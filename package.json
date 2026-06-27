@@ -6,10 +6,16 @@
   "scripts": {
     "dev": "astro dev --port 4332",
     "build": "astro build",
-    "preview": "astro preview --port 4332"
+    "preview": "astro preview --port 4332",
+    "sync:games": "node scripts/sync-games.mjs"
   },
   "dependencies": {
-    "astro": "^5.10.0"
+    "astro": "^5.10.0",
+    "gray-matter": "^4.0.3",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-html": "^16.0.1",
+    "mermaid": "^11.6.0"
   },
   "engines": {
     "node": ">=20.0.0"

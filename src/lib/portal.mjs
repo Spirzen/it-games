@@ -5,7 +5,7 @@ export function getPortalContext() {
   return {
     config,
     navItems: buildNavItems(config, 'games'),
-    brandHref: `${resolvePortalBase(config, 'games')}/`,
+    brandHref: `${resolvePortalBase(config, 'games')}/games/intro`,
     brandLabel: 'Игры IT',
     ecosystemConfigJson: JSON.stringify({
       postMessage: config.postMessage,
