@@ -1,0 +1,17 @@
+{
+  "name": "it-games",
+  "version": "0.1.0",
+  "type": "module",
+  "homepage": "https://games.spirzen.ru",
+  "scripts": {
+    "dev": "astro dev --port 4332",
+    "build": "astro build",
+    "preview": "astro preview --port 4332"
+  },
+  "dependencies": {
+    "astro": "^5.10.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

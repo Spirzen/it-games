@@ -1,0 +1,17 @@
+---
+import PortalLayout from '@/components/PortalLayout.astro';
+import {getPortalContext} from '@/lib/portal.mjs';
+const {navItems, brandHref, brandLabel, ecosystemConfigJson} = getPortalContext();
+---
+
+<PortalLayout
+  title="Игры — IT Universe"
+  description="games.spirzen.ru"
+  brandLabel={brandLabel}
+  brandHref={brandHref}
+  navItems={navItems}
+  ecosystemConfigJson={ecosystemConfigJson}
+>
+  <div class="portal-hero"><h1>Игровой портал</h1><p>Game studies и разработка игр.</p></div>
+  <div class="placeholder-card"><h2>В разработке</h2></div>
+</PortalLayout>
