@@ -1,0 +1,25 @@
+---
+const platforms = [
+  {id: 'steam', label: 'Steam'},
+  {id: 'xbox', label: 'Xbox'},
+  {id: 'playstation', label: 'PlayStation'},
+  {id: 'nintendo', label: 'Nintendo'},
+];
+---
+
+<div class="platform-picker" role="group" aria-label="Стиль платформы">
+  {
+    platforms.map((platform) => (
+      <button
+        type="button"
+        class:list={['platform-picker__btn', platform.id === 'steam' && 'is-active']}
+        data-games-platform={platform.id}
+        aria-pressed={platform.id === 'steam' ? 'true' : 'false'}
+        title={platform.label}
+      >
+        <span class="platform-picker__swatch" aria-hidden="true" />
+        <span class="platform-picker__label">{platform.label}</span>
+      </button>
+    ))
+  }
+</div>

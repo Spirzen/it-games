@@ -2,36 +2,59 @@
 import path from 'node:path';
 import {findRepoRoot} from '@/lib/ecosystem.mjs';
 import {loadPortalPages} from '@/lib/content/load-pages.mjs';
+import {buildPortalSearchIndex} from '@/lib/content/search-index.mjs';
+import {PORTAL} from '@/lib/portal-config.mjs';
 import {getPortalContext} from '@/lib/portal.mjs';
 import PortalLayout from '@/components/PortalLayout.astro';
 import PortalSidebar from '@/components/PortalSidebar.astro';
 import ArticleBreadcrumbs from '@/components/ArticleBreadcrumbs.astro';
 import ArticleToolbar from '@/components/ArticleToolbar.astro';
 import ArticleToc from '@/components/ArticleToc.astro';
+import GamesIntroHero from '@/components/GamesIntroHero.astro';
 
 export async function getStaticPaths() {
   const contentDir = path.join(findRepoRoot(), 'content/games');
   const portal = await loadPortalPages(contentDir);
+  const searchIndex = buildPortalSearchIndex(portal.pages);
+  const categoryCount = new Set(portal.pages.map((p) => p.categoryKey).filter(Boolean)).size;
+
   return portal.pages.map((page) => ({
     params: {slug: page.pathSlug},
-    props: {page, sidebar: portal.sidebar},
+    props: {page, sidebar: portal.sidebar, searchIndex, pageCount: portal.pages.length, categoryCount},
   }));
 }
 
-const {page, sidebar} = Astro.props;
+const {page, sidebar, searchIndex, pageCount, categoryCount} = Astro.props;
 const {navItems, brandHref, brandLabel, ecosystemConfigJson} = getPortalContext();
+const isPortalIntro = page.href === PORTAL.introHref;
+
+function enrichSidebarNodes(nodes, page) {
+  return nodes.map((node) => {
+    if (node.type === 'link') {
+      return {...node, active: node.href === page.href};
+    }
+    const children = enrichSidebarNodes(node.children, page);
+    const childActive = children.some((child) => child.active || (child.type === 'category' && child.open));
+    const subsectionMatch =
+      node.subsectionKey && page.subsectionKey && node.subsectionKey === page.subsectionKey;
+    return {
+      ...node,
+      active: node.href === page.href,
+      open: childActive || node.href === page.href || subsectionMatch,
+      children,
+    };
+  });
+}
 
 const sidebarItems = sidebar.map((item) => {
   if (item.type === 'category') {
-    const childActive = item.children.some((child) => child.href === page.href);
+    const children = enrichSidebarNodes(item.children, page);
+    const childActive = children.some((child) => child.active || (child.type === 'category' && child.open));
     return {
       ...item,
       active: item.href === page.href,
       open: childActive || item.href === page.href || page.categoryKey === item.categoryKey,
-      children: item.children.map((child) => ({
-        ...child,
-        active: child.href === page.href,
-      })),
+      children,
     };
   }
   return {...item, active: item.href === page.href};
@@ -45,25 +68,33 @@ const sidebarItems = sidebar.map((item) => {
   brandHref={brandHref}
   navItems={navItems}
   hasSidebar={true}
-  hasToc={page.toc.length > 1}
+  hasToc={!isPortalIntro && page.toc.length > 1}
   ecosystemConfigJson={ecosystemConfigJson}
+  portalVariant="games"
+  contentClass={isPortalIntro ? 'portal-content--games-intro' : ''}
 >
   <PortalSidebar slot="sidebar" title="Разделы" items={sidebarItems} />
 
   <ArticleBreadcrumbs items={page.breadcrumbs} />
 
-  <header class="portal-hero">
-    <h1>{page.title}</h1>
-    {page.description ? <p>{page.description}</p> : null}
-  </header>
+  {
+    isPortalIntro ? (
+      <GamesIntroHero pageCount={pageCount} categoryCount={categoryCount} searchIndex={searchIndex} />
+    ) : (
+      <header class="portal-hero">
+        <h1>{page.title}</h1>
+        {page.description ? <p>{page.description}</p> : null}
+      </header>
+    )
+  }
 
-  <ArticleToolbar title={page.title} href={page.href} />
+  {!isPortalIntro ? <ArticleToolbar title={page.title} href={page.href} /> : null}
 
-  <div class="article-layout">
+  <div class:list={['article-layout', isPortalIntro && 'article-layout--intro']}>
     <article class="article-shell">
       <div class="article-body" set:html={page.bodyHtml} />
     </article>
-    <ArticleToc items={page.toc} />
+    {!isPortalIntro && page.toc.length > 1 ? <ArticleToc items={page.toc} /> : null}
   </div>
 
   {
@@ -84,9 +115,4 @@ const sidebarItems = sidebar.map((item) => {
     ) : null
   }
 
-  <footer class="portal-footer">
-    <p>
-      Часть экосистемы <a href={navItems.find((n) => n.id === 'spirzen')?.href}>Вселенная IT</a>.
-    </p>
-  </footer>
 </PortalLayout>

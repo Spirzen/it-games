@@ -39,7 +39,7 @@ function slugToPathSegments(slug) {
   return normalized.split('/').filter(Boolean);
 }
 
-function readCategoryLabel(relDir, contentRoot) {
+function readCategoryMeta(relDir, contentRoot) {
   if (!relDir || relDir === '.') {
     return null;
   }
@@ -49,7 +49,10 @@ function readCategoryLabel(relDir, contentRoot) {
   }
   try {
     const json = JSON.parse(fs.readFileSync(categoryPath, 'utf8'));
-    return json.label ?? null;
+    return {
+      label: json.label ?? null,
+      position: typeof json.position === 'number' ? json.position : null,
+    };
   } catch {
     return null;
   }
@@ -71,10 +74,15 @@ function parsePortalMarkdownFile(filePath, contentRoot) {
   const slug = resolveSlugFromFile(relPath);
   const pathSegments = slugToPathSegments(slug);
   const folder = path.dirname(relPath);
-  const categoryKey = folder === '.' ? null : folder.split('/')[0];
-  const categoryLabel = categoryKey
-    ? (readCategoryLabel(folder.split('/')[0], contentRoot) ?? categoryKey)
-    : null;
+  const folderParts = folder === '.' ? [] : folder.split('/');
+  const categoryKey = folderParts[0] ?? null;
+  const categoryMeta = categoryKey ? readCategoryMeta(categoryKey, contentRoot) : null;
+  const categoryLabel = categoryKey ? (categoryMeta?.label ?? categoryKey) : null;
+  const subsectionKey = folderParts.length >= 2 ? folderParts[1] : null;
+  const subsectionMeta =
+    subsectionKey && categoryKey ? readCategoryMeta(`${categoryKey}/${subsectionKey}`, contentRoot) : null;
+  const subsectionLabel = subsectionMeta?.label ?? null;
+  const subsectionPosition = subsectionMeta?.position ?? null;
 
   return {
     relPath,
@@ -89,6 +97,9 @@ function parsePortalMarkdownFile(filePath, contentRoot) {
     bodyMarkdown: prepareBody(content, relPath),
     categoryKey,
     categoryLabel,
+    subsectionKey,
+    subsectionLabel,
+    subsectionPosition,
     isIntro: pathSegments.at(-1) === 'intro' || slug === PORTAL.introHref,
   };
 }
@@ -109,12 +120,15 @@ function prepareBody(content, relPath) {
   return body.trim();
 }
 
+
 function transformRandomGameGenerator() {
   return [
-    '<div class="itu-game-generator-stub">',
-    '<p><strong>Интерактивный генератор игр</strong> — полный каталог на',
-    ' <a href="https://tools.spirzen.ru/tools/games/4">tools.spirzen.ru</a>.</p>',
-    '</div>',
+    `<div class="itu-play-embed"`,
+    `data-example="tools-games/random-game-generator"`,
+    `data-title="Генератор случайной игры"`,
+    `data-min-height="420"`,
+    `data-embed-data-source="article-games">`,
+    `</div>`,
   ].join(' ');
 }
 

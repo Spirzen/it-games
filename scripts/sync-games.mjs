@@ -14,6 +14,18 @@ const SOURCES = [
   '9-04-razrabotka-igr',
 ];
 
+const introPath = path.join(dest, 'intro.md');
+const gametoolsDir = path.join(dest, '9-031-gametools');
+let introBackup = null;
+if (fs.existsSync(introPath)) {
+  introBackup = fs.readFileSync(introPath, 'utf8');
+}
+const gametoolsBackupDir = path.join(repoRoot, '.sync-gametools-backup');
+if (fs.existsSync(gametoolsDir)) {
+  fs.rmSync(gametoolsBackupDir, {recursive: true, force: true});
+  fs.cpSync(gametoolsDir, gametoolsBackupDir, {recursive: true});
+}
+
 if (fs.existsSync(dest)) {
   fs.rmSync(dest, {recursive: true, force: true});
 }
@@ -31,25 +43,30 @@ for (const folder of SOURCES) {
   assets += mirrorAssetsDir(src, path.join(assetsDest, folder));
 }
 
-const introPath = path.join(dest, 'intro.md');
-if (!fs.existsSync(introPath)) {
+const introPathAfter = path.join(dest, 'intro.md');
+if (introBackup) {
+  fs.writeFileSync(introPathAfter, introBackup, 'utf8');
+} else if (!fs.existsSync(introPathAfter)) {
   fs.writeFileSync(
-    introPath,
+    introPathAfter,
     `---
 title: Игры — о портале
-description: Игровая индустрия, game studies и разработка игр — материалы энциклопедии Вселенная IT.
+description: Игровая индустрия, game studies и разработка игр — материалы, интерактивы и практикумы энциклопедии Вселенная IT.
 sidebar_label: О портале
 ---
 
-# Игры
-
-На этом портале собраны материалы spinoff-разделов **игровая индустрия** и **разработка игр** — теория, обзоры, практикумы и интерактивы.
+## Карта портала
 
 <!-- DOC_CARD_LIST -->
 `,
     'utf8',
   );
   count += 1;
+}
+
+if (fs.existsSync(gametoolsBackupDir)) {
+  fs.cpSync(gametoolsBackupDir, path.join(dest, '9-031-gametools'), {recursive: true});
+  fs.rmSync(gametoolsBackupDir, {recursive: true, force: true});
 }
 
 console.log(`sync-games: ${count} files → content/games, ${assets} assets → public/doc-assets/games`);

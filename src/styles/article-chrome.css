@@ -192,6 +192,25 @@
   background: var(--itu-accent-soft);
 }
 
+.portal-sidebar__sublink--section {
+  font-weight: 600;
+}
+
+.portal-sidebar__nested {
+  margin: 0.2rem 0 0.35rem;
+  padding: 0 0 0 0.55rem;
+  list-style: none;
+  border-left: 1px solid var(--itu-border);
+}
+
+.portal-sidebar__details--nested {
+  margin-top: 0.1rem;
+}
+
+.portal-sidebar__summary--nested {
+  margin-bottom: 0.1rem;
+}
+
 .portal-shell.sidebar-collapsed.has-sidebar {
   grid-template-columns: 2.75rem minmax(0, 1fr);
 }

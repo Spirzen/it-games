@@ -1,0 +1,169 @@
+---
+interface SearchItem {
+  title: string;
+  description: string;
+  href: string;
+  category: string;
+  categoryKey: string;
+  isIntro: boolean;
+}
+
+interface QuestCard {
+  icon: string;
+  label: string;
+  title: string;
+  href: string;
+  tag: string;
+}
+
+interface Props {
+  pageCount: number;
+  categoryCount: number;
+  searchIndex: SearchItem[];
+}
+
+const {pageCount, categoryCount, searchIndex} = Astro.props;
+
+const quests: QuestCard[] = [
+  {
+    icon: '🏭',
+    label: 'Квест 01',
+    title: 'Игровая индустрия',
+    href: '/games/9-03-igrovaya-industriya/intro',
+    tag: 'Рынок · платформы · монетизация',
+  },
+  {
+    icon: '📖',
+    label: 'Квест 02',
+    title: 'Игроведение',
+    href: '/games/9-03-igrovaya-industriya/game-studies/intro',
+    tag: 'Жанры · франшизы · культура',
+  },
+  {
+    icon: '🛠️',
+    label: 'Квест 03',
+    title: 'Разработка игр',
+    href: '/games/9-04-razrabotka-igr/intro',
+    tag: 'Unity · Unreal · Godot · Roblox',
+  },
+  {
+    icon: '🐍',
+    label: 'Квест 04',
+    title: 'Практикум',
+    href: '/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro',
+    tag: 'Python · Java · TypeScript',
+  },
+  {
+    icon: '🧰',
+    label: 'Квест 05',
+    title: 'Полезные инструменты',
+    href: '/games/9-031-gametools/intro',
+    tag: 'Движки · магазины · каталог хитов',
+  },
+];
+
+const quickLinks = [
+  {label: 'Каталог хитов', href: '/games/9-031-gametools/4', ext: false},
+  {label: 'Интерактивы Play', href: 'https://play.spirzen.ru/', ext: true},
+  {label: 'Lab — Pygame & Unity', href: 'https://lab.spirzen.ru/', ext: true},
+  {label: 'Энциклопедия', href: 'https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro', ext: true},
+  {label: 'Урал Батыр ↗', href: 'https://spirzen.github.io/OnlineCardGame/', ext: true},
+];
+---
+
+<section class="games-intro" data-games-intro aria-label="Игровой портал">
+  <div class="games-intro__panel">
+    <div class="games-intro__bg" aria-hidden="true">
+      <div class="games-intro__grid"></div>
+      <div class="games-intro__glow games-intro__glow--a"></div>
+      <div class="games-intro__glow games-intro__glow--b"></div>
+    </div>
+
+    <div class="games-intro__head">
+      <p class="games-intro__eyebrow">
+        <span class="games-intro__pulse" aria-hidden="true"></span>
+        GAME PORTAL · IT UNIVERSE
+      </p>
+      <h1 class="games-intro__title">Игровой портал</h1>
+      <p class="games-intro__lead">
+        Индустрия, game studies и геймдев — {pageCount} материалов, интерактивы и практикумы.
+        Выберите квест или найдите статью через поиск.
+      </p>
+      <div class="games-intro__stats">
+        <span class="games-intro__stat"><strong>{pageCount}</strong> статей</span>
+        <span class="games-intro__stat"><strong>{categoryCount}</strong> раздела</span>
+        <span class="games-intro__stat"><strong>∞</strong> respawn</span>
+      </div>
+    </div>
+
+    <div class="games-intro__search-wrap">
+      <label class="sr-only" for="games-portal-search">Поиск по порталу</label>
+      <div class="games-intro__search-box">
+        <span class="games-intro__search-icon" aria-hidden="true">⌕</span>
+        <input
+          id="games-portal-search"
+          class="games-intro__search-input"
+          type="search"
+          placeholder="Поиск: Unity, roguelike, Steam, netcode…"
+          autocomplete="off"
+          spellcheck="false"
+          data-games-search-input
+        />
+      </div>
+
+      <div class="games-intro__chips" data-games-chips role="group" aria-label="Фильтр раздела">
+        <button type="button" class="games-intro__chip is-active" data-games-chip="all">Все</button>
+        <button type="button" class="games-intro__chip" data-games-chip="9-031-gametools">Инструменты</button>
+        <button type="button" class="games-intro__chip" data-games-chip="9-03-igrovaya-industriya">Индустрия</button>
+        <button type="button" class="games-intro__chip" data-games-chip="9-04-razrabotka-igr">Геймдев</button>
+      </div>
+
+      <p class="games-intro__search-meta" data-games-search-count></p>
+
+      <div class="games-intro__search-output" data-games-search-output hidden>
+        <p class="games-intro__search-empty" data-games-search-empty hidden>Ничего не найдено — попробуйте другой запрос или фильтр.</p>
+        <ul class="games-intro__results" data-games-search-results role="listbox"></ul>
+      </div>
+    </div>
+
+    <div class="games-intro__quests" aria-label="Стартовые квесты">
+      {quests.map((quest) => (
+        <a class="games-intro__quest" href={quest.href}>
+          <span class="games-intro__quest-icon" aria-hidden="true">{quest.icon}</span>
+          <span class="games-intro__quest-label">{quest.label}</span>
+          <span class="games-intro__quest-title">{quest.title}</span>
+          <span class="games-intro__quest-tag">{quest.tag}</span>
+          <span class="games-intro__quest-cta">Начать →</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="games-intro__bar">
+      <div class="games-intro__links" aria-label="Связанные сервисы">
+        {quickLinks.map((link) => (
+          <a
+            class="games-intro__link"
+            href={link.href}
+            target={link.ext ? '_blank' : undefined}
+            rel={link.ext ? 'noopener noreferrer' : undefined}
+          >
+            {link.label}
+            {link.ext ? ' ↗' : ''}
+          </a>
+        ))}
+      </div>
+      <div class="games-intro__loot">
+        <button type="button" class="games-intro__loot-btn" data-games-random>
+          🎲 Случайный квест
+        </button>
+        <p class="games-intro__loot-out" data-games-random-out hidden></p>
+      </div>
+    </div>
+  </div>
+
+  <script type="application/json" id="games-search-index" set:html={JSON.stringify(searchIndex)} />
+</section>
+
+<script>
+  import '../scripts/games-intro-search.js';
+</script>

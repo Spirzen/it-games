@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://games.spirzen.ru/sitemap-index.xml

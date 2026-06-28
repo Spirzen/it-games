@@ -26,6 +26,9 @@
     if (stored === 'light' || stored === 'dark') {
       return stored;
     }
+    if (root.dataset.portal === 'games') {
+      return 'dark';
+    }
     return systemPrefersDark() ? 'dark' : 'light';
   }
 

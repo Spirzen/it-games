@@ -8,7 +8,10 @@ export const PORTAL = {
   assetsBase: '/doc-assets/games',
   contentDir: 'content/games',
   introHref: '/games/intro',
-  spinoffRoots: ['9-03-igrovaya-industriya', '9-04-razrabotka-igr'],
+  spinoffRoots: ['9-03-igrovaya-industriya', '9-04-razrabotka-igr', '9-031-gametools'],
+  /** Порядок разделов в sidebar (иначе 9-031 уходит перед 9-04 по localeCompare). */
+  categoryOrder: ['9-03-igrovaya-industriya', '9-04-razrabotka-igr', '9-031-gametools'],
+  gametoolsKey: '9-031-gametools',
 };
 
 export const GAMES_ORIGIN = 'https://games.spirzen.ru';

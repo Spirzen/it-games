@@ -1,5 +1,8 @@
 ---
+import PortalSidebarNodes from './PortalSidebarNodes.astro';
+
 interface SidebarLink {
+  type: 'link';
   slug: string;
   label: string;
   href: string;
@@ -11,9 +14,10 @@ interface SidebarCategory {
   slug: string;
   label: string;
   href: string;
+  categoryKey?: string;
   active?: boolean;
   open?: boolean;
-  children: SidebarLink[];
+  children: Array<SidebarLink | SidebarCategory>;
 }
 
 interface SidebarFlatLink {
@@ -59,19 +63,7 @@ const {title = 'Разделы', items} = Astro.props;
                     {item.label}
                   </a>
                 </summary>
-                {
-                  item.children.length > 0 ? (
-                    <ul class="portal-sidebar__sublist">
-                      {item.children.map((child) => (
-                        <li>
-                          <a class:list={['portal-sidebar__sublink', child.active && 'is-active']} href={child.href}>
-                            {child.label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null
-                }
+                {item.children.length > 0 ? <PortalSidebarNodes items={item.children} /> : null}
               </details>
             </li>
           ),

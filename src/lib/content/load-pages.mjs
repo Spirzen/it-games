@@ -136,6 +136,14 @@ function buildRelatedLinks(related) {
           external: true,
         };
       }
+      if (doc.startsWith('tools/games/')) {
+        const rel = doc.replace(/^tools\/games\/?/, '') || 'intro';
+        return {
+          title: item.title ?? doc,
+          href: pathSegmentsToHref([PORTAL.gametoolsKey, ...rel.split('/').filter(Boolean)]),
+          external: false,
+        };
+      }
       if (doc.startsWith('tools/')) {
         return {
           title: item.title ?? doc,
@@ -153,6 +161,63 @@ function buildRelatedLinks(related) {
       return null;
     })
     .filter(Boolean);
+}
+
+function pageToSidebarLink(page) {
+  return {
+    type: 'link',
+    slug: page.pathSlug,
+    label: page.title,
+    href: page.href,
+  };
+}
+
+function buildCategoryChildren(categoryPages, categoryKey) {
+  const contentPages = categoryPages.filter((p) => !(p.isIntro && p.pathSegments.length === 2));
+
+  const topLevel = [];
+  const subsections = new Map();
+
+  for (const page of contentPages) {
+    if (!page.subsectionKey || !page.subsectionLabel) {
+      topLevel.push(page);
+      continue;
+    }
+    if (!subsections.has(page.subsectionKey)) {
+      subsections.set(page.subsectionKey, {
+        label: page.subsectionLabel,
+        position: page.subsectionPosition ?? 999,
+        pages: [],
+      });
+    }
+    subsections.get(page.subsectionKey).pages.push(page);
+  }
+
+  const children = [];
+
+  for (const [subKey, {label, position, pages: subPages}] of [...subsections.entries()].sort(
+    (a, b) => (a[1].position ?? 999) - (b[1].position ?? 999) || a[0].localeCompare(b[0], 'ru'),
+  )) {
+    const intro = subPages.find((p) => p.isIntro && p.pathSegments.length === 3);
+    const subChildren = sortByDocPath(
+      subPages.filter((p) => !(p.isIntro && p.pathSegments.length === 3)),
+    ).map(pageToSidebarLink);
+
+    children.push({
+      type: 'category',
+      slug: intro?.pathSlug ?? `${categoryKey}/${subKey}`,
+      subsectionKey: subKey,
+      label,
+      href: intro?.href ?? `/${PORTAL.prefix}/${categoryKey}/${subKey}/intro`,
+      children: subChildren,
+    });
+  }
+
+  for (const page of sortByDocPath(topLevel)) {
+    children.push(pageToSidebarLink(page));
+  }
+
+  return children;
 }
 
 function buildSidebar(pages) {
@@ -173,17 +238,23 @@ function buildSidebar(pages) {
     categories.get(page.categoryKey).pages.push(page);
   }
 
-  for (const [key, {label, pages: categoryPages}] of [...categories.entries()].sort((a, b) =>
-    a[0].localeCompare(b[0], 'ru'),
-  )) {
+  for (const [key, {label, pages: categoryPages}] of [...categories.entries()].sort((a, b) => {
+    const order = PORTAL.categoryOrder ?? [];
+    const ia = order.indexOf(a[0]);
+    const ib = order.indexOf(b[0]);
+    if (ia >= 0 && ib >= 0) {
+      return ia - ib;
+    }
+    if (ia >= 0) {
+      return -1;
+    }
+    if (ib >= 0) {
+      return 1;
+    }
+    return a[0].localeCompare(b[0], 'ru');
+  })) {
     const intro = categoryPages.find((p) => p.isIntro && p.pathSegments.length === 2);
-    const children = sortByDocPath(
-      categoryPages.filter((p) => !p.isIntro || p.pathSegments.length > 2).filter((p) => !(p.isIntro && p.pathSegments.length === 2)),
-    ).map((p) => ({
-        slug: p.pathSlug,
-        label: p.title,
-        href: p.href,
-      }));
+    const children = buildCategoryChildren(categoryPages, key);
 
     items.push({
       type: 'category',

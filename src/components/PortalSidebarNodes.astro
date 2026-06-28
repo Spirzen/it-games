@@ -1,0 +1,55 @@
+---
+import PortalSidebarNodes from './PortalSidebarNodes.astro';
+
+interface SidebarLink {
+  type: 'link';
+  slug: string;
+  label: string;
+  href: string;
+  active?: boolean;
+}
+
+interface SidebarCategory {
+  type: 'category';
+  slug: string;
+  label: string;
+  href: string;
+  active?: boolean;
+  open?: boolean;
+  children: SidebarNode[];
+}
+
+type SidebarNode = SidebarLink | SidebarCategory;
+
+interface Props {
+  items: SidebarNode[];
+  nested?: boolean;
+}
+
+const {items, nested = false} = Astro.props;
+---
+
+<ul class:list={[nested ? 'portal-sidebar__nested' : 'portal-sidebar__sublist']}>
+  {
+    items.map((item) =>
+      item.type === 'link' ? (
+        <li>
+          <a class:list={['portal-sidebar__sublink', item.active && 'is-active']} href={item.href}>
+            {item.label}
+          </a>
+        </li>
+      ) : (
+        <li class="portal-sidebar__subcategory">
+          <details class="portal-sidebar__details portal-sidebar__details--nested" open={item.open ?? item.active}>
+            <summary class="portal-sidebar__summary portal-sidebar__summary--nested">
+              <a class:list={['portal-sidebar__sublink', 'portal-sidebar__sublink--section', item.active && 'is-active']} href={item.href}>
+                {item.label}
+              </a>
+            </summary>
+            {item.children.length > 0 ? <PortalSidebarNodes items={item.children} nested /> : null}
+          </details>
+        </li>
+      ),
+    )
+  }
+</ul>

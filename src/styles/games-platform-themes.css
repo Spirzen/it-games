@@ -1,0 +1,413 @@
+/**
+ * Платформенные темы портала games: Steam (default), Xbox, PlayStation, Nintendo.
+ * Светлая/тёмная — через data-theme на html (как у остальных порталов).
+ */
+
+:root[data-portal='games'] {
+  --games-font-sans: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --itu-font-sans: var(--games-font-sans);
+  --itu-radius: 4px;
+  --itu-radius-sm: 3px;
+}
+
+/* ── Steam (default) ── */
+
+:root[data-portal='games'][data-platform='steam'],
+:root[data-portal='games']:not([data-platform]) {
+  --games-accent: #66c0f4;
+  --games-accent-hover: #ffffff;
+  --games-accent-secondary: #1a9fff;
+  --games-accent-soft: rgba(102, 192, 244, 0.14);
+  --games-accent-muted: rgba(102, 192, 244, 0.45);
+  --games-panel-bg: linear-gradient(180deg, #2a475e 0%, #1b2838 100%);
+  --games-panel-border: rgba(102, 192, 244, 0.22);
+  --games-glow-a: #1a9fff;
+  --games-glow-b: #2a475e;
+  --games-grid-color: rgba(102, 192, 244, 0.07);
+  --games-success: #a4d007;
+  --games-loot: #beee11;
+}
+
+:root[data-portal='games'][data-platform='steam'][data-theme='dark'],
+:root[data-portal='games'][data-platform='steam'].dark,
+:root[data-portal='games']:not([data-platform])[data-theme='dark'],
+:root[data-portal='games']:not([data-platform]).dark {
+  --itu-bg: #1b2838;
+  --itu-bg-elevated: #2a475e;
+  --itu-bg-subtle: #171a21;
+  --itu-text: #c7d5e0;
+  --itu-text-muted: #8f98a0;
+  --itu-border: #3d5a73;
+  --itu-accent: #66c0f4;
+  --itu-accent-soft: rgba(102, 192, 244, 0.14);
+  --itu-accent-hover: #ffffff;
+  --itu-link: #66c0f4;
+  --itu-link-hover: #ffffff;
+  --itu-nav-bg: linear-gradient(90deg, #171a21 0%, #1b2838 55%, #2a475e 100%);
+  --itu-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  --games-on-panel-text: #c7d5e0;
+  --games-on-panel-muted: rgba(199, 213, 224, 0.72);
+  --games-surface: rgba(23, 26, 33, 0.65);
+  --games-surface-border: rgba(102, 192, 244, 0.2);
+  --games-title-gradient: linear-gradient(120deg, #ffffff 10%, #66c0f4 55%, #1a9fff 90%);
+}
+
+:root[data-portal='games'][data-platform='steam'][data-theme='light'],
+:root[data-portal='games'][data-platform='steam']:not([data-theme]):not(.dark),
+:root[data-portal='games']:not([data-platform])[data-theme='light'],
+:root[data-portal='games']:not([data-platform]):not([data-theme]):not(.dark) {
+  --itu-bg: #c6d4df;
+  --itu-bg-elevated: #ffffff;
+  --itu-bg-subtle: #acb2b8;
+  --itu-text: #1b2838;
+  --itu-text-muted: #556772;
+  --itu-border: #8ba0b2;
+  --itu-accent: #1a9fff;
+  --itu-accent-soft: rgba(26, 159, 255, 0.12);
+  --itu-accent-hover: #0066cc;
+  --itu-link: #0066cc;
+  --itu-link-hover: #004080;
+  --itu-nav-bg: linear-gradient(90deg, #171a21 0%, #1b2838 40%, #2a475e 100%);
+  --itu-shadow: 0 4px 16px rgba(27, 40, 56, 0.15);
+  --games-panel-bg: linear-gradient(180deg, #ffffff 0%, #e3e9ef 100%);
+  --games-panel-border: rgba(26, 159, 255, 0.25);
+  --games-on-panel-text: #1b2838;
+  --games-on-panel-muted: rgba(27, 40, 56, 0.65);
+  --games-surface: rgba(255, 255, 255, 0.85);
+  --games-surface-border: rgba(26, 159, 255, 0.22);
+  --games-title-gradient: linear-gradient(120deg, #1b2838 10%, #1a9fff 55%, #0066cc 90%);
+}
+
+/* ── Xbox ── */
+
+:root[data-portal='games'][data-platform='xbox'] {
+  --games-accent: #9bf00b;
+  --games-accent-hover: #c4ff4d;
+  --games-accent-secondary: #107c10;
+  --games-accent-soft: rgba(155, 240, 11, 0.12);
+  --games-accent-muted: rgba(155, 240, 11, 0.4);
+  --games-panel-bg: linear-gradient(160deg, #1a2418 0%, #0e1410 100%);
+  --games-panel-border: rgba(155, 240, 11, 0.22);
+  --games-glow-a: #9bf00b;
+  --games-glow-b: #107c10;
+  --games-grid-color: rgba(155, 240, 11, 0.06);
+  --games-success: #9bf00b;
+  --games-loot: #c4ff4d;
+}
+
+:root[data-portal='games'][data-platform='xbox'][data-theme='dark'],
+:root[data-portal='games'][data-platform='xbox'].dark {
+  --itu-bg: #0e1410;
+  --itu-bg-elevated: #1a2418;
+  --itu-bg-subtle: #141914;
+  --itu-text: #e8ece8;
+  --itu-text-muted: #9aa89a;
+  --itu-border: #2d3d2a;
+  --itu-accent: #9bf00b;
+  --itu-accent-soft: rgba(155, 240, 11, 0.12);
+  --itu-accent-hover: #c4ff4d;
+  --itu-link: #9bf00b;
+  --itu-link-hover: #c4ff4d;
+  --itu-nav-bg: linear-gradient(90deg, #0a0f0a 0%, #0e1410 50%, #1a2418 100%);
+  --itu-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --games-on-panel-text: #e8ece8;
+  --games-on-panel-muted: rgba(232, 236, 232, 0.7);
+  --games-surface: rgba(10, 15, 10, 0.7);
+  --games-surface-border: rgba(155, 240, 11, 0.2);
+  --games-title-gradient: linear-gradient(120deg, #ffffff 10%, #9bf00b 50%, #107c10 90%);
+}
+
+:root[data-portal='games'][data-platform='xbox'][data-theme='light'],
+:root[data-portal='games'][data-platform='xbox']:not([data-theme]):not(.dark) {
+  --itu-bg: #f0f4ee;
+  --itu-bg-elevated: #ffffff;
+  --itu-bg-subtle: #e2ebe0;
+  --itu-text: #0e1410;
+  --itu-text-muted: #4a5c48;
+  --itu-border: #b8c9b4;
+  --itu-accent: #107c10;
+  --itu-accent-soft: rgba(16, 124, 16, 0.1);
+  --itu-accent-hover: #0b5a0b;
+  --itu-link: #107c10;
+  --itu-link-hover: #0b5a0b;
+  --itu-nav-bg: linear-gradient(90deg, #0e1410 0%, #107c10 100%);
+  --itu-shadow: 0 4px 16px rgba(16, 124, 16, 0.12);
+  --games-panel-bg: linear-gradient(180deg, #ffffff 0%, #e8f2e6 100%);
+  --games-panel-border: rgba(16, 124, 16, 0.25);
+  --games-on-panel-text: #0e1410;
+  --games-on-panel-muted: rgba(14, 20, 16, 0.65);
+  --games-surface: rgba(255, 255, 255, 0.9);
+  --games-surface-border: rgba(16, 124, 16, 0.22);
+  --games-title-gradient: linear-gradient(120deg, #0e1410 10%, #107c10 50%, #9bf00b 90%);
+}
+
+/* ── PlayStation ── */
+
+:root[data-portal='games'][data-platform='playstation'] {
+  --games-accent: #0070d1;
+  --games-accent-hover: #4da3ff;
+  --games-accent-secondary: #00439c;
+  --games-accent-soft: rgba(0, 112, 209, 0.14);
+  --games-accent-muted: rgba(0, 112, 209, 0.45);
+  --games-panel-bg: linear-gradient(160deg, #0d1a2e 0%, #0a0a12 100%);
+  --games-panel-border: rgba(0, 112, 209, 0.25);
+  --games-glow-a: #0070d1;
+  --games-glow-b: #00439c;
+  --games-grid-color: rgba(0, 112, 209, 0.07);
+  --games-success: #2d9cdb;
+  --games-loot: #4da3ff;
+}
+
+:root[data-portal='games'][data-platform='playstation'][data-theme='dark'],
+:root[data-portal='games'][data-platform='playstation'].dark {
+  --itu-bg: #0a0a12;
+  --itu-bg-elevated: #121826;
+  --itu-bg-subtle: #0d1520;
+  --itu-text: #e8eaed;
+  --itu-text-muted: #8b95a5;
+  --itu-border: #1e3a5f;
+  --itu-accent: #0070d1;
+  --itu-accent-soft: rgba(0, 112, 209, 0.14);
+  --itu-accent-hover: #4da3ff;
+  --itu-link: #2d9cdb;
+  --itu-link-hover: #4da3ff;
+  --itu-nav-bg: linear-gradient(90deg, #000000 0%, #0a0a12 45%, #003791 100%);
+  --itu-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
+  --games-on-panel-text: #e8eaed;
+  --games-on-panel-muted: rgba(232, 234, 237, 0.72);
+  --games-surface: rgba(10, 10, 18, 0.72);
+  --games-surface-border: rgba(0, 112, 209, 0.22);
+  --games-title-gradient: linear-gradient(120deg, #ffffff 10%, #0070d1 50%, #00439c 90%);
+}
+
+:root[data-portal='games'][data-platform='playstation'][data-theme='light'],
+:root[data-portal='games'][data-platform='playstation']:not([data-theme]):not(.dark) {
+  --itu-bg: #eef2f8;
+  --itu-bg-elevated: #ffffff;
+  --itu-bg-subtle: #d8e4f0;
+  --itu-text: #0a0a12;
+  --itu-text-muted: #4a5568;
+  --itu-border: #a8bdd4;
+  --itu-accent: #0070cc;
+  --itu-accent-soft: rgba(0, 112, 204, 0.1);
+  --itu-accent-hover: #00439c;
+  --itu-link: #0070cc;
+  --itu-link-hover: #00439c;
+  --itu-nav-bg: linear-gradient(90deg, #003791 0%, #0070cc 100%);
+  --itu-shadow: 0 4px 16px rgba(0, 67, 156, 0.12);
+  --games-panel-bg: linear-gradient(180deg, #ffffff 0%, #e8f0fa 100%);
+  --games-panel-border: rgba(0, 112, 204, 0.25);
+  --games-on-panel-text: #0a0a12;
+  --games-on-panel-muted: rgba(10, 10, 18, 0.65);
+  --games-surface: rgba(255, 255, 255, 0.92);
+  --games-surface-border: rgba(0, 112, 204, 0.2);
+  --games-title-gradient: linear-gradient(120deg, #0a0a12 10%, #0070cc 50%, #00439c 90%);
+}
+
+/* ── Nintendo ── */
+
+:root[data-portal='games'][data-platform='nintendo'] {
+  --games-accent: #e60012;
+  --games-accent-hover: #ff4040;
+  --games-accent-secondary: #c4000f;
+  --games-accent-soft: rgba(230, 0, 18, 0.12);
+  --games-accent-muted: rgba(230, 0, 18, 0.4);
+  --games-panel-bg: linear-gradient(160deg, #2d2d2d 0%, #1a1a1a 100%);
+  --games-panel-border: rgba(230, 0, 18, 0.22);
+  --games-glow-a: #e60012;
+  --games-glow-b: #8b0000;
+  --games-grid-color: rgba(230, 0, 18, 0.06);
+  --games-success: #ff4040;
+  --games-loot: #ff6b6b;
+}
+
+:root[data-portal='games'][data-platform='nintendo'][data-theme='dark'],
+:root[data-portal='games'][data-platform='nintendo'].dark {
+  --itu-bg: #1a1a1a;
+  --itu-bg-elevated: #2d2d2d;
+  --itu-bg-subtle: #242424;
+  --itu-text: #f0f0f0;
+  --itu-text-muted: #a0a0a0;
+  --itu-border: #444444;
+  --itu-accent: #e60012;
+  --itu-accent-soft: rgba(230, 0, 18, 0.12);
+  --itu-accent-hover: #ff4040;
+  --itu-link: #ff4040;
+  --itu-link-hover: #ff6b6b;
+  --itu-nav-bg: linear-gradient(90deg, #1a1a1a 0%, #2d2d2d 50%, #8b0000 100%);
+  --itu-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --games-on-panel-text: #f0f0f0;
+  --games-on-panel-muted: rgba(240, 240, 240, 0.72);
+  --games-surface: rgba(26, 26, 26, 0.75);
+  --games-surface-border: rgba(230, 0, 18, 0.2);
+  --games-title-gradient: linear-gradient(120deg, #ffffff 10%, #e60012 50%, #8b0000 90%);
+}
+
+:root[data-portal='games'][data-platform='nintendo'][data-theme='light'],
+:root[data-portal='games'][data-platform='nintendo']:not([data-theme]):not(.dark) {
+  --itu-bg: #fafafa;
+  --itu-bg-elevated: #ffffff;
+  --itu-bg-subtle: #f0f0f0;
+  --itu-text: #1a1a1a;
+  --itu-text-muted: #666666;
+  --itu-border: #dddddd;
+  --itu-accent: #e60012;
+  --itu-accent-soft: rgba(230, 0, 18, 0.08);
+  --itu-accent-hover: #c4000f;
+  --itu-link: #e60012;
+  --itu-link-hover: #c4000f;
+  --itu-nav-bg: linear-gradient(90deg, #e60012 0%, #c4000f 100%);
+  --itu-shadow: 0 4px 16px rgba(230, 0, 18, 0.1);
+  --games-panel-bg: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+  --games-panel-border: rgba(230, 0, 18, 0.2);
+  --games-on-panel-text: #1a1a1a;
+  --games-on-panel-muted: rgba(26, 26, 26, 0.65);
+  --games-surface: rgba(255, 255, 255, 0.92);
+  --games-surface-border: rgba(230, 0, 18, 0.18);
+  --games-title-gradient: linear-gradient(120deg, #1a1a1a 10%, #e60012 50%, #c4000f 90%);
+}
+
+/* Games portal: фон и навигация */
+
+:root[data-portal='games'] body {
+  background:
+    radial-gradient(ellipse 100% 60% at 50% 0%, color-mix(in srgb, var(--games-accent) 8%, transparent), transparent 55%),
+    var(--itu-bg);
+}
+
+:root[data-portal='games'] .ecosystem-nav__brand,
+:root[data-portal='games'] .ecosystem-nav__link {
+  color: #e8eaed;
+}
+
+:root[data-portal='games'] .ecosystem-nav__link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+:root[data-portal='games'] .ecosystem-nav__link.is-active {
+  color: var(--games-accent);
+  background: color-mix(in srgb, var(--games-accent) 18%, transparent);
+}
+
+:root[data-portal='games'] .platform-picker {
+  background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+:root[data-portal='games'] .platform-picker__btn {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+:root[data-portal='games'] .platform-picker__btn:hover,
+:root[data-portal='games'] .platform-picker__btn.is-active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-portal='games'] .ecosystem-nav {
+  background: var(--itu-nav-bg);
+  border-bottom-color: var(--itu-border);
+}
+
+:root[data-portal='games'] .theme-toggle {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.25);
+  color: #e8eaed;
+}
+
+:root[data-portal='games'] .portal-hero {
+  border-color: var(--itu-border);
+  background: linear-gradient(135deg, var(--itu-bg-elevated), var(--itu-bg-subtle));
+  border-radius: var(--itu-radius);
+}
+
+:root[data-portal='games'] .portal-card {
+  border-color: var(--games-surface-border, var(--itu-border));
+  background: var(--itu-bg-elevated);
+  border-radius: var(--itu-radius);
+}
+
+:root[data-portal='games'] .portal-card:hover {
+  border-color: var(--games-accent);
+  box-shadow: var(--itu-shadow);
+}
+
+/* Переключатель платформ */
+
+.platform-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--itu-border);
+  background: var(--itu-bg-subtle);
+}
+
+.platform-picker__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--itu-text-muted);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.platform-picker__btn:hover {
+  color: var(--itu-text);
+  background: var(--itu-bg-elevated);
+}
+
+.platform-picker__btn.is-active {
+  color: var(--itu-text);
+  background: var(--itu-bg-elevated);
+  border-color: var(--platform-swatch, var(--games-accent));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--platform-swatch, var(--games-accent)) 35%, transparent);
+}
+
+.platform-picker__swatch {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--platform-swatch);
+  flex-shrink: 0;
+}
+
+.platform-picker__btn[data-games-platform='steam'] {
+  --platform-swatch: #66c0f4;
+}
+
+.platform-picker__btn[data-games-platform='xbox'] {
+  --platform-swatch: #9bf00b;
+}
+
+.platform-picker__btn[data-games-platform='playstation'] {
+  --platform-swatch: #0070d1;
+}
+
+.platform-picker__btn[data-games-platform='nintendo'] {
+  --platform-swatch: #e60012;
+}
+
+@media (max-width: 900px) {
+  .platform-picker__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .platform-picker__btn {
+    padding: 0.35rem;
+  }
+}
