@@ -75,7 +75,7 @@ const sidebarItems = sidebar.map((item) => {
 >
   <PortalSidebar slot="sidebar" title="Разделы" items={sidebarItems} />
 
-  <ArticleBreadcrumbs items={page.breadcrumbs} />
+  {!isPortalIntro ? <ArticleBreadcrumbs items={page.breadcrumbs} /> : null}
 
   {
     isPortalIntro ? (
