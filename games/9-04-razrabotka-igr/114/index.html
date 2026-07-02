@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Языки программирования игр — Игры IT Universe</title><meta name="description" content="Языки для игр на примере Unity - роль C#, стандартная библиотека, сборка мусора и продуктивность разработки под движок."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Языки программирования игр</span></li></ol></nav><header class="portal-hero"> <h1>Языки программирования игр</h1> <p>Языки для игр на примере Unity - роль C#, стандартная библиотека, сборка мусора и продуктивность разработки под движок.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Языки программирования игр" data-url="/games/9-04-razrabotka-igr/114">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Языки программирования игр">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Языки программирования игр</h1>
+<div class="itu-play-embed" data-example="spinoff/game-languages-play" data-src="" data-title="Языки в геймдеве" data-min-height="480" data-play-props="{}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="языки-программирования-игр">Языки программирования игр</h2>
+<p>Разработка видеоигр — одна из самых требовательных и многогранных дисциплин в программной инженерии. Она объединяет в себе задачи высокопроизводительных вычислений, графического рендеринга, физического моделирования, сетевого взаимодействия, аудиообработки, искусственного интеллекта и пользовательского взаимодействия — всё это должно работать в реальном времени, часто под жёсткими ограничениями на ресурсы. Поэтому выбор языка программирования и сопутствующих инструментов в игровой индустрии определяется не столько модой, сколько конкретными инженерными компромиссами между производительностью, предсказуемостью, переносимостью и скоростью разработки.</p>
+<p>Исторически игры были одним из первых применений программного кода на электронных вычислительных машинах. Уже в 1950-х годах появлялись игрушки вроде <em>Tennis for Two</em> и <em>Spacewar!</em>, написанные непосредственно на машинных кодах и ассемблерах. С появлением высокоуровневых языков программирования игры стали доступнее для разработки и масштабирования. Тем не менее, из-за высоких требований к производительности и контролю над аппаратными ресурсами в игровой индустрии долгое время доминировали компилируемые языки с ручным управлением памятью и близким доступом к железу.</p>
+<p>Сегодня ландшафт языков для игровой разработки значительно разнообразился, но по-прежнему разделён на категории в зависимости от уровня абстракции, целевой платформы и сложности проекта. Ниже мы рассмотрим основные языки, их применение, исторический контекст, технические обоснования их выбора и ограничения.</p>
+<hr>
+<h3 id="язык-без-движка-что-реально-получится">Язык без движка — что реально получится</h3>
+<p>Прежде чем выбирать C++ или Python, стоит разделить <strong>"язык + библиотека"</strong> и <strong>"язык внутри движка"</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Стек</th>
+<th>Что вы пишете сами</th>
+<th>Типичный потолок</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python + <strong>Pygame</strong></td>
+<td>цикл, отрисовку, коллизии прямоугольниками</td>
+<td>змейка, Pong, Match-3, top-down аркада</td>
+</tr>
+<tr>
+<td>Java + <strong>LibGDX</strong> / Swing</td>
+<td>то же, плюс кроссплатформенный деплой</td>
+<td>2D-головоломки, простой платформер</td>
+</tr>
+<tr>
+<td>C# + <strong>MonoGame</strong></td>
+<td>низкоуровневый доступ к DirectX/OpenGL через API</td>
+<td>2D/лёгкий 3D, ретро-стиль</td>
+</tr>
+<tr>
+<td>C# + <strong>Unity</strong></td>
+<td>только gameplay-логику в <code>MonoBehaviour</code></td>
+<td>от мобайла до AA; рендер — движок</td>
+</tr>
+<tr>
+<td>C++ + <strong>Unreal</strong></td>
+<td>системы и оптимизацию; геймплей — Blueprints или C++</td>
+<td>AAA 3D</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Игровой цикл</strong> (<em>game loop</em>) — сердце любой игры: прочитать ввод → обновить состояние → нарисовать кадр → повторить. На "чистом" стеке вы реализуете его вручную; движок прячет этот каркас и добавляет редактор, физику, анимацию и сборку билдов (<a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/112">Игровой движок</a>).</p>
+<h4>Минимальный пример на Python (Pygame)</h4>
+<p>Так выглядит каркас простой 2D-игры <strong>без движка</strong> — квадрат, который ездит по экрану:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-114-001" data-title="Минимальный пример на Python (Pygame)" data-min-height="516"> </div>
+<p><strong>Разбор по строкам:</strong></p>
+<ul>
+<li><code>pygame.init()</code> — инициализация подсистем (звук, дисплей, ввод).</li>
+<li><code>while running</code> — <strong>игровой цикл</strong>; без него нет ни одной интерактивной игры.</li>
+<li><code>pygame.event.get()</code> — очередь событий ОС (закрытие окна, клики).</li>
+<li><code>key.get_pressed()</code> — состояние клавиш <strong>прямо сейчас</strong> (удобно для непрерывного движения).</li>
+<li><code>screen.fill</code> + <code>draw.rect</code> — очистка кадра и отрисовка "игрока" (здесь — прямоугольник).</li>
+<li><code>display.flip()</code> — показать кадр на экране.</li>
+<li><code>clock.tick(60)</code> — ограничить <strong>~60 FPS</strong>, чтобы игра не ускорялась на мощном ПК.</li>
+</ul>
+<p>Этого достаточно для учебной аркады. Чтобы добавить <strong>анимацию скелета</strong>, <strong>освещение</strong>, <strong>сеть на 100 игроков</strong> или <strong>стриминг open-world</strong>, пришлось бы дописывать тысячи строк инфраструктуры — проще взять <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">Unity</a> или <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/4">Unreal</a>. Готовые мини-игры с построчным разбором — <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132">Pygame в Lab</a>; пошаговые проекты — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro">Практикум</a>.</p>
+<h4>Тот же смысл в Unity (C# внутри движка)</h4>
+<p>В Unity вы <strong>не</strong> рисуете каждый кадр вручную — движок вызывает ваш скрипт:</p>
+<pre><code class="language-csharp">using UnityEngine;
+
+public class PlayerMove : MonoBehaviour
+{
+    public float speed = 4f;
+
+    void Update()
+    {
+        float h = Input.GetAxis("Horizontal");
+        transform.Translate(h * speed * Time.deltaTime, 0, 0);
+    }
+}
+</code></pre>
+<ul>
+<li><code>MonoBehaviour</code> — базовый класс компонента; Unity сам вызывает <code>Update()</code> каждый кадр.</li>
+<li><code>transform.Translate</code> — сдвиг объекта в сцене; коллизии, камера, освещение уже в движке.</li>
+<li><code>Time.deltaTime</code> — шаг времени между кадрами; движение не зависит от FPS.</li>
+</ul>
+<p>Полный разбор учебных скриптов — <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1136">Unity C# — скрипты для новичков</a>.</p>
+<h4>Когда "чистый язык" — нормальный выбор</h4>
+<ul>
+<li><strong>Обучение</strong> — понять цикл, координаты, столкновения (<a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python — Python</a>).</li>
+<li><strong>Олимпиада, курсовая, хакатон</strong> — одна механика за вечер.</li>
+<li><strong>Инструменты в студии</strong> — Python-скрипты для генерации уровней или автоматизации сборки (не рантайм игры).</li>
+<li><strong>Простая 2D-инди</strong> — если осознанно принимаете ограничения Pygame/LibGDX.</li>
+</ul>
+<h4>Когда нужен движок или свой стек</h4>
+<ul>
+<li>3D, кат-сцены, сложная физика, мультиплеер, консоли.</li>
+<li>Команда из художников и дизайнеров — им нужен <strong>визуальный редактор</strong>, а не только код.</li>
+<li>Live-service, патчи, локализация, античит — инфраструктура движка или in-house платформы (<a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/111">Команда</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/112">Издатели</a>).</li>
+</ul>
+<hr>
+<h3 id="c">C</h3>
+<p>Первые коммерческие видеоигры, включая такие культовые проекты, как <em>Tetris</em> (1984), <em>Doom</em> (1993) и <em>Quake</em> (1996), были написаны на языке <strong>C</strong>. Это не случайность — в 1980–1990-е годы C был стандартом де-факто для системного программирования, особенно в условиях, где важны были минимальные накладные расходы и прямой контроль над памятью и аппаратными ресурсами.</p>
+<p>Язык C предоставляет компактный и предсказуемый машинный код, что критично при работе на платформах с ограниченной памятью и вычислительной мощностью (например, игровые консоли того времени — NES, Sega Genesis, PlayStation 1). Архитектура движков, таких как id Tech (Quake), строилась вокруг чёткого разделения между ядром движка (написанным на C или C++) и игровой логикой (часто на встраиваемых скриптовых языках, таких как QuakeC).</p>
+<p>Несмотря на то что чистый C сегодня редко используется для разработки полномасштабных игр, его наследие сохраняется: большинство системных библиотек, графических API и middleware-компонентов по-прежнему предоставляют интерфейсы на C из-за его стабильности ABI (Application Binary Interface) и совместимости.</p>
+<hr>
+<h3 id="c">C++</h3>
+<p>С переходом к трёхмерной графике в середине 1990-х годов требования к производительности и структуре кода резко возросли. Именно тогда <strong>C++</strong> начал вытеснять C как основной язык для разработки игровых движков. Причин несколько.</p>
+<p>Во-первых, C++ поддерживает объектно-ориентированное программирование, что позволяет структурировать сложные иерархии игровых сущностей (персонажей, оружия, эффектов), не теряя при этом производительности низкоуровневых операций. Во-вторых, благодаря механизмам шаблонов и inline-функций C++ позволяет писать обобщённый код без накладных расходов времени выполнения. В-третьих, C++ предоставляет полный контроль над управлением памятью, размещением объектов в кэш-дружественных структурах данных и распределением задач по потокам — всё это критически важно для достижения стабильной частоты кадров (60 FPS и выше).</p>
+<p>Современные AAA-движки, такие как <strong>Unreal Engine</strong>, <strong>CryEngine</strong>, <strong>id Tech</strong>, <strong>Frostbite</strong>, написаны в основном на C++. В Unreal Engine, например, основная логика движка, рендерер, физический движок и сетевой стек реализованы на C++, в то время как пользовательская логика может быть реализована в <strong>Blueprints</strong> (байткод Blueprint VM с вызовами C++ через reflection) или в нативном C++.</p>
+<p>Следует подчеркнуть — C++ не "лучше" других языков универсально — он лучше <strong>в контексте</strong> задач, где важны предсказуемость, низкая задержка и максимальное использование аппаратных возможностей. Однако эта мощь достигается ценой сложности — ручное управление памятью, отсутствие встроенной сборки мусора, необходимость глубокого понимания архитектуры CPU и GPU делают C++ сложным для новичков и трудоёмким в поддержке.</p>
+<hr>
+<h3 id="c">C#</h3>
+<p>В отличие от C++, язык <strong>C#</strong>, разработанный Microsoft в начале 2000-х как часть платформы .NET, изначально не предназначался для высокопроизводительных приложений в реальном времени. Однако с появлением и стремительным ростом популярности движка <strong>Unity</strong> (с 2005 года) C# стал одним из самых распространённых языков в игровой индустрии — особенно среди инди-разработчиков, мобильных студий и образовательных проектов.</p>
+<p>Причины выбора C# в Unity многогранны:</p>
+<ol>
+<li>
+<p><strong>Продуктивность разработки.</strong> C# обладает современным синтаксисом, богатой стандартной библиотекой, автоматическим управлением памятью (через сборку мусора) и мощной поддержкой IDE (в первую очередь, Visual Studio и Rider). Это позволяет командам быстрее прототипировать, итерировать и выпускать контент.</p>
+</li>
+<li>
+<p><strong>Безопасность.</strong> В отличие от C++, C# изолирует разработчика от прямого доступа к памяти (за исключением unsafe-контекстов), что снижает вероятность критических ошибок вроде buffer overflow или dangling pointers.</p>
+</li>
+<li>
+<p><strong>Кроссплатформенность через IL2CPP.</strong> Unity использует собственную систему трансляции C# в нативный код — IL2CPP (Intermediate Language to C++). Это позволяет компилировать игры на C# для мобильных платформ (iOS, Android), консолей и настольных ОС без необходимости переписывать логику на C++. Хотя это добавляет уровень абстракции, Unity оптимизирует критические участки, особенно в новых версиях движка.</p>
+</li>
+<li>
+<p><strong>Экосистема и обучаемость.</strong> C# проще освоить для начинающих, чем C++. В сочетании с визуальным редактором Unity это сделало движок доступным миллионам разработчиков без академического бэкграунда в computer science.</p>
+</li>
+</ol>
+<p>Для старта на C# удобна галерея <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1136">Unity C# — скрипты для новичков</a> (каркас <code>MonoBehaviour</code>, движение, триггеры, UI) параллельно с <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">курсом в редакторе</a> и <a href="https://spirzen.ru/encyclopedia/5-languages/5-05-csharp/intro">разделом C#</a>.</p>
+<p>Тем не менее, C# в Unity имеет ограничения, особенно в части производительности в высоконагруженных сценах. Сборка мусора может вызывать микрофризы, а отсутствие прямого контроля над кэшированием данных усложняет оптимизацию CPU-bound задач. Для частичного преодоления этих ограничений Unity активно развивает DOTS (Data-Oriented Technology Stack) — архитектуру, основанную на data-oriented design и Burst-компиляторе, генерирующем нативный код из C#.</p>
+<hr>
+<h3 id="python">Python</h3>
+<p>Язык <strong>Python</strong> обладает рядом качеств, делающих его привлекательным для определённых задач в игровой разработке — простота синтаксиса, интерактивность, богатая стандартная библиотека и быстрое прототипирование. Однако важно чётко разграничивать его потенциальные применения и ограничения.</p>
+<p>В промышленной разработке AAA- или даже indie-игр Python <strong>не используется как основной язык реализации игрового цикла</strong>, особенно если речь идёт о производительности в реальном времени. Причина — интерпретируемая природа языка, динамическая типизация и отсутствие компиляции в нативный код, что приводит к значительным накладным расходам. Даже при использовании JIT-компиляторов (PyPy) или трансляторов в C (Cython, Nuitka), Python не достигает уровня производительности, необходимого для рендеринга, физики или сложной ИИ-логики при высокой частоте кадров.</p>
+<p>Тем не менее, Python широко применяется <strong>внутри игровых студий</strong> в следующих ролях:</p>
+<ul>
+<li><strong>Инструменты разработки</strong> — генераторы уровней, редакторы анимаций, скрипты автоматизации сборки.</li>
+<li><strong>Серверная логика</strong> в многопользовательских играх (например, с использованием Twisted или asyncio), хотя здесь всё чаще предпочтение отдаётся Go, Rust или C++.</li>
+<li><strong>Образовательные и демонстрационные проекты</strong>: библиотеки вроде <strong>Pygame</strong>, <strong>Arcade</strong> или <strong>Panda3D</strong> позволяют быстро создавать 2D-игры или простые 3D-сцены, что делает Python отличным стартовым инструментом для обучения основам игровой логики и событийной модели. Подробнее — <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">Pygame</a>, готовые <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132">мини-игры с разбором</a> и <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/318">Panda3D</a>. В <strong>Minecraft Java</strong> те же идеи (условие, счётчик, цикл) можно отработать через <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1142">команды и datapack</a> — без отдельного IDE, прямо в мире.</li>
+</ul>
+<p>Следует предостеречь начинающих разработчиков — если цель — создание коммерческой или даже серьёзной инди-игры с высокими требованиями к производительности, масштабируемости или кроссплатформенности, Python не является жизнеспособным основным языком. Его место — вспомогательное, а не центральное.</p>
+<hr>
+<h3 id="java-и-kotlin">Java и Kotlin</h3>
+<p>На заре мобильной эры (2000-е годы) игры для телефонов с кнопочной клавиатурой и ограниченным экраном часто писались на <strong>Java ME</strong> (Micro Edition). Эта платформа обеспечивала кроссплатформенность между устройствами разных производителей и использовала ограниченный подмножество Java с собственной виртуальной машиной (KVM). Игры вроде <em>Snake</em>, <em>Bounce</em> или <em>Asphalt: Urban GT</em> стали культовыми благодаря именно Java ME.</p>
+<p>С приходом Android в 2008 году ситуация изменилась. Хотя Android изначально использовал <strong>Dalvik VM</strong>, а затем <strong>Android Runtime (ART)</strong>, основной язык разработки остался Java. В течение более чем десяти лет Java была доминирующим языком для Android-приложений, включая игры.</p>
+<p>Однако для полноценных 3D- или высокопроизводительных 2D-игр даже на Android <strong>Java редко используется напрямую</strong>. Причины:</p>
+<ul>
+<li>Сборка мусора в ART может вызывать непредсказуемые паузы.</li>
+<li>Ограниченный контроль над памятью и кэшированием.</li>
+<li>Недостаточная производительность для тяжёлых вычислений.</li>
+</ul>
+<p>Вместо этого Android-игры чаще всего создаются с использованием:</p>
+<ul>
+<li><strong>Unity (C#)</strong> или <strong>Unreal Engine (C++)</strong>, которые компилируются в нативный код и интегрируются в APK через соответствующие плагины.</li>
+<li><strong>Нативного C++</strong> через <strong>Android NDK</strong> (Native Development Kit (NDK)), особенно если требуется максимальная производительность или интеграция с существующими C++-библиотеками.</li>
+</ul>
+<p>Тем не менее, для простых 2D-игр (например, головоломок, карточных приложений) Java остаётся допустимым выбором, особенно в связке с фреймворками вроде <strong>LibGDX</strong>, который предоставляет кроссплатформенный API и компилирует Java-код в нативные бинарники для Android, iOS и десктопа.</p>
+<p>С 2017 года Google официально поддерживает <strong>Kotlin</strong> как предпочтительный язык для Android-разработки. Kotlin сочетает в себе лаконичность и безопасность (null-safety, неизменяемость по умолчанию) с полной совместимостью с Java-библиотеками. В контексте игровой разработки Kotlin пока не получил широкого распространения как основной язык для игр, но может использоваться для написания UI-слоёв, меню или серверной логики.</p>
+<hr>
+<h3 id="swift-и-objective-c">Swift и Objective-C</h3>
+<p>На экосистеме Apple разработка игр исторически шла двумя путями:</p>
+<ol>
+<li><strong>Собственные нативные игры</strong> с использованием <strong>SpriteKit</strong> (2D) и <strong>SceneKit</strong> (3D) — фреймворков от Apple, написанных на <strong>Objective-C</strong> и позже адаптированных под <strong>Swift</strong>.</li>
+<li><strong>Кроссплатформенные игры</strong> через Unity, Unreal или Godot, где Swift/Objective-C используются только для интеграции с нативными API (например, Game Center, In-App Purchases, push-уведомления).</li>
+</ol>
+<p><strong>Objective-C</strong>, как язык объектно-ориентированного расширения C, долгое время был основным языком разработки под macOS и iOS. Его динамическая природа и runtime-интроспекция позволяли гибко управлять объектами, но за счёт производительности и сложности отладки. С появлением <strong>Swift</strong> в 2014 году Apple начала постепенный переход к более безопасному, быстрому и выразительному языку.</p>
+<p><strong>Swift</strong> компилируется в нативный код через LLVM, поддерживает value types (structs, enums), автоматическое управление памятью через ARC (Automatic Reference Counting) и предлагает высокую производительность — близкую к C++ в некоторых сценариях. Это делает Swift приемлемым выбором для 2D-игр и лёгких 3D-проектов, особенно в образовательной среде или при разработке мини-игр внутри приложений.</p>
+<p>Тем не менее, для серьёзных проектов разработчики предпочитают использовать движки вроде Unity (C#) или Unreal (C++), компилируя их под iOS, а Swift оставляют для обёрток и интеграций.</p>
+<hr>
+<h3 id="javascript-и-typescript">JavaScript и TypeScript</h3>
+<p>С развитием HTML5, WebGL и мощных браузеров <strong>JavaScript</strong> стал де-факто стандартом для разработки <strong>веб-игр</strong>. Возможность запускать игру без установки, мгновенно распространять через URL и интегрировать с веб-сервисами делает этот подход привлекательным для казуальных, обучающих и рекламных проектов.</p>
+<p>Однако JavaScript — интерпретируемый язык с динамической типизацией, что накладывает серьёзные ограничения на производительность и масштабируемость. Для преодоления этих ограничений появились:</p>
+<ul>
+<li><strong>WebGL</strong>: низкоуровневый API для рендеринга 2D/3D графики в браузере, основанный на OpenGL ES. Напрямую использовать WebGL сложно, поэтому чаще применяют библиотеки.</li>
+<li><strong>Фреймворки и движки</strong>:
+<ul>
+<li><strong>Phaser</strong> — популярный 2D-движок с поддержкой Canvas и WebGL, ориентированный на быструю разработку.</li>
+<li><strong>Three.js</strong> — библиотека для 3D-графики, упрощающая работу с WebGL.</li>
+<li><strong>Babylon.js</strong>, <strong>PlayCanvas</strong> — более продвинутые 3D-движки с редакторами и поддержкой физики.</li>
+<li><strong>Godot Engine</strong> (экспорт в HTML5) — позволяет писать игру на GDScript или C# и экспортировать в веб.</li>
+</ul>
+</li>
+</ul>
+<p>С ростом сложности проектов многие разработчики переходят на <strong>TypeScript</strong> — надмножество JavaScript с статической типизацией. TypeScript значительно улучшает поддерживаемость кода, упрощает рефакторинг и снижает количество ошибок, особенно в крупных командах.</p>
+<p>Важно понимать: веб-игры принципиально ограничены средой браузера. Они не имеют прямого доступа к файловой системе, ограничены по памяти, подвержены блокировке фоновых вкладок и зависят от производительности JavaScript-движка (V8, SpiderMonkey и др.). Поэтому веб — это ниша для казуальных, социальных или демонстрационных игр, но не для требовательных проектов.</p>
+<hr>
+<h3 id="графические-api">Графические API</h3>
+<p>Выбор языка программирования тесно связан с выбором графического API — интерфейса между игровым движком и видеодрайвером. Именно через эти API выполняется отрисовка кадров, управление шейдерами, работа с текстурами и буферами.</p>
+<hr>
+<h4>DirectX (Microsoft)</h4>
+<ul>
+<li><strong>Платформа</strong>: исключительно Windows и Xbox.</li>
+<li><strong>Версии</strong> — DirectX 11 (широко совместим), DirectX 12 (низкоуровневый, требует явного управления ресурсами).</li>
+<li><strong>Особенности</strong> — тесная интеграция с Windows, отличная поддержка в инструментах профилирования (PIX, Visual Studio Graphics Debugger). DirectX 12 позволяет достичь производительности, сопоставимой с Vulkan, но только на экосистеме Microsoft.</li>
+</ul>
+<hr>
+<h4>OpenGL</h4>
+<ul>
+<li><strong>Платформа</strong> — кроссплатформенный (Windows, Linux, macOS до 2018 г., Android через OpenGL ES).</li>
+<li><strong>Особенности</strong>: высокоуровневый, с автоматическим управлением состояниями. Устарел на macOS и уступает Vulkan по производительности. OpenGL ES (Embedded Systems) до сих пор используется в лёгких мобильных играх.</li>
+</ul>
+<hr>
+<h4>Vulkan</h4>
+<ul>
+<li><strong>Платформа</strong> — Windows, Linux, Android, Nintendo Switch.</li>
+<li><strong>Особенности</strong> — низкоуровневый, явное управление памятью, потоками и синхронизацией. Предоставляет максимальный контроль над GPU, но требует значительно больше кода и экспертизы. Используется в современных движках (Unreal Engine 4/5, Unity через SRP).</li>
+</ul>
+<hr>
+<h4>Metal (Apple)</h4>
+<ul>
+<li><strong>Платформа</strong> — iOS, macOS, tvOS.</li>
+<li><strong>Особенности</strong> — низкоуровневый API от Apple, аналог Vulkan, но оптимизированный под архитектуру Apple Silicon и GPU от Imagination Technologies/AMD. Обязателен для высокопроизводительной графики на устройствах Apple.</li>
+</ul>
+<p>Выбор API диктуется целевой платформой и требованиями к производительности. Современные движки абстрагируют эти различия через собственные рендер-бэкенды, но разработчики нативных движков должны глубоко понимать специфику каждого API.</p>
+<hr>
+<h3 id="скриптовые-языки">Скриптовые языки</h3>
+<p>С самого зарождения игровой индустрии существует принципиальное разделение между <strong>ядом движка</strong> и <strong>игровой логикой</strong>. Ядро — это низкоуровневая, производительная, стабильная подсистема, отвечающая за рендеринг, физику, аудио, сеть и управление памятью. Игровая логика — это правила — как ведёт себя персонаж, что происходит при взаимодействии с объектом, как развивается сюжет. Эта логика часто меняется в процессе разработки, требует быстрой итерации и должна быть доступна программистам и гейм-дизайнерам.</p>
+<p>Для этих целей используются <strong>встраиваемые скриптовые языки</strong>, отличающиеся лёгкостью интеграции, изолированностью выполнения и простотой синтаксиса.</p>
+<hr>
+<h4>Lua</h4>
+<p><strong>Lua</strong> — безусловный лидер в этой нише. Разработанный в 1993 году в Бразилии, он сочетает минимализм (всего 21 ключевое слово), быстрый интерпретатор на C, лёгкую интеграцию с хост-языком и гибкую модель данных на основе таблиц.</p>
+<p>Примеры использования:</p>
+<ul>
+<li><strong>World of Warcraft</strong>: пользовательские интерфейсы и аддоны пишутся на Lua.</li>
+<li><strong>Roblox</strong>: весь пользовательский контент (игры, объекты) — на Lua (в варианте Luau).</li>
+<li><strong>CryEngine</strong>, <strong>Lumberyard</strong>, <strong>Garry’s Mod</strong>, <strong>Factorio</strong> — все используют Lua для скриптов игровых событий.</li>
+</ul>
+<p>Преимущества Lua:</p>
+<ul>
+<li>Размер интерпретатора — менее 300 КБ.</li>
+<li>Полный контроль над средой выполнения (можно изолировать скрипты или ограничить ресурсы).</li>
+<li>Возможность горячей перезагрузки скриптов без перезапуска игры.</li>
+</ul>
+<p>Недостатки:</p>
+<ul>
+<li>Отсутствие статической типизации (хотя Luau частично это компенсирует).</li>
+<li>Не предназначен для тяжёлых вычислений.</li>
+</ul>
+<hr>
+<h4>AngelScript, Squirrel, GDScript</h4>
+<ul>
+<li><strong>AngelScript</strong> (C++-подобный синтаксис) используется в движках вроде <strong>Amnesia</strong> и <strong>TowerFall</strong>. Поддерживает прямую передачу объектов C++ в скрипты.</li>
+<li><strong>Squirrel</strong> — альтернатива Lua с поддержкой классов и генераторов; применялся в <strong>Left 4 Dead 2</strong> и <strong>Final Fantasy Crystal Chronicles</strong>.</li>
+<li><strong>GDScript</strong> — язык, созданный специально для движка <strong>Godot</strong>. Синтаксис близок к Python, но скомпилирован в байткод и оптимизирован под сценовую архитектуру Godot. Не выходит за пределы движка, но обеспечивает отличную производительность внутри него.</li>
+</ul>
+<p>Ключевой вывод — скриптовые языки не заменяют C++ или C# — они <strong>дополняют</strong> их, обеспечивая гибкость там, где скорость разработки важнее предельной производительности.</p>
+<hr>
+<h3 id="языки-шейдеров">Языки шейдеров</h3>
+<p>Рендеринг в современных играх — это не просто вызов функции "нарисовать треугольник". Это выполнение программ <strong>на графическом процессоре</strong>, написанных на специализированных языках, ориентированных на массово-параллельную обработку.</p>
+<p>Эти языки не являются универсальными — они компилируются в машинный код GPU и выполняются в строго определённых этапах графического конвейера (vertex shader, fragment/pixel shader, compute shader и др.).</p>
+<hr>
+<h4>HLSL (High-Level Shading Language)</h4>
+<ul>
+<li><strong>Платформа</strong>: DirectX (Windows, Xbox).</li>
+<li><strong>Особенности</strong> — синтаксис, близкий к C, тесная интеграция с DirectX. Используется в Unreal Engine, Unity (при выборе DirectX-бэкенда).</li>
+</ul>
+<hr>
+<h4>GLSL (OpenGL Shading Language)</h4>
+<ul>
+<li><strong>Платформа</strong> — OpenGL, OpenGL ES, WebGL.</li>
+<li><strong>Особенности</strong> — похож на C, но с ограничениями (нет рекурсии, динамических аллокаций). Каждый шейдер — отдельный файл с точками входа.</li>
+</ul>
+<hr>
+<h4>Metal Shading Language (MSL)</h4>
+<ul>
+<li><strong>Платформа</strong>: Apple (Metal API).</li>
+<li><strong>Особенности</strong>: основан на C++14, поддерживает шаблоны и объектно-ориентированные конструкции. Компилируется в IR (Intermediate Representation), затем в машинный код GPU.</li>
+</ul>
+<hr>
+<h4>Кроссплатформенность через промежуточные представления</h4>
+<p>Современные движки (Unreal, Unity, Godot) всё чаще используют <strong>универсальный шейдерный код на HLSL</strong>, который затем транслируется в другие языки через промежуточный формат <strong>SPIR-V</strong> (Standard Portable Intermediate Representation). Это позволяет писать шейдер один раз и запускать его на Vulkan, Metal и даже WebGL (через дополнительные преобразования).</p>
+<p>Шейдеры — это отдельная дисциплина, требующая понимания синтаксиса и архитектуры GPU, кэширования, bandwidth и latency. Ошибка в шейдере может привести не к падению программы, а к артефактам, перегреву или катастрофическому падению FPS.</p>
+<hr>
+<h3 id="эмерджентные-языки-и-будущие-тренды">Эмерджентные языки и будущие тренды</h3>
+<p>Хотя C++, C# и Lua доминируют сегодня, индустрия ищет альтернативы, сочетающие безопасность, производительность и модернизацию инструментария.</p>
+<hr>
+<h4>Rust</h4>
+<p><strong>Rust</strong> привлекает внимание благодаря:</p>
+<ul>
+<li>Отсутствию сборщика мусора при гарантии отсутствия data races и dangling pointers.</li>
+<li>Zero-cost abstractions и прямой компиляции в нативный код.</li>
+<li>Растущей экосистемой (Bevy — игровой движок на Rust).</li>
+</ul>
+<p>Однако Rust пока не используется в крупных коммерческих играх. Причины: сложность владения borrow checker’ом в контексте циклических ссылок (типично для игровых сущностей), отсутствие зрелых инструментов профилирования и долгое время компиляции. Тем не менее, Rust активно применяется в <strong>инструментах разработки</strong>, <strong>серверной логике</strong> и <strong>мидлваре</strong>.</p>
+<hr>
+<h4>WebGPU и новые веб-стандарты</h4>
+<p><strong>WebGPU</strong> — следующее поколение графического API для браузеров, призванный заменить WebGL. Он предоставляет Vulkan/Metal/Direct12-подобный интерфейс с поддержкой compute shaders и асинхронного выполнения. Написание кода для WebGPU пока ведётся на JavaScript/TypeScript, но в будущем возможно появление компиляции из Rust или C++ через WebAssembly с прямым доступом к GPU.</p>
+<hr>
+<h4>Zig, Odin, и другие системные языки</h4>
+<p>Языки вроде <strong>Zig</strong> и <strong>Odin</strong> позиционируются как "C без боли" — с современными конструкциями, но без рантайма. Пока они остаются нишевыми, но в инди-разработке уже появляются экспериментальные движки на этих языках.</p>
+<hr>
+<h3 id="многоязыковая-архитектура-современной-игры">Многоязыковая архитектура современной игры</h3>
+<p>Типичный AAA-проект сегодня — это <strong>сложная многоуровневая система</strong>, в которой участвуют:</p>
+<table>
+<thead>
+<tr>
+<th>Уровень</th>
+<th>Язык / Технология</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ядро движка</td>
+<td>C++</td>
+<td>Рендеринг, физика, память, сеть</td>
+</tr>
+<tr>
+<td>Игровая логика</td>
+<td>C# (Unity) / Blueprints + C++ (Unreal) / Lua</td>
+<td>Поведение персонажей, квесты, события</td>
+</tr>
+<tr>
+<td>Шейдеры</td>
+<td>HLSL / GLSL / MSL</td>
+<td>Визуальные эффекты, освещение</td>
+</tr>
+<tr>
+<td>Инструменты</td>
+<td>Python, C#, JavaScript</td>
+<td>Редакторы, билд-системы, аналитика</td>
+</tr>
+<tr>
+<td>Серверная часть</td>
+<td>C++, Rust, Go</td>
+<td>Многопользовательская логика</td>
+</tr>
+<tr>
+<td>Веб-компоненты</td>
+<td>TypeScript, WebGL</td>
+<td>Страницы продвижения, мини-игры</td>
+</tr>
+</tbody>
+</table>
+<p>Такой подход позволяет оптимизировать <strong>каждый компонент под его задачу</strong> — производительность там, где она критична, и гибкость — где важна скорость итерации.</p>
+<hr>
+<h3 id="где-смотреть-реальные-кодовые-базы">Где смотреть реальные кодовые базы</h3>
+<p>Учебные примеры в движке редко показывают полный масштаб AAA-проекта. Сообщественный каталог <strong><a href="https://osgameclones.com/">Open Source Game Clones</a></strong> (<a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/125">глава 125</a>) индексирует репозитории по языку (<code>langs</code>), движку (<code>frameworks</code>) и зрелости (<code>Playable</code>, <code>Very Active</code>). Удобный приём: выбрать клон в том же стеке, что и ваш трек (C# / Unity, C++ / SDL, Luau после Roblox), собрать проект и искать в коде один узкий вопрос — pathfinding, инвентарь, сетевой тик. Там же — <strong>подборка по стекам</strong> с прямыми ссылками на GitHub.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#языки-программирования-игр">Языки программирования игр</a></li><li class="article-toc__item is-h3"><a href="#язык-без-движка-что-реально-получится">Язык без движка — что реально получится</a></li><li class="article-toc__item is-h3"><a href="#c">C</a></li><li class="article-toc__item is-h3"><a href="#c">C++</a></li><li class="article-toc__item is-h3"><a href="#c">C#</a></li><li class="article-toc__item is-h3"><a href="#python">Python</a></li><li class="article-toc__item is-h3"><a href="#java-и-kotlin">Java и Kotlin</a></li><li class="article-toc__item is-h3"><a href="#swift-и-objective-c">Swift и Objective-C</a></li><li class="article-toc__item is-h3"><a href="#javascript-и-typescript">JavaScript и TypeScript</a></li><li class="article-toc__item is-h3"><a href="#графические-api">Графические API</a></li><li class="article-toc__item is-h3"><a href="#скриптовые-языки">Скриптовые языки</a></li><li class="article-toc__item is-h3"><a href="#языки-шейдеров">Языки шейдеров</a></li><li class="article-toc__item is-h3"><a href="#эмерджентные-языки-и-будущие-тренды">Эмерджентные языки и будущие тренды</a></li><li class="article-toc__item is-h3"><a href="#многоязыковая-архитектура-современной-игры">Многоязыковая архитектура современной игры</a></li><li class="article-toc__item is-h3"><a href="#где-смотреть-реальные-кодовые-базы">Где смотреть реальные кодовые базы</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/112"> Игровой движок  </a> </li><li> <a href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр  </a> </li><li> <a href="/games/9-04-razrabotka-igr/111"> Команда разработки  </a> </li><li> <a href="https://lab.spirzen.ru/lab/examples/1142" target="_blank" rel="noopener noreferrer"> Minecraft — команды и datapack  ↗ </a> </li><li> <a href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft  </a> </li><li> <a href="https://lab.spirzen.ru/lab/examples/1136" target="_blank" rel="noopener noreferrer"> Unity C# — скрипты для новичков  ↗ </a> </li><li> <a href="/games/9-04-razrabotka-igr/3"> Разработка на Unity  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-05-csharp/intro" target="_blank" rel="noopener noreferrer"> C# — о разделе  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

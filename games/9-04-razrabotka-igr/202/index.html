@@ -1,0 +1,533 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Внутриигровая экономика Roblox — Игры IT Universe</title><meta name="description" content="Серверные транзакции, магазин, DataStore, Developer Products и пошаговый гайд по монетизации в Roblox."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Внутриигровая экономика Roblox</span></li></ol></nav><header class="portal-hero"> <h1>Внутриигровая экономика Roblox</h1> <p>Серверные транзакции, магазин, DataStore, Developer Products и пошаговый гайд по монетизации в Roblox.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Внутриигровая экономика Roblox" data-url="/games/9-04-razrabotka-igr/202">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Внутриигровая экономика Roblox">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Внутриигровая экономика Roblox</h1>
+<div class="article-tags">
+  <span class="tag tag-advanced">ПРОДВИНУТОЕ</span>
+</div>
+<p><span class="complexity-badge">Roblox</span></p>
+<p>Продолжение курса <a href="./2">Разработка на Roblox</a>: здесь — транзакции, проектирование магазина и полный практический гайд. Базовая архитектура клиент–сервер и <code>RemoteEvent</code> разобраны в основной статье.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Сначала практика</div>
+  <div class="callout-body">
+  <p>Если вы ещё не собирали магазин в игре, начните с <a href="/encyclopedia/9-spinoff/9-04-razrabotka-igr/204">практикума "обби"</a> (внутриигровая валюта и Developer Product). Затем возвращайтесь сюда за архитектурой и идемпотентностью транзакций.</p>
+</div>
+</div>
+<hr>
+<h2 id="транзакции-и-сервер">Транзакции и сервер</h2>
+<h3 id="что-такое-транзакция">Что такое транзакция?</h3>
+<p><strong>Транзакция</strong> — операция, которая должна быть выполнена <em>целиком или не выполнена вовсе</em>.<br>
+Пример: <em>"списать 100 монет и выдать меч"</em>.</p>
+<p>Если списание прошло, а выдача — нет → игрок потерял деньги → недоверие.</p>
+<hr>
+<h3 id="почему-сервер-источник-истины">Почему сервер — источник истины?</h3>
+<table>
+<thead>
+<tr>
+<th>Операция</th>
+<th>Клиентская проверка</th>
+<th>Серверная проверка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Проверка баланса</td>
+<td><code>if balance >= 100</code></td>
+<td><code>CurrencyManager:GetBalance(player) >= 100</code></td>
+</tr>
+<tr>
+<td>Списание</td>
+<td><code>balance -= 100</code></td>
+<td><code>CurrencyManager:SpendCoins(player, 100)</code></td>
+</tr>
+<tr>
+<td>Выдача предмета</td>
+<td><code>inventory:add("Sword")</code></td>
+<td><code>InventorySystem:UnlockItem(player, "Sword")</code></td>
+</tr>
+</tbody>
+</table>
+<p>Проблема клиента:</p>
+<ul>
+<li>Любой может открыть DevConsole (F9) и выполнить:</li>
+</ul>
+<pre><code class="language-lua">  game.Players.LocalPlayer.leaderstats.Coins.Value = 999999
+</code></pre>
+<ul>
+<li>Или заменить цену в GUI-скрипте.</li>
+</ul>
+<p><strong>Сервер защищён</strong>: клиент может <em>попросить</em>, но решает сервер.</p>
+<hr>
+<h3 id="как-проходит-покупка">Как проходит покупка?</h3>
+<p>Рассмотрим покупку меча за 500 монет:</p>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Клиент</th>
+<th>Сервер</th>
+<th>Платформа</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Показ</strong></td>
+<td>Отображает кнопку "Купить (500 монет)"</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2. Инициация</strong></td>
+<td><code>BuyEvent:FireServer("Sword", txId)</code></td>
+<td>Получает запрос</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>3. Валидация</strong></td>
+<td>—</td>
+<td>Проверяет: — <code>txId</code> уникален?  — предмет существует?  — баланс ≥ 500?</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>4. Исполнение</strong></td>
+<td>—</td>
+<td>1. Списывает 500 монет; 2. Добавляет меч в <code>Inventory</code>; 3. Сохраняет в <code>DataStore</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>5. Подтверждение</strong></td>
+<td>Получает <code>BuyEvent.OnClientEvent("Success")</code></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>6. Отображение</strong></td>
+<td>Обновляет GUI, показывает эффект</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Если на шаге 4 произошла ошибка → сервер возвращает <code>"Failed"</code> → клиент <strong>не меняет баланс</strong> (он запрашивает актуальный после ответа).</p>
+<blockquote>
+<p>🔁 При повторной отправке с тем же <code>txId</code> сервер отклонит запрос как дубль — это и есть <strong>идемпотентность</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="система-магазина-и-монет-в-roblox-studio">Система магазина и монет в Roblox Studio</h2>
+<p>Внутриигровая экономика — один из ключевых элементов современных игровых проектов, особенно в многопользовательских и сервисных играх, ориентированных на длительное вовлечение. Roblox, как платформа, предоставляет разработчикам инструменты для построения собственных экономических систем, включая магазины, валюту, транзакции и интеграцию с платёжными средствами. Однако, несмотря на высокий уровень абстракции, которую предлагает движок, понимание принципов построения таких систем требует системного подхода: от проектирования логики до обеспечения безопасности и масштабируемости.</p>
+<p>Настоящий раздел посвящён реализации магазина в Roblox Studio, и <strong>архитектурному осмыслению</strong> того, что представляет собой внутриигровой магазин как подсистема, как он интегрируется в общую структуру проекта, и какие ограничения и возможности накладывает платформа Roblox на разработчика. Мы последовательно разберём концепции, их взаимосвязи и реализацию, при этом сохраняя акцент на устойчивости, читаемости кода и перспективе дальнейшего развития проекта.</p>
+<hr>
+<h3 id="1-что-такое-внутриигровой-магазин">1. Что такое внутриигровой магазин</h3>
+<p>Внутриигровой магазин — это программная подсистема, которая реализует функции выбора, приобретения и выдачи игровых активов (предметов, улучшений, скинов, способностей и т.д.) в обмен на одну или несколько форм внутриигровой валюты. Магазин — это <strong>целостный сервис</strong>, включающий:</p>
+<ul>
+<li><strong>Каталог товаров</strong> — структура данных, описывающая доступные предметы, их стоимость, условия приобретения и эффекты после покупки;</li>
+<li><strong>Систему валюты</strong> — механизм учёта баланса игрока, валидации транзакций и обновления данных;</li>
+<li><strong>Механизмы выдачи и применения</strong> — логика, которая реагирует на успешную транзакцию и производит соответствующие изменения в состоянии игры (например, надевает скин, открывает уровень, выдаёт инвентарь);</li>
+<li><strong>Интерфейс взаимодействия</strong> — визуальный и поведенческий слой, через который игрок взаимодействует с магазином;</li>
+<li><strong>Систему сохранения и синхронизации</strong> — способ гарантированного сохранения состояния покупок между сессиями и при переходе между серверами.</li>
+</ul>
+<p>Важнейшее свойство хорошего магазина — <strong>идемпотентность операций</strong>. Это означает, что повторное выполнение одной и той же операции (например, повторная отправка запроса на покупку) не приводит к нежелательным последствиям, таким как многократное списание валюты или дублирование предмета. В распределённых системах, какими являются игры на Roblox, такая устойчивость к сетевым артефактам критична.</p>
+<p>Подсистема магазина должна быть <strong>изолирована</strong> от основной игровой логики. Это достигается за счёт чёткого разделения ответственности: модуль магазина не должен напрямую менять состояние персонажа или мира, а только отправлять события или вызывать строго определённые методы других систем (например, через шину событий или менеджер инвентаря). Такой подход обеспечивает тестируемость, модульность и упрощает дальнейшее расширение функционала.</p>
+<hr>
+<h3 id="2-что-такое-магазин-и-монеты-в-roblox-платформенные-особенности">2. Что такое магазин и монеты в Roblox — платформенные особенности</h3>
+<p>Roblox предоставляет две основные формы валюты — <strong>Robux</strong> — официальная платёжная валюта платформы, приобретаемая за реальные деньги, и <strong>внутриигровые валюты</strong> — пользовательские единицы, создаваемые разработчиком (например, "золото", "кристаллы", "очки опыта"). Эти два типа валют принципиально различаются по происхождению, способу управления и правовым последствиям.</p>
+<hr>
+<h4>2.1. Robux и Developer Products</h4>
+<p>Robux — это валюта, принадлежащая платформе. Разработчик не может напрямую управлять балансом Robux игрока. Вместо этого используется механизм <strong>Developer Products</strong> — зарегистрированных в системе DevHub цифровых товаров, привязанных к конкретной игре. При покупке такого товара Roblox обрабатывает платёж, списывает Robux с аккаунта игрока и отправляет <em>подтверждённое событие</em> в игру через <strong>MarketplaceService:PromptPurchase()</strong> и последующий <strong>MarketplaceService.PromptPurchaseFinished</strong>.</p>
+<p>Ключевые особенности:</p>
+<ul>
+<li>Все транзакции с Robux проходят через серверы Roblox — клиентская сторона не может инициировать списание напрямую.</li>
+<li>Разработчик получает уведомление о покупке <strong>асинхронно</strong>, и только после получения подтверждения от сервера может выдать предмет.</li>
+<li>Поддерживается механизм <strong>возврата</strong> (refund) — в течение определённого времени игрок может отменить покупку, и разработчик обязан корректно обработать отмену (например, отозвать предмет).</li>
+<li>Developer Products неизменяемы после публикации: нельзя изменить цену или название без создания нового продукта. Это требует тщательного планирования при запуске проекта.</li>
+</ul>
+<p>Таким образом, магазин, использующий Robux, всегда является <strong>гибридной системой</strong> — клиент отображает интерфейс, сервер Roblox обрабатывает платёж, а сервер игры (Game Server) — выдаёт награду.</p>
+<hr>
+<h4>2.2. Внутриигровые валюты</h4>
+<p>Любая валюта, не являющаяся Robux (например, "монеты", "жетоны"), полностью управляется разработчиком. Её баланс хранится в <strong>DataStore</strong>, в <strong>плейерских атрибутах</strong> (Player:SetAttribute / GetAttribute) или в пользовательских объектах (например, Folder в PlayerGui или Backpack), но <strong>только в рамках сессии</strong> — для постоянного хранения обязателен DataStore.</p>
+<p>Особенности:</p>
+<ul>
+<li>Разработчик сам определяет правила начисления (за уровень, за задание, за время) и расходования.</li>
+<li>Отсутствует встроенная защита от мошенничества: клиентская часть может быть взломана, если логика проверки баланса реализована только на клиенте.</li>
+<li>Нет автоматической интеграции с платёжными системами: конвертация реальных денег в такую валюту возможна только через Developer Product ("купить 1000 монет за 50 Robux").</li>
+</ul>
+<p>Важно подчеркнуть: <strong>никакая внутриигровая валюта не может быть обменена на Robux игроком</strong> — это нарушает условия использования платформы. Обратный обмен (Robux → внутриигровая валюта) разрешён и является стандартной практикой.</p>
+<hr>
+<h3 id="3-монетизация-в-roblox-и-как-разработчики-получают-доход">3. Монетизация в Roblox и как разработчики получают доход</h3>
+<p>Монетизация в Roblox строится вокруг нескольких официальных каналов, каждый из которых требует соблюдения политик и технических требований платформы.</p>
+<hr>
+<h4>3.1. Developer Products (одноразовые покупки)</h4>
+<p>Это основной способ продажи цифровых товаров — скины, улучшения, внутриигровая валюта, косметика. Разработчик создаёт продукт в DevHub, задаёт цену в Robux, привязывает его к игре и обрабатывает событие покупки в коде. Roblox берёт комиссию ~30% (в зависимости от условий партнёрской программы и типа аккаунта — individual vs group).</p>
+<hr>
+<h4>3.2. Game Passes (игровые пропуска)</h4>
+<p>Game Pass — это разовая покупка, дающая постоянное преимущество — доступ к эксклюзивному контенту, бонусам, привилегиям (например, двойной опыт, уникальный персонаж). Game Pass привязан к аккаунту игрока и действует во всех сессиях игры. Технически проверка наличия Game Pass осуществляется через <strong>GamePassService:UserOwnsGamePassAsync()</strong>.</p>
+<p>Преимущество Game Pass перед Developer Product — в постоянстве эффекта и простоте проверки. Недостаток — невозможность динамического изменения функционала после выпуска (за исключением программной логики, активируемой наличием пропуска).</p>
+<hr>
+<h4>3.3. Premium Payouts (доход от подписки Roblox Premium)</h4>
+<p>Разработчики получают долю от времени, проведённого подписчиками Premium в их игре, через систему <strong>Engagement-Based Payouts</strong>. Это пассивный доход, не требующий реализации магазина, но зависящий от удержания аудитории. Расчёт производится ежемесячно и зависит от доли <em>активного времени</em> подписчиков в конкретной игре относительно всего экосистемного времени.</p>
+<hr>
+<h4>3.4. Виртуальные товары и пользовательский контент (UGC)</h4>
+<p>С 2023 года Roblox активно развивает систему <strong>UGC (User-Generated Content)</strong> — пользователи могут создавать и продавать свои ассеты (одежда, аксессуары, анимации), а разработчики — интегрировать их в игру через официальные API. Это создаёт дополнительные возможности для монетизации через комиссии и кураторство.</p>
+<p>Важное ограничение: <strong>все платёжные операции должны проходить через официальные сервисы Roblox</strong>. Попытки организовать сторонние платежи (например, через Telegram-бота или внешний сайт) ведут к бану игры и аккаунта.</p>
+<hr>
+<h3 id="4-как-создать-свою-систему-магазина-и-монет-в-roblox-studio">4. Как создать свою систему магазина и монет в Roblox Studio</h3>
+<p>Построение собственной экономической системы в Roblox требует технической реализации и <strong>проектирования архитектуры</strong>, устойчивой к ошибкам, мошенничеству и изменениям в требованиях. Ниже рассмотрены ключевые компоненты такой системы — от концептуальной модели до кодовой структуры. Мы будем избегать "быстрых решений" вроде скриптов в <code>StarterGui</code>, ориентируясь на <strong>промышленные практики разработки</strong> — разделение ответственности, защита от клиентских атак, восстанавливаемость состояния и поддерживаемость.</p>
+<hr>
+<h4>4.1. Архитектурные принципы</h4>
+<p>Любая устойчивая система магазина в Roblox должна соответствовать следующим принципам:</p>
+<ul>
+<li>
+<p><strong>Сервер — единственный источник истины.</strong><br>
+Вся логика, связанная с проверкой баланса, списанием валюты и выдачей предметов, должна выполняться на сервере (<code>ServerScriptService</code> или <code>ReplicatedStorage</code>). Клиент (<code>StarterGui</code>, <code>LocalScript</code>) может инициировать запрос, но не принимать решение о допустимости операции.</p>
+</li>
+<li>
+<p><strong>Полная изоляция данных.</strong><br>
+Данные об инвентаре, валюте и истории покупок хранятся в <code>DataStore</code>, а не в <code>PlayerGui</code> или <code>Backpack</code>. Временные копии могут быть на клиенте для отображения, но они всегда должны синхронизироваться с сервером и считаться <em>недостоверными</em> до подтверждения.</p>
+</li>
+<li>
+<p><strong>Событийная модель взаимодействия.</strong><br>
+Клиент отправляет <em>запросы</em>. Сервер обрабатывает их, валидирует, и при успехе отправляет <em>подтверждение</em> или <em>отказ</em>. Это предотвращает race-conditions и обеспечивает предсказуемость.</p>
+</li>
+<li>
+<p><strong>Идемпотентность транзакций.</strong><br>
+Каждая покупка должна иметь уникальный идентификатор (например, <code>transactionId = os.time() .. "_" .. playerId</code>). При повторной отправке запроса с тем же ID сервер не должен выполнять операцию дважды. Это защищает от сетевых дублей и намеренных атак.</p>
+</li>
+<li>
+<p><strong>Отказоустойчивость при сохранении.</strong><br>
+Операция "списать валюту и выдать предмет" должна быть <em>атомарной</em>: либо оба действия выполнены, либо ни одно. Для этого применяется паттерн <strong>двухфазного сохранения</strong>:</p>
+<ol>
+<li>Сервер временно блокирует баланс игрока в памяти.</li>
+<li>Выполняет выдачу предмета (например, добавляет в <code>PlayerData.Inventory</code>).</li>
+<li>Выполняет сохранение в <code>DataStore</code>.</li>
+<li>При успехе — фиксирует списание; при ошибке — откатывает изменения.</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4>4.2. Проектирование структуры данных</h4>
+<p>Перед написанием кода необходимо определить, как будут храниться и передаваться данные. Это влияет на масштабируемость и удобство отладки.</p>
+<hr>
+<h5>4.2.1. Структура каталога товаров</h5>
+<p>Каталог товаров — это <em>статическая</em> или <em>полу-статическая</em> конфигурация. Лучше всего её хранить в <code>ReplicatedStorage</code> в виде <code>ModuleScript</code>, например:</p>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-202-001" data-title="4.2. Проектирование структуры данных" data-min-height="534"> </div>
+<p>Обратите внимание:</p>
+<ul>
+<li>Цена может быть указана как в пользовательской валюте (<code>Coins</code>), так и через ссылку на <code>DeveloperProduct</code> (по ID или имени).</li>
+<li>Все метаданные предмета — строго структурированы. Это позволяет системе выдачи интерпретировать их без жёсткой привязки к конкретным скриптам.</li>
+<li>Каталог не содержит информации о наличии у игрока — только описание товара.</li>
+</ul>
+<hr>
+<h5>4.2.2. Структура данных игрока</h5>
+<p>Данные игрока (<code>PlayerData</code>) хранятся в <code>DataStore</code> и должны включать:</p>
+<pre><code class="language-lua">{
+    Coins = 1250,
+    Inventory = {
+        ["Sword_001"] = { Count = 1, Equipped = true },
+        ["Skin_Warrior_Red"] = { Unlocked = true }
+    },
+    PurchaseHistory = {
+        { TransactionId = "1731156480_12345", ItemId = "Sword_001", Timestamp = 1731156480 },
+        { TransactionId = "1731156800_12345", ItemId = "prod_123abc", Timestamp = 1731156800 }
+    }
+}
+</code></pre>
+<p>Элементы:</p>
+<ul>
+<li><code>Coins</code> — баланс пользовательской валюты.</li>
+<li><code>Inventory</code> — карта предметов. Каждый предмет описывается минимально — достаточно флагов (<code>Unlocked</code>, <code>Equipped</code>, <code>Count</code>), а не полной копии каталога.</li>
+<li><code>PurchaseHistory</code> — журнал транзакций для аудита, отладки и реализации идемпотентности.</li>
+</ul>
+<p>Важно: <strong>никогда не храните пароли, токены или приватные ключи в DataStore</strong>. Все данные, сохраняемые через <code>DataStoreService</code>, шифруются Roblox, но не предназначены для хранения секретов.</p>
+<hr>
+<h4>4.3. Реализация клиент-серверного взаимодействия</h4>
+<p>Взаимодействие между клиентом и сервером строится на <code>RemoteEvent</code> и <code>RemoteFunction</code>. Используйте <strong>два отдельных канала</strong>:</p>
+<ul>
+<li><code>RemoteEvent</code> — для асинхронных действий (покупка, запрос обновления баланса).</li>
+<li><code>RemoteFunction</code> — для синхронных запросов ("можно ли купить?", "получить текущий баланс?").</li>
+</ul>
+<hr>
+<h5>Пример — запрос на покупку</h5>
+<ol>
+<li>Клиент (<code>LocalScript</code> в GUI):</li>
+</ol>
+<pre><code class="language-lua">   local BuyEvent = game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("BuyItem")
+   BuyEvent:FireServer("Sword_001", "tx_" .. tick())
+</code></pre>
+<ol start="2">
+<li>Сервер (<code>Script</code> в <code>ServerScriptService</code>):</li>
+</ol>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-202-002" data-title="4.3. Реализация клиент-серверного взаимодействия" data-min-height="660"> </div>
+<p>Ключевые моменты:</p>
+<ul>
+<li><code>isTransactionProcessed</code> проверяет <code>PurchaseHistory</code>.</li>
+<li><code>commitPurchase</code> выполняет — списание валюты, добавление в инвентарь, сохранение в DataStore, запись в историю — и только при полном успехе возвращает <code>true</code>.</li>
+<li>Клиент получает только событие — без деталей баланса (во избежание утечки информации).</li>
+</ul>
+<hr>
+<h4>4.4. Интеграция с Robux (Developer Products)</h4>
+<p>Для продажи через Robux используется <code>MarketplaceService</code>. Важно: <strong>никогда не доверяйте клиенту информацию о покупке</strong>.</p>
+<p>Правильная последовательность:</p>
+<ol>
+<li>Клиент вызывает <code>MarketplaceService:PromptPurchase(player, productId)</code>.</li>
+<li>Игрок подтверждает покупку (всплывающее окно от Roblox).</li>
+<li>Roblox отправляет событие <code>PromptPurchaseFinished</code> на сервер.</li>
+<li>Сервер проверяет:
+<ul>
+<li>Принадлежит ли <code>productId</code> ожидаемому товару?</li>
+<li>Не была ли покупка уже обработана?</li>
+<li>Корректен ли <code>player</code>?</li>
+</ul>
+</li>
+<li>При успехе — выдаёт предмет, сохраняет.</li>
+</ol>
+<p>Пример обработчика на сервере:</p>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-202-003" data-title="4.4. Интеграция с Robux (Developer Products)" data-min-height="606"> </div>
+<p>Замечание: Roblox гарантирует, что <code>PromptPurchaseFinished</code> срабатывает <strong>только после подтверждения платёжа на сервере Roblox</strong>. Это делает его безопасным.</p>
+<hr>
+<h4>4.5. Безопасность — типичные уязвимости и защита</h4>
+<h5>4.5.1. Подделка запросов на клиенте</h5>
+<p>Если логика "хватает предмет из каталога и вычитает цену" реализована в <code>LocalScript</code>, злоумышленник может изменить цену на 0 и купить всё.<br>
+<strong>Защита:</strong> Вся валидация — на сервере. Клиент отправляет только <code>itemId</code>, сервер сам смотрит цену в каталоге.</p>
+<hr>
+<h5>4.5.2. Race condition при одновременных покупках</h5>
+<p>Два запроса на покупку одного и того же предмета (например, последнего в лимитированной серии) могут пройти, если проверка баланса и списание не атомарны.<br>
+<strong>Защита:</strong> Блокировка игрока на время транзакции (например, через <code>coroutine</code> или флаг <code>playerData.Locked</code>), либо использование <code>DataStore:UpdateAsync</code>, который гарантирует сериализацию.</p>
+<hr>
+<h5>4.5.3. Потеря данных при ошибке сохранения</h5>
+<p>Если после списания валюты произошла ошибка сохранения, игрок потеряет деньги.<br>
+<strong>Защита:</strong> Паттерн "сначала сохранить, потом применить":</p>
+<ol>
+<li>Создать копию <code>playerData</code>.</li>
+<li>Внести изменения в копию.</li>
+<li>Попытаться сохранить копию через <code>UpdateAsync</code>.</li>
+<li>При успехе — применить изменения в текущее состояние игрока.</li>
+</ol>
+<hr>
+<h5>4.5.4. Спам-атаки</h5>
+<p>Злоумышленник может отправлять тысячи запросов на покупку в секунду.<br>
+<strong>Защита:</strong> Rate-limiting на уровне сервера — например, разрешать не более 3 запросов в секунду на игрока, с использованием <code>Debounce</code>.</p>
+<hr>
+<h4>4.6. Тестирование и отладка</h4>
+<ul>
+<li>Используйте <code>TestService</code> для эмуляции покупок в Studio без траты Robux.</li>
+<li>Создайте <code>Debug</code>-режим: при <code>game.PlaceId == 0</code> (локальный запуск) разрешать выдачу валюты по нажатию клавиши.</li>
+<li>Логируйте все транзакции в <code>print()</code> или через <code>HttpService</code> в внешний сервис (например, Discord-вебхук для разработчиков).</li>
+<li>Пишите unit-тесты для <code>commitPurchase</code>, <code>isTransactionProcessed</code> и других критичных функций — с использованием mock-объектов.</li>
+</ul>
+<hr>
+<h4>4.7. Расширяемость и поддержка</h4>
+<p>Хорошая система магазина должна позволять:</p>
+<ul>
+<li>Добавлять новые валюты без изменения ядра.</li>
+<li>Подключать модули выдачи (например, <code>ToolSystem</code>, <code>AppearanceSystem</code>) через интерфейсы.</li>
+<li>Поддерживать A/B-тестирование цен (через конфигурационный <code>ModuleScript</code>, переключаемый по флагу).</li>
+</ul>
+<p>Рекомендуется выделить следующие модули:</p>
+<ul>
+<li><code>CurrencyManager</code> — управление балансами.</li>
+<li><code>InventorySystem</code> — хранение и синхронизация инвентаря.</li>
+<li><code>TransactionProcessor</code> — валидация и выполнение покупок.</li>
+<li><code>CatalogService</code> — загрузка и кэширование каталога.</li>
+<li><code>DataStoreAdapter</code> — абстракция над <code>DataStoreService</code>.</li>
+</ul>
+<p>Это позволяет заменять компоненты (например, перейти с <code>GlobalDataStore</code> на <code>OrderedDataStore</code> для лидербордов) без переписывания всей логики.</p>
+<hr>
+<h2 id="-гайд-создание-собственной-системы-магазина-и-монет-в-roblox-studio">🛠️ Гайд — Создание собственной системы магазина и монет в Roblox Studio</h2>
+<blockquote>
+<p><strong>Цель</strong>: построить систему, в которой игрок может:</p>
+<ul>
+<li>зарабатывать внутриигровые монеты (Coins);</li>
+<li>тратить их на предметы в магазине;</li>
+<li>покупать монеты за Robux через Developer Product;</li>
+<li>сохранять прогресс между сессиями;</li>
+<li>быть защищён от подделки транзакций.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Ограничения</strong>:</p>
+<ul>
+<li>Никакой логики на клиенте, кроме отображения и отправки запросов.</li>
+<li>Все данные — через <code>DataStore</code>.</li>
+<li>Поддержка идемпотентности и предотвращение race condition.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="шаг-1-подготовка-проекта-структура">Шаг 1. Подготовка проекта — структура</h3>
+<p>Создайте следующую иерархию в <code>Explorer</code>:</p>
+<pre><code>ReplicatedStorage/
+├── Catalog/
+│   └── Items.lua          -- каталог товаров (ModuleScript)
+├── Services/
+│   ├── CurrencyManager.lua
+│   ├── InventorySystem.lua
+│   ├── TransactionProcessor.lua
+│   └── DataStoreAdapter.lua
+├── RemoteEvents/
+│   ├── BuyItem.lua        -- RemoteEvent
+│   └── RequestBalance.lua -- RemoteEvent
+ServerScriptService/
+├── MainEconomySystem.lua  -- точка входа
+StarterGui/
+└── ShopGUI/
+    └── ShopFrame.lua      -- ScreenGui с LocalScript внутри
+</code></pre>
+<blockquote>
+<p>💡 <strong>Почему так?</strong><br>
+Разделение по папкам обеспечивает читаемость и предотвращает "скриптовый хаос". Серверные сервисы — в <code>ReplicatedStorage/Services</code>, клиентская логика — в <code>StarterGui</code>, события — отдельно. Это соответствует best practices Roblox и позволяет легко находить компоненты.</p>
+</blockquote>
+<hr>
+<h3 id="шаг-2-создание-каталога-товаров">Шаг 2. Создание каталога товаров</h3>
+<h4><code>ReplicatedStorage/Catalog/Items.lua</code> (ModuleScript)</h4>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-202-004" data-title="`ReplicatedStorage/Catalog/Items.lua` (ModuleScript)" data-min-height="720"> </div>
+<blockquote>
+<p>💡 <strong>Важно</strong>:</p>
+<ul>
+<li><code>Price</code> — таблица, чтобы в будущем можно было добавить <code>Gems = 10</code> без изменений в логике.</li>
+<li><code>RobuxProduct</code> — символьное имя, а не числовой ID. Это позволяет избежать ошибок при переносе проекта (ID меняются между местами).</li>
+<li><code>Metadata</code> строго типизирован: система выдачи будет проверять наличие полей, а не их значения.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="шаг-3-реализация-адаптера-к-datastore">Шаг 3. Реализация адаптера к DataStore</h3>
+<h4><code>ReplicatedStorage/Services/DataStoreAdapter.lua</code> (ModuleScript)</h4>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-202-005" data-title="`ReplicatedStorage/Services/DataStoreAdapter.lua` (ModuleScript)" data-min-height="720"> </div>
+<blockquote>
+<p>💡 <strong>Почему <code>SetAsync</code>, а не <code>UpdateAsync</code>?</strong><br>
+Для простоты этого гайда используется <code>SetAsync</code>. В продакшене <strong>обязательно</strong> перейдите на <code>UpdateAsync</code>, чтобы предотвратить перезапись при одновременных запросах. Но <code>SetAsync</code> проще для первого шага и демонстрирует базовую идею.</p>
+</blockquote>
+<hr>
+<h3 id="шаг-4-менеджер-валюты-и-инвентаря">Шаг 4. Менеджер валюты и инвентаря</h3>
+<h4><code>ReplicatedStorage/Services/CurrencyManager.lua</code></h4>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-202-006" data-title="`ReplicatedStorage/Services/CurrencyManager.lua`" data-min-height="720"> </div>
+<hr>
+<h4><code>ReplicatedStorage/Services/InventorySystem.lua</code></h4>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-202-007" data-title="`ReplicatedStorage/Services/InventorySystem.lua`" data-min-height="408"> </div>
+<blockquote>
+<p>💡 <strong>Замечание</strong>:<br>
+Оба модуля используют <strong>кэширование в <code>_EconomyData</code></strong>, чтобы избежать частых вызовов <code>DataStore</code>. Это повышает производительность. Синхронизация с <code>DataStore</code> происходит только при изменении.</p>
+</blockquote>
+<hr>
+<h3 id="шаг-5-обработка-транзакций">Шаг 5. Обработка транзакций</h3>
+<h4><code>ReplicatedStorage/Services/TransactionProcessor.lua</code></h4>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-202-008" data-title="`ReplicatedStorage/Services/TransactionProcessor.lua`" data-min-height="720"> </div>
+<blockquote>
+<p>💡 <strong>Ключевой момент</strong>:<br>
+Здесь нет <code>RemoteEvent</code>. Это <strong>чистая бизнес-логика</strong>, которую можно тестировать изолированно. Интеграция с событиями — на следующем шаге.</p>
+</blockquote>
+<hr>
+<h3 id="шаг-6-серверная-точка-входа">Шаг 6. Серверная точка входа</h3>
+<h4><code>ServerScriptService/MainEconomySystem.lua</code></h4>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-202-009" data-title="`ServerScriptService/MainEconomySystem.lua`" data-min-height="720"> </div>
+<blockquote>
+<p>💡 <strong>Про Developer Products</strong>:<br>
+Чтобы это работало, нужно:</p>
+<ol>
+<li>Зарегистрировать Developer Product в <a href="https://create.roblox.com/dashboard/creations">DevHub</a>.</li>
+<li>Запомнить его <strong>Product ID</strong> (число).</li>
+<li>Создать <code>Script</code> в <code>ServerScriptService</code> с именем <code>DevProductMapping</code>, содержащий:
+<pre><code class="language-lua">script:SetAttribute("Products", {
+    prod_coins_1k = 123456789 -- замените на реальный ID
+})
+</code></pre>
+Это позволяет не хардкодить ID в основном коде.</li>
+</ol>
+</blockquote>
+<hr>
+<h3 id="шаг-7-клиентская-часть-интерфейс-магазина">Шаг 7. Клиентская часть — интерфейс магазина</h3>
+<h4><code>StarterGui/ShopGUI/ShopFrame.lua</code> (ScreenGui → Frame → LocalScript)</h4>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-202-010" data-title="`StarterGui/ShopGUI/ShopFrame.lua` (ScreenGui → Frame → LocalScript)" data-min-height="720"> </div>
+<blockquote>
+<p>💡 <strong>Важно для клиента</strong>:</p>
+<ul>
+<li>Никакого подсчёта баланса — только отображение.</li>
+<li>Никакой проверки "хватит ли денег" перед отправкой — это делает сервер.</li>
+<li><code>tick()</code> + <code>math.random</code> даёт уникальный <code>transactionId</code> без коллизий.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="шаг-8-тестирование-в-studio">Шаг 8. Тестирование в Studio</h3>
+<ol>
+<li><strong>Запустите игру локально</strong> (<code>Play</code> в Studio).</li>
+<li>Откройте магазин — должен отобразиться баланс <code>100</code> (стартовый бонус).</li>
+<li>Нажмите "Купить меч" — баланс уменьшится на 500, предмет разблокируется.</li>
+<li>Перезайдите — баланс и инвентарь сохранятся (Roblox эмулирует DataStore локально).</li>
+<li>Для теста Robux-покупок:
+<ul>
+<li>В Studio: <code>Test > Test Purchases</code>.</li>
+<li>Добавьте Developer Product (введите ID и название).</li>
+<li>Нажмите "Купить монеты" — появится окно подтверждения.</li>
+<li>После подтверждения — 1000 монет добавятся.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>✅ Если всё работает — система готова к деплою.</p>
+</blockquote>
+<hr>
+<h3 id="что-делать-дальше-продвинутые-шаги">Что делать дальше (продвинутые шаги)</h3>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Как реализовать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Поддержка нескольких валют</td>
+<td>Расширить <code>Price = { Coins = 100, Gems = 5 }</code>, изменить <code>CurrencyManager</code> на работу с таблицей балансов (<code>{ Coins = 500, Gems = 20 }</code>).</td>
+</tr>
+<tr>
+<td>Лидерборды по богатству</td>
+<td>Использовать <code>OrderedDataStore</code> для хранения топ-100.</td>
+</tr>
+<tr>
+<td>Возвраты (refunds)</td>
+<td>Обрабатывать <code>MarketplaceService.RefundOccurred</code>.</td>
+</tr>
+<tr>
+<td>A/B-тестирование цен</td>
+<td>Хранить цены в <code>Configuration</code>-модуле, управляемом через <code>Game.Settings</code> или внешний JSON.</td>
+</tr>
+<tr>
+<td>Модульные эффекты (например, надеть скин)</td>
+<td>Создать <code>AppearanceService</code>, который слушает <code>InventorySystem.ItemUnlocked</code> через <code>BindableEvent</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#транзакции-и-сервер">Транзакции и сервер</a></li><li class="article-toc__item is-h3"><a href="#что-такое-транзакция">Что такое транзакция?</a></li><li class="article-toc__item is-h3"><a href="#почему-сервер-источник-истины">Почему сервер — источник истины?</a></li><li class="article-toc__item is-h3"><a href="#как-проходит-покупка">Как проходит покупка?</a></li><li class="article-toc__item"><a href="#система-магазина-и-монет-в-roblox-studio">Система магазина и монет в Roblox Studio</a></li><li class="article-toc__item is-h3"><a href="#1-что-такое-внутриигровой-магазин">1. Что такое внутриигровой магазин</a></li><li class="article-toc__item is-h3"><a href="#2-что-такое-магазин-и-монеты-в-roblox-платформенные-особенности">2. Что такое магазин и монеты в Roblox — платформенные особенности</a></li><li class="article-toc__item is-h3"><a href="#3-монетизация-в-roblox-и-как-разработчики-получают-доход">3. Монетизация в Roblox и как разработчики получают доход</a></li><li class="article-toc__item is-h3"><a href="#4-как-создать-свою-систему-магазина-и-монет-в-roblox-studio">4. Как создать свою систему магазина и монет в Roblox Studio</a></li><li class="article-toc__item"><a href="#-гайд-создание-собственной-системы-магазина-и-монет-в-roblox-studio">🛠️ Гайд — Создание собственной системы магазина и монет в Roblox Studio</a></li><li class="article-toc__item is-h3"><a href="#шаг-1-подготовка-проекта-структура">Шаг 1. Подготовка проекта — структура</a></li><li class="article-toc__item is-h3"><a href="#шаг-2-создание-каталога-товаров">Шаг 2. Создание каталога товаров</a></li><li class="article-toc__item is-h3"><a href="#шаг-3-реализация-адаптера-к-datastore">Шаг 3. Реализация адаптера к DataStore</a></li><li class="article-toc__item is-h3"><a href="#шаг-4-менеджер-валюты-и-инвентаря">Шаг 4. Менеджер валюты и инвентаря</a></li><li class="article-toc__item is-h3"><a href="#шаг-5-обработка-транзакций">Шаг 5. Обработка транзакций</a></li><li class="article-toc__item is-h3"><a href="#шаг-6-серверная-точка-входа">Шаг 6. Серверная точка входа</a></li><li class="article-toc__item is-h3"><a href="#шаг-7-клиентская-часть-интерфейс-магазина">Шаг 7. Клиентская часть — интерфейс магазина</a></li><li class="article-toc__item is-h3"><a href="#шаг-8-тестирование-в-studio">Шаг 8. Тестирование в Studio</a></li><li class="article-toc__item is-h3"><a href="#что-делать-дальше-продвинутые-шаги">Что делать дальше (продвинутые шаги)</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

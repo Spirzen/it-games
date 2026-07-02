@@ -1,0 +1,716 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Live-service игры — Игры IT Universe</title><meta name="description" content="Сервисные игры, сезоны, battle pass, мета и экономика — как устроены Fortnite, Genshin, Destiny и аналоги."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Live-service игры</span></li></ol></nav><header class="portal-hero"> <h1>Live-service игры</h1> <p>Сервисные игры, сезоны, battle pass, мета и экономика — как устроены Fortnite, Genshin, Destiny и аналоги.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Live-service игры" data-url="/games/9-03-igrovaya-industriya/126">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Live-service игры">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Live-service игры</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<p><strong>Live-service</strong> (games as a service, GaaS) — модель, при которой игра <strong>живёт годами</strong> после релиза: сезоны, события, баланс-патчи, магазин, серверная инфраструктура и команда live-ops. Покупка диска один раз уступила место подписке внимания и часто кошелька игрока. Экономика, психология и техника — в одной связке. См. <a href="./115">монетизацию</a>, <a href="./127">UGC-платформы</a>, <a href="./11">кризис индустрии</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/124">тестирование</a>.</p>
+<hr>
+<h2 id="словарь">Словарь</h2>
+<ul>
+<li><strong>Live-ops</strong> — операционная поддержка игры после релиза: события, патчи, магазин, community.</li>
+<li><strong>GaaS</strong> — games as a service; синоним live-service модели.</li>
+<li><strong>Сезон</strong> — цикл 8–12 недель с новой темой, контентом и battle pass.</li>
+<li><strong>Battle pass (BP)</strong> — лестница наград за игру и опционально за покупку premium tier.</li>
+<li><strong>Premium track / free track</strong> — платная и бесплатная ветки наград BP.</li>
+<li><strong>FOMO</strong> (fear of missing out) — ограниченные скины только в сезоне.</li>
+<li><strong>Retention</strong> — удержание игроков; D1, D7, D30 ключевые точки.</li>
+<li><strong>DAU / MAU</strong> — daily / monthly active users.</li>
+<li><strong>ARPU</strong> — average revenue per user; средний доход на игрока.</li>
+<li><strong>ARPPU</strong> — average revenue per paying user; на платящего.</li>
+<li><strong>Conversion rate</strong> — доля игроков, совершивших покупку.</li>
+<li><strong>Whale</strong> — игрок с очень высокими тратами.</li>
+<li><strong>Minnow / dolphin</strong> — мелкий и средний spender.</li>
+<li><strong>Gacha</strong> — случайная выдача персонажей/оружия за валюту (Genshin, Honkai).</li>
+<li><strong>Pity system</strong> — гарантированная редкая награда после N попыток.</li>
+<li><strong>Daily / weekly quests</strong> — задания для habit loop.</li>
+<li><strong>Event calendar</strong> — расписание ивентов на квартал.</li>
+<li><strong>Hotfix</strong> — срочный патч без полного релиза клиента.</li>
+<li><strong>Feature flag</strong> — включение фичи без деплоя всего приложения.</li>
+<li><strong>Rollback</strong> — откат сломанного патча или конфига.</li>
+<li><strong>CDN</strong> — доставка ассетов сезона игрокам.</li>
+<li><strong>Server authoritative</strong> — сервер решает исход; античит и инвентарь.</li>
+<li><strong>Live balance</strong> — патчи stats без нового контента.</li>
+<li><strong>Sunset</strong> — закрытие игры или режима.</li>
+<li><strong>Battle pass level skip</strong> — покупка уровней за real money.</li>
+<li><strong>Seasonal rank reset</strong> — обнуление рейтинга каждый сезон.</li>
+<li><strong>Live-service KPI</strong> — retention, monetization, engagement metrics.</li>
+</ul>
+<hr>
+<h2 id="коробочная-игра-и-live-service">Коробочная игра и live-service</h2>
+<table>
+<thead>
+<tr>
+<th>Коробка / сингл</th>
+<th>Live-service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Релиз → патчи редко</td>
+<td>Еженедельные или сезонные обновления</td>
+</tr>
+<tr>
+<td>Контент фиксирован</td>
+<td>Контент по расписанию roadmap</td>
+</tr>
+<tr>
+<td>Цена на витрине</td>
+<td>Battle pass, магазин, подписка</td>
+</tr>
+<tr>
+<td>Команда после релиза уходит</td>
+<td>Live-ops, аналитика, community permanent</td>
+</tr>
+<tr>
+<td>Мультиплеер опционален</td>
+<td>Online часто core</td>
+</tr>
+<tr>
+<td>Revenue front-loaded</td>
+<td>Revenue spread over years</td>
+</tr>
+</tbody>
+</table>
+<p>Примеры live-service: Fortnite, Apex Legends, Genshin Impact, Destiny 2, Warframe, Diablo IV live seasons, The Finals, Marvel Rivals. Roblox — платформа live-service по определению. См. <a href="./127">UGC</a>.</p>
+<hr>
+<h2 id="экономика-gaas">Экономика GaaS</h2>
+<h3 id="модель-дохода">Модель дохода</h3>
+<ul>
+<li><strong>Free-to-play (F2P)</strong> — игра бесплатна; monetization через cosmetics, BP, gacha.</li>
+<li><strong>Premium + live</strong> — buy game ($40–70) + seasons/BP (Destiny 2 historically hybrid).</li>
+<li><strong>Subscription</strong> — WoW, FFXIV; monthly fee + expansions.</li>
+</ul>
+<h3 id="unit-economics-упрощённо">Unit economics (упрощённо)</h3>
+<ul>
+<li><strong>CAC</strong> (customer acquisition cost) — marketing per new player.</li>
+<li><strong>LTV</strong> (lifetime value) — сколько игрок принесёт за всё время.</li>
+<li>Устойчивость: LTV > CAC для paid acquisition.</li>
+<li>Organic growth через Twitch, TikTok снижает CAC.</li>
+</ul>
+<h3 id="whale-economics">Whale economics</h3>
+<ul>
+<li>Top 1–2% payers могут давать 50%+ revenue в некоторых mobile/gacha titles.</li>
+<li>Ethical и regulatory pressure на прозрачность odds (gacha laws EU, China).</li>
+</ul>
+<h3 id="content-cost-amortization">Content cost amortization</h3>
+<ul>
+<li>AAA live-service: контент дорогой, но <strong>распределяется</strong> на миллионы игроков × годы.</li>
+<li>Один сезон может стоить как indie game, но ROI через BP.</li>
+</ul>
+<p>См. <a href="./115">монетизацию</a> подробнее.</p>
+<hr>
+<h2 id="free-to-play-модели">Free-to-play модели</h2>
+<h3 id="cosmetics-only">Cosmetics only</h3>
+<ul>
+<li>Fortnite, Apex — skins, emotes; no gameplay advantage.</li>
+<li><strong>Fairness narrative</strong> — competitive integrity.</li>
+</ul>
+<h3 id="pay-for-convenience">Pay-for-convenience</h3>
+<ul>
+<li>XP boosters, stash expanders; спорная граница с pay-to-win.</li>
+</ul>
+<h3 id="gacha-loot-boxes">Gacha / loot boxes</h3>
+<ul>
+<li>Random pulls; pity, banners, rate-up characters.</li>
+<li>Regulation: disclosure odds, age gates, bans in some countries.</li>
+</ul>
+<h3 id="battle-pass-primary">Battle pass primary</h3>
+<ul>
+<li>Seasonal pass as main monetization driver; F2P track + premium $10–20.</li>
+</ul>
+<h3 id="subscription-tiers">Subscription tiers</h3>
+<ul>
+<li>Fortnite Crew, WoW sub — recurring revenue predictability.</li>
+</ul>
+<hr>
+<h2 id="сезоны-дизайн">Сезоны — дизайн</h2>
+<h3 id="длительность">Длительность</h3>
+<ul>
+<li><strong>8–12 недель</strong> — industry sweet spot; long enough for mastery, short enough for FOMO refresh.</li>
+<li>Shorter seasons — faster fatigue risk for dev team.</li>
+<li>Longer — stale meta, BP grind feels endless.</li>
+</ul>
+<h3 id="seasonal-theme">Seasonal theme</h3>
+<ul>
+<li>Narrative arc (Fortnite story, Destiny season story).</li>
+<li>Map changes, new POIs, limited modes.</li>
+<li>Visual identity для marketing trailers.</li>
+</ul>
+<h3 id="rank-reset">Rank reset</h3>
+<ul>
+<li>Fresh ladder каждый сезон; engagement spike в первые недели.</li>
+<li>Soft reset vs hard reset — design choice.</li>
+</ul>
+<h3 id="content-cadence-внутри-сезона">Content cadence внутри сезона</h3>
+<ul>
+<li>Week 1: big patch, new BP.</li>
+<li>Mid-season: balance patch, mini-event.</li>
+<li>Week 10–12: teaser next season, FOMO push on tier completion.</li>
+</ul>
+<h3 id="live-balance-mid-season">Live balance mid-season</h3>
+<ul>
+<li>Nerfs/buffs по analytics; community backlash management on Reddit/Discord.</li>
+</ul>
+<hr>
+<h2 id="battle-pass-психология-и-дизайн">Battle pass — психология и дизайн</h2>
+<h3 id="структура">Структура</h3>
+<ul>
+<li>100 tiers typical; XP per tier increases slightly.</li>
+<li>Free track: sample rewards; premium: full set + currency back sometimes.</li>
+</ul>
+<h3 id="psychological-hooks">Psychological hooks</h3>
+<ul>
+<li><strong>Endowed progress</strong> — bonus tiers at purchase ("start at tier 5").</li>
+<li><strong>Loss aversion</strong> — "season ends in 14 days" notifications.</li>
+<li><strong>Completionism</strong> — players grind last tiers even when tired.</li>
+<li><strong>Social comparison</strong> — seeing others with exclusive skin.</li>
+</ul>
+<h3 id="ethical-considerations">Ethical considerations</h3>
+<ul>
+<li>Transparent pricing; no hidden gambling in pure BP (unlike gacha).</li>
+<li><strong>Player welfare</strong>: grind hours vs price of tier skips — community calculates "time value".</li>
+</ul>
+<h3 id="battle-pass-fatigue">Battle pass fatigue</h3>
+<ul>
+<li>Industry trend 2024–26: some games reduce grind or offer shorter passes.</li>
+<li>Player pushback on multiple simultaneous passes (game + event pass).</li>
+</ul>
+<hr>
+<h2 id="live-ops-календарь">Live-ops календарь</h2>
+<h3 id="квартальное-планирование">Квартальное планирование</h3>
+<ul>
+<li><strong>Q1 roadmap</strong>: season theme, collab IP, holiday events (Lunar New Year).</li>
+<li>Cross-functional: design, art, engineering, QA, marketing lock dates.</li>
+</ul>
+<h3 id="типы-ивентов">Типы ивентов</h3>
+<ul>
+<li><strong>Limited-time mode (LTM)</strong> — Fortnite 50v50, Apex Armed and Dangerous.</li>
+<li><strong>Double XP weekends</strong> — retention boost.</li>
+<li><strong>Collaboration</strong> — Marvel, Star Wars skins; legal licensing heavy.</li>
+<li><strong>In-game concerts / cinematics</strong> — marketing moments.</li>
+</ul>
+<h3 id="ops-rhythm">Ops rhythm</h3>
+<ul>
+<li>Daily: monitor metrics, hotfix if outage.</li>
+<li>Weekly: store rotation, small patch Tuesday.</li>
+<li>Monthly: mid-season update.</li>
+<li>Quarterly: new season launch.</li>
+</ul>
+<h3 id="tools">Tools</h3>
+<ul>
+<li>Jira / Linear for tasks.</li>
+<li>Google Sheets master calendar shared with all teams.</li>
+<li>Slack war rooms on launch day.</li>
+</ul>
+<hr>
+<h2 id="ab-тестирование">A/B тестирование</h2>
+<h3 id="что-тестируют">Что тестируют</h3>
+<ul>
+<li>Store layout, bundle pricing, BP XP curves.</li>
+<li>Matchmaking tweaks, bot backfill in low population queues.</li>
+<li>Onboarding funnel: tutorial skip vs full.</li>
+</ul>
+<h3 id="infrastructure">Infrastructure</h3>
+<ul>
+<li><strong>Assignment service</strong> — player ID → variant A/B.</li>
+<li><strong>Analytics pipeline</strong> — events to Snowflake/BigQuery.</li>
+<li><strong>Statistical significance</strong> — don't ship on 24h noise.</li>
+</ul>
+<h3 id="ethics">Ethics</h3>
+<ul>
+<li>Dark patterns (hidden close button) under scrutiny.</li>
+<li>Some regions require consent for experiment participation.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/124">тестирование игр</a>, <a href="https://spirzen.ru/encyclopedia/3-data-markup/3-07-sql/intro">SQL для аналитики</a>.</p>
+<hr>
+<h2 id="серверная-архитектура">Серверная архитектура</h2>
+<h3 id="patterns">Patterns</h3>
+<ul>
+<li><strong>Dedicated servers</strong> — authoritative simulation (Fortnite, Apex).</li>
+<li><strong>Peer-to-peer with relay</strong> — cheaper, worse for competitive anti-cheat.</li>
+<li><strong>Hybrid</strong> — P2P co-op + dedicated for PvP.</li>
+</ul>
+<h3 id="microservices-typical-aaa">Microservices (typical AAA)</h3>
+<ul>
+<li><strong>Matchmaking service</strong> — queue, skill rating (TrueSkill, ELO variants).</li>
+<li><strong>Inventory service</strong> — owned cosmetics, entitlements.</li>
+<li><strong>Commerce service</strong> — purchases, receipt validation.</li>
+<li><strong>Leaderboard / stats</strong> — seasonal rankings.</li>
+<li><strong>Content delivery</strong> — patch manifests, CDN URLs.</li>
+</ul>
+<h3 id="scaling-events">Scaling events</h3>
+<ul>
+<li>Launch day / season start: <strong>10x traffic</strong> spike.</li>
+<li>Auto-scale Kubernetes pods; queue times if under-provisioned.</li>
+<li>Graceful degradation: disable non-critical features.</li>
+</ul>
+<h3 id="database">Database</h3>
+<ul>
+<li>Player profiles sharded by ID.</li>
+<li>Event sourcing for purchase audit trail.</li>
+<li>Redis for session cache, rate limits.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/2-system-network/2-03-set-i-internet/intro">сети</a>, <a href="https://spirzen.ru/encyclopedia/4-code-dev/code-dev">backend</a>.</p>
+<hr>
+<h2 id="feature-flags">Feature flags</h2>
+<h3 id="зачем">Зачем</h3>
+<ul>
+<li>Enable Halloween event for 10% players first (canary).</li>
+<li>Kill switch broken shop item without full deploy.</li>
+<li>Gradual rollout new weapon across regions.</li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<ul>
+<li>LaunchDarkly, Unleash, custom config service.</li>
+<li>Client polls config on login; server validates actions.</li>
+</ul>
+<h3 id="best-practices">Best practices</h3>
+<ul>
+<li>Flag naming convention: <code>event_halloween_2026_enabled</code>.</li>
+<li>Owner and expiry date; remove dead flags.</li>
+<li>Test both paths in CI.</li>
+</ul>
+<hr>
+<h2 id="rollback-и-incident-response">Rollback и incident response</h2>
+<h3 id="deployment-pipeline">Deployment pipeline</h3>
+<ul>
+<li>Build → staging → prod canary → full prod.</li>
+<li><strong>Blue-green</strong> or rolling updates.</li>
+</ul>
+<h3 id="when-rollback">When rollback</h3>
+<ul>
+<li>Crash rate spike > threshold.</li>
+<li>Economy exploit (duplicate currency).</li>
+<li>Matchmaking completely broken.</li>
+</ul>
+<h3 id="rollback-types">Rollback types</h3>
+<ul>
+<li><strong>Server-only</strong> — revert API config.</li>
+<li><strong>Client rollback</strong> — rare; force old patch via launcher.</li>
+<li><strong>Database rollback</strong> — dangerous; prefer compensating transactions.</li>
+</ul>
+<h3 id="postmortem">Postmortem</h3>
+<ul>
+<li>Blameless document: timeline, root cause, action items.</li>
+<li>Player communication: status page, Twitter, in-game message.</li>
+</ul>
+<hr>
+<h2 id="case-study-fortnite-epic">Case study — Fortnite (Epic)</h2>
+<h3 id="model">Model</h3>
+<ul>
+<li>F2P battle royale; cosmetics + Battle Pass + Item Shop rotation.</li>
+<li>Creative / UEFN extends platform — см. <a href="./127">UGC</a>.</li>
+</ul>
+<h3 id="season-structure">Season structure</h3>
+<ul>
+<li>Map evolution, narrative, weekly quests.</li>
+<li>Zero Build vs Build modes split audience.</li>
+</ul>
+<h3 id="tech">Tech</h3>
+<ul>
+<li>Unreal Engine; massive concurrent players on AWS infra.</li>
+<li>Cross-play PC, console, mobile (where allowed).</li>
+</ul>
+<h3 id="lessons">Lessons</h3>
+<ul>
+<li>IP collabs drive revenue spikes.</li>
+<li>Live events (concert) as marketing flywheel.</li>
+<li>Competition from Apex, PUBG forced rapid innovation.</li>
+</ul>
+<hr>
+<h2 id="case-study-destiny-2-bungie">Case study — Destiny 2 (Bungie)</h2>
+<h3 id="model-evolution">Model evolution</h3>
+<ul>
+<li>Premium launch 2017 → F2P New Light 2019 → seasonal model.</li>
+<li>Expansions + seasonal passes + Eververse shop.</li>
+</ul>
+<h3 id="seasonal-content">Seasonal content</h3>
+<ul>
+<li>3-month season: story missions, raid or dungeon, seasonal artifact meta.</li>
+<li>Power grind each season — controversial retention lever.</li>
+</ul>
+<h3 id="live-balance">Live balance</h3>
+<ul>
+<li>PvP and PvE separate tuning; community sandbox requests.</li>
+</ul>
+<h3 id="lessons">Lessons</h3>
+<ul>
+<li>Content vaulting (removing old content) — backlash; partially reversed approach.</li>
+<li>Player trust fragile after monetization missteps.</li>
+</ul>
+<hr>
+<h2 id="case-study-genshin-impact-mihoyo-hoyoverse">Case study — Genshin Impact (miHoYo / HoYoverse)</h2>
+<h3 id="model">Model</h3>
+<ul>
+<li>F2P open world gacha; character and weapon banners.</li>
+<li>Pity at 90 pulls (character banner rules evolve).</li>
+</ul>
+<h3 id="update-cadence">Update cadence</h3>
+<ul>
+<li>~6 weeks major version: new region or story chapter.</li>
+<li>Events parallel: mini-games, re-runs banners.</li>
+</ul>
+<h3 id="tech">Tech</h3>
+<ul>
+<li>Client heavy; online auth and co-op sessions.</li>
+<li>Mobile + PC + PS cross-save.</li>
+</ul>
+<h3 id="lessons">Lessons</h3>
+<ul>
+<li>Gacha whale economics extreme; regulatory watch globally.</li>
+<li>Content quality drives retention beyond gambling loop.</li>
+</ul>
+<hr>
+<h2 id="риски-закрытия-sunset">Риски закрытия (sunset)</h2>
+<h3 id="примеры-shutdowns">Примеры shutdowns</h3>
+<ul>
+<li>Multiplayer-only games: servers off = game dead.</li>
+<li>Examples from industry history: various live-service cancellations announced with refund policies varying.</li>
+</ul>
+<h3 id="player-impact">Player impact</h3>
+<ul>
+<li>Lost purchases (cosmetics non-transferable).</li>
+<li>Community dispersal.</li>
+</ul>
+<h3 id="legal">Legal</h3>
+<ul>
+<li>EU consumer rights on digital goods evolving.</li>
+<li>Some jurisdictions require refund windows.</li>
+</ul>
+<p>См. <a href="./11">кризис игровой индустрии</a>.</p>
+<hr>
+<h2 id="ментальное-здоровье-игрока">Ментальное здоровье игрока</h2>
+<h3 id="fomo-и-обязательность">FOMO и обязательность</h3>
+<ul>
+<li>Daily login streaks feel like job.</li>
+<li><strong>Miss one day</strong> → anxiety; design intentional.</li>
+</ul>
+<h3 id="coping-strategies-for-players">Coping strategies for players</h3>
+<ul>
+<li>Set spending caps monthly.</li>
+<li>Skip seasons without guilt — cosmetics optional.</li>
+<li>Mute shop notifications.</li>
+</ul>
+<h3 id="developer-responsibility">Developer responsibility</h3>
+<ul>
+<li>Play time reminders (China minors regulations model).</li>
+<li>Transparent odds; no predatory dark patterns where banned.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-10-internet-kultura/117">цифровое выгорание</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-02-kak-ponyat-chto-pora-menyat-rabotu/5">выгорание</a>.</p>
+<hr>
+<h2 id="crunch-в-live-service">Crunch в live-service</h2>
+<h3 id="always-on-pressure">Always-on pressure</h3>
+<ul>
+<li>Season deadline immovable; holiday events fixed calendar.</li>
+<li><strong>Crunch cycles</strong> every 8 weeks instead of once before ship.</li>
+</ul>
+<h3 id="staffing">Staffing</h3>
+<ul>
+<li>Live-ops teams separate from feature teams ideally.</li>
+<li>Burnout → talent leaves → quality drops spiral.</li>
+</ul>
+<h3 id="industry-response">Industry response</h3>
+<ul>
+<li>Unionization discussions; some studios public "no crunch" pledges hard to verify.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/111">команда разработки</a>.</p>
+<hr>
+<h2 id="live-ops-роли-команда">Live-ops роли — команда</h2>
+<ul>
+<li><strong>Executive producer</strong> — P&#x26;L, roadmap.</li>
+<li><strong>Live ops producer</strong> — calendar owner.</li>
+<li><strong>Game economist</strong> — sinks and faucets virtual currency.</li>
+<li><strong>Community manager</strong> — Reddit, Discord, crisis.</li>
+<li><strong>Data analyst</strong> — dashboards, A/B analysis.</li>
+<li><strong>Backend engineer</strong> — services, scale.</li>
+<li><strong>DevOps / SRE</strong> — uptime, incidents.</li>
+<li><strong>QA live</strong> — regression each patch.</li>
+</ul>
+<hr>
+<h2 id="метрики-dashboard-пример">Метрики dashboard (пример)</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Definition</th>
+<th>Healthy signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 retention</td>
+<td>Returned day after install</td>
+<td>>40% mobile benchmark varies</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>Week retention</td>
+<td>Compare cohort week over week</td>
+</tr>
+<tr>
+<td>D30</td>
+<td>Month retention</td>
+<td>Seasonal comparison</td>
+</tr>
+<tr>
+<td>ARPU</td>
+<td>Revenue / DAU</td>
+<td>Stable or growing</td>
+</tr>
+<tr>
+<td>Conversion</td>
+<td>% payers</td>
+<td>2–5% typical F2P PC</td>
+</tr>
+<tr>
+<td>Session length</td>
+<td>Avg minutes</td>
+<td>Too high may signal grind fatigue</td>
+</tr>
+<tr>
+<td>Churn</td>
+<td>Stopped playing</td>
+<td>Spike after bad patch</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="технический-чек-лист-live-service-launch">Технический чек-лист live-service launch</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Matchmaking load tested 2x expected peak.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Commerce receipt validation server-side.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Feature flags for launch day events.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Rollback playbook documented.</li>
+<li class="task-list-item"><input type="checkbox" disabled> CDN cache invalidation tested.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Anti-cheat integrated on dedicated servers.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Analytics events schema frozen before season.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Status page for player communication.</li>
+</ul>
+<hr>
+<h2 id="faq">FAQ</h2>
+<p><strong>Что такое live-service игра?</strong>
+Игра с постоянными обновлениями, событиями и monetization после релиза.</p>
+<p><strong>Чем live-service отличается от MMO?</strong>
+MMO — поджанр; live-service — бизнес-модель (WoW is both).</p>
+<p><strong>Что такое battle pass?</strong>
+Сезонная лестница наград за XP; premium tier за деньги.</p>
+<p><strong>Сколько длится сезон?</strong>
+Обычно 8–12 недель; зависит от игры.</p>
+<p><strong>Что такое FOMO в играх?</strong>
+Страх упустить limited-time контент.</p>
+<p><strong>Что такое gacha?</strong>
+Случайная выдача предметов за premium валюту.</p>
+<p><strong>Что такое pity system?</strong>
+Гарантия редкого drop после N неудачных pulls.</p>
+<p><strong>Что такое whale?</strong>
+Игрок с очень большими тратами.</p>
+<p><strong>Что такое ARPU?</strong>
+Средний доход на одного пользователя.</p>
+<p><strong>Что такое retention D7?</strong>
+Доля игроков, вернувшихся на 7-й день после старта.</p>
+<p><strong>Что такое live-ops?</strong>
+Операции после релиза: ивенты, патчи, shop.</p>
+<p><strong>Что такое hotfix?</strong>
+Быстрый патч критического бага.</p>
+<p><strong>Что такое feature flag?</strong>
+Переключатель фичи без полного деплоя.</p>
+<p><strong>Что такое rollback?</strong>
+Откат версии или конфига при поломке.</p>
+<p><strong>Fortnite платная?</strong>
+Нет; monetization через cosmetics и BP.</p>
+<p><strong>Destiny 2 бесплатная?</strong>
+Base New Light F2P; expansions и seasons paid.</p>
+<p><strong>Genshin pay-to-win?</strong>
+PVE можно пройти F2P; gacha ускоряет collection power.</p>
+<p><strong>Можно ли закрыть live-service?</strong>
+Да; servers sunset = игра недоступна.</p>
+<p><strong>Что такое server authoritative?</strong>
+Сервер решает исход; клиент не trusted.</p>
+<p><strong>Что такое CDN в играх?</strong>
+Сеть доставки патчей и ассетов.</p>
+<p><strong>Что такое seasonal rank reset?</strong>
+Обнуление рейтинга каждый сезон.</p>
+<p><strong>Что такое daily quests?</strong>
+Ежедневные задания для habit engagement.</p>
+<p><strong>Что такое A/B test в играх?</strong>
+Сравнение двух вариантов на части аудитории.</p>
+<p><strong>Что такое conversion rate?</strong>
+Процент игроков, совершивших покупку.</p>
+<p><strong>Что такое LTV?</strong>
+Lifetime value — доход от игрока за всё время.</p>
+<p><strong>Что такое pay-to-win?</strong>
+Покупка игрового преимущества за деньги.</p>
+<p><strong>Что такое cosmetics only?</strong>
+Monetization без gameplay advantage.</p>
+<p><strong>Что такое event calendar?</strong>
+Расписание ивентов на месяцы вперёд.</p>
+<p><strong>Что такое double XP weekend?</strong>
+Ивент повышенного опыта для retention.</p>
+<p><strong>Что такое LTM?</strong>
+Limited-time mode — временный игровой режим.</p>
+<p><strong>Почему crunch в live-service?</strong>
+Жёсткие даты сезонов и ивентов.</p>
+<p><strong>Как защитить mental health?</strong>
+Лимиты трат и времени; skip seasons.</p>
+<p><strong>Что такое Eververse?</strong>
+In-game shop Destiny за premium currency.</p>
+<p><strong>Что такое battle pass fatigue?</strong>
+Усталость игроков от бесконечного grind BP.</p>
+<p><strong>Что такое collab season?</strong>
+Сезон с licensed IP (Marvel, etc.).</p>
+<p><strong>Что такое map rotation?</strong>
+Смена playable maps каждый season.</p>
+<p><strong>Что такое economy sink?</strong>
+Механика траты валюты из economy (crafting fees).</p>
+<p><strong>Что такое faucet?</strong>
+Источник выдачи валюты (quests, drops).</p>
+<p><strong>Что такое game economist?</strong>
+Специалист баланса virtual economy.</p>
+<p><strong>Что такое status page?</strong>
+Публичная страница uptime и incidents.</p>
+<p><strong>Что такое compensating transaction?</strong>
+Выдача валюты игрокам после bug exploit вместо DB rollback.</p>
+<p><strong>Roblox live-service?</strong>
+Платформа UGC с постоянными updates — см. <a href="./127">127</a>.</p>
+<p><strong>Что такое cross-progression?</strong>
+Shared progress между PC и console.</p>
+<p><strong>Что такое season pass vs battle pass?</strong>
+Terms often interchangeable; some games use both names for different products.</p>
+<p><strong>Что такое battle pass tier skip?</strong>
+Покупка уровней за real money.</p>
+<p><strong>Какие KPI у live-service?</strong>
+Retention, ARPU, DAU, conversion, session length.</p>
+<p><strong>Что такое canary deploy?</strong>
+Выкат на малую долю пользователей первым.</p>
+<p><strong>Что такое blue-green deployment?</strong>
+Два prod окружения; switch traffic instantly.</p>
+<p><strong>Что такое matchmaking service?</strong>
+Сервис подбора игроков в матч.</p>
+<p><strong>Что такое TrueSkill?</strong>
+Rating algorithm от Microsoft для matchmaking.</p>
+<p><strong>Что такое content vaulting?</strong>
+Удаление старого контента из game client (Destiny controversy).</p>
+<p><strong>Что такое re-run banner?</strong>
+Повтор gacha banner в Genshin.</p>
+<p><strong>Что такое battle pass premium?</strong>
+Платная ветка наград BP.</p>
+<p><strong>Можно ли играть F2P без disadvantage?</strong>
+В cosmetics-only games — да; в gacha PVE — slower progression.</p>
+<p><strong>Что такое incident postmortem?</strong>
+Разбор outage без blame для улучшений.</p>
+<p><strong>Что такое dark pattern?</strong>
+UI манипуляция (скрытый unsubscribe, etc.).</p>
+<p><strong>Что такое engagement spike?</strong>
+Рост активности в начале season.</p>
+<p><strong>Что такое cohort analysis?</strong>
+Сравнение групп игроков по дате install.</p>
+<p><strong>Что такoe churn?</strong>
+Уход игрока из игры.</p>
+<p><strong>Что такое live balance patch?</strong>
+Изменение stats без нового контента.</p>
+<p><strong>Что такое QA live team?</strong>
+QA focused on regression каждый patch.</p>
+<p><strong>Что такое SRE в играх?</strong>
+Site reliability engineering — uptime и scale.</p>
+<p><strong>Связь live-service и AI?</strong>
+Matchmaking ML, churn prediction — см. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/128">ИИ в играх</a>.</p>
+<hr>
+<h2 id="монетизация-по-регионам">Монетизация по регионам</h2>
+<ul>
+<li><strong>EU</strong> — давление на loot box odds disclosure; DMA влияет на store rules.</li>
+<li><strong>Китай</strong> — license freezes, playtime limits minors, gacha reporting.</li>
+<li><strong>Япония</strong> — kompu gacha regulations historical influence.</li>
+<li><strong>США</strong> — state bills on minors purchases; FTC attention dark patterns.</li>
+<li><strong>Россия</strong> — in-app purchases работают; локальные payment rails менялись — следите store policy.</li>
+</ul>
+<p>Для студентов gamedev: legal review перед global launch — <a href="./115">монетизация</a>.</p>
+<hr>
+<h2 id="сравнение-battle-pass-и-gacha">Сравнение battle pass и gacha</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Battle pass</th>
+<th>Gacha banners</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Предсказуемость</td>
+<td>Fixed track rewards</td>
+<td>Random pull</td>
+</tr>
+<tr>
+<td>FOMO</td>
+<td>Season end</td>
+<td>Banner end + pity</td>
+</tr>
+<tr>
+<td>Revenue spike</td>
+<td>Season start</td>
+<td>New character launch</td>
+</tr>
+<tr>
+<td>Regulation heat</td>
+<td>Lower</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td>Player sentiment</td>
+<td>Grind complaints</td>
+<td>Gambling analogies</td>
+</tr>
+</tbody>
+</table>
+<p>Hybrid games (Fortnite BP + shop rotation) combine both psychology layers without gacha pulls.</p>
+<hr>
+<h2 id="см-также">См. также</h2>
+<ul>
+<li><a href="./115">Монетизация</a></li>
+<li><a href="./127">UGC-платформы</a></li>
+<li><a href="./11">Кризис игровой индустрии</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/202">Roblox — экономика</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/128">ИИ в играх</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/124">Тестирование игр</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/111">Команда разработки</a></li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#словарь">Словарь</a></li><li class="article-toc__item"><a href="#коробочная-игра-и-live-service">Коробочная игра и live-service</a></li><li class="article-toc__item"><a href="#экономика-gaas">Экономика GaaS</a></li><li class="article-toc__item is-h3"><a href="#модель-дохода">Модель дохода</a></li><li class="article-toc__item is-h3"><a href="#unit-economics-упрощённо">Unit economics (упрощённо)</a></li><li class="article-toc__item is-h3"><a href="#whale-economics">Whale economics</a></li><li class="article-toc__item is-h3"><a href="#content-cost-amortization">Content cost amortization</a></li><li class="article-toc__item"><a href="#free-to-play-модели">Free-to-play модели</a></li><li class="article-toc__item is-h3"><a href="#cosmetics-only">Cosmetics only</a></li><li class="article-toc__item is-h3"><a href="#pay-for-convenience">Pay-for-convenience</a></li><li class="article-toc__item is-h3"><a href="#gacha-loot-boxes">Gacha / loot boxes</a></li><li class="article-toc__item is-h3"><a href="#battle-pass-primary">Battle pass primary</a></li><li class="article-toc__item is-h3"><a href="#subscription-tiers">Subscription tiers</a></li><li class="article-toc__item"><a href="#сезоны-дизайн">Сезоны — дизайн</a></li><li class="article-toc__item is-h3"><a href="#длительность">Длительность</a></li><li class="article-toc__item is-h3"><a href="#seasonal-theme">Seasonal theme</a></li><li class="article-toc__item is-h3"><a href="#rank-reset">Rank reset</a></li><li class="article-toc__item is-h3"><a href="#content-cadence-внутри-сезона">Content cadence внутри сезона</a></li><li class="article-toc__item is-h3"><a href="#live-balance-mid-season">Live balance mid-season</a></li><li class="article-toc__item"><a href="#battle-pass-психология-и-дизайн">Battle pass — психология и дизайн</a></li><li class="article-toc__item is-h3"><a href="#структура">Структура</a></li><li class="article-toc__item is-h3"><a href="#psychological-hooks">Psychological hooks</a></li><li class="article-toc__item is-h3"><a href="#ethical-considerations">Ethical considerations</a></li><li class="article-toc__item is-h3"><a href="#battle-pass-fatigue">Battle pass fatigue</a></li><li class="article-toc__item"><a href="#live-ops-календарь">Live-ops календарь</a></li><li class="article-toc__item is-h3"><a href="#квартальное-планирование">Квартальное планирование</a></li><li class="article-toc__item is-h3"><a href="#типы-ивентов">Типы ивентов</a></li><li class="article-toc__item is-h3"><a href="#ops-rhythm">Ops rhythm</a></li><li class="article-toc__item is-h3"><a href="#tools">Tools</a></li><li class="article-toc__item"><a href="#ab-тестирование">A/B тестирование</a></li><li class="article-toc__item is-h3"><a href="#что-тестируют">Что тестируют</a></li><li class="article-toc__item is-h3"><a href="#infrastructure">Infrastructure</a></li><li class="article-toc__item is-h3"><a href="#ethics">Ethics</a></li><li class="article-toc__item"><a href="#серверная-архитектура">Серверная архитектура</a></li><li class="article-toc__item is-h3"><a href="#patterns">Patterns</a></li><li class="article-toc__item is-h3"><a href="#microservices-typical-aaa">Microservices (typical AAA)</a></li><li class="article-toc__item is-h3"><a href="#scaling-events">Scaling events</a></li><li class="article-toc__item is-h3"><a href="#database">Database</a></li><li class="article-toc__item"><a href="#feature-flags">Feature flags</a></li><li class="article-toc__item is-h3"><a href="#зачем">Зачем</a></li><li class="article-toc__item is-h3"><a href="#implementation">Implementation</a></li><li class="article-toc__item is-h3"><a href="#best-practices">Best practices</a></li><li class="article-toc__item"><a href="#rollback-и-incident-response">Rollback и incident response</a></li><li class="article-toc__item is-h3"><a href="#deployment-pipeline">Deployment pipeline</a></li><li class="article-toc__item is-h3"><a href="#when-rollback">When rollback</a></li><li class="article-toc__item is-h3"><a href="#rollback-types">Rollback types</a></li><li class="article-toc__item is-h3"><a href="#postmortem">Postmortem</a></li><li class="article-toc__item"><a href="#case-study-fortnite-epic">Case study — Fortnite (Epic)</a></li><li class="article-toc__item is-h3"><a href="#model">Model</a></li><li class="article-toc__item is-h3"><a href="#season-structure">Season structure</a></li><li class="article-toc__item is-h3"><a href="#tech">Tech</a></li><li class="article-toc__item is-h3"><a href="#lessons">Lessons</a></li><li class="article-toc__item"><a href="#case-study-destiny-2-bungie">Case study — Destiny 2 (Bungie)</a></li><li class="article-toc__item is-h3"><a href="#model-evolution">Model evolution</a></li><li class="article-toc__item is-h3"><a href="#seasonal-content">Seasonal content</a></li><li class="article-toc__item is-h3"><a href="#live-balance">Live balance</a></li><li class="article-toc__item is-h3"><a href="#lessons">Lessons</a></li><li class="article-toc__item"><a href="#case-study-genshin-impact-mihoyo-hoyoverse">Case study — Genshin Impact (miHoYo / HoYoverse)</a></li><li class="article-toc__item is-h3"><a href="#model">Model</a></li><li class="article-toc__item is-h3"><a href="#update-cadence">Update cadence</a></li><li class="article-toc__item is-h3"><a href="#tech">Tech</a></li><li class="article-toc__item is-h3"><a href="#lessons">Lessons</a></li><li class="article-toc__item"><a href="#риски-закрытия-sunset">Риски закрытия (sunset)</a></li><li class="article-toc__item is-h3"><a href="#примеры-shutdowns">Примеры shutdowns</a></li><li class="article-toc__item is-h3"><a href="#player-impact">Player impact</a></li><li class="article-toc__item is-h3"><a href="#legal">Legal</a></li><li class="article-toc__item"><a href="#ментальное-здоровье-игрока">Ментальное здоровье игрока</a></li><li class="article-toc__item is-h3"><a href="#fomo-и-обязательность">FOMO и обязательность</a></li><li class="article-toc__item is-h3"><a href="#coping-strategies-for-players">Coping strategies for players</a></li><li class="article-toc__item is-h3"><a href="#developer-responsibility">Developer responsibility</a></li><li class="article-toc__item"><a href="#crunch-в-live-service">Crunch в live-service</a></li><li class="article-toc__item is-h3"><a href="#always-on-pressure">Always-on pressure</a></li><li class="article-toc__item is-h3"><a href="#staffing">Staffing</a></li><li class="article-toc__item is-h3"><a href="#industry-response">Industry response</a></li><li class="article-toc__item"><a href="#live-ops-роли-команда">Live-ops роли — команда</a></li><li class="article-toc__item"><a href="#метрики-dashboard-пример">Метрики dashboard (пример)</a></li><li class="article-toc__item"><a href="#технический-чек-лист-live-service-launch">Технический чек-лист live-service launch</a></li><li class="article-toc__item"><a href="#faq">FAQ</a></li><li class="article-toc__item"><a href="#монетизация-по-регионам">Монетизация по регионам</a></li><li class="article-toc__item"><a href="#сравнение-battle-pass-и-gacha">Сравнение battle pass и gacha</a></li><li class="article-toc__item"><a href="#см-также">См. также</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-03-igrovaya-industriya/115"> Монетизация  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии  </a> </li><li> <a href="/games/9-04-razrabotka-igr/124"> Тестирование игр  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/127"> UGC-платформы  </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

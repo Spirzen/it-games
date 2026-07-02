@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Super Mario — Игры IT Universe</title><meta name="description" content="Серия игр Super Mario представляет собой фундаментальную часть истории видеоигр. Разрабатываемая компанией Nintendo, эта франшиза охватывает более сорока лет развития индустрии."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Super Mario</span></li></ol></nav><header class="portal-hero"> <h1>Super Mario</h1> <p>Серия игр Super Mario представляет собой фундаментальную часть истории видеоигр. Разрабатываемая компанией Nintendo, эта франшиза охватывает более сорока лет развития индустрии.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Super Mario" data-url="/games/9-03-igrovaya-industriya/game-studies/112">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Super Mario">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Super Mario</h1>
+<div class="itu-play-embed" data-example="spinoff/game-franchise-play" data-src="" data-title="Игровая франшиза" data-min-height="520" data-play-props="{&quot;franchise&quot;:&quot;mario&quot;}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="что-такое-super-mario">Что такое Super Mario</h2>
+<p>Серия игр <strong>Super Mario</strong> представляет собой фундаментальную часть истории видеоигр. Разрабатываемая компанией Nintendo, эта франшиза охватывает более сорока лет развития индустрии. Проект начался в 1985 году с выхода оригинальной игры для консоли NES и продолжается до наших дней, включая релизы на современных платформах, таких как Nintendo Switch 2.</p>
+<p>Марио — это не просто персонаж. Это символ целой эпохи, культурный феномен и эталон дизайна уровней. Игры серии демонстрируют эволюцию игровых механик: от простейших двухмерных скроллеров до сложных трехмерных миров с открытым пространством и физикой гравитации.</p>
+<p>Сюжетные линии часто остаются неизменными: спасение принцессы Пич от злодея Боузера. Однако за этой простой схемой скрывается глубокая проработка мира, множество вариаций геймплея и эксперименты с жанрами. Франшиза включает в себя платформеры, гонки, спортивные симуляторы, ролевые игры и творческие инструменты для создания собственных уровней.</p>
+<hr>
+<h2 id="лор-и-история-вселенной">Лор и история вселенной</h2>
+<h3 id="география-и-локации">География и локации</h3>
+<p>Центральным элементом вселенной является <strong>Грибное Королевство</strong>. Эта локация населена людьми-грибами по имени Тоады, которые служат верными помощниками правительницы. Территория характеризуется наличием магических труб, позволяющих мгновенно перемещаться между разными мирами, парящих блоков со знаками вопроса и разнообразных природных зон — лесов, пустынь, подводных царств и лавовых подземелий.</p>
+<p><strong>Цветочное Королевство</strong> появляется в поздних играх серии, например, в <em>Super Mario Bros. Wonder</em>. Это мир, где природа обладает уникальными свойствами, а реальность может меняться под воздействием чудо-цветков.</p>
+<p><strong>Страна Динозавров</strong> (Dinosaur Land) известна как место обитания динозавров и главного спутника Марио — Йоши. Локация часто становится ареной для приключений, где герои сталкиваются с новыми угрозами.</p>
+<p><strong>Комета Обсерватория</strong> служит космическим хабом в игре <em>Super Mario Galaxy</em>. Это летающий корабль, откуда игроки отправляются в различные галактики, каждая из которых представляет собой отдельный мир с уникальной физикой и гравитацией.</p>
+<p><strong>Лунное Царство</strong> — загадочная локация, где действует пониженная сила притяжения. Здесь происходит финальное противостояние в <em>Super Mario Odyssey</em>.</p>
+<p><strong>Нью Донг Сти</strong> выделяется своей реалистичностью и архитектурой, напоминающей современный мегаполис Манхэттен. Жители этого города имеют человеческие пропорции, что создает контраст с мультяшным стилем остального мира Марио.</p>
+<hr>
+<h3 id="персонажи">Персонажи</h3>
+<p><strong>Марио</strong> — главный герой серии. Итальянский водопроводчик, который стал защитником мира. Его характер отличается решимостью, оптимизмом и готовностью к риску. Марио способен выполнять сложные акробатические трюки, преодолевать препятствия и сражаться с врагами. В разных играх он приобретает новые способности благодаря специальным предметам.</p>
+<p><strong>Луиджи</strong> — младший брат Марио. Он выше ростом, прыгает выше, но медленнее бегает. Луиджи часто изображается как более пугливый и осторожный персонаж, однако он не раз проявлял храбрость ради спасения брата или принцессы. В некоторых проектах он выступает как самостоятельный протагонист.</p>
+<p><strong>Принцесса Пич</strong> (Toadstool) — правительница Грибного Королевства. Она обладает магическими способностями и часто становится объектом похищения со стороны Боузера. В последних частях серии она проявляет больше самостоятельности и даже способность к бою. Пич известна своей добротой и умением вдохновлять других.</p>
+<p><strong>Боузер</strong> (King Koopa / Bowser) — главный антагонист франшизы. Король Купа, гигантский черепахоподобный монстр с огнем во рту. Его цель — захватить власть, похитить принцессу и жениться на ней. Боузер командует армией Купа-трупов, гумбов и других существ. Он часто использует магию, механизмы и воздушные корабли для достижения своих целей.</p>
+<p><strong>Йоши</strong> — дружелюбный зеленый динозавр, ставший верным спутником Марио. Йоши способен проглатывать врагов, выплевывать их яйца, использовать язык для захвата предметов и летать с помощью панцирей купы. У него есть несколько цветовых вариаций, каждая из которых обладает уникальными способностями.</p>
+<p><strong>Донки Конг</strong> — могучая горилла, изначально бывшая соперником Марио в одноименной аркаде. Со временем они стали союзниками. Донки Конг управляет своим островом джунглей и часто помогает героям в их приключениях.</p>
+<p><strong>Тоад</strong> — маленькие гриболюди, служащие жителями и помощниками Принцессы Пич. Они появляются в каждой игре серии, выполняя функции хранителей замков, продавцов или простых жителей королевства.</p>
+<p><strong>Кэппи</strong> — призрачная шляпа, появившаяся в <em>Super Mario Odyssey</em>. Он дарит Марио способность "зашляпливания", позволяющую временно управлять другими персонажами и объектами. Кэппи имеет собственную историю и мотивацию, связанную с поиском своей сестры Тиары.</p>
+<p><strong>Розалина</strong> — хранительница космоса и опекунша люмов. Она впервые появилась в <em>Super Mario Galaxy</em> и стала важной фигурой в космической трилогии. Розалина обладает мудростью и силой, помогая Марио в его путешествиях по галактикам.</p>
+<p><strong>Люма</strong> — маленькие звездные существа, сопровождающие Марио в <em>Super Mario Odyssey</em>. Они являются источником энергии и помогают герою в сборе лун. Люма также выступает как второй игрок в кооперативном режиме.</p>
+<hr>
+<h3 id="хронология-событий">Хронология событий</h3>
+<p>История вселенной развивается параллельно с выходом игр. Основные события можно разделить на несколько ключевых этапов.</p>
+<p>Первое путешествие Марио начинается после событий игры <em>Mario Bros.</em> Братья через трубу попадают в Грибное Королевство. Боузер и его племя купа-трупов вторгаются в королевство, превращая жителей в неодушевленные предметы и похищая принцессу. Марио и Луиджи отправляются на спасение, проходя через восемь миров и сражаясь с приспешниками злодея. Финальная битва происходит в восьмом мире, где Марио побеждает настоящего Боузера.</p>
+<p>В последующих приключениях сюжет расширяется. В <em>Super Mario World</em> герои отправляются в отпуск в Страну Динозавров, где Пич исчезает. Марио и Луиджи находят яйцо, из которого вылупляется Йоши. Вместе они спасают друзей динозаврика и борются с тиранией Боузера.</p>
+<p>В <em>Super Mario 64</em> действие переносится в открытый замок. Принцесса Пич приглашает Марио на праздник, но Боузер похищает её и звезды замка. Марио должен собрать 120 звезд, чтобы открыть двери к финальной битве.</p>
+<p><em>Super Mario Sunshine</em> переносит героев на солнечный остров Исла-де-Парис. Боузер использует грязь, чтобы испортить красоту острова и похитить принцессу. Марио получает устройство F.L.U.D.D., которое позволяет ему очищать загрязнения и сражаться с врагами.</p>
+<p>В <em>Super Mario Galaxy</em> и <em>Galaxy 2</em> действие происходит в космосе. Марио путешествует по галактикам, собирая звезды силы и спасая вселенную от разрушения. Боузер пытается захватить власть над всеми мирами.</p>
+<p><em>Super Mario Odyssey</em> открывает новую главу. Марио путешествует по разным царствам, используя способность Кэппи. Финал истории показывает, как Пич отвергает предложение руки и сердца от обоих претендентов, выбирая независимость.</p>
+<p>В <em>Super Mario Bros. Wonder</em> герои защищают Цветочное Королевство от Боузера, который использует чудо-цветок для изменения реальности. Марио и его друзья собирают великие семечки, чтобы победить злодея и вернуть мир в нормальное состояние.</p>
+<hr>
+<h2 id="геймплей-и-механики">Геймплей и механики</h2>
+<h3 id="2d-платформинг">2D-платформинг</h3>
+<p>Основополагающая механика серии заключается в управлении персонажем, который движется слева направо. Игрок должен точно рассчитывать прыжки, учитывая инерцию движения и высоту препятствий. Основной способ уничтожения врагов — прыжок сверху на голову противника. Если враг имеет защиту (например, панцирь или шипы), требуется использование специальных приемов или предметов.</p>
+<p>Сбор монет увеличивает счет и дает дополнительные жизни при достижении определенных порогов. Блоки со знаком вопроса содержат бонусы — супергрибы, огненные цветы, суперзвезды или скрытые пути. Трубы позволяют быстро перемещаться между уровнями или попадать в секретные зоны.</p>
+<p>В <em>New Super Mario Bros.</em> и <em>Super Mario Bros. Wonder</em> добавлены новые механики — тройной прыжок, прыжок от стены, мега-гриб для увеличения размера и мини-гриб для уменьшения. Эти элементы расширяют возможности прохождения и создают новые задачи для игрока.</p>
+<hr>
+<h3 id="3d-революция">3D-революция</h3>
+<p>Переход к трехмерному пространству в <em>Super Mario 64</em> изменил представление о платформерах. Игрок получил свободу передвижения в любом направлении, возможность осматриваться вокруг и взаимодействовать с окружением. Камера управляется виртуальным оператором, который следует за персонажем, избегая столкновений с объектами.</p>
+<p>Новые приемы включают прыжки от стен, двойные прыжки, сальто назад и длинный прыжок. Эти движения требуют точного управления и координации. Игрок должен исследовать большие открытые миры, находить скрытые зоны и собирать звезды для продвижения вперед.</p>
+<p>В <em>Super Mario Galaxy</em> и <em>Odyssey</em> механика 3D была ещё сильнее усложнена. Появилась система гравитации, позволяющая ходить по поверхности планет любой формы. Марио может прыгать с одной планеты на другую, используя инерцию и направление полета. Управление камерой стало более гибким, а возможности взаимодействия с миром — разнообразнее.</p>
+<hr>
+<h3 id="система-power-up">Система Power-up</h3>
+<p>Предметы в серии играют ключевую роль в изменении механики игры. Каждый бонус дает уникальные способности:</p>
+<ul>
+<li><strong>Супергриб</strong>: увеличивает размер Марио, делая его неуязвимым для одного удара. Позволяет разбивать блоки над головой.</li>
+<li><strong>Огненный цветок</strong>: превращает Марио в Огненного Марио, давая возможность метать огненные шары. Одежда героя меняет цвет на красный.</li>
+<li><strong>Суперзвезда</strong>: делает персонажа неуязвимым на короткое время. Марио может проходить сквозь врагов и разрушать препятствия.</li>
+<li><strong>Костюм Кота</strong>: позволяет взбираться по стенам, выполнять уникальные атаки и двигаться быстрее. Доступен в <em>Super Mario 3D World</em>.</li>
+<li><strong>Бумеранг-цветок</strong>: дает возможность метать бумеранги, которые возвращаются обратно.</li>
+<li><strong>Ледяной цветок</strong>: позволяет создавать ледяные плиты на жидких поверхностях и стрелять ледяными снарядами.</li>
+<li><strong>Гриб-пружина</strong>: дает возможность высоко прыгать.</li>
+<li><strong>Гриб-пчела</strong>: позволяет летать, лазить по сотам и ходить по облакам.</li>
+<li><strong>Гриб-бу</strong>: делает Марио невидимым и позволяет проходить сквозь объекты.</li>
+</ul>
+<hr>
+<h3 id="дизайн-уровней">Дизайн уровней</h3>
+<p>Принцип построения уровней в серии основан на постепенном обучении игрока. Первый уровень <em>World 1-1</em> в оригинальной <em>Super Mario Bros.</em> считается эталоном геймдизайна. Он вводит основные механики — прыжки, врагов, блоки и трубы. Игрок учится распознавать опасности и находить решения без явных инструкций.</p>
+<p>Структура уровня часто следует схеме — введение механики, развитие сложности, неожиданный поворот и безопасный финал. Этот подход позволяет игроку чувствовать прогресс и уверенность в своих силах.</p>
+<p>В <em>Super Mario Maker</em> и <em>Super Mario Maker 2</em> разработчики дали игрокам возможность создавать собственные уровни, используя элементы из разных частей серии. Это позволило создать миллионы уникальных комбинаций и проверить границы возможностей движка.</p>
+<hr>
+<h2 id="архитектура-выполнения-и-технические-аспекты">Архитектура выполнения и технические аспекты</h2>
+<h3 id="эпоха-8-бит-и-nes">Эпоха 8-бит и NES</h3>
+<p>Консоль NES имела ограниченные ресурсы памяти. Картридж вмещал всего 40 килобайт, из которых 32 использовались для кода и данных, а 8 — для спрайтов и графики. Это ограничение заставляло разработчиков искать способы экономии места. Например, один и тот же спрайт использовался для облаков и кустов, различаясь только цветом. Фоновые декорации расставлялись с помощью автоматического алгоритма.</p>
+<p>Звуковые эффекты также подверглись оптимизации. Звук получения урона использовался в момент входа в трубу, а звук прыжка на врага повторялся при гребке под водой. После добавления саундтрека на картридже оставалось около 20 байт свободного места, которые были заполнены спрайтом короны для игроков, набравших десять жизней.</p>
+<hr>
+<h3 id="движок-обработки-столкновений">Движок обработки столкновений</h3>
+<p>Хитбоксы Марио динамически изменяются в зависимости от состояния персонажа. При приседании хитбокс сжимается, что позволяет проходить через узкие проходы. Во время прыжка хитбокс адаптируется к траектории движения. Такая точность управления критически важна для прохождения сложных уровней.</p>
+<p>В <em>Super Mario 64</em> и последующих 3D-играх система столкновений стала сложнее. Она учитывает не только позицию персонажа, но и направление движения, скорость и физику объектов. Это позволяет реализовать реалистичные взаимодействия с окружающей средой.</p>
+<hr>
+<h3 id="оптимизация-рендеринга">Оптимизация рендеринга</h3>
+<p>Использование тайловой графики и жестко заданных палитр позволяло экономить видеопамять. В 2D-играх каждый уровень строился из повторяющихся элементов, которые комбинировались различными способами. В 3D-играх применялась техника LOD (Level of Detail), когда дальние объекты отображались с меньшим количеством полигонов.</p>
+<p>В <em>Super Mario 64</em> использовался микрокод процессора Reality Coprocessor для оптимизации векторных вычислений. Это обеспечивало плавную работу трехмерных моделей и эффектов частиц.</p>
+<hr>
+<h3 id="управление-камерой-в-3d">Управление камерой в 3D</h3>
+<p>Камера в <em>Super Mario 64</em> управлялась виртуальным оператором, который следовал за игроком по сложным алгоритмам. Оператор избегал столкновений с объектами и старался сохранять обзор на персонажа. В <em>Super Mario Galaxy</em> и <em>Odyssey</em> камера стала еще более гибкой, адаптируясь к форме планет и гравитации.</p>
+<p>В <em>Super Mario 3D World</em> и <em>Wonder</em> камера автоматически переключается между режимами, обеспечивая лучший вид на происходящее. В многопользовательском режиме камера масштабируется, чтобы вместить всех игроков в кадр.</p>
+<hr>
+<h2 id="влияние-на-индустрию">Влияние на индустрию</h2>
+<h3 id="спасение-рынка">Спасение рынка</h3>
+<p>Выход <em>Super Mario Bros.</em> в 1985 году сыграл решающую роль в восстановлении игровой индустрии США после кризиса 1983 года. Игра продемонстрировала потенциал приставок и привлекла внимание широкой аудитории. Продажи консоли NES выросли, а жанр платформеров стал доминирующим.</p>
+<hr>
+<h3 id="стандарт-3d-игр">Стандарт 3D-игр</h3>
+<p><em>Super Mario 64</em> установила новые стандарты для трехмерных платформеров. Механика управления, система камеры и принципы исследования открытых миров стали образцом для многих последующих проектов. Разработчики других студий изучали игру, чтобы понять, как создать удобный и увлекательный опыт в 3D-пространстве.</p>
+<hr>
+<h3 id="жанровое-разнообразие">Жанровое разнообразие</h3>
+<p>Франшиза успешно расширила границы жанров. <em>Mario Kart</em> популяризировала гоночные аркады, а <em>Mario Party</em> создала новый поджанр настольных игр для консолей. Спортивные симуляторы, такие как <em>Mario Tennis</em> и <em>Mario Golf</em>, также получили широкое распространение.</p>
+<hr>
+<h3 id="поп-культурный-феномен">Поп-культурный феномен</h3>
+<p>Марио стал самым узнаваемым игровым персонажем в мире. Исследования показывают, что о нем знают больше детей, чем о Микки Маусе. Саундтрек Кодзи Кондо является одним из самых популярных видеоигровых произведений. Персонаж появился в мультфильмах, фильмах, аниме и множестве других медиапродуктов.</p>
+<hr>
+<h3 id="наследие-и-современные-проекты">Наследие и современные проекты</h3>
+<p>Серия продолжает развиваться. <em>Super Mario Bros. Wonder</em> (2023) вернул серию к истокам 2D-платформинга, добавив новые механики и эффекты. <em>Super Mario Bros. Wonder – Nintendo Switch 2 Edition</em> (2026) расширяет возможности игры на новой платформе. Фильм "Супер Марио: Галактическое кино" (2026) продолжает расширение вселенной.</p>
+<p>Игроки и разработчики продолжают исследовать возможности серии. Спидраннеры устанавливают рекорды скорости прохождения, моддеры создают новые версии игр, а фанаты генерируют бесконечное количество контента. Вселенная Super Mario остается живой и развивающейся системой знаний и развлечений.</p>
+<hr>
+<h2 id="история-разработки-ключевых-хитов">История разработки ключевых хитов</h2>
+<h3 id="super-mario-bros-1985">Super Mario Bros. (1985)</h3>
+<p><strong>Сюдзо Миямото</strong> возглавил команду из <strong>семи</strong> человек после переориентации Famicom на домашние игры. Разработка стала ранним примером <strong>разделения труда</strong> в индустрии — дизайн мира, программирование, спрайты, музыка (<strong>Кодзи Кондо</strong>) — отдельные роли. В проект вошли авторы <strong>Donkey Kong</strong> и <strong>Mario Bros.</strong>, принеся механики склонов, лифтов, пружин и <strong>POW-блоков</strong>. Игра спасла рынок после краха 1983 года; тираж превысил <strong>40 млн</strong> картриджей.</p>
+<hr>
+<h3 id="super-mario-world-и-yoshi-1990">Super Mario World и Yoshi (1990)</h3>
+<p>Пакетный хит <strong>SNES</strong> — карта мира, <strong>Йоши</strong>, <strong>Feather</strong> (полёт). Сюжет — спасение <strong>Пич</strong> в <strong>Стране Динозавров</strong> после событий <strong>SMB3</strong>.</p>
+<hr>
+<h3 id="super-mario-64-1996">Super Mario 64 (1996)</h3>
+<p>Первый <strong>3D-Mario</strong> — <strong>120 звёзд</strong>, свободная камера, <strong>Боб-омбы</strong>, <strong>Боузер</strong> в трёх крепостях. Задала стандарт 3D-платформера на поколение.</p>
+<hr>
+<h3 id="super-mario-galaxy-2007">Super Mario Galaxy (2007)</h3>
+<p><strong>Ёсиаки Коидзуми</strong>, команда <strong>~100</strong> человек: идеи на стикерах на стенах студии. <strong>Гравитация</strong> мини-планет, <strong>Power Stars</strong>, смесь 3D и 2D-секций. Один из высочайших Metacritic в истории (97).</p>
+<hr>
+<h3 id="super-mario-odyssey-2017">Super Mario Odyssey (2017)</h3>
+<p><strong>Switch</strong> — <strong>Кепи-Кепи</strong> (захват врагов <strong>Cappy</strong>), королевства вместо хаба-звёзд, <strong>880 луны</strong>. Продажи <strong>~30 млн</strong>; возврат к исследованию без линейных уровней-"коридоров".</p>
+<hr>
+<h3 id="super-mario-bros-wonder-2023">Super Mario Bros. Wonder (2023)</h3>
+<p>2D-возрождение с <strong>Wonder Flower</strong> (трансформации уровня), <strong>Элефант-Марио</strong>, кооп до 4 игроков. Показал, что классическая формула 2D ещё коммерчески доминирует.</p>
+<hr>
+<h2 id="полный-список-игр-франшизы">Полный список игр франшизы</h2>
+<p>Ниже представлен полный перечень игр серии Super Mario, упорядоченный по системам выпуска.</p>
+<hr>
+<h3 id="аркадные-автоматы">Аркадные автоматы</h3>
+<ul>
+<li>Donkey Kong (1981)</li>
+<li>Donkey Kong Jr. (1982)</li>
+<li>Mario Bros. (1983)</li>
+<li>Vs. Super Mario Bros. (1986)</li>
+</ul>
+<hr>
+<h3 id="карманные-консоли-game-x26-watch">Карманные консоли Game &#x26; Watch</h3>
+<ul>
+<li>Manhole (1981)</li>
+<li>Donkey Kong (1982)</li>
+<li>Donkey Kong Jr. (1982)</li>
+<li>Donkey Kong 2 (1983)</li>
+<li>Mario Bros. (1983)</li>
+<li>Mario's Cement Factory (1983)</li>
+<li>Mario's Bombs Away (1983)</li>
+<li>Donkey Kong 3 (1984)</li>
+<li>Super Mario Bros. (1986)</li>
+<li>Mario the Juggler (1991)</li>
+</ul>
+<hr>
+<h3 id="game-boy">Game Boy</h3>
+<ul>
+<li>Alleyway (1989/1990)</li>
+<li>Tennis (1989/1990)</li>
+<li>Super Mario Land (1989/1990)</li>
+<li>Tetris (1989/1990)</li>
+<li>Golf (1989/1990)</li>
+<li>Qix (1990)</li>
+<li>Dr. Mario (1990/1991)</li>
+<li>F-1 Race (1990/1991)</li>
+<li>Super Mario Land 2: 6 Golden Coins (1992/1993)</li>
+<li>Wario Land: Super Mario Land 3 (1994)</li>
+<li>Donkey Kong (1994)</li>
+<li>Mario's Picross (1995)</li>
+<li>Picross 2 (1996)</li>
+<li>Game &#x26; Watch Gallery (1997)</li>
+<li>Game &#x26; Watch Gallery 2 (1997)</li>
+</ul>
+<hr>
+<h3 id="virtual-boy">Virtual Boy</h3>
+<ul>
+<li>Mario's Tennis (1995)</li>
+<li>Mario Clash (1995)</li>
+</ul>
+<hr>
+<h3 id="game-boy-color">Game Boy Color</h3>
+<ul>
+<li>Game &#x26; Watch Gallery 2 (1998)</li>
+<li>Super Mario Bros. Deluxe (1999/2000)</li>
+<li>Game &#x26; Watch Gallery 3 (1999/2000)</li>
+<li>Mario Golf (1999)</li>
+<li>Mario Tennis (2000/2001)</li>
+</ul>
+<hr>
+<h3 id="game-boy-advance">Game Boy Advance</h3>
+<ul>
+<li>Mario Kart Super Circuit (2001)</li>
+<li>Super Mario Advance (2001)</li>
+<li>Super Mario World: Super Mario Advance 2 (2001/2002)</li>
+<li>Super Mario Advance 3: Yoshi's Island (2002)</li>
+<li>Game &#x26; Watch Gallery 4 (2002)</li>
+<li>Super Mario Advance 4: Super Mario Bros. 3 (2003)</li>
+<li>Mario &#x26; Luigi: Superstar Saga (2003)</li>
+<li>Mario vs. Donkey Kong (2004)</li>
+<li>Mario Golf: Advance Tour (2004)</li>
+<li>Super Mario Bros. (Classic NES Series) (2004)</li>
+<li>Mario Pinball Land (2004)</li>
+<li>Yoshi's Universal Gravitation (2004/2005)</li>
+<li>Dr. Mario (Classic NES Series) (2004/2005)</li>
+<li>Mario Party Advance (2005)</li>
+<li>Mario Tennis: Power Tour (2005)</li>
+<li>Dr. Mario &#x26; Puzzle League (2005)</li>
+</ul>
+<hr>
+<h3 id="nintendo-ds">Nintendo DS</h3>
+<ul>
+<li>Super Mario 64 DS (2004/2005)</li>
+<li>Mario Kart DS (2005)</li>
+<li>Mario &#x26; Luigi: Partners in Time (2005/2006)</li>
+<li>Super Princess Peach (2005/2006)</li>
+<li>Tetris DS (2006)</li>
+<li>New Super Mario Bros. (2006)</li>
+<li>Mario Hoops 3-on-3 (2006/2007)</li>
+<li>Mario vs. Donkey Kong 2: March of the Minis (2006/2007)</li>
+<li>Yoshi's Island DS (2006/2007)</li>
+<li>Itadaki Street DS (2007)</li>
+<li>Mario &#x26; Sonic at the Olympic Игры (2008)</li>
+<li>Mario &#x26; Luigi: Bowser's Inside Story (2009)</li>
+<li>Mario &#x26; Sonic at the Olympic Winter Игры (2009)</li>
+<li>Mario vs. Donkey Kong: Mini-Land Mayhem! (2010/2011)</li>
+</ul>
+<hr>
+<h3 id="nintendo-3ds">Nintendo 3DS</h3>
+<ul>
+<li>Mario Kart 7 (2011)</li>
+<li>Super Mario 3D Land (2011)</li>
+<li>Mario &#x26; Sonic at the London 2012 Olympic Игры (2012)</li>
+<li>Mario Tennis Open (2012)</li>
+<li>Paper Mario: Sticker Star (2012)</li>
+<li>New Super Mario Bros. 2 (2012)</li>
+<li>Luigi's Mansion: Dark Moon/Luigi's Mansion 2 (2013)</li>
+<li>Mario &#x26; Luigi: Dream Team (2013)</li>
+<li>Mario and Donkey Kong: Minis on the Move (2013)</li>
+<li>Mario Party: Island Tour (2013/2014)</li>
+<li>Mario Golf: World Tour (2014)</li>
+<li>Super Smash Bros. for Nintendo 3DS (2014)</li>
+<li>Mario vs. Donkey Kong: Tipping Stars (2015)</li>
+<li>Dr. Mario: Miracle Cure (2015)</li>
+<li>Mario &#x26; Luigi: Paper Jam (2015/2016)</li>
+<li>Mario &#x26; Sonic at the Rio 2016 Olympic Игры (2016)</li>
+<li>Mario Party: Star Rush (2016)</li>
+<li>Super Mario Maker for Nintendo 3DS (2016)</li>
+<li>Mario Sports Superstars (2017)</li>
+<li>Mario &#x26; Luigi: Superstar Saga + Bowser's Minions (2017)</li>
+<li>Mario Party: The Top 100 (2017)</li>
+<li>Luigi's Mansion (2018)</li>
+<li>Mario &#x26; Luigi: Bowser's Inside Story + Bowser Jr's Journey (2019)</li>
+</ul>
+<hr>
+<h3 id="famicomnes">Famicom/NES</h3>
+<ul>
+<li>Mario Bros. (1983/1986)</li>
+<li>Golf (1984/1985/1986)</li>
+<li>Pinball (1984/1985/1986)</li>
+<li>Super Mario Bros. (1985/1987)</li>
+<li>Tennis (1985/1986/1987)</li>
+<li>Wrecking Crew (1985/1987)</li>
+<li>Mike Tyson's Punch-Out!! (1987)</li>
+<li>Super Mario Bros. 2 / Super Mario Bros. USA (1988/1989/1992)</li>
+<li>Tetris (1988/1989/1990)</li>
+<li>Super Mario Bros. 3 (1988/1990/1991)</li>
+<li>Dr. Mario (1990/1991)</li>
+<li>NES Open Tournament Golf (1991/1992)</li>
+<li>Mario is Missing! (1993)</li>
+<li>Mario's Time Machine (1994)</li>
+</ul>
+<hr>
+<h3 id="famicom-disk-system">Famicom Disk System</h3>
+<ul>
+<li>Golf (1986)</li>
+<li>Super Mario Bros. (1986)</li>
+<li>Super Mario Bros. 2 (1986)</li>
+<li>All Night Nippon Super Mario Bros. (1986)</li>
+<li>Family Computer Golf: U. S. Course (1987)</li>
+<li>Kaettekita Mario Bros. (1988)</li>
+<li>Famicom Grand Prix II: 3D Hot Rally (1988)</li>
+<li>Pinball (1989)</li>
+</ul>
+<hr>
+<h3 id="super-famicomsnes">Super Famicom/SNES</h3>
+<ul>
+<li>Super Mario World (1990/1991/1992)</li>
+<li>Super Mario Kart (1992/1993)</li>
+<li>Mario Paint (1992)</li>
+<li>Mario is Missing! (1992)</li>
+<li>Mario's Time Machine (1993)</li>
+<li>Super Mario All-Stars (1993)</li>
+<li>Mario's Early Years: Fun with Letters (1994)</li>
+<li>Mario's Early Years: Fun with Numbers (1994)</li>
+<li>Mario's Early Years: Preschool Fun (1994)</li>
+<li>Tetris &#x26; Dr. Mario (1994)</li>
+<li>Super Mario All-Stars + Super Mario World (1994)</li>
+<li>Super Mario World 2: Yoshi's Island (1995)</li>
+<li>Mario's Super Picross (1995)</li>
+<li>Undake 30 Same Game (1995)</li>
+<li>BS Super Mario USA (1996)</li>
+<li>Super Mario RPG: Legend of the Seven Stars (1996)</li>
+<li>Mario Excite Bike (1997)</li>
+<li>Wrecking Crew '98 (1998)</li>
+</ul>
+<hr>
+<h3 id="nintendo-64">Nintendo 64</h3>
+<ul>
+<li>Super Mario 64 (1996/1997)</li>
+<li>Mario Kart 64 (1996/1997)</li>
+<li>Mario no Photopi (1998)</li>
+<li>Mario Party (1998/1999)</li>
+<li>Super Mario 64 2 (отменена)</li>
+<li>Donkey Kong 64 (1999)</li>
+<li>Mario Golf (1999)</li>
+<li>Super Smash Bros. (1999)</li>
+<li>Mario Party 2 (1999/2000)</li>
+<li>Mario Artist: Paint Studio (1999)</li>
+<li>Mario Artist: Talent Studio (2000)</li>
+<li>Mario Artist: Communication Kit (2000)</li>
+<li>Mario Artist: Polygon Studio (2000)</li>
+<li>Mario Tennis (2000)</li>
+<li>Paper Mario (2000/2001)</li>
+<li>Mario Party 3 (2000/2001)</li>
+<li>Dr. Mario 64 (2001)</li>
+</ul>
+<hr>
+<h3 id="gamecube">GameCube</h3>
+<ul>
+<li>Super Mario 128 (отменена)</li>
+<li>Luigi's Mansion (2001/2002)</li>
+<li>Super Smash Bros. Melee (2001/2002)</li>
+<li>Super Mario Sunshine (2002)</li>
+<li>Mario Party 4 (2002)</li>
+<li>Mario Party 5 (2003)</li>
+<li>Mario Kart: Double Dash!! (2003)</li>
+<li>Mario Golf: Toadstool Tour (2003/2004)</li>
+<li>Paper Mario: The Thousand-Year Door (2004)</li>
+<li>Mario Power Tennis (2004/2005)</li>
+<li>Mario Party 6 (2004/2005)</li>
+<li>NBA Street V3 (2005)</li>
+<li>Mario Superstar Baseball (2005)</li>
+<li>Dance Dance Revolution: Mario Mix (2005)</li>
+<li>SSX On Tour (2005)</li>
+<li>Mario Party 7 (2005/2006)</li>
+<li>Super Mario Strikers (2005/2006)</li>
+</ul>
+<hr>
+<h3 id="wii">Wii</h3>
+<ul>
+<li>Super Mario 128 (отменена)</li>
+<li>Super Paper Mario (2007)</li>
+<li>Mario Party 8 (2007)</li>
+<li>Mario Strikers Charged (2007)</li>
+<li>Mario &#x26; Sonic at the Olympic Игры (2007)</li>
+<li>Super Mario Galaxy (2007)</li>
+<li>Super Mario Spikers (отменена)</li>
+<li>Super Smash Bros. Brawl (2008)</li>
+<li>Mario Kart Wii (2008)</li>
+<li>Mario Super Sluggers (2008)</li>
+<li>Play On Wii (New Play Control!): Mario Power Tennis (2009)</li>
+<li>Mario &#x26; Sonic at the Olympic Winter Игры (2009)</li>
+<li>New Super Mario Bros. Wii (2009)</li>
+<li>Super Mario Galaxy 2 (2010)</li>
+<li>Super Mario All-Stars 25th Anniversary Edition (2010)</li>
+<li>Mario Sports Mix (2010/2011)</li>
+<li>Mario &#x26; Sonic at the London 2012 Olympic Игры (2011)</li>
+<li>Mario Party 9 (2012)</li>
+</ul>
+<hr>
+<h3 id="wii-u">Wii U</h3>
+<ul>
+<li>New Super Mario Bros. U (2012)</li>
+<li>Super Mario 3D World (2013)</li>
+<li>Mario &#x26; Sonic at the Sochi 2014 Olympic Winter Игры (2013)</li>
+<li>Dr. Luigi (2013/2014)</li>
+<li>Mario Kart 8 (2014)</li>
+<li>Captain Toad: Treasure Tracker (2014/2015)</li>
+<li>Super Smash Bros. for Wii U (2014)</li>
+<li>Super Mario Maker (2015)</li>
+<li>Mario Party 10 (2015)</li>
+<li>Mario vs. Donkey Kong: Tipping Stars (2015)</li>
+<li>Mario Tennis: Ultra Smash (2015/2016)</li>
+<li>Mario &#x26; Sonic at the Rio 2016 Olympic Игры (2016)</li>
+<li>Paper Mario: Color Splash (2016)</li>
+</ul>
+<hr>
+<h3 id="nintendo-switch">Nintendo Switch</h3>
+<ul>
+<li>Mario Kart 8 Deluxe (2017)</li>
+<li>Super Mario Odyssey (2017)</li>
+<li>Mario + Rabbids Kingdom Battle (2017)</li>
+<li>Mario Tennis Aces (2018)</li>
+<li>Super Mario Party (2018)</li>
+<li>Super Smash Bros. Ultimate (2018)</li>
+<li>New Super Mario Bros. U Deluxe (2019)</li>
+<li>Super Mario Maker 2 (2019)</li>
+<li>Mario &#x26; Sonic at the Olympic Игры Tokyo 2020 (2019)</li>
+<li>Luigi's Mansion 3 (2019)</li>
+<li>Paper Mario: The Origami King (2020)</li>
+<li>Super Mario 3D All-Stars (2020)</li>
+<li>Super Mario Bros. 35 (2020)</li>
+<li>Mario Kart Live: Home Circuit (2020)</li>
+<li>Super Mario 3D World + Bowser's Fury (2021)</li>
+<li>Mario Golf: Super Rush (2021)</li>
+<li>Mario Party Superstars (2021)</li>
+<li>Mario Strikers: Battle League (2022)</li>
+<li>Mario + Rabbids Sparks of Hope (2022)</li>
+<li>Super Mario Bros. Wonder (2023)</li>
+<li>Super Mario RPG (2023)</li>
+<li>Mario vs. Donkey Kong (2024)</li>
+<li>Luigi's Mansion 2 HD (2024)</li>
+<li>Paper Mario: The Thousand-Year Door (2024)</li>
+<li>Princess Peach Showtime (2024)</li>
+<li>Super Mario Party Jamboree (2024)</li>
+<li>Mario &#x26; Luigi: Brothership (2024)</li>
+<li>Donkey Kong Country Returns HD (2025)</li>
+<li>Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park (2026)</li>
+</ul>
+<hr>
+<h3 id="остальные-платформы">Остальные платформы</h3>
+<h4>Commodore 64</h4>
+<ul>
+<li>Mario Bros. II (1987)</li>
+</ul>
+<hr>
+<h4>NEC PC88</h4>
+<ul>
+<li>Mario Bros. Special (1984)</li>
+<li>Punch Ball Mario Bros. (1984)</li>
+<li>Super Mario Bros. Special (1986)</li>
+</ul>
+<hr>
+<h4>CD-i</h4>
+<ul>
+<li>Super Mario's Wacky Worlds (отменена)</li>
+<li>Hotel Mario (1994)</li>
+</ul>
+<hr>
+<h4>PC</h4>
+<ul>
+<li>Super Mario Bros. (1986)</li>
+<li>Super Mario Bros. &#x26; Friends: When I Grow Up (1992)</li>
+<li>Mario Teaches Typing (1992)</li>
+<li>Mario's FUNdamentals (1995)</li>
+<li>Mario Teaches Typing 2 (1997)</li>
+</ul>
+<hr>
+<h4>iOS</h4>
+<ul>
+<li>Super Mario Run (2016)</li>
+<li>Dr. Mario World (2019)</li>
+<li>Mario Kart Tour (2019)</li>
+</ul>
+<hr>
+<h4>Android</h4>
+<ul>
+<li>Super Mario Run (2017)</li>
+<li>Dr. Mario World (2019)</li>
+<li>Mario Kart Tour (2019)</li>
+</ul>
+<hr>
+<h4>ZX Spectrum</h4>
+<ul>
+<li>Mario Bros. (1987)</li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-super-mario">Что такое Super Mario</a></li><li class="article-toc__item"><a href="#лор-и-история-вселенной">Лор и история вселенной</a></li><li class="article-toc__item is-h3"><a href="#география-и-локации">География и локации</a></li><li class="article-toc__item is-h3"><a href="#персонажи">Персонажи</a></li><li class="article-toc__item is-h3"><a href="#хронология-событий">Хронология событий</a></li><li class="article-toc__item"><a href="#геймплей-и-механики">Геймплей и механики</a></li><li class="article-toc__item is-h3"><a href="#2d-платформинг">2D-платформинг</a></li><li class="article-toc__item is-h3"><a href="#3d-революция">3D-революция</a></li><li class="article-toc__item is-h3"><a href="#система-power-up">Система Power-up</a></li><li class="article-toc__item is-h3"><a href="#дизайн-уровней">Дизайн уровней</a></li><li class="article-toc__item"><a href="#архитектура-выполнения-и-технические-аспекты">Архитектура выполнения и технические аспекты</a></li><li class="article-toc__item is-h3"><a href="#эпоха-8-бит-и-nes">Эпоха 8-бит и NES</a></li><li class="article-toc__item is-h3"><a href="#движок-обработки-столкновений">Движок обработки столкновений</a></li><li class="article-toc__item is-h3"><a href="#оптимизация-рендеринга">Оптимизация рендеринга</a></li><li class="article-toc__item is-h3"><a href="#управление-камерой-в-3d">Управление камерой в 3D</a></li><li class="article-toc__item"><a href="#влияние-на-индустрию">Влияние на индустрию</a></li><li class="article-toc__item is-h3"><a href="#спасение-рынка">Спасение рынка</a></li><li class="article-toc__item is-h3"><a href="#стандарт-3d-игр">Стандарт 3D-игр</a></li><li class="article-toc__item is-h3"><a href="#жанровое-разнообразие">Жанровое разнообразие</a></li><li class="article-toc__item is-h3"><a href="#поп-культурный-феномен">Поп-культурный феномен</a></li><li class="article-toc__item is-h3"><a href="#наследие-и-современные-проекты">Наследие и современные проекты</a></li><li class="article-toc__item"><a href="#история-разработки-ключевых-хитов">История разработки ключевых хитов</a></li><li class="article-toc__item is-h3"><a href="#super-mario-bros-1985">Super Mario Bros. (1985)</a></li><li class="article-toc__item is-h3"><a href="#super-mario-world-и-yoshi-1990">Super Mario World и Yoshi (1990)</a></li><li class="article-toc__item is-h3"><a href="#super-mario-64-1996">Super Mario 64 (1996)</a></li><li class="article-toc__item is-h3"><a href="#super-mario-galaxy-2007">Super Mario Galaxy (2007)</a></li><li class="article-toc__item is-h3"><a href="#super-mario-odyssey-2017">Super Mario Odyssey (2017)</a></li><li class="article-toc__item is-h3"><a href="#super-mario-bros-wonder-2023">Super Mario Bros. Wonder (2023)</a></li><li class="article-toc__item"><a href="#полный-список-игр-франшизы">Полный список игр франшизы</a></li><li class="article-toc__item is-h3"><a href="#аркадные-автоматы">Аркадные автоматы</a></li><li class="article-toc__item is-h3"><a href="#карманные-консоли-game-watch">Карманные консоли Game &amp; Watch</a></li><li class="article-toc__item is-h3"><a href="#game-boy">Game Boy</a></li><li class="article-toc__item is-h3"><a href="#virtual-boy">Virtual Boy</a></li><li class="article-toc__item is-h3"><a href="#game-boy-color">Game Boy Color</a></li><li class="article-toc__item is-h3"><a href="#game-boy-advance">Game Boy Advance</a></li><li class="article-toc__item is-h3"><a href="#nintendo-ds">Nintendo DS</a></li><li class="article-toc__item is-h3"><a href="#nintendo-3ds">Nintendo 3DS</a></li><li class="article-toc__item is-h3"><a href="#famicomnes">Famicom/NES</a></li><li class="article-toc__item is-h3"><a href="#famicom-disk-system">Famicom Disk System</a></li><li class="article-toc__item is-h3"><a href="#super-famicomsnes">Super Famicom/SNES</a></li><li class="article-toc__item is-h3"><a href="#nintendo-64">Nintendo 64</a></li><li class="article-toc__item is-h3"><a href="#gamecube">GameCube</a></li><li class="article-toc__item is-h3"><a href="#wii">Wii</a></li><li class="article-toc__item is-h3"><a href="#wii-u">Wii U</a></li><li class="article-toc__item is-h3"><a href="#nintendo-switch">Nintendo Switch</a></li><li class="article-toc__item is-h3"><a href="#остальные-платформы">Остальные платформы</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

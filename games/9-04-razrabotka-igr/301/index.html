@@ -1,0 +1,4633 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Справочник по Unity — Игры IT Universe</title><meta name="description" content="Шпаргалка по Unity — таблицы синтаксиса, API, команд и параметров — для быстрого поиска фактов."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Справочник по Unity</span></li></ol></nav><header class="portal-hero"> <h1>Справочник по Unity</h1> <p>Шпаргалка по Unity — таблицы синтаксиса, API, команд и параметров — для быстрого поиска фактов.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Справочник по Unity" data-url="/games/9-04-razrabotka-igr/301">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Справочник по Unity">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Справочник по Unity</h1>
+<div class="article-tags"><span class="tag tag-reference">СПРАВОЧНИК</span></div>
+<hr>
+<h2 id="назначение">Назначение</h2>
+<p>Горячие клавиши, команды и форматы <strong>Unity</strong> для ежедневной работы. Учебный курс: <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/intro">раздел</a>. Готовые скрипты с построчным разбором для новичков — <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1136">Unity C# — скрипты для новичков</a>.</p>
+<hr>
+<h2 id="краткое-пояснение">Краткое пояснение</h2>
+<p>Шпаргалка по <strong>Unity</strong> — таблицы синтаксиса, API, команд и параметров — для быстрого поиска фактов.</p>
+<hr>
+<h2 id="справочные-таблицы">Справочные таблицы</h2>
+<h3 id="содержание-справочника">Содержание справочника</h3>
+<ul>
+<li><a href="#%D0%B1%D0%BB%D0%BE%D0%BA-1-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0-lifecycle-gameobject-transform-component-project-settings">Блок 1. Основа — Lifecycle, GameObject, Transform, Component, Project Settings</a></li>
+<li><a href="#%D0%B1%D0%BB%D0%BE%D0%BA-2-%D1%84%D0%B8%D0%B7%D0%B8%D0%BA%D0%B0-%D1%80%D0%B5%D0%BD%D0%B4%D0%B5%D1%80%D0%B8%D0%BD%D0%B3-%D0%BE%D1%81%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B0%D1%83%D0%B4%D0%B8%D0%BE">Блок 2. Физика, Рендеринг, Освещение, Аудио</a> — в т.ч. <a href="#navmesh-agent">NavMeshAgent</a></li>
+<li><a href="#%D0%B1%D0%BB%D0%BE%D0%BA-3-%D0%B0%D0%BD%D0%B8%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-oriented-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D1%8B-%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B0">Блок 3. Анимация, Data-Oriented Design, Пакеты, Профилирование, Сборка</a></li>
+<li><a href="#%D0%B1%D0%BB%D0%BE%D0%BA-4-%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%BE%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%B3%D1%80%D0%B0%D1%84%D1%8B-%D0%B4%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B0-%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C">Блок 4. Высокопроизводительные системы, графы, динамическая загрузка, безопасность</a></li>
+<li><a href="#%D0%B1%D0%BB%D0%BE%D0%BA-5-ui-%D0%BB%D0%BE%D0%BA%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BE%D0%B1%D0%BB%D0%B0%D0%BA%D0%BE-%D1%8D%D0%BA%D1%81%D1%82%D0%B5%D0%BD%D1%88%D0%B5%D0%BD%D1%8B-%D1%80%D0%B5%D0%B4%D0%B0%D0%BA%D1%82%D0%BE%D1%80%D0%B0">Блок 5. UI, Локализация, Тестирование, Облако, Экстеншены редактора</a></li>
+<li><a href="#%D0%B1%D0%BB%D0%BE%D0%BA-6-%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%82%D0%B8-%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8-cicd">Блок 6. Мобильные, Сети, Оптимизация, Интеграции, CI/CD</a></li>
+</ul>
+<hr>
+<h3 id="блок-1-основа-lifecycle-gameobject-transform-component-project-settings">Блок 1. Основа — Lifecycle, GameObject, Transform, Component, Project Settings</h3>
+<blockquote>
+<p><strong>Устаревшие API:</strong> в новых проектах избегайте <code>FindObjectOfType</code> / <code>FindObjectsOfType</code> (замена — <code>FindFirstObjectByType</code>, <code>FindObjectsByType</code>), <code>GameObject.Find</code> в runtime, <code>SendMessage</code> и <code>BroadcastMessage</code>. Ниже — справочник с актуальными и legacy-именами там, где они ещё встречаются в чужом коде.</p>
+</blockquote>
+<hr>
+<h4>1. MonoBehaviour Lifecycle (гарантированный порядок вызова)</h4>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Когда вызывается</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Awake()</code></td>
+<td>При инициализации объекта (до <code>Start</code>) — даже если <code>enabled = false</code></td>
+<td>Вызывается один раз за жизненный цикл объекта. Подходит для инициализации ссылок (<code>GetComponent</code>, <code>FindFirstObjectByType</code>).</td>
+</tr>
+<tr>
+<td><code>OnEnable()</code></td>
+<td>После <code>Awake</code>, каждый раз при включении объекта (<code>SetActive(true)</code> или <code>enabled = true</code>)</td>
+<td>Может вызываться многократно.</td>
+</tr>
+<tr>
+<td><code>Start()</code></td>
+<td>Перед первым <code>Update</code>, только если скрипт включён (<code>enabled == true</code>)</td>
+<td>Не вызывается, если объект создан через <code>Instantiate</code> с <code>SetActive(false)</code>.</td>
+</tr>
+<tr>
+<td><code>FixedUpdate()</code></td>
+<td>С фиксированным интервалом (<code>Time.fixedDeltaTime</code>, по умолчанию 0.02 с = 50 Гц)</td>
+<td>Физика (<code>Rigidbody.AddForce</code>). При <code>Time.timeScale = 0</code> симуляция на паузе (шаг ≈ 0).</td>
+</tr>
+<tr>
+<td><code>Update()</code></td>
+<td>Один раз за кадр (частота зависит от FPS)</td>
+<td>Основной цикл логики игры.</td>
+</tr>
+<tr>
+<td><code>LateUpdate()</code></td>
+<td>После всех <code>Update</code></td>
+<td>Используется для камеры (<code>Camera.main.transform.position = target.position</code>), анимации, post-processing.</td>
+</tr>
+<tr>
+<td><code>OnPreCull()</code></td>
+<td>До начала рендеринга сцены (внутри <code>Camera.Render</code>)</td>
+<td>Редко используется. <code>Camera</code> уже имеет <code>worldToCameraMatrix</code>, но <code>projectionMatrix</code> ещё не установлен.</td>
+</tr>
+<tr>
+<td><code>OnWillRenderObject()</code></td>
+<td>Перед рендерингом каждого объекта (только если <code>Camera</code> видит объект и он имеет <code>MeshRenderer</code>)</td>
+<td>Может вызываться несколько раз за кадр (множество камер).</td>
+</tr>
+<tr>
+<td><code>OnRenderObject()</code></td>
+<td>После <code>OnWillRenderObject</code>, до <code>OnPostRender</code> (внутри <code>Camera.Render</code>)</td>
+<td>Можно вызывать <code>GL.IssuePluginEvent</code>, <code>Graphics.DrawMeshNow</code>.</td>
+</tr>
+<tr>
+<td><code>OnPostRender()</code></td>
+<td>После <code>OnRenderObject</code>, внутри <code>Camera.Render</code></td>
+<td>Подходит для post-processing вручную (например, <code>Graphics.Blit</code>).</td>
+</tr>
+<tr>
+<td><code>OnBecameVisible()</code> / <code>OnBecameInvisible()</code></td>
+<td>При переходе в/из поля зрения любой активной камеры</td>
+<td>Требует <code>Renderer.enabled == true</code>.</td>
+</tr>
+<tr>
+<td><code>OnApplicationFocus(bool focus)</code></td>
+<td>При потере/получении фокуса игрой (окно активно/неактивно)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OnApplicationPause(bool pause)</code></td>
+<td>При паузе (свёртывание на мобильных, Alt+Tab на ПК и т.д.)</td>
+<td>На Android/iOS — вызывается при сворачивании.</td>
+</tr>
+<tr>
+<td><code>OnApplicationQuit()</code></td>
+<td>При завершении приложения (в редакторе — при нажатии Stop)</td>
+<td>Вызывается только в standalone-сборках и при остановке в редакторе. Не вызывается при закрытии редактора.</td>
+</tr>
+<tr>
+<td><code>OnDestroy()</code></td>
+<td>При уничтожении объекта (<code>Destroy(gameObject)</code>) или при выходе из сцены</td>
+<td>Вызывается даже если скрипт отключён. Последний шанс на очистку (<code>StopAllCoroutines</code>, отписка от событий).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Важно</strong>:</p>
+<ul>
+<li><code>Reset()</code> — вызывается в редакторе при добавлении компонента или через Inspector <code>></code> ⚙️ <code>></code> Reset. <strong>Не</strong> часть runtime lifecycle.</li>
+<li><code>OnValidate()</code> — вызывается в редакторе при изменении значений в инспекторе или загрузке сцены. <strong>Не</strong> вызывается в сборке.</li>
+</ul>
+</blockquote>
+<div class="callout callout--warning">
+  <div class="callout-title">Типичные ошибки lifecycle</div>
+  <div class="callout-body">
+  <ul>
+  <li><strong>Физика в <code>Update</code></strong> — силы и прыжки через <code>Rigidbody</code> задавайте в <code>FixedUpdate</code>; в <code>Update</code> только ввод и логика без физики.</li>
+  <li><strong>Смешение Transform и Rigidbody</strong> — у динамического тела не задавайте <code>transform.position</code> каждый кадр; используйте <code>MovePosition</code> / <code>AddForce</code>.</li>
+  <li><strong>Без <code>Time.deltaTime</code></strong> — движение через <code>Translate</code> в <code>Update</code> должно масштабироваться на длительность кадра.</li>
+  <li><strong><code>Start</code> не вызвался</strong> — объект создан через <code>Instantiate</code> с <code>SetActive(false)</code> или скрипт отключён (<code>enabled = false</code>).</li>
+  <li><strong><code>GetComponent</code> в hot path</strong> — кешируйте ссылки в <code>Awake</code>; в runtime избегайте <code>GameObject.Find</code>.</li>
+  <li><strong>Триггер молчит</strong> — нужен <code>Collider</code> + <code>Is Trigger</code> и <code>Rigidbody</code> хотя бы на одной стороне; см. <a href="/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">практику Unity</a>.</li>
+  </ul>
+<p>Пошаговые примеры — <a href="/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">Разработка на Unity</a>. Готовые фрагменты с разбором строк — <a href="/lab/Примеры/1136">Unity C# — скрипты для новичков</a> (<a href="/lab/Примеры/1136#coin">триггеры</a>, <a href="/lab/Примеры/1136#jump">Rigidbody</a>, <a href="/lab/Примеры/1136#errors">частые ошибки</a>).</p>
+</div>
+</div>
+<hr>
+<h4>2. <code>GameObject</code></h4>
+<h5>Основные свойства</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>activeSelf</code></td>
+<td><code>bool</code></td>
+<td>Состояние активности <em>именно этого</em> GameObject (локальное).</td>
+</tr>
+<tr>
+<td><code>activeInHierarchy</code></td>
+<td><code>bool</code></td>
+<td><code>true</code>, если объект и все его предки активны.</td>
+</tr>
+<tr>
+<td><code>isStatic</code></td>
+<td><code>bool</code></td>
+<td>Флаг <code>Static</code> (для оптимизаций: batching, lighting, culling).</td>
+</tr>
+<tr>
+<td><code>layer</code></td>
+<td><code>int</code></td>
+<td>Слой (0–31). Соответствует <code>LayerMask.NameToLayer</code>.</td>
+</tr>
+<tr>
+<td><code>tag</code></td>
+<td><code>string</code></td>
+<td>Тег. Доступные теги — в Edit <code>></code> Project Settings <code>></code> Tags and Layers.</td>
+</tr>
+<tr>
+<td><code>scene</code></td>
+<td><code>Scene</code></td>
+<td>Сцена, к которой принадлежит объект.</td>
+</tr>
+<tr>
+<td><code>transform</code></td>
+<td><code>Transform</code></td>
+<td>Ссылка на компонент <code>Transform</code>. Не может быть <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>hideFlags</code></td>
+<td><code>HideFlags</code></td>
+<td>Управляет отображением в иерархии и инспекторе (<code>HideInHierarchy</code>, <code>DontSave</code>, <code>HideInInspector</code> и др.).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Основные методы</h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SetActive(bool)</code></td>
+<td>Устанавливает <code>activeSelf</code>.</td>
+</tr>
+<tr>
+<td><code>GetComponent&#x3C;T>()</code> / <code>GetComponent(Type)</code></td>
+<td>Быстрый доступ к <em>первому</em> компоненту указанного типа.</td>
+</tr>
+<tr>
+<td><code>GetComponents&#x3C;T>(List&#x3C;T>)</code> / <code>GetComponentsInChildren&#x3C;T>(includeInactive)</code></td>
+<td>Массовый сбор компонентов (рекомендуется переиспользовать <code>List&#x3C;T></code> во избежание GC).</td>
+</tr>
+<tr>
+<td><code>AddComponent&#x3C;T>()</code> / <code>AddComponent(Type)</code></td>
+<td>Добавление компонента. Не создаёт дубликаты (если компонент <code>[DisallowMultipleComponent]</code>).</td>
+</tr>
+<tr>
+<td><code>TryGetComponent&#x3C;T>(out T)</code></td>
+<td>Безопасное получение компонента (возвращает <code>bool</code>).</td>
+</tr>
+<tr>
+<td><code>CompareTag(string)</code></td>
+<td>Безопасное сравнение тега (не создаёт GC, не падает при <code>null</code>).</td>
+</tr>
+<tr>
+<td><code>SendMessage(...)</code></td>
+<td><strong>Legacy.</strong> Отправка сообщения по имени метода всем компонентам (медленно, без типобезопасности). Предпочитайте прямые ссылки, события C# или <code>UnityEvent</code>.</td>
+</tr>
+<tr>
+<td><code>FindFirstObjectByType&#x3C;T>()</code> / <code>FindObjectsByType&#x3C;T>()</code></td>
+<td>Поиск в сцене (Unity 2023+). Заменяют <code>FindObjectOfType</code> / <code>FindObjectsOfType</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>3. <code>Transform</code></h4>
+<p><strong>Иерархия — костяк Unity.</strong> Все операции с позицией/вращением/масштабом — через <code>Transform</code>.</p>
+<hr>
+<h5>Свойства</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>position</code></td>
+<td><code>Vector3</code></td>
+<td>Мировая позиция (<code>Vector3.zero</code> = начало мировой системы).</td>
+</tr>
+<tr>
+<td><code>localPosition</code></td>
+<td><code>Vector3</code></td>
+<td>Позиция относительно родителя.</td>
+</tr>
+<tr>
+<td><code>rotation</code></td>
+<td><code>Quaternion</code></td>
+<td>Мировое вращение.</td>
+</tr>
+<tr>
+<td><code>localRotation</code></td>
+<td><code>Quaternion</code></td>
+<td>Вращение относительно родителя.</td>
+</tr>
+<tr>
+<td><code>eulerAngles</code></td>
+<td><code>Vector3</code></td>
+<td>Углы Эйлера (в градусах, мировые). <em>Чтение</em> — конвертация из <code>rotation</code>; <em>запись</em> — конвертация в <code>Quaternion</code>.</td>
+</tr>
+<tr>
+<td><code>localEulerAngles</code></td>
+<td><code>Vector3</code></td>
+<td>Углы Эйлера (локальные).</td>
+</tr>
+<tr>
+<td><code>lossyScale</code></td>
+<td><code>Vector3</code></td>
+<td>Фактический мировой масштаб (с учётом вращения родителей — может быть искажён).</td>
+</tr>
+<tr>
+<td><code>localScale</code></td>
+<td><code>Vector3</code></td>
+<td>Локальный масштаб (применяется до вращения).</td>
+</tr>
+<tr>
+<td><code>parent</code></td>
+<td><code>Transform</code></td>
+<td>Родитель. <code>null</code> — корень.</td>
+</tr>
+<tr>
+<td><code>root</code></td>
+<td><code>Transform</code></td>
+<td>Корень иерархии.</td>
+</tr>
+<tr>
+<td><code>childCount</code></td>
+<td><code>int</code></td>
+<td>Количество дочерних объектов.</td>
+</tr>
+<tr>
+<td><code>hasChanged</code></td>
+<td><code>bool</code></td>
+<td><code>true</code>, если <code>position</code>/<code>rotation</code>/<code>localScale</code> изменились с последнего кадра (сбрасывается в <code>Update</code>). Не учитывает изменение <code>parent</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Методы</h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SetParent(Transform, worldPositionStays)</code></td>
+<td>Изменение родителя. <code>worldPositionStays = true</code> — сохраняет мировую позицию.</td>
+</tr>
+<tr>
+<td><code>Translate(Vector3, Space)</code></td>
+<td>Смещение на вектор в <code>Space.Self</code> или <code>Space.World</code>.</td>
+</tr>
+<tr>
+<td><code>Rotate(Vector3, Space)</code></td>
+<td>Поворот (углы в градусах) относительно осей (<code>Space.Self</code>, <code>Space.World</code>, или <code>TransformDirection</code>).</td>
+</tr>
+<tr>
+<td><code>RotateAround(Vector3 point, Vector3 axis, float angle)</code></td>
+<td>Вращение вокруг точки в мировом пространстве.</td>
+</tr>
+<tr>
+<td><code>TransformPoint(Vector3)</code></td>
+<td>Преобразует точку из локального → мирового пространства.</td>
+</tr>
+<tr>
+<td><code>InverseTransformPoint(Vector3)</code></td>
+<td>Мировая → локальная точка.</td>
+</tr>
+<tr>
+<td><code>TransformDirection(Vector3)</code></td>
+<td>Направление (без учёта масштаба и сдвига) из локального → мирового.</td>
+</tr>
+<tr>
+<td><code>InverseTransformDirection(Vector3)</code></td>
+<td>Обратное преобразование направления.</td>
+</tr>
+<tr>
+<td><code>TransformVector(Vector3)</code></td>
+<td>Вектор (с учётом масштаба) из локального → мирового.</td>
+</tr>
+<tr>
+<td><code>LookAt(Transform / Vector3)</code></td>
+<td>Поворачивает объект, чтобы <code>forward</code> смотрел на цель.</td>
+</tr>
+<tr>
+<td><code>SetPositionAndRotation(Vector3, Quaternion)</code></td>
+<td>Атомарная установка позиции и вращения (предпочтительнее двух отдельных присваиваний).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Важно</strong>:</p>
+<ul>
+<li>Изменение <code>position</code>/<code>rotation</code>/<code>localScale</code> напрямую приводит к рекурсивному обновлению <code>Transform</code> всей ветки — избегать в циклах без необходимости.</li>
+<li><code>SetParent(null, true)</code> ≠ <code>DontDestroyOnLoad</code> — последний перемещает объект в скрытую сцену <code>DontDestroyOnLoad</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>4. Базовые компоненты — общие параметры и свойства</h4>
+<h5>Общие для всех <code>Component</code></h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gameObject</code></td>
+<td>Ссылка на GameObject, к которому прикреплён компонент.</td>
+</tr>
+<tr>
+<td><code>transform</code></td>
+<td>Кэшированный <code>gameObject.transform</code>.</td>
+</tr>
+<tr>
+<td><code>enabled</code> (<code>Behaviour</code> only)</td>
+<td>Включенность компонента (только для <code>MonoBehaviour</code>, <code>Collider</code>, <code>Renderer</code>, <code>Light</code>, <code>AudioSource</code>).</td>
+</tr>
+<tr>
+<td><code>tag</code> (<code>Component</code> → <code>GameObject.tag</code>)</td>
+<td>Короткий доступ к тегу GameObject.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5><code>Renderer</code> (базовый класс для <code>MeshRenderer</code>, <code>SkinnedMeshRenderer</code>, <code>SpriteRenderer</code> и др.)</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td><code>bool</code></td>
+<td>Видимость в рендере.</td>
+</tr>
+<tr>
+<td><code>isVisible</code></td>
+<td><code>bool</code></td>
+<td>Видим ли объект <em>хотя бы одной камерой</em> (только если <code>enabled == true</code>).</td>
+</tr>
+<tr>
+<td><code>bounds</code></td>
+<td><code>Bounds</code></td>
+<td>Ограничивающий объём в <em>мировом</em> пространстве (<code>center</code>, <code>extents</code>, <code>size</code>).</td>
+</tr>
+<tr>
+<td><code>localBounds</code></td>
+<td><code>Bounds</code></td>
+<td>Локальный bounding box (только <code>SkinnedMeshRenderer</code>).</td>
+</tr>
+<tr>
+<td><code>material</code> / <code>materials</code></td>
+<td><code>Material</code> / <code>Material[]</code></td>
+<td>Первый материал / все материалы. Присваивание создаёт инстанс (копию).</td>
+</tr>
+<tr>
+<td><code>sharedMaterial</code> / <code>sharedMaterials</code></td>
+<td><code>Material</code> / <code>Material[]</code></td>
+<td>Прямой доступ к материалам без копирования (опасно — изменяет все объекты, использующие материал).</td>
+</tr>
+<tr>
+<td><code>lightmapIndex</code> / <code>lightmapScaleOffset</code></td>
+<td><code>int</code> / <code>Vector4</code></td>
+<td>Параметры baked lighting (Lightmap Index, UV scale/offset).</td>
+</tr>
+<tr>
+<td><code>receiveShadows</code></td>
+<td><code>bool</code></td>
+<td>Получает ли тени от других объектов.</td>
+</tr>
+<tr>
+<td><code>motionVectorGenerationMode</code></td>
+<td><code>MotionVectorGenerationMode</code></td>
+<td>Off / Camera / Object — для TAA и motion blur.</td>
+</tr>
+<tr>
+<td><code>allowOcclusionWhenDynamic</code></td>
+<td><code>bool</code></td>
+<td>Разрешает dynamic occlusion culling (требует <code>OcclusionCulling</code> в настройках).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5><code>Collider</code> (базовый класс)</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td>Участвует ли коллайдер в физике.</td>
+</tr>
+<tr>
+<td><code>isTrigger</code></td>
+<td><code>true</code> — триггер (вызывает <code>OnTriggerEnter/Stay/Exit</code>, не участвует в физике).</td>
+</tr>
+<tr>
+<td><code>sharedMaterial</code></td>
+<td><code>PhysicMaterial</code> (3D) / <code>PhysicsMaterial2D</code> (2D) — трение, отскок.</td>
+</tr>
+<tr>
+<td><code>bounds</code></td>
+<td>Мировые границы (даже если <code>enabled == false</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>5. Project Settings (Edit > Project Settings)</h4>
+<h5>📁 <em>Time</em></h5>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Значение по умолчанию</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Time.timeScale</code></td>
+<td>1.0</td>
+<td>Глобальный множитель времени (<code>0</code> — пауза).</td>
+</tr>
+<tr>
+<td><code>Time.fixedDeltaTime</code></td>
+<td>0.02 (50 FPS)</td>
+<td>Интервал <code>FixedUpdate</code>. Рекомендуется <code>≤</code> <code>Application.targetFrameRate / 2</code>.</td>
+</tr>
+<tr>
+<td><code>Maximum Allowed Timestep</code></td>
+<td>0.333...</td>
+<td>Макс. длительность <code>FixedUpdate</code>, если игра "тормозит".</td>
+</tr>
+<tr>
+<td><code>Time.captureFramerate</code></td>
+<td>0</td>
+<td>Если <code>≠</code> 0 — фиксирует FPS = <code>captureFramerate</code> (для записи видео).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>🎮 <em>Input</em></h5>
+<ul>
+<li><strong>Input Manager</strong> (устаревший, но поддерживается):<br>
+<code>Axes</code> — до 20 осей (<code>Horizontal</code>, <code>Vertical</code>, <code>Jump</code> и др.), с <code>Sensitivity</code>, <code>Gravity</code>, <code>Dead</code>, <code>Snap</code>, <code>Invert</code>, <code>Type</code> (Key/Axis/Mouse), <code>Joy Num</code>, <code>Positive/Negative Button</code>.<br>
+⚠️ Заменён на <strong>Input System Package</strong> (рекомендуется для новых проектов).</li>
+</ul>
+<hr>
+<h5>🖥️ <em>Graphics</em></h5>
+<table>
+<thead>
+<tr>
+<th>Настройка</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Tier Settings</code></td>
+<td>Уровни качества графики (Tier 1/2/3 — для Low/Med/High-end GPU).</td>
+</tr>
+<tr>
+<td><code>Always Included Shaders</code></td>
+<td>Шейдеры, всегда включаемые в сборку (например, <code>Unlit</code>, <code>Standard</code>).</td>
+</tr>
+<tr>
+<td><code>Preloaded Shaders</code></td>
+<td>Шейдерные варианты, загружаемые при старте.</td>
+</tr>
+<tr>
+<td><code>Shader Stripping</code></td>
+<td>Удаление ненужных вариантов (lightmap modes, fog, instancing).</td>
+</tr>
+<tr>
+<td><code>Vertex Compression</code></td>
+<td>Сжатие позиций/нормалей/UV в мешах (экономия VRAM).</td>
+</tr>
+<tr>
+<td><code>Use GPU Skinning</code></td>
+<td>Аппаратная анимация скелета.</td>
+</tr>
+<tr>
+<td><code>Lightmaps</code> → <code>Mode</code></td>
+<td>Disabled / Non-Directional / Directional / Directional Specular.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>📦 <em>Player</em></h5>
+<table>
+<thead>
+<tr>
+<th>Настройка</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Scripting Backend</code></td>
+<td>Mono (быстрая сборка) / IL2CPP (оптимизировано, AOT, поддержка 64-bit iOS/Android).</td>
+</tr>
+<tr>
+<td><code>Api Compatibility Level</code></td>
+<td>.NET Standard 2.1 (реком.) / .NET Framework / .NET 6+ (experimental).</td>
+</tr>
+<tr>
+<td><code>Active Input Handling</code></td>
+<td>Both / Input Manager (Old) / Input System (New).</td>
+</tr>
+<tr>
+<td><code>Optimization</code> → <code>Managed Stripping Level</code></td>
+<td>Disabled / Low / Medium / High — удаление неиспользуемых API (осторожно с reflection).</td>
+</tr>
+<tr>
+<td><code>Resolution and Presentation</code></td>
+<td>Fullscreen mode, Default resolution, VSync, Display resolution dialog.</td>
+</tr>
+<tr>
+<td><code>Icon</code></td>
+<td>Иконка сборки (Windows, macOS, Linux, Android, iOS).</td>
+</tr>
+<tr>
+<td><code>Splash Screen</code></td>
+<td>Экран загрузки; кастомизация зависит от тарифа Unity (см. актуальную лицензию на unity.com).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>🧠 <em>Physics</em> (и <em>Physics 2D</em>)</h5>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Gravity</code></td>
+<td>Вектор гравитации (<code>0, -9.81, 0</code> по умолчанию).</td>
+</tr>
+<tr>
+<td><code>Default Material</code></td>
+<td><code>PhysicMaterial</code> по умолчанию (Bounciness=0, Friction=0.5).</td>
+</tr>
+<tr>
+<td><code>Bounce Threshold</code></td>
+<td>Мин. скорость для отскока (меньше — "прилипание").</td>
+</tr>
+<tr>
+<td><code>Sleep Threshold</code></td>
+<td>Энергия, ниже которой Rigidbody "засыпает".</td>
+</tr>
+<tr>
+<td><code>Default Solver Iterations / Velocity Iterations</code></td>
+<td>Точность симуляции (выше — точнее, дороже).</td>
+</tr>
+<tr>
+<td><code>Queries Hit Triggers</code> / <code>Triggers Hit Triggers</code></td>
+<td>Влияют на <code>Physics.Raycast</code>, <code>OverlapSphere</code> и др.</td>
+</tr>
+<tr>
+<td><code>Layer Collision Matrix</code></td>
+<td>32×32 битовая матрица — какие слои сталкиваются.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>🎨 <em>Quality</em></h5>
+<table>
+<thead>
+<tr>
+<th>Уровень</th>
+<th>Основные параметры (настраиваемые)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VSync Count</code></td>
+<td>Don’t Sync / Every V Blank / Every Second V Blank — борьба с tearing.</td>
+</tr>
+<tr>
+<td><code>Anti Aliasing</code></td>
+<td>2x–8x MSAA (только Forward), или Post-processing (FXAA, TAA).</td>
+</tr>
+<tr>
+<td><code>Anisotropic Textures</code></td>
+<td>Disabled / Per Texture / Forced On.</td>
+</tr>
+<tr>
+<td><code>Soft Particles</code></td>
+<td>Затемнение частиц при пересечении геометрии.</td>
+</tr>
+<tr>
+<td><code>Realtime Reflection Probes</code></td>
+<td>Refresh mode (On Awake / Every Frame / Via Script).</td>
+</tr>
+<tr>
+<td><code>Shadow Distance</code> / <code>Cascades</code></td>
+<td>Дальность и разбиение теней для Directional Light.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="блок-2-физика-рендеринг-освещение-аудио">Блок 2. Физика, Рендеринг, Освещение, Аудио</h3>
+<h4>1. <code>Rigidbody</code> (3D)</h4>
+<h5>Основные свойства</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Тип</th>
+<th>Значение по умолчанию</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mass</code></td>
+<td><code>float</code></td>
+<td>1.0</td>
+<td>Масса в кг. Влияет на инерцию, импульс, силу гравитации (<code>F = m·g</code>).</td>
+</tr>
+<tr>
+<td><code>drag</code></td>
+<td><code>float</code></td>
+<td>0.0</td>
+<td>Линейное сопротивление воздуха (коэффициент пропорциональности <code>F_drag = -v·drag</code>).</td>
+</tr>
+<tr>
+<td><code>angularDrag</code></td>
+<td><code>float</code></td>
+<td>0.05</td>
+<td>Угловое сопротивление (аналогично <code>drag</code>, но для вращения).</td>
+</tr>
+<tr>
+<td><code>useGravity</code></td>
+<td><code>bool</code></td>
+<td><code>true</code></td>
+<td>Учитывать ли глобальную гравитацию (<code>Physics.gravity</code>).</td>
+</tr>
+<tr>
+<td><code>isKinematic</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+<td><code>true</code> — объект не участвует в физике, но может двигаться через <code>Transform</code>; триггеры работают.</td>
+</tr>
+<tr>
+<td><code>interpolation</code></td>
+<td><code>RigidbodyInterpolation</code></td>
+<td><code>None</code></td>
+<td><code>Interpolate</code>/<code>Extrapolate</code> — сглаживание движения при дискретных физ. шагах (для сетевых игр).</td>
+</tr>
+<tr>
+<td><code>collisionDetectionMode</code></td>
+<td><code>CollisionDetectionMode</code></td>
+<td><code>Discrete</code></td>
+<td><code>Continuous</code>/<code>ContinuousDynamic</code>/<code>ContinuousSpeculative</code> — анти-туннелирование для быстрых объектов.</td>
+</tr>
+<tr>
+<td><code>constraints</code></td>
+<td><code>RigidbodyConstraints</code></td>
+<td><code>None</code></td>
+<td>Флаги: <code>FreezePositionX/Y/Z</code>, <code>FreezeRotationX/Y/Z</code>.</td>
+</tr>
+<tr>
+<td><code>centerOfMass</code></td>
+<td><code>Vector3</code></td>
+<td><code>Vector3.zero</code></td>
+<td>Центр масс в <em>локальных</em> координатах. Смещение влияет на вращение под действием сил.</td>
+</tr>
+<tr>
+<td><code>inertiaTensor</code></td>
+<td><code>Vector3</code></td>
+<td>Автоматически</td>
+<td>Тензор инерции (диагональная матрица, задаёт сопротивление вращению по осям).</td>
+</tr>
+<tr>
+<td><code>inertiaTensorRotation</code></td>
+<td><code>Quaternion</code></td>
+<td><code>Quaternion.identity</code></td>
+<td>Поворот осей тензора инерции.</td>
+</tr>
+<tr>
+<td><code>detectCollisions</code></td>
+<td><code>bool</code></td>
+<td><code>true</code></td>
+<td>Отключает обнаружение столкновений (но не триггеров), если <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Методы изменения состояния</h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Сигнатура</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AddForce</code></td>
+<td><code>AddForce(Vector3 force, ForceMode mode = ForceMode.Force)</code></td>
+<td><code>ForceMode</code>: <code>Force</code> (F), <code>Acceleration</code> (<code>a = F/m</code>), <code>Impulse</code> (<code>Δp</code>), <code>VelocityChange</code> (<code>Δv</code>).</td>
+</tr>
+<tr>
+<td><code>AddRelativeForce</code></td>
+<td>Аналогично, но сила прикладывается в локальной СК.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>AddTorque</code></td>
+<td><code>AddTorque(Vector3 torque, ForceMode mode)</code></td>
+<td>Вращающий момент (аналогично <code>AddForce</code>).</td>
+</tr>
+<tr>
+<td><code>AddRelativeTorque</code></td>
+<td>В локальной СК.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MovePosition</code></td>
+<td><code>MovePosition(Vector3 position)</code></td>
+<td>Атомарное перемещение (для <code>isKinematic = true</code>); сглаживается при <code>interpolation</code>.</td>
+</tr>
+<tr>
+<td><code>MoveRotation</code></td>
+<td><code>MoveRotation(Quaternion rot)</code></td>
+<td>Атомарный поворот (аналогично <code>MovePosition</code>).</td>
+</tr>
+<tr>
+<td><code>Sleep()</code> / <code>WakeUp()</code></td>
+<td>—</td>
+<td>Принудительный переход в спящее/активное состояние.</td>
+</tr>
+<tr>
+<td><code>IsSleeping()</code></td>
+<td><code>bool</code></td>
+<td>Проверка состояния.</td>
+</tr>
+<tr>
+<td><code>ResetCenterOfMass()</code> / <code>ResetInertiaTensor()</code></td>
+<td>—</td>
+<td>Возврат к автоматическому расчёту.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Важно</strong>:</p>
+<ul>
+<li>Все силы/импульсы, добавленные через <code>AddForce</code> и т.п., действуют <em>до</em> следующего <code>FixedUpdate</code>.</li>
+<li><code>linearVelocity</code> / <code>angularVelocity</code> (Unity 6+; ранее <code>velocity</code> / <code>angularVelocity</code>) можно читать/писать напрямую, но для реалистичной физики предпочтительнее <code>AddForce</code>/<code>AddTorque</code>.</li>
+<li><code>maxAngularVelocity</code> — глобальное ограничение (в <code>Project Settings > Physics</code>), по умолчанию 7.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>2. <code>Rigidbody2D</code></h4>
+<h5>Свойства (отличия от 3D)</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Значение по умолчанию</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gravityScale</code></td>
+<td>1.0</td>
+<td>Множитель 2D-гравитации (<code>Physics2D.gravity</code>).</td>
+</tr>
+<tr>
+<td><code>freezeRotation</code></td>
+<td><code>false</code></td>
+<td>Заменяет <code>constraints</code> для Z-вращения.</td>
+</tr>
+<tr>
+<td><code>simulated</code></td>
+<td><code>true</code></td>
+<td>Аналог <code>enabled</code>, но для физики 2D: отключает симуляцию, сохраняя компонент.</td>
+</tr>
+<tr>
+<td><code>interpolation</code></td>
+<td><code>None</code></td>
+<td>Аналогично 3D: <code>Interpolate</code>, <code>Extrapolate</code>.</td>
+</tr>
+<tr>
+<td><code>sleepMode</code></td>
+<td><code>StartAwake</code></td>
+<td><code>StartAsleep</code> — изначально спящий.</td>
+</tr>
+<tr>
+<td><code>collisionDetection</code></td>
+<td><code>Discrete</code></td>
+<td><code>Continuous</code> — анти-туннелирование (только для <code>RigidbodyType.Dynamic</code>).</td>
+</tr>
+<tr>
+<td><code>mass</code>, <code>drag</code>, <code>angularDrag</code></td>
+<td>как в 3D</td>
+<td></td>
+</tr>
+<tr>
+<td><code>constraints</code></td>
+<td><code>None</code></td>
+<td><code>FreezePositionX/Y</code>, <code>FreezeRotation</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Методы (2D-специфичные)</h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AddForce(Vector2, ForceMode2D)</code></td>
+<td><code>ForceMode2D.Force</code> / <code>Impulse</code>.</td>
+</tr>
+<tr>
+<td><code>AddTorque(float, ForceMode2D)</code></td>
+<td>Вращение вокруг Z.</td>
+</tr>
+<tr>
+<td><code>MovePosition(Vector2)</code> / <code>MoveRotation(float)</code></td>
+<td>Атомарные операции.</td>
+</tr>
+<tr>
+<td><code>GetContacts(ContactPoint2D[])</code></td>
+<td>Заполняет массив контактами за последний кадр.</td>
+</tr>
+<tr>
+<td><code>OverlapCollider(NonAlloc)</code></td>
+<td>Проверка пересечения без аллокаций.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Особенность</strong>:</p>
+<ul>
+<li><code>Rigidbody2D</code> и <code>Collider2D</code> работают <em>только</em> в 2D-физике — не взаимодействуют с 3D-объектами.</li>
+<li><code>Physics2D.autoSimulation = false</code> позволяет делать <code>Physics2D.Simulate(deltaTime)</code> вручную (для фиксированной логики в сетевых играх).</li>
+</ul>
+</blockquote>
+<hr>
+<h4>3. Коллайдеры</h4>
+<h5>Общие для всех <code>Collider</code></h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>isTrigger</code></td>
+<td><code>bool</code></td>
+<td>Триггер: вызывает события <code>OnTrigger*</code>, не участвует в физике.</td>
+</tr>
+<tr>
+<td><code>sharedMaterial</code></td>
+<td><code>PhysicMaterial</code> / <code>PhysicsMaterial2D</code></td>
+<td>Трение (<code>dynamicFriction</code>, <code>staticFriction</code>) и отскок (<code>bounciness</code>).</td>
+</tr>
+<tr>
+<td><code>attachedRigidbody</code></td>
+<td><code>Rigidbody</code> / <code>Rigidbody2D</code></td>
+<td>Первый <code>Rigidbody</code>, найденный при подъёме по иерархии (включая родителей).</td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td><code>bool</code></td>
+<td>Участвует ли в физике/триггерах.</td>
+</tr>
+<tr>
+<td><code>bounds</code></td>
+<td><code>Bounds</code> (3D) / <code>Bounds</code> (2D → преобразуется в 3D)</td>
+<td>Габариты в мировом пространстве (даже если <code>enabled = false</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>3D-коллайдеры</h5>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Свойства</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BoxCollider</code></td>
+<td><code>center</code>, <code>size</code></td>
+<td>Оси выровнены с <code>Transform</code>. Не поддерживает скейл с отрицательными компонентами (mirror).</td>
+</tr>
+<tr>
+<td><code>SphereCollider</code></td>
+<td><code>center</code>, <code>radius</code></td>
+<td>Самый дешёвый по вычислениям.</td>
+</tr>
+<tr>
+<td><code>CapsuleCollider</code></td>
+<td><code>center</code>, <code>radius</code>, <code>height</code>, <code>direction</code> (0=X,1=Y,2=Z)</td>
+<td>Высота включает сферические "шапки".</td>
+</tr>
+<tr>
+<td><code>MeshCollider</code></td>
+<td><code>sharedMesh</code>, <code>convex</code>, <code>cookingOptions</code></td>
+<td><code>convex = true</code> — требуется для <code>Rigidbody</code> (ограничение: ≤ 255 треугольников). <code>cookingOptions</code>: <code>CookForFasterSimulation</code>, <code>EnableMeshCleaning</code>, <code>WeldColocatedVertices</code>.</td>
+</tr>
+<tr>
+<td><code>TerrainCollider</code></td>
+<td><code>terrainData</code></td>
+<td>Привязан к <code>Terrain</code>. Не может быть триггером.</td>
+</tr>
+<tr>
+<td><code>WheelCollider</code></td>
+<td><code>center</code>, <code>radius</code>, <code>suspensionDistance</code>, <code>suspensionSpring</code>, <code>forwardFriction</code>, <code>sidewaysFriction</code>, <code>motorTorque</code>, <code>brakeTorque</code>, <code>steerAngle</code></td>
+<td>Физическая модель подвески (не геометрия — невидим). Требует <code>Rigidbody</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>2D-коллайдеры</h5>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Свойства</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BoxCollider2D</code></td>
+<td><code>size</code>, <code>offset</code>, <code>autoTiling</code></td>
+<td><code>autoTiling</code> — коррекция размера под <code>SpriteRenderer.size</code>.</td>
+</tr>
+<tr>
+<td><code>CircleCollider2D</code></td>
+<td><code>radius</code>, <code>offset</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>CapsuleCollider2D</code></td>
+<td><code>size</code>, <code>direction</code> (Vertical/Horizontal)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>PolygonCollider2D</code></td>
+<td><code>points</code> (локальные), <code>autoTiling</code></td>
+<td>Автоматическая генерация из <code>Sprite</code> (если <code>Sprite</code> не <code>None</code>).</td>
+</tr>
+<tr>
+<td><code>EdgeCollider2D</code></td>
+<td><code>points</code>, <code>edgeRadius</code></td>
+<td>Открытая ломаная (не замкнутая). <code>edgeRadius</code> — скругление углов.</td>
+</tr>
+<tr>
+<td><code>CompositeCollider2D</code></td>
+<td><code>geometryType</code> (Outlines/Polygons), <code>generationType</code> (Manual/Synchronous/Asynchronous)</td>
+<td>Объединяет несколько <code>Collider2D</code> с <code>UsedByComposite = true</code>. Требует <code>Rigidbody2D</code> с <code>BodyType = Static</code> или <code>Kinematic</code>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Ограничения</strong>:</p>
+<ul>
+<li><code>MeshCollider</code> без <code>convex = true</code> <strong>не</strong> взаимодействует с другими <code>MeshCollider</code> и <code>TerrainCollider</code>.</li>
+<li><code>WheelCollider</code> не поддерживает <code>isTrigger</code>.</li>
+<li><code>CompositeCollider2D</code> не может быть триггером.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>4. <code>Camera</code></h4>
+<h5>Проекция и параметры</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fieldOfView</code></td>
+<td><code>float</code></td>
+<td>Угол обзора (в градусах) для <code>projection = Perspective</code>.</td>
+</tr>
+<tr>
+<td><code>orthographicSize</code></td>
+<td><code>float</code></td>
+<td>Половина высоты видимой области (в мировых единицах) для <code>orthographic = true</code>.</td>
+</tr>
+<tr>
+<td><code>nearClipPlane</code></td>
+<td><code>float</code></td>
+<td>Ближняя плоскость отсечения (по умолчанию 0.3). Уменьшение → артефакты Z-fighting.</td>
+</tr>
+<tr>
+<td><code>farClipPlane</code></td>
+<td><code>float</code></td>
+<td>Дальняя плоскость (по умолчанию 1000). Увеличение → снижение precision Z-buffer.</td>
+</tr>
+<tr>
+<td><code>projectionMatrix</code></td>
+<td><code>Matrix4x4</code></td>
+<td>Пользовательская матрица проекции (переопределяет FOV/orthographicSize).</td>
+</tr>
+<tr>
+<td><code>cullingMask</code></td>
+<td><code>LayerMask</code></td>
+<td>Какие слои рендерить.</td>
+</tr>
+<tr>
+<td><code>targetDisplay</code></td>
+<td><code>int</code></td>
+<td>Номер <code>Display</code> (0 — основной). Для multi-monitor.</td>
+</tr>
+<tr>
+<td><code>rect</code></td>
+<td><code>Rect</code></td>
+<td>Область экрана (в нормализованных координатах: 0–1). Для splitscreen/UI.</td>
+</tr>
+<tr>
+<td><code>depth</code></td>
+<td><code>float</code></td>
+<td>Порядок рендеринга (больше — позже).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Режимы проекции</h5>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th><code>perspective = true</code></th>
+<th><code>orthographic = true</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>projection</code></td>
+<td><code>CameraProjection.Perspective</code></td>
+<td><code>CameraProjection.Orthographic</code></td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><code>fieldOfView</code></td>
+<td><code>orthographicSize</code></td>
+</tr>
+<tr>
+<td>Использование</td>
+<td>3D-сцены, погружение</td>
+<td>2D, изометрия, UI, CAD</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>HDR и постобработка</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Значение по умолчанию</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hdr</code></td>
+<td><code>true</code> (в URP/HDRP)</td>
+<td>Рендеринг в HDR (32-bit float render texture). Требуется для bloom, tone mapping.</td>
+</tr>
+<tr>
+<td><code>allowHDR</code></td>
+<td>—</td>
+<td>Доступно только в Built-in RP (в URP/HDRP управление через asset).</td>
+</tr>
+<tr>
+<td><code>allowMSAA</code></td>
+<td><code>true</code></td>
+<td>Включение MSAA (работает только в Forward, не в Deferred).</td>
+</tr>
+<tr>
+<td><code>useOcclusionCulling</code></td>
+<td><code>true</code></td>
+<td>Использовать precomputed occlusion data.</td>
+</tr>
+<tr>
+<td><code>stereoTargetEye</code></td>
+<td><code>StereoTargetEyeMask.Both</code></td>
+<td>Настройка для VR.</td>
+</tr>
+<tr>
+<td><code>cameraType</code></td>
+<td><code>CameraType.Game</code></td>
+<td><code>SceneView</code>, <code>Reflection</code>, <code>Preview</code>, <code>VR</code> — влияет на поведение в редакторе.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Методы</h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ScreenPointToRay(Vector3)</code></td>
+<td>Луч из точки экрана (в пикселях) в мировое пространство.</td>
+</tr>
+<tr>
+<td><code>WorldToScreenPoint(Vector3)</code></td>
+<td>Мировая точка → точка на экране (Z — расстояние до near plane).</td>
+</tr>
+<tr>
+<td><code>WorldToViewportPoint(Vector3)</code></td>
+<td>Мировая точка → нормализованные координаты (0–1 по X/Y, Z — 0..1 между near/far).</td>
+</tr>
+<tr>
+<td><code>ViewportToWorldPoint(Vector3)</code></td>
+<td>Обратное преобразование.</td>
+</tr>
+<tr>
+<td><code>Render()</code></td>
+<td>Принудительный рендеринг (вне основного цикла).</td>
+</tr>
+<tr>
+<td><code>CopyFrom(Camera)</code></td>
+<td>Копирование всех параметров из другой камеры.</td>
+</tr>
+<tr>
+<td><code>TryGetCullingParameters(out ScriptableCullingParameters)</code></td>
+<td>Получение параметров для custom culling (URP/HDRP).</td>
+</tr>
+<tr>
+<td><code>GetStereoProjectionMatrix(Camera.StereoscopicEye)</code></td>
+<td>Для VR.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Stacking (URP/HDRP)</h5>
+<table>
+<thead>
+<tr>
+<th>Понятие</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base Camera</td>
+<td>Главная камера, определяет viewport, clear flags, culling mask.</td>
+</tr>
+<tr>
+<td>Overlay Camera</td>
+<td>Доп. камера, рендерит <em>поверх</em> Base (например, UI, миникарта, crosshair). Имеет <code>cameraType = CameraType.Overlay</code>.</td>
+</tr>
+<tr>
+<td>Order in Layer</td>
+<td>Порядок overlay-камер (в инспекторе).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Важно</strong>:</p>
+<ul>
+<li><code>clearFlags</code> — <code>Skybox</code>, <code>SolidColor</code>, <code>DepthOnly</code>, <code>DontClear</code>. <code>DepthOnly</code> — для UI-камер (сохраняет цвет, очищает depth buffer).</li>
+<li>В URP/HDRP параметры <code>hdr</code>, <code>msaa</code>, <code>colorGrading</code> задаются в <code>Renderer Asset</code>, а не в компоненте <code>Camera</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>5. <code>Light</code></h4>
+<h5>Типы и параметры</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>LightType</code></td>
+<td><code>Directional</code>, <code>Point</code>, <code>Spot</code>, <code>Area</code> (только для baking).</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td><code>Color</code></td>
+<td>Цвет света (gamma-corrected).</td>
+</tr>
+<tr>
+<td><code>intensity</code></td>
+<td><code>float</code></td>
+<td>Яркость (люмены): <code>Directional</code> — illuminance (lux), <code>Point/Spot</code> — luminous power (lumens).</td>
+</tr>
+<tr>
+<td><code>range</code></td>
+<td><code>float</code></td>
+<td>Дальность действия (кроме <code>Directional</code>).</td>
+</tr>
+<tr>
+<td><code>spotAngle</code></td>
+<td><code>float</code></td>
+<td>Угол конуса (только <code>Spot</code>).</td>
+</tr>
+<tr>
+<td><code>innerSpotAngle</code></td>
+<td><code>float</code></td>
+<td>Внутренний угол (для soft falloff).</td>
+</tr>
+<tr>
+<td><code>shadows</code></td>
+<td><code>LightShadows</code></td>
+<td><code>None</code>, <code>Hard</code>, <code>Soft</code>.</td>
+</tr>
+<tr>
+<td><code>shadowStrength</code></td>
+<td><code>float</code></td>
+<td>Прозрачность теней (0–1).</td>
+</tr>
+<tr>
+<td><code>shadowBias</code></td>
+<td><code>float</code></td>
+<td>Смещение для борьбы с acne (требует подбора под сцену).</td>
+</tr>
+<tr>
+<td><code>shadowNormalBias</code></td>
+<td><code>float</code></td>
+<td>Смещение по нормали (для тонких объектов).</td>
+</tr>
+<tr>
+<td><code>shadowNearPlane</code></td>
+<td><code>float</code></td>
+<td>Near plane теневого frustum (только <code>Directional</code>).</td>
+</tr>
+<tr>
+<td><code>cookie</code></td>
+<td><code>Texture</code></td>
+<td>Текстура проекции (только для <code>Spot</code>).</td>
+</tr>
+<tr>
+<td><code>renderMode</code></td>
+<td><code>LightRenderMode</code></td>
+<td><code>Auto</code>, <code>Important</code>, <code>Not Important</code> — управление per-pixel lighting.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Baking и realtime</h5>
+<table>
+<thead>
+<tr>
+<th>Настройка</th>
+<th>Built-in RP</th>
+<th>URP</th>
+<th>HDRP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Mode</code></td>
+<td><code>Realtime</code>, <code>Mixed</code>, <code>Baked</code></td>
+<td><code>Realtime</code>, <code>Baked</code></td>
+<td><code>Realtime</code>, <code>Baked</code></td>
+</tr>
+<tr>
+<td><code>Mixed</code> (Built-in)</td>
+<td><code>Shadowmask</code>, <code>Subtractive</code>, <code>Baked Indirect</code></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Light Layers</td>
+<td>—</td>
+<td>Поддержка (через asset)</td>
+<td>Полная поддержка</td>
+</tr>
+<tr>
+<td>Light Cookies</td>
+<td>Поддержка (2D cookie)</td>
+<td>Поддержка</td>
+<td>Поддержка (3D cookie)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Realtime GI (Built-in RP only)</h5>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Bounce Intensity</code></td>
+<td>Множитель отражённого света.</td>
+</tr>
+<tr>
+<td><code>Color Temperature</code></td>
+<td>Цвет по шкале Кельвина (если <code>Use Color Temperature = true</code>).</td>
+</tr>
+<tr>
+<td><code>Indirect Multiplier</code></td>
+<td>Яркость indirect lighting.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Ограничения</strong>:</p>
+<ul>
+<li><code>Area</code> light работает <strong>только</strong> в baked режиме.</li>
+<li>В URP/HDRP realtime GI заменён на Screen Space GI, SSR, или light probes.</li>
+<li><code>shadowResolution</code> — <code>Low</code> (512), <code>Medium</code> (1024), <code>High</code> (2048), <code>Very High</code> (4096). Глобально в <code>Project Settings > Quality</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>6. <code>AudioSource</code> / <code>AudioListener</code></h4>
+<h5><code>AudioSource</code></h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Тип</th>
+<th>Значение по умолчанию</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clip</code></td>
+<td><code>AudioClip</code></td>
+<td><code>null</code></td>
+<td>Аудиоданные (OGG/Vorbis, PCM, ADPCM).</td>
+</tr>
+<tr>
+<td><code>outputAudioMixerGroup</code></td>
+<td><code>AudioMixerGroup</code></td>
+<td><code>null</code></td>
+<td>Группа в <code>AudioMixer</code> (для эффектов, volume Автоматизация).</td>
+</tr>
+<tr>
+<td><code>playOnAwake</code></td>
+<td><code>bool</code></td>
+<td><code>true</code></td>
+<td>Автовоспроизведение.</td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td><code>float</code></td>
+<td>1.0</td>
+<td>Громкость (0–1).</td>
+</tr>
+<tr>
+<td><code>pitch</code></td>
+<td><code>float</code></td>
+<td>1.0</td>
+<td>Темп и тональность (0.5–2.0 рекомендовано).</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+<td>Зацикливание.</td>
+</tr>
+<tr>
+<td><code>mute</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+<td>Отключение (но <code>isPlaying</code> остаётся <code>true</code>).</td>
+</tr>
+<tr>
+<td><code>spatialBlend</code></td>
+<td><code>float</code></td>
+<td>0.0</td>
+<td>0 — 2D (одинаково во всех динамиках), 1 — 3D (пространственное звучание).</td>
+</tr>
+<tr>
+<td><code>spatialize</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+<td>Включение spatializer plugin (например, Oculus Spatializer).</td>
+</tr>
+<tr>
+<td><code>reverbZoneMix</code></td>
+<td><code>float</code></td>
+<td>1.0</td>
+<td>Вклад в эффект реверберации (в <code>AudioReverbZone</code>).</td>
+</tr>
+<tr>
+<td><code>dopplerLevel</code></td>
+<td><code>float</code></td>
+<td>1.0</td>
+<td>Интенсивность эффекта Доплера.</td>
+</tr>
+<tr>
+<td><code>spread</code></td>
+<td><code>float</code></td>
+<td>0.0</td>
+<td>Угол стереоразвёртки (в градусах, 0–360).</td>
+</tr>
+<tr>
+<td><code>priority</code></td>
+<td><code>int</code></td>
+<td>128</td>
+<td>При нехватке голосов — останавливаются с наибольшим <code>priority</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Пространственное звучание (3D)</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>minDistance</code></td>
+<td>Расстояние, внутри которого громкость = <code>volume</code>.</td>
+</tr>
+<tr>
+<td><code>maxDistance</code></td>
+<td>Расстояние, за которым громкость = <code>AudioListener.volume * AudioListener.gameObject.GetComponent&#x3C;AudioLowPassFilter>()?.cutoffFrequency</code> (если есть).</td>
+</tr>
+<tr>
+<td><code>rolloffMode</code></td>
+<td><code>AudioRolloffMode</code>: <code>Logarithmic</code>, <code>Linear</code>, <code>Custom</code>.</td>
+</tr>
+<tr>
+<td><code>bypassEffects</code> / <code>bypassListenerEffects</code> / <code>bypassReverbZones</code></td>
+<td>Отключение обработки (для debug или оптимизации).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5><code>AudioListener</code></h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>volume</code></td>
+<td>Глобальная громкость (умножается на <code>AudioSource.volume</code>).</td>
+</tr>
+<tr>
+<td><code>spatializeInternal</code></td>
+<td>Включение internal spatializer (если нет plugin).</td>
+</tr>
+<tr>
+<td><code>output</code></td>
+<td><code>AudioMixerGroup</code> — глобальный выход.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Методы <code>AudioSource</code></h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Play()</code> / <code>PlayDelayed(float)</code> / <code>PlayScheduled(double)</code></td>
+<td><code>PlayScheduled</code> — точное воспроизведение по DSP clock.</td>
+</tr>
+<tr>
+<td><code>Pause()</code> / <code>UnPause()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Stop()</code></td>
+<td>Останавливает и сбрасывает позицию.</td>
+</tr>
+<tr>
+<td><code>PlayOneShot(AudioClip, volumeScale)</code></td>
+<td>Воспроизведение без изменения <code>clip</code> и <code>isPlaying</code>.</td>
+</tr>
+<tr>
+<td><code>SetScheduledStartTime(double)</code> / <code>SetScheduledEndTime(double)</code></td>
+<td>Для точного синхронного воспроизведения.</td>
+</tr>
+<tr>
+<td><code>GetOutputData(float[], int)</code></td>
+<td>Получение PCM-данных (для визуализации).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Важно</strong>:</p>
+<ul>
+<li>Макс. число одновременных голосов: <code>AudioSettings.dspBufferSize</code> / <code>AudioSettings.speakerMode</code>.</li>
+<li><code>AudioMixer</code> позволяет группировать источники, применять эффекты (reverb, EQ, compressor), и управлять параметрами через скрипты (<code>mixer.SetFloat("Volume", -10f)</code>).</li>
+</ul>
+</blockquote>
+<hr>
+<p><span id="navmesh-agent"></span></p>
+<h4>7. NavMesh и <code>NavMeshAgent</code></h4>
+<p>Пакет <strong>AI Navigation</strong> (<em>Window → AI → Navigation</em>). <strong>Bake</strong> строит проходимую сетку из <strong>Navigation Static</strong> геометрии.</p>
+<h5><code>NavMeshAgent</code></h5>
+<table>
+<thead>
+<tr>
+<th>Свойство / метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>speed</code></td>
+<td>Макс. скорость перемещения (м/с).</td>
+</tr>
+<tr>
+<td><code>angularSpeed</code></td>
+<td>Скорость поворота (град/с).</td>
+</tr>
+<tr>
+<td><code>acceleration</code></td>
+<td>Ускорение при изменении скорости.</td>
+</tr>
+<tr>
+<td><code>stoppingDistance</code></td>
+<td>Дистанция до цели, на которой агент считается прибывшим.</td>
+</tr>
+<tr>
+<td><code>autoBraking</code></td>
+<td>Замедление у цели.</td>
+</tr>
+<tr>
+<td><code>radius</code> / <code>height</code></td>
+<td>Объём агента для avoidance и bake.</td>
+</tr>
+<tr>
+<td><code>SetDestination(Vector3)</code></td>
+<td>Задать целевую точку на NavMesh.</td>
+</tr>
+<tr>
+<td><code>ResetPath()</code></td>
+<td>Сброс текущего пути.</td>
+</tr>
+<tr>
+<td><code>pathPending</code></td>
+<td><code>true</code>, пока путь пересчитывается.</td>
+</tr>
+<tr>
+<td><code>remainingDistance</code></td>
+<td>Оставшаяся длина пути по полилинии.</td>
+</tr>
+<tr>
+<td><code>isOnNavMesh</code></td>
+<td>Агент стоит на запечённой сетке.</td>
+</tr>
+<tr>
+<td><code>isStopped</code></td>
+<td>Приостановка движения без сброса цели.</td>
+</tr>
+<tr>
+<td><code>velocity</code></td>
+<td>Текущая скорость (read-only, для отладки).</td>
+</tr>
+</tbody>
+</table>
+<h5>Связанные компоненты</h5>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NavMesh Surface</strong> (опционально)</td>
+<td>Локальный bake для части сцены (мульти-уровни).</td>
+</tr>
+<tr>
+<td><strong>NavMesh Obstacle</strong></td>
+<td>Динамическое препятствие (дверь, ящик), которое "вырезает" или уклоняет агентов.</td>
+</tr>
+<tr>
+<td><strong>Off-Mesh Link</strong></td>
+<td>Прыжки, лестницы между островами NavMesh.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Важно</strong>:</p>
+<ul>
+<li>После изменения геометрии уровня <strong>перезапеките</strong> NavMesh.</li>
+<li>Цель <code>SetDestination</code> должна лежать <strong>на</strong> NavMesh (иначе ближайшая валидная точка).</li>
+<li>Агент без bake на сцене — <code>isOnNavMesh == false</code>, движения не будет.</li>
+<li>Учебный патруль и преследование — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">Разработка на Unity</a>.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="блок-3-анимация-data-oriented-design-пакеты-профилирование-сборка">Блок 3. Анимация, Data-Oriented Design, Пакеты, Профилирование, Сборка</h3>
+<h4>1. <code>Animator</code> и <code>Animation</code></h4>
+<h5><code>Animator</code> — компонент</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>runtimeAnimatorController</code></td>
+<td><code>RuntimeAnimatorController</code></td>
+<td>Ссылка на <code>AnimatorController</code> (<code>.controller</code> asset). Может быть <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>applyRootMotion</code></td>
+<td><code>bool</code></td>
+<td><code>true</code> — перемещение/вращение из корня анимации применяется к <code>Transform</code>.</td>
+</tr>
+<tr>
+<td><code>updateMode</code></td>
+<td><code>AnimatorUpdateMode</code></td>
+<td><code>Normal</code> (в <code>Update</code>), <code>AnimatePhysics</code> (в <code>FixedUpdate</code>), <code>UnscaledTime</code> (игнорирует <code>Time.timeScale</code>).</td>
+</tr>
+<tr>
+<td><code>cullingMode</code></td>
+<td><code>AnimatorCullingMode</code></td>
+<td><code>AlwaysAnimate</code>, <code>CullUpdateTransforms</code>, <code>CullCompletely</code> — управление обновлением при <code>isVisible = false</code>.</td>
+</tr>
+<tr>
+<td><code>avatar</code></td>
+<td><code>Avatar</code></td>
+<td>Описание скелета (только для humanoid).</td>
+</tr>
+<tr>
+<td><code>layersAffectMassCenter</code></td>
+<td><code>bool</code> (URP/HDRP)</td>
+<td>Влияют ли IK-слои на центр масс (для физики).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Параметры анимации</h5>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Диапазон</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td><code>±3.4e38</code></td>
+<td>Основной тип для blend trees, thresholds.</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>±2^31</code></td>
+<td>Для дискретных состояний (e.g. <code>weaponState = 0/1/2</code>).</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><code>true/false</code></td>
+<td>Простые переключения (e.g. <code>isGrounded</code>).</td>
+</tr>
+<tr>
+<td><code>Trigger</code></td>
+<td>—</td>
+<td>Автоматически сбрасывается после использования (<code>Animator.ResetTrigger</code>).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Производительность:</p>
+<ul>
+<li>Чтение/запись параметров — <strong>не бесплатна</strong>: <code>SetFloat</code> вызывает копирование буфера параметров.</li>
+<li>Кэшируйте <code>Animator.StringToHash("param")</code> → используйте <code>animator.SetFloat(hash, value)</code>.</li>
+<li>Избегайте <code>GetFloat</code> в hot paths — лучше хранить состояние в скрипте.</li>
+</ul>
+</blockquote>
+<hr>
+<h5>Состояния и переходы</h5>
+<table>
+<thead>
+<tr>
+<th>Элемент</th>
+<th>Свойства</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>State</strong></td>
+<td><code>Speed</code>, <code>Cycle Offset</code>, <code>Foot IK</code>, <code>Write Defaults</code>, <code>Transitions</code>, <code>Motion</code> (<code>AnimationClip</code> или <code>BlendTree</code>).</td>
+</tr>
+<tr>
+<td><strong>Blend Tree</strong></td>
+<td><code>Type</code>: <code>1D</code>, <code>2D Simple Directional</code>, <code>2D Freeform Directional</code>, <code>2D Freeform Cartesian</code>, <code>Direct</code>; <code>Parameters</code>, <code>Thresholds</code>, <code>Child Motions</code>.</td>
+</tr>
+<tr>
+<td><strong>Transition</strong></td>
+<td><code>Has Exit Time</code>, <code>Exit Time</code>, <code>Fixed Duration</code> / <code>Transition Duration (s)</code>, <code>Transition Offset</code>, <code>Interruption Source</code>, <code>Ordered Interruption</code>, <code>Conditions</code>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Особенности:</p>
+<ul>
+<li><code>Write Defaults = true</code> — при выходе из состояния все параметры сбрасываются в значения по умолчанию (указаны в контроллере). Может вызывать артефакты — отключайте при необходимости.</li>
+<li><code>Any State</code> — виртуальное состояние, из которого можно перейти в любое другое. Осторожно: может нарушить логику.</li>
+<li><code>Solo</code> / <code>Mute</code> — отладка слоёв: <code>Solo</code> проигрывает только этот слой, <code>Mute</code> — исключает.</li>
+</ul>
+</blockquote>
+<hr>
+<h5>События анимации</h5>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Где задаётся</th>
+<th>Когда вызывается</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Animation Event</code></td>
+<td>В <code>AnimationClip</code> (в редакторе анимации)</td>
+<td>В указанный кадр анимации (независимо от <code>speed</code>).</td>
+</tr>
+<tr>
+<td><code>StateMachineBehaviour</code></td>
+<td>В контроллере (на состоянии/переходе)</td>
+<td><code>OnStateEnter</code>, <code>OnStateUpdate</code>, <code>OnStateExit</code>, <code>OnStateMove</code>, <code>OnStateIK</code>.</td>
+</tr>
+<tr>
+<td><code>OnAnimatorMove()</code></td>
+<td>В <code>MonoBehaviour</code></td>
+<td>После <code>Animator</code> обработал root motion (если <code>applyRootMotion = true</code>).</td>
+</tr>
+<tr>
+<td><code>OnAnimatorIK(int layerIndex)</code></td>
+<td>В <code>MonoBehaviour</code></td>
+<td>После <code>Animator</code> вычислил IK, до применения к <code>Transform</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>IK (Inverse Kinematics)</h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SetIKPosition(AvatarIKGoal, Vector3)</code></td>
+<td>Установка целевой точки для кисти/ступни.</td>
+</tr>
+<tr>
+<td><code>SetIKRotation(AvatarIKGoal, Quaternion)</code></td>
+<td>Установка целевого вращения.</td>
+</tr>
+<tr>
+<td><code>SetLookAtPosition(Vector3)</code></td>
+<td>Глаза/голова смотрят на точку.</td>
+</tr>
+<tr>
+<td><code>SetLookAtWeight(float lookAtWeight, ...)</code></td>
+<td>Плавное управление: <code>bodyWeight</code>, <code>headWeight</code>, <code>eyesWeight</code>, <code>clampWeight</code>, <code>clampBody</code>.</td>
+</tr>
+<tr>
+<td><code>SetIKPositionWeight(AvatarIKGoal, float)</code></td>
+<td>Вес влияния IK (0 — выкл, 1 — полный).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Требования:</p>
+<ul>
+<li>Только для <code>Avatar</code> с <code>Humanoid</code> rig.</li>
+<li>Вызывать <strong>только</strong> внутри <code>OnAnimatorIK</code>.</li>
+<li><code>Animator.updateMode = AnimatePhysics</code>, если IK связан с физикой.</li>
+</ul>
+</blockquote>
+<hr>
+<h5><code>Animation</code> (устаревшая система)</h5>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clip</code></td>
+<td>Текущий <code>AnimationClip</code>.</td>
+</tr>
+<tr>
+<td><code>playAutomatically</code></td>
+<td>Автопроигрывание при старте.</td>
+</tr>
+<tr>
+<td><code>wrapMode</code></td>
+<td><code>Once</code>, <code>Loop</code>, <code>PingPong</code>, <code>ClampForever</code>.</td>
+</tr>
+<tr>
+<td><code>animatePhysics</code></td>
+<td>Обновление в <code>FixedUpdate</code>.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Play(string)</code></td>
+<td>Запуск клипа (по имени).</td>
+</tr>
+<tr>
+<td><code>CrossFade(string, float fadeLength)</code></td>
+<td>Плавный переход.</td>
+</tr>
+<tr>
+<td><code>Blend(string, float targetWeight, float fadeLength)</code></td>
+<td>Наложение нескольких клипов (additive).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Рекомендация: <strong>избегать</strong> в новых проектах — <code>Animator</code> предпочтителен.</p>
+</blockquote>
+<hr>
+<h4>2. <code>ScriptableObject</code></h4>
+<h5>Назначение</h5>
+<ul>
+<li>Хранение данных, независимых от сцены и экземпляров GameObject.</li>
+<li>Конфигурации, таблицы уровней, инвентарь, локализация, настройки баланса.</li>
+</ul>
+<hr>
+<h5>Создание и управление</h5>
+<table>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Способ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Создание asset</td>
+<td><code>[CreateAssetMenu(fileName = "data.asset", menuName = "Данные/MyData")]</code> → ПКМ в Project.</td>
+</tr>
+<tr>
+<td>Загрузка</td>
+<td><code>Resources.Load&#x3C;T></code>, <code>Addressables.LoadAssetAsync&#x3C;T></code>, <code>AssetDatabase.LoadAssetAtPath&#x3C;T></code> (только в редакторе).</td>
+</tr>
+<tr>
+<td>Инстанцирование</td>
+<td><code>ScriptableObject.CreateInstance&#x3C;T>()</code> (временный объект, не сохраняется).</td>
+</tr>
+<tr>
+<td>Сохранение</td>
+<td><code>AssetDatabase.CreateAsset(so, path)</code> (редактор), <code>EditorUtility.SetDirty(so)</code> перед <code>AssetDatabase.SaveAssets()</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Свойства и методы</h5>
+<table>
+<thead>
+<tr>
+<th>Элемент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hideFlags</code></td>
+<td><code>HideFlags.DontSave</code>, <code>HideInHierarchy</code> и др. — управление видимостью.</td>
+</tr>
+<tr>
+<td><code>OnEnable()</code></td>
+<td>Вызывается при загрузке asset (аналог <code>Awake</code> для <code>MonoBehaviour</code>).</td>
+</tr>
+<tr>
+<td><code>OnValidate()</code></td>
+<td>В редакторе — при изменении в инспекторе.</td>
+</tr>
+<tr>
+<td><code>Reset()</code></td>
+<td>В редакторе — при сбросе до значений по умолчанию.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Паттерны использования</h5>
+<table>
+<thead>
+<tr>
+<th>Паттерн</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Данные-Driven Проектирование</strong></td>
+<td>Все параметры геймплея — в <code>ScriptableObject</code>.</td>
+</tr>
+<tr>
+<td><strong>Polymorphic References</strong></td>
+<td>Базовый класс <code>[Serializable]</code>, наследники — <code>[CreateAssetMenu]</code>.</td>
+</tr>
+<tr>
+<td><strong>Event Channels</strong></td>
+<td><code>ScriptableObject</code> как event bus (без <code>UnityEvent</code>, для loose coupling).</td>
+</tr>
+<tr>
+<td><strong>Editor-Only Данные</strong></td>
+<td><code>[HideInInspector]</code> + <code>[SerializeField]</code> для временных данных в редакторе.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Важно:</p>
+<ul>
+<li><code>ScriptableObject</code> — <strong>не сериализуется</strong> через <code>JsonUtility</code> по умолчанию (нет <code>ISerializationCallbackReceiver</code>).</li>
+<li>При использовании <code>Addressables</code> — назначайте <code>Address</code> явно (иначе asset может быть выгружен).</li>
+<li>Избегайте ссылок на <code>MonoBehaviour</code> внутри <code>ScriptableObject</code> — это нарушает чистоту данных.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>3. Ключевые пакеты</h4>
+<h5>Input System (com.unity.inputsystem)</h5>
+<h6>Архитектура</h6>
+<ul>
+<li><strong>Input Action Asset</strong> (<code>.inputactions</code>) — описание действий (<code>action</code>, <code>binding</code>, <code>composite</code>).</li>
+<li><strong>Input System UI Input Module</strong> — интеграция с <code>EventSystem</code>.</li>
+<li><strong>Input Debugger</strong> — окно для мониторинга (Window > Input Debugger).</li>
+</ul>
+<hr>
+<h6>Типы привязок</h6>
+<table>
+<thead>
+<tr>
+<th>Binding</th>
+<th>Пример</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#x3C;Gamepad>/leftStick</code></td>
+<td>Ось</td>
+<td>2D вектор.</td>
+</tr>
+<tr>
+<td><code>&#x3C;Keyboard>/space</code></td>
+<td>Кнопка</td>
+<td><code>press</code>, <code>hold</code>, <code>release</code>.</td>
+</tr>
+<tr>
+<td><code>&#x3C;Mouse>/position</code></td>
+<td>Позиция</td>
+<td>Экранные координаты.</td>
+</tr>
+<tr>
+<td><code>*/&#x26;#123;PrimaryAction&#x26;#125;</code></td>
+<td>Composite</td>
+<td>Универсальная привязка (A на геймпаде, ЛКМ, Space).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Режимы обработки</h6>
+<table>
+<thead>
+<tr>
+<th>Режим</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Polling</strong></td>
+<td><code>action.ReadValue&#x3C;T>()</code> — опрос в <code>Update</code>.</td>
+</tr>
+<tr>
+<td><strong>Events</strong></td>
+<td><code>action.performed += ctx => { }</code> — события при срабатывании.</td>
+</tr>
+<tr>
+<td><strong>Control schemes</strong></td>
+<td>Разные схемы ввода (клавиатура / геймпад) через <code>PlayerInput</code> и <code>InputActionAsset</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Производительность</h6>
+<ul>
+<li><code>PlayerInput</code> компонент — <code>Send Messages</code> (устаревший), <code>Invoke Unity Events</code>, <code>Call Events</code>.</li>
+<li><code>InputActionAsset.Enable()</code> — активирует все действия. <code>Disable()</code> — деактивирует.</li>
+<li>В сборке: <code>Player Settings > Active Input Handling = Input System (New)</code>.</li>
+</ul>
+<hr>
+<h5>Addressables (com.unity.addressables)</h5>
+<h6>Основные команды</h6>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Addressables.LoadAssetAsync&#x3C;T>(key)</code></td>
+<td>Асинхронная загрузка.</td>
+</tr>
+<tr>
+<td><code>Addressables.InstantiateAsync(key, parent, ...)</code></td>
+<td>Создание экземпляра с правильным управлением ссылками.</td>
+</tr>
+<tr>
+<td><code>Addressables.Release(object)</code></td>
+<td>Счётчик ссылок — объект удаляется при <code>refCount = 0</code>.</td>
+</tr>
+<tr>
+<td><code>Addressables.ClearDependencyCacheAsync()</code></td>
+<td>Очистка кэша зависимостей.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Типы ключей</h6>
+<table>
+<thead>
+<tr>
+<th>Ключ</th>
+<th>Формат</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Address</strong></td>
+<td><code>string</code></td>
+<td>Уникальная строка (задаётся в инспекторе).</td>
+</tr>
+<tr>
+<td><strong>Label</strong></td>
+<td><code>string</code></td>
+<td>Группировка (<code>platform:Android</code>, <code>lang:ru</code>).</td>
+</tr>
+<tr>
+<td><strong>Asset GUID</strong></td>
+<td><code>GUID</code></td>
+<td>Внутренний идентификатор.</td>
+</tr>
+<tr>
+<td><strong>AssetReference</strong></td>
+<td><code>AssetReference</code></td>
+<td>Сериализуемая ссылка (в инспекторе — drag &#x26; drop).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Build и настройки</h6>
+<table>
+<thead>
+<tr>
+<th>Настройка</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Build Path</code></td>
+<td><code>LocalBuildPath</code>, <code>RemoteBuildPath</code> (для CDN).</td>
+</tr>
+<tr>
+<td><code>Bundle Mode</code></td>
+<td><code>Pack Together</code>, <code>Pack Separately</code>, <code>No Bundles</code> (режим кэширования).</td>
+</tr>
+<tr>
+<td><code>Compression</code></td>
+<td><code>LZ4</code>, <code>LZMA</code>, <code>Uncompressed</code>. LZ4 — баланс скорости/размера.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Важно:</p>
+<ul>
+<li><code>Addressables.InitializeAsync()</code> должен завершиться до первого <code>LoadAsset</code>.</li>
+<li>В редакторе: <code>Addressables > Groups > Build > New Build > Default Build Script</code>.</li>
+<li>Избегайте <code>Addressables.LoadAsset&#x3C;GameObject></code> — лучше загружать <code>AssetReference</code> и <code>Instantiate</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h5>URP (Universal Render Pipeline)</h5>
+<h6>Core Settings (<code>UniversalRenderPipelineAsset</code>)</h6>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Rendering Path</code></td>
+<td><code>Forward</code>, <code>Deferred</code> (только с <code>DepthNormals</code> и <code>MotionVectors</code>).</td>
+</tr>
+<tr>
+<td><code>Color Rendering</code></td>
+<td><code>HDR</code>, <code>MSAA</code>, <code>Color Grading LUT Size</code>.</td>
+</tr>
+<tr>
+<td><code>Shadows</code></td>
+<td><code>Max Distance</code>, <code>Cascades</code>, <code>Depth Bias</code>, <code>Normal Bias</code>, <code>Soft Shadows</code>.</td>
+</tr>
+<tr>
+<td><code>Post-processing</code></td>
+<td><code>Post-pipeline</code>, <code>After Opaque</code>, <code>Before Transparent</code> — порядок.</td>
+</tr>
+<tr>
+<td><code>Renderer Features</code></td>
+<td>Кастомные pass’ы (Outline, Custom SSAO, Decals).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Render Features (часто используемые)</h6>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Render Objects</strong></td>
+<td>Рендер одних объектов поверх других (например, outline через depth bias).</td>
+</tr>
+<tr>
+<td><strong>Render Profiling</strong></td>
+<td>Визуализация затрат (overdraw, depth, albedo).</td>
+</tr>
+<tr>
+<td><strong>Decal Projector</strong></td>
+<td>Наклейки на геометрию (требует <code>Decal Renderer Feature</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>HDRP (High Definition Render Pipeline)</h5>
+<h6>Key Differences и URP</h6>
+<table>
+<thead>
+<tr>
+<th>Аспект</th>
+<th>HDRP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lighting</strong></td>
+<td>Physically Based (lux, lumens), Area lights realtime (GPU).</td>
+</tr>
+<tr>
+<td><strong>Volumetrics</strong></td>
+<td>Volumetric fog, clouds, god rays.</td>
+</tr>
+<tr>
+<td><strong>Decals</strong></td>
+<td>Native support (material-based).</td>
+</tr>
+<tr>
+<td><strong>Ray Tracing</strong></td>
+<td>DXR/Vulkan RT: reflections, shadows, GI, AO.</td>
+</tr>
+<tr>
+<td><strong>Custom Passes</strong></td>
+<td><code>FullScreen</code>, <code>Before Opaque</code>, <code>After Post-processing</code>, <code>After Opaque And Sky</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Frame Settings</h6>
+<table>
+<thead>
+<tr>
+<th>Группа</th>
+<th>Параметры</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lighting</strong></td>
+<td>Screen Space Reflection, Ray Tracing, Light Layers.</td>
+</tr>
+<tr>
+<td><strong>Rendering</strong></td>
+<td>Motion Vectors, Subsurface Scattering, Distortion.</td>
+</tr>
+<tr>
+<td><strong>Post-processing</strong></td>
+<td>Depth of Field, Bloom, Lens Flare, Tonemapping (ACES, Neutral).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Требования:</p>
+<ul>
+<li>GPU: DX11.1+ / Vulkan / Metal.</li>
+<li>Для Ray Tracing: драйверы <code>≥</code> 471.11 (NVIDIA), RTX 20xx+.</li>
+<li><code>HDAdditionalCameraData</code> — обязательный компонент на камере.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>4. Профилирование</h4>
+<h5>Unity Profiler (Window > Analysis > Profiler)</h5>
+<h6>Модули</h6>
+<table>
+<thead>
+<tr>
+<th>Модуль</th>
+<th>Что измеряет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CPU Usage</strong></td>
+<td>Время в <code>Update</code>, <code>FixedUpdate</code>, рендер, физика.</td>
+</tr>
+<tr>
+<td><strong>Memory</strong></td>
+<td><code>GC.Alloc</code>, managed heap, native memory, assets.</td>
+</tr>
+<tr>
+<td><strong>Rendering</strong></td>
+<td>Draw calls, batches, set pass calls, shader variants.</td>
+</tr>
+<tr>
+<td><strong>Physics</strong></td>
+<td><code>FixedUpdate</code> time, contact pairs, CCD checks.</td>
+</tr>
+<tr>
+<td><strong>Audio</strong></td>
+<td>Голоса, DSP load, mixer bus load.</td>
+</tr>
+<tr>
+<td><strong>UI</strong></td>
+<td><code>Canvas.BuildBatch</code>, <code>Graphic.Rebuild</code>, input events.</td>
+</tr>
+<tr>
+<td><strong>Video</strong></td>
+<td>Декодирование, синхронизация.</td>
+</tr>
+<tr>
+<td><strong>Global Illumination</strong></td>
+<td>Light probe updates, reflection probes.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Hot Path Analysis</h6>
+<ul>
+<li><strong>Self ms</strong> — время в методе без учёта вызовов.</li>
+<li><strong>Total ms</strong> — с учётом вызовов.</li>
+<li>Правый клик → <strong>Add Bookmark</strong> — фиксация baseline.</li>
+<li><code>GC.Collect()</code> вручную — для проверки пиков GC.</li>
+</ul>
+<hr>
+<h5>Frame Debugger (Window > Analysis > Frame Debugger)</h5>
+<table>
+<thead>
+<tr>
+<th>Функция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Step Through</strong></td>
+<td>Пошаговое выполнение draw call’ов.</td>
+</tr>
+<tr>
+<td><strong>Shader Variant</strong></td>
+<td>Просмотр конкретного шейдера (pass, keywords).</td>
+</tr>
+<tr>
+<td><strong>State Changes</strong></td>
+<td><code>SetPass</code>, <code>SetTexture</code>, <code>SetFloat</code> — источники overhead.</td>
+</tr>
+<tr>
+<td><strong>Occlusion Culling</strong></td>
+<td>Проверка, какие объекты отсекаются.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Memory Profiler (отдельный пакет)</h5>
+<table>
+<thead>
+<tr>
+<th>Отчёт</th>
+<th>Содержание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Managed Memory</strong></td>
+<td>Объекты в managed heap, roots, GC pressure.</td>
+</tr>
+<tr>
+<td><strong>Native Memory</strong></td>
+<td><code>Texture2D</code>, <code>Mesh</code>, <code>AudioClip</code> в native memory.</td>
+</tr>
+<tr>
+<td><strong>Asset Memory</strong></td>
+<td>Размер <code>AssetBundle</code>, <code>Resources.UnloadUnusedAssets()</code> эффект.</td>
+</tr>
+<tr>
+<td><strong>Compare Snapshots</strong></td>
+<td>Утечки: объекты, появившиеся между снимками.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Rendering Debugger (URP/HDRP)</h5>
+<table>
+<thead>
+<tr>
+<th>Вкладка</th>
+<th>Инструменты</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lighting</strong></td>
+<td>Light overlap, probe visualization, GI cache.</td>
+</tr>
+<tr>
+<td><strong>Material</strong></td>
+<td>Albedo, specular, smoothness override.</td>
+</tr>
+<tr>
+<td><strong>Post-processing</strong></td>
+<td>Bloom, DoF, motion vectors.</td>
+</tr>
+<tr>
+<td><strong>Custom Passes</strong></td>
+<td>Визуализация custom render features.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Советы:</p>
+<ul>
+<li>В релизе: <code>Разработка Build + Autoconnect Profiler</code> → профилирование на устройстве.</li>
+<li>Избегайте <code>Debug.Log</code> в hot paths — это allocation + I/O.</li>
+<li>Используйте <code>Profiler.BeginSample("MyCode")</code> / <code>EndSample()</code> для кастомных маркеров.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>5. Сборка и дистрибуция</h4>
+<h5>Build Settings (File <code>></code> Build Settings)</h5>
+<table>
+<thead>
+<tr>
+<th>Платформа</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PC, Mac, Linux Standalone</strong></td>
+<td><code>Target Architecture</code>: x86, x86_64, Universal. IL2CPP only for 64-bit.</td>
+</tr>
+<tr>
+<td><strong>Android</strong></td>
+<td><code>Scripting Backend</code>: IL2CPP (required for 64-bit), <code>Target API Level</code>, <code>Min API Level</code>, <code>Split Application Binary</code>.</td>
+</tr>
+<tr>
+<td><strong>iOS</strong></td>
+<td><code>Target SDK</code>: Device SDK, <code>Architecture</code>: ARM64, <code>Strip Engine Code</code>. Bitcode устарел (Apple не требует с 2023 г.).</td>
+</tr>
+<tr>
+<td><strong>WebGL</strong></td>
+<td><code>Compression Format</code>: Brotli (best), Gzip, Disabled; <code>Memory Size</code>: 256–512 MB.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>IL2CPP</h5>
+<table>
+<thead>
+<tr>
+<th>Настройка</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Engine Code Stripping</code></td>
+<td>Удаление неиспользуемых классов движка (осторожно с reflection).</td>
+</tr>
+<tr>
+<td><code>Managed Stripping Level</code></td>
+<td><code>Low</code> → <code>High</code> — удаление API (System.Reflection.Emit, CultureInfo и др.).</td>
+</tr>
+<tr>
+<td><code>Debug Symbols</code></td>
+<td>Включение <code>*.pdb</code> / <code>*.map</code> для crash reporting.</td>
+</tr>
+<tr>
+<td><code>Incremental GC</code></td>
+<td>Уменьшает паузы GC (URP/HDRP recommended).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>AOT (Ahead-of-Time Compilation)</h5>
+<table>
+<thead>
+<tr>
+<th>Платформа</th>
+<th>Поддержка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iOS, WebGL, Consoles</td>
+<td>Обязательно (JIT запрещён).</td>
+</tr>
+<tr>
+<td>Android (IL2CPP)</td>
+<td>Да.</td>
+</tr>
+<tr>
+<td>Windows (IL2CPP)</td>
+<td>Опционально.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Проблемы AOT:</p>
+<ul>
+<li>Generic virtual methods — могут не компилироваться (требуется <code>Preserve</code> атрибут или <code>link.xml</code>).</li>
+<li>Reflection — только на типах/методах, упомянутых в коде или <code>link.xml</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h5>Symbolication (Crash Reporting)</h5>
+<table>
+<thead>
+<tr>
+<th>Формат</th>
+<th>Где взять</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Windows</strong></td>
+<td><code>Game_Data/Managed/Game.pdb</code></td>
+</tr>
+<tr>
+<td><strong>Android</strong></td>
+<td><code>Game_Data/Native/</code> + <code>split_symbols</code> (при включённых symbols)</td>
+</tr>
+<tr>
+<td><strong>iOS</strong></td>
+<td><code>dSYM</code> папка (в <code>Build</code> при <code>Debug Symbols = true</code>)</td>
+</tr>
+<tr>
+<td><strong>WebGL</strong></td>
+<td><code>Game.wasm.map</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5><code>link.xml</code> (для IL2CPP)</h5>
+<pre><code class="language-xml">&#x3C;linker>
+  &#x3C;assembly fullname="Assembly-CSharp">
+    &#x3C;type fullname="MyNamespace.MyClass" preserve="all"/>
+    &#x3C;namespace fullname="MyNamespace.Utilities" preserve="methods"/>
+  &#x3C;/assembly>
+  &#x3C;assembly fullname="System.Core">
+    &#x3C;type fullname="System.Linq.Enumerable" preserve="methods"/>
+  &#x3C;/assembly>
+&#x3C;/linker>
+</code></pre>
+<blockquote>
+<p>Расположение: <code>Assets/link.xml</code> (автоматически обрабатывается при сборке).</p>
+</blockquote>
+<hr>
+<h3 id="блок-4-высокопроизводительные-системы-графы-динамическая-загрузка-безопасность">Блок 4. Высокопроизводительные системы, графы, динамическая загрузка, безопасность</h3>
+<h4>1. Job System и Burst Compiler</h4>
+<h5>Архитектура Job System</h5>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Job</strong></td>
+<td>Единица работы: реализует <code>IJob</code>, <code>IJobParallelFor</code>, <code>IJobChunk</code> и др.</td>
+</tr>
+<tr>
+<td><strong>NativeContainer</strong></td>
+<td><code>NativeArray&#x3C;T></code>, <code>NativeList&#x3C;T></code>, <code>NativeHashMap&#x3C;K,V></code> — память вне managed heap.</td>
+</tr>
+<tr>
+<td><strong>Dependency Graph</strong></td>
+<td><code>JobHandle</code> — управление порядком выполнения (<code>CombineDependencies</code>, <code>Schedule</code>, <code>Complete</code>).</td>
+</tr>
+<tr>
+<td><strong>Safety System</strong></td>
+<td>Проверка aliasing: один <code>NativeArray</code> не может быть записан в нескольких job’ах одновременно.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Типы Job’ов</h5>
+<table>
+<thead>
+<tr>
+<th>Интерфейс</th>
+<th>Сигнатура</th>
+<th>Применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IJob</code></td>
+<td><code>void Execute()</code></td>
+<td>Однопоточная задача.</td>
+</tr>
+<tr>
+<td><code>IJobParallelFor</code></td>
+<td><code>void Execute(int index)</code></td>
+<td>Параллельный цикл (<code>0..length-1</code>).</td>
+</tr>
+<tr>
+<td><code>IJobParallelForTransform</code></td>
+<td><code>void Execute(int index, TransformAccess transform)</code></td>
+<td>Параллельная работа с <code>Transform</code> (через <code>TransformAccessArray</code>).</td>
+</tr>
+<tr>
+<td><code>IJobChunk</code></td>
+<td><code>void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)</code></td>
+<td>Работа с чанками (только в ECS).</td>
+</tr>
+<tr>
+<td><code>IJobEntity</code></td>
+<td><code>[BurstCompile] void Execute(ref T0 c0, ...)</code></td>
+<td>ECS-only, высокоуровневый <code>Entities.ForEach</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5><code>NativeArray&#x3C;T></code> — ключевые параметры</h5>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Значения</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Allocator</code></td>
+<td><code>Temp</code> (1 frame), <code>TempJob</code> (4 frames), <code>Persistent</code></td>
+<td>Управление временем жизни.</td>
+</tr>
+<tr>
+<td><code>NativeArrayOptions</code></td>
+<td><code>UninitializedMemory</code>, <code>ClearMemory</code></td>
+<td>Инициализация содержимого.</td>
+</tr>
+<tr>
+<td><code>ReadOnly</code> / <code>ReadWrite</code></td>
+<td>Атрибуты: <code>[ReadOnly]</code>, <code>[WriteOnly]</code></td>
+<td>Указание намерения — разрешает параллелизм.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Пример — <code>IJobParallelFor</code></h5>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-301-001" data-title="1. Job System и Burst Compiler" data-min-height="444"> </div>
+<blockquote>
+<p>⚠️ Требования Burst:</p>
+<ul>
+<li>Только подмножество C# — нет исключений, <code>virtual</code>, <code>interface</code>, <code>reflection</code>, <code>string</code>, <code>managed types</code>.</li>
+<li>Поддержка <code>math</code> (Unity.Mathematics) — <code>float3</code>, <code>quaternion</code>, SIMD.</li>
+<li><code>#if BURST_COMPILE</code> — условная компиляция.</li>
+</ul>
+</blockquote>
+<hr>
+<h5>Safety System — отключение</h5>
+<table>
+<thead>
+<tr>
+<th>Способ</th>
+<th>Опасность</th>
+<th>Применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NativeArray&#x3C;T>.GetUnsafePtr()</code></td>
+<td>Нет проверок</td>
+<td>Только в <code>[BurstCompile]</code> job’ах.</td>
+</tr>
+<tr>
+<td><code>JobsUtility.DisableJobCompilerSafetyChecks</code></td>
+<td>Отключает все проверки</td>
+<td>Только в release-сборках, после полного тестирования.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>2. ECS (Entities Package, версия 1.0+)</h4>
+<h5>Ядро — <code>World</code>, <code>EntityManager</code>, <code>Entity</code></h5>
+<table>
+<thead>
+<tr>
+<th>Элемент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>World</code></td>
+<td>Контейнер для систем и данных. <code>World.DefaultGameObjectInjectionWorld</code> — основной.</td>
+</tr>
+<tr>
+<td><code>EntityManager</code></td>
+<td>Фабрика и менеджер <code>Entity</code>. Доступ: <code>world.EntityManager</code>.</td>
+</tr>
+<tr>
+<td><code>Entity</code></td>
+<td>64-битный идентификатор (<code>Index</code>, <code>Version</code>). Не содержит данных — только ключ.</td>
+</tr>
+<tr>
+<td><code>ComponentType</code></td>
+<td>Описание типа компонента: <code>ComponentType.ReadOnly&#x3C;T>()</code>, <code>ComponentType.Exclude&#x3C;T>()</code>.</td>
+</tr>
+<tr>
+<td><code>Archetype</code></td>
+<td>Комбинация типов компонентов. Все <code>Entity</code> с одинаковым набором — в одном archetype.</td>
+</tr>
+<tr>
+<td><code>Chunk</code></td>
+<td>Блок памяти (обычно 16 КБ), хранит несколько <code>Entity</code> одного archetype.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Создание сущностей</h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EntityManager.CreateEntity(ComponentType[])</code></td>
+<td>Создать <code>Entity</code> с заданными компонентами.</td>
+</tr>
+<tr>
+<td><code>EntityManager.Instantiate(Entity)</code></td>
+<td>Клонирование (только структурные компоненты).</td>
+</tr>
+<tr>
+<td><code>EntityManager.SetComponentData&#x3C;T>(Entity, T)</code></td>
+<td>Установка значения компонента.</td>
+</tr>
+<tr>
+<td><code>EntityManager.AddComponentData&#x3C;T>(Entity, T)</code></td>
+<td>Добавление компонента со значением.</td>
+</tr>
+<tr>
+<td><code>EntityManager.RemoveComponent&#x3C;T>(Entity)</code></td>
+<td>Удаление компонента (изменяет archetype).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Системы</h5>
+<table>
+<thead>
+<tr>
+<th>Базовый класс</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SystemBase</code></td>
+<td>Современный подход: <code>OnUpdate()</code>, <code>Entities.ForEach(...)</code>.</td>
+</tr>
+<tr>
+<td><code>JobComponentSystem</code></td>
+<td>Устаревший: <code>OnUpdate()</code> → <code>JobHandle</code>.</td>
+</tr>
+<tr>
+<td><code>ComponentSystem</code></td>
+<td>Без job’ов (только для инициализации).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5><code>Entities.ForEach</code> (SystemBase)</h5>
+<pre><code class="language-csharp">protected override void OnUpdate()
+{
+    float deltaTime = Time.DeltaTime;
+    Entities
+        .WithName("Movement")
+        .WithBurst(FloatMode.Default, FloatPrecision.Standard, true)
+        .ForEach((ref Translation pos, in Velocity vel) =>
+        {
+            pos.Value += vel.Value * deltaTime;
+        })
+        .ScheduleParallel(); // или .Run()
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Модификатор</th>
+<th>Эффект</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.WithNativeDisableParallelForRestriction()</code></td>
+<td>Разрешает запись в shared <code>NativeArray</code>.</td>
+</tr>
+<tr>
+<td><code>.WithReadOnly(component)</code></td>
+<td>Чтение без блокировки.</td>
+</tr>
+<tr>
+<td><code>.WithStructuralChanges()</code></td>
+<td>Разрешает добавление/удаление компонентов (только <code>.Run()</code>).</td>
+</tr>
+<tr>
+<td><code>.WithDisposeOnCompletion(array)</code></td>
+<td>Авто-<code>Dispose</code> <code>NativeArray</code> после job’а.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Shared Component и Buffer</h5>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ISharedComponentData</code></td>
+<td>Значение разделяется между <code>Entity</code> (например, <code>Material</code>). Изменение — копирование archetype.</td>
+</tr>
+<tr>
+<td><code>IBufferElementData</code></td>
+<td>Динамический массив на <code>Entity</code> (например, <code>WeaponAmmo</code>). Доступ: <code>EntityManager.GetBuffer&#x3C;T>(entity)</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>3. Shader Graph и VFX Graph</h4>
+<h5>Shader Graph (URP/HDRP)</h5>
+<h6>Типы шейдеров</h6>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unlit</strong></td>
+<td>Без освещения (UI, particles).</td>
+</tr>
+<tr>
+<td><strong>Lit</strong></td>
+<td>Стандартное PBR-освещение.</td>
+</tr>
+<tr>
+<td><strong>Transparent</strong></td>
+<td>Алгоритмы blending: <code>Alpha</code>, <code>Premultiply</code>, <code>Additive</code>, <code>Multiply</code>.</td>
+</tr>
+<tr>
+<td><strong>2D</strong></td>
+<td>Sprite-специфичные: <code>Sprite</code>, <code>Sprite Lit</code>, <code>Sprite Unlit</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Ключевые ноды</h6>
+<table>
+<thead>
+<tr>
+<th>Группа</th>
+<th>Ноды</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input</strong></td>
+<td><code>Time</code>, <code>Screen Position</code>, <code>Object Position</code>, <code>Tiling &#x26; Offset</code>, <code>Properties</code> (Vector2, Texture, Color).</td>
+</tr>
+<tr>
+<td><strong>Math</strong></td>
+<td><code>Add</code>, <code>Multiply</code>, <code>Power</code>, <code>Sine</code>, <code>Step</code>, <code>Smoothstep</code>, <code>Lerp</code>.</td>
+</tr>
+<tr>
+<td><strong>Vector</strong></td>
+<td><code>Normalize</code>, <code>Cross Product</code>, <code>Dot Product</code>, <code>Transform</code>.</td>
+</tr>
+<tr>
+<td><strong>UV</strong></td>
+<td><code>Tiling And Offset</code>, <code>Mirror</code>, <code>Rotate</code>, <code>Polar Coordinates</code>.</td>
+</tr>
+<tr>
+<td><strong>Procedural</strong></td>
+<td><code>Noise</code>, <code>Gradient</code>, <code>Checkerboard</code>, <code>Voronoi</code>.</td>
+</tr>
+<tr>
+<td><strong>Lighting</strong></td>
+<td><code>Main Light</code>, <code>Additional Lights</code>, <code>Vertex Normal</code>, <code>World Space Reflections</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Параметры шейдера (в инспекторе)</h6>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Surface</code></td>
+<td><code>Opaque</code>, <code>Transparent</code>.</td>
+</tr>
+<tr>
+<td><code>Blend Mode</code></td>
+<td><code>Alpha</code>, <code>Additive</code>, <code>Multiply</code>, <code>Premultiply</code>.</td>
+</tr>
+<tr>
+<td><code>Culling</code></td>
+<td><code>Off</code>, <code>Front</code>, <code>Back</code>.</td>
+</tr>
+<tr>
+<td><code>Queue Offset</code></td>
+<td>Смещение render queue (<code>Geometry+100</code> = 2500+100).</td>
+</tr>
+<tr>
+<td><code>Two Sided</code></td>
+<td>Отключение backface culling.</td>
+</tr>
+<tr>
+<td><code>Depth Write</code></td>
+<td>Запись в depth buffer (отключать для transparent).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>VFX Graph (HDRP / URP с VFX Feature)</h5>
+<h6>Архитектура</h6>
+<table>
+<thead>
+<tr>
+<th>Блок</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Context</strong></td>
+<td><code>Spawn</code>, <code>Initialize</code>, <code>Update</code>, <code>Output</code>.</td>
+</tr>
+<tr>
+<td><strong>Block</strong></td>
+<td><code>Add Velocity</code>, <code>Apply Force</code>, <code>Collision</code>, <code>Color Over Life</code>.</td>
+</tr>
+<tr>
+<td><strong>Operator</strong></td>
+<td><code>Add</code>, <code>Multiply</code>, <code>Sample Texture</code>, <code>Noise</code>.</td>
+</tr>
+<tr>
+<td><strong>Event</strong></td>
+<td><code>Collision Event</code>, <code>Trigger Event</code> — реакция на события.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Типы систем</h6>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPU</strong></td>
+<td>Выполняется на GPU (миллионы частиц). Требует <code>VFXRenderer</code>.</td>
+</tr>
+<tr>
+<td><strong>CPU</strong></td>
+<td>Для сложной логики (colliders, events). Макс. ~10k частиц.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Интеграция с кодом</h6>
+<pre><code class="language-csharp">VFXEventAttribute attr = vfxSystem.CreateVFXEventAttribute();
+attr.SetFloat("Speed", 5.0f);
+attr.SetVector3("Direction", transform.forward);
+vfxSystem.SendEvent("Spawn", attr);
+vfxSystem.SetFloat("GlobalIntensity", 0.8f); // глобальный параметр
+</code></pre>
+<blockquote>
+<p>⚠️ Требования:</p>
+<ul>
+<li>В URP: <code>Renderer Features > VFX Renderer</code>.</li>
+<li>Текстуры: <code>VFXLit</code>, <code>VFXUnlit</code> — специальные шейдеры частиц.</li>
+<li>Для GPU-частиц: <code>VFX Property Binder</code> — связь с <code>Transform</code>, <code>SkinnedMeshRenderer</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>4. Asset Bundles</h4>
+<h5>Сборка</h5>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BuildPipeline.BuildAssetBundles(outputPath, BuildAssetBundleOptions, BuildTarget)</code></td>
+<td>Основной метод.</td>
+</tr>
+<tr>
+<td><code>AssetBundleBuild</code></td>
+<td>Пакетная сборка: <code>assetBundleName</code>, <code>assetNames</code>, <code>assetBundleVariant</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6><code>BuildAssetBundleOptions</code></h6>
+<table>
+<thead>
+<tr>
+<th>Флаг</th>
+<th>Эффект</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code></td>
+<td>Без сжатия.</td>
+</tr>
+<tr>
+<td><code>UncompressedAssetBundle</code></td>
+<td>Не сжимать (быстрая загрузка, большой размер).</td>
+</tr>
+<tr>
+<td><code>DisableWriteTypeTree</code></td>
+<td>Уменьшает размер, но ломает обратную совместимость.</td>
+</tr>
+<tr>
+<td><code>StrictMode</code></td>
+<td>Ошибка при циклических зависимостях.</td>
+</tr>
+<tr>
+<td><code>DeterministicAssetBundle</code></td>
+<td>Одинаковый хеш при одинаковом содержимом.</td>
+</tr>
+<tr>
+<td><code>ChunkBasedCompression</code></td>
+<td>LZ4 (быстрее LZMA, размер +~30%).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Загрузка</h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AssetBundle.LoadFromFileAsync(path)</code></td>
+<td>Быстро — memory-mapped.</td>
+</tr>
+<tr>
+<td><code>AssetBundle.LoadFromMemoryAsync(byte[])</code></td>
+<td>Для скачанных данных.</td>
+</tr>
+<tr>
+<td><code>AssetBundle.LoadAssetAsync&#x3C;T>(name)</code></td>
+<td>Асинхронная загрузка ассета.</td>
+</tr>
+<tr>
+<td><code>AssetBundle.Unload(bool unloadAllLoadedObjects)</code></td>
+<td><code>true</code> — выгрузить и ассеты, <code>false</code> — только bundle.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Кэширование (для онлайн-загрузки)</h5>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Caching.ClearCache()</code></td>
+<td>Очистка всего кэша.</td>
+</tr>
+<tr>
+<td><code>Caching.ClearAllCachedVersions(key)</code></td>
+<td>Удаление старых версий.</td>
+</tr>
+<tr>
+<td><code>UnityWebRequest.GetAssetBundle(url, hash, crc)</code></td>
+<td>Автоматическое кэширование через <code>Caching</code>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Практика:</p>
+<ul>
+<li>Всегда вызывайте <code>AssetBundle.Unload(false)</code> после загрузки ассетов — освобождает bundle, оставляя ассеты.</li>
+<li>Для hot reload: <code>Resources.UnloadUnusedAssets()</code> + <code>GC.Collect()</code>.</li>
+<li><code>AssetBundle.mainAsset</code> — устаревшее; используйте явное имя.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>5. Безопасность</h4>
+<h5>Обфускация кода</h5>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Возможности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Obfuscator (Unity)</strong></td>
+<td>Базовая переименовка (встроен в IL2CPP при <code>Engine Code Stripping</code>).</td>
+</tr>
+<tr>
+<td><strong>Babel Obfuscator</strong>, <strong>Dotfuscator</strong></td>
+<td>Полная обфускация: renaming, control flow, string encryption, anti-debug.</td>
+</tr>
+<tr>
+<td><strong>ConfuserEx</strong></td>
+<td>Open-source; поддержка Unity (только managed assemblies).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Ограничения:</p>
+<ul>
+<li>IL2CPP конвертирует C# → C++ → native, что затрудняет reverse engineering.</li>
+<li>Burst-скомпилированный код — машинный, без метаданных.</li>
+</ul>
+</blockquote>
+<hr>
+<h5>Защита от читов</h5>
+<table>
+<thead>
+<tr>
+<th>Уровень</th>
+<th>Меры</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Клиент</strong></td>
+<td>Валидация входных данных, <code>Time.unscaledDeltaTime</code> для анти-таймчейт, <code>Debug.isDebugBuild</code> guard.</td>
+</tr>
+<tr>
+<td><strong>Сетевой</strong></td>
+<td>Серверная валидация (координаты, скорости), signed RPC, server-authoritative state.</td>
+</tr>
+<tr>
+<td><strong>Память</strong></td>
+<td><code>SecurePlayerPrefs</code> (шифрование), <code>Unity.MemoryProfiler</code> для поиска memory editors.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Secure Storage</h5>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PlayerPrefs</code></td>
+<td>Не безопасен — хранится в открытом виде (registry / plist / shared_prefs).</td>
+</tr>
+<tr>
+<td><strong>Unity Encrypted PlayerPrefs</strong></td>
+<td>Пакет <code>com.unity.nuget.mono-cecil</code> + AES-256 (community solutions).</td>
+</tr>
+<tr>
+<td><strong>Native Plugins</strong></td>
+<td>Keychain (iOS), Keystore (Android), DPAPI (Windows) — через C++ plugin.</td>
+</tr>
+<tr>
+<td><strong>PlayFab</strong></td>
+<td><code>Cloud Script</code> + <code>Player Данные</code> с encryption at rest.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Анти-отладка</h5>
+<table>
+<thead>
+<tr>
+<th>Приём</th>
+<th>Реализация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Проверка отладчика</td>
+<td><code>#if !UNITY_EDITOR &#x26;&#x26; UNITY_STANDALONE_WIN</code> → <code>CheckRemoteDebuggerPresent</code>.</td>
+</tr>
+<tr>
+<td>Integrity Check</td>
+<td>Хеш сборки (<code>Application.version</code>, <code>crc</code>) → сравнение с сервером.</td>
+</tr>
+<tr>
+<td>Tamper Detection</td>
+<td>Проверка <code>Assembly.GetExecutingAssembly().Location</code> на изменение.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Реалистично:</p>
+<ul>
+<li>Полная защита невозможна — цель: повысить стоимость взлома.</li>
+<li>Критичные данные (ключи, баланс) — только на сервере.</li>
+<li>Используйте <code>DOTNET_DEFAULT_DICTIONARY_CAPACITY=0</code> в <code>boot.config</code> для уменьшения метаданных.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="блок-5-ui-локализация-тестирование-облако-экстеншены-редактора">Блок 5. UI, Локализация, Тестирование, Облако, Экстеншены редактора</h3>
+<h4>1. UI Toolkit</h4>
+<h5>Архитектура</h5>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UXML</strong></td>
+<td>Декларативное описание UI (аналог HTML). Расширение <code>.uxml</code>.</td>
+</tr>
+<tr>
+<td><strong>USS</strong></td>
+<td>Стилизация (аналог CSS). Расширение <code>.uss</code>. Поддержка классов, псевдоклассов, <code>:hover</code>, <code>:focus</code>.</td>
+</tr>
+<tr>
+<td><strong><code>VisualElement</code></strong></td>
+<td>Базовый класс всех UI-элементов. Аналог <code>GameObject</code> в UI иерархии.</td>
+</tr>
+<tr>
+<td><strong><code>PanelSettings</code></strong></td>
+<td>Настройки рендерера: <code>scaleMode</code>, <code>referenceResolution</code>, <code>renderMode</code> (<code>WorldSpace</code>, <code>ScreenSpaceOverlay</code>, <code>ScreenSpaceCamera</code>).</td>
+</tr>
+<tr>
+<td><strong><code>UIDocument</code></strong></td>
+<td>Компонент для привязки UXML/USS к GameObject (в сцене).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>UXML — синтаксис</h5>
+<pre><code class="language-xml">&#x3C;UXML xmlns:ui="UnityEngine.UIElements" xmlns:engine="UnityEditor.UIElements">
+  &#x3C;ui:Label text="Score:" class="header" />
+  &#x3C;ui:Box name="score-container">
+    &#x3C;ui:Label name="score-value" text="0" />
+  &#x3C;/ui:Box>
+  &#x3C;ui:Button text="Restart" name="restart-btn" />
+&#x3C;/UXML>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Атрибут</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>class</code></td>
+<td>CSS-класс (множественные: <code>"btn primary"</code>).</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Уникальный идентификатор (для поиска через <code>root.Q&#x3C;Label>("score-value")</code>).</td>
+</tr>
+<tr>
+<td><code>picking-mode</code></td>
+<td><code>Position</code>, <code>Ignore</code> — влияет на клики.</td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>Inline-стили (избегать — нарушает разделение слоёв).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>USS — ключевые правила</h5>
+<div class="itu-code-embed" data-example="css/sp-9-9-04-razrabotka-igr-301-002" data-title="1. UI Toolkit" data-min-height="408"> </div>
+<table>
+<thead>
+<tr>
+<th>Правило</th>
+<th>Поддержка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flex-direction</code>, <code>justify-content</code>, <code>align-items</code></td>
+<td>Полная (Flexbox).</td>
+</tr>
+<tr>
+<td><code>unity-text-outline-color</code>, <code>unity-text-outline-width</code></td>
+<td>Outline текста.</td>
+</tr>
+<tr>
+<td><code>unity-background-image</code></td>
+<td>Текстура фона (только <code>VisualElement</code>, не <code>Label</code>).</td>
+</tr>
+<tr>
+<td><code>--property-name</code></td>
+<td>CSS-переменные (через <code>style.SetProperty("--prop", "value")</code> в коде).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Runtime API</h5>
+<table>
+<thead>
+<tr>
+<th>Класс/Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VisualTreeAsset.CloneTree()</code></td>
+<td>Создание экземпляра из <code>.uxml</code>.</td>
+</tr>
+<tr>
+<td><code>root.Q&#x3C;T>(name, className)</code></td>
+<td>Поиск элемента по <code>name</code> и/или <code>class</code>.</td>
+</tr>
+<tr>
+<td><code>element.Add(child)</code> / <code>element.Remove(child)</code></td>
+<td>Изменение иерархии.</td>
+</tr>
+<tr>
+<td><code>element.ToggleInClassList("active")</code></td>
+<td>Переключение CSS-класса.</td>
+</tr>
+<tr>
+<td><code>element.RegisterCallback&#x3C;ClickEvent>(evt => { })</code></td>
+<td>Обработка событий.</td>
+</tr>
+<tr>
+<td><code>element.Bind(new SerializedObject(target))</code></td>
+<td>Привязка к <code>ScriptableObject</code>/<code>MonoBehaviour</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Binding (UI Toolkit + SerializedObject)</h5>
+<pre><code class="language-csharp">// В UXML: &#x3C;ui:Label binding-path="health" text="${health}"/>
+var so = new SerializedObject(playerStats);
+document.rootVisualElement.Bind(so);
+so.Update(); // перед изменением
+playerStats.health = 75;
+so.ApplyModifiedProperties(); // обновляет UI
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Binding Type</th>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Simple</strong></td>
+<td><code>$&#x26;#123;propertyName&#x26;#125;</code></td>
+</tr>
+<tr>
+<td><strong>With Format</strong></td>
+<td><code>$&#x26;#123;propertyName:0.00&#x26;#125;</code> (требует <code>SmartFormat</code> integration)</td>
+</tr>
+<tr>
+<td><strong>Nested</strong></td>
+<td><code>$&#x26;#123;inventory.items.Array.data[0].name&#x26;#125;</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Важно:</p>
+<ul>
+<li><code>UIDocument.panelSettings</code> должен быть назначен.</li>
+<li>В runtime: <code>UIDocument.component.gameObject.SetActive(false)</code> не останавливает рендеринг — используйте <code>document.rootVisualElement.style.display = DisplayStyle.None</code>.</li>
+<li><code>IMGUIContainer</code> — для встраивания legacy UI (избегать в новых проектах).</li>
+</ul>
+</blockquote>
+<hr>
+<h4>2. Localization (com.unity.localization)</h4>
+<h5>Архитектура</h5>
+<table>
+<thead>
+<tr>
+<th>Элемент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Locale</code></strong></td>
+<td>Язык + регион (<code>en</code>, <code>ru-RU</code>, <code>zh-Hans</code>). Добавляется в <code>Localization Settings</code>.</td>
+</tr>
+<tr>
+<td><strong><code>String Table</code></strong> (<code>String Table Collection</code>)</td>
+<td>Коллекция строк: <code>Table Name</code>, <code>Entry Id</code>, <code>Key</code>, <code>Value</code>.</td>
+</tr>
+<tr>
+<td><strong><code>Term</code></strong></td>
+<td>Плейсхолдер: <code>&#x26;#123;PlayerName&#x26;#125;</code>, <code>&#x26;#123;ItemCount&#x26;#125;</code> — для динамических строк.</td>
+</tr>
+<tr>
+<td><strong><code>Localized String</code></strong></td>
+<td>Компонент для GameObject: <code>Table Reference</code>, <code>Table Entry Reference</code>, <code>Format Arguments</code>.</td>
+</tr>
+<tr>
+<td><strong><code>Smart</code></strong></td>
+<td>Расширение форматирования: pluralization, gender, conditional.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5><code>SmartFormat</code> — синтентаксис</h5>
+<pre><code class="language-text">"Вы собрали {ItemCount:plural:zero=ничего|one=1 предмет|few={ItemCount} предмета|many={ItemCount} предметов|other={ItemCount} предметов}."
+
+</code></pre>
+<hr>
+<h5>Runtime API</h5>
+<pre><code class="language-csharp">// Получение строки
+var table = LocalizationSettings.StringDatabase.GetTable("GameText");
+string text = table.GetEntry("WELCOME_MESSAGE").Format("Player1");
+
+// Смена локали
+await LocalizationSettings.Instance.SetLocaleAsync(locale);
+
+// События
+LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Настройка</th>
+<th>Расположение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Localization Settings</code></td>
+<td><code>Project Settings > Localization</code></td>
+</tr>
+<tr>
+<td><code>Asset References</code></td>
+<td><code>String Table</code> → <code>Asset Table</code> (для спрайтов, аудио)</td>
+</tr>
+<tr>
+<td><code>Google Sheets Sync</code></td>
+<td>Требует <code>com.unity.localization.google-sheets</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Производительность:</p>
+<ul>
+<li>Кэшируйте <code>LocalizedString.GetLocalizedString()</code> — повторные вызовы с теми же аргументами не аллоцируют.</li>
+<li>Избегайте <code>LocalizedString.GetLocalizedString()</code> в <code>Update</code> — используйте <code>OnLocaleChanged</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>3. Test Framework (com.unity.test-framework)</h4>
+<h5>Типы тестов</h5>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Атрибут</th>
+<th>Выполняется</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EditMode</strong></td>
+<td><code>[Test]</code></td>
+<td>Вне игрового цикла</td>
+<td>Быстро, доступ к private/protected, <code>Editor</code> assemblies.</td>
+</tr>
+<tr>
+<td><strong>PlayMode</strong></td>
+<td><code>[UnityTest]</code></td>
+<td>Внутри <code>PlayMode</code></td>
+<td>Доступ к <code>GameObject</code>, <code>MonoBehaviour</code>, <code>Time</code>.</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td><code>[PerformanceTest]</code></td>
+<td>В PlayMode</td>
+<td>Метрики: GC, FPS, duration.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Жизненный цикл</h5>
+<table>
+<thead>
+<tr>
+<th>Атрибут</th>
+<th>Вызывается</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[OneTimeSetUp]</code></td>
+<td>Один раз перед всеми тестами в классе</td>
+</tr>
+<tr>
+<td><code>[SetUp]</code></td>
+<td>Перед каждым тестом</td>
+</tr>
+<tr>
+<td><code>[TearDown]</code></td>
+<td>После каждого теста</td>
+</tr>
+<tr>
+<td><code>[OneTimeTearDown]</code></td>
+<td>Один раз после всех тестов</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Assertion API</h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Assert.AreEqual(expected, actual)</code></td>
+<td><code>Assert.AreEqual(42, result)</code></td>
+</tr>
+<tr>
+<td><code>Assert.IsTrue(condition)</code></td>
+<td><code>Assert.IsTrue(obj.activeSelf)</code></td>
+</tr>
+<tr>
+<td><code>Assert.Throws&#x3C;T>(code)</code></td>
+<td><code>Assert.Throws&#x3C;ArgumentNullException>(() => method(null))</code></td>
+</tr>
+<tr>
+<td><code>LogAssert.Expect(LogType.Warning, "message")</code></td>
+<td>Проверка логов</td>
+</tr>
+<tr>
+<td><code>yield return new WaitForSeconds(1f)</code></td>
+<td>В <code>[UnityTest]</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Performance Testing</h5>
+<pre><code class="language-csharp">[PerformanceTest]
+public IEnumerator Movement_Speed()
+{
+    var obj = new GameObject().AddComponent&#x3C;Rigidbody>();
+    yield return Measure.Frames()
+        .WarmupCount(10)
+        .MeasurementCount(50)
+        .Run(() =>
+        {
+            obj.AddForce(Vector3.forward);
+        });
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Метрика</th>
+<th>Единица</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GC.Alloc</code></td>
+<td>байты</td>
+</tr>
+<tr>
+<td><code>Duration</code></td>
+<td>секунды</td>
+</tr>
+<tr>
+<td><code>FrameCount</code></td>
+<td>кадры</td>
+</tr>
+<tr>
+<td><code>FPS</code></td>
+<td>frames per second</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Практика:</p>
+<ul>
+<li><code>EditMode</code> тесты — для pure-логики, алгоритмов, serialization.</li>
+<li><code>PlayMode</code> — для интеграции с движком.</li>
+<li>В CI: <code>Unity.exe -runTests -testPlatform EditMode -logFile -</code> → вывод в stdout.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>4. Cloud Services</h4>
+<h5>Unity Cloud Build (UCB)</h5>
+<table>
+<thead>
+<tr>
+<th>Настройка</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Targets</strong></td>
+<td><code>Android_Development</code>, <code>iOS_Release</code> — комбинация platform + config.</td>
+</tr>
+<tr>
+<td><strong>Build Hooks</strong></td>
+<td><code>preBuild.sh</code>, <code>postBuild.sh</code> — скрипты на агенте.</td>
+</tr>
+<tr>
+<td><strong>Variables</strong></td>
+<td><code>UNITY_USERNAME</code>, <code>UNITY_PASSWORD</code> — для license activation.</td>
+</tr>
+<tr>
+<td><strong>Artifacts</strong></td>
+<td><code>.apk</code>, <code>.ipa</code>, <code>.zip</code> — доступны по URL или через API.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Plastic SCM (Unity Version Control)</h5>
+<table>
+<thead>
+<tr>
+<th>Команда CLI</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cm checkout /main@rep:project</code></td>
+<td>Переключение на ветку.</td>
+</tr>
+<tr>
+<td><code>cm add .</code></td>
+<td>Добавление новых файлов.</td>
+</tr>
+<tr>
+<td><code>cm checkin -c "message"</code></td>
+<td>Коммит.</td>
+</tr>
+<tr>
+<td><code>cm merge /main@rep:project</code></td>
+<td>Слияние.</td>
+</tr>
+<tr>
+<td><code>cm cloud sync</code></td>
+<td>Синхронизация с облаком.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><code>.plasticignore</code></th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*.meta</code></td>
+<td><code>Library/</code></td>
+</tr>
+<tr>
+<td><code>Temp/</code></td>
+<td><code>UserSettings/</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Unity Services Dashboard</h5>
+<table>
+<thead>
+<tr>
+<th>Сервис</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Analytics</strong></td>
+<td>События: <code>customEvent</code>, <code>transaction</code>, <code>userAttribute</code>.</td>
+</tr>
+<tr>
+<td><strong>Remote Settings</strong></td>
+<td>Динамические параметры: <code>float</code>, <code>string</code>, <code>bool</code>.</td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td><code>Anonymous</code>, <code>Apple</code>, <code>Google</code>, <code>Custom</code>.</td>
+</tr>
+<tr>
+<td><strong>Cloud Code</strong></td>
+<td>JavaScript-функции на сервере (аналог Cloud Script).</td>
+</tr>
+<tr>
+<td><strong>Economy</strong></td>
+<td>Валюты, предметы, баланс.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Миграция:</p>
+<ul>
+<li><code>Unity Analytics</code> → <code>Unity Gaming Services (UGS)</code>.</li>
+<li><code>Unity IAP</code> — теперь часть <code>Unity Monetization</code>.</li>
+<li><code>Unity Ads</code> и <code>Unity LevelPlay</code> — объединены в <code>Unity Ads Monetization</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>5. Editor Scripting</h4>
+<h5><code>EditorWindow</code></h5>
+<pre><code class="language-csharp">public class MyWindow : EditorWindow
+{
+    [MenuItem("Tools/My Window")]
+    public static void ShowWindow() => GetWindow&#x3C;MyWindow>("My Tool");
+
+    private void OnGUI()
+    {
+        if (GUILayout.Button("Process"))
+            Process();
+    }
+
+    private void OnInspectorUpdate() => Repaint(); // автообновление
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Вызов</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OnGUI()</code></td>
+<td>При перерисовке окна.</td>
+</tr>
+<tr>
+<td><code>OnEnable()</code></td>
+<td>При открытии/фокусе.</td>
+</tr>
+<tr>
+<td><code>OnDisable()</code></td>
+<td>При закрытии/потере фокуса.</td>
+</tr>
+<tr>
+<td><code>OnInspectorUpdate()</code></td>
+<td>Каждые 0.1s (по умолчанию).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5><code>CustomEditor</code></h5>
+<pre><code class="language-csharp">[CustomEditor(typeof(PlayerStats))]
+public class PlayerStatsEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("health"));
+        serializedObject.ApplyModifiedProperties();
+    }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OnSceneGUI()</code></td>
+<td>Рисование в сцене (handles, gizmos).</td>
+</tr>
+<tr>
+<td><code>OnPreviewGUI()</code></td>
+<td>Превью в инспекторе (для <code>ScriptableObject</code>).</td>
+</tr>
+<tr>
+<td><code>RequiresConstantRepaint()</code></td>
+<td><code>return true</code> — постоянный <code>Repaint()</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5><code>PropertyDrawer</code></h5>
+<pre><code class="language-csharp">[CustomPropertyDrawer(typeof(RangeFloat))]
+public class RangeFloatDrawer : PropertyDrawer
+{
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        var minProp = property.FindPropertyRelative("min");
+        var maxProp = property.FindPropertyRelative("max");
+        EditorGUI.MinMaxSlider(position, label, minProp, maxProp, 0f, 100f);
+    }
+}
+</code></pre>
+<hr>
+<h5>Build Pipeline (Callbacks)</h5>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-301-003" data-title="5. Editor Scripting" data-min-height="372"> </div>
+<table>
+<thead>
+<tr>
+<th>Интерфейс</th>
+<th>Фаза</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IPreprocessBuildWithReport</code></td>
+<td>До сборки</td>
+</tr>
+<tr>
+<td><code>IProcessSceneWithReport</code></td>
+<td>После обработки сцены (lightmapping, stripping)</td>
+</tr>
+<tr>
+<td><code>IPostprocessBuildWithReport</code></td>
+<td>После сборки</td>
+</tr>
+<tr>
+<td><code>IOrderedCallback</code></td>
+<td>Управление порядком (<code>callbackOrder</code>)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Практика:</p>
+<ul>
+<li>Все editor-скрипты — в папке <code>Editor/</code>.</li>
+<li><code>Undo.RecordObject(target, "Change")</code> — для отмены действий.</li>
+<li><code>EditorUtility.DisplayProgressBar()</code> — прогресс длительных операций.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="блок-6-мобильные-сети-оптимизация-интеграции-cicd">Блок 6. Мобильные, Сети, Оптимизация, Интеграции, CI/CD</h3>
+<h4>1. Мобильная разработка</h4>
+<h5>Player Settings (Android)</h5>
+<table>
+<thead>
+<tr>
+<th>Категория</th>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Other Settings</strong></td>
+<td><code>Bundle Identifier</code></td>
+<td><code>com.company.game</code> — должен быть уникальным.</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Version</code> / <code>Bundle Version Code</code></td>
+<td><code>1.0.0</code> / <code>100</code> — версия отображаемая / внутренний инкремент.</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Minimum API Level</code></td>
+<td><code>Android 5.0 (API level 21)</code> — минимум для IL2CPP.</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Target API Level</code></td>
+<td><code>Automatic</code> / <code>API level 34 (Android 14)</code> — для Google Play (требуется <code>≥</code> 33 с 2024 г.).</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Scripting Backend</code></td>
+<td><code>IL2CPP</code> (обязательно для 64-bit).</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Target Architectures</code></td>
+<td><code>ARM64</code> (обязательно), <code>ARMv7</code> (опционально).</td>
+</tr>
+<tr>
+<td><strong>Publishing Settings</strong></td>
+<td><code>Keystore</code></td>
+<td><code>Create New</code> / <code>Use Existing</code> — release signing. Debug: <code>debug.keystore</code>.</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Build</code></td>
+<td><code>Internal</code> (монолитный APK), <code>Gradle</code> (рекомендуется), <code>ADT</code> (устарело).</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Split Application Binary</code></td>
+<td><code>Enable</code> → <code>base.apk</code> + <code>UnityData</code> (для <code>></code>100 МБ).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Player Settings (iOS)</h5>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Target SDK</code></td>
+<td><code>Device SDK</code> (release), <code>Simulator SDK</code> (debug).</td>
+</tr>
+<tr>
+<td><code>Architecture</code></td>
+<td><code>ARM64</code> (обязательно), <code>ARM64 + Simulator</code> (для тестирования в Xcode).</td>
+</tr>
+<tr>
+<td><code>Strip Engine Code</code></td>
+<td>Удаляет неиспользуемые модули движка (экономия 20–50 МБ).</td>
+</tr>
+<tr>
+<td><code>Bitcode</code></td>
+<td><code>Disabled</code> (Apple не требует с 2023 г.).</td>
+</tr>
+<tr>
+<td><code>Camera Usage Description</code></td>
+<td>Обязательно, если используется камера (иначе rejection в App Store).</td>
+</tr>
+<tr>
+<td><code>Supported URL Schemes</code></td>
+<td>Для deep linking: <code>mygame://</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Permissions (Android)</h5>
+<table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>Где объявить</th>
+<th>Runtime?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>INTERNET</code></td>
+<td><code>AndroidManifest.xml</code> (автоматически при <code>Networking</code>)</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td><code>WRITE_EXTERNAL_STORAGE</code></td>
+<td><code>Player Settings > Publishing > Custom Main Gradle Template</code></td>
+<td>Да (Android 6.0+)</td>
+</tr>
+<tr>
+<td><code>VIBRATE</code></td>
+<td><code>AndroidManifest.xml</code></td>
+<td>Нет</td>
+</tr>
+<tr>
+<td><code>ACCESS_FINE_LOCATION</code></td>
+<td>Через plugin или <code>Plugins/Android/AndroidManifest.xml</code></td>
+<td>Да</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Пример runtime-запроса (Android):</p>
+</blockquote>
+<pre><code class="language-csharp">if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+    Permission.RequestUserPermission(Permission.FineLocation);
+</code></pre>
+<hr>
+<h5>Deep Linking</h5>
+<table>
+<thead>
+<tr>
+<th>Платформа</th>
+<th>Реализация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Android</strong></td>
+<td><code>AndroidManifest.xml</code>:</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-xml">&#x3C;intent-filter>
+  &#x3C;action android:name="android.intent.action.VIEW" />
+  &#x3C;category android:name="android.intent.category.DEFAULT" />
+  &#x3C;category android:name="android.intent.category.BROWSABLE" />
+  &#x3C;Данные android:scheme="mygame" android:host="open" />
+&#x3C;/intent-filter>
+</code></pre>
+<p>Обработка: <code>Application.absoluteURL</code> → <code>OnApplicationFocus(true)</code>. |
+| <strong>iOS</strong> | <code>Info.plist</code>:</p>
+<pre><code class="language-xml">&#x3C;key>CFBundleURLTypes&#x3C;/key>
+&#x3C;array>
+  &#x3C;dict>&#x3C;key>CFBundleURLSchemes&#x3C;/key>&#x3C;array>&#x3C;string>mygame&#x3C;/string>&#x3C;/array>&#x3C;/dict>
+&#x3C;/array>
+</code></pre>
+<p>Обработка: <code>AppDelegate</code> → <code>UnityAppController</code> → <code>Application.absoluteURL</code>. |</p>
+<blockquote>
+<p>⚠️ Важно:</p>
+<ul>
+<li>На iOS: <code>LSApplicationQueriesSchemes</code> — если открываете другие приложения (<code>whatsapp://</code>, <code>tg://</code>).</li>
+<li><code>Application.absoluteURL</code> возвращает <code>null</code>, если игра запущена не из ссылки.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>2. Сетевые решения</h4>
+<h5>Unity Transport (com.unity.transport)</h5>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UnityTransport</code></td>
+<td>Транспортный уровень: UDP (на основе <code>Netcode.Transports</code>).</td>
+</tr>
+<tr>
+<td>Protocols</td>
+<td><code>UNET</code> (устарело), <code>Ruffles</code> (новый, с congestion control).</td>
+</tr>
+<tr>
+<td>Channels</td>
+<td><code>ReliableSequenced</code>, <code>Unreliable</code>, <code>UnreliableSequenced</code>.</td>
+</tr>
+<tr>
+<td>Connection Approval</td>
+<td>Серверная валидация подключения (токены, bans).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Netcode for GameObjects (com.unity.netcode.gameobjects)</h5>
+<table>
+<thead>
+<tr>
+<th>Понятие</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NetworkObject</code></td>
+<td>Компонент на GameObject: <code>Spawn With Scene</code>, <code>Destroy With Scene</code>.</td>
+</tr>
+<tr>
+<td><code>NetworkVariable&#x3C;T></code></td>
+<td>Синхронизируемая переменная: <code>ReadPermission</code>, <code>WritePermission</code>, <code>OnValueChanged</code>.</td>
+</tr>
+<tr>
+<td><code>Rpc</code></td>
+<td><code>[ServerRpc]</code>, <code>[ClientRpc]</code> — remote procedure calls. Поддержка <code>Delivery</code> (Reliable/Unreliable).</td>
+</tr>
+<tr>
+<td><code>NetworkBehaviour</code></td>
+<td>Базовый класс: <code>IsServer</code>, <code>IsClient</code>, <code>IsLocalPlayer</code>, <code>OwnerClientId</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Пример</h6>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-301-004" data-title="2. Сетевые решения" data-min-height="336"> </div>
+<hr>
+<h5>NAT Traversal</h5>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Relay Server</strong></td>
+<td>Unity Relay (UGS) — сервер-посредник (STUN/TURN).</td>
+</tr>
+<tr>
+<td><strong>UPnP</strong></td>
+<td>Автоматическое пробрасывание портов (ненадёжно).</td>
+</tr>
+<tr>
+<td><strong>Manual Port Forwarding</strong></td>
+<td>Указание порта в настройках роутера.</td>
+</tr>
+<tr>
+<td><strong>Connection Approval Token</strong></td>
+<td>Защита от подделки: JWT, подписанный сервером.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Ограничения:</p>
+<ul>
+<li><code>NetworkVariable&#x3C;T></code> поддерживает только <code>INetworkSerializable</code> типы — <code>int</code>, <code>float</code>, <code>FixedString</code>, <code>NetworkList&#x3C;T></code>.</li>
+<li><code>ClientRpc</code> без <code>Target</code> рассылается всем клиентам — избегайте в hot paths.</li>
+<li><code>NetworkSceneManager</code> — для загрузки сцен — <code>LoadScene</code>, <code>UnloadScene</code>, <code>ClientSynchronizationMode</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>3. Оптимизации</h4>
+<h5>Static Batching</h5>
+<table>
+<thead>
+<tr>
+<th>Условие</th>
+<th>Требования</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Static</code> flag</td>
+<td>GameObject должен быть <code>Static</code> (в инспекторе).</td>
+</tr>
+<tr>
+<td>Одинаковый материал</td>
+<td>Все объекты — один <code>Material</code>.</td>
+</tr>
+<tr>
+<td>Не анимированы</td>
+<td>Нет скелетной анимации, morph targets.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Результат: объединение в один mesh при сборке. В редакторе: <code>Window > Analysis > Frame Debugger</code> → <code>StaticBatcher.Combine</code>.</p>
+</blockquote>
+<hr>
+<h5>GPU Instancing</h5>
+<table>
+<thead>
+<tr>
+<th>Условие</th>
+<th>Требования</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Одинаковый mesh/material</td>
+<td>Все инстансы — один <code>Mesh</code> + <code>Material</code>.</td>
+</tr>
+<tr>
+<td><code>Enable GPU Instancing</code></td>
+<td>В инспекторе материала (URP/HDRP: <code>GPU Instancing</code>).</td>
+</tr>
+<tr>
+<td>Поддержка шейдера</td>
+<td><code>#pragma multi_compile_instancing</code>, <code>UNITY_INSTANCING_BUFFER_START</code>.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Graphics.DrawMeshInstanced(mesh, submeshIndex, material, ...)</code></td>
+<td>Ручной вызов (до 1023 инстансов).</td>
+</tr>
+<tr>
+<td><code>Graphics.DrawMeshInstancedIndirect(...)</code></td>
+<td>Через compute buffer (миллионы).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Texture Atlasing</h5>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sprite Atlas</strong> (2D)</td>
+<td><code>Create > Sprite Atlas</code> → Drag sprites → <code>Pack Preview</code>.</td>
+</tr>
+<tr>
+<td><strong>Texture2D.PackTextures</strong></td>
+<td>Runtime атласинг (избегать в runtime — аллокации).</td>
+</tr>
+<tr>
+<td><strong>Shader Keywords</strong></td>
+<td><code>UNITY_TEXTURE_ALPHASPLIT_DISABLE</code> — для alpha-split текстур.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>LOD (Level of Detail)</h5>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Свойства</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LOD Group</code></td>
+<td><code>LOD 0..5</code>: <code>Screen Relative Transition Height</code>, <code>Renderers</code>.</td>
+</tr>
+<tr>
+<td><code>LOD Bias</code></td>
+<td>В <code>Quality Settings</code> — смещение автоматического выбора LOD.</td>
+</tr>
+<tr>
+<td><code>Culling</code></td>
+<td><code>Animate Physics</code>, <code>Cross Fade</code> — управление переходами.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Occlusion Culling</h5>
+<table>
+<thead>
+<tr>
+<th>Шаг</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Пометить <code>Occluder Static</code> / <code>Occludee Static</code>.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>Window > Rendering > Occlusion Culling</code> → <code>Bake</code>.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Настройка: <code>Smallest Occluder</code>, <code>Smallest Hole</code>, <code>Backface Threshold</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>| Результат | Просмотр в <code>Scene View > Occlusion Culling</code> → <code>Visualization</code>. |</p>
+<blockquote>
+<p>⚠️ Советы:</p>
+<ul>
+<li>Избегайте <code>Mesh.CombineMeshes</code> в runtime — используйте static batching заранее.</li>
+<li><code>Shader.Find("Standard")</code> → кэшируйте ссылки.</li>
+<li><code>MaterialPropertyBlock</code> — для изменения параметров без инстансинга материала.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>4. Сторонние интеграции</h4>
+<h5>Firebase (com.google.firebase)</h5>
+<table>
+<thead>
+<tr>
+<th>Пакет</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Firebase Analytics</code></td>
+<td>События, пользовательские параметры.</td>
+</tr>
+<tr>
+<td><code>Firebase Crashlytics</code></td>
+<td>Отчёты об ошибках (включая native crashes).</td>
+</tr>
+<tr>
+<td><code>Firebase Remote Config</code></td>
+<td>Динамические параметры (<code>GetLong("speed")</code>).</td>
+</tr>
+<tr>
+<td><code>Firebase Cloud Messaging</code></td>
+<td>Push-уведомления.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6>Инициализация</h6>
+<pre><code class="language-csharp">FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+    if (task.Result == DependencyStatus.Available)
+        FirebaseAnalytics.LogEvent("game_start");
+});
+</code></pre>
+<hr>
+<h5>Sentry (io.sentry.unity)</h5>
+<table>
+<thead>
+<tr>
+<th>Функция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SentrySdk.CaptureMessage("Info")</code></td>
+<td>Логирование.</td>
+</tr>
+<tr>
+<td><code>SentrySdk.CaptureException(ex)</code></td>
+<td>Исключения.</td>
+</tr>
+<tr>
+<td><code>ConfigureScope</code></td>
+<td>Добавление тегов: <code>scope.SetTag("level", "5")</code>.</td>
+</tr>
+<tr>
+<td><code>BeforeSend</code></td>
+<td>Фильтрация событий.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Discord Rich Presence</h5>
+<table>
+<thead>
+<tr>
+<th>Подход</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Discord Game SDK</strong></td>
+<td>Нативный SDK; обёртки в Asset Store / GitHub (проверьте актуальный package id в Package Manager).</td>
+</tr>
+<tr>
+<td><strong>Rich Presence</strong></td>
+<td><code>details</code>, <code>state</code>, <code>largeImageKey</code> — статус "в игре" в клиенте Discord.</td>
+</tr>
+<tr>
+<td><strong>Инициализация</strong></td>
+<td><code>clientId</code> из Developer Portal; вызовы SDK — из <code>Awake</code>/<code>Start</code>, обновление — при смене уровня.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Steamworks.NET</h5>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SteamAPI.Init()</code></td>
+<td>Инициализация (в <code>Awake</code>).</td>
+</tr>
+<tr>
+<td><code>SteamUserStats.SetStat("Kills", 42)</code></td>
+<td>Статистика.</td>
+</tr>
+<tr>
+<td><code>SteamUserStats.StoreStats()</code></td>
+<td>Сохранение на сервере.</td>
+</tr>
+<tr>
+<td><code>SteamFriends.SetRichPresence("status", "In Game")</code></td>
+<td>Rich Presence.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Важно:</p>
+<ul>
+<li>Firebase требует <code>google-services.json</code> (Android) / <code>GoogleService-Info.plist</code> (iOS).</li>
+<li>Sentry: <code>options.Dsn = "https://...@o123456.ingest.sentry.io/123456"</code> в <code>SentryOptions</code>.</li>
+<li>Steamworks.NET: <code>steam_appid.txt</code> в корне сборки (только для debug).</li>
+</ul>
+</blockquote>
+<hr>
+<h4>5. CI/CD</h4>
+<h5>GitHub Actions (<code>/.github/workflows/build.yml</code>)</h5>
+<div class="itu-code-embed" data-example="yaml/sp-9-9-04-razrabotka-igr-301-005" data-title="5. CI/CD" data-min-height="408"> </div>
+<hr>
+<h5>Jenkins Pipeline</h5>
+<div class="itu-code-embed" data-example="groovy/sp-9-9-04-razrabotka-igr-301-006" data-title="5. CI/CD" data-min-height="390"> </div>
+<hr>
+<h5>Azure Pipelines (<code>azure-pipelines.yml</code>)</h5>
+<pre><code class="language-yaml">- task: UnityBuild@3
+  inputs:
+    buildTarget: 'StandaloneWindows64'
+    outputPath: 'build/windows'
+    buildMethod: 'BuildScript.BuildWindows'
+</code></pre>
+<hr>
+<h5>Unity Builder (game-ci)</h5>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customImage</code></td>
+<td>Кастомный Docker-образ (с Android SDK, Xcode).</td>
+</tr>
+<tr>
+<td><code>allowDirtyBuild</code></td>
+<td>Сборка при dirty working tree (только для debug).</td>
+</tr>
+<tr>
+<td><code>versioning</code></td>
+<td><code>None</code>, <code>Automatic</code>, <code>Custom</code>.</td>
+</tr>
+<tr>
+<td><code>androidVersionCode</code></td>
+<td>Автоматическое увеличение: <code>$(date +%s)</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5>Постобработка</h5>
+<table>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Инструмент</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>APK Signing</strong></td>
+<td><code>apksigner</code> (Android), <code>codesign</code> (iOS).</td>
+</tr>
+<tr>
+<td><strong>ProGuard/R8</strong></td>
+<td>Уменьшение размера (Android).</td>
+</tr>
+<tr>
+<td><strong>AssetBundle Upload</strong></td>
+<td><code>aws s3 cp</code>, <code>az storage blob upload</code>.</td>
+</tr>
+<tr>
+<td><strong>Test Reports</strong></td>
+<td><code>nunit3</code> → <code>PublishTestResults@2</code> (Azure).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Практика:</p>
+<ul>
+<li>Используйте <code>--no-graphics</code> в CI для ускорения.</li>
+<li><code>Unity.exe -quit -batchmode -nographics -logFile - -executeMethod BuildScript.PerformBuild</code>.</li>
+<li>Кэшируйте <code>Library/</code> между сборками (осторожно: может вызывать артефакты).</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="ошибки">Ошибки</h2>
+<table>
+<thead>
+<tr>
+<th>Ситуация</th>
+<th>Что проверить</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Команда не найдена</td>
+<td>PATH, установка пакета, alias</td>
+</tr>
+<tr>
+<td>Permission denied</td>
+<td>пользователь, группа, sudo, ACL</td>
+</tr>
+<tr>
+<td>Неверная версия</td>
+<td>см. "Совместимость", <code>--version</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="в-подборках">В подборках</h2>
+<p>Статья входит в <a href="https://spirzen.ru/about/collections">тематические подборки</a> и блок "С чего начать?" на <a href="/">главной</a>. Соседние шаги того же маршрута:</p>
+<p><strong>Справочники</strong> — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/201">Справочник по Roblox</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-06-otraslevoe-po/111">Справочник по Adobe Photoshop</a>, <a href="https://spirzen.ru/encyclopedia/8-infra-security/8-06-konteynerizatsiya-i-orkestratsiya/211">Справочник по Kubernetes</a>, <a href="https://spirzen.ru/encyclopedia/8-infra-security/8-06-konteynerizatsiya-i-orkestratsiya/2">Справочник по Docker</a>, <a href="https://spirzen.ru/encyclopedia/8-infra-security/8-05-mikroservisy-i-integratsiya/1205">Справочник по Apache Kafka</a>, <a href="https://spirzen.ru/encyclopedia/8-infra-security/8-05-mikroservisy-i-integratsiya/1204">Справочник по RabbitMQ</a>.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#назначение">Назначение</a></li><li class="article-toc__item"><a href="#краткое-пояснение">Краткое пояснение</a></li><li class="article-toc__item"><a href="#справочные-таблицы">Справочные таблицы</a></li><li class="article-toc__item is-h3"><a href="#содержание-справочника">Содержание справочника</a></li><li class="article-toc__item is-h3"><a href="#блок-1-основа-lifecycle-gameobject-transform-component-project-settings">Блок 1. Основа — Lifecycle, GameObject, Transform, Component, Project Settings</a></li><li class="article-toc__item is-h3"><a href="#блок-2-физика-рендеринг-освещение-аудио">Блок 2. Физика, Рендеринг, Освещение, Аудио</a></li><li class="article-toc__item is-h3"><a href="#блок-3-анимация-data-oriented-design-пакеты-профилирование-сборка">Блок 3. Анимация, Data-Oriented Design, Пакеты, Профилирование, Сборка</a></li><li class="article-toc__item is-h3"><a href="#блок-4-высокопроизводительные-системы-графы-динамическая-загрузка-безопасность">Блок 4. Высокопроизводительные системы, графы, динамическая загрузка, безопасность</a></li><li class="article-toc__item is-h3"><a href="#блок-5-ui-локализация-тестирование-облако-экстеншены-редактора">Блок 5. UI, Локализация, Тестирование, Облако, Экстеншены редактора</a></li><li class="article-toc__item is-h3"><a href="#блок-6-мобильные-сети-оптимизация-интеграции-cicd">Блок 6. Мобильные, Сети, Оптимизация, Интеграции, CI/CD</a></li><li class="article-toc__item"><a href="#ошибки">Ошибки</a></li><li class="article-toc__item"><a href="#в-подборках">В подборках</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="https://lab.spirzen.ru/lab/examples/1136" target="_blank" rel="noopener noreferrer"> Unity C# — скрипты для новичков  ↗ </a> </li><li> <a href="/games/9-04-razrabotka-igr/3"> Разработка на Unity  </a> </li><li> <a href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-06-otraslevoe-po/111" target="_blank" rel="noopener noreferrer"> Справочник по Adobe Photoshop  ↗ </a> </li><li> <a href="https://spirzen.ru/encyclopedia/8-infra-security/8-06-konteynerizatsiya-i-orkestratsiya/211" target="_blank" rel="noopener noreferrer"> Справочник по Kubernetes  ↗ </a> </li><li> <a href="https://spirzen.ru/encyclopedia/8-infra-security/8-06-konteynerizatsiya-i-orkestratsiya/2" target="_blank" rel="noopener noreferrer"> Справочник по Docker  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Assassin&#39;s Creed — Игры IT Universe</title><meta name="description" content="Assassins Creed — это глобальная медиафраншиза, созданная канадской студией Ubisoft Montreal. Проект объединяет серию компьютерных игр, книг, комиксов и киноадаптаций, объединенных единой вселенной."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Assassin&#39;s Creed</span></li></ol></nav><header class="portal-hero"> <h1>Assassin&#39;s Creed</h1> <p>Assassins Creed — это глобальная медиафраншиза, созданная канадской студией Ubisoft Montreal. Проект объединяет серию компьютерных игр, книг, комиксов и киноадаптаций, объединенных единой вселенной.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Assassin's Creed" data-url="/games/9-03-igrovaya-industriya/game-studies/117">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Assassin's Creed">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Assassin's Creed</h1>
+<div class="itu-play-embed" data-example="spinoff/game-franchise-play" data-src="" data-title="Игровая франшиза" data-min-height="520" data-play-props="{&quot;franchise&quot;:&quot;assassins-creed&quot;}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="что-такое-assassins-creed">Что такое Assassin's Creed</h2>
+<p><strong>Assassin's Creed</strong> — это глобальная медиафраншиза, созданная канадской студией Ubisoft Montreal. Проект объединяет серию компьютерных игр, книг, комиксов и киноадаптаций, объединенных единой вселенной. Первая игра вышла в 2007 году, а последняя на текущий момент часть, <strong>Assassin's Creed Shadows</strong>, была выпущена 20 марта 2025 года. Франшиза стала одним из самых коммерчески успешных проектов в истории индустрии видеоигр, продав более 230 миллионов копий к началу 2026 года.</p>
+<p>Сюжетная основа серии строится на многовековой тайной войне между двумя древними орденами: Ассасинами и Тамплиерами. Действие игр перемещает игрока через различные исторические эпохи, от Древнего Египта до феодальной Японии, используя вымышленную технологию для погружения в генетическую память предков. Наряду с историческими приключениями, серия исследует темы свободы воли, контроля, этики и влияния древних цивилизаций на развитие человечества.</p>
+<p>Проект демонстрирует эволюцию игровых механик от линейного стелс-экшена до масштабных ролевых игр с открытым миром. Серия также стала пионером в создании детализированных исторических симуляций, где каждая локация служит образовательным инструментом, позволяющим посетителям погрузиться в атмосферу прошлых столетий.</p>
+<hr>
+<h2 id="серия-игр">Серия игр</h2>
+<h3 id="основная-серия-assassins-creed">Основная серия Assassin's Creed</h3>
+<table>
+<thead>
+<tr>
+<th>Название игры</th>
+<th>Год выхода</th>
+<th>Исторический период</th>
+<th>Главный герой в прошлом</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assassin's Creed</td>
+<td>2007</td>
+<td>Третий крестовый поход (1191 г.)</td>
+<td>Альтаир ибн Ла-Ахад</td>
+</tr>
+<tr>
+<td>Assassin's Creed II</td>
+<td>2009</td>
+<td>Итальянское Возрождение (1476–1499 гг.)</td>
+<td>Эцио Аудиторе да Фиренце</td>
+</tr>
+<tr>
+<td>Assassin's Creed: Brotherhood</td>
+<td>2010</td>
+<td>Итальянское Возрождение (Рим, 1499–1507 гг.)</td>
+<td>Эцио Аудиторе да Фиренце</td>
+</tr>
+<tr>
+<td>Assassin's Creed: Revelations</td>
+<td>2011</td>
+<td>Османская империя (Константинополь, 1511 г.)</td>
+<td>Эцио Аудиторе / Альтаир</td>
+</tr>
+<tr>
+<td>Assassin's Creed III</td>
+<td>2012</td>
+<td>Война за независимость США (1754–1783 гг.)</td>
+<td>Радунхагейду (Коннор Кенуэй)</td>
+</tr>
+<tr>
+<td>Assassin's Creed IV: Black Flag</td>
+<td>2013</td>
+<td>Золотой век пиратства (Вест-Индия, 1715–1722 гг.)</td>
+<td>Эдвард Кенуэй</td>
+</tr>
+<tr>
+<td>Assassin's Creed: Rogue (Изгой)</td>
+<td>2014</td>
+<td>Семилетняя война (Северная Америка, 1752–1763 гг.)</td>
+<td>Шэй Патрик Кормак</td>
+</tr>
+<tr>
+<td>Assassin's Creed: Unity (Единство)</td>
+<td>2014</td>
+<td>Великая французская революция (Париж, 1789–1794 гг.)</td>
+<td>Арно Виктор Дориан</td>
+</tr>
+<tr>
+<td>Assassin's Creed: Syndicate</td>
+<td>2015</td>
+<td>Викторианская эпоха (Лондон, 1868 г.)</td>
+<td>Джейкоб и Иви Фрай</td>
+</tr>
+<tr>
+<td>Assassin's Creed: Origins (Истоки)</td>
+<td>2017</td>
+<td>Эллинистический Египет (49–43 гг. до н.э.)</td>
+<td>Байек из Свы</td>
+</tr>
+<tr>
+<td>Assassin's Creed: Odyssey</td>
+<td>2018</td>
+<td>Пелопоннесская война (Древняя Греция, 431–422 гг. до н.э.)</td>
+<td>Алексиос / Кассандра</td>
+</tr>
+<tr>
+<td>Assassin's Creed: Valhalla</td>
+<td>2020</td>
+<td>Экспансия викингов в Англию (872–878 гг.)</td>
+<td>Эйвор Варинсдоттер</td>
+</tr>
+<tr>
+<td>Assassin's Creed: Mirage</td>
+<td>2023</td>
+<td>Аббасидский халифат (Багдад, 861 г.)</td>
+<td>Басим ибн Исхак</td>
+</tr>
+<tr>
+<td>Assassin's Creed: Shadows</td>
+<td>2025</td>
+<td>Период Сэнгоку (Феодальная Япония, XVI век)</td>
+<td>Наоэ и Ясукэ</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="известные-ответвления-и-спин-оффы">Известные ответвления и спин-оффы</h3>
+<table>
+<thead>
+<tr>
+<th>Название игры</th>
+<th>Год выхода</th>
+<th>Платформы</th>
+<th>Особенности проекта</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Altaïr's Chronicles</td>
+<td>2008</td>
+<td>Nintendo DS, iOS, Android</td>
+<td>Приквел к самой первой части серии</td>
+</tr>
+<tr>
+<td>Bloodlines</td>
+<td>2009</td>
+<td>PlayStation Portable</td>
+<td>Сюжетное продолжение истории Альтаира</td>
+</tr>
+<tr>
+<td>Discovery</td>
+<td>2009</td>
+<td>Nintendo DS, iOS</td>
+<td>Сайд-скроллер про Эцио в Испании</td>
+</tr>
+<tr>
+<td>Liberation</td>
+<td>2012</td>
+<td>PS Vita, ПК, консоли</td>
+<td>Сюжет разворачивается параллельно с AC III, героиня — Авелина де Гранпре</td>
+</tr>
+<tr>
+<td>Pirates</td>
+<td>2013</td>
+<td>iOS, Android</td>
+<td>Мобильные морские сражения</td>
+</tr>
+<tr>
+<td>Chronicles: China</td>
+<td>2015</td>
+<td>ПК, PS4, Xbox One, Vita</td>
+<td>2.5D-платформер про Шао Цзюнь в Китае</td>
+</tr>
+<tr>
+<td>Chronicles: India</td>
+<td>2016</td>
+<td>ПК, PS4, Xbox One, Vita</td>
+<td>2.5D-платформер про Арбааза Мира в Индии</td>
+</tr>
+<tr>
+<td>Chronicles: Russia</td>
+<td>2016</td>
+<td>ПК, PS4, Xbox One, Vita</td>
+<td>2.5D-платформер про Николая Орлова в России</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>2016</td>
+<td>iOS, Android</td>
+<td>Мобильная экшен-RPG в сеттинге Италии</td>
+</tr>
+<tr>
+<td>Rebellion</td>
+<td>2018</td>
+<td>iOS, Android</td>
+<td>Мобильная пошаговая RPG с чиби-графикой</td>
+</tr>
+<tr>
+<td>Nexus VR</td>
+<td>2023</td>
+<td>Meta Quest</td>
+<td>Игра от первого лица для виртуальной реальности</td>
+</tr>
+<tr>
+<td>Jade</td>
+<td>2025/2026</td>
+<td>iOS, Android</td>
+<td>Полноценная мобильная RPG в Древнем Китае</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="лор-вселенной">Лор вселенной</h2>
+<p>Фундамент нарратива <strong>Assassin's Creed</strong> составляют три ключевые силы, определяющие ход истории человечества. Это противостояние двух человеческих фракций и вмешательство древней высокоразвитой расы.</p>
+<hr>
+<h3 id="тайная-война-ассасины-против-тамплиеров">Тайная война — Ассасины против Тамплиеров</h3>
+<p>Основное повествование сосредоточено на конфликте двух секретных организаций, чьи цели диаметрально противоположны.</p>
+<p><strong>Ассасины (Братство)</strong> — организация, борющаяся за абсолютную свободу воли каждого человека. Они верят, что каждый индивид должен иметь право самостоятельно выбирать свой путь, нести ответственность за свои поступки и принимать решения без внешнего принуждения. Ассасины действуют в тени, используя скрытность, дипломатию и точечные удары для предотвращения тирании. Их идеал — общество, где люди свободны от страха и манипуляций.</p>
+<p><strong>Тамплиеры (Орден)</strong> — организация, стремящаяся установить мировой порядок через тотальный контроль, дисциплину и единую власть. Тамплиеры убеждены, что человечество не способно к самоорганизации и склонно к хаосу и войнам. Только жесткая централизация власти и контроль над каждым аспектом жизни способны обеспечить стабильность и предотвратить самоуничтожение вида. Они используют экономическое давление, политические интриги и силовое подавление для достижения своих целей.</p>
+<p>Конфликт этих двух мировоззрений определяет действия всех главных героев серии. Ни одна сторона не является абсолютно "хорошей" или "плохой". Ассасины могут прибегать к убийствам ради высшей цели, а тамплиеры часто видят в своих действиях благо для всего человечества.</p>
+<hr>
+<h3 id="ису-предтечи">Ису (Предтечи)</h3>
+<p>За пределами человеческой борьбы существует история о <strong>Ису</strong> (или Предтечах) — высокоразвитой расе, обитавшей на Земле около 75 тысяч лет назад. Ису обладали технологиями, которые современному человеку кажутся магией. Они создали людей как рабочую силу, используя генную инженерию, чтобы создать гибрид, способный работать и служить.</p>
+<p>Ису использовали мощные артефакты, называемые <strong>Частицами Эдема</strong>. Эти устройства могли управлять разумом, исцелять раны, изменять погоду и даже создавать материальные объекты. Среди наиболее известных артефактов выделяются Яблоки Эдема, Посох Гермеса и Плащаница Ису.</p>
+<p>История Ису закончилась катастрофически. Мощная солнечная вспышка и связанное с ней извержение супервулкана Тоба уничтожили их цивилизацию. Выжившие Ису, включая таких фигур, как Юнона, Минерва и Аита, пытались предотвратить повторение этой катастрофы и контролировать будущее человечества. Они оставили после себя технологии и знания, которые стали основой мифологии и религий многих народов.</p>
+<hr>
+<h3 id="частицы-эдема">Частицы Эдема</h3>
+<p>Частицы Эдема представляют собой технологические артефакты, созданные Ису. Они обладают уникальными свойствами, позволяющими пользователю манипулировать реальностью и сознанием.</p>
+<p><strong>Яблоко Эдема</strong> — самый известный артефакт. Оно позволяет пользователю вызывать иллюзии, управлять разумом толпы, исцелять раны и видеть скрытые объекты. Яблоко обладает высокой энергией и требует сильной воли для управления.</p>
+<p><strong>Посох Гермеса</strong> — артефакт, дарующий бессмертие и способность телепортироваться. Он также может усиливать другие частицы Эдема.</p>
+<p><strong>Плащаница Ису</strong> — ткань, обладающая регенеративными свойствами. Она способна восстанавливать поврежденные ткани и продлевать жизнь владельца.</p>
+<p><strong>Обсерватория</strong> — устройство, позволяющее наблюдать за любым человеком в любой точке мира в реальном времени. Тамплиеры стремились использовать его для глобального шпионажа и контроля.</p>
+<p>Все эти артефакты являются ключевыми элементами сюжета, вокруг которых разворачиваются битвы между Ассасинами и Тамплиерами.</p>
+<hr>
+<h3 id="катастрофа-и-конец-света">Катастрофа и конец света</h3>
+<p>Ису предвидели грядущую катастрофу, которая должна была произойти в 2012 году. Чтобы предотвратить гибель человечества, они разработали план, связанный с Великим Храмом. Этот храм содержал технологии, способные защитить Землю от солнечной вспышки. Однако реализация плана требовала великой жертвы, которую должен был совершить человек с чистой ДНК Ису.</p>
+<p>Эта тема становится центральной в финальной арке оригинальной трилогии, где главный герой Дезмонд Майлс пожертвовал собой, чтобы активировать защитный механизм Храма и спасти мир от гибели.</p>
+<hr>
+<h2 id="анимус">Анимус</h2>
+<p><strong>Анимус</strong> — центральное устройство вселенной <strong>Assassin's Creed</strong>. Это машина, разработанная корпорацией Абстерго (современная версия Тамплиеров), для считывания генетической памяти.</p>
+<hr>
+<h3 id="генетическая-память">Генетическая память</h3>
+<p>Ученые доказали, что воспоминания и навыки предков записываются в ДНК потомков. Анимус способен извлекать эти данные, декодировать их и проецировать в виде трехмерной виртуальной реальности. Это позволяет оператору машины переживать события прошлого так, словно он сам находится в той эпохе.</p>
+<hr>
+<h3 id="виртуальная-реальность-и-синхронизация">Виртуальная реальность и синхронизация</h3>
+<p>Процесс работы Анимуса основан на поддержании высокой степени <strong>синхронизации</strong>. Оператор должен выполнять действия предка максимально точно, следуя его алгоритмам поведения. Малейшее отклонение от действий предка снижает уровень синхронизации.</p>
+<p>Если синхронизация падает до нуля, происходит <strong>десинхронизация</strong>. Сессия прерывается, и оператор возвращается к последней сохраненной точке памяти. Десинхронизация может быть вызвана разными факторами — убийством мирных граждан, смертью персонажа, выполнением действий, не соответствующих характеру предка, или нарушением правил стелса.</p>
+<hr>
+<h3 id="эффект-просачивания">Эффект просачивания</h3>
+<p>При длительном использовании Анимуса возникает побочный эффект, называемый <strong>эффектом просачивания</strong>. Навыки, рефлексы и даже воспоминания предка начинают передаваться оператору в реальном мире.</p>
+<ul>
+<li><strong>Физиологический аспект:</strong> Оператор начинает лучше владеть оружием, паркуром и боевыми приемами.</li>
+<li><strong>Психологический аспект:</strong> Возникают галлюцинации, смешение собственной личности с личностью предка, потеря ориентации во времени.</li>
+<li><strong>Риск:</strong> Чрезмерное использование Анимуса может привести к полной потере собственного "Я", когда оператор полностью растворяется в памяти предка.</li>
+</ul>
+<hr>
+<h3 id="современные-версии-анимуса">Современные версии Анимуса</h3>
+<p>Серия игр демонстрирует эволюцию технологии Анимуса:</p>
+<ul>
+<li><strong>Анимус 1.0:</strong> Использовался в первой части для чтения воспоминаний Альтаира. Был громоздким и требовал прямого подключения к телу.</li>
+<li><strong>Анимус 2.0:</strong> Улучшенная версия, использовавшаяся в трилогии Эцио. Позволила проводить более глубокие исследования и улучшила качество визуализации.</li>
+<li><strong>Анимус 3.0:</strong> Разработанная Ребеккой Крейн, эта версия использовала облачные вычисления и могла считывать память без прямого контакта с телом, используя образцы ДНК.</li>
+<li><strong>Helix:</strong> Онлайн-платформа, доступная широкой публике. Позволяет пользователям просматривать генетические воспоминания других людей за определенную плату.</li>
+<li><strong>Animus Hub:</strong> Новая платформа, интегрирующая все игры серии и предоставляющая доступ к дополнительному контенту и лору вселенной.</li>
+</ul>
+<hr>
+<h2 id="кредо-убийцы">Кредо убийцы</h2>
+<p><strong>Кредо ассасинов</strong> — свод правил и принципов, которым обязаны следовать все члены Братства. Главный девиз звучит как: <strong>"Ничто не истинно, всё дозволено"</strong>.</p>
+<hr>
+<h3 id="интерпретация-философии">Интерпретация философии</h3>
+<p>Эта фраза не призывает к анархии или безнравственности. Она означает, что законы общества хрупки и часто служат инструментом контроля. Каждый человек несет полную ответственность за свои поступки. Ассасин понимает, что истина скрыта за слоями лжи и манипуляций, и только через личный выбор и действие можно приблизиться к истине.</p>
+<p>"Всё дозволено" означает, что у ассасина нет внешних ограничений, кроме его собственной совести и целей Братства. Он действует исходя из необходимости, а не из страха наказания.</p>
+<hr>
+<h3 id="три-основных-правила">Три основных правила</h3>
+<p>Для практического применения Кредо были сформулированы три конкретных правила, которые определяют поведение ассасина в полевых условиях:</p>
+<ol>
+<li>
+<p><strong>Оберегай клинок от плоти невиновного.</strong>
+Ассасин никогда не должен убивать мирных жителей, детей или тех, кто не представляет угрозы. Целью всегда является конкретный враг, участвующий в заговоре или причиняющий вред обществу. Нарушение этого правила ведет к десинхронизации и потере статуса.</p>
+</li>
+<li>
+<p><strong>Скрывайся у всех на виду, будь заодно с толпой.</strong>
+Лучшая защита — это незаметность. Ассасин должен уметь сливаться с окружением, используя толпу, здания и любые доступные укрытия. Открытое противостояние должно быть крайней мерой.</p>
+</li>
+<li>
+<p><strong>Не подставляй под удар Братство.</strong>
+Любое действие ассасина не должно компрометировать организацию в целом. Конспирация и безопасность Братства стоят выше личных амбиций или эмоций.</p>
+</li>
+</ol>
+<hr>
+<h3 id="ритуал-посвящения">Ритуал посвящения</h3>
+<p>Исторически процесс вступления в Братство включал сложный ритуал. Одним из ключевых элементов было отсечение безымянного пальца левой руки. Эта процедура позволяла скрытому клинку, встроенному в запястье, свободно выдвигаться без препятствий.</p>
+<p>Отсутствие пальца служило символом полного посвящения и готовности умереть ради идеи. В современных интерпретациях ритуал часто заменяется на символические действия или обучение, но традиция остается важной частью культурного кода серии.</p>
+<hr>
+<h2 id="геймплей">Геймплей</h2>
+<p>Геймплей <strong>Assassin's Creed</strong> прошел долгий путь развития от простых механик стелса до сложных систем открытого мира. Каждая новая часть привносит новые элементы, сохраняя при этом фундаментальные принципы серии.</p>
+<hr>
+<h3 id="паркур">Паркур</h3>
+<p><strong>Паркур</strong> — одна из визитных карточек франшизы. Механика позволяет персонажу свободно перемещаться по городской среде, взбираясь на стены, крыши, колонны и любые другие поверхности.</p>
+<ul>
+<li><strong>Динамичность:</strong> Персонаж может бежать, прыгать, кувыркаться, цепляться за края и спускаться вниз с любой высоты.</li>
+<li><strong>Прыжок веры:</strong> Кульминационный элемент паркура. Прыжок с высокой точки в мягкую среду (стог сена, вода, листья) завершается мгновенным исчезновением персонажа, символизируя переход в безопасное состояние.</li>
+<li><strong>Эволюция:</strong> В ранних частях паркур был линейным и требовал точности. В поздних играх система стала более плавной, добавлены возможности скольжения, раскачивания и взаимодействия с динамической средой.</li>
+</ul>
+<hr>
+<h3 id="социальный-стелс">Социальный стелс</h3>
+<p>Механика <strong>социального стелса</strong> позволяет игроку скрываться среди толпы NPC. Персонаж может сливаться с группами людей, носить маскировку или использовать одежду, чтобы стать незаметным.</p>
+<ul>
+<li><strong>Толпа как укрытие:</strong> Враги не замечают игрока, если он находится в группе гражданских.</li>
+<li><strong>Разделение внимания:</strong> Игрок может отвлекать стражников, используя крики или шум, чтобы пройти незамеченным.</li>
+<li><strong>Наемники и куртизанки:</strong> В некоторых играх доступны специальные типы NPC, помогающие скрываться или отвлекать внимание.</li>
+</ul>
+<hr>
+<h3 id="орлиное-зрение">Орлиное зрение</h3>
+<p><strong>Орлиное зрение</strong> — способность, позволяющая игроку видеть скрытые детали окружающего мира. Активация этого навыка окрашивает мир в специфические цвета, выделяя важные объекты.</p>
+<ul>
+<li><strong>Цели:</strong> Враги подсвечиваются красным, союзники — синим, предметы коллекционирования — белым, пути следования — желтым.</li>
+<li><strong>Стратегия:</strong> Навык помогает планировать атаку, находить слабые места врагов и обнаруживать скрытые проходы.</li>
+<li><strong>Эффект просачивания:</strong> В сюжетных линиях использование орлиного зрения в Анимусе передает эту способность самому оператору в реальности.</li>
+</ul>
+<hr>
+<h3 id="боевая-система">Боевая система</h3>
+<p>Боевая система серии прошла значительную трансформацию:</p>
+<ul>
+<li><strong>Ранние части:</strong> Основывались на системе контратак. Игрок ждал удара врага, блокировал его и наносил ответный удар. Система была простой, но требовала реакции.</li>
+<li><strong>Средний период:</strong> Добавлены комбо, разнообразие оружия и возможность отбиваться от нескольких противников одновременно.</li>
+<li><strong>Современные части:</strong> Перешли к системе RPG с деревом навыков, различными типами оружия (мечи, луки, алебарды) и возможностью комбинировать приемы. Появилась система прочности брони и повреждений.</li>
+</ul>
+<hr>
+<h3 id="скрытый-клинок">Скрытый клинок</h3>
+<p><strong>Скрытый клинок</strong> — легендарное оружие ассасинов. Это лезвие, прячущееся в запястье и выдвигающееся при нажатии кнопки.</p>
+<ul>
+<li><strong>Функциональность:</strong> Позволяет наносить смертельный удар в один контакт, если цель не замечает игрока.</li>
+<li><strong>Разнообразие:</strong> В разных играх клинок дополняется крюком, гарпуном, ядовитыми дротиками или другими модулями.</li>
+<li><strong>Тактика:</strong> Использование скрытого клинка требует скрытности и точности. Прямая атака с использованием клинка возможна только в определенных ситуациях.</li>
+</ul>
+<hr>
+<h3 id="вышки-и-синхронизация">Вышки и синхронизация</h3>
+<p><strong>Вышки</strong> — высокие точки на карте, которые необходимо захватывать для открытия карты местности.</p>
+<ul>
+<li><strong>Снхронизация:</strong> Подъем на вышку требует выполнения ряда условий, таких как преодоление препятствий и избегание врагов.</li>
+<li><strong>Открытие карты:</strong> После захвата вышки игрок получает обзор всей близлежащей территории, видит маркеры заданий и точки интереса.</li>
+<li><strong>Быстрое перемещение:</strong> Вышки становятся точками быстрого перемещения, позволяя игроку мгновенно перемещаться между ними.</li>
+</ul>
+<hr>
+<h2 id="архитектура-выполнения">Архитектура выполнения</h2>
+<p>Разработка серии <strong>Assassin's Creed</strong> потребовала создания уникальных технических решений для реализации масштабных открытых миров и сложной логики искусственного интеллекта.</p>
+<hr>
+<h3 id="игровой-движок-anvil">Игровой движок Anvil</h3>
+<p>Вся серия базируется на проприетарном движке <strong>Anvil</strong> (ранее известном как Scimitar). Движок постоянно развивался, адаптируясь под требования новых частей.</p>
+<ul>
+<li><strong>Масштабирование:</strong> Anvil позволяет загружать огромные открытые миры без потери производительности.</li>
+<li><strong>Оптимизация:</strong> Движок эффективно управляет ресурсами, обеспечивая высокую частоту кадров даже на старых консолях.</li>
+<li><strong>Графика:</strong> Поддержка передовых технологий рендеринга, включая трассировку лучей и динамическое освещение.</li>
+</ul>
+<hr>
+<h3 id="масштабная-толпа">Масштабная толпа</h3>
+<p>Одной из главных задач разработки было создание реалистичной толпы. Игра должна отображать сотни уникальных NPC одновременно, каждый из которых имеет свое поведение и реакцию.</p>
+<ul>
+<li><strong>AI-логика:</strong> Каждый NPC обладает базовой логикой — движение по маршрутам, реакция на звуки, взаимодействие с другими объектами.</li>
+<li><strong>Оптимизация:</strong> Используются методы LOD (Level of Detail) и occlusion culling для снижения нагрузки на систему.</li>
+<li><strong>Социальное поведение:</strong> Толпа реагирует на действия игрока, создает панику или собирается вокруг событий.</li>
+</ul>
+<hr>
+<h3 id="система-навигации">Система навигации</h3>
+<p>Для обеспечения плавного паркура используется специальная система навигации. Поверхности размечены невидимыми маркерами, которые указывают персонажу возможные пути движения.</p>
+<ul>
+<li><strong>Маршруты:</strong> Маркеры определяют, куда можно забраться, откуда спрыгнуть и как преодолеть препятствие.</li>
+<li><strong>Адаптивность:</strong> Система автоматически подстраивается под геометрию уровня, обеспечивая бесшовное перемещение.</li>
+</ul>
+<hr>
+<h3 id="ai-логика-противников">AI-логика противников</h3>
+<p>Искусственный интеллект врагов использует сложные системы зон видимости и слуха.</p>
+<ul>
+<li><strong>Зоны видимости:</strong> Враги имеют конусы обзора, которые меняются в зависимости от освещения и положения игрока.</li>
+<li><strong>Реакция:</strong> При обнаружении враги поднимают тревогу, вызывают подкрепление и пытаются окружить игрока.</li>
+<li><strong>Паттерны поведения:</strong> Враги имеют разные уровни сложности, от патрулирующих стражников до элитных бойцов с уникальными тактиками.</li>
+</ul>
+<hr>
+<h3 id="многопоточность">Многопоточность</h3>
+<p>Движок эффективно распределяет задачи по ядрам процессора.</p>
+<ul>
+<li><strong>Физика:</strong> Расчет физики тканей, анимации и разрушений выполняется параллельно.</li>
+<li><strong>Логика:</strong> ИИ и обработка событий разделены на отдельные потоки для предотвращения задержек.</li>
+<li><strong>Загрузка:</strong> Асинхронная загрузка ресурсов позволяет игроку перемещаться по миру без экранов загрузки.</li>
+</ul>
+<hr>
+<h3 id="исторический-ассет-менеджмент">Исторический ассет-менеджмент</h3>
+<p>Для воссоздания исторических городов используется модульная система сборки зданий.</p>
+<ul>
+<li><strong>Библиотеки ассетов:</strong> Огромное количество моделей зданий, улиц и объектов, собранных из реальных исторических источников.</li>
+<li><strong>Генерация:</strong> Алгоритмы позволяют комбинировать элементы для создания уникальных кварталов, сохраняя историческую достоверность.</li>
+<li><strong>Детализация:</strong> Высокая степень проработки текстур и геометрии обеспечивает погружение в эпоху.</li>
+</ul>
+<hr>
+<h2 id="влияние-на-индустрию">Влияние на индустрию</h2>
+<p>Франшиза <strong>Assassin's Creed</strong> оказала глубокое влияние на развитие игровой индустрии, изменив подход к созданию открытых миров, стелс-механик и исторического контента.</p>
+<hr>
+<h3 id="популяризация-паркура">Популяризация паркура</h3>
+<p>До выхода первой части серии паркур был известен лишь узкому кругу любителей экстремальных видов спорта. <strong>Assassin's Creed</strong> сделала механику свободного лазания стандартом для экшенов от третьего лица.</p>
+<ul>
+<li><strong>Новый жанр:</strong> Игра создала новый поджанр, сочетающий стелс, паркур и открытый мир.</li>
+<li><strong>Вдохновение:</strong> Многие последующие игры взяли за основу механику паркура, адаптировав ее под свои нужды.</li>
+</ul>
+<hr>
+<h3 id="формула-открытого-мира">Формула открытого мира</h3>
+<p>Дизайн <strong>Assassin's Creed</strong> определил структуру большинства современных открытых миров.</p>
+<ul>
+<li><strong>Вышки и карта:</strong> Механика захвата вышек для открытия карты стала эталоном.</li>
+<li><strong>Зачистка:</strong> Система очистки карты от вражеских лагерей и точек интереса была скопирована десятками сторонних франшиз.</li>
+<li><strong>Свобода:</strong> Возможность исследовать мир в любом порядке и решать задачи разными способами стала нормой.</li>
+</ul>
+<hr>
+<h3 id="исторический-туризм">Исторический туризм</h3>
+<p>Проект продемонстрировал коммерческий потенциал детальной реконструкции реальных исторических эпох.</p>
+<ul>
+<li><strong>Образование:</strong> Игры стали инструментом изучения истории, культуры и архитектуры прошлых веков.</li>
+<li><strong>Туризм:</strong> Индустрия увидела, как игровые локации могут привлекать туристов в реальные города и музеи.</li>
+<li><strong>Интерактивные туры:</strong> Моделирование исторических мест стало отдельным направлением разработки.</li>
+</ul>
+<hr>
+<h3 id="трансмедиа">Трансмедиа</h3>
+<p><strong>Assassin's Creed</strong> доказала успешность расширения бренда через различные медиаформаты.</p>
+<ul>
+<li><strong>Книги и комиксы:</strong> Серия книг и комиксов расширила лор вселенной, добавив новые сюжетные линии и персонажей.</li>
+<li><strong>Кино и сериалы:</strong> Киноадаптации и сериалы привлекли новую аудиторию, хотя и получили смешанные отзывы.</li>
+<li><strong>Интеграция:</strong> Все медиаформаты связаны общей каноничной историей, создавая целостную вселенную.</li>
+</ul>
+<hr>
+<h3 id="сервисная-модель">Сервисная модель</h3>
+<p>Переход серии на рельсы RPG показал жизнеспособность долгой поддержки одиночных игр.</p>
+<ul>
+<li><strong>Поддержка:</strong> Регулярные обновления, DLC и сезонные события поддерживают интерес игроков годами.</li>
+<li><strong>RPG-элементы:</strong> Внедрение уровней, навыков и крафта позволило игрокам развивать персонажей в своем стиле.</li>
+<li><strong>Экономика:</strong> Модель монетизации через донаты и косметические предметы стала стандартом для крупных проектов.</li>
+</ul>
+<hr>
+<h2 id="история-серии-игр">История серии игр</h2>
+<p>Серия <strong>Assassin's Creed</strong> состоит из множества частей, каждая из которых развивает историю и механики предыдущих игр. Ниже представлен подробный обзор основных игр и их особенностей.</p>
+<hr>
+<h3 id="assassins-creed-2007">Assassin's Creed (2007)</h3>
+<p>Первая игра серии, выпущенная в 2007 году. Она задала тон всему проекту, представив игрока в роли Дезмонда Майлса, который использует Анимус для чтения воспоминаний своего предка Альтаира ибн Ла-Ахада.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Третий крестовый поход, 1191 год. Действие происходит в городах Святой земли — Дамаск, Акра, Иерусалим.</li>
+<li><strong>Герой:</strong> Альтаир ибн Ла-Ахад, мастер-ассасин, лишенный звания и вынужденный искупить вину, убивая девять целей.</li>
+<li><strong>Механики:</strong> Впервые представлена механика паркура, социального стелса и скрытого клинка.</li>
+<li><strong>Сюжет:</strong> История о предательстве, поиске истины и борьбе с Тамплиерами. Финал открывает путь к будущим играм.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-ii-2009">Assassin's Creed II (2009)</h3>
+<p>Продолжение серии, которое стало более популярным и получило признание критиков. Игра фокусируется на новой временной линии и новом герое.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Италия эпохи Возрождения, конец XV века. Действие происходит во Флоренции, Венеции, Риме и других городах.</li>
+<li><strong>Герой:</strong> Эцио Аудиторе да Фиренце, молодой аристократ, ставший ассасином после казни своей семьи.</li>
+<li><strong>Механики:</strong> Улучшен паркур, добавлено плавание, ныряние и возможность отбирать оружие у врагов. Введена система "Орлиного зрения".</li>
+<li><strong>Сюжет:</strong> История мести Эцио, его становления как лидера Братства и борьбы с семьей Борджиа.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-brotherhood-2010">Assassin's Creed — Brotherhood (2010)</h3>
+<p>Прямое продолжение второй части, действие которого происходит в Риме.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Рим конца XV века.</li>
+<li><strong>Герой:</strong> Эцио Аудиторе.</li>
+<li><strong>Механики:</strong> Введена система восстановления города, управление ассасинами, многопользовательский режим.</li>
+<li><strong>Сюжет:</strong> Эцио освобождает Рим от власти Борджиа и восстанавливает Братство.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-revelations-2011">Assassin's Creed — Revelations (2011)</h3>
+<p>Финал трилогии об Эцио, действие которой происходит в Константинополе.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Константинополь начала XVI века.</li>
+<li><strong>Герой:</strong> Эцио Аудиторе и Альтаир ибн Ла-Ахад.</li>
+<li><strong>Механики:</strong> Добавлен нож-крюк, бомбы, система защиты базы, расширение многопользовательского режима.</li>
+<li><strong>Сюжет:</strong> Эцио ищет библиотеку Альтаира и узнает правду о Первой Цивилизации.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-iii-2012">Assassin's Creed III (2012)</h3>
+<p>Переход к новому герою и новой эпохе. Игра стала самой продаваемой в серии на момент выхода.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Америка времён Войны за независимость, XVIII век.</li>
+<li><strong>Герой:</strong> Коннор (Ра́дунхагейду), индеец-полукровка, сын Хэйтема Кенуэя.</li>
+<li><strong>Механики:</strong> Добавлена морская кампания, стрельба из лука, новые виды оружия.</li>
+<li><strong>Сюжет:</strong> История Коннора, его борьба за свободу своего народа и участие в Американской революции. Финал арки Дезмонда.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-iv-black-flag-2013">Assassin's Creed IV — Black Flag (2013)</h3>
+<p>Игра, вернувшаяся к пиратской тематике и морской кампании.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Золотая эпоха пиратства, начало XVIII века. Карибское море.</li>
+<li><strong>Герой:</strong> Эдвард Кенуэй, пират и отец Хэйтема.</li>
+<li><strong>Механики:</strong> Улучшена морская кампания, добавлены корабли, модификации, морские сражения.</li>
+<li><strong>Сюжет:</strong> История Эдварда, его путь от пирата до ассасина и борьба с Тамплиерами.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-rogue-2014">Assassin's Creed Rogue (2014)</h3>
+<p>Игра, рассказывающая историю тамплиера.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Северная Америка и Атлантика, середина XVIII века.</li>
+<li><strong>Герой:</strong> Шэй Патрик Кормак, бывший ассасин, ставший тамплиером.</li>
+<li><strong>Механики:</strong> Улучшена морская кампания, добавлено оружие, возможность плавать в ледяной воде.</li>
+<li><strong>Сюжет:</strong> История разочарования Шэя в Братстве и его перехода на сторону Тамплиеров.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-unity-2014">Assassin's Creed Unity (2014)</h3>
+<p>Игра, сосредоточенная на французской революции.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Париж, конец XVIII века.</li>
+<li><strong>Герой:</strong> Арно Дориан.</li>
+<li><strong>Механики:</strong> Введен кооперативный режим на 4 игроков, улучшен паркур, добавлена система укрытий.</li>
+<li><strong>Сюжет:</strong> История Арно, его борьба с Тамплиерами и участие в Великой французской революции.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-syndicate-2015">Assassin's Creed Syndicate (2015)</h3>
+<p>Игра, действие которой происходит в викторианском Лондоне.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Лондон, XIX век.</li>
+<li><strong>Герои:</strong> Джейкоб и Иви Фрай, близнецы.</li>
+<li><strong>Механики:</strong> Добавлена возможность переключения между героями, банды, железнодорожные поезда.</li>
+<li><strong>Сюжет:</strong> История близнецов, освобождающих Лондон от власти Тамплиеров.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-origins-2017">Assassin's Creed Origins (2017)</h3>
+<p>Переход к жанру RPG.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Древний Египет, время правления Клеопатры.</li>
+<li><strong>Герой:</strong> Байек, меджай.</li>
+<li><strong>Механики:</strong> Полноценная RPG с деревом навыков, крафтом, системой боя и исследованием.</li>
+<li><strong>Сюжет:</strong> История Байека и Айи, закладывающих основы Братства Ассасинов.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-odyssey-2018">Assassin's Creed Odyssey (2018)</h3>
+<p>Игра, переносящая игрока в Древнюю Грецию.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Древняя Греция, Пелопоннесская война.</li>
+<li><strong>Герои:</strong> Алексиос или Кассандра, потомки Леонида I.</li>
+<li><strong>Механики:</strong> Углубленная RPG, диалоги, романтические отношения, морская кампания.</li>
+<li><strong>Сюжет:</strong> История поиска семьи и борьбы с Культом Космоса.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-valhalla-2020">Assassin's Creed Valhalla (2020)</h3>
+<p>Игра о викингах.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Англия и Норвегия, IX век.</li>
+<li><strong>Герой:</strong> Эйвор, викинг.</li>
+<li><strong>Механики:</strong> Строительство поселения, рейды, бои, магические способности.</li>
+<li><strong>Сюжет:</strong> История Эйвора, ведущего свой клан в Англию, и борьба с Тамплиерами.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-mirage-2023">Assassin's Creed Mirage (2023)</h3>
+<p>Возвращение к корням серии.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Багдад, IX век.</li>
+<li><strong>Герой:</strong> Басим ибн Исхак.</li>
+<li><strong>Механики:</strong> Фокус на стелсе, паркуре и убийствах, меньше RPG-элементов.</li>
+<li><strong>Сюжет:</strong> История становления Басима мастером-ассасином.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-shadows-2025">Assassin's Creed Shadows (2025)</h3>
+<p>Самая свежая часть серии.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Феодальная Япония, период Сэнгоку.</li>
+<li><strong>Герои:</strong> Наоэ и Ясукэ.</li>
+<li><strong>Механики:</strong> Два героя с разными стилями игры, времена года, погода, строительство убежища.</li>
+<li><strong>Сюжет:</strong> История Наоэ и Ясукэ, их борьба с Тамплиерами и открытие новой главы в истории Братства.</li>
+</ul>
+<hr>
+<h3 id="assassins-creed-black-flag-resynced-2026">Assassin's Creed Black Flag Resynced (2026)</h3>
+<p>Переиздание классики.</p>
+<ul>
+<li><strong>Сеттинг:</strong> Карибское море, Золотая эпоха пиратства.</li>
+<li><strong>Герой:</strong> Эдвард Кенуэй.</li>
+<li><strong>Механики:</strong> Обновленная графика, улучшенный геймплей, новые механики боя и паркура.</li>
+<li><strong>Сюжет:</strong> Переосмысленная история Эдварда с новыми сценами и деталями.</li>
+</ul>
+<hr>
+<h2 id="персонажи">Персонажи</h2>
+<p>Каждая игра серии представляет уникальных персонажей, чьи судьбы переплетаются с историей человечества.</p>
+<hr>
+<h3 id="основные-герои">Основные герои</h3>
+<p><strong>Дезмонд Майлс</strong> — главный герой первых пяти частей. Бармен, ставший ассасином благодаря своим генетическим воспоминаниям. Его жертва спасла мир от катастрофы.</p>
+<p><strong>Эцио Аудиторе да Фиренце</strong> — итальянский аристократ, ставший одним из величайших ассасинов. Его история охватывает трилогию игр и показывает путь от мстителя до мудрого лидера.</p>
+<p><strong>Коннор (Ра́дунхагейду)</strong> — индеец-полукровка, герой третьей части. Его борьба за свободу своего народа и понимание конфликта между Ассасинами и Тамплиерами сделали его ключевой фигурой в истории.</p>
+<p><strong>Эдвард Кенуэй</strong> — пират, ставший ассасином. Его история в "Black Flag" сочетает приключения, морские сражения и поиск истины.</p>
+<p><strong>Байек</strong> — египетский меджай, основатель Братства Ассасинов. Его история в "Origins" показывает истоки организации и её философию.</p>
+<p><strong>Кассандра/Алексиос</strong> — спартанские наемники, герои "Odyssey". Их путешествие по Древней Греции включает поиск семьи и борьбу с древними культами.</p>
+<p><strong>Эйвор</strong> — викинг, лидер клана в "Valhalla". Его история охватывает завоевания Англии и столкновение с мифическими силами.</p>
+<p><strong>Басим ибн Исхак</strong> — герой "Mirage", чья история показывает путь от уличного вора до мастера-ассасина.</p>
+<p><strong>Наоэ и Ясукэ</strong> — главные герои "Shadows". Наоэ — куноити, мастер скрытности, а Ясукэ — самурай, сильный воин. Их дуэт открывает новую главу в истории.</p>
+<hr>
+<h3 id="антигерои-и-злодеи">Антигерои и злодеи</h3>
+<p><strong>Альтаир ибн Ла-Ахад</strong> — мастер-ассасин, чье предательство запустило события первой игры. Позже он стал мудрым учителем и наставником.</p>
+<p><strong>Робер де Сабле</strong> — магистр Тамплиеров в первой части. Его амбиции и желание контролировать Яблоко Эдема сделали его главным врагом Альтаира.</p>
+<p><strong>Чезаре Борджиа</strong> — один из самых опасных противников Эцио. Его стремление к власти и использованию артефактов Ису сделало его легендой зла.</p>
+<p><strong>Хэйтем Кенуэй</strong> — великий магистр Тамплиеров, отец Коннора. Его холодный расчет и преданность Ордену сделали его опасным врагом.</p>
+<p><strong>Шэй Патрик Кормак</strong> — бывший ассасин, ставший тамплиером. Его история в "Rogue" показывает другую сторону конфликта.</p>
+<p><strong>Арно Дориан</strong> — герой "Unity", чья жизнь полна трагедий и предательства. Его борьба с Тамплиерами в период революции стала ключевой.</p>
+<p><strong>Джейкоб и Иви Фрай</strong> — близнецы, герои "Syndicate". Их энергия и решимость помогли им победить в Лондоне.</p>
+<p><strong>Жермен</strong> — главный злодей "Unity", Мудрец, управляющий революцией ради своих целей.</p>
+<p><strong>Лаошуй</strong> — таинственный лидер Тамплиеров в "Origins", чьи планы угрожают всему миру.</p>
+<p><strong>Деймос</strong> — брат Кассандры/Алексиоса, лидер Культа Космоса в "Odyssey".</p>
+<p><strong>Альфред Великий</strong> — король Англии, лидер Тамплиеров в "Valhalla". Его стремление к контролю и христианству стало угрозой для Эйвора.</p>
+<hr>
+<h2 id="discovery-tour-и-образовательные-режимы">Discovery Tour и образовательные режимы</h2>
+<p>Ubisoft развивает <strong>Assassin's Creed</strong> как инструмент изучения истории:</p>
+<table>
+<thead>
+<tr>
+<th>Проект</th>
+<th>Год</th>
+<th>Содержание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Discovery Tour: Ancient Egypt</strong></td>
+<td>2018</td>
+<td>Свободная прогулка по Египту <em>Origins</em> без боя; экскурсии от историков</td>
+</tr>
+<tr>
+<td><strong>Discovery Tour: Ancient Greece</strong></td>
+<td>2019</td>
+<td>Мир <em>Odyssey</em>; мифология, Пелопоннес, повседневная жизнь</td>
+</tr>
+<tr>
+<td><strong>Discovery Tour: Viking Age</strong></td>
+<td>2021</td>
+<td>Англия и Норвегия <em>Valhalla</em>; викинги, сельское хозяйство</td>
+</tr>
+<tr>
+<td><strong>Discovery Tour: Dynasties of China</strong></td>
+<td>TBA</td>
+<td>Анонс для <em>Jade</em> (мобильная RPG, Древний Китай)</td>
+</tr>
+</tbody>
+</table>
+<p>Режим отключает боёвку и квесты убийств, оставляя музеи, аудиогиды и "станции" с фактами. Используется в школах и университетах как визуальный атлас.</p>
+<hr>
+<h2 id="мобильная-линейка-и-сервисы">Мобильная линейка и сервисы</h2>
+<p>Помимо <strong>Identity</strong> (2016) и <strong>Rebellion</strong> (2014):</p>
+<ul>
+<li><strong>Assassin's Creed: Memories</strong> — карточная стратегия (отменена).</li>
+<li><strong>Assassin's Creed: Pirates</strong> (2013) — морские бои на основе <em>Black Flag</em>.</li>
+<li><strong>Assassin's Creed: Utopia</strong> — отменённый MMO-прототип.</li>
+<li><strong>Invictus</strong> — гоночный спин-офф (2023), не канон основной линии.</li>
+<li><strong>Mirage</strong> (2023) — возврат к стелсу классической школы в Багдаде <strong>861</strong> года; <strong>Басим</strong> — протагонист, позже — наставник в <em>Valhalla</em>.</li>
+</ul>
+<p><strong>Assassin's Creed Infinity</strong> (платформа-хаб) объединяет будущие проекты с общим прогрессом и сезонным контентом в духе live-service, сохраняя отдельные сюжетные кампании.</p>
+<hr>
+<h3 id="критика-и-продажи-ориентиры">Критика и продажи (ориентиры)</h3>
+<p>Серия — <strong>одна из крупнейших</strong> в индустрии: <em>Black Flag</em> ~15 млн, <em>Origins</em> и <em>Odyssey</em> — десятки млн каждая. Критики хвалят <strong>реконструкцию эпох</strong> и <strong>паркур</strong>, ругают <strong>гринд</strong> RPG-элементов (с <em>Origins</em>) и <strong>технические баги</strong> на релизе <em>Unity</em> (2014). <em>Mirage</em> получил одобрение за возврат к корням; <em>Shadows</em> (2024, Феодальная Япония) — за смелый сеттинг и споры вокруг исторической достоверности.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-assassins-creed">Что такое Assassin&#39;s Creed</a></li><li class="article-toc__item"><a href="#серия-игр">Серия игр</a></li><li class="article-toc__item is-h3"><a href="#основная-серия-assassins-creed">Основная серия Assassin&#39;s Creed</a></li><li class="article-toc__item is-h3"><a href="#известные-ответвления-и-спин-оффы">Известные ответвления и спин-оффы</a></li><li class="article-toc__item"><a href="#лор-вселенной">Лор вселенной</a></li><li class="article-toc__item is-h3"><a href="#тайная-война-ассасины-против-тамплиеров">Тайная война — Ассасины против Тамплиеров</a></li><li class="article-toc__item is-h3"><a href="#ису-предтечи">Ису (Предтечи)</a></li><li class="article-toc__item is-h3"><a href="#частицы-эдема">Частицы Эдема</a></li><li class="article-toc__item is-h3"><a href="#катастрофа-и-конец-света">Катастрофа и конец света</a></li><li class="article-toc__item"><a href="#анимус">Анимус</a></li><li class="article-toc__item is-h3"><a href="#генетическая-память">Генетическая память</a></li><li class="article-toc__item is-h3"><a href="#виртуальная-реальность-и-синхронизация">Виртуальная реальность и синхронизация</a></li><li class="article-toc__item is-h3"><a href="#эффект-просачивания">Эффект просачивания</a></li><li class="article-toc__item is-h3"><a href="#современные-версии-анимуса">Современные версии Анимуса</a></li><li class="article-toc__item"><a href="#кредо-убийцы">Кредо убийцы</a></li><li class="article-toc__item is-h3"><a href="#интерпретация-философии">Интерпретация философии</a></li><li class="article-toc__item is-h3"><a href="#три-основных-правила">Три основных правила</a></li><li class="article-toc__item is-h3"><a href="#ритуал-посвящения">Ритуал посвящения</a></li><li class="article-toc__item"><a href="#геймплей">Геймплей</a></li><li class="article-toc__item is-h3"><a href="#паркур">Паркур</a></li><li class="article-toc__item is-h3"><a href="#социальный-стелс">Социальный стелс</a></li><li class="article-toc__item is-h3"><a href="#орлиное-зрение">Орлиное зрение</a></li><li class="article-toc__item is-h3"><a href="#боевая-система">Боевая система</a></li><li class="article-toc__item is-h3"><a href="#скрытый-клинок">Скрытый клинок</a></li><li class="article-toc__item is-h3"><a href="#вышки-и-синхронизация">Вышки и синхронизация</a></li><li class="article-toc__item"><a href="#архитектура-выполнения">Архитектура выполнения</a></li><li class="article-toc__item is-h3"><a href="#игровой-движок-anvil">Игровой движок Anvil</a></li><li class="article-toc__item is-h3"><a href="#масштабная-толпа">Масштабная толпа</a></li><li class="article-toc__item is-h3"><a href="#система-навигации">Система навигации</a></li><li class="article-toc__item is-h3"><a href="#ai-логика-противников">AI-логика противников</a></li><li class="article-toc__item is-h3"><a href="#многопоточность">Многопоточность</a></li><li class="article-toc__item is-h3"><a href="#исторический-ассет-менеджмент">Исторический ассет-менеджмент</a></li><li class="article-toc__item"><a href="#влияние-на-индустрию">Влияние на индустрию</a></li><li class="article-toc__item is-h3"><a href="#популяризация-паркура">Популяризация паркура</a></li><li class="article-toc__item is-h3"><a href="#формула-открытого-мира">Формула открытого мира</a></li><li class="article-toc__item is-h3"><a href="#исторический-туризм">Исторический туризм</a></li><li class="article-toc__item is-h3"><a href="#трансмедиа">Трансмедиа</a></li><li class="article-toc__item is-h3"><a href="#сервисная-модель">Сервисная модель</a></li><li class="article-toc__item"><a href="#история-серии-игр">История серии игр</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-2007">Assassin&#39;s Creed (2007)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-ii-2009">Assassin&#39;s Creed II (2009)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-brotherhood-2010">Assassin&#39;s Creed — Brotherhood (2010)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-revelations-2011">Assassin&#39;s Creed — Revelations (2011)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-iii-2012">Assassin&#39;s Creed III (2012)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-iv-black-flag-2013">Assassin&#39;s Creed IV — Black Flag (2013)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-rogue-2014">Assassin&#39;s Creed Rogue (2014)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-unity-2014">Assassin&#39;s Creed Unity (2014)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-syndicate-2015">Assassin&#39;s Creed Syndicate (2015)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-origins-2017">Assassin&#39;s Creed Origins (2017)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-odyssey-2018">Assassin&#39;s Creed Odyssey (2018)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-valhalla-2020">Assassin&#39;s Creed Valhalla (2020)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-mirage-2023">Assassin&#39;s Creed Mirage (2023)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-shadows-2025">Assassin&#39;s Creed Shadows (2025)</a></li><li class="article-toc__item is-h3"><a href="#assassins-creed-black-flag-resynced-2026">Assassin&#39;s Creed Black Flag Resynced (2026)</a></li><li class="article-toc__item"><a href="#персонажи">Персонажи</a></li><li class="article-toc__item is-h3"><a href="#основные-герои">Основные герои</a></li><li class="article-toc__item is-h3"><a href="#антигерои-и-злодеи">Антигерои и злодеи</a></li><li class="article-toc__item"><a href="#discovery-tour-и-образовательные-режимы">Discovery Tour и образовательные режимы</a></li><li class="article-toc__item"><a href="#мобильная-линейка-и-сервисы">Мобильная линейка и сервисы</a></li><li class="article-toc__item is-h3"><a href="#критика-и-продажи-ориентиры">Критика и продажи (ориентиры)</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

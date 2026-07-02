@@ -1,0 +1,1673 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Overwatch — Игры IT Universe</title><meta name="description" content="Overwatch — это многопользовательская компьютерная игра в жанре геройского шутера от первого лица, разработанная и выпущенная компанией Blizzard Entertainment."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Overwatch</span></li></ol></nav><header class="portal-hero"> <h1>Overwatch</h1> <p>Overwatch — это многопользовательская компьютерная игра в жанре геройского шутера от первого лица, разработанная и выпущенная компанией Blizzard Entertainment.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Overwatch" data-url="/games/9-03-igrovaya-industriya/game-studies/101">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Overwatch">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Overwatch</h1>
+<div class="itu-play-embed" data-example="spinoff/game-franchise-play" data-src="" data-title="Игровая франшиза" data-min-height="520" data-play-props="{&quot;franchise&quot;:&quot;overwatch&quot;}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="что-такое-overwatch">Что такое Overwatch</h2>
+<p><strong>Overwatch</strong> — это многопользовательская компьютерная игра в жанре геройского шутера от первого лица, разработанная и выпущенная компанией Blizzard Развлечения. Проект вышел на рынок в 2016 году для персональных компьютеров под управлением Windows, а также для игровых консолей PlayStation 4 и Xbox One. Позже версия игры стала доступна для Nintendo Switch. В 2022 году вышло продолжение проекта, получившее название <strong>Overwatch 2</strong>, которое трансформировало оригинальную модель монетизации и изменило формат командных сражений.</p>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/OW2.png" alt="OW2.png"></p>
+<p>В 2026 году игру обратно переименовали в Overwatch.</p>
+<p>Жанр <strong>геройский шутер</strong> (Hero Shooter) представляет собой симбиоз тактического шутера и ролевой игры. Игроки не создают персонажа с нуля, выбирая из заранее разработанного списка уникальных героев. Каждый герой обладает неповторимым визуальным стилем, набором способностей и ролью на поле боя. Успех в матче зависит не только от меткости стрельбы, но и от синергии между участниками команды, грамотного использования специальных умений и способности адаптироваться к меняющимся условиям битвы.</p>
+<p>История игры начинается в недалёком будущем, где человечество находится на пороге глобального конфликта с искусственным интеллектом. События разворачиваются на фоне научного прогресса, политических интриг и социальных потрясений. Игра сочетает в себе динамичный игровой процесс с глубоким повествованием, раскрываемым через сюжетные миссии, короткие анимационные фильмы и детали окружения.</p>
+<hr>
+<h2 id="лор-вселенной">Лор вселенной</h2>
+<p>Мир <strong>Overwatch</strong> характеризуется сложной историей, охватывающей несколько десятилетий развития технологий и геополитики. Основные события можно разделить на этапы — эпоха омников, Война омников, деятельность организации Overwatch, её падение и современное противостояние.</p>
+<hr>
+<h3 id="омники-и-люди-зарождение-конфликта">Омники и люди — Зарождение конфликта</h3>
+<p><strong>Омники</strong> — это роботы, обладающие высоким уровнем искусственного интеллекта и способностью к самосознанию. Их создание стало результатом работы над проектом "Анимус", который позволил машинам развивать собственную личность.</p>
+<ul>
+<li><strong>Золотой век:</strong> В начале XXI века омники стали незаменимыми помощниками человечества. Они строили города, занимались сельским хозяйством и поднимали мировую экономику до небывалых высот. Отношения между людьми и машинами были гармоничными.</li>
+<li><strong>Восстание машин:</strong> Глобальный кризис начался после того, как неизвестный код проник в системы фабрик-омний по всему миру. Роботы получили приказы уничтожить человечество. Это событие получило название <strong>Война омников</strong>. Конфликт охватил весь земной шар и привёл к разрушению многих стран.</li>
+<li><strong>Социальный раскол:</strong> После окончания войны общество оказалось разделено. Часть людей выступала за равенство машин и их права, другая часть представляла радикальных робоненавистников, требующих полного уничтожения всех искусственных существ.</li>
+</ul>
+<hr>
+<h3 id="организация-overwatch">Организация Overwatch</h3>
+<p><strong>Overwatch</strong> — это международная спецслужба, созданная ООН для борьбы с угрозой восставших омников и восстановления мира.</p>
+<ul>
+<li><strong>Авангард человечества:</strong> Организация объединила лучших специалистов со всего мира — военных, учёных, исследователей и обычных граждан, готовых пожертвовать собой ради общего блага.</li>
+<li><strong>Лидеры рассвета:</strong> Основателями и первыми лидерами организации стали Габриэль Рейес (известный как Солдат-76 в прошлом, хотя позже он стал Жнецом) и Джек Моррисон (Солдат-76). Они возглавили силы сопротивления и координировали операции по всему миру.</li>
+<li><strong>Золотая эпоха:</strong> После победы над омниками организация перешла к миротворческим функциям. В течение двадцати лет она поддерживала глобальный мир, решала локальные конфликты и продвигала научные открытия.</li>
+<li><strong>Падение титанов:</strong> Коррупция внутри организации, внутренние заговоры и страх общества перед её мощью привели к закрытию. Акт Петраса официально распустить организацию, что вызвало раскол среди её бывших членов. Многие герои ушли в тень или присоединились к другим фракциям.</li>
+</ul>
+<hr>
+<h3 id="blackwatch-теневое-подразделение">Blackwatch — Теневое подразделение</h3>
+<p><strong>Blackwatch</strong> — секретное подразделение Overwatch, занимавшееся выполнением грязных, незаконных операций, которые официальная структура не могла провести открыто.</p>
+<ul>
+<li><strong>Теневой клинок:</strong> Подразление действовало в тени, проводя диверсии, ликвидацию целей и сбор разведданных. Его деятельность была строго засекречена.</li>
+<li><strong>Оперативники хаоса:</strong> В рядах Blackwatch служили такие известные фигуры, как Маккри, Мойра и Гэндзи. Они работали под руководством Габриэля Рейеса.</li>
+<li><strong>Финал в Венеции:</strong> Публичный теракт, совершенный членами подразделения в Венеции, раскрыл существование отдела. Это событие окончательно подорвало репутацию Overwatch и ускорило её роспуск.</li>
+</ul>
+<hr>
+<h3 id="террористическая-группировка-коготь">Террористическая группировка "Коготь"</h3>
+<p><strong>Коготь</strong> — это террористический синдикат, верящий в то, что человечество может развиваться сильнее через мировые конфликты и войну.</p>
+<ul>
+<li><strong>Идеология эволюции:</strong> Лидеры организации считают, что мир должен быть очищен войной, чтобы породить сильнейших лидеров.</li>
+<li><strong>Кулак Смерти:</strong> Аканде Огундиму, известный как Кулак Смерти, является одним из главных лидеров совета. Он продвигает философию "выживания сильнейших" и использует свои ресурсы для усиления позиций Когтя.</li>
+<li><strong>Теневая ложа:</strong> Такие персонажи, как Роковая Вдова, Жнец, Сомбра и Мойра, используют ресурсы организации для достижения личных генетических и политических целей, оставаясь при этом частью структуры.</li>
+</ul>
+<hr>
+<h3 id="джанкертаун-и-австралия">Джанкертаун и Австралия</h3>
+<p><strong>Джанкертаун</strong> — это регион в австралийском аутбэке, ставший зоной радиоактивного загрязнения после ядерного взрыва.</p>
+<ul>
+<li><strong>Ядерный апокалипсис:</strong> Правительство Австралии передало управление регионом омникам, что спровоцировало бунт местных жителей.</li>
+<li><strong>Взрыв омнии:</strong> Подрыв реактора превратил континент в радиоактивную пустыню. Выжившие жители объединились в племя стервятников (Джанкеров).</li>
+<li><strong>Закон силы:</strong> Общество выживает на гладиаторских боях под властью Королевы Стервятников, которая стремится восстановить порядок и защитить свой народ от внешних угроз.</li>
+</ul>
+<hr>
+<h3 id="корпорация-вишкар">Корпорация Вишкар</h3>
+<p><strong>Вишкар</strong> — это мегакорпорация из Индии, стремящаяся перестроить мир с помощью технологии жесткого света.</p>
+<ul>
+<li><strong>Идеальный порядок:</strong> Компания предлагает бедным районам безопасность и инфраструктуру в обмен на полный контроль.</li>
+<li><strong>Корпоративный фашизм:</strong> Под предлогом защиты населения Вишкар устанавливает тоталитарный режим, ограничивая свободу передвижения и доступа к ресурсам.</li>
+</ul>
+<hr>
+<h3 id="клан-шимада-и-клан-хашимото">Клан Шимада и клан Хашимото</h3>
+<p>Эти преступные империи контролируют наркотрафик, торговлю оружием и наемные убийства в регионе Ханамуры.</p>
+<ul>
+<li><strong>Преступная империя:</strong> Клан Шимада веками доминировал в регионе благодаря жесткой дисциплине и силе.</li>
+<li><strong>Смена власти:</strong> После падения братьев Хандзо и Гэндзи власть в регионе захватил ещё более жестокий клан Хашимото, который продолжает традицию насилия.</li>
+</ul>
+<hr>
+<h3 id="освободительный-фронт-ада-в-южной-корее">Освободительный фронт Ада в Южной Корее</h3>
+<p>Южная Корея сталкивается с регулярными атаками гигантского омника-титана "Колосс".</p>
+<ul>
+<li><strong>Морская угроза:</strong> Из глубин Восточно-Китайского моря враг атакует побережье страны.</li>
+<li><strong>Отряд MEKA:</strong> Правительство мобилизовало киберспортсменов, включая D.Va, для управления боевыми мехами против адаптивного врага. Киберспортивные навыки позволяют пилотам реагировать быстрее стандартных солдат.</li>
+</ul>
+<hr>
+<h3 id="нуль-сектор-и-рамматра">Нуль-сектор и Рамматра</h3>
+<p><strong>Нуль-сектор</strong> — радикальная фракция омников, отказавшаяся терпеть притеснения со стороны людей.</p>
+<ul>
+<li><strong>Железный экстремизм:</strong> Фракция считает, что машины должны получить полное господство над человечеством.</li>
+<li><strong>Рамматра:</strong> Бывший боевой омник-монах возглавил Нуль-сектор, запустив глобальное вторжение, целью которого является освобождение всех омников от человеческого контроля.</li>
+</ul>
+<hr>
+<h2 id="геймплей-и-механики">Геймплей и механики</h2>
+<p>Игровой процесс <strong>Overwatch</strong> построен на принципах командного взаимодействия и тактического планирования. В отличие от классических шутеров, где важны только точность стрельбы и реакция, здесь ключевую роль играют способности героев и их комбинации.</p>
+<hr>
+<h3 id="классовая-синергия">Классовая синергия</h3>
+<p>Каждый матч требует наличия трёх основных ролей, которые дополняют друг друга:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Роль</th>
+<th align="left">Описание</th>
+<th align="left">Примеры героев</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Танк</strong></td>
+<td align="left">Герои с высокой живучестью, бронёй и способностями контроля территории. Они открывают путь команде и защищают союзников.</td>
+<td align="left">Райнхардт, Заря, Торбьорн, D.Va</td>
+</tr>
+<tr>
+<td align="left"><strong>Урон</strong></td>
+<td align="left">Герои, наносящие высокий урон и занимающиеся целями противника. Они обеспечивают огневую мощь и давление на врага.</td>
+<td align="left">Трейсер, Гэндзи, Соjорн, Крысавчик</td>
+</tr>
+<tr>
+<td align="left"><strong>Поддержка</strong></td>
+<td align="left">Герои, способные исцелять союзников, усиливать их характеристики и выполнять вспомогательные задачи.</td>
+<td align="left">Ангел, Батист, Люсио, Бригитта</td>
+</tr>
+</tbody>
+</table>
+<p>Командная победа достигается только при слаженной работе всех трёх ролей. Отсутствие одной роли часто приводит к проигрышу.</p>
+<hr>
+<h3 id="упор-на-способности">Упор на способности</h3>
+<p>Вместо простой стрельбы игроки применяют уникальные навыки и "ультимативные способности" (ульты).</p>
+<ul>
+<li><strong>Активные способности:</strong> Используются регулярно для перемещения, атаки или защиты. Например, телепортация Трейсер или щит Райнхардта.</li>
+<li><strong>Ультимативные способности:</strong> Мощные умения, накапливаемые в течение матча. Они требуют времени для зарядки и могут кардинально изменить ход битвы. Пример: Гравитонная пушка Зари или Удар дракона Хандзо.</li>
+</ul>
+<hr>
+<h3 id="командный-тайминг">Командный тайминг</h3>
+<p>Победа зависит от комбо-атак и координации действий. Игроки должны синхронизировать использование ультимативных способностей для нанесения максимального урона или создания непреодолимых препятствий.</p>
+<ul>
+<li><strong>Пример комбо:</strong> Использование Гравитонной пушки Зари для сбора врагов в одну точку с последующим применением Удара дракона Хандзо или Метеорита Торбьорна.</li>
+<li><strong>Защита:</strong> Танк должен держать щит, пока поддержка лечит команду, а уроженцы наносят урон по цели.</li>
+</ul>
+<hr>
+<h3 id="смена-героев">Смена героев</h3>
+<p>Игрок может менять персонажа прямо во время матча. Это позволяет адаптироваться к стратегии противника (контр-пик).</p>
+<ul>
+<li>Если вражеская команда выбрала много дальних бойцов, игрок может сменить героя на ближнего бойца.</li>
+<li>Если противник имеет сильного танка, можно выбрать героя с высоким пробивным уроном.</li>
+</ul>
+<hr>
+<h3 id="формат-матчей">Формат матчей</h3>
+<p>Игра прошла значительную трансформацию с выходом второй части.</p>
+<ul>
+<li><strong>Overwatch 1:</strong> Формат командных сражений 6 на 6 (2 танка, 2 поддержки, 2 урона). Это позволяло создавать сложные тактические схемы и обеспечивало большую устойчивость команды.</li>
+<li><strong>Overwatch 2:</strong> Переход к формату 5 на 5 (1 танк, 2 поддержки, 2 урона). Это изменение сделало игру более динамичной и увеличило индивидуальную зависимость от каждого игрока. Один танк теперь отвечает за всю защиту команды, что повышает требования к его мастерству.</li>
+</ul>
+<hr>
+<h3 id="режимы-игры">Режимы игры</h3>
+<p>Игра предлагает множество режимов для различных типов игры:</p>
+<ul>
+<li><strong>Быстрая игра:</strong> Матчи с игроками вашего уровня сложности без рейтинга.</li>
+<li><strong>Соревновательная игра:</strong> Рейтингные матчи, влияющие на ранг игрока.</li>
+<li><strong>Аркада:</strong> Различные режимы с изменёнными правилами:
+<ul>
+<li><em>Случайная дуэль:</em> 1 на 1 до 5 побед.</li>
+<li><em>Ликвидация:</em> 3 на 3 до 3 побед.</li>
+<li><em>Все потасовки!</em>: 6 на 6 со случайными правилами.</li>
+<li><em>Без ограничений:</em> Выбор любого героя без ограничений по ролям.</li>
+</ul>
+</li>
+<li><strong>Направление (Push):</strong> Команды сражаются за управление роботом, толкающим груз на противоположную сторону карты.</li>
+<li><strong>Стадион:</strong> Режим формата 5 на 5, состоящий из семи раундов с системой улучшений героя.</li>
+</ul>
+<hr>
+<h3 id="карты-в-overwatch">Карты в Overwatch</h3>
+<table>
+<thead>
+<tr>
+<th>Название карты</th>
+<th>Режим игры</th>
+<th>Дебют</th>
+<th>Статус в Overwatch 2 / Текущая доступность</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>King's Row (Кингс Роу)</td>
+<td>Гибрид (Hybrid)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Numbani (Нумбани)</td>
+<td>Гибрид (Hybrid)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Hollywood (Голливуд)</td>
+<td>Гибрид (Hybrid)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Eichenwalde (Айхенвальд)</td>
+<td>Гибрид (Hybrid)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Blizzard World (Blizzard World)</td>
+<td>Гибрид (Hybrid)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Midtown (Мидтаун)</td>
+<td>Гибрид (Hybrid)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Paraíso (Параисо)</td>
+<td>Гибрид (Hybrid)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Dorado (Дорадо)</td>
+<td>Сопровождение (Escort)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Watchpoint: Gibraltar (Пост наблюдения: Гибралтар)</td>
+<td>Сопровождение (Escort)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Route 66 (Шоссе 66)</td>
+<td>Сопровождение (Escort)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Junkertown (Джанкертаун)</td>
+<td>Сопровождение (Escort)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Rialto (Риальто)</td>
+<td>Сопровождение (Escort)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Havana (Гавана)</td>
+<td>Сопровождение (Escort)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Circuit Royal (Королевская трасса)</td>
+<td>Сопровождение (Escort)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Shambali Monastery (Монастырь Шамбала)</td>
+<td>Сопровождение (Escort)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Runasapi (Рунасапи)</td>
+<td>Сопровождение (Escort)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Ilios (Илиос)</td>
+<td>Контроль объекта (Control)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Lijiang Tower (Башня Лицзян)</td>
+<td>Контроль объекта (Control)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Nepal (Непал)</td>
+<td>Контроль объекта (Control)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Oasis (Оазис)</td>
+<td>Контроль объекта (Control)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Busan (Пусан)</td>
+<td>Контроль объекта (Control)</td>
+<td>OW1</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Antarctic Peninsula (Антарктическая станция)</td>
+<td>Контроль объекта (Control)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Samoa (Самоа)</td>
+<td>Контроль объекта (Control)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Colosseo (Колизей)</td>
+<td>Натиск (Push)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Esperança (Эсперанса)</td>
+<td>Натиск (Push)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>New Queen Street (Нью-Квин-стрит)</td>
+<td>Натиск (Push)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Runasapi</td>
+<td>Натиск (Push)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Suravasa (Сураваса)</td>
+<td>Точка возгорания (Flashpoint)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>New Junk City (Нью-Джанкерсити)</td>
+<td>Точка возгорания (Flashpoint)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Hanaoka (Ханока)</td>
+<td>Столкновение (Clash)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Throne of Anubis (Трон Анубиса)</td>
+<td>Столкновение (Clash)</td>
+<td>OW2</td>
+<td>Доступна в основном пуле.</td>
+</tr>
+<tr>
+<td>Hanamura (Ханамура)</td>
+<td>Захват точек (Assault / 2CP)</td>
+<td>OW1</td>
+<td>Удалена из рейтинга/быстрой игры; доступна в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Temple of Anubis (Храм Анубиса)</td>
+<td>Захват точек (Assault / 2CP)</td>
+<td>OW1</td>
+<td>Удалена из рейтинга/быстрой игры; доступна в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Volskaya Industries (КБ Вольской)</td>
+<td>Захват точек (Assault / 2CP)</td>
+<td>OW1</td>
+<td>Удалена из рейтинга/быстрой игры; доступна в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Horizon Lunar Colony (Лунная колония "Горизонт")</td>
+<td>Захват точек (Assault / 2CP)</td>
+<td>OW1</td>
+<td>Удалена из рейтинга/быстрой игры; доступна в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Paris (Париж)</td>
+<td>Захват точек (Assault / 2CP)</td>
+<td>OW1</td>
+<td>Удалена из рейтинга/быстрой игры; доступна в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Eco-point: Antarctica (Экостанция: Антарктида)</td>
+<td>Ликвидация / Арена (Elimination)</td>
+<td>OW1</td>
+<td>Доступна только в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Black Forest (Чёрный лес)</td>
+<td>Ликвидация / Арена (Elimination)</td>
+<td>OW1</td>
+<td>Доступна только в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Castillo (Кастильо)</td>
+<td>Ликвидация / Арена (Elimination)</td>
+<td>OW1</td>
+<td>Доступна только в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Necropolis (Некрополь)</td>
+<td>Ликвидация / Арена (Elimination)</td>
+<td>OW1</td>
+<td>Доступна только в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Ayutthaya (Аюттхая)</td>
+<td>Захват флага (Capture the Flag)</td>
+<td>OW1</td>
+<td>Доступна только в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Château Guillard (Шато-Гийяр)</td>
+<td>Схватка (Deathmatch)</td>
+<td>OW1</td>
+<td>Доступна только в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Petra (Петра)</td>
+<td>Схватка (Deathmatch)</td>
+<td>OW1</td>
+<td>Доступна только в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Kanezaka (Канедзака)</td>
+<td>Схватка (Deathmatch)</td>
+<td>OW1</td>
+<td>Доступна только в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Malevento (Малевенто)</td>
+<td>Схватка (Deathmatch)</td>
+<td>OW1</td>
+<td>Доступна только в Аркаде и Своей игре.</td>
+</tr>
+<tr>
+<td>Estádio das Rãs</td>
+<td>Лусиобол (Lúcioball)</td>
+<td>OW1</td>
+<td>Сезонная карта (Летние игры).</td>
+</tr>
+<tr>
+<td>Sydney Harbour Arena</td>
+<td>Лусиобол (Lúcioball)</td>
+<td>OW1</td>
+<td>Сезонная карта (Летние игры).</td>
+</tr>
+<tr>
+<td>Busan Stadium</td>
+<td>Лусиобол (Lúcioball)</td>
+<td>OW1</td>
+<td>Сезонная карта (Летние игры).</td>
+</tr>
+<tr>
+<td>Adlersbrunn (Адлерсбрунн)</td>
+<td>Месть Крысенштейна</td>
+<td>OW1</td>
+<td>Измененная версия Эйхенвальда под Хэллоуин.</td>
+</tr>
+<tr>
+<td>Talantis (Талантис)</td>
+<td>Своя игра (Workshop)</td>
+<td>OW2</td>
+<td>Карта, созданная сообществом (доступна в Своей игре).</td>
+</tr>
+<tr>
+<td>Rio de Janeiro (Рио-де-Жанейро)</td>
+<td>Сюжетная PvE-миссия</td>
+<td>OW2</td>
+<td>Доступна только при покупке PvE-комплекта Invasion.</td>
+</tr>
+<tr>
+<td>Toronto (Торонто)</td>
+<td>Сюжетная PvE-миссия</td>
+<td>OW2</td>
+<td>Доступна только при покупке PvE-комплекта Invasion.</td>
+</tr>
+<tr>
+<td>Gothenburg (Гётеборг)</td>
+<td>Сюжетная PvE-миссия</td>
+<td>OW2</td>
+<td>Доступна только при покупке PvE-комплекта Invasion.</td>
+</tr>
+<tr>
+<td>Underworld (Подземный мир)</td>
+<td>Ивентовая PvE-миссия</td>
+<td>OW2</td>
+<td>Измененная подземная часть Кингс Роу (Ивенты).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="архитектура-выполнения-и-технические-особенности">Архитектура выполнения и технические особенности</h2>
+<p>Разработка <strong>Overwatch</strong> потребовала создания специализированных технологий для обеспечения высокой производительности и отзывчивости сети.</p>
+<hr>
+<h3 id="движок-prometheus">Движок Prometheus</h3>
+<p>Blizzard создала проприетарный игровой движок <strong>Prometheus</strong>, специально разработанный для <strong>Overwatch</strong>.</p>
+<ul>
+<li><strong>Высокая кадровая частота:</strong> Движок оптимизирован для стабильной работы на высоких показателях FPS (кадров в секунду), что критически важно для соревновательных шутеров.</li>
+<li><strong>Сетевая отзывчивость:</strong> Архитектура обеспечивает минимальную задержку между действиями игрока и их отображением на экране.</li>
+</ul>
+<hr>
+<h3 id="система-ecs-entity-component-system">Система ECS (Entity Component System)</h3>
+<p>Для обработки сотен игровых сущностей и эффектов используется система <strong>ECS</strong>.</p>
+<ul>
+<li><strong>Компонентная архитектура:</strong> Объекты в игре строятся из независимых компонентов (например, физика, рендеринг, здоровье), что позволяет гибко комбинировать их свойства.</li>
+<li><strong>Оптимизация:</strong> Такая структура позволяет эффективно обрабатывать множество объектов одновременно без потери производительности.</li>
+</ul>
+<hr>
+<h3 id="сетевой-код-netcode">Сетевой код Netcode</h3>
+<p>Игра использует продвинутый алгоритм <strong>детерминированного предсказания</strong> (Prediction) для компенсации пинга.</p>
+<ul>
+<li><strong>Предсказание движения:</strong> Клиент предсказывает движение других игроков, чтобы скрыть задержку сети.</li>
+<li><strong>Резолюция конфликтов:</strong> Сервер корректирует предсказания при получении достоверных данных, обеспечивая согласованность состояния игры для всех участников.</li>
+</ul>
+<hr>
+<h3 id="звуковой-движок">Звуковой движок</h3>
+<p>Система динамического позиционирования звуков играет важную роль в геймплее.</p>
+<ul>
+<li><strong>Приоритизация:</strong> Звуковой движок выделяет самые опасные звуки: шаги врагов, перезарядку оружия и реплики противников.</li>
+<li><strong>Пространственное аудио:</strong> Игроки могут определять направление и расстояние до источника звука, что помогает в тактическом планировании.</li>
+</ul>
+<hr>
+<h2 id="культурное-влияние-и-наследие">Культурное влияние и наследие</h2>
+<p><strong>Overwatch</strong> оказала огромное влияние на игровую индустрию и поп-культуру в целом.</p>
+<hr>
+<h3 id="феномен-косплея">Феномен косплея</h3>
+<p>Дизайн персонажей стал эталоном для мировой гик-культуры. Образы таких героев, как Трейсер, Мерси и D.Va, часто используются в косплее благодаря яркому внешнему виду и узнаваемости.</p>
+<hr>
+<h3 id="анимационный-триумф">Анимационный триумф</h3>
+<p>Blizzard создала серию короткометражных анимационных фильмов, которые собирали десятки миллионов просмотров. Эти произведения конкурировали с работами студий Pixar по качеству анимации и глубине сюжета. Фильмы раскрывают истории персонажей и расширяют лор вселенной.</p>
+<hr>
+<h3 id="киберспортивный-масштаб">Киберспортивный масштаб</h3>
+<p>Создание <strong>Overwatch League (OWL)</strong> стало революционным шагом. Лига построена по модели традиционных спортивных франшиз с городскими гео-локациями. Это привлекло внимание массовой аудитории и инвесторов к киберспорту.</p>
+<hr>
+<h3 id="влияние-на-индустрию">Влияние на индустрию</h3>
+<ul>
+<li><strong>Лутбоксы:</strong> Игра популяризировала систему лутбоксов (контейнеров с случайными предметами), что запустило волну законодательных запретов и регулирования в разных странах.</li>
+<li><strong>Геройский шутер:</strong> <strong>Overwatch</strong> задала тренд на поджанр Hero Shooter, вдохновив множество других разработчиков на создание подобных проектов.</li>
+<li><strong>Бесплатная модель:</strong> Переход <strong>Overwatch 2</strong> на модель free-to-play с боевым пропуском изменил подход монетизации в индустрии.</li>
+</ul>
+<hr>
+<h2 id="полный-список-героев">Полный список героев</h2>
+<p>Ниже представлена детальная таблица всех доступных героев, разделённая по ролям. Данные актуальны для версии игры, включающей как оригинальный состав, так и новых персонажей, добавленных в ходе обновлений.</p>
+<hr>
+<h3 id="танки">Танки</h3>
+<p>Танки обладают высокой живучестью и способны контролировать территорию.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Позывной</th>
+<th align="left">Возраст</th>
+<th align="left">Оперативная база</th>
+<th align="left">Принадлежность</th>
+<th align="left">Описание</th>
+<th align="left">Дата добавления</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>D.Va</strong></td>
+<td align="left">19 лет</td>
+<td align="left">Пусан, Южная Корея</td>
+<td align="left">Мобильная группа экзобойцов корейской армии (MEKA)</td>
+<td align="left">Бывшая киберспортсменка, управляющая бронированным экзоскелетом. Может взорвать меху для нанесения урона.</td>
+<td align="left">10.11.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Заря</strong></td>
+<td align="left">28 лет</td>
+<td align="left">Красноярский фронт, Россия</td>
+<td align="left">Российские силы обороны</td>
+<td align="left">Чемпионка-тяжёлоатлетка. Защищена энергетическим барьером, который усиливает её оружие при получении урона.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Райнхардт</strong></td>
+<td align="left">61 год</td>
+<td align="left">Штутгарт, Германия</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Рыцарь в тяжёлых доспехах с молотом и щитом. Защищает союзников и наносит мощный удар.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Ориса</strong></td>
+<td align="left">1 месяц</td>
+<td align="left">Нумбани, Нигерия</td>
+<td align="left">Отсутствует</td>
+<td align="left">Модифицированная боевая машина OR15, переделанная Ифи Оладеле. Использует щит и лазерную пушку.</td>
+<td align="left">02.03.2017</td>
+</tr>
+<tr>
+<td align="left"><strong>Сгма</strong></td>
+<td align="left">62 года</td>
+<td align="left">Гаага, Нидерланды</td>
+<td align="left">"Коготь"</td>
+<td align="left">Эксцентричный астрофизик, управляющий гравитацией. Создает барьеры и бросает объекты во врагов.</td>
+<td align="left">23.07.2019</td>
+</tr>
+<tr>
+<td align="left"><strong>Таран</strong></td>
+<td align="left">14 лет</td>
+<td align="left">Лунная колония "Горизонт" / Джанкертаун</td>
+<td align="left">Нет</td>
+<td align="left">Хомяк Хэммонд в боевой трансформирующейся сфере. Наносит огромный урон тараном.</td>
+<td align="left">28.06.2018</td>
+</tr>
+<tr>
+<td align="left"><strong>Турбосвин</strong></td>
+<td align="left">48 лет</td>
+<td align="left">Джанкертаун, Австралия</td>
+<td align="left">Стервятники (в прошлом)</td>
+<td align="left">Наёмник с крюком и дробовиком. Может притягивать врагов и наносить урон.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Уинстон</strong></td>
+<td align="left">29 лет</td>
+<td align="left">Лунная колония "Горизонт" / Пост наблюдения: Гибралтар</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Генетически модифицированный горилла-учёный. Обладает щитом и прыжком.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Мауга</strong></td>
+<td align="left">37 лет</td>
+<td align="left">Апиа, Самоа</td>
+<td align="left">Морские налётчики / "Коготь"</td>
+<td align="left">Бывший экоактивист, ныне участник "Когтя". Имеет второе кибернетическое сердце.</td>
+<td align="left">5 декабря 2023</td>
+</tr>
+<tr>
+<td align="left"><strong>Раматтра</strong></td>
+<td align="left">28 лет</td>
+<td align="left">Монастырь Шамбала, Непал</td>
+<td align="left">Шамбала / Нуль-сектор</td>
+<td align="left">Лидер "Нуль-сектора", военная машина. Использует силу омников для защиты.</td>
+<td align="left">6 декабря 2022</td>
+</tr>
+<tr>
+<td align="left"><strong>Королева Стервятников</strong></td>
+<td align="left">31 год</td>
+<td align="left">Джанкертаун, Австралия</td>
+<td align="left">Пустынники / Стервятники</td>
+<td align="left">Правительница Джанкертауна. Пресекает беспорядки и готовит стервятников к битвам.</td>
+<td align="left">4 октября 2022</td>
+</tr>
+<tr>
+<td align="left"><strong>Азарт</strong></td>
+<td align="left">24 года</td>
+<td align="left">Глазго, Шотландия</td>
+<td align="left">Шотландская армия (ранее)</td>
+<td align="left">Радикальный нарушитель, стремительно снискавший известность в криминальных кругах.</td>
+<td align="left">10 декабря 2024</td>
+</tr>
+<tr>
+<td align="left"><strong>Домина</strong></td>
+<td align="left">32 года</td>
+<td align="left">Лондон, Англия / Утопия, Индия</td>
+<td align="left">Корпорация "Вишкар"</td>
+<td align="left">Ведущий дипломат и переговорщик архитекторов "Вишкар". Использует технологии "жёсткого" света.</td>
+<td align="left">10 февраля 2026</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="урон">Урон</h3>
+<p>Герои урона наносят высокий урон и занимаются целями противника.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Позывной</th>
+<th align="left">Возраст</th>
+<th align="left">Оперативная база</th>
+<th align="left">Принадлежность</th>
+<th align="left">Описание</th>
+<th align="left">Дата добавления</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Бастион</strong></td>
+<td align="left">30 лет</td>
+<td align="left">Неизвестно</td>
+<td align="left">Отсутствует</td>
+<td align="left">Боевой робот E54. Переключается между режимом разведки и турелью с пулемётом Гатлинга.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Гэндзи</strong></td>
+<td align="left">35 лет</td>
+<td align="left">Ханамура, Япония</td>
+<td align="left">Клан Шимада / Overwatch / Blackwatch</td>
+<td align="left">Ниндзя-киборг, вооружённый катаной и сюрикэнами. Быстро перемещается и отбивает снаряды.</td>
+<td align="left">10.11.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Жнец</strong></td>
+<td align="left">58 лет</td>
+<td align="left">Лос-Анджелес, США</td>
+<td align="left">Overwatch / Blackwatch / "Коготь"</td>
+<td align="left">Жестокий убийца в маске. Может обращаться в тень и перемещаться за спины врагов.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Крысавчик</strong></td>
+<td align="left">25 лет</td>
+<td align="left">Джанкертаун, Австралия</td>
+<td align="left">Стервятники (в прошлом)</td>
+<td align="left">Безумный инженер с дробовиком и бомбами.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Кулак Смерти</strong></td>
+<td align="left">45 лет</td>
+<td align="left">Ойо, Нигерия</td>
+<td align="left">"Коготь"</td>
+<td align="left">Наёмник с кибернетическим протезом руки. Использует мощные удары.</td>
+<td align="left">06.07.2017</td>
+</tr>
+<tr>
+<td align="left"><strong>Коул Кэссиди</strong></td>
+<td align="left">37 лет</td>
+<td align="left">Санта-Фе, Нью-Мексико, США</td>
+<td align="left">Банда Мертвецов / Blackwatch / Overwatch</td>
+<td align="left">Бывший шериф, использующий винтовку и динамит.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Мэй</strong></td>
+<td align="left">31 год</td>
+<td align="left">Сань, Китай (ранее)</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Учёный-климатолог, использующий замораживающее оружие.</td>
+<td align="left">10.11.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Мойра</strong></td>
+<td align="left">48 лет</td>
+<td align="left">Дублин, Ирландия / Оазис</td>
+<td align="left">Blackwatch (в прошлом) / "Коготь"</td>
+<td align="left">Блестящий генетик, ставящий научный прогресс выше этики.</td>
+<td align="left">03.11.2017</td>
+</tr>
+<tr>
+<td align="left"><strong>Роковая Вдова</strong></td>
+<td align="left">33 года</td>
+<td align="left">Анси, Франция</td>
+<td align="left">"Коготь"</td>
+<td align="left">Лучший снайпер террористической организации. Всегда бьёт точно в цель.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Смметра</strong></td>
+<td align="left">28 лет</td>
+<td align="left">Утопия, Индия</td>
+<td align="left">Корпорация Вишкар</td>
+<td align="left">Инженер, создающий стены и телепортирующий союзников.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Солдат-76</strong></td>
+<td align="left">Неизвестно</td>
+<td align="left">Блумингтон, США (в прошлом)</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Бывший лидер Overwatch, использующий автомат и ракетницу.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Сомбра</strong></td>
+<td align="left">30 лет</td>
+<td align="left">Дорадо, Мексика</td>
+<td align="left">"Лос Муэртос" / "Коготь"</td>
+<td align="left">Хакер, умеющий взламывать технику и живых существ.</td>
+<td align="left">15.11.2016</td>
+</tr>
+<tr>
+<td align="left"><strong>Торбьорн</strong></td>
+<td align="left">57 лет</td>
+<td align="left">Гётеборг, Швеция</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Инженер, создающий турель и ремонтирующий щиты.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Трейсер</strong></td>
+<td align="left">26 лет</td>
+<td align="left">Лондон, Великобритания</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Бывшая лётчица, перемещающаяся во времени. Быстрая и мобильная.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Уинстон</strong></td>
+<td align="left">29 лет</td>
+<td align="left">Лунная колония "Горизонт" / Пост наблюдения: Гибралтар</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Генетически модифицированный горилла-учёный. Обладает щитом и прыжком.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Фарра</strong></td>
+<td align="left">32 года</td>
+<td align="left">Гиза, Египет</td>
+<td align="left">Helix Security International</td>
+<td align="left">Дочь Аны. Летает и стреляет ракетами.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Хандзо</strong></td>
+<td align="left">38 лет</td>
+<td align="left">Ханамура, Япония</td>
+<td align="left">Клан Шимада (в прошлом)</td>
+<td align="left">Мастер лука и меча. Наносит урон издалека.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Эхо</strong></td>
+<td align="left">Неизвестно</td>
+<td align="left">Швейцария (в прошлом)</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Робот, способный летать и копировать способности врагов.</td>
+<td align="left">14.04.2020</td>
+</tr>
+<tr>
+<td align="left"><strong>Эш</strong></td>
+<td align="left">39 лет</td>
+<td align="left">Каньон Мертвецов, Аризона, США</td>
+<td align="left">Банда Мертвецов</td>
+<td align="left">Главарь банды, вооружённая винтовкой и динамитом.</td>
+<td align="left">2.11.2018</td>
+</tr>
+<tr>
+<td align="left"><strong>Авентюра</strong></td>
+<td align="left">26 лет</td>
+<td align="left">Новая Шотландия, Канада</td>
+<td align="left">Общество Искателей</td>
+<td align="left">Харизматичный археолог, первый небинарный персонаж.</td>
+<td align="left">16 апреля 2024</td>
+</tr>
+<tr>
+<td align="left"><strong>Ань Жань</strong></td>
+<td align="left">22 года</td>
+<td align="left">Университет "У Сн", Чэнду, Китай</td>
+<td align="left">Университет "У Сн" / Overwatch</td>
+<td align="left">Выпускница факультета магии огня. Амбициозна и стремительна.</td>
+<td align="left">10 февраля 2026</td>
+</tr>
+<tr>
+<td align="left"><strong>Вендетта</strong></td>
+<td align="left">29 лет</td>
+<td align="left">Рим, Италия</td>
+<td align="left">"Коготь"</td>
+<td align="left">Чемпионка Колизея, мастер ближнего боя.</td>
+<td align="left">9 декабря 2025</td>
+</tr>
+<tr>
+<td align="left"><strong>Соджорн</strong></td>
+<td align="left">51 год</td>
+<td align="left">Торонто, Канада</td>
+<td align="left">Канадская армия / Overwatch</td>
+<td align="left">Блестящий тактик, бывший капитан Overwatch.</td>
+<td align="left">4 октября 2022</td>
+</tr>
+<tr>
+<td align="left"><strong>Сьерра</strong></td>
+<td align="left">25 лет</td>
+<td align="left">Гранд-Меса, Колорадо</td>
+<td align="left">"Хеликс Секьюрити"</td>
+<td align="left">Руководитель организации, прошедшая процедуру физического улучшения.</td>
+<td align="left">14 апреля 2026</td>
+</tr>
+<tr>
+<td align="left"><strong>Фрейя</strong></td>
+<td align="left">34 года</td>
+<td align="left">Копенгаген, Дания (ранее)</td>
+<td align="left">ВС Дании / Overwatch (ранее)</td>
+<td align="left">Охотница за головами, известная в криминальном мире.</td>
+<td align="left">22 апреля 2025</td>
+</tr>
+<tr>
+<td align="left"><strong>Эмре</strong></td>
+<td align="left">44 года</td>
+<td align="left">Стамбул, Турция (ранее) / Рим, Италия</td>
+<td align="left">Overwatch (ранее)</td>
+<td align="left">Бывший оперативник, находящийся под влиянием сущности.</td>
+<td align="left">10 февраля 2026</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="поддержка">Поддержка</h3>
+<p>Герои поддержки исцеляют союзников, усиливают их характеристики и выполняют вспомогательные задачи.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Позывной</th>
+<th align="left">Возраст</th>
+<th align="left">Оперативная база</th>
+<th align="left">Принадлежность</th>
+<th align="left">Описание</th>
+<th align="left">Дата добавления</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Ана</strong></td>
+<td align="left">60 лет</td>
+<td align="left">Каир, Египет</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Египетский снайпер с биотическим ружьём. Может лечить или усыплять врагов.</td>
+<td align="left">12.07.2016</td>
+</tr>
+<tr>
+<td align="left"><strong>Ангел</strong></td>
+<td align="left">37 лет</td>
+<td align="left">Цюрих, Швейцария</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Полевой врач, восстанавливающий здоровье и воскрешающий союзников.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Батист</strong></td>
+<td align="left">36 лет</td>
+<td align="left">Тортуга, Гаити (в прошлом)</td>
+<td align="left">Карибская коалиция / "Коготь" (в прошлом)</td>
+<td align="left">Полевой врач, использующий гранаты и джетпак.</td>
+<td align="left">26.02.2019</td>
+</tr>
+<tr>
+<td align="left"><strong>Бригитта</strong></td>
+<td align="left">23 года</td>
+<td align="left">Гётеборг, Швеция (в прошлом)</td>
+<td align="left">Нет</td>
+<td align="left">Дочь Торбьорна, сражается в ближнем бою с щитом и молотом.</td>
+<td align="left">28.02.2018</td>
+</tr>
+<tr>
+<td align="left"><strong>Дзенъятта</strong></td>
+<td align="left">20 лет</td>
+<td align="left">Монастырь Шамбала, Гималаи (в прошлом)</td>
+<td align="left">Шамбала (в прошлом)</td>
+<td align="left">Робот-монах, усиливающий союзников и атакующий врагов.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Лусио</strong></td>
+<td align="left">26 лет</td>
+<td align="left">Рио-де-Жанейро, Бразилия</td>
+<td align="left">Нет</td>
+<td align="left">DJ, ускоряющий союзников и лечащий их звуковыми волнами.</td>
+<td align="left">27.10.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Мэй</strong></td>
+<td align="left">31 год</td>
+<td align="left">Сань, Китай (ранее)</td>
+<td align="left">Overwatch (в прошлом)</td>
+<td align="left">Учёный-климатолог, использующий замораживающее оружие.</td>
+<td align="left">10.11.2015</td>
+</tr>
+<tr>
+<td align="left"><strong>Ткач Жизни</strong></td>
+<td align="left">31 год</td>
+<td align="left">Чиангмай, Таиланд (ранее)</td>
+<td align="left">Архитектурная академия Vishkar / Аркология Атлантики</td>
+<td align="left">Учёный, использующий технологию биосвета.</td>
+<td align="left">11 апреля 2023</td>
+</tr>
+<tr>
+<td align="left"><strong>Иллари</strong></td>
+<td align="left">18 лет</td>
+<td align="left">Рунасапи, Перу</td>
+<td align="left">Воины Инти / Вигилант</td>
+<td align="left">Последняя представительница воинов Инти, покоряющих солнечную энергию.</td>
+<td align="left">10 августа 2023</td>
+</tr>
+<tr>
+<td align="left"><strong>Кирико</strong></td>
+<td align="left">21 год</td>
+<td align="left">Канэдзака, Япония</td>
+<td align="left">Клинки Ямагами / Ёкай</td>
+<td align="left">Мико и ниндзя-целитель. Первая героиня, доступная через боевой пропуск.</td>
+<td align="left">4 октября 2022</td>
+</tr>
+<tr>
+<td align="left"><strong>Реактивная Киса</strong></td>
+<td align="left">—</td>
+<td align="left">Пост наблюдения: Гибралтар</td>
+<td align="left">Overwatch</td>
+<td align="left">Кошка, пилотирующая летательное устройство.</td>
+<td align="left">10 февраля 2026</td>
+</tr>
+<tr>
+<td align="left"><strong>У Ян</strong></td>
+<td align="left">19 лет</td>
+<td align="left">Чэнду, Сычуань, Китай</td>
+<td align="left">Университет "У Сн" / Overwatch</td>
+<td align="left">Мастер целительных техник факультета воды.</td>
+<td align="left">26 августа 2025</td>
+</tr>
+<tr>
+<td align="left"><strong>Юнона</strong></td>
+<td align="left">19 лет</td>
+<td align="left">Колония "Красное обещание", Марс (ранее)</td>
+<td align="left">Колония "Красное обещание"</td>
+<td align="left">Космический рейнджер, первый человек, рождённый на Марсе.</td>
+<td align="left">20 августа 2024</td>
+</tr>
+<tr>
+<td align="left"><strong>Мидзуки</strong></td>
+<td align="left">22 года</td>
+<td align="left">Токио, Япония (ранее) / Канэдзака, Япония</td>
+<td align="left">Неизвестно</td>
+<td align="left">Персонаж с трагической судьбой, страдающий от родового проклятия.</td>
+<td align="left">10 февраля 2026</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="ультимативные-способности-героев">Ультимативные способности героев</h3>
+<h4>Танки (Tank)</h4>
+<table>
+<thead>
+<tr>
+<th>Герой</th>
+<th>Суперспособность</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D.Va</td>
+<td>Самоуничтожение / Вызов мехи</td>
+<td>Меха взрывается с огромным радиусом; без робота — вызывает новую меху.</td>
+</tr>
+<tr>
+<td>Doomfist</td>
+<td>Удар метеора</td>
+<td>Герой взмывает в небо и приземляется, нанося урон по площади.</td>
+</tr>
+<tr>
+<td>Hazard</td>
+<td>Tectonic Shock (Тектонический шок)</td>
+<td>Мощные направленные удары по земле, ускоряющие откат базовых способностей.</td>
+</tr>
+<tr>
+<td>Junker Queen</td>
+<td>Буйство</td>
+<td>Рывок вперед с нанесением урона, наложением эффекта кровотечения и запрета на отхил.</td>
+</tr>
+<tr>
+<td>Mauga</td>
+<td>Смертельный бой</td>
+<td>Барьер-цилиндр, блокирующий врагов внутри и дающий Мауге бесконечные патроны.</td>
+</tr>
+<tr>
+<td>Orisa</td>
+<td>Встряска земли</td>
+<td>Стягивает врагов к себе, замедляет их и наносит мощный удар по площади.</td>
+</tr>
+<tr>
+<td>Ramattra</td>
+<td>Аннигиляция</td>
+<td>Переходит в форму Немезиды и создает рой, наносящий урон всем врагам вокруг.</td>
+</tr>
+<tr>
+<td>Reinhardt</td>
+<td>Землетрясение</td>
+<td>Удар молотом по земле, который сбивает с ног и оглушает врагов перед собой.</td>
+</tr>
+<tr>
+<td>Roadhog</td>
+<td>Турбосвин</td>
+<td>Переделывает оружие в пулемет, отбрасывающий врагов и наносящий сильный урон.</td>
+</tr>
+<tr>
+<td>Sigma</td>
+<td>Гравитационный колодец</td>
+<td>Поднимает врагов в воздух в выбранной зоне, после чего резко обрушивает их на землю.</td>
+</tr>
+<tr>
+<td>Winston</td>
+<td>Ярость зверя</td>
+<td>Сльно увеличивает здоровье, заменяя пушку на сокрушительные удары руками.</td>
+</tr>
+<tr>
+<td>Wrecking Ball</td>
+<td>Минное поле</td>
+<td>Рассылает вокруг себя россыпь чувствительных к приближению парящих мин.</td>
+</tr>
+<tr>
+<td>Zarya</td>
+<td>Гравитонный импульс</td>
+<td>Выпускает сферу, притягивающую к центру всех врагов в радиусе действия.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Урон (Damage / DPS)</h4>
+<table>
+<thead>
+<tr>
+<th>Герой</th>
+<th>Суперспособность</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anran</td>
+<td>Восхождение / Возрождение</td>
+<td>Огненный рывок со взрывом при столкновении; при гибели позволяет воскреснуть.</td>
+</tr>
+<tr>
+<td>Ashe</td>
+<td>Б.О.Б.</td>
+<td>Призывает на поле робота-дворецкого, который подбрасывает врагов и ведет огонь.</td>
+</tr>
+<tr>
+<td>Bastion</td>
+<td>Режим: Артиллерия</td>
+<td>Персонаж замирает и выпускает до трех мощных снарядов по выбранным точкам.</td>
+</tr>
+<tr>
+<td>Cassidy</td>
+<td>Меткий стрелок</td>
+<td>Наводится на цели в поле зрения и совершает серию смертоносных выстрелов.</td>
+</tr>
+<tr>
+<td>Echo</td>
+<td>Дубликация</td>
+<td>Копирует выбранного вражеского героя и ускоряет накопление его ультимейта.</td>
+</tr>
+<tr>
+<td>Emre</td>
+<td>Override Protocol (Протокол перезаписи)</td>
+<td>Усиливает базовые атаки, замедляет цели и увеличивает огневую мощь.</td>
+</tr>
+<tr>
+<td>Freja</td>
+<td>Снежная буря / Гнев зимы</td>
+<td>Создает зону обморожения, замораживающую и наносящую урон целям.</td>
+</tr>
+<tr>
+<td>Genji</td>
+<td>Клинок дракона</td>
+<td>Достает катану, наносящую колоссальный урон в ближнем бою.</td>
+</tr>
+<tr>
+<td>Hanzo</td>
+<td>Удар дракона</td>
+<td>Выпускает стрелу, превращающуюся в гигантских проходящих сквозь стены драконов.</td>
+</tr>
+<tr>
+<td>Junkrat</td>
+<td>Адская шина</td>
+<td>Управляет катящимся колесом-бомбой, которое можно взорвать вручную.</td>
+</tr>
+<tr>
+<td>Mei</td>
+<td>Вьюга</td>
+<td>Дрон создает метель, замедляющую и полностью замораживающую врагов в зоне.</td>
+</tr>
+<tr>
+<td>Pharah</td>
+<td>Ракетный залп</td>
+<td>Застывает в воздухе и выпускает непрерывный шквал мини-ракет.</td>
+</tr>
+<tr>
+<td>Reaper</td>
+<td>Цветок смерти</td>
+<td>Быстро вращается, расстреливая всех противников вокруг себя.</td>
+</tr>
+<tr>
+<td>Sojourn</td>
+<td>Разгон</td>
+<td>Автоматически и непрерывно заряжает рельсовую пушку, выстрелы которой прошивают врагов.</td>
+</tr>
+<tr>
+<td>Soldier: 76</td>
+<td>Тактический визор</td>
+<td>Активирует автоматическое наведение оружия на цели в поле видимости.</td>
+</tr>
+<tr>
+<td>Sombra</td>
+<td>ИМП</td>
+<td>Электромагнитный взрыв, взламывающий врагов, снимающий щиты и прерывающий ульты.</td>
+</tr>
+<tr>
+<td>Symmetra</td>
+<td>Фотонный барьер</td>
+<td>Развертывает огромный энергетический щит во всю длину игровой карты.</td>
+</tr>
+<tr>
+<td>Torbjörn</td>
+<td>Перегрев</td>
+<td>Разливает лужи расплавленного металла, наносящие повышенный урон по броне.</td>
+</tr>
+<tr>
+<td>Tracer</td>
+<td>Импульсная бомба</td>
+<td>Бросает мощную бомбу-липучку, закрепляющуюся на врагах или поверхностях.</td>
+</tr>
+<tr>
+<td>Vendetta</td>
+<td>Гладиаторский триумф</td>
+<td>Призывает арену, увеличивая собственную скорость атаки и блокируя побег врагов.</td>
+</tr>
+<tr>
+<td>Venture</td>
+<td>Тектонический сдвиг</td>
+<td>Посылает по земле серию из четырех разрушительных ударных волн.</td>
+</tr>
+<tr>
+<td>Widowmaker</td>
+<td>Инфразрение</td>
+<td>Подсвечивает силуэты всех врагов сквозь стены для всей своей команды.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Поддержка (Support)</h4>
+<table>
+<thead>
+<tr>
+<th>Герой</th>
+<th>Суперспособность</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ana</td>
+<td>Наностимулятор</td>
+<td>Повышает урон союзника и снижает получаемые им повреждения.</td>
+</tr>
+<tr>
+<td>Baptiste</td>
+<td>Матрица усиления</td>
+<td>Создает поле, удваивающее урон и лечение пролетающих сквозь него снарядов.</td>
+</tr>
+<tr>
+<td>Brigitte</td>
+<td>Общий сбор</td>
+<td>Бригитта получает броню, улучшает щит и дает дополнительное здоровье союзникам.</td>
+</tr>
+<tr>
+<td>Illari</td>
+<td>Плененное солнце</td>
+<td>Взлетает и стреляет шаром энергии, замедляющим врагов и взрывающимся от урона.</td>
+</tr>
+<tr>
+<td>Juno</td>
+<td>Орбитальный луч</td>
+<td>Вызывает луч со спутника, который движется вперед, лечит союзников и баффает их урон.</td>
+</tr>
+<tr>
+<td>Kiriko</td>
+<td>Удалая лисица</td>
+<td>Призывает духа лисы, ускоряющего бег, атаку и откат способностей союзников.</td>
+</tr>
+<tr>
+<td>Lifeweaver</td>
+<td>Древо жизни</td>
+<td>Выращивает дерево, мгновенно исцеляющее союзников при рождении и пульсирующее лечением.</td>
+</tr>
+<tr>
+<td>Lúcio</td>
+<td>Звуковой барьер</td>
+<td>Обрушивает звуковую волну, дающую всем ближайшим союзникам огромный запас щитов.</td>
+</tr>
+<tr>
+<td>Mercy</td>
+<td>Валькирия</td>
+<td>Получает способность летать, а ее лучи лечения и усиления действуют сразу на группу.</td>
+</tr>
+<tr>
+<td>Mizuki</td>
+<td>Прилив исцеления</td>
+<td>Мощная гидро-волна, смывающая негативные эффекты и дающая массовый реген здоровья.</td>
+</tr>
+<tr>
+<td>Moira</td>
+<td>Коалесценция</td>
+<td>Выпускает дальнобойный луч, который одновременно лечит союзников и ранит врагов.</td>
+</tr>
+<tr>
+<td>Wuyang</td>
+<td>Неудержимый поток</td>
+<td>Вызывает мощное течение, сильно ускоряющее союзников и сбивающее врагов с ног.</td>
+</tr>
+<tr>
+<td>Zenyatta</td>
+<td>Трансцендентность</td>
+<td>Становится неуязвимым и стремительно исцеляет всех союзников вокруг себя.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="контрпики-в-overwatch">Контрпики в Overwatch</h2>
+<p>Для победы над противником, нужно брать подходящих героев. Вот набор контрпиков.</p>
+<hr>
+<h3 id="танки-tanks">Танки (Tanks)</h3>
+<table>
+<thead>
+<tr>
+<th>Герой [1, 2]</th>
+<th>Кто его контрит (Враги)</th>
+<th>Кого он контрит (Жертвы)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D.Va</td>
+<td>Mei, Zarya, Symmetra, Roadhog, Brigitte</td>
+<td>Winston, Pharah, Widowmaker, Bastion, Freja</td>
+</tr>
+<tr>
+<td>Doomfist</td>
+<td>Roadhog, Orisa, Sombra, Cassidy, Ana</td>
+<td>Zenyatta, Widowmaker, Hanzo, Ana</td>
+</tr>
+<tr>
+<td>Junker Queen</td>
+<td>Kiriko, Ana, Roadhog, Widowmaker, Zarya</td>
+<td>Reinhardt, Junker Queen, Doomfist, Brigitte</td>
+</tr>
+<tr>
+<td>Mauga</td>
+<td>Ana, D.Va, Sigma, Zarya, Zen</td>
+<td>Roadhog, Winston, Reinhardt, Jumper Queen</td>
+</tr>
+<tr>
+<td>Orisa</td>
+<td>Sombra, Zarya, Sigma, Hanzo, Widowmaker</td>
+<td>Doomfist, Reinhardt, Roadhog, Bastion</td>
+</tr>
+<tr>
+<td>Ramattra</td>
+<td>Roadhog, Reaper, Bastion, Ana</td>
+<td>Reinhardt, Sigma, Brigitte, Torbjörn</td>
+</tr>
+<tr>
+<td>Reinhardt</td>
+<td>Bastion, Ramattra, Reaper, Sombra, Orisa</td>
+<td>Soldier: 76, Widowmaker, Cassidy, Torbjörn</td>
+</tr>
+<tr>
+<td>Roadhog</td>
+<td>Ana, Reaper, Mei, Mauga, Zen</td>
+<td>Winston, Doomfist, Sigma, Genji, Lucio</td>
+</tr>
+<tr>
+<td>Sigma</td>
+<td>Sombra, Ramattra, Roadhog, Lucio, Genji</td>
+<td>Orisa, Bastion, Widowmaker, Ashe</td>
+</tr>
+<tr>
+<td>Winston</td>
+<td>Reaper, Bastion, Roadhog, Torbjörn, Mauga</td>
+<td>Genji, Widowmaker, Hanzo, Symmetra, Lucio</td>
+</tr>
+<tr>
+<td>Wrecking Ball</td>
+<td>Sombra, Roadhog, Mei, Cassidy, Brigitte</td>
+<td>Widowmaker, Zen, Hanzo, Ana</td>
+</tr>
+<tr>
+<td>Zarya</td>
+<td>Bastion, Reaper, Pharah, Echo, Widowmaker</td>
+<td>D.Va, Genji, Sigma, Orisa, Winston</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<hr>
+<h3 id="урон-dps">Урон (DPS)</h3>
+<table>
+<thead>
+<tr>
+<th>Герой</th>
+<th>Кто его контрит (Враги)</th>
+<th>Кого он контрит (Жертвы)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ashe</td>
+<td>Genji, Tracer, Sombra, Widowmaker, Winston</td>
+<td>Pharah, Echo, Mercy, Reaper</td>
+</tr>
+<tr>
+<td>Bastion</td>
+<td>Genji, Tracer, Sombra, Zarya, Hanzo, Ana</td>
+<td>Reinhardt, Winston, Mauga, Illari</td>
+</tr>
+<tr>
+<td>Cassidy</td>
+<td>Genji, Widowmaker, Hanzo, Ashe</td>
+<td>Tracer, Doomfist, Sombra, Wrecking Ball, Lucio</td>
+</tr>
+<tr>
+<td>Echo</td>
+<td>Soldier: 76, Cassidy, Ashe, Widowmaker</td>
+<td>Doomfist, Junkrat, Reaper, Zarya</td>
+</tr>
+<tr>
+<td>Freja</td>
+<td>D.Va, Tracer, Genji, Reaper, Ana</td>
+<td>Reinhardt, Orisa, Mauga, Torbjörn</td>
+</tr>
+<tr>
+<td>Genji</td>
+<td>Winston, Zarya, Symmetra, Moira, Mei</td>
+<td>Bastion, Widowmaker, Hanzo, Mercy, Ana</td>
+</tr>
+<tr>
+<td>Hanzo</td>
+<td>Genji, Tracer, Sombra, Winston, D.Va</td>
+<td>Bastion, Torbjörn, Zenyatta, Cassidy</td>
+</tr>
+<tr>
+<td>Junkrat</td>
+<td>Pharah, Echo, Ashe, Widowmaker</td>
+<td>Symmetra, Torbjörn, Reinhardt, Brigitte</td>
+</tr>
+<tr>
+<td>Mei</td>
+<td>Pharah, Echo, Widowmaker, Reaper</td>
+<td>Genji, Tracer, Roadhog, Wrecking Ball, Kiriko</td>
+</tr>
+<tr>
+<td>Pharah</td>
+<td>Soldier: 76, Cassidy, Ashe, Widowmaker, D.Va</td>
+<td>Junkrat, Symmetra, Torbjörn, Brigitte, Reaper</td>
+</tr>
+<tr>
+<td>Reaper</td>
+<td>Pharah, Echo, Ashe, Widowmaker, Ana</td>
+<td>Winston, Roadhog, Ramattra, Domina</td>
+</tr>
+<tr>
+<td>Sojourn</td>
+<td>Genji, Tracer, Sombra, Widowmaker</td>
+<td>Pharah, Echo, Roadhog, Reinhardt</td>
+</tr>
+<tr>
+<td>Soldier: 76</td>
+<td>Genji, Roadhog, Widowmaker, Shields</td>
+<td>Pharah, Echo, Lifeweaver, Mercy, Lucio</td>
+</tr>
+<tr>
+<td>Sombra</td>
+<td>Winston, Moira, Brigitte, Kiriko, Tracer</td>
+<td>Doomfist, Wrecking Ball, Sigma, Reinhardt, Lifeweaver</td>
+</tr>
+<tr>
+<td>Symmetra</td>
+<td>Pharah, Echo, Junkrat, Winston, Mauga</td>
+<td>Genji, D.Va, Reinhardt, Sigma, Mercy</td>
+</tr>
+<tr>
+<td>Torbjörn</td>
+<td>Junkrat, Pharah, Hanzo, Widowmaker, Ana</td>
+<td>Genji, Tracer, Sombra, Doomfist</td>
+</tr>
+<tr>
+<td>Tracer</td>
+<td>Winston, Torbjörn, Cassidy, Sombra, Mei</td>
+<td>Widowmaker, Zen, Ana, Hanzo</td>
+</tr>
+<tr>
+<td>Venture</td>
+<td>Pharah, Echo, Cassidy, Roadhog</td>
+<td>Torbjörn, Widowmaker, Domina, Ana</td>
+</tr>
+<tr>
+<td>Widowmaker</td>
+<td>Genji, Tracer, Sombra, Winston, D.Va</td>
+<td>Pharah, Echo, Zenyatta, Torbjörn</td>
+</tr>
+<tr>
+<td>Domina</td>
+<td>Reaper, Venture, Sombra</td>
+<td>Zenyatta, Ana, Illari</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<hr>
+<h3 id="поддержка-support">Поддержка (Support)</h3>
+<table>
+<thead>
+<tr>
+<th>Герой</th>
+<th>Кто его контрит (Враги)</th>
+<th>Кого он контрит (Жертвы)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ana</td>
+<td>Genji, Tracer, Sombra, Winston, D.Va</td>
+<td>Roadhog, Mauga, Junker Queen, Bastion, Freja</td>
+</tr>
+<tr>
+<td>Baptiste</td>
+<td>Genji, Tracer, Sombra, Echo, Pharah</td>
+<td>Pharah (при хорошем аиме), Winston</td>
+</tr>
+<tr>
+<td>Brigitte</td>
+<td>Pharah, Echo, Junkrat, Ramattra</td>
+<td>Tracer, Genji, Sombra, Doomfist, Wrecking Ball</td>
+</tr>
+<tr>
+<td>Illari</td>
+<td>Genji, Tracer, Sombra, D.Va</td>
+<td>Pharah, Mercy, Junkrat</td>
+</tr>
+<tr>
+<td>Kiriko</td>
+<td>Tracer, Genji, Sombra, Roadhog, Mei</td>
+<td>Ana, Junker Queen, Reinhardt</td>
+</tr>
+<tr>
+<td>Lifeweaver</td>
+<td>Sombra, Soldier: 76, Genji</td>
+<td>Zarya, Mei, Orisa</td>
+</tr>
+<tr>
+<td>Lúcio</td>
+<td>Cassidy, Soldier: 76, Symmetra, Moira, Torbjörn</td>
+<td>Sigma, Winston, Reinhardt, Baptiste</td>
+</tr>
+<tr>
+<td>Mercy</td>
+<td>Soldier: 76, Cassidy, Ashe, Widowmaker, Genji</td>
+<td>Не контрит напрямую (усиливает союзников)</td>
+</tr>
+<tr>
+<td>Moira</td>
+<td>D.Va, Roadhog, Reaper, Widowmaker</td>
+<td>Genji, Tracer, Sombra, Lucio</td>
+</tr>
+<tr>
+<td>Zenyatta</td>
+<td>Genji, Tracer, Sombra, Winston, Doomfist</td>
+<td>Roadhog, Mauga, Junker Queen, Reinhardt</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="история-разработки-и-релизы">История разработки и релизы</h2>
+<p>Разработка <strong>Overwatch</strong> началась после отмены массовой многопользовательской онлайн-игры <strong>Titan</strong>. Некоторые наработки Titan вошли в концепцию новой игры. Разработчики уделили особое внимание балансу персонажей, следя за тем, чтобы как новички, так и опытные игроки могли получать удовольствие от игры.</p>
+<hr>
+<h3 id="этапы-создания">Этапы создания</h3>
+<ul>
+<li><strong>2014 год:</strong> Игра была представлена публике на фестивале BlizzCon. До весны 2016 года находилась в режиме закрытого бета-тестирования.</li>
+<li><strong>2016 год:</strong> Открытое бета-тестирование в мае привлекло почти 10 млн игроков. Официальный релиз состоялся 24 мая 2016 года.</li>
+<li><strong>2019 год:</strong> Началась разработка продолжения. Был анонсирован проект <strong>Overwatch 2</strong> на BlizzCon.</li>
+<li><strong>2022 год:</strong> Overwatch 2 вышла в раннем доступе 4 октября 2022 года. Серверы первой части были закрыты 3 октября 2022 года.</li>
+<li><strong>2023 год:</strong> Полноценный релиз Overwatch 2 состоялся 10 августа 2023 года. Игра стала первой от Blizzard, доступной в Steam.</li>
+<li><strong>2026 год:</strong> В феврале 2026 года игра была переименована обратно в <strong>Overwatch</strong>. Нумерация сезонов была сброшена, а повествование строится вокруг годовых сюжетных арок.</li>
+</ul>
+<hr>
+<h3 id="монетизация-и-обновления">Монетизация и обновления</h3>
+<ul>
+<li><strong>Первый этап:</strong> Игра использовала систему лутбоксов (контейнеров) для получения косметических предметов.</li>
+<li><strong>Второй этап (Overwatch 2):</strong> Переход на модель free-to-play с боевым пропуском. Лутбоксы были временно заменены, но позже возвращены в обновлённом виде.</li>
+<li><strong>Обновления:</strong> Регулярные сезонные обновления добавляют новых героев, карты, режимы и косметические предметы.</li>
+</ul>
+<hr>
+<h2 id="лор-кризис-омников-и-ключевые-события">Лор — кризис Омников и ключевые события</h2>
+<h3 id="омниковый-кризис">Омниковый кризис</h3>
+<p><strong>Омники</strong> — роботы с ИИ для мирных задач. <strong>Омниковый кризис</strong> начался, когда <strong>аномальные</strong> единицы атаковали человечество. Ответ — международная сила <strong>Overwatch</strong> под <strong>Джеком Моррисоном</strong> (Солдат-76) и <strong>Габриэлем Рейесом</strong> (Рипер). После победы Overwatch стала героями, затем — <strong>шпионский скандал</strong>, взрыв штаба в Женеве и роспуск по <strong>PETN</strong> (Протоколу о роспуске).</p>
+<hr>
+<h3 id="ключевые-организации">Ключевые организации</h3>
+<table>
+<thead>
+<tr>
+<th>Фракция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Overwatch</strong></td>
+<td>Герои-защитники; возрождение в OW2</td>
+</tr>
+<tr>
+<td><strong>Blackwatch</strong></td>
+<td>"Чёрный" отряд Рейеса; шпионаж и грязная работа</td>
+</tr>
+<tr>
+<td><strong>Talon</strong></td>
+<td>Террористы под <strong>Думфистом</strong>, <strong>Моирой</strong>, <strong>Сигмой</strong></td>
+</tr>
+<tr>
+<td><strong>Helix Security</strong></td>
+<td>Корпоративная охрана (Винстон, Бастион)</td>
+</tr>
+<tr>
+<td>** Vishkar**</td>
+<td>Корпорация симметрии; конфликт в Неомбуде</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="сюжетные-арки-overwatch-2">Сюжетные арки Overwatch 2</h3>
+<ul>
+<li><strong>Zero Hour</strong> (2022) — вторжение <strong>Нуль-Сектора</strong>, спасение <strong>Ли Син</strong> (Кассандра).</li>
+<li><strong>Invasion</strong> (2023) — вторжение <strong>Праймуса</strong>, кооп <strong>PvE</strong> на 3 игрока.</li>
+<li><strong>Миссии героев</strong> — одиночные кампании (<strong>Кэссиди</strong>, <strong>Мэй</strong>, <strong>Рейнхардт</strong>).</li>
+<li><strong>Годовые арки</strong> (с 2026) — сезонное повествование без нумерации "2".</li>
+</ul>
+<hr>
+<h3 id="карты-и-режимы">Карты и режимы</h3>
+<p><strong>Типы режимов:</strong> <strong>Escort</strong> (сопровождение груза), <strong>Assault</strong> (захват точек), <strong>Control</strong> (король холма), <strong>Push</strong> (робот), <strong>Flashpoint</strong> (динамичные точки). Локации — <strong>Нуми</strong>, <strong>Илиос</strong>, <strong>Лижанг</strong>, <strong>Кингс-Роу</strong>, <strong>Холливуд</strong>, <strong>Близзард Уорлд</strong> и др. — каждая с привязкой к лору героя или события.</p>
+<hr>
+<h3 id="pve-и-кооператив">PvE и кооператив</h3>
+<p><strong>Overwatch 2</strong> добавил <strong>Story Missions</strong> и <strong>Invasion</strong> — волны врагов, боссы, прокачка внутри миссии. Режимы не заменили соревновательное ядро, но расширили аудиторию PvE-фанатов Blizzard.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-overwatch">Что такое Overwatch</a></li><li class="article-toc__item"><a href="#лор-вселенной">Лор вселенной</a></li><li class="article-toc__item is-h3"><a href="#омники-и-люди-зарождение-конфликта">Омники и люди — Зарождение конфликта</a></li><li class="article-toc__item is-h3"><a href="#организация-overwatch">Организация Overwatch</a></li><li class="article-toc__item is-h3"><a href="#blackwatch-теневое-подразделение">Blackwatch — Теневое подразделение</a></li><li class="article-toc__item is-h3"><a href="#террористическая-группировка-коготь">Террористическая группировка &quot;Коготь&quot;</a></li><li class="article-toc__item is-h3"><a href="#джанкертаун-и-австралия">Джанкертаун и Австралия</a></li><li class="article-toc__item is-h3"><a href="#корпорация-вишкар">Корпорация Вишкар</a></li><li class="article-toc__item is-h3"><a href="#клан-шимада-и-клан-хашимото">Клан Шимада и клан Хашимото</a></li><li class="article-toc__item is-h3"><a href="#освободительный-фронт-ада-в-южной-корее">Освободительный фронт Ада в Южной Корее</a></li><li class="article-toc__item is-h3"><a href="#нуль-сектор-и-рамматра">Нуль-сектор и Рамматра</a></li><li class="article-toc__item"><a href="#геймплей-и-механики">Геймплей и механики</a></li><li class="article-toc__item is-h3"><a href="#классовая-синергия">Классовая синергия</a></li><li class="article-toc__item is-h3"><a href="#упор-на-способности">Упор на способности</a></li><li class="article-toc__item is-h3"><a href="#командный-тайминг">Командный тайминг</a></li><li class="article-toc__item is-h3"><a href="#смена-героев">Смена героев</a></li><li class="article-toc__item is-h3"><a href="#формат-матчей">Формат матчей</a></li><li class="article-toc__item is-h3"><a href="#режимы-игры">Режимы игры</a></li><li class="article-toc__item is-h3"><a href="#карты-в-overwatch">Карты в Overwatch</a></li><li class="article-toc__item"><a href="#архитектура-выполнения-и-технические-особенности">Архитектура выполнения и технические особенности</a></li><li class="article-toc__item is-h3"><a href="#движок-prometheus">Движок Prometheus</a></li><li class="article-toc__item is-h3"><a href="#система-ecs-entity-component-system">Система ECS (Entity Component System)</a></li><li class="article-toc__item is-h3"><a href="#сетевой-код-netcode">Сетевой код Netcode</a></li><li class="article-toc__item is-h3"><a href="#звуковой-движок">Звуковой движок</a></li><li class="article-toc__item"><a href="#культурное-влияние-и-наследие">Культурное влияние и наследие</a></li><li class="article-toc__item is-h3"><a href="#феномен-косплея">Феномен косплея</a></li><li class="article-toc__item is-h3"><a href="#анимационный-триумф">Анимационный триумф</a></li><li class="article-toc__item is-h3"><a href="#киберспортивный-масштаб">Киберспортивный масштаб</a></li><li class="article-toc__item is-h3"><a href="#влияние-на-индустрию">Влияние на индустрию</a></li><li class="article-toc__item"><a href="#полный-список-героев">Полный список героев</a></li><li class="article-toc__item is-h3"><a href="#танки">Танки</a></li><li class="article-toc__item is-h3"><a href="#урон">Урон</a></li><li class="article-toc__item is-h3"><a href="#поддержка">Поддержка</a></li><li class="article-toc__item is-h3"><a href="#ультимативные-способности-героев">Ультимативные способности героев</a></li><li class="article-toc__item"><a href="#контрпики-в-overwatch">Контрпики в Overwatch</a></li><li class="article-toc__item is-h3"><a href="#танки-tanks">Танки (Tanks)</a></li><li class="article-toc__item is-h3"><a href="#урон-dps">Урон (DPS)</a></li><li class="article-toc__item is-h3"><a href="#поддержка-support">Поддержка (Support)</a></li><li class="article-toc__item"><a href="#история-разработки-и-релизы">История разработки и релизы</a></li><li class="article-toc__item is-h3"><a href="#этапы-создания">Этапы создания</a></li><li class="article-toc__item is-h3"><a href="#монетизация-и-обновления">Монетизация и обновления</a></li><li class="article-toc__item"><a href="#лор-кризис-омников-и-ключевые-события">Лор — кризис Омников и ключевые события</a></li><li class="article-toc__item is-h3"><a href="#омниковый-кризис">Омниковый кризис</a></li><li class="article-toc__item is-h3"><a href="#ключевые-организации">Ключевые организации</a></li><li class="article-toc__item is-h3"><a href="#сюжетные-арки-overwatch-2">Сюжетные арки Overwatch 2</a></li><li class="article-toc__item is-h3"><a href="#карты-и-режимы">Карты и режимы</a></li><li class="article-toc__item is-h3"><a href="#pve-и-кооператив">PvE и кооператив</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

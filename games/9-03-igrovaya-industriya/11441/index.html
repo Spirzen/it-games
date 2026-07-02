@@ -1,0 +1,412 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Как устроен Steam Machine — Игры IT Universe</title><meta name="description" content="Стационарная консоль Valve 2026 на SteamOS 3 — железо AMD, порты, апгрейд, Proton, производительность в играх и ориентиры по цене."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Как устроен Steam Machine</span></li></ol></nav><header class="portal-hero"> <h1>Как устроен Steam Machine</h1> <p>Стационарная консоль Valve 2026 на SteamOS 3 — железо AMD, порты, апгрейд, Proton, производительность в играх и ориентиры по цене.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Как устроен Steam Machine" data-url="/games/9-03-igrovaya-industriya/11441">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Как устроен Steam Machine">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Как устроен Steam Machine</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="как-устроен-steam-machine">Как устроен Steam Machine</h2>
+<p><strong>Steam Machine</strong> — настольная игровая консоль от <a href="https://terms.spirzen.ru/glossary/V#valve">Valve</a>. Её подключают к телевизору или <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/717">монитору</a> по HDMI или DisplayPort, управляют <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/4">геймпадом</a> или клавиатурой с мышью и запускают игры из магазина <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11435">Steam</a>. По классу устройства это ближе к <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11434">PlayStation 5</a> и <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11431">Xbox Series X</a>, чем к портативному <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Steam Deck</a>, хотя программная среда у Deck и Machine общая.</p>
+<p>Внутри корпуса — обычный <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/intro">персональный компьютер</a> на архитектуре <strong>x86-64</strong> (те же программы, что на Windows-ПК). Открытая <a href="https://spirzen.ru/encyclopedia/2-system-network/2-01-operatsionnaya-sistema/intro">операционная система</a> <strong><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">SteamOS 3</a></strong> построена на <a href="https://spirzen.ru/encyclopedia/2-system-network/2-01-operatsionnaya-sistema/5">Linux</a>. Игры, изначально выпущенные под <a href="https://spirzen.ru/encyclopedia/2-system-network/2-01-operatsionnaya-sistema/4">Windows</a>, запускаются через слой <strong><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11438">Proton</a></strong> — тот же механизм, что на Deck.</p>
+<p>Анонс относится к <strong>2026</strong> году. Старт продаж ожидается в <strong>первом квартале 2026</strong>. В базовую коробку <strong>геймпад не кладут</strong> — <a href="https://terms.spirzen.ru/glossary/S#steam-controller">Steam Controller</a> второго поколения продают отдельно.</p>
+<p>История первой линейки Steam Machines (2015–2018) и подробный разбор Deck — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">статье про Steam Deck</a>.</p>
+<hr>
+<h2 id="словарь">Словарь</h2>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Простыми словами</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Steam Machine (2026)</strong></td>
+<td>Единая настольная консоль Valve с фиксированным железом и SteamOS 3</td>
+</tr>
+<tr>
+<td><strong>SteamOS 3</strong></td>
+<td>Игровая ОС на Arch Linux с оболочкой KDE Plasma; та же ветка, что на <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Steam Deck</a></td>
+</tr>
+<tr>
+<td><strong>Proton</strong></td>
+<td>Слой совместимости Valve на базе Wine — переводит вызовы Windows-игры в команды Linux. См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11438">Linux-гейминг и Proton</a></td>
+</tr>
+<tr>
+<td><strong>OEM</strong></td>
+<td>Сторонний производитель, который собирает устройство по чужой спецификации (так работала первая волна Steam Machines)</td>
+</tr>
+<tr>
+<td><strong>APU</strong></td>
+<td>Чип, где <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/4">процессор</a> и <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/2">видеочип</a> на одном кристалле. Экономит место и энергию</td>
+</tr>
+<tr>
+<td><strong>Zen 4</strong></td>
+<td>Поколение архитектуры CPU от AMD (2022+). В Machine — 6 ядер и 12 потоков</td>
+</tr>
+<tr>
+<td><strong>RDNA 3</strong></td>
+<td>Поколение графики AMD. В Machine — 28 вычислительных блоков (CU)</td>
+</tr>
+<tr>
+<td><strong>TDP</strong></td>
+<td>Лимит мощности чипа в ваттах. Влияет на тепло, шум вентилятора и <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/1">FPS</a></td>
+</tr>
+<tr>
+<td><strong>ОЗУ (RAM)</strong></td>
+<td>Оперативная память для данных игры и системы. В Machine — 16 ГБ <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/3">DDR5</a>, модуль можно заменить</td>
+</tr>
+<tr>
+<td><strong>VRAM / видеопамять</strong></td>
+<td>Память, которую <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/2">GPU</a> использует для текстур и кадра. На APU она <strong>общая</strong> с CPU — в Machine заявлено 8 ГБ <a href="https://terms.spirzen.ru/glossary/D#dram">GDDR6</a></td>
+</tr>
+<tr>
+<td><strong>SSD M.2</strong></td>
+<td>Быстрый накопитель в формате пластины. <strong>2230</strong> — короткий модуль (как в Deck); <strong>2280</strong> — стандартный размер для настольных ПК</td>
+</tr>
+<tr>
+<td><strong>FSR 3</strong></td>
+<td>Технология AMD — <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/8">апскейлинг</a> и генерация кадров. Помогает тянуть тяжёлые игры на слабом GPU</td>
+</tr>
+<tr>
+<td><strong>Внутреннее разрешение</strong></td>
+<td>Сколько пикселей реально рисует видеочип. Может быть 1080p, а на ТВ картинка выводится в 4K после апскейла</td>
+</tr>
+<tr>
+<td><strong>Quick Resume</strong></td>
+<td>Быстрое возобновление игры с места остановки без полной перезагрузки уровня (аналогичная функция есть на Xbox)</td>
+</tr>
+<tr>
+<td><strong>Dual-boot</strong></td>
+<td>Две ОС на одном диске — при включении выбираете SteamOS или Windows</td>
+</tr>
+<tr>
+<td><strong>Gaming Mode</strong></td>
+<td>Полноэкранный интерфейс Steam, заточенный под геймпад</td>
+</tr>
+<tr>
+<td><strong>Desktop Mode</strong></td>
+<td>Режим "как у обычного Linux" — браузер, файлы, сторонние магазины</td>
+</tr>
+<tr>
+<td><strong>Verified / Playable</strong></td>
+<td>Значки в Steam — игра проверена или частично работает на устройствах Valve</td>
+</tr>
+<tr>
+<td><strong>VRR</strong></td>
+<td>Переменная частота обновления экрана под кадры игры — меньше рывков. Нужны поддержка ТВ и HDMI 2.1; у Machine на выходе HDMI 2.0</td>
+</tr>
+<tr>
+<td><strong>Трассировка лучей (RT)</strong></td>
+<td>Реалистичные отражения и тени; сильно нагружает GPU. Теория — <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/8">апскейлинг и RT</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="первая-линейка-2015-и-новая-консоль-2026">Первая линейка (2015) и новая консоль (2026)</h2>
+<p>В <strong>2015</strong> году Valve запустила программу <strong>Steam Machine</strong> — открытую альтернативу закрытым приставкам Sony, Microsoft и Nintendo. Участвовали сторонние производители (Alienware, Zotac и другие). У каждой коробки были свои</p>
+<ul>
+<li>лимит мощности (TDP);</li>
+<li>модель <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/2">видеокарты</a>;</li>
+<li>цена и корпус.</li>
+</ul>
+<p>Общим оставались <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11438">SteamOS</a>, магазин Steam и <a href="https://terms.spirzen.ru/glossary/S#steam-controller">Steam Controller</a> первого поколения. Разброс железа мешал единой оптимизации игр и простому объяснению покупателю "что внутри". К <strong>2018</strong> году линейку свернули, но накопленный опыт Linux и контроллеров пригодился при создании <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Steam Deck</a>.</p>
+<p><strong>Новая Steam Machine (2026)</strong> возвращает идею "консоль у телевизора" с подходом Deck</p>
+<ul>
+<li>одна спецификация от Valve;</li>
+<li>предсказуемая производительность;</li>
+<li>тот же стек <strong>SteamOS 3</strong> и <strong>Proton</strong>.</li>
+</ul>
+<p>Корпус — компактный куб примерно <strong>16×16 см</strong> (около половины габарита <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11431">Xbox Series X</a> по занимаемому месту).</p>
+<hr>
+<h2 id="корпус-дизайн-и-кастомизация">Корпус, дизайн и кастомизация</h2>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Форм-фактор</td>
+<td>Куб ~16×16 см</td>
+</tr>
+<tr>
+<td>Передняя панель</td>
+<td>На магнитах, съёмная</td>
+</tr>
+<tr>
+<td>Подсветка</td>
+<td>17 настраиваемых RGB-светодиодов</td>
+</tr>
+<tr>
+<td>Блок питания</td>
+<td>Встроенный, 300 Вт</td>
+</tr>
+<tr>
+<td>Охлаждение</td>
+<td>Вентилятор 120 мм и крупный радиатор</td>
+</tr>
+</tbody>
+</table>
+<p>Съёмная панель на магнитах упрощает доступ к фильтрам и открывает рынок аксессуаров — сторонние панели уже анонсировали, в том числе с индикаторами загрузки <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/4">CPU</a> и <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/3">RAM</a>.</p>
+<p>Встроенный блок питания избавляет от отдельного БП на полу — достаточно кабеля к розетке и провода к ТВ. По шуму Valve делает упор на тихую работу при TDP 110 Вт; подробнее про <a href="https://spirzen.ru/encyclopedia/1-basics/1-035-bazovaya-informatika/408">охлаждение и троттлинг</a> — в материалах для продвинутых.</p>
+<hr>
+<h2 id="процессор-графика-и-память">Процессор, графика и память</h2>
+<p>Сердце системы — полузаказной чип <strong>AMD</strong> (архитектуры <strong>Zen 4</strong> + <strong>RDNA 3</strong>). Это <strong>APU</strong> — <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/4">процессор</a> и <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/2">видеочип</a> на одном кристалле, как в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Steam Deck</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11434">PlayStation 5</a> и <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11431">Xbox Series</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Характеристики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>6 ядер / 12 потоков, до ~4,8 ГГц</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>RDNA 3, 28 CU, до ~2,45 ГГц</td>
+</tr>
+<tr>
+<td>TDP всего чипа</td>
+<td>110 Вт</td>
+</tr>
+<tr>
+<td>ОЗУ</td>
+<td>16 ГБ DDR5, <strong>заменяемая</strong></td>
+</tr>
+<tr>
+<td>Видеопамять</td>
+<td>8 ГБ GDDR6 (общая с CPU)</td>
+</tr>
+<tr>
+<td>SSD</td>
+<td>M.2 2230, 512 ГБ или 2 ТБ; при замене подходит и формат 2280</td>
+</tr>
+</tbody>
+</table>
+<h3 id="производительность-в-играх">Производительность в играх</h3>
+<p>По спецификации Valve и данным прессы мощность близка к базовой <strong>PlayStation 5</strong> и ниже <strong>PS5 Pro</strong>. Для ориентира по классу железа смотрите <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11434">разбор PS5</a> и <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11431">Xbox Series</a>.</p>
+<p>Главный лимит для тяжёлых AAA — <strong>8 ГБ видеопамяти</strong>. Современные проекты с крупными текстурами и <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/8">трассировкой лучей</a> быстро заполняют VRAM. Игра может идти, но с просадками FPS или вынужденным снижением настроек.</p>
+<p><strong>CPU и GPU впаяны</strong> — как на большинстве консолей. Пользователь может обновить <strong>ОЗУ</strong> и <strong>SSD</strong>; смена процессора или видеокарты недоступна.</p>
+<div class="callout callout--info">
+  <div class="callout-title">Куда целиться по разрешению</div>
+  Machine логично рассматривать для **1080p** и **1440p** с [FSR](https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/8) или аналогами.
+<p>Вывод на телевизор <strong>4K</strong> возможен, когда игра рисует кадр в меньшем разрешении, а апскейлер растягивает картинку на весь экран.</p>
+</div>
+<hr>
+<h2 id="порты-и-беспроводная-связь">Порты и беспроводная связь</h2>
+<h3 id="спереди">Спереди</h3>
+<ul>
+<li><strong>2× USB-A 3.2 Gen 1</strong> — флешки, проводные геймпады, внешние диски</li>
+<li><strong>MicroSD</strong> — карта памяти для дополнительных файлов или переноса данных с Deck</li>
+<li>индикатор и кнопка питания</li>
+</ul>
+<h3 id="сзади">Сзади</h3>
+<ul>
+<li><strong>DisplayPort 1.4</strong> — вывод изображения на монитор или ТВ через переходник</li>
+<li><strong>HDMI 2.0</strong> — до <strong>4K при 60 Гц</strong> на большинстве телевизоров. Стандарт <strong>HDMI 2.1</strong> (120 Гц, <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/716">VRR</a>) на этой консоли не заявлен — ограничение лицензии HDMI Forum для платформ с открытым исходным кодом</li>
+<li><strong>2× USB-A 2.0</strong> — клавиатура, мышь, старые аксессуары</li>
+<li><strong>1× USB-C 3.2 Gen 2</strong> — быстрые устройства, док-станции</li>
+<li><strong>Gigabit Ethernet</strong> — проводной интернет до ~1 Гбит/с</li>
+</ul>
+<h3 id="беспроводные-интерфейсы">Беспроводные интерфейсы</h3>
+<ul>
+<li><strong>Wi-Fi 6E</strong> — сеть в диапазонах 2,4 / 5 / 6 ГГц</li>
+<li><strong>Bluetooth 5.3</strong> — наушники, геймпады, мыши</li>
+<li>отдельный радиомодуль <strong>2,4 ГГц</strong> только для геймпада Valve — меньше задержка ввода, трафик не делит канал с Wi-Fi</li>
+</ul>
+<p>Подробнее про разъёмы и <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/716">HDMI</a> — в статье про дисплеи.</p>
+<hr>
+<h2 id="steamos-proton-и-windows">SteamOS, Proton и Windows</h2>
+<p>Консоль штатно работает на <strong>SteamOS 3</strong>. Интерфейс тот же, что у владельцев Deck</p>
+<ul>
+<li><strong>Gaming Mode</strong> — полноэкранный Steam с управлением геймпадом;</li>
+<li><strong>Desktop Mode</strong> — рабочий стол KDE Plasma, браузер, файловый менеджер, терминал.</li>
+</ul>
+<p><strong>Proton</strong> переводит Windows-игру в команды Linux. Покупка в Steam часто запускается без отдельной установки Windows. Как устроен стек Wine, ProtonDB и типичные проблемы — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11438">Linux-гейминг и Proton</a>.</p>
+<p><strong>Быстрое возобновление (Quick Resume)</strong> сохраняет сессию нескольких игр — можно переключиться между ними без долгой загрузки с нуля.</p>
+<p><strong>Windows и dual-boot.</strong> Железо x86-64 совместимо с обычным ПК-софтом. При необходимости ставят Windows 11 или настраивают загрузку двух систем с одного диска. Это имеет смысл для игр с жёсткой привязкой к Windows или <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/128">античитом</a> без поддержки Linux.</p>
+<p>В Desktop Mode через <strong>Heroic</strong>, <strong>Lutris</strong> и другие лаунчеры открывают Epic Games Store, GOG и сторонние источники — так же, как на <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Steam Deck</a>.</p>
+<hr>
+<h2 id="игры-и-практическая-производительность">Игры и практическая производительность</h2>
+<p>Ориентиры по тяжёлому AAA из ранних обзоров прессы — не гарантия для каждой игры.</p>
+<table>
+<thead>
+<tr>
+<th>Сценарий</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Cyberpunk 2077</em>, 1080p, средние настройки, RT, <strong>FSR 3</strong></td>
+<td>~60 FPS, иногда ~50; на ТВ картинка может выводиться в 4K после апскейла</td>
+</tr>
+<tr>
+<td>Тот же проект, нативный рендер без FSR</td>
+<td>ниже 30 FPS</td>
+</tr>
+</tbody>
+</table>
+<p>Для плавной картинки на <strong>4K-телевизоре</strong> обычно снижают <strong>внутреннее разрешение</strong> (1080p или 1440p) и включают <a href="https://terms.spirzen.ru/glossary/F#fsr">FSR</a> или похожие технологии. Разница между внутренним и выходным разрешением — в <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/8">статье про апскейлинг</a>.</p>
+<p><strong>Совместимость.</strong> В магазине Steam смотрите значки <strong>Verified</strong> и <strong>Playable</strong> для Deck — они же помогают оценить Machine. Дополнительно — отзывы на <a href="https://www.protondb.com/">ProtonDB</a> и в обсуждениях игры.</p>
+<hr>
+<h2 id="steam-controller-и-соседние-устройства-valve">Steam Controller и соседние устройства Valve</h2>
+<p><strong>Steam Controller</strong> второго поколения — отдельная покупка (ориентир <strong>$80–100</strong>). В коробке Machine его нет.</p>
+<p>От Deck унаследована эргономика рукояток; встроенный экран Deck убран. В геймпаде есть</p>
+<ul>
+<li>симметричные стики с <strong>магнитными датчиками</strong> — стик со временем реже "уезжает" сам (дрифт);</li>
+<li>тачпады для эмуляции мыши;</li>
+<li>задние кнопки;</li>
+<li><strong>гироскоп</strong>, который включается при касании рукояток;</li>
+<li>переназначение любой кнопки в Steam Input.</li>
+</ul>
+<p>Адаптивного сопротивления триггеров (как у DualSense на PS5) нет; вибрация усилена. Док-станция заряжает контроллер и передаёт сигнал по <strong>2,4 ГГц</strong> — до четырёх геймпадов на один приёмник. Также работают Bluetooth и USB.</p>
+<p>Вместе с Machine Valve анонсировала <strong>Steam Frame</strong> — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/1144">VR</a>-шлем на чипе Snapdragon с автономным режимом и стримингом с ПК — и порт <strong>SteamOS на ARM</strong> для мобильных процессоров. Это соседние продукты той же экосистемы: задел на будущий Deck и запуск PC-игр на планшетах. С железом настольной Machine они связаны общим магазином и ОС, но корпус и чип у каждого свой.</p>
+<hr>
+<h2 id="цена-релиз-и-покупка-в-россии">Цена, релиз и покупка в России</h2>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Ориентир</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ожидаемая цена</td>
+<td>около <strong>$700</strong></td>
+</tr>
+<tr>
+<td>Риск подорожания</td>
+<td>до <strong>~$900</strong> при сохранении кризиса на рынке <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/3">памяти</a></td>
+</tr>
+<tr>
+<td>Позиция Valve</td>
+<td>дешевле VR-шлема Index ($1000)</td>
+</tr>
+<tr>
+<td>Релиз</td>
+<td><strong>Q1 2026</strong></td>
+</tr>
+<tr>
+<td>Россия</td>
+<td>официальных поставок и цен в рублях нет; покупают через импорт и маркетплейсы, как <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Deck</a> и другие консоли</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout--note">
+  <div class="callout-title">Слухи про Half-Life 3</div>
+  В сети связывают *Half-Life 3* с релизом железа Valve или стартовым бандлом. Valve это не подтверждала. Решение о покупке разумно строить на железе, цене и библиотеке [Steam](https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11435).
+</div>
+<hr>
+<h2 id="сравнение-с-другими-платформами">Сравнение с другими платформами</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Steam Machine</th>
+<th>PS5</th>
+<th>Xbox Series X</th>
+<th>Steam Deck</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Класс</td>
+<td>Настольная PC-консоль</td>
+<td>Закрытая консоль</td>
+<td>Закрытая консоль</td>
+<td>Портатив</td>
+</tr>
+<tr>
+<td>ОС</td>
+<td>SteamOS, опционально Windows</td>
+<td>Проприетарная</td>
+<td>Проприетарная, родство с Windows</td>
+<td>SteamOS</td>
+</tr>
+<tr>
+<td>Магазин</td>
+<td>Steam, сторонние в Desktop</td>
+<td>PlayStation Store</td>
+<td>Xbox + PC</td>
+<td>Steam</td>
+</tr>
+<tr>
+<td>Апгрейд RAM/SSD</td>
+<td>да</td>
+<td>нет</td>
+<td>нет</td>
+<td>SSD</td>
+</tr>
+<tr>
+<td>Типичная цель</td>
+<td>1080p–1440p с апскейлом на 4K ТВ</td>
+<td>4K</td>
+<td>4K</td>
+<td>800p–1080p в руках</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Сильные стороны Machine</strong> — свобода ПК, одна библиотека с Deck, замена <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/3">накопителя</a> и ОЗУ.</p>
+<p><strong>Слабые стороны</strong> — меньше оптимизации "под одно железо", чем у Sony и Microsoft, и скромный объём VRAM по меркам настольных видеокарт.</p>
+<p>Обзор консолей как класса устройств — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/129">игровые консоли — маршрут</a>.</p>
+<hr>
+<h2 id="что-важно-запомнить">Что важно запомнить</h2>
+<ol>
+<li><strong>Steam Machine 2026</strong> — единый продукт Valve с фиксированным железом; первая волна 2015 года собиралась разными OEM.</li>
+<li><strong>Железо</strong> уровня PS5 при TDP 110 Вт; <strong>8 ГБ VRAM</strong> — главный потолок для AAA в высоком качестве.</li>
+<li><strong>SteamOS 3 + Proton</strong> открывают огромную PC-библиотеку; Windows и dual-boot остаются запасным путём.</li>
+<li><strong>ОЗУ и SSD</strong> меняются; CPU и GPU — нет.</li>
+<li><strong>Геймпад покупают отдельно</strong> — заложите Steam Controller или совместимый пад в бюджет.</li>
+<li>Портативный сосед той же экосистемы — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Steam Deck</a>.</li>
+</ol>
+<hr>
+<h2 id="в-подборках">В подборках</h2>
+<p>Статья входит в <a href="https://spirzen.ru/about/collections">тематические подборки</a> и блок "С чего начать?" на <a href="/">главной</a>. Соседние шаги того же маршрута:</p>
+<p><strong>Железо</strong> — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Как устроен Steam Deck и Steam Machine</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11431">Как устроен Xbox Series S и Series X</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11440">Как устроена Nintendo Switch 2</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11434">Как устроена Playstation 5</a>, <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/intro">Аппаратное обеспечение — о разделе</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11438">Linux-гейминг и Proton</a>, <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/8">DLSS и FSR — апскейлинг в играх</a>.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#как-устроен-steam-machine">Как устроен Steam Machine</a></li><li class="article-toc__item"><a href="#словарь">Словарь</a></li><li class="article-toc__item"><a href="#первая-линейка-2015-и-новая-консоль-2026">Первая линейка (2015) и новая консоль (2026)</a></li><li class="article-toc__item"><a href="#корпус-дизайн-и-кастомизация">Корпус, дизайн и кастомизация</a></li><li class="article-toc__item"><a href="#процессор-графика-и-память">Процессор, графика и память</a></li><li class="article-toc__item is-h3"><a href="#производительность-в-играх">Производительность в играх</a></li><li class="article-toc__item"><a href="#порты-и-беспроводная-связь">Порты и беспроводная связь</a></li><li class="article-toc__item is-h3"><a href="#спереди">Спереди</a></li><li class="article-toc__item is-h3"><a href="#сзади">Сзади</a></li><li class="article-toc__item is-h3"><a href="#беспроводные-интерфейсы">Беспроводные интерфейсы</a></li><li class="article-toc__item"><a href="#steamos-proton-и-windows">SteamOS, Proton и Windows</a></li><li class="article-toc__item"><a href="#игры-и-практическая-производительность">Игры и практическая производительность</a></li><li class="article-toc__item"><a href="#steam-controller-и-соседние-устройства-valve">Steam Controller и соседние устройства Valve</a></li><li class="article-toc__item"><a href="#цена-релиз-и-покупка-в-россии">Цена, релиз и покупка в России</a></li><li class="article-toc__item"><a href="#сравнение-с-другими-платформами">Сравнение с другими платформами</a></li><li class="article-toc__item"><a href="#что-важно-запомнить">Что важно запомнить</a></li><li class="article-toc__item"><a href="#в-подборках">В подборках</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/8" target="_blank" rel="noopener noreferrer"> DLSS и FSR — апскейлинг в играх  ↗ </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11435"> Steam  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/intro" target="_blank" rel="noopener noreferrer"> Как работает компьютер — о разделе  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

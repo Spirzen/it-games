@@ -1,0 +1,1481 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Python — карточная стратегия — Игры IT Universe</title><meta name="description" content="Пошаговый практикум — карточный roguelike на Python и Pygame: архитектура, формулы боя, 17 этапов кода, моддинг JSON и сверка с AutoBattler (Тени Шпиля)."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Python — карточная стратегия</span></li></ol></nav><header class="portal-hero"> <h1>Python — карточная стратегия</h1> <p>Пошаговый практикум — карточный roguelike на Python и Pygame: архитектура, формулы боя, 17 этапов кода, моддинг JSON и сверка с AutoBattler (Тени Шпиля).</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Python — карточная стратегия" data-url="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Python — карточная стратегия">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Python — карточная стратегия</h1>
+<div class="article-tags">
+  <span class="tag tag-inprogress">В РАЗРАБОТКЕ</span>
+</div>
+<p><span class="complexity-badge">Разработчику</span>
+<span class="complexity-badge">Средний уровень</span></p>
+<div class="callout callout--info">
+  <div class="callout-title">Формат практикума</div>
+  <div class="callout-body">
+  <p>Материалы трека приводятся к единому формату: <strong>полные листинги для копирования</strong> на каждом этапе, блок <strong>"Разбор"</strong> и раздел <strong>"Полная ревизия"</strong> в конце статьи.</p>
+  <ul>
+    <li>Гарантированно запускаемые эталоны для сверки сейчас: <a href="https://github.com/Spirzen/BattleCity">Python — Battle City</a> (GitHub), <a href="https://github.com/Spirzen/Match3">Python — Match3</a> (GitHub, <code>match3.py</code>), <a href="./3.md#full-revision">Python — Ping Pong</a> (<code>#full-revision</code>).</li>
+    <li>Раздел полной ревизии в этой статье ещё в работе — идите по этапам по порядку; если код перестал запускаться, сравните проект с этими эталонами.</li>
+  </ul>
+  </div>
+</div>
+<h2 id="как-проходить-практикум">Как проходить практикум</h2>
+<ul>
+<li>Копируйте <strong>целиком</strong> файлы из блоков кода каждого этапа.</li>
+<li>После каждого этапа <strong>запускайте</strong> проект (команда указана в главе) и пройдите чек-лист самопроверки.</li>
+<li>Если застряли — методология в разделе <a href="./intro.md">Практикум разработки игр — о разделе</a>; для сверки готовые треки <a href="https://github.com/Spirzen/BattleCity">Battle City</a>, <a href="https://github.com/Spirzen/Match3">Match3</a> и <a href="./3.md#full-revision">Ping Pong</a>.</li>
+</ul>
+<hr>
+<h2 id="о-практикуме">О практикуме</h2>
+<p>Соберём <strong>карточный roguelike</strong> в духе <em>Slay the Spire</em> с темпом боя ближе к <em>Hearthstone</em> — колода, рука, энергия на ход, несколько врагов, намерения, карта путей между боями, награды и реликвии. Стек — <strong>Python 3.10+</strong> и <strong>Pygame 2.5+</strong>, без стороннего игрового движка.</p>
+<div class="callout callout--info">
+  <div class="callout-title">Эталонный проект</div>
+  <div class="callout-body">
+  <p>Полная реализация с 66+ картами, редактором, звуком и мета-прогрессом — репозиторий <a href="https://github.com/Spirzen/AutoBattler">Spirzen/AutoBattler</a> ("Тени Шпиля"). Практикум ведёт к той же архитектуре папок и модулей; на каждом этапе код <strong>запускается</strong>, даже если это только меню или один бой на прямоугольниках.</p>
+  </div>
+</div>
+<div class="callout callout--info">
+  <div class="callout-title">Для кого материал</div>
+  <div class="callout-body">
+  <p>Нужны классы, списки, словари, базовый JSON и знакомство с Pygame из статьи <a href="/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a>. Опыт deckbuilder-ов полезен, но не обязателен — механики вводим по одной.</p>
+  </div>
+</div>
+<p><strong>Управление в финальной версии практикума</strong></p>
+<table>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Управление</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Клик по карте, врагу, узлу карты, кнопкам</td>
+<td><strong>Мышь</strong></td>
+</tr>
+<tr>
+<td>Завершить ход в бою</td>
+<td><strong>E</strong></td>
+</tr>
+<tr>
+<td>Меню / выход из редактора</td>
+<td><strong>Esc</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Маршрут чтения</strong></p>
+<ol>
+<li><a href="#architecture">Архитектура</a> — экраны, бой, данные.</li>
+<li><a href="#dependencies">Зависимости и структура папок</a>.</li>
+<li><a href="#stage-0">Этап 0 — минимальный запуск</a>.</li>
+<li>Этапы 1–14 — ядро забега и боя.</li>
+<li><a href="#stage-15">Этапы 15–16</a> — реестр эффектов и редактор карт (как в эталоне).</li>
+<li><a href="#modding">Моддинг и отладка</a> · <a href="#final-checklist">Итоговая самопроверка</a>.</li>
+</ol>
+<p>Имя папки в примерах — <code>auto_battler/</code>. Параллельно держите клон <a href="https://github.com/Spirzen/AutoBattler">AutoBattler</a> (<code>F:\Projects\Games\AutoBattler</code> или <code>git clone</code>) и сверяйте одноимённые файлы после каждого этапа.</p>
+<h3 id="что-получится-в-конце">Что получится в конце</h3>
+<table>
+<thead>
+<tr>
+<th>Результат</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Играбельный забег</strong></td>
+<td>меню → карта узлов → бои → награда → костёр/лавка → босс</td>
+</tr>
+<tr>
+<td><strong>Чистая архитектура</strong></td>
+<td>логика без Pygame в <code>classes/</code>, контент в <code>data/*.json</code></td>
+</tr>
+<tr>
+<td><strong>Мост к эталону</strong></td>
+<td>те же имена экранов, <code>CombatManager</code>, <code>RunState</code>, что в "Тенях Шпиля"</td>
+</tr>
+</tbody>
+</table>
+<p>Ориентир по времени (с перерывами, без полировки графики):</p>
+<table>
+<thead>
+<tr>
+<th>Блок</th>
+<th>Этапы</th>
+<th>Часы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Окно и данные</td>
+<td>0–3</td>
+<td>2–4</td>
+</tr>
+<tr>
+<td>Бой без UI</td>
+<td>4–7</td>
+<td>4–6</td>
+</tr>
+<tr>
+<td>Pygame и забег</td>
+<td>8–11</td>
+<td>6–10</td>
+</tr>
+<tr>
+<td>Мета и контент</td>
+<td>12–16</td>
+<td>4–8</td>
+</tr>
+<tr>
+<td><strong>Итого</strong></td>
+<td>0–16</td>
+<td><strong>16–28</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="architecture"></span></p>
+<h2 id="архитектура">Архитектура</h2>
+<p>Карточный roguelike строится вокруг <strong>забега</strong> (run): карта узлов → события → сражения → усиление колоды → босс. Каждый бой — отдельная подсистема со своим конечным автоматом; между боями колода и реликвии сохраняются, HP и золото тоже.</p>
+<h3 id="жанровые-опоры">Жанровые опоры</h3>
+<table>
+<thead>
+<tr>
+<th>Идея</th>
+<th>Откуда в жанре</th>
+<th>Как реализуем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Карта путей</td>
+<td><em>Slay the Spire</em></td>
+<td><code>GameMap</code>, узлы <code>combat</code> / <code>rest</code> / <code>shop</code> …</td>
+</tr>
+<tr>
+<td>Энергия и рука каждый ход</td>
+<td><em>Hearthstone</em>, <em>Slay the Spire</em></td>
+<td><code>Player.energy</code>, добор в <code>CombatManager</code></td>
+</tr>
+<tr>
+<td>Намерения врагов</td>
+<td><em>Slay the Spire</em></td>
+<td><code>Enemy._plan_intent()</code>, иконка на UI</td>
+</tr>
+<tr>
+<td>Несколько врагов</td>
+<td><em>Darkest Dungeon</em>, STS (редко)</td>
+<td><code>Encounter</code>, выбор цели атаки</td>
+</tr>
+<tr>
+<td>Реликвии</td>
+<td>STS</td>
+<td>пассивные объекты на <code>Player.relics</code></td>
+</tr>
+<tr>
+<td>Контент в данных</td>
+<td>моддинг</td>
+<td><code>data/cards.json</code>, <code>enemies.json</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="игровой-цикл-pygame">Игровой цикл Pygame</h3>
+<pre><code class="language-mermaid">flowchart TD
+    A[Старт] --> B[pygame.init + окно]
+    B --> C{running?}
+    C -->|да| D[События мыши/клавиш]
+    D --> E[run.screen → update экрана]
+    E --> F[UI.draw + effects]
+    F --> G[clock.tick FPS]
+    G --> C
+    C -->|нет| H[pygame.quit]
+</code></pre>
+<p>Класс <code>Game</code> в <code>main.py</code> — <strong>оркестратор</strong>: он не считает урон карт напрямую, а делегирует <code>RunState</code> и <code>CombatManager</code>.</p>
+<h3 id="экраны-забега-конечный-автомат-ui">Экраны забега (конечный автомат UI)</h3>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --> MENU
+    MENU --> MAP : новый забег
+    MAP --> COMBAT : узел бой/элита/босс
+    COMBAT --> REWARD : победа
+    REWARD --> MAP
+    MAP --> SHOP : лавка
+    MAP --> REST : костёр
+    SHOP --> MAP
+    REST --> MAP
+    COMBAT --> GAME_OVER : HP = 0
+    MAP --> VICTORY : босс повержен
+    MENU --> CARD_EDITOR : редактор
+    CARD_EDITOR --> MENU
+</code></pre>
+<p>Поле <code>RunState.screen</code> переключает ветки в <code>Game._handle_click</code> и <code>UI.draw_*</code>. Логика боя живёт в <code>CombatManager</code>, пока <code>screen == combat</code>.</p>
+<h3 id="слои-приложения">Слои приложения</h3>
+<table>
+<thead>
+<tr>
+<th>Слой</th>
+<th>Ответственность</th>
+<th>Модули</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Данные</strong></td>
+<td>Карты, враги, реликвии из JSON</td>
+<td><code>data/*</code>, <code>card_catalog.py</code></td>
+</tr>
+<tr>
+<td><strong>Модель</strong></td>
+<td>Сущности и правила без Pygame</td>
+<td><code>card.py</code>, <code>player.py</code>, <code>enemy.py</code>, <code>combat.py</code>, <code>relic.py</code></td>
+</tr>
+<tr>
+<td><strong>Забег</strong></td>
+<td>Карта, золото, смена экранов</td>
+<td><code>game_state.py</code>, <code>map.py</code></td>
+</tr>
+<tr>
+<td><strong>Представление</strong></td>
+<td>Рисование, хитбоксы</td>
+<td><code>ui.py</code>, <code>widgets.py</code>, <code>effects.py</code></td>
+</tr>
+<tr>
+<td><strong>Вход</strong></td>
+<td>Клики, клавиши</td>
+<td><code>main.py</code> → <code>Game</code></td>
+</tr>
+</tbody>
+</table>
+<p>Правило для поддерживаемости: <strong>урон и блок считаются в <code>CombatManager</code></strong>, UI только вызывает <code>play_card(index)</code> и <code>end_player_turn()</code>.</p>
+<h3 id="поток-данных-в-бою">Поток данных в бою</h3>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant UI
+    participant Game
+    participant Combat as CombatManager
+    participant Player
+    participant Encounter
+
+    UI->>Game: клик по карте
+    Game->>Combat: play_card(i, target)
+    Combat->>Player: spend_energy, hand.remove
+    Combat->>Encounter: damage enemy
+    UI->>Game: клавиша E
+    Game->>Combat: end_player_turn()
+    Combat->>Player: discard hand, start_turn draw
+    Combat->>Encounter: execute intents
+    Combat-->>Game: victory / defeat
+</code></pre>
+<h3 id="целевая-структура-файлов">Целевая структура файлов</h3>
+<p>К концу практикума (и в <a href="https://github.com/Spirzen/AutoBattler">AutoBattler</a>) дерево выглядит так:</p>
+<pre><code>auto_battler/
+├── main.py                 # класс Game, цикл while
+├── settings.py             # баланс, цвета, константы типов карт
+├── locale.py               # строки UI (опционально с этапа 9)
+├── requirements.txt
+├── save_data.json          # создаётся игрой, в .gitignore
+│
+├── classes/
+│   ├── card.py             # Card, Deck, Hand
+│   ├── card_catalog.py     # загрузка JSON
+│   ├── player.py
+│   ├── enemy.py
+│   ├── combat.py
+│   ├── relic.py
+│   ├── map.py
+│   ├── game_state.py       # RunState, SaveSystem
+│   ├── card_effects.py     # этап 15
+│   ├── card_text.py        # подписи эффектов
+│   ├── card_editor.py      # этап 16
+│   ├── widgets.py          # поля ввода редактора
+│   ├── ui.py               # отрисовка
+│   ├── effects.py          # вспышки (опционально)
+│   ├── audio.py            # звук (опционально)
+│   └── transitions.py      # fade и баннеры (опционально)
+│
+└── data/
+    ├── cards.json
+    ├── enemies.json
+    ├── relics.json
+    └── custom_cards.json   # создаёт редактор
+</code></pre>
+<p>На <strong>этапах 0–5</strong> достаточно <code>main.py</code> + <code>settings.py</code> + один-два файла в <code>classes/</code>. Папку <code>data/</code> добавляем на <strong>этапе 2</strong>.</p>
+<h3 id="диаграмма-классов-целевая">Диаграмма классов (целевая)</h3>
+<pre><code class="language-mermaid">classDiagram
+    class Game {
+        +run RunState
+        +ui UI
+        +run_loop()
+    }
+    class RunState {
+        +screen
+        +player Player
+        +game_map GameMap
+        +combat CombatManager
+    }
+    class Player {
+        +hp energy gold
+        +deck Deck
+        +hand Hand
+        +relics
+    }
+    class CombatManager {
+        +state
+        +encounter Encounter
+        +play_card()
+        +end_player_turn()
+    }
+    class Card {
+        +id type cost value
+    }
+    class Enemy {
+        +hp intent
+    }
+    Game --> RunState
+    RunState --> Player
+    RunState --> CombatManager
+    CombatManager --> Player
+    CombatManager --> Encounter
+    Player --> Deck
+    Player --> Hand
+    Deck --> Card
+    Hand --> Card
+    Encounter --> Enemy
+</code></pre>
+<div class="callout callout--tip">
+  <div class="callout-title">Почему JSON, а не код для каждой карты</div>
+  <div class="callout-body">
+  <p>Дизайнер баланса правит <code>data/cards.json</code> без пересборки логики. Код знает <strong>типы</strong> (<code>attack</code>, <code>block</code>, <code>buff</code>…) и <strong>эффекты</strong> (<code>vulnerable</code>, <code>draw</code>…), а числа лежат в данных — так устроен и полный AutoBattler.</p>
+  </div>
+</div>
+<h3 id="глоссарий-механик">Глоссарий механик</h3>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Значение в практикуме</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Забег (run)</strong></td>
+<td>одна попытка пройти карту от старта до босса или смерти</td>
+</tr>
+<tr>
+<td><strong>Колода (deck)</strong></td>
+<td>все карты игрока; в бою делится на стопку добора и сброс</td>
+</tr>
+<tr>
+<td><strong>Рука (hand)</strong></td>
+<td>карты, которые можно разыграть сейчас (лимит 10)</td>
+</tr>
+<tr>
+<td><strong>Энергия</strong></td>
+<td>ресурс хода; восстанавливается в <code>start_turn</code></td>
+</tr>
+<tr>
+<td><strong>Броня (block)</strong></td>
+<td>поглощает урон до конца хода (у игрока и врагов)</td>
+</tr>
+<tr>
+<td><strong>Намерение (intent)</strong></td>
+<td>запланированное действие врага на следующий его ход</td>
+</tr>
+<tr>
+<td><strong>Энкаунтер</strong></td>
+<td>группа врагов в одном бою</td>
+</tr>
+<tr>
+<td><strong>Узел</strong></td>
+<td>точка на карте путей (бой, лавка, костёр…)</td>
+</tr>
+<tr>
+<td><strong>Реликвия</strong></td>
+<td>пассивный артефакт на весь забег</td>
+</tr>
+<tr>
+<td><strong>Мета-прогресс</strong></td>
+<td>статистика и открытия между забегами в <code>save_data.json</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="конечный-автомат-боя">Конечный автомат боя</h3>
+<p>Отдельно от экранов UI у <code>CombatManager</code> три состояния хода:</p>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --> PLAYER_TURN : _init_combat
+    PLAYER_TURN --> ENEMY_TURN : end_player_turn
+    ENEMY_TURN --> PLAYER_TURN : все враги сходили, добор карт
+    PLAYER_TURN --> VICTORY : все враги мертвы
+    ENEMY_TURN --> DEFEAT : HP игрока = 0
+    VICTORY --> [*]
+    DEFEAT --> [*]
+</code></pre>
+<p>Пока <code>state == player_turn</code>, принимаются <code>play_card</code> и клики по цели. Фаза врага <strong>блокирует</strong> ввод — в эталоне это же условие плюс <code>ScreenFade</code> / баннеры в <code>Game._input_blocked()</code>.</p>
+<h3 id="формулы-урона-и-брони">Формулы урона и брони</h3>
+<p>Базовые правила совпадают с <em>Slay the Spire</em> и с <code>Player</code> / <code>Enemy</code> в AutoBattler:</p>
+<table>
+<thead>
+<tr>
+<th>Ситуация</th>
+<th>Формула</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Атака по врагу</td>
+<td><code>урон = value + player.strength</code> (плюс модификаторы карт)</td>
+</tr>
+<tr>
+<td>Входящий урон по игроку с <strong>Уязвимостью</strong></td>
+<td><code>int(amount * 1.5)</code></td>
+</tr>
+<tr>
+<td>Входящий урон по игроку с <strong>бронёй</strong></td>
+<td>сначала вычитается <code>block</code>, остаток бьёт HP</td>
+</tr>
+<tr>
+<td><strong>Слабость</strong> у атакующего врага</td>
+<td>урон врага уменьшается (в эталоне — в <code>Enemy._calc_damage</code>)</td>
+</tr>
+<tr>
+<td><strong>Хрупкость (frail)</strong></td>
+<td>получаемая броня ×0.75</td>
+</tr>
+</tbody>
+</table>
+<p>Урон по врагу с бронёй: <code>dealt = max(0, amount - enemy.block)</code>, затем <code>enemy.block</code> уменьшается. <strong>Пробивание</strong> (<code>pierce</code> в <code>card_effects.py</code>) обходит броню и бьёт HP напрямую.</p>
+<h3 id="раскладка-экрана-боя-1280720">Раскладка экрана боя (1280×720)</h3>
+<p>Эталон рисует зоны предсказуемо — удобно повторить на этапе 8:</p>
+<pre><code>┌────────────────────────────────────────────────────────────────┐
+│  [HP] [Энергия] [Броня] [Золото]     реликвии (иконки)       │
+├────────────────────────────────────────────────────────────────┤
+│                                                                │
+│     Враг 1          Враг 2          Враг 3                     │
+│     [intent]        [intent]        [intent]                   │
+│                                                                │
+│                     журнал боя (последние 5–8 строк)           │
+├────────────────────────────────────────────────────────────────┤
+│              [карта][карта][карта][карта][карта]               │
+│                                    [ Конец хода (E) ]          │
+└────────────────────────────────────────────────────────────────┘
+</code></pre>
+<p>Константы размеров карт в эталоне — <code>CARD_WIDTH = 160</code>, <code>CARD_HEIGHT = 240</code>, <code>CARD_SPACING = 12</code> в <code>settings.py</code>. Рука центрируется по формуле из этапа 8.</p>
+<h3 id="карта-этапов-файлы-эталона">Карта этапов → файлы эталона</h3>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Вы добавляете</th>
+<th>Сверка в AutoBattler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–1</td>
+<td><code>main.py</code>, <code>settings.py</code></td>
+<td><code>main.py</code>, <code>settings.py</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>Card</code>, <code>data/cards.json</code></td>
+<td><code>classes/card.py</code>, <code>data/cards.json</code></td>
+</tr>
+<tr>
+<td>3–4</td>
+<td><code>Deck</code>, <code>Hand</code>, <code>Player</code></td>
+<td><code>classes/card.py</code>, <code>classes/player.py</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>Enemy</code>, <code>Encounter</code></td>
+<td><code>classes/enemy.py</code>, <code>data/enemies.json</code></td>
+</tr>
+<tr>
+<td>6–7</td>
+<td><code>CombatManager</code></td>
+<td><code>classes/combat.py</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>UI.draw_combat</code></td>
+<td><code>classes/ui.py</code> (фрагмент)</td>
+</tr>
+<tr>
+<td>9–11</td>
+<td><code>RunState</code>, <code>GameMap</code></td>
+<td><code>classes/game_state.py</code>, <code>classes/map.py</code></td>
+</tr>
+<tr>
+<td>12–13</td>
+<td>реликвии, shop/rest</td>
+<td><code>classes/relic.py</code>, экраны в <code>main.py</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>SaveSystem</code>, <code>locale</code></td>
+<td><code>classes/game_state.py</code>, <code>locale.py</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>card_effects.py</code></td>
+<td><code>classes/card_effects.py</code></td>
+</tr>
+<tr>
+<td>16</td>
+<td>редактор</td>
+<td><code>classes/card_editor.py</code>, <code>card_catalog.py</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="dependencies"></span></p>
+<h2 id="зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</h2>
+<h3 id="требования">Требования</h3>
+<ul>
+<li><strong>Python 3.10+</strong> (аннотации <code>list[Card]</code>, <code>int | None</code>).</li>
+<li><strong>Pygame 2.5+</strong> — единственная внешняя зависимость в <code>requirements.txt</code> эталона.</li>
+</ul>
+<h3 id="установка">Установка</h3>
+<pre><code class="language-bash">mkdir auto_battler &#x26;&#x26; cd auto_battler
+python -m venv .venv
+</code></pre>
+<p>Активация:</p>
+<ul>
+<li><strong>Windows (PowerShell):</strong> <code>.venv\Scripts\Activate.ps1</code></li>
+<li><strong>Linux / macOS:</strong> <code>source .venv/bin/activate</code></li>
+</ul>
+<pre><code class="language-bash">pip install pygame
+python -c "import pygame; print('Pygame', pygame.ver)"
+</code></pre>
+<p><code>requirements.txt</code>:</p>
+<pre><code>pygame>=2.5.0
+</code></pre>
+<h3 id="клон-эталона-для-сверки">Клон эталона для сверки</h3>
+<pre><code class="language-bash">git clone https://github.com/Spirzen/AutoBattler.git
+cd AutoBattler
+pip install -r requirements.txt
+python main.py
+</code></pre>
+<p>Окно <strong>1280×720</strong>, главное меню на русском. Практикум можно проходить <strong>параллельно</strong> в <code>auto_battler/</code>, сверяя готовые модули с одноимёнными файлами в репозитории.</p>
+<h3>Пакет <code>classes</code> и <code>.gitignore</code></h3>
+<p>Создайте пустые файлы, чтобы импорты <code>from classes.card import …</code> работали стабильно:</p>
+<pre><code>auto_battler/
+├── classes/
+│   └── __init__.py      # можно оставить пустым
+</code></pre>
+<p><code>.gitignore</code> в корне учебного проекта:</p>
+<pre><code>.venv/
+__pycache__/
+*.pyc
+save_data.json
+data/custom_cards.json
+</code></pre>
+<p>В AutoBattler <code>save_data.json</code> и <code>custom_cards.json</code> тоже исключены из git — прогресс и кастомные карты локальны.</p>
+<h3 id="шрифты-с-кириллицей">Шрифты с кириллицей</h3>
+<p>Pygame по умолчанию может взять шрифт без русских букв. Эталон перебирает список:</p>
+<pre><code class="language-python">FONT_NAMES = ["segoeui", "arial", "tahoma", "calibri", "verdana"]
+
+def pick_font(size: int, bold: bool = False):
+    for name in settings.FONT_NAMES:
+        path = pygame.font.match_font(name, bold=bold)
+        if path:
+            return pygame.font.Font(path, size)
+    return pygame.font.SysFont(None, size)
+</code></pre>
+<p>Подключите <code>pick_font</code> на этапе 8 в <code>UI.__init__</code>.</p>
+<div class="callout callout--warning">
+  <div class="callout-title">Кодировка JSON</div>
+  <div class="callout-body">
+  <p>Файлы в <code>data/</code> сохраняйте в <strong>UTF-8</strong> с <code>ensure_ascii=False</code> при записи из Python — иначе кириллица в названиях карт сломается на Windows.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-0"></span></p>
+<h2 id="этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</h2>
+<p><strong>Цель</strong> — окно 1280×720, цикл 60 FPS, выход по крестику и <code>Esc</code>. Размер совпадает с эталоном, чтобы дальше не перенастраивать UI.</p>
+<p><code>main.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-001" data-title="Этап 0 — минимальный запускаемый код" data-min-height="588"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Окно без traceback.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>Esc</code> и крестик закрывают программу.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Стабильные ~60 FPS (без <code>tick</code> кадр "улетает").</li>
+</ul>
+<hr>
+<p><span id="stage-1"></span></p>
+<h2 id="этап-1-настройки-и-палитра">Этап 1 — настройки и палитра</h2>
+<p><strong>Цель</strong> — вынести константы в <code>settings.py</code>, подготовить типы карт и цвета как в AutoBattler.</p>
+<p><code>settings.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-002" data-title="Этап 1 — настройки и палитра" data-min-height="588"> </div>
+<p>Обновите <code>main.py</code> — импорт <code>settings</code>, заливка фона, подпись этапа.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Все модули импортируют размеры только из <code>settings</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Цвета карт заданы один раз в <code>CARD_TYPE_COLORS</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-2"></span></p>
+<h2 id="этап-2-модель-карты-и-json">Этап 2 — модель карты и JSON</h2>
+<p><strong>Цель</strong> — класс <code>Card</code>, загрузка базы из <code>data/cards.json</code>, фабрика <code>create_card</code>.</p>
+<p>Создайте <code>data/cards.json</code> (минимальный набор):</p>
+<div class="itu-code-embed" data-example="json/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-003" data-title="Этап 2 — модель карты и JSON" data-min-height="624"> </div>
+<p><code>classes/card.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-004" data-title="Этап 2 — модель карты и JSON" data-min-height="720"> </div>
+<p>Проверка из консоли (из корня <code>auto_battler/</code>):</p>
+<pre><code class="language-bash">python -c "from classes.card import create_starting_deck; print(len(create_starting_deck()), create_starting_deck[0].name)"
+</code></pre>
+<p>Ожидается <code>10 Удар</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>FileNotFoundError</code> исчезает при запуске из корня проекта.</li>
+<li class="task-list-item"><input type="checkbox" disabled> У каждой карты есть <code>type</code>, <code>cost</code>, <code>value</code>.</li>
+</ul>
+<h3>Справочник полей <code>cards.json</code> (эталон)</h3>
+<p>Практикум начинает с короткой записи; в <a href="https://github.com/Spirzen/AutoBattler/blob/main/data/cards.json">AutoBattler</a> карты богаче. Основные поля класса <code>Card</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Роль</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>ключ в базе, дубликаты в колоде допустимы</td>
+</tr>
+<tr>
+<td><code>name</code>, <code>description</code></td>
+<td>string</td>
+<td>UI и подсказка</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>attack</code>, <code>block</code>, <code>buff</code>, <code>debuff</code>, <code>draw</code>, <code>creature</code></td>
+</tr>
+<tr>
+<td><code>cost</code></td>
+<td>int</td>
+<td>энергия при розыгрыше</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>int</td>
+<td>урон или величина эффекта по типу</td>
+</tr>
+<tr>
+<td><code>rarity</code></td>
+<td>string</td>
+<td><code>basic</code>, <code>common</code>, <code>uncommon</code>, <code>rare</code></td>
+</tr>
+<tr>
+<td><code>block</code></td>
+<td>int</td>
+<td>доп. броня на карте атаки</td>
+</tr>
+<tr>
+<td><code>draw</code></td>
+<td>int</td>
+<td>добор при розыгрыше</td>
+</tr>
+<tr>
+<td><code>aoe</code></td>
+<td>bool</td>
+<td>урон/дебафф по всем врагам</td>
+</tr>
+<tr>
+<td><code>effect</code>, <code>effect_value</code></td>
+<td>string, int</td>
+<td>первый бонус (<code>vulnerable</code>, <code>poison</code>…)</td>
+</tr>
+<tr>
+<td><code>effect2</code>, <code>effect2_value</code></td>
+<td>string, int</td>
+<td>второй бонус</td>
+</tr>
+<tr>
+<td><code>bonuses</code></td>
+<td>list[dict]</td>
+<td>несколько эффектов в одной карте</td>
+</tr>
+<tr>
+<td><code>lifesteal</code>, <code>pierce</code> (через bonuses)</td>
+<td>bool</td>
+<td>флаги из <code>card_effects.py</code></td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td>string</td>
+<td><code>spell</code> / <code>creature</code> для редактора</td>
+</tr>
+<tr>
+<td><code>health</code></td>
+<td>int</td>
+<td>"здоровье" существа → броня при розыгрыше</td>
+</tr>
+</tbody>
+</table>
+<p>Пример карты эталона с двумя эффектами (сокращённо):</p>
+<pre><code class="language-json">{
+  "id": "uppercut",
+  "name": "Апперкот",
+  "type": "attack",
+  "cost": 2,
+  "value": 13,
+  "effect": "vulnerable",
+  "effect_value": 2,
+  "effect2": "weak",
+  "effect2_value": 1,
+  "description": "Удар с ослаблением.",
+  "rarity": "uncommon"
+}
+</code></pre>
+<p>На этапе 15 эти поля обрабатывает <code>apply_on_play_bonuses</code>, а не разросшийся <code>if</code> внутри <code>play_card</code>.</p>
+<hr>
+<p><span id="stage-3"></span></p>
+<h2 id="этап-3-колода-и-рука">Этап 3 — колода и рука</h2>
+<p><strong>Цель</strong> — <code>Deck</code> (стопка добора, сброс, перетасовка) и <code>Hand</code> (лимит карт).</p>
+<p>Дополните <code>classes/card.py</code> — классы <code>Deck</code> и <code>Hand</code> в том же файле, что и <code>Card</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-005" data-title="Этап 3 — колода и рука" data-min-height="720"> </div>
+<p>Тест:</p>
+<pre><code class="language-python">from classes.card import create_starting_deck, Deck, Hand
+
+d = Deck(create_starting_deck())
+h = Hand()
+for c in d.draw(5):
+    h.add(c)
+print([c.name for c in h.cards], "осталось в колоде", len(d.draw_pile))
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Пустая стопка добора перетасовывает сброс.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Рука не принимает 11-ю карту при <code>MAX_HAND = 10</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-4"></span></p>
+<h2 id="этап-4-игрок-hp-энергия-блок">Этап 4 — игрок (HP, энергия, блок)</h2>
+<p><strong>Цель</strong> — <code>Player</code> с боевым сбросом состояния и экономикой урона/брони.</p>
+<p><code>classes/player.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-006" data-title="Этап 4 — игрок (HP, энергия, блок)" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>reset_combat</code> возвращает все карты в колоду и тасует.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Блок поглощает урон до обнуления HP.</li>
+</ul>
+<hr>
+<p><span id="stage-5"></span></p>
+<h2 id="этап-5-враг-намерение-энкаунтер">Этап 5 — враг, намерение, энкаунтер</h2>
+<p><strong>Цель</strong> — один враг с циклом намерений <code>attack</code> / <code>block</code>, загрузка из JSON.</p>
+<p><code>data/enemies.json</code>:</p>
+<div class="itu-code-embed" data-example="json/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-007" data-title="Этап 5 — враг, намерение, энкаунтер" data-min-height="426"> </div>
+<p><code>classes/enemy.py</code> (упрощённо):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-008" data-title="Этап 5 — враг, намерение, энкаунтер" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После хода врага видно <strong>следующее</strong> намерение (<code>_plan_intent</code> в конце).</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>Encounter.all_dead()</code> становится <code>True</code>, когда HP врага 0.</li>
+</ul>
+<h3 id="отображение-намерений">Отображение намерений</h3>
+<p>В эталоне <code>locale.INTENT_LABELS</code> переводит <code>attack</code> → "Атака", <code>block</code> → "Защита", <code>buff</code> → "Усиление". Цвета — <code>INTENT_COLORS</code> в <code>enemy.py</code>. На UI рисуйте под портретом врага:</p>
+<pre><code class="language-python">label = INTENT_LABELS.get(enemy.current_intent, "?")
+value = enemy.intent_value
+color = INTENT_COLORS.get(enemy.current_intent, (200, 200, 200))
+# иконка: красный клинок для attack, щит для block
+</code></pre>
+<p>Игрок всегда видит <strong>следующий</strong> ход врага — ключевое отличие deckbuilder от "чистого" автобаттлера без информации.</p>
+<hr>
+<p><span id="stage-6"></span></p>
+<h2 id="этап-6-combatmanager-без-ui">Этап 6 — CombatManager без UI</h2>
+<p><strong>Цель</strong> — пошаговый бой в консоли или через <code>print</code> — розыгрыш карт, конец хода, ход врагов.</p>
+<p><code>classes/combat.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-009" data-title="Этап 6 — CombatManager без UI" data-min-height="720"> </div>
+<p>Запуск: <code>python -m classes.combat</code> (из корня, с пакетом <code>classes</code> как папкой; при необходимости добавьте пустые <code>classes/__init__.py</code>).</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Атака тратит энергию и уходит в сброс.</li>
+<li class="task-list-item"><input type="checkbox" disabled> После <code>end_player_turn</code> враг бьёт, игрок добирает карты.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Победа при <code>hp</code> врага ≤ 0.</li>
+</ul>
+<h3>Цепочка <code>play_card</code> в эталоне</h3>
+<p>Когда учебный <code>CombatManager</code> обрастает механиками, перенесите разбор эффектов в отдельный метод — как в AutoBattler:</p>
+<pre><code class="language-mermaid">flowchart LR
+    A[can_play_card] --> B[resolve_target_index]
+    B --> C[spend_energy]
+    C --> D[hand.remove]
+    D --> E[_resolve_card]
+    E --> F[deck.discard]
+    F --> G{все враги мертвы?}
+    G -->|да| H[_end_combat_victory]
+</code></pre>
+<p>Тело <code>_resolve_card</code> в эталоне:</p>
+<ol>
+<li>Собрать <code>targets</code> (один враг, AOE или случайный).</li>
+<li>Нанести урон / выдать броню / призвать "существо".</li>
+<li>Вызвать <code>apply_on_play_bonuses</code> для <code>effect</code> / <code>bonuses[]</code>.</li>
+<li>Обработать <code>draw</code>, <code>energy_gain</code>, <code>self_damage</code>.</li>
+<li>При флаге <strong>Echo</strong> — повторить удар.</li>
+</ol>
+<p>Упрощённый скелет для этапа 15:</p>
+<pre><code class="language-python">def _resolve_card(self, card, target_index: int | None) -> list[str]:
+    messages = []
+    living = self.encounter.get_living_enemies()
+    # ... урон / блок по type ...
+    apply_on_play_bonuses(self, card, target_index, messages)
+    if card.draw:
+        for c in self.player.deck.draw(card.draw):
+            self.player.hand.add(c)
+    return messages
+</code></pre>
+<div class="callout callout--tip">
+  <div class="callout-title">Журнал боя</div>
+  <div class="callout-body">
+  <p>Метод <code>_add_log</code> в эталоне обрезает список до 8 строк — UI всегда читает "хвост", без прокрутки.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-7"></span></p>
+<h2 id="этап-7-несколько-врагов-и-выбор-цели">Этап 7 — несколько врагов и выбор цели</h2>
+<p><strong>Цель</strong> — энкаунтер из 2–3 врагов, поле <code>selected_enemy_index</code>, атаки только по живым.</p>
+<p>Расширьте <code>create_encounter</code>:</p>
+<pre><code class="language-python">def create_combat_encounter(node_type: str) -> Encounter:
+    db = load_enemies()
+    if node_type == "elite":
+        return Encounter([Enemy(db[1], 1.4)])
+    group = [Enemy(db[0]), Enemy(db[0])]
+    return Encounter(group)
+</code></pre>
+<p>В <code>CombatManager</code> добавьте:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-010" data-title="Этап 7 — несколько врагов и выбор цели" data-min-height="372"> </div>
+<p>В эталоне AutoBattler то же делает <code>CombatManager.card_needs_target</code> и клик по портрету врага перед картой.</p>
+<h3 id="генерация-энкаунтера-по-этажу-эталон">Генерация энкаунтера по этажу (эталон)</h3>
+<p>В <code>classes/enemy.py</code> функция <code>create_combat_encounter(is_elite, is_boss, floor)</code> подбирает состав и число врагов:</p>
+<ul>
+<li><strong>босс</strong> — один из <code>hexaghost</code>, <code>slime_boss</code>, <code>guardian</code>;</li>
+<li><strong>элита</strong> — <code>gremlin_nob</code> или <code>sentry</code>, множитель HP <code>1.1</code>;</li>
+<li><strong>обычный бой</strong> — пул зависит от <code>floor</code>, от 1 до 3 врагов с весами.</li>
+</ul>
+<p>Подключите упрощённую версию при входе в бой с карты:</p>
+<pre><code class="language-python">def start_combat_from_node(self, node):
+    from classes.enemy import create_combat_encounter
+    elite = node.type == settings.NODE_ELITE
+    boss = node.type == settings.NODE_BOSS
+    floor = node.floor
+    enc = create_combat_encounter(elite, boss, floor)
+    self.combat = CombatManager(self.player, enc)
+    self.screen = self.SCREEN_COMBAT
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Атака без живых врагов возвращает <code>False</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Можно переключить цель между двумя слизнями.</li>
+<li class="task-list-item"><input type="checkbox" disabled> На этаже 3+ иногда появляется два врага.</li>
+</ul>
+<hr>
+<p><span id="stage-8"></span></p>
+<h2 id="этап-8-боевой-ui-рука-энергия-журнал">Этап 8 — боевой UI (рука, энергия, журнал)</h2>
+<p><strong>Цель</strong> — один экран боя — прямоугольники карт, полоса HP, кнопка "Конец хода", журнал снизу.</p>
+<p><code>classes/ui.py</code> (фрагмент):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-011" data-title="Этап 8 — боевой UI (рука, энергия, журнал)" data-min-height="720"> </div>
+<p><code>main.py</code> — режим "только бой" для отладки:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-012" data-title="Этап 8 — боевой UI (рука, энергия, журнал)" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Клик по карте с достаточной энергией наносит урон.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>E</code> завершает ход, враг атакует, в журнале новые строки.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Серая карта при нехватке маны (визуально темнее).</li>
+</ul>
+<h3 id="двухшаговый-ввод-карта-цель">Двухшаговый ввод (карта → цель)</h3>
+<p>В AutoBattler <code>Game._handle_click</code> для боя устроен так:</p>
+<ol>
+<li>Клик по <strong>врагу</strong> — запомнить <code>combat.selected_enemy_index</code>.</li>
+<li>Клик по <strong>карте</strong> — если карте нужна цель и враг не выбран при нескольких живых, розыгрыш отклоняется; иначе <code>play_card(index, selected_enemy_index)</code>.</li>
+<li>Клик по кнопке "Конец хода" или клавиша <strong>E</strong> — <code>end_player_turn()</code>.</li>
+</ol>
+<p>Учебный обработчик:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-013" data-title="Двухшаговый ввод (карта → цель)" data-min-height="372"> </div>
+<p>Храните <code>last_hand_rects</code> / <code>last_enemy_rects</code> в <code>UI</code> после отрисовки — <strong>те же координаты</strong>, что при <code>draw</code>, иначе клики "мимо".</p>
+<hr>
+<p><span id="stage-9"></span></p>
+<h2 id="этап-9-runstate-и-главное-меню">Этап 9 — RunState и главное меню</h2>
+<p><strong>Цель</strong> — переключение <code>screen</code> между меню и боем, класс <code>Game</code> как в AutoBattler.</p>
+<p><code>classes/game_state.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-014" data-title="Этап 9 — RunState и главное меню" data-min-height="498"> </div>
+<p><code>main.py</code> — кнопка "Новый бой (тест)" на меню и <code>RunState</code>.</p>
+<p>Сверьте с <code>RunState</code> в <a href="https://github.com/Spirzen/AutoBattler/blob/main/classes/game_state.py">game_state.py эталона</a> — там больше экранов (<code>reward</code>, <code>shop</code>, <code>rest</code>, <code>victory</code>).</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Из меню вход в бой и возврат <code>Esc</code> (пока без карты).</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>RunState</code> не создаёт второй <code>CombatManager</code>, пока бой не закончен.</li>
+</ul>
+<hr>
+<p><span id="stage-10"></span></p>
+<h2 id="этап-10-процедурная-карта-узлов">Этап 10 — процедурная карта узлов</h2>
+<p><strong>Цель</strong> — <code>GameMap</code> с этажами и связями, клик по доступному узлу запускает бой.</p>
+<p><code>classes/map.py</code> (ядро):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-015" data-title="Этап 10 — процедурная карта узлов" data-min-height="720"> </div>
+<p>Добавьте в <code>settings.py</code> константы <code>NODE_COMBAT</code>, <code>NODE_REST</code>, <code>NODE_BOSS</code>, <code>NODE_COLORS</code>.</p>
+<p>В <code>RunState.start_new_run()</code>:</p>
+<pre><code class="language-python">from classes.map import GameMap
+
+def start_new_run(self):
+    self.player = Player()
+    self.game_map = GameMap()
+    self.combat = None
+    self.screen = self.SCREEN_MAP
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После первого узла доступны только соседи следующего этажа.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Узел босса на последнем этаже.</li>
+</ul>
+<h3 id="веса-узлов-эталон">Веса узлов (эталон)</h3>
+<p>В <code>GameMap._random_node_type</code> эталон задаёт вероятности:</p>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Вес</th>
+<th>Смысл</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>combat</code></td>
+<td>45</td>
+<td>обычный бой</td>
+</tr>
+<tr>
+<td><code>elite</code></td>
+<td>12</td>
+<td>сложный бой, лучшая награда</td>
+</tr>
+<tr>
+<td><code>rest</code></td>
+<td>8</td>
+<td>лечение / кузница</td>
+</tr>
+<tr>
+<td><code>shop</code></td>
+<td>10</td>
+<td>покупки</td>
+</tr>
+<tr>
+<td><code>treasure</code></td>
+<td>8</td>
+<td>реликвия</td>
+</tr>
+<tr>
+<td><code>event</code></td>
+<td>17</td>
+<td>случайное событие</td>
+</tr>
+</tbody>
+</table>
+<p>Каждый 5-й этаж (<code>f % 5 == 0</code>) в генераторе эталона принудительно получает <strong>костёр</strong> в одной из колонок — ритм "бой → бой → отдых".</p>
+<p>Отрисовка карты — <code>UI.draw_map</code> — узлы по координатам <code>(floor, row)</code>, линии между <code>connections</code>, подсветка <code>available</code> / <code>completed</code>.</p>
+<hr>
+<p><span id="stage-11"></span></p>
+<h2 id="этап-11-связка-карта-бой-награда">Этап 11 — связка карта → бой → награда</h2>
+<p><strong>Цель</strong> — после победы экран <code>reward</code> с тремя картами на выбор, добавление в колоду.</p>
+<p><code>classes/card_catalog.py</code>:</p>
+<pre><code class="language-python">
+import random
+
+from classes.card import load_card_database, create_card, Card
+
+
+def get_reward_cards(count: int = 3, exclude_basic: bool = True) -> list[Card]:
+    pool = load_card_database()
+    if exclude_basic:
+        pool = [c for c in pool if c.get("rarity") != "basic"]
+    picks = random.sample(pool, min(count, len(pool)))
+    return [create_card(p) for p in picks]
+</code></pre>
+<p>В <code>RunState</code>:</p>
+<pre><code class="language-python">SCREEN_REWARD = "reward"
+
+def on_combat_victory(self):
+    from classes.card_catalog import get_reward_cards
+    self.reward_cards = get_reward_cards(3)
+    self.screen = self.SCREEN_REWARD
+
+def pick_reward(self, index: int):
+    if 0 &#x3C;= index &#x3C; len(self.reward_cards):
+        self.player.deck.add_to_draw(self.reward_cards[index])
+    self.reward_cards = []
+    self.screen = self.SCREEN_MAP
+</code></pre>
+<p><code>Game</code> после <code>combat.combat_over</code> и <code>combat.victory</code> вызывает <code>run.on_combat_victory()</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Колода растёт после выбора карты.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Возврат на карту, текущий узел отмечен пройденным.</li>
+</ul>
+<hr>
+<p><span id="stage-12"></span></p>
+<h2 id="этап-12-реликвии">Этап 12 — реликвии</h2>
+<p><strong>Цель</strong> — пассивный предмет на весь забег, срабатывание при старте боя.</p>
+<p><code>data/relics.json</code>:</p>
+<div class="itu-code-embed" data-example="json/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-016" data-title="Этап 12 — реликвии" data-min-height="390"> </div>
+<p><code>classes/relic.py</code> + хуки в <code>CombatManager._init_combat</code> и после победы.</p>
+<pre><code class="language-python">def apply_relic_on_combat_start(player, relic):
+    if relic.effect == "extra_draw":
+        return relic.value  # добавить к STARTING_HAND в _init_combat
+    return 0
+
+def apply_relic_on_combat_end(player, relic, victory: bool):
+    if victory and relic.effect == "heal_after_combat":
+        player.heal(relic.value)
+</code></pre>
+<p>В <code>RunState.start_new_run</code> выдайте стартовую реликвию:</p>
+<pre><code class="language-python">from classes.relic import get_starter_relic
+self.player.relics.append(get_starter_relic())
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После победы HP растёт при <code>burning_blood</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Враги начинают бой с уязвимостью при <code>bag_of_marbles</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-13"></span></p>
+<h2 id="этап-13-лавка-и-костёр">Этап 13 — лавка и костёр</h2>
+<p><strong>Цель</strong> — узлы <code>shop</code> и <code>rest</code> на карте.</p>
+<table>
+<thead>
+<tr>
+<th>Узел</th>
+<th>Логика</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>rest</strong></td>
+<td>+30% <code>max_hp</code> или улучшение случайной карты в колоде</td>
+</tr>
+<tr>
+<td><strong>shop</strong></td>
+<td>покупка карты за 50 золота, удаление карты за 75</td>
+</tr>
+</tbody>
+</table>
+<p>В эталоне экраны <code>SCREEN_SHOP</code>, <code>SCREEN_REST</code>, списки <code>shop_cards</code> / <code>shop_relics</code> в <code>RunState</code>.</p>
+<p>Минимальный <code>rest</code>:</p>
+<pre><code class="language-python">def rest_heal(self):
+    heal = max(1, int(self.player.max_hp * 0.3))
+    self.player.hp = min(self.player.max_hp, self.player.hp + heal)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Золото уменьшается при покупке.</li>
+<li class="task-list-item"><input type="checkbox" disabled> На костре HP не превышает максимум.</li>
+</ul>
+<hr>
+<p><span id="stage-14"></span></p>
+<h2 id="этап-14-сохранения-локализация-полировка">Этап 14 — сохранения, локализация, полировка</h2>
+<p><strong>Цель</strong> — мета-прогресс между забегами и вынос строк.</p>
+<p><code>SaveSystem</code> (как в эталоне):</p>
+<ul>
+<li><code>total_runs</code>, <code>total_wins</code>, <code>best_floor</code>, <code>unlocked_cards</code>;</li>
+<li>файл <code>save_data.json</code> в корне, в <code>.gitignore</code>;</li>
+<li><code>record_run_end(floor, won, kills)</code> при <code>GAME_OVER</code> / <code>VICTORY</code>.</li>
+</ul>
+<p><code>locale.py</code> — константы <code>MENU_NEW_RUN</code>, <code>COMBAT_YOUR_TURN</code>, подписи узлов. В AutoBattler весь видимый текст вынесен туда для единообразия.</p>
+<p>Опциональные улучшения как в репозитории:</p>
+<ul>
+<li><code>classes/audio.py</code> — процедурные звуки без файлов;</li>
+<li><code>classes/effects.py</code> — вспышки урона, частицы победы;</li>
+<li><code>classes/card_editor.py</code> — редактор кастомных карт → <code>data/custom_cards.json</code>;</li>
+<li><code>classes/card_effects.py</code> — расширенные эффекты (~40 механик).</li>
+</ul>
+<p>Рефакторинг <code>main.py</code> в класс <code>Game</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-017" data-title="Этап 14 — сохранения, локализация, полировка" data-min-height="408"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Второй забег показывает статистику в меню.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>main.py</code> остаётся тонким контроллером.</li>
+</ul>
+<hr>
+<p><span id="stage-15"></span></p>
+<h2>Этап 15 — реестр эффектов (<code>card_effects.py</code>)</h2>
+<p><strong>Цель</strong> — вынести десятки механик из <code>CombatManager</code> в модуль с явными идентификаторами, как в <a href="https://github.com/Spirzen/AutoBattler/blob/main/classes/card_effects.py">card_effects.py</a>.</p>
+<h3 id="зачем-отдельный-файл">Зачем отдельный файл</h3>
+<table>
+<thead>
+<tr>
+<th>Проблема без реестра</th>
+<th>Решение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>play_card</code> на 400+ строк</td>
+<td><code>_resolve_card</code> + <code>apply_on_play_bonuses</code></td>
+</tr>
+<tr>
+<td>дубли <code>if effect == "poison"</code></td>
+<td>константы <code>EFFECT_POISON</code>, таблица целей</td>
+</tr>
+<tr>
+<td>сложно тестировать</td>
+<td>вызов <code>apply_effect(combat, bonus, target)</code> из unit-теста</td>
+</tr>
+</tbody>
+</table>
+<h3 id="минимальный-реестр-5-эффектов">Минимальный реестр (5 эффектов)</h3>
+<p>Создайте <code>classes/card_effects.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-018" data-title="Минимальный реестр (5 эффектов)" data-min-height="720"> </div>
+<h3>Тики яда и кровотечения в <code>_enemy_phase</code></h3>
+<p>Перед <code>execute_intent</code> у каждого врага:</p>
+<pre><code class="language-python">if getattr(enemy, "poison", 0) > 0:
+    enemy.take_damage(enemy.poison)
+    enemy.poison = max(0, enemy.poison - 1)
+</code></pre>
+<p>В эталоне аналогичные тики и <strong>Execute</strong> (×1.5 по раненым), <strong>Lifesteal</strong>, <strong>Echo</strong> уже подключены — добавляйте по одному <code>elif</code> в <code>_apply_one</code> и строку в <code>card_text.BONUS_LABELS</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Карта только с <code>effect: "vulnerable"</code> в JSON работает без правки <code>combat.py</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>collect_card_bonuses</code> видит и <code>bonuses[]</code>, и legacy-поля <code>effect</code> / <code>effect2</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-16"></span></p>
+<h2>Этап 16 — редактор карт и <code>custom_cards.json</code></h2>
+<p><strong>Цель</strong> — экран <code>SCREEN_CARD_EDITOR</code>, сохранение пользовательских карт в пул наград и магазина.</p>
+<h3 id="поток-редактора">Поток редактора</h3>
+<pre><code class="language-mermaid">flowchart LR
+    M[Меню] --> E[Редактор]
+    E --> F[Черновик draft]
+    F --> P[Предпросмотр Card]
+    F --> S[save_custom_cards]
+    S --> C[data/custom_cards.json]
+    C --> G[get_reward_cards / shop]
+</code></pre>
+<h3 id="черновик-и-виджеты">Черновик и виджеты</h3>
+<p><code>CardEditorState</code> хранит <code>draft — dict</code> с полями <code>name</code>, <code>description</code>, <code>cost</code>, <code>damage</code>, <code>health</code>, <code>kind</code>, <code>effect</code>. В эталоне ввод через <code>TextInput</code>, <code>NumberInput</code>, <code>OptionPicker</code> из <code>classes/widgets.py</code>.</p>
+<p>Минимальное сохранение:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-7-019" data-title="Черновик и виджеты" data-min-height="408"> </div>
+<p><code>card_catalog.load_all_cards()</code> = <code>cards.json</code> + <code>custom_cards.json</code>. После сохранения новая карта попадает в <code>get_reward_cards()</code> без перезапуска, если каталог перечитывается при генерации награды.</p>
+<h3 id="подсказки-на-картах">Подсказки на картах</h3>
+<p><code>classes/card_text.py</code> строит строки для tooltip из механики — <code>build_tooltip_lines(card, player_energy)</code>. Подключите на этапе 8 при наведении: если <code>card.get_tooltip_lines(energy)</code>, рисуйте всплывающий прямоугольник над картой.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Карта из редактора появляется в награде после победы.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>Esc</code> возвращает в меню без падения.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>custom_cards.json</code> в <code>.gitignore</code>.</li>
+</ul>
+<hr>
+<p><span id="modding"></span></p>
+<h2 id="моддинг-и-отладка">Моддинг и отладка</h2>
+<h3>Баланс в <code>settings.py</code></h3>
+<p>Эталонные значения (можно копировать в учебный проект):</p>
+<pre><code class="language-python">STARTING_HP = 85
+STARTING_ENERGY = 3
+STARTING_GOLD = 99
+STARTING_HAND = 5
+DRAW_PER_TURN = 5
+MAX_HAND = 10
+</code></pre>
+<h3 id="новый-враг">Новый враг</h3>
+<p>Запись в <code>data/enemies.json</code> (ключ — <code>id</code>):</p>
+<pre><code class="language-json">"jaw_worm": {
+  "name": "Челюстной червь",
+  "hp": 40,
+  "attack_damage": 11,
+  "intent_pattern": ["attack", "buff", "attack"],
+  "buff_value": 3,
+  "description": "Разгоняется и бьёт сильно."
+}
+</code></pre>
+<p>В эталоне файл — объект <code>id → данные</code>, в учебнике на этапе 5 — массив; при слиянии с эталоном приведите формат к одному стилю.</p>
+<h3 id="новая-реликвия">Новая реликвия</h3>
+<pre><code class="language-json">{
+  "id": "oddly_smooth_stone",
+  "name": "Гладкий камень",
+  "description": "+1 энергия в начале боя.",
+  "effect": "extra_energy",
+  "value": 1,
+  "rarity": "common"
+}
+</code></pre>
+<p>Обработчик <code>extra_energy</code> в <code>apply_relic_on_combat_start</code> увеличивает <code>player.max_energy</code> на время забега или даёт энергию в первый ход — сверьте с <code>classes/relic.py</code> эталона.</p>
+<h3 id="отладка-без-ui">Отладка без UI</h3>
+<pre><code class="language-bash">python -c "
+from classes.player import Player
+from classes.combat import CombatManager
+from classes.enemy import create_encounter
+p = Player()
+c = CombatManager(p, create_encounter('slime'))
+c.play_card(0, 0)
+c.end_player_turn()
+print(c.log[-3:])
+"
+</code></pre>
+<h3 id="логирование-кликов">Логирование кликов</h3>
+<p>На время этапа 8:</p>
+<pre><code class="language-python">if event.type == pygame.MOUSEBUTTONDOWN:
+    print("click", event.pos, "hand", getattr(ui, "last_hand_rects", []))
+</code></pre>
+<p>Сравните координаты клика с <code>Rect</code> карт — расхождение на 1–2 px часто из-за <code>CARD_OVERLAP</code> в эталоне (карты наезжают друг на друга, хитбокс уже визуальной ширины).</p>
+<div class="callout callout--caution">
+  <div class="callout-title">Смешение list и dict в enemies.json</div>
+  <div class="callout-body">
+  <p>Учебный этап 5 использует <strong>массив</strong> врагов, эталон — <strong>словарь</strong> по id. Перед копированием контента из AutoBattler конвертируйте формат или унифицируйте <code>load_enemies()</code>.</p>
+  </div>
+</div>
+<hr>
+<p><span id="final-checklist"></span></p>
+<h2 id="итоговая-самопроверка-и-эталон">Итоговая самопроверка и эталон</h2>
+<h3 id="чек-лист-учебного-прототипа">Чек-лист учебного прототипа</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Критерий</th>
+<th>Да / нет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Окно 1280×720, стабильный FPS</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Карты и враги грузятся из JSON</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Колода, рука, сброс, перетасовка</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Энергия, блок, уязвимость работают</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Несколько врагов, выбор цели атаки</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Намерения врагов видны до их хода</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Карта узлов, переход в бой</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Награда — добавление карты в колоду</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Хотя бы одна реликвия влияет на бой</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Код разбит на <code>classes/*</code> и <code>data/*</code></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Реестр эффектов отделён от боя</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Редактор пишет в <code>custom_cards.json</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="сравнение-с-autobattler">Сравнение с AutoBattler</h3>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Практикум (минимум)</th>
+<th><a href="https://github.com/Spirzen/AutoBattler">AutoBattler</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Карт в базе</td>
+<td>3–10 + custom</td>
+<td>66+</td>
+</tr>
+<tr>
+<td>Эффекты</td>
+<td>5+, рост до ~40</td>
+<td><code>card_effects.py</code>, <code>ALL_EFFECT_IDS</code></td>
+</tr>
+<tr>
+<td>Этажей карты</td>
+<td>8</td>
+<td>15 (<code>GameMap.FLOORS</code>)</td>
+</tr>
+<tr>
+<td>Враги</td>
+<td>2–3 id</td>
+<td>9 + боссы в JSON</td>
+</tr>
+<tr>
+<td>Реликвии</td>
+<td>1–2</td>
+<td>15 в <code>relics.json</code></td>
+</tr>
+<tr>
+<td>Редактор карт</td>
+<td>этап 16</td>
+<td><code>card_editor.py</code> + виджеты</td>
+</tr>
+<tr>
+<td>Звук</td>
+<td>—</td>
+<td>процедурный <code>audio.py</code></td>
+</tr>
+<tr>
+<td>Переходы UI</td>
+<td>—</td>
+<td><code>transitions.py</code>, <code>BannerQueue</code>, fade</td>
+</tr>
+<tr>
+<td>Локализация</td>
+<td>частично</td>
+<td><code>locale.py</code> целиком</td>
+</tr>
+</tbody>
+</table>
+<h3 id="маршрут-чтения-эталона-после-практикума">Маршрут чтения эталона после практикума</h3>
+<p>Рекомендуемый порядок файлов в клоне:</p>
+<ol>
+<li><code>settings.py</code> — баланс и константы узлов.</li>
+<li><code>classes/card.py</code> → <code>card_catalog.py</code> → <code>card_effects.py</code> — данные и механика карт.</li>
+<li><code>classes/player.py</code> → <code>enemy.py</code> → <code>combat.py</code> — бой.</li>
+<li><code>classes/game_state.py</code> → <code>map.py</code> — забег.</li>
+<li><code>classes/ui.py</code> — отрисовка (большой файл, читайте по <code>draw_*</code>).</li>
+<li><code>main.py</code> — склейка экранов, <code>_handle_click</code>, звук и баннеры.</li>
+</ol>
+<p>Полезные точки входа для экспериментов:</p>
+<ul>
+<li>изменить стартовую колоду — <code>create_starting_deck()</code> в <code>card_catalog.py</code>;</li>
+<li>усложнить обычные бои — <code>create_combat_encounter(..., floor=...)</code>;</li>
+<li>добавить баннер босса — <code>Game._on_screen_changed</code> при <code>NODE_BOSS</code>.</li>
+</ul>
+<h3 id="типичные-ошибки">Типичные ошибки</h3>
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Вероятная причина</th>
+<th>Что сделать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Чёрный экран</td>
+<td>нет <code>display.flip()</code></td>
+<td>вызов в конце цикла</td>
+</tr>
+<tr>
+<td>Карты не кликаются</td>
+<td>rect руки не совпадает с отрисовкой</td>
+<td>храните <code>rect</code> в UI, передавайте в обработчик</td>
+</tr>
+<tr>
+<td>Враг бьёт дважды за ход</td>
+<td><code>_plan_intent</code> не в конце <code>execute_intent</code></td>
+<td>планируйте намерение после действия</td>
+</tr>
+<tr>
+<td>Колода "теряет" карты</td>
+<td>при <code>reset_combat</code> не собрали discard</td>
+<td><code>get_all_cards()</code> как в эталоне</td>
+</tr>
+<tr>
+<td>JSON не грузится</td>
+<td>запуск не из корня</td>
+<td><code>cd auto_battler</code> или <code>_data_path()</code> от <code>__file__</code></td>
+</tr>
+<tr>
+<td>Бесконечный добор</td>
+<td>нет лимита руки</td>
+<td><code>Hand.add</code> возвращает <code>False</code></td>
+</tr>
+<tr>
+<td><code>play_card</code> всегда False при 2 врагах</td>
+<td>нет выбранной цели</td>
+<td>сначала клик по врагу</td>
+</tr>
+<tr>
+<td>Эффект из JSON игнорируется</td>
+<td>логика только в <code>attack</code>/<code>block</code></td>
+<td>этап 15, <code>apply_on_play_bonuses</code></td>
+</tr>
+<tr>
+<td>Кастомная карта не в награде</td>
+<td>каталог не читает custom</td>
+<td><code>load_all_cards()</code> в <code>get_reward_cards</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="идеи-для-расширения-самостоятельно">Идеи для расширения (самостоятельно)</h3>
+<ul>
+<li><strong>События</strong> (<code>NODE_EVENT</code>) — случайный исход с риском HP/золота, как в эталоне <code>RunState</code> + <code>event_message</code>.</li>
+<li><strong>Существа</strong> (<code>CARD_CREATURE</code>) — урон плюс <code>gain_block(health)</code> при розыгрыше.</li>
+<li><strong>Улучшение карт</strong> на костре — копия карты с <code>upgraded: true</code> и +25% к <code>value</code>.</li>
+<li><strong>Достижения</strong> в <code>SaveSystem.data["achievements"]</code>.</li>
+<li><strong>HoverAnimator</strong> и вспышки урона из <code>effects.py</code> / <code>hover_anim.py</code>.</li>
+<li>Спрайты в <code>assets/</code> вместо <code>pygame.draw.rect</code>.</li>
+<li>Порт на <strong>pygame-ce</strong> при необходимости свежих сборок.</li>
+</ul>
+<hr>
+<h2 id="связанные-материалы">Связанные материалы</h2>
+<ul>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro">Практикум разработки игр — о разделе</a> — другие треки (Battle City, Tetris, diabloид).</li>
+<li><a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a> — Pygame, цикл, ввод.</li>
+<li><a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro">Компьютерные игры — о разделе</a> — жанры deckbuilder и roguelike.</li>
+<li>Эталонный код — <a href="https://github.com/Spirzen/AutoBattler">github.com/Spirzen/AutoBattler</a>.</li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#как-проходить-практикум">Как проходить практикум</a></li><li class="article-toc__item"><a href="#о-практикуме">О практикуме</a></li><li class="article-toc__item is-h3"><a href="#что-получится-в-конце">Что получится в конце</a></li><li class="article-toc__item"><a href="#архитектура">Архитектура</a></li><li class="article-toc__item is-h3"><a href="#жанровые-опоры">Жанровые опоры</a></li><li class="article-toc__item is-h3"><a href="#игровой-цикл-pygame">Игровой цикл Pygame</a></li><li class="article-toc__item is-h3"><a href="#экраны-забега-конечный-автомат-ui">Экраны забега (конечный автомат UI)</a></li><li class="article-toc__item is-h3"><a href="#слои-приложения">Слои приложения</a></li><li class="article-toc__item is-h3"><a href="#поток-данных-в-бою">Поток данных в бою</a></li><li class="article-toc__item is-h3"><a href="#целевая-структура-файлов">Целевая структура файлов</a></li><li class="article-toc__item is-h3"><a href="#диаграмма-классов-целевая">Диаграмма классов (целевая)</a></li><li class="article-toc__item is-h3"><a href="#глоссарий-механик">Глоссарий механик</a></li><li class="article-toc__item is-h3"><a href="#конечный-автомат-боя">Конечный автомат боя</a></li><li class="article-toc__item is-h3"><a href="#формулы-урона-и-брони">Формулы урона и брони</a></li><li class="article-toc__item is-h3"><a href="#раскладка-экрана-боя-1280720">Раскладка экрана боя (1280×720)</a></li><li class="article-toc__item is-h3"><a href="#карта-этапов-файлы-эталона">Карта этапов → файлы эталона</a></li><li class="article-toc__item"><a href="#зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</a></li><li class="article-toc__item is-h3"><a href="#требования">Требования</a></li><li class="article-toc__item is-h3"><a href="#установка">Установка</a></li><li class="article-toc__item is-h3"><a href="#клон-эталона-для-сверки">Клон эталона для сверки</a></li><li class="article-toc__item is-h3"><a href="#пакет-classes-и-gitignore">Пакет `classes` и `.gitignore`</a></li><li class="article-toc__item is-h3"><a href="#шрифты-с-кириллицей">Шрифты с кириллицей</a></li><li class="article-toc__item"><a href="#этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</a></li><li class="article-toc__item"><a href="#этап-1-настройки-и-палитра">Этап 1 — настройки и палитра</a></li><li class="article-toc__item"><a href="#этап-2-модель-карты-и-json">Этап 2 — модель карты и JSON</a></li><li class="article-toc__item is-h3"><a href="#справочник-полей-cardsjson-эталон">Справочник полей `cards.json` (эталон)</a></li><li class="article-toc__item"><a href="#этап-3-колода-и-рука">Этап 3 — колода и рука</a></li><li class="article-toc__item"><a href="#этап-4-игрок-hp-энергия-блок">Этап 4 — игрок (HP, энергия, блок)</a></li><li class="article-toc__item"><a href="#этап-5-враг-намерение-энкаунтер">Этап 5 — враг, намерение, энкаунтер</a></li><li class="article-toc__item is-h3"><a href="#отображение-намерений">Отображение намерений</a></li><li class="article-toc__item"><a href="#этап-6-combatmanager-без-ui">Этап 6 — CombatManager без UI</a></li><li class="article-toc__item is-h3"><a href="#цепочка-playcard-в-эталоне">Цепочка `play_card` в эталоне</a></li><li class="article-toc__item"><a href="#этап-7-несколько-врагов-и-выбор-цели">Этап 7 — несколько врагов и выбор цели</a></li><li class="article-toc__item is-h3"><a href="#генерация-энкаунтера-по-этажу-эталон">Генерация энкаунтера по этажу (эталон)</a></li><li class="article-toc__item"><a href="#этап-8-боевой-ui-рука-энергия-журнал">Этап 8 — боевой UI (рука, энергия, журнал)</a></li><li class="article-toc__item is-h3"><a href="#двухшаговый-ввод-карта-цель">Двухшаговый ввод (карта → цель)</a></li><li class="article-toc__item"><a href="#этап-9-runstate-и-главное-меню">Этап 9 — RunState и главное меню</a></li><li class="article-toc__item"><a href="#этап-10-процедурная-карта-узлов">Этап 10 — процедурная карта узлов</a></li><li class="article-toc__item is-h3"><a href="#веса-узлов-эталон">Веса узлов (эталон)</a></li><li class="article-toc__item"><a href="#этап-11-связка-карта-бой-награда">Этап 11 — связка карта → бой → награда</a></li><li class="article-toc__item"><a href="#этап-12-реликвии">Этап 12 — реликвии</a></li><li class="article-toc__item"><a href="#этап-13-лавка-и-костёр">Этап 13 — лавка и костёр</a></li><li class="article-toc__item"><a href="#этап-14-сохранения-локализация-полировка">Этап 14 — сохранения, локализация, полировка</a></li><li class="article-toc__item"><a href="#этап-15-реестр-эффектов-cardeffectspy">Этап 15 — реестр эффектов (`card_effects.py`)</a></li><li class="article-toc__item is-h3"><a href="#зачем-отдельный-файл">Зачем отдельный файл</a></li><li class="article-toc__item is-h3"><a href="#минимальный-реестр-5-эффектов">Минимальный реестр (5 эффектов)</a></li><li class="article-toc__item is-h3"><a href="#тики-яда-и-кровотечения-в-enemyphase">Тики яда и кровотечения в `_enemy_phase`</a></li><li class="article-toc__item"><a href="#этап-16-редактор-карт-и-customcardsjson">Этап 16 — редактор карт и `custom_cards.json`</a></li><li class="article-toc__item is-h3"><a href="#поток-редактора">Поток редактора</a></li><li class="article-toc__item is-h3"><a href="#черновик-и-виджеты">Черновик и виджеты</a></li><li class="article-toc__item is-h3"><a href="#подсказки-на-картах">Подсказки на картах</a></li><li class="article-toc__item"><a href="#моддинг-и-отладка">Моддинг и отладка</a></li><li class="article-toc__item is-h3"><a href="#баланс-в-settingspy">Баланс в `settings.py`</a></li><li class="article-toc__item is-h3"><a href="#новый-враг">Новый враг</a></li><li class="article-toc__item is-h3"><a href="#новая-реликвия">Новая реликвия</a></li><li class="article-toc__item is-h3"><a href="#отладка-без-ui">Отладка без UI</a></li><li class="article-toc__item is-h3"><a href="#логирование-кликов">Логирование кликов</a></li><li class="article-toc__item"><a href="#итоговая-самопроверка-и-эталон">Итоговая самопроверка и эталон</a></li><li class="article-toc__item is-h3"><a href="#чек-лист-учебного-прототипа">Чек-лист учебного прототипа</a></li><li class="article-toc__item is-h3"><a href="#сравнение-с-autobattler">Сравнение с AutoBattler</a></li><li class="article-toc__item is-h3"><a href="#маршрут-чтения-эталона-после-практикума">Маршрут чтения эталона после практикума</a></li><li class="article-toc__item is-h3"><a href="#типичные-ошибки">Типичные ошибки</a></li><li class="article-toc__item is-h3"><a href="#идеи-для-расширения-самостоятельно">Идеи для расширения (самостоятельно)</a></li><li class="article-toc__item"><a href="#связанные-материалы">Связанные материалы</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр — о разделе  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312" target="_blank" rel="noopener noreferrer"> Разработка игр на Python  ↗ </a> </li><li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro" target="_blank" rel="noopener noreferrer"> Компьютерные игры — о разделе  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

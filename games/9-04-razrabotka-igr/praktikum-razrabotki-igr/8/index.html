@@ -1,0 +1,1278 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Java — Java Survivors — Игры IT Universe</title><meta name="description" content="Пошаговый практикум — survivor-like в духе Vampire Survivors на Java (Swing, Java2D): архитектура, гейм-дизайн, Maven, 18 этапов с полным кодом ключевых систем и карта расширений до Java Survivors."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Java — Java Survivors</span></li></ol></nav><header class="portal-hero"> <h1>Java — Java Survivors</h1> <p>Пошаговый практикум — survivor-like в духе Vampire Survivors на Java (Swing, Java2D): архитектура, гейм-дизайн, Maven, 18 этапов с полным кодом ключевых систем и карта расширений до Java Survivors.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Java — Java Survivors" data-url="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Java — Java Survivors">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Java — Java Survivors</h1>
+<div class="article-tags">
+  <span class="tag tag-inprogress">В РАЗРАБОТКЕ</span>
+</div>
+<p><span class="complexity-badge">Разработчику</span>
+<span class="complexity-badge">Средний уровень</span></p>
+<div class="callout callout--info">
+  <div class="callout-title">Формат практикума</div>
+  <div class="callout-body">
+  <p>Материалы трека приводятся к единому формату: <strong>полные листинги для копирования</strong> на каждом этапе, блок <strong>"Разбор"</strong> и раздел <strong>"Полная ревизия"</strong> в конце статьи.</p>
+  <ul>
+    <li>Гарантированно запускаемые эталоны для сверки сейчас: <a href="https://github.com/Spirzen/BattleCity">Python — Battle City</a> (GitHub), <a href="https://github.com/Spirzen/Match3">Python — Match3</a> (GitHub, <code>match3.py</code>), <a href="./3.md#full-revision">Python — Ping Pong</a> (<code>#full-revision</code>).</li>
+    <li>Раздел полной ревизии в этой статье ещё в работе — идите по этапам по порядку; если код перестал запускаться, сравните проект с этими эталонами.</li>
+  </ul>
+  </div>
+</div>
+<h2 id="как-проходить-практикум">Как проходить практикум</h2>
+<ul>
+<li>Копируйте <strong>целиком</strong> файлы из блоков кода каждого этапа.</li>
+<li>После каждого этапа <strong>запускайте</strong> проект (команда указана в главе) и пройдите чек-лист самопроверки.</li>
+<li>Если застряли — методология в разделе <a href="./intro.md">Практикум разработки игр — о разделе</a>; для сверки готовые треки <a href="https://github.com/Spirzen/BattleCity">Battle City</a>, <a href="https://github.com/Spirzen/Match3">Match3</a> и <a href="./3.md#full-revision">Ping Pong</a>.</li>
+</ul>
+<hr>
+<h2 id="о-практикуме">О практикуме</h2>
+<p><strong>Vampire Survivors</strong> и его клоны (<strong>survivor-like</strong>, <strong>horde survival</strong>) — арена сверху, волны врагов, <strong>автоатаки</strong> без прицеливания, опыт с поля и <strong>пауза на выбор улучшений</strong>. Полная реализация с десятками оружий, персонажами и сохранениями — в репозитории <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a> (локально: <code>F:\Projects\JVM\Java\Java Survivors</code>). Стек там — <strong>Java 17</strong>, <strong>Swing</strong>, <strong>Java2D</strong>, без сторонних игровых движков.</p>
+<p>В этом практикуме соберём <strong>узнаваемый прототип</strong> с нуля — от пустого окна до врагов, магического болта, опыта, экрана прокачки, нескольких оружий, HUD и меню. Графика — круги и прямоугольники (как в ранней версии до спрайтов); в конце — карта расширений до уровня полного проекта.</p>
+<div class="callout callout--info">
+  <div class="callout-title">Для кого материал</div>
+  <div class="callout-body">
+  <p>Нужны базовый Java (классы, <code>enum</code>, коллекции, <code>List</code>, <code>Iterator</code>) и понимание ООП. Каждый этап — <strong>запускаемый код</strong>: после шага проект компилируется и показывает новую механику. Сборка — <strong>Maven</strong>; IDE — IntelliJ IDEA, VS Code с Extension Pack for Java или Cursor.</p>
+  </div>
+</div>
+<p><strong>Управление в финальной версии практикума</strong></p>
+<table>
+<thead>
+<tr>
+<th>Клавиша</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>W</code> <code>A</code> <code>S</code> <code>D</code> или стрелки</td>
+<td>Движение</td>
+</tr>
+<tr>
+<td><code>Пробел</code></td>
+<td>Рывок (dash)</td>
+</tr>
+<tr>
+<td><code>1</code> <code>2</code> <code>3</code></td>
+<td>Выбор улучшения на экране level-up</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>Старт с меню</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>Перезапуск после поражения</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Выход</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Маршрут чтения</strong></p>
+<ol>
+<li><a href="#architecture">Архитектура</a> — как устроен проект до первой строки кода.</li>
+<li><a href="#dependencies">Зависимости и структура</a> — JDK, Maven, пакеты.</li>
+<li><a href="#stage-0">Этап 0 — минимальный запуск</a> — окно и игровой поток.</li>
+<li>Этапы 1–18 — по одной (или паре) механик за шаг.</li>
+<li><a href="#final-checklist">Итоговая самопроверка</a> — чек-лист и связь с полным репозиторием.</li>
+</ol>
+<p><strong>Что должно получиться к этапу 18</strong></p>
+<table>
+<thead>
+<tr>
+<th>Механика</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Цикл</td>
+<td>Отдельный поток + <code>dt</code>, отрисовка в <code>paintComponent</code></td>
+</tr>
+<tr>
+<td>Игрок</td>
+<td>Круг, HP, реген, броня, движение по WASD</td>
+</tr>
+<tr>
+<td>Враги</td>
+<td>Спавн с краёв экрана, преследование, рост сложности</td>
+</tr>
+<tr>
+<td>Оружие</td>
+<td>Авто "магический болт", тройной залп, кольцо импульса</td>
+</tr>
+<tr>
+<td>Опыт</td>
+<td>Сферы XP, магнит, уровни, пауза на 3 улучшения</td>
+</tr>
+<tr>
+<td>Урон</td>
+<td>Снаряды, контакт, рывок с неуязвимостью</td>
+</tr>
+<tr>
+<td>HUD</td>
+<td>HP, полоска XP, время, счёт, волна</td>
+</tr>
+<tr>
+<td>Состояния</td>
+<td>Меню, игра, game over</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout--tip">
+  <div class="callout-title">Готовый проект</div>
+  <div class="callout-body">
+  <p>Полная игра с персонажами, магазином и сохранениями — в <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a>. Практикум ниже объясняет, <strong>как такой проект собирается с нуля</strong>; после этапа 18 можно построчно сравнить свой <code>com.survivors</code> с <code>com.diabloid</code> в репозитории.</p>
+  </div>
+</div>
+<h3 id="сводка-этапов">Сводка этапов</h3>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Тема</th>
+<th>Новое в запуске</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#stage-0">0</a></td>
+<td>Цикл</td>
+<td>Окно, поток, <code>dt</code>, <code>repaint</code></td>
+</tr>
+<tr>
+<td><a href="#stage-1">1</a></td>
+<td>FSM</td>
+<td><code>GameState</code>, меню, <code>Esc</code></td>
+</tr>
+<tr>
+<td><a href="#stage-2">2</a></td>
+<td>Игрок</td>
+<td>WASD, круг на арене</td>
+</tr>
+<tr>
+<td><a href="#stage-3">3</a></td>
+<td>Враги</td>
+<td>Спавн с краёв, преследование</td>
+</tr>
+<tr>
+<td><a href="#stage-4">4</a></td>
+<td>Снаряды</td>
+<td>Авто "магический болт"</td>
+</tr>
+<tr>
+<td><a href="#stage-5">5</a></td>
+<td>Урон</td>
+<td>Попадания, счёт, смерть врага</td>
+</tr>
+<tr>
+<td><a href="#stage-6">6</a></td>
+<td>XP</td>
+<td>Орбы, магнит, уровень</td>
+</tr>
+<tr>
+<td><a href="#stage-7">7</a></td>
+<td>Перки</td>
+<td>Пауза, 3 выбора, <code>1</code> <code>2</code> <code>3</code></td>
+</tr>
+<tr>
+<td><a href="#stage-8">8</a></td>
+<td>HUD</td>
+<td>HP, XP, время, волна</td>
+</tr>
+<tr>
+<td><a href="#stage-9">9</a></td>
+<td>Оружия</td>
+<td><code>WeaponType</code>, залп, кольцо</td>
+</tr>
+<tr>
+<td><a href="#stage-10">10</a></td>
+<td>Выживание</td>
+<td>Контакт, броня, реген</td>
+</tr>
+<tr>
+<td><a href="#stage-11">11</a></td>
+<td>Рывок</td>
+<td>Dash, i-frames</td>
+</tr>
+<tr>
+<td><a href="#stage-12">12</a></td>
+<td>Juice</td>
+<td>Цифры урона, частицы</td>
+</tr>
+<tr>
+<td><a href="#stage-13">13</a></td>
+<td>Мета-ран</td>
+<td>Game over, <code>resetRun</code></td>
+</tr>
+<tr>
+<td><a href="#stage-14">14</a></td>
+<td>Архетипы</td>
+<td>SPEEDER, TANK, SHOOTER</td>
+</tr>
+<tr>
+<td><a href="#stage-15">15</a></td>
+<td>Босс</td>
+<td>Сложность по времени</td>
+</tr>
+<tr>
+<td><a href="#stage-16">16</a></td>
+<td>Модули</td>
+<td><code>WeaponManager</code>, файлы</td>
+</tr>
+<tr>
+<td><a href="#stage-17">17</a></td>
+<td>Арт</td>
+<td>PNG, <code>MediaTracker</code></td>
+</tr>
+<tr>
+<td><a href="#stage-18">18</a></td>
+<td>Референс</td>
+<td>Таблица фич полной игры</td>
+</tr>
+</tbody>
+</table>
+<h3 id="чем-survivor-like-отличается-от-обычного-шутера">Чем survivor-like отличается от "обычного" шутера</h3>
+<table>
+<thead>
+<tr>
+<th>Аспект</th>
+<th>Классический twin-stick</th>
+<th>Survivor-like (VS, Java Survivors)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Прицеливание</td>
+<td>Игрок целится</td>
+<td>Оружие само выбирает цель / паттерн</td>
+</tr>
+<tr>
+<td>Прогресс в ране</td>
+<td>Подбор на карте</td>
+<td>Level-up с <strong>выбором</strong> из 3 карт</td>
+</tr>
+<tr>
+<td>Давление</td>
+<td>Волны по скрипту</td>
+<td>Непрерывный спавн + рост <code>difficulty</code> по <code>worldTime</code></td>
+</tr>
+<tr>
+<td>Поражение</td>
+<td>Жизни / чекпоинты</td>
+<td>Один HP-бар, короткий рестарт</td>
+</tr>
+<tr>
+<td>Сессия</td>
+<td>5–15 мин уровень</td>
+<td>10–30 мин один ран до смерти</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="architecture"></span></p>
+<h2 id="архитектура">Архитектура</h2>
+<p>Прежде чем писать код, зафиксируем <strong>что из чего состоит</strong> и <strong>как данные текут по кадру</strong>. Референсная архитектура совпадает с <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a>: центральная панель владеет списками сущностей и вызывает обновление/отрисовку.</p>
+<h3 id="жанр-и-петля-геймплея">Жанр и петля геймплея</h3>
+<p>Survivor-like строится на <strong>положительной обратной связи</strong>:</p>
+<ol>
+<li>Враги приходят волнами → игрок убивает <strong>автооружием</strong>.</li>
+<li>Выпадает <strong>опыт</strong> → уровень → <strong>выбор перка</strong> (сильнее).</li>
+<li>Сложность растёт по <strong>времени выживания</strong> → нужны новые перки.</li>
+<li>Смерть → короткий цикл "ещё раз".</li>
+</ol>
+<pre><code class="language-mermaid">flowchart LR
+    A[Враги] --> B[Автоатаки]
+    B --> C[XP / лут]
+    C --> D[Level-up]
+    D --> E[Усиление]
+    E --> B
+    A --> F[Контактный урон]
+    F --> G[HP игрока]
+    G --> H{жив?}
+    H -->|нет| I[Game Over]
+    H -->|да| A
+</code></pre>
+<h3 id="игровой-цикл-swing">Игровой цикл (Swing)</h3>
+<p>В desktop-играх на Swing <strong>нельзя</strong> долго блокировать EDT (Event Dispatch Thread). В Java Survivors логика крутится в <strong>отдельном потоке</strong>, а перерисовка — через <code>repaint()</code> → <code>paintComponent</code>:</p>
+<pre><code class="language-mermaid">flowchart TD
+    A[main → SwingUtilities.invokeLater] --> B[JFrame + GamePanel]
+    B --> C[Запуск потока game-loop]
+    C --> D{running?}
+    D -->|да| E[dt из System.nanoTime]
+    E --> F[update dt]
+    F --> G[repaint]
+    G --> H[Thread.sleep ~8ms]
+    H --> D
+    D -->|нет| I[закрытие]
+    G --> J[paintComponent на EDT]
+    J --> K[draw мир + HUD]
+</code></pre>
+<p>На каждом шаге <strong>update</strong> (если не меню и не пауза прокачки):</p>
+<ol>
+<li>Увеличить <code>worldTime</code>, таймеры спавна и волн.</li>
+<li>Движение игрока, реген HP.</li>
+<li>Спавн врагов, ИИ преследования.</li>
+<li>Кулдауны оружия → новые снаряды.</li>
+<li>Движение снарядов, столкновения, смерть врагов → XP.</li>
+<li>Магнит XP, проверка level-up.</li>
+<li>Контактный урон, проверка game over.</li>
+</ol>
+<h3 id="слои-приложения">Слои приложения</h3>
+<table>
+<thead>
+<tr>
+<th>Слой</th>
+<th>Ответственность</th>
+<th>Примеры в полном проекте</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ввод</strong></td>
+<td>Клавиши, мышь на экране улучшений</td>
+<td><code>KeyHandler</code>, <code>MouseHandler</code></td>
+</tr>
+<tr>
+<td><strong>Мир</strong></td>
+<td>Размер арены, время, волны</td>
+<td><code>WIDTH</code>, <code>HEIGHT</code>, <code>worldTime</code>, <code>wave</code></td>
+</tr>
+<tr>
+<td><strong>Акторы</strong></td>
+<td>Игрок, враги, снаряды, XP</td>
+<td><code>Player</code>, <code>Enemy</code>, <code>Projectile</code>, <code>XpOrb</code></td>
+</tr>
+<tr>
+<td><strong>Правила</strong></td>
+<td>Урон, опыт, перки, оружие</td>
+<td><code>damageEnemy</code>, <code>addXp</code>, <code>rollUpgradeChoices</code></td>
+</tr>
+<tr>
+<td><strong>Представление</strong></td>
+<td>Java2D, HUD, оверлеи</td>
+<td><code>paintComponent</code>, <code>Graphics2D</code></td>
+</tr>
+<tr>
+<td><strong>Мета</strong></td>
+<td>Сохранения, персонажи, магазин</td>
+<td><code>SaveSystem</code>, <code>CharacterDef</code> (этап 18+)</td>
+</tr>
+</tbody>
+</table>
+<p>Слой <strong>правил</strong> не рисует напрямую — он меняет поля объектов; <strong>paintComponent</strong> только читает состояние.</p>
+<h3 id="координаты-и-коллизии">Координаты и коллизии</h3>
+<p>Арена — <strong>пиксели</strong>, начало <code>(0, 0)</code> в левом верхнем углу. Игрок и враги — <strong>круги</strong> <code>(x, y, radius)</code>. Столкновение двух кругов:</p>
+<pre><code class="language-java">static boolean circlesHit(double x1, double y1, double r1,
+                          double x2, double y2, double r2) {
+    double dx = x1 - x2;
+    double dy = y1 - y2;
+    double sum = r1 + r2;
+    return dx * dx + dy * dy &#x3C;= sum * sum;
+}
+</code></pre>
+<p>Для производительности в горячих циклах используют <code>distanceSq</code> без <code>Math.sqrt</code>.</p>
+<h3>Шаг времени <code>dt</code> и cap</h3>
+<p><code>dt</code> — секунды с прошлого кадра. Без ограничения свёрнутое окно даёт скачок <code>dt</code> на секунды, и игрок "телепортируется" сквозь врагов:</p>
+<pre><code class="language-java">dt = Math.min(dt, 0.033); // не больше ~2 кадров при 60 FPS
+</code></pre>
+<p>Все перемещения и кулдауны записываются в форме <code>x += speed * dt</code>, <code>cooldown -= dt</code> — так игра ведёт себя одинаково на 60 и 120 Гц монитора.</p>
+<h3>Порядок <code>update</code> на зрелом этапе</h3>
+<p>Фиксированный порядок снижает баги "снаряд попал до спавна врага":</p>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Loop as game-loop
+    participant U as update
+    participant W as weapons
+    participant S as spawner
+    participant E as enemies
+    participant P as projectiles
+    participant X as xp
+
+    Loop->>U: dt
+    U->>U: worldTime, wave, dash
+    U->>U: player.move + heal
+    U->>W: updateWeapons
+    U->>S: spawnEnemies
+    U->>E: updateEnemies
+    U->>P: updateProjectiles
+    U->>X: updateXpOrbs + level-up?
+    U->>U: contact damage, game over
+</code></pre>
+<h3 id="карта-репозитория-java-survivors">Карта репозитория Java Survivors</h3>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Роль</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JavaSurvivors.java</code></td>
+<td>Точка входа → <code>DiabloidGame</code></td>
+</tr>
+<tr>
+<td><code>DiabloidGame.java</code></td>
+<td><code>JFrame</code>, вложенный <code>GamePanel</code>, цикл, отрисовка, 90% логики рана</td>
+</tr>
+<tr>
+<td><code>Player.java</code></td>
+<td>Статы, кулдауны всех оружий, <code>reset()</code></td>
+</tr>
+<tr>
+<td><code>Enemy.java</code> / <code>EnemyKind.java</code></td>
+<td>Враг и архетип</td>
+</tr>
+<tr>
+<td><code>Projectile.java</code></td>
+<td>Снаряд игрока/врага, <code>pierce</code>, статусы</td>
+</tr>
+<tr>
+<td><code>WeaponType.java</code></td>
+<td>Все виды оружия (болт, молния, стихии…)</td>
+</tr>
+<tr>
+<td><code>WeaponManager.java</code></td>
+<td>Делегат <code>updateWeapons</code></td>
+</tr>
+<tr>
+<td><code>EnemySpawner.java</code></td>
+<td>Делегат <code>spawnEnemies</code></td>
+</tr>
+<tr>
+<td><code>SaveSystem.java</code> / <code>SaveData.java</code></td>
+<td>Мета-прогресс между ранами</td>
+</tr>
+<tr>
+<td><code>ParticleSystem.java</code></td>
+<td>Частицы и следы</td>
+</tr>
+</tbody>
+</table>
+<p>Учебный проект намеренно <strong>не копирует</strong> 1700 строк сразу — вы повторяете те же <strong>списки + enum + пауза на upgrade</strong>, расширяя по этапам.</p>
+<h3 id="конечный-автомат-упрощённый">Конечный автомат (упрощённый)</h3>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --> MENU
+    MENU --> PLAYING : Enter
+    PLAYING --> PAUSED_UPGRADE : level-up
+    PAUSED_UPGRADE --> PLAYING : выбор 1/2/3
+    PLAYING --> GAME_OVER : HP &#x3C;= 0
+    GAME_OVER --> PLAYING : R
+    MENU --> [*] : Esc
+    PLAYING --> [*] : Esc
+    GAME_OVER --> [*] : Esc
+</code></pre>
+<p>В полном Java Survivors добавлены <code>UpgradeState.PAUSED_FOR_SHOP</code>, выбор персонажа и сохранение — см. <a href="#stage-18">этап 18</a>.</p>
+<h3 id="списки-сущностей-на-кадре">Списки сущностей на кадре</h3>
+<pre><code class="language-mermaid">classDiagram
+    class GamePanel {
+        +Player player
+        +List~Enemy~ enemies
+        +List~Projectile~ projectiles
+        +List~XpOrb~ xpOrbs
+        +Set~WeaponType~ unlockedWeapons
+        +update(dt)
+        +paintComponent(g)
+    }
+    class Player {
+        +double x y
+        +double hp maxHp
+        +int level xp
+    }
+    class Enemy {
+        +double x y hp
+        +double speed
+    }
+    class Projectile {
+        +double x y vx vy
+        +double damage radius
+    }
+    GamePanel --> Player
+    GamePanel --> Enemy
+    GamePanel --> Projectile
+    GamePanel --> XpOrb
+</code></pre>
+<h3 id="целевая-структура-файлов">Целевая структура файлов</h3>
+<p>К <strong>этапу 6</strong> достаточно одного <code>SurvivorsGame.java</code> с вложенным <code>GamePanel</code>. Дальше <strong>выносим классы</strong> — как в репозитории <code>com.diabloid</code>:</p>
+<pre><code>java-survivors-lab/
+├── pom.xml
+└── src/main/java/com/survivors/
+    ├── JavaSurvivors.java          # main
+    ├── SurvivorsGame.java          # JFrame + GamePanel (этапы 0–10)
+    ├── GameState.java
+    ├── UpgradeState.java
+    ├── WeaponType.java
+    ├── Player.java                 # этап 14+
+    ├── Enemy.java
+    ├── EnemyKind.java
+    ├── Projectile.java
+    ├── XpOrb.java
+    └── DamageNumber.java
+</code></pre>
+<p>Пакет в учебнике — <code>com.survivors</code>; в <a href="https://github.com/Spirzen/Java-Survivors">полном проекте</a> — <code>com.diabloid</code> (историческое имя "Diabloid").</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Почему Swing, а не LibGDX</div>
+  <div class="callout-body">
+  <p>Референсный репозиторий использует <strong>встроенный Java2D</strong> — нулевые внешние зависимости, один JAR после <code>mvn package</code>. LibGDX уместен для кроссплатформы и GPU-спрайтов; для понимания survivor-like логики Swing достаточен. Базовые <code>JFrame</code>, кнопки и EDT — <a href="/lab/Примеры/1143">Lab — Java Swing</a>; теория GUI — <a href="/encyclopedia/5-languages/5-03-java/311">JavaFX и GUI</a>.</p>
+  </div>
+</div>
+<hr>
+<p><span id="dependencies"></span></p>
+<h2 id="зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</h2>
+<h3 id="требования">Требования</h3>
+<ul>
+<li><strong>JDK 17+</strong> (как в <code>pom.xml</code> репозитория).</li>
+<li><strong>Maven 3.8+</strong> (или встроенный Maven в IDE).</li>
+<li>Опционально — <strong>Git</strong> для клонирования референса.</li>
+</ul>
+<h3 id="создание-проекта">Создание проекта</h3>
+<pre><code class="language-bash">mkdir java-survivors-lab &#x26;&#x26; cd java-survivors-lab
+</code></pre>
+<p><code>pom.xml</code> (совпадает по духу с <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a>):</p>
+<div class="itu-code-embed" data-example="xml/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-001" data-title="Создание проекта" data-min-height="720"> </div>
+<p>Папки:</p>
+<pre><code>src/main/java/com/survivors/
+</code></pre>
+<h3 id="сборка-и-запуск">Сборка и запуск</h3>
+<pre><code class="language-bash">mvn -q compile exec:java -Dexec.mainClass="com.survivors.JavaSurvivors"
+</code></pre>
+<p>Или после упаковки:</p>
+<pre><code class="language-bash">mvn -q package
+java -jar target/java-survivors-lab-1.0-SNAPSHOT.jar
+</code></pre>
+<h3 id="intellij-idea-cursor">IntelliJ IDEA / Cursor</h3>
+<ol>
+<li><strong>File → Open</strong> — папка с <code>pom.xml</code>.</li>
+<li>Дождитесь индексации Maven (импорт JDK 17).</li>
+<li>ПКМ по <code>JavaSurvivors.java</code> → <strong>Run 'JavaSurvivors.main()'</strong>.</li>
+<li><strong>Working directory</strong> — корень проекта (для <code>assets/</code> на этапе 17).</li>
+</ol>
+<div class="callout callout--info">
+  <div class="callout-title">Потоки и EDT</div>
+  <div class="callout-body">
+  <p>Если поставить весь <code>while (running)</code> в <code>main</code> без отдельного потока, Swing "замрёт". В практикуме логика — в <code>Thread</code> с именем <code>game-loop</code>, отрисовка — только через <code>repaint()</code> на EDT.</p>
+  </div>
+</div>
+<h3 id="палитра-единые-цвета">Палитра (единые цвета)</h3>
+<p>Вынесите цвета в <code>GameColors.java</code>, чтобы HUD и сущности не расходились:</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-002" data-title="Палитра (единые цвета)" data-min-height="354"> </div>
+<h3>Структура <code>assets/</code> (этап 17)</h3>
+<pre><code>java-survivors-lab/
+├── assets/
+│   ├── player.png
+│   ├── enemy_normal.png
+│   ├── enemy_tank.png
+│   └── background.jpg
+└── src/main/java/...
+</code></pre>
+<p>Запускайте JAR из <strong>корня</strong>, где лежит <code>assets/</code>, иначе <code>Toolkit.getImage("assets/...")</code> вернёт пустую картинку.</p>
+<div class="callout callout--warning">
+  <div class="callout-title">Кодировка исходников</div>
+  <div class="callout-body">
+  <p>Сохраняйте <code>.java</code> в <strong>UTF-8</strong>. Русские строки в HUD и улучшениях иначе превратятся в "кракозябры" при сборке на Windows с неверной кодировкой по умолчанию.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-0"></span></p>
+<h2 id="этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</h2>
+<p><strong>Цель</strong> — <code>JFrame</code>, тёмная панель, поток игрового цикла, стабильный <code>dt</code>, выход по закрытию окна.</p>
+<p><code>src/main/java/com/survivors/JavaSurvivors.java</code>:</p>
+<pre><code class="language-java">package com.survivors;
+
+import javax.swing.SwingUtilities;
+
+public final class JavaSurvivors {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(SurvivorsGame::new);
+    }
+}
+</code></pre>
+<p><code>src/main/java/com/survivors/SurvivorsGame.java</code>:</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-003" data-title="Этап 0 — минимальный запускаемый код" data-min-height="720"> </div>
+<p><strong>Самопроверка этапа 0</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>mvn compile</code> без ошибок.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Окно 960×540, тёмный фон, подпись на экране.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Нет зависаний при перетаскивании окна (логика не в EDT).</li>
+</ul>
+<div class="callout callout--note">
+  <div class="callout-title">Отладка FPS</div>
+  <div class="callout-body">
+  <p>Временно рисуйте <code>1.div(dt)</code> в углу экрана — если значение скачет ниже 30 при пустой сцене, ищите тяжёлую работу в <code>paintComponent</code> (там должна быть только отрисовка).</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-1"></span></p>
+<h2 id="этап-1-состояния-игры-и-ввод">Этап 1 — состояния игры и ввод</h2>
+<p><strong>Цель</strong> — <code>enum GameState</code>, меню с <code>Enter</code>, выход <code>Esc</code>, заготовка <code>PLAYING</code>.</p>
+<p>Добавьте <code>GameState.java</code>:</p>
+<pre><code class="language-java">package com.survivors;
+
+public enum GameState {
+    MENU, PLAYING, GAME_OVER
+}
+</code></pre>
+<p>В <code>GamePanel</code> — поля и <strong>полный</strong> обработчик клавиш (на этапе 2 понадобятся <code>keyReleased</code>):</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-004" data-title="Этап 1 — состояния игры и ввод" data-min-height="720"> </div>
+<p>В <code>paintComponent</code> — текст меню:</p>
+<pre><code class="language-java">if (gameState == GameState.MENU) {
+    g.drawString("JAVA SURVIVORS — Enter: старт", 280, HEIGHT / 2);
+}
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> На старте видно меню; <code>Enter</code> переключает на пустую арену.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>Esc</code> закрывает игру.</li>
+</ul>
+<hr>
+<p><span id="stage-2"></span></p>
+<h2 id="этап-2-игрок-и-движение">Этап 2 — игрок и движение</h2>
+<p><strong>Цель</strong> — класс <code>Player</code>, WASD/стрелки, ограничение внутри экрана.</p>
+<p><code>Player.java</code>:</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-005" data-title="Этап 2 — игрок и движение" data-min-height="534"> </div>
+<p>В <code>GamePanel</code> — флаги клавиш и отрисовка круга:</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-006" data-title="Этап 2 — игрок и движение" data-min-height="534"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Синий круг двигается плавно, не выходит за края.</li>
+</ul>
+<hr>
+<p><span id="stage-3"></span></p>
+<h2 id="этап-3-враги-и-спавн-с-краёв">Этап 3 — враги и спавн с краёв</h2>
+<p><strong>Цель</strong> — <code>Enemy</code>, список <code>enemies</code>, спавн по таймеру, преследование игрока.</p>
+<p><code>Enemy.java</code> (минимум):</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-007" data-title="Этап 3 — враги и спавн с краёв" data-min-height="390"> </div>
+<p>В <code>GamePanel</code>:</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-008" data-title="Этап 3 — враги и спавн с краёв" data-min-height="720"> </div>
+<p>Отрисовка врагов — красные круги.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Каждые ~0.5–1 с появляется новый враг с края.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Враги сходятся к игроку.</li>
+</ul>
+<hr>
+<p><span id="stage-4"></span></p>
+<h2 id="этап-4-снаряды-и-магический-болт">Этап 4 — снаряды и магический болт</h2>
+<p><strong>Цель</strong> — <code>Projectile</code>, автоатака по <strong>ближайшему</strong> врагу с кулдауном.</p>
+<p><code>Projectile.java</code>:</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-009" data-title="Этап 4 — снаряды и магический болт" data-min-height="390"> </div>
+<p>В <code>Player</code> добавьте <code>double shotCooldown = 0.2;</code>.</p>
+<p>В <code>GamePanel</code>:</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-010" data-title="Этап 4 — снаряды и магический болт" data-min-height="720"> </div>
+<p><code>updateProjectiles</code> и отрисовка (этап 4–5):</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-011" data-title="Этап 4 — снаряды и магический болт" data-min-height="426"> </div>
+<div class="callout callout--tip">
+  <div class="callout-title">Почему "ближайший" враг</div>
+  <div class="callout-body">
+  <p>В <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a> большинство снарядов летит к <code>findNearestEnemy()</code> — простая эвристика, которая ощущается как прицеливание без мыши. Паттерны вроде "кольцо импульса" стреляют во все стороны и не используют цель.</p>
+  </div>
+</div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Снаряды летят к ближайшему врагу без клика мыши.</li>
+</ul>
+<hr>
+<p><span id="stage-5"></span></p>
+<h2 id="этап-5-урон-смерть-врага-очки">Этап 5 — урон, смерть врага, очки</h2>
+<p><strong>Цель</strong> — столкновение снаряд–враг, единая точка урона <code>damageEnemy</code>, счёт.</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-012" data-title="Этап 5 — урон, смерть врага, очки" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Враги исчезают от попаданий, счёт растёт.</li>
+</ul>
+<hr>
+<p><span id="stage-6"></span></p>
+<h2 id="этап-6-опыт-магнит-уровень">Этап 6 — опыт, магнит, уровень</h2>
+<p><strong>Цель</strong> — <code>XpOrb</code>, выпадение при смерти, притягивание, <code>level</code> / <code>xpToNext</code>.</p>
+<p><code>XpOrb.java</code>:</p>
+<pre><code class="language-java">package com.survivors;
+
+public final class XpOrb {
+    public double x, y;
+    public final int value;
+    public XpOrb(double x, double y, int value) {
+        this.x = x; this.y = y; this.value = value;
+    }
+}
+</code></pre>
+<p>В <code>Player</code>:</p>
+<pre><code class="language-java">public int level = 1;
+public int xp = 0;
+public int xpToNext = 10;
+public double magnetRadius = 90;
+</code></pre>
+<p>При убийстве врага: <code>xpOrbs.add(new XpOrb(e.x, e.y, e.xpValue));</code></p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-013" data-title="Этап 6 — опыт, магнит, уровень" data-min-height="570"> </div>
+<p>Поле <code>int pendingLevelUps</code> — используем на следующем этапе.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Зелёные/бирюзовые точки XP тянутся к игроку и исчезают при подборе.</li>
+<li class="task-list-item"><input type="checkbox" disabled> В консоли или HUD позже видно рост <code>level</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-7"></span></p>
+<h2 id="этап-7-пауза-на-выбор-улучшений">Этап 7 — пауза на выбор улучшений</h2>
+<p><strong>Цель</strong> — <code>UpgradeState</code>, три случайных перка, клавиши <code>1</code> <code>2</code> <code>3</code>.</p>
+<p><code>UpgradeState.java</code>:</p>
+<pre><code class="language-java">package com.survivors;
+
+public enum UpgradeState {
+    NONE, PAUSED_FOR_UPGRADE
+}
+</code></pre>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-014" data-title="Этап 7 — пауза на выбор улучшений" data-min-height="624"> </div>
+<p>В <code>Player</code> добавьте <code>damageMultiplier</code>, <code>attackSpeedMultiplier</code>, <code>flatDamageBonus</code> (по умолчанию <code>1.0</code> и <code>0</code>).</p>
+<p>В <code>update</code> в начале:</p>
+<pre><code class="language-java">if (upgradeState == UpgradeState.PAUSED_FOR_UPGRADE) {
+    return;
+}
+</code></pre>
+<p>В <code>keyPressed</code>:</p>
+<pre><code class="language-java">if (upgradeState == UpgradeState.PAUSED_FOR_UPGRADE) {
+    if (e.getKeyCode() == KeyEvent.VK_1 &#x26;&#x26; upgradeChoices.size() > 0) pickUpgrade(0);
+    if (e.getKeyCode() == KeyEvent.VK_2 &#x26;&#x26; upgradeChoices.size() > 1) pickUpgrade(1);
+    if (e.getKeyCode() == KeyEvent.VK_3 &#x26;&#x26; upgradeChoices.size() > 2) pickUpgrade(2);
+}
+</code></pre>
+<p><code>pickUpgrade</code> и очередь нескольких уровней за раз:</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-015" data-title="Этап 7 — пауза на выбор улучшений" data-min-height="372"> </div>
+<p>Оверлей level-up (рисуется поверх арены, логика на паузе):</p>
+<pre><code class="language-java">private void drawUpgradeOverlay(Graphics2D g2) {
+    g2.setColor(new Color(0, 0, 0, 170));
+    g2.fillRect(0, 0, WIDTH, HEIGHT);
+    g2.setFont(g2.getFont().deriveFont(Font.BOLD, 28f));
+    g2.setColor(Color.WHITE);
+    g2.drawString("LEVEL UP — выберите улучшение", 260, 120);
+    g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20f));
+    for (int i = 0; i &#x3C; upgradeChoices.size(); i++) {
+        g2.drawString((i + 1) + " — " + upgradeChoices.get(i), 280, 200 + i * 48);
+    }
+}
+</code></pre>
+<p>В <code>applyUpgrade</code> добавьте ветки для оружия (этап 9):</p>
+<pre><code class="language-java">case "Оружие: Тройной залп" -> unlockedWeapons.add(WeaponType.TRIPLE_CAST);
+case "Оружие: Кольцо импульса" -> unlockedWeapons.add(WeaponType.PULSE_RING);
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> При level-up игра замирает, видны 3 варианта.</li>
+<li class="task-list-item"><input type="checkbox" disabled> После <code>2</code> бой продолжается, статы изменились.</li>
+</ul>
+<hr>
+<p><span id="stage-8"></span></p>
+<h2 id="этап-8-hud-hp-xp-время-счёт">Этап 8 — HUD (HP, XP, время, счёт)</h2>
+<p><strong>Цель</strong> — полоски HP/XP, таймер <code>worldTime</code>, волна.</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-016" data-title="Этап 8 — HUD (HP, XP, время, счёт)" data-min-height="552"> </div>
+<p>В <code>shootMagicBolt</code> учитывайте множители:</p>
+<pre><code class="language-java">double damage = 18 * player.damageMultiplier + player.flatDamageBonus;
+player.shotCooldown = Math.max(0.08, 0.35 / player.attackSpeedMultiplier);
+</code></pre>
+<p>Порядок отрисовки в <code>paintComponent</code> (снизу вверх):</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-017" data-title="Этап 8 — HUD (HP, XP, время, счёт)" data-min-height="516"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> HUD читается поверх арены, не перекрывает игрока в центре.</li>
+</ul>
+<hr>
+<p><span id="stage-9"></span></p>
+<h2 id="этап-9-несколько-оружий-enum">Этап 9 — несколько оружий (enum)</h2>
+<p><strong>Цель</strong> — <code>WeaponType</code>, <code>Set&#x3C;WeaponType> unlockedWeapons</code>, тройной залп и кольцо импульса.</p>
+<p><code>WeaponType.java</code>:</p>
+<pre><code class="language-java">package com.survivors;
+
+public enum WeaponType {
+    MAGIC_BOLT, TRIPLE_CAST, PULSE_RING
+}
+</code></pre>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-018" data-title="Этап 9 — несколько оружий (enum)" data-min-height="534"> </div>
+<p>В <code>Player</code> добавьте отдельные кулдауны:</p>
+<pre><code class="language-java">public double tripleCooldown = 0.8;
+public double pulseCooldown = 1.2;
+public double damageMultiplier = 1.0;
+public double attackSpeedMultiplier = 1.0;
+public double flatDamageBonus = 0.0;
+</code></pre>
+<p>Полные реализации (адаптация из <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a>):</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-019" data-title="Этап 9 — несколько оружий (enum)" data-min-height="720"> </div>
+<p>Расширьте <code>Projectile</code> полем <code>public int pierce = 0;</code> — на <a href="#bonus-mechanics">бонусном этапе</a> снаряд с <code>pierce > 0</code> не удаляется после первого попадания.</p>
+<p>В пул <code>rollUpgradeChoices</code> добавьте строки оружия (только если ещё не разблокировано):</p>
+<pre><code class="language-java">if (!unlockedWeapons.contains(WeaponType.TRIPLE_CAST)) {
+    pool.add("Оружие: Тройной залп");
+}
+if (!unlockedWeapons.contains(WeaponType.PULSE_RING)) {
+    pool.add("Оружие: Кольцо импульса");
+}
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После выбора "Тройной залп" видны дополнительные снаряды с отдельным ритмом.</li>
+</ul>
+<hr>
+<p><span id="stage-10"></span></p>
+<h2 id="этап-10-контактный-урон-броня-реген">Этап 10 — контактный урон, броня, реген</h2>
+<p><strong>Цель</strong> — урон при наложении кругов, <code>armorReduction</code>, пассивный хил.</p>
+<p>В <code>Player</code>:</p>
+<pre><code class="language-java">public double regen = 1.5;
+public double armorReduction = 0.1;
+
+public void heal(double dt) {
+    hp = Math.min(maxHp, hp + regen * dt);
+}
+</code></pre>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-020" data-title="Этап 10 — контактный урон, броня, реген" data-min-height="462"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> При "объятии" толпой HP падает ступенями, не каждый кадр.</li>
+</ul>
+<hr>
+<p><span id="stage-11"></span></p>
+<h2 id="этап-11-рывок-dash">Этап 11 — рывок (dash)</h2>
+<p><strong>Цель</strong> — <code>Пробел</code>, краткая неуязвимость, кулдаун (как <code>DASH_DURATION</code> в референсе).</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-021" data-title="Этап 11 — рывок (dash)" data-min-height="588"> </div>
+<p>Визуально — белая обводка <code>Ellipse2D</code> вокруг игрока на время рывка. В <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a> рывок также сбрасывает серию без урона (<code>noDamageTime</code>) — можно добавить для достижений в мета-сохранении.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Рывок проскальзывает сквозь орду без урона на ~0.15 с.</li>
+</ul>
+<hr>
+<p><span id="stage-12"></span></p>
+<h2 id="этап-12-всплывающий-урон-и-частицы">Этап 12 — всплывающий урон и частицы</h2>
+<p><strong>Цель</strong> — <code>DamageNumber</code>, простые <code>Particle</code> при убийстве.</p>
+<p><code>DamageNumber.java</code>:</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-022" data-title="Этап 12 — всплывающий урон и частицы" data-min-height="318"> </div>
+<p>При <code>damageEnemy</code> добавляйте <code>damageNumbers.add(new DamageNumber(e.x, e.y - 10, String.format("%.0f", dmg)));</code>.</p>
+<p>Обновление — <code>y -= 40 * dt</code>, <code>life -= dt</code>, удаление при <code>life &#x3C;= 0</code>. Отрисовка — <code>g2.drawString</code>.</p>
+<p><code>Particle.java</code> и простой спавн при убийстве:</p>
+<pre><code class="language-java">package com.survivors;
+
+public final class Particle {
+    public double x, y, vx, vy;
+    public double life = 0.5;
+    public final java.awt.Color color;
+
+    public Particle(double x, double y, double vx, double vy, java.awt.Color color) {
+        this.x = x; this.y = y; this.vx = vx; this.vy = vy;
+        this.color = color;
+    }
+}
+</code></pre>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-023" data-title="Этап 12 — всплывающий урон и частицы" data-min-height="462"> </div>
+<p>В <code>damageEnemy</code> при смерти вызывайте <code>spawnKillParticles(enemy.x, enemy.y)</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> При попадании видны жёлтые цифры урона.</li>
+</ul>
+<hr>
+<p><span id="stage-13"></span></p>
+<h2 id="этап-13-меню-game-over-перезапуск">Этап 13 — меню, game over, перезапуск</h2>
+<p><strong>Цель</strong> — сброс рана по <code>R</code>, экран поражения со статистикой.</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-024" data-title="Этап 13 — меню, game over, перезапуск" data-min-height="390"> </div>
+<p><code>Player.reset()</code> — сброс статов рана (упрощённо):</p>
+<pre><code class="language-java">public void reset() {
+    x = 480; y = 270;
+    maxHp = 100; hp = 100;
+    moveSpeed = 220;
+    regen = 1.5;
+    armorReduction = 0.1;
+    magnetRadius = 90;
+    damageMultiplier = 1.0;
+    attackSpeedMultiplier = 1.0;
+    flatDamageBonus = 0.0;
+    level = 1; xp = 0; xpToNext = 10;
+    shotCooldown = 0; tripleCooldown = 0; pulseCooldown = 0;
+}
+</code></pre>
+<h3>Скелет <code>update</code> к этапу 13</h3>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-025" data-title="Скелет `update` к этапу 13" data-min-height="606"> </div>
+<p><code>paintComponent</code> для <code>GAME_OVER</code> — "Поражение", счёт, время, "R — заново".</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После смерти <code>R</code> запускает чистый ран.</li>
+</ul>
+<hr>
+<p><span id="stage-14"></span></p>
+<h2 id="этап-14-типы-врагов-enum">Этап 14 — типы врагов (enum)</h2>
+<p><strong>Цель</strong> — <code>EnemyKind</code> — NORMAL, SPEEDER, TANK (упрощённо).</p>
+<p><code>EnemyKind.java</code>:</p>
+<pre><code class="language-java">package com.survivors;
+
+public enum EnemyKind {
+    NORMAL, SPEEDER, TANK, SHOOTER, BOSS
+}
+</code></pre>
+<p>Поле <code>public EnemyKind kind = EnemyKind.NORMAL;</code> в <code>Enemy</code>. Пример <code>spawnEnemy</code> с вероятностями (как в референсе, упрощённо):</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-026" data-title="Этап 14 — типы врагов (enum)" data-min-height="588"> </div>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Визуал</th>
+<th>Поведение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NORMAL</td>
+<td>красный</td>
+<td>идёт к игроку</td>
+</tr>
+<tr>
+<td>SPEEDER</td>
+<td>оранжевый, меньше</td>
+<td>быстрее</td>
+</tr>
+<tr>
+<td>TANK</td>
+<td>тёмно-красный, больше</td>
+<td>медленный, много HP</td>
+</tr>
+<tr>
+<td>SHOOTER</td>
+<td>розоватый</td>
+<td>держит дистанцию ~180px, стреляет</td>
+</tr>
+</tbody>
+</table>
+<p>ИИ стрелка (в <code>updateEnemies</code>):</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-027" data-title="Этап 14 — типы врагов (enum)" data-min-height="336"> </div>
+<p>Добавьте в <code>Enemy</code> поле <code>double attackCooldown = 0;</code> и в <code>Projectile</code> флаг <code>boolean fromEnemy = false</code>. В <code>updateProjectiles</code> обрабатывайте вражеские снаряды отдельно — урон игроку, как в <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> На поле смешаны разные силуэты, темп игры разнообразнее.</li>
+</ul>
+<hr>
+<p><span id="stage-15"></span></p>
+<h2 id="этап-15-усложнение-спавна-и-босс-мини">Этап 15 — усложнение спавна и босс (мини)</h2>
+<p><strong>Цель</strong> — формула <code>difficulty</code> от <code>worldTime</code>, пачки врагов, редкий босс.</p>
+<p>Спавн-таймер из референса (ускоряется со временем):</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-028" data-title="Этап 15 — усложнение спавна и босс (мини)" data-min-height="354"> </div>
+<p>Сигнатуру <code>spawnEnemy</code> измените на <code>spawnEnemy(double difficulty)</code> и используйте множитель в HP/скорости.</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-029" data-title="Этап 15 — усложнение спавна и босс (мини)" data-min-height="426"> </div>
+<p>Босс — большой HP, медленный, много XP. <strong>Фаза 1</strong> в полной игре — кольцо из 18 вражеских снарядов при <code>attackCooldown &#x3C;= 0</code>; <strong>фаза 2</strong> — дополнительный спавн мелочи. Реализация — в <code>updateEnemies</code> для <code>EnemyKind.BOSS</code> в <a href="https://github.com/Spirzen/Java-Survivors/blob/main/src/main/java/com/diabloid/DiabloidGame.java">DiabloidGame.java</a>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Раз в ~2 минуты появляется крупный враг сверху.</li>
+</ul>
+<hr>
+<p><span id="stage-16"></span></p>
+<h2 id="этап-16-разнесение-по-файлам-и-делегаты">Этап 16 — разнесение по файлам и делегаты</h2>
+<p><strong>Цель</strong> — повторить структуру <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a>: вынести <code>Player</code>, <code>Enemy</code>, <code>Projectile</code>, оставить в <code>GamePanel</code> только оркестрацию.</p>
+<p>Создайте тонкие обёртки (как в репозитории):</p>
+<pre><code class="language-java">final class EnemySpawner {
+    private final SurvivorsGame.GamePanel game;
+    void tick(double dt) { game.spawnEnemies(dt); }
+}
+</code></pre>
+<pre><code class="language-java">final class WeaponManager {
+    private final SurvivorsGame.GamePanel game;
+    void tick(double dt) { game.updateWeapons(dt); }
+}
+</code></pre>
+<p>В <code>update(dt)</code>:</p>
+<pre><code class="language-java">weaponManager.tick(dt);
+enemySpawner.tick(dt);
+</code></pre>
+<p>Это тот же приём, что <code>WeaponManager</code> / <code>EnemySpawner</code> в <code>com.diabloid</code> — <strong>делегирование</strong> без преждевременного раздувания одного файла на 1700+ строк.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Поведение идентично этапу 15, <code>DiabloidGame.java</code> / <code>SurvivorsGame.java</code> короче и читаемее.</li>
+</ul>
+<hr>
+<p><span id="stage-17"></span></p>
+<h2 id="этап-17-спрайты-и-фон">Этап 17 — спрайты и фон</h2>
+<p><strong>Цель</strong> — загрузка PNG из <code>assets/</code>, <code>MediaTracker</code>, fallback на круги.</p>
+<p>Загрузка с ожиданием декодирования (как в <code>DiabloidGame.loadAssets</code>):</p>
+<div class="itu-code-embed" data-example="java/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-8-030" data-title="Этап 17 — спрайты и фон" data-min-height="642"> </div>
+<p>При ошибке загрузки — <code>imagesLoaded = false</code>, рисуем примитивы. Скопируйте ассеты из клонированного <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a> или нарисуйте 32×32 в любом редакторе.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> С ассетами — спрайты; без папки <code>assets</code> — игра не падает.</li>
+</ul>
+<hr>
+<p><span id="stage-18"></span></p>
+<h2 id="этап-18-карта-пути-к-полному-java-survivors">Этап 18 — карта пути к полному Java Survivors</h2>
+<p><strong>Цель</strong> — понять, что уже есть в репозитории и что добавить самостоятельно.</p>
+<table>
+<thead>
+<tr>
+<th>Функция в <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a></th>
+<th>Класс / зона</th>
+<th>В практикуме</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10+ персонажей с разным стартовым оружием</td>
+<td><code>CharacterDef</code>, выбор в меню</td>
+<td>этап 18+</td>
+</tr>
+<tr>
+<td>Десятки <code>WeaponType</code>, стихии</td>
+<td><code>WeaponType</code>, <code>fireExtraWeapon</code></td>
+<td>частично (этап 9)</td>
+</tr>
+<tr>
+<td>Цепная молния, пила</td>
+<td><code>LightningEffect</code>, <code>SawBladeEffect</code></td>
+<td>самостоятельно</td>
+</tr>
+<tr>
+<td>Статусы burn/slow/poison</td>
+<td><code>StatusEffect</code>, <code>StatusEffectType</code></td>
+<td>самостоятельно</td>
+</tr>
+<tr>
+<td>Магазин между волнами</td>
+<td><code>PAUSED_FOR_SHOP</code>, <code>rollShopChoices</code></td>
+<td>самостоятельно</td>
+</tr>
+<tr>
+<td>Сохранение мета-прогресса</td>
+<td><code>SaveSystem</code>, <code>SaveData</code></td>
+<td>самостоятельно</td>
+</tr>
+<tr>
+<td>Монеты на карте</td>
+<td><code>CoinPickup</code>, <code>runCoins</code></td>
+<td>самостоятельно</td>
+</tr>
+</tbody>
+</table>
+<p>Клонирование референса:</p>
+<pre><code class="language-bash">git clone https://github.com/Spirzen/Java-Survivors.git
+cd Java-Survivors
+mvn -q package
+java -jar target/java-survivors-1.0-SNAPSHOT.jar
+</code></pre>
+<p>Сравните свой <code>com.survivors</code> с <code>com.diabloid</code> — совпадают имена паттернов (списки, <code>Iterator</code>, enum оружия, пауза на upgrade).</p>
+<h3 id="ветки-перков-в-полной-игре">Ветки перков в полной игре</h3>
+<p>В референсе улучшения разбиты по <code>PerkBranch</code> — <strong>ATTACK</strong>, <strong>DEFENSE</strong>, <strong>SUPPORT</strong>; на level-up предлагается <strong>по одному</strong> варианту с каждой ветки (до трёх строк на экране). Метод <code>rollUpgradeChoices()</code> в <code>DiabloidGame</code> — образец для расширения учебного пула.</p>
+<h3 id="магазин-каждые-3-волны">Магазин каждые 3 волны</h3>
+<p><code>UpgradeState.PAUSED_FOR_SHOP</code> открывается при <code>wave % 3 == 0</code> — трата <code>runCoins</code> на постоянные бонусы (<code>permanentShopUpgrades</code>). Это мета-слой внутри рана, между "чистым" survivor-like и roguelike.</p>
+<hr>
+<p><span id="bonus-mechanics"></span></p>
+<h2 id="бонус-пронзание-аура-цепная-молния">Бонус — пронзание, аура, цепная молния</h2>
+<p>После этапа 18 можно добавить три узнаваемых механики из <a href="https://github.com/Spirzen/Java-Survivors">Java Survivors</a> без переписывания архитектуры.</p>
+<h3>Пронзающие снаряды (<code>pierce</code>)</h3>
+<p>В <code>updateProjectiles</code> после <code>damageEnemy</code>:</p>
+<pre><code class="language-java">if (hit != null) {
+    damageEnemy(hit, p.damage);
+    if (p.pierce > 0) {
+        p.pierce--;
+    } else {
+        it.remove();
+    }
+}
+</code></pre>
+<p><code>shootPierceLance</code> — один луч с <code>pierce = 2</code> и повышенным уроном.</p>
+<h3>Аура урона (<code>DAMAGE_AURA</code>)</h3>
+<p>Тик раз в ~0.28 с, урон всем врагам в радиусе <code>auraRadius</code> без снарядов:</p>
+<pre><code class="language-java">private void updateDamageAura(double dt) {
+    player.auraTickCooldown -= dt;
+    if (player.auraTickCooldown > 0) return;
+    player.auraTickCooldown = 0.28;
+    double r = player.auraRadius;
+    double dmg = 7.5 * totalDamageMultiplier();
+    for (Enemy e : new ArrayList&#x3C;>(enemies)) {
+        if (distSq(player.x, player.y, e.x, e.y) &#x3C;= r * r) {
+            damageEnemy(e, dmg);
+        }
+    }
+}
+</code></pre>
+<h3 id="цепная-молния">Цепная молния</h3>
+<p>Мгновенный урон по цепочке до трёх врагов + класс <code>LightningEffect</code> только для отрисовки линий между ними на 0.2 с. Логика выбора <code>second</code>/<code>third</code> в радиусе 210px — см. <code>castChainLightning()</code> в репозитории.</p>
+<hr>
+<p><span id="final-checklist"></span></p>
+<h2 id="итоговая-самопроверка-проекта">Итоговая самопроверка проекта</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Критерий</th>
+<th>Да / нет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Maven-сборка, <code>main</code> в манифесте shade</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Игровой цикл в отдельном потоке, capped <code>dt</code></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Игрок двигается, не выходит за экран</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Враги спавнятся с краёв и преследуют</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Автоатака без клика по врагам</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>XP, уровень, экран выбора 3 перков</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Минимум 2 дополнительных оружия через перки</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>HUD — HP, XP, время, счёт</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Контактный урон, рывок, game over + restart</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Код разнесён по нескольким <code>.java</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="типичные-ошибки">Типичные ошибки</h3>
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Вероятная причина</th>
+<th>Что сделать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Чёрное окно, нет отрисовки</td>
+<td>Логика только в потоке, забыли <code>repaint()</code></td>
+<td>После <code>update</code> вызывайте <code>repaint()</code></td>
+</tr>
+<tr>
+<td>Зависание при закрытии</td>
+<td><code>System.exit</code> без остановки потока</td>
+<td><code>running = false</code>, <code>interrupt</code> потока</td>
+</tr>
+<tr>
+<td>Враги не умирают</td>
+<td>Нет <code>break</code> после попадания снаряда</td>
+<td>Один снаряд — один враг за шаг итератора</td>
+</tr>
+<tr>
+<td>Level-up без паузы</td>
+<td>Не проверяете <code>upgradeState</code> в начале <code>update</code></td>
+<td>Ранний <code>return</code> при <code>PAUSED_FOR_UPGRADE</code></td>
+</tr>
+<tr>
+<td><code>ConcurrentModificationException</code></td>
+<td>Удаление из списка во вложенном <code>for</code></td>
+<td><code>Iterator.remove()</code></td>
+</tr>
+<tr>
+<td>Кракозябры в HUD</td>
+<td>CP1251 вместо UTF-8</td>
+<td>UTF-8 в IDE и <code>project.build.sourceEncoding</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="идеи-для-расширения">Идеи для расширения</h3>
+<ul>
+<li><strong>Мультивыстрел</strong> — поле <code>multishotMultiplier</code> увеличивает число снарядов в <code>shootMagicBolt</code> (веер).</li>
+<li><strong>Сохранения</strong> — <code>SaveData</code> + <code>ObjectOutputStream</code> в <code>save.json</code> (как <code>SaveSystem</code> в репозитории).</li>
+<li><strong>Персонажи</strong> — <code>CharacterDef</code> со стартовым <code>WeaponType</code> и ценой разблокировки в монетах.</li>
+<li><strong>Звук</strong> — <code>javax.sound.sampled</code>, короткие WAV в <code>assets/sfx/</code>.</li>
+<li><strong>Порт</strong> на JavaFX или LibGDX — те же списки <code>enemies</code> / <code>projectiles</code>, другой рендер.</li>
+</ul>
+<h3 id="чек-лист-ощущение-vampire-survivors">Чек-лист "ощущение Vampire Survivors"</h3>
+<table>
+<thead>
+<tr>
+<th>Ощущение</th>
+<th>Реализовано в практикуме?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Толпа нарастает со временем</td>
+<td>Этапы 3, 15 (<code>batch</code>, <code>difficulty</code>)</td>
+</tr>
+<tr>
+<td>Становишься сильнее быстрее врагов</td>
+<td>Этапы 6–9 (XP + оружие)</td>
+</tr>
+<tr>
+<td>Решения на level-up</td>
+<td>Этап 7</td>
+</tr>
+<tr>
+<td>Одна ошибка — наказание</td>
+<td>Этап 10</td>
+</tr>
+<tr>
+<td>"Ещё один ран"</td>
+<td>Этап 13</td>
+</tr>
+<tr>
+<td>Визуальный шум (juice)</td>
+<td>Этап 12</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="связанные-материалы">Связанные материалы</h2>
+<ul>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro">Практикум разработки игр — о разделе</a> — другие треки (Python, TypeScript).</li>
+<li><a href="https://spirzen.ru/encyclopedia/5-languages/5-03-java/intro">Java — о разделе</a> — синтаксис, JVM, инструменты.</li>
+<li><a href="https://github.com/Spirzen/Java-Survivors">Java Survivors на GitHub</a> — полная версия практикума.</li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/10">TypeScript — TypeScript Survivors</a> — тот же жанр в браузере (в подготовке).</li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/intro">Игроведение — о разделе</a> — жанры, механики, контекст индустрии.</li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#как-проходить-практикум">Как проходить практикум</a></li><li class="article-toc__item"><a href="#о-практикуме">О практикуме</a></li><li class="article-toc__item is-h3"><a href="#сводка-этапов">Сводка этапов</a></li><li class="article-toc__item is-h3"><a href="#чем-survivor-like-отличается-от-обычного-шутера">Чем survivor-like отличается от &quot;обычного&quot; шутера</a></li><li class="article-toc__item"><a href="#архитектура">Архитектура</a></li><li class="article-toc__item is-h3"><a href="#жанр-и-петля-геймплея">Жанр и петля геймплея</a></li><li class="article-toc__item is-h3"><a href="#игровой-цикл-swing">Игровой цикл (Swing)</a></li><li class="article-toc__item is-h3"><a href="#слои-приложения">Слои приложения</a></li><li class="article-toc__item is-h3"><a href="#координаты-и-коллизии">Координаты и коллизии</a></li><li class="article-toc__item is-h3"><a href="#шаг-времени-dt-и-cap">Шаг времени `dt` и cap</a></li><li class="article-toc__item is-h3"><a href="#порядок-update-на-зрелом-этапе">Порядок `update` на зрелом этапе</a></li><li class="article-toc__item is-h3"><a href="#карта-репозитория-java-survivors">Карта репозитория Java Survivors</a></li><li class="article-toc__item is-h3"><a href="#конечный-автомат-упрощённый">Конечный автомат (упрощённый)</a></li><li class="article-toc__item is-h3"><a href="#списки-сущностей-на-кадре">Списки сущностей на кадре</a></li><li class="article-toc__item is-h3"><a href="#целевая-структура-файлов">Целевая структура файлов</a></li><li class="article-toc__item"><a href="#зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</a></li><li class="article-toc__item is-h3"><a href="#требования">Требования</a></li><li class="article-toc__item is-h3"><a href="#создание-проекта">Создание проекта</a></li><li class="article-toc__item is-h3"><a href="#сборка-и-запуск">Сборка и запуск</a></li><li class="article-toc__item is-h3"><a href="#intellij-idea-cursor">IntelliJ IDEA / Cursor</a></li><li class="article-toc__item is-h3"><a href="#палитра-единые-цвета">Палитра (единые цвета)</a></li><li class="article-toc__item is-h3"><a href="#структура-assets-этап-17">Структура `assets/` (этап 17)</a></li><li class="article-toc__item"><a href="#этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</a></li><li class="article-toc__item"><a href="#этап-1-состояния-игры-и-ввод">Этап 1 — состояния игры и ввод</a></li><li class="article-toc__item"><a href="#этап-2-игрок-и-движение">Этап 2 — игрок и движение</a></li><li class="article-toc__item"><a href="#этап-3-враги-и-спавн-с-краёв">Этап 3 — враги и спавн с краёв</a></li><li class="article-toc__item"><a href="#этап-4-снаряды-и-магический-болт">Этап 4 — снаряды и магический болт</a></li><li class="article-toc__item"><a href="#этап-5-урон-смерть-врага-очки">Этап 5 — урон, смерть врага, очки</a></li><li class="article-toc__item"><a href="#этап-6-опыт-магнит-уровень">Этап 6 — опыт, магнит, уровень</a></li><li class="article-toc__item"><a href="#этап-7-пауза-на-выбор-улучшений">Этап 7 — пауза на выбор улучшений</a></li><li class="article-toc__item"><a href="#этап-8-hud-hp-xp-время-счёт">Этап 8 — HUD (HP, XP, время, счёт)</a></li><li class="article-toc__item"><a href="#этап-9-несколько-оружий-enum">Этап 9 — несколько оружий (enum)</a></li><li class="article-toc__item"><a href="#этап-10-контактный-урон-броня-реген">Этап 10 — контактный урон, броня, реген</a></li><li class="article-toc__item"><a href="#этап-11-рывок-dash">Этап 11 — рывок (dash)</a></li><li class="article-toc__item"><a href="#этап-12-всплывающий-урон-и-частицы">Этап 12 — всплывающий урон и частицы</a></li><li class="article-toc__item"><a href="#этап-13-меню-game-over-перезапуск">Этап 13 — меню, game over, перезапуск</a></li><li class="article-toc__item is-h3"><a href="#скелет-update-к-этапу-13">Скелет `update` к этапу 13</a></li><li class="article-toc__item"><a href="#этап-14-типы-врагов-enum">Этап 14 — типы врагов (enum)</a></li><li class="article-toc__item"><a href="#этап-15-усложнение-спавна-и-босс-мини">Этап 15 — усложнение спавна и босс (мини)</a></li><li class="article-toc__item"><a href="#этап-16-разнесение-по-файлам-и-делегаты">Этап 16 — разнесение по файлам и делегаты</a></li><li class="article-toc__item"><a href="#этап-17-спрайты-и-фон">Этап 17 — спрайты и фон</a></li><li class="article-toc__item"><a href="#этап-18-карта-пути-к-полному-java-survivors">Этап 18 — карта пути к полному Java Survivors</a></li><li class="article-toc__item is-h3"><a href="#ветки-перков-в-полной-игре">Ветки перков в полной игре</a></li><li class="article-toc__item is-h3"><a href="#магазин-каждые-3-волны">Магазин каждые 3 волны</a></li><li class="article-toc__item"><a href="#бонус-пронзание-аура-цепная-молния">Бонус — пронзание, аура, цепная молния</a></li><li class="article-toc__item is-h3"><a href="#пронзающие-снаряды-pierce">Пронзающие снаряды (`pierce`)</a></li><li class="article-toc__item is-h3"><a href="#аура-урона-damageaura">Аура урона (`DAMAGE_AURA`)</a></li><li class="article-toc__item is-h3"><a href="#цепная-молния">Цепная молния</a></li><li class="article-toc__item"><a href="#итоговая-самопроверка-проекта">Итоговая самопроверка проекта</a></li><li class="article-toc__item is-h3"><a href="#типичные-ошибки">Типичные ошибки</a></li><li class="article-toc__item is-h3"><a href="#идеи-для-расширения">Идеи для расширения</a></li><li class="article-toc__item is-h3"><a href="#чек-лист-ощущение-vampire-survivors">Чек-лист &quot;ощущение Vampire Survivors&quot;</a></li><li class="article-toc__item"><a href="#связанные-материалы">Связанные материалы</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр — о разделе  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-03-java/intro" target="_blank" rel="noopener noreferrer"> Java — о разделе  ↗ </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-03-java/13" target="_blank" rel="noopener noreferrer"> Первая программа  ↗ </a> </li><li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> TypeScript — TypeScript Survivors  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro" target="_blank" rel="noopener noreferrer"> Компьютерные игры — о разделе  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

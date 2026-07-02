@@ -1,0 +1,1019 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Diablo — Игры IT Universe</title><meta name="description" content="Diablo — серия Action RPG от Blizzard. История Condor, Blizzard North, скандал Error 37 и эволюция лута от 1996 до Diablo IV."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Diablo</span></li></ol></nav><header class="portal-hero"> <h1>Diablo</h1> <p>Diablo — серия Action RPG от Blizzard. История Condor, Blizzard North, скандал Error 37 и эволюция лута от 1996 до Diablo IV.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Diablo" data-url="/games/9-03-igrovaya-industriya/game-studies/1">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Diablo">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Diablo</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="что-такое-diablo">Что такое Diablo?</h2>
+<p><strong>Diablo</strong> — серия <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro">компьютерных игр</a> в жанре <a href="https://terms.spirzen.ru/glossary/R#rpg">Action RPG</a> (ролевой экшен с прокачкой уровня и навыков; бой идёт в реальном времени, без пошаговых ходов). Издатель и правообладатель — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/intro">Blizzard Entertainment</a>. Серия задала канон для поджанра <a href="https://terms.spirzen.ru/glossary/H#hack-and-slash">Hack and Slash</a> и <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%B8%D0%B0%D0%B1%D0%BB%D0%BE%D0%B8%D0%B4">диаблоидов</a> — игр с <a href="https://terms.spirzen.ru/glossary/%D0%98#%D0%B8%D0%B7%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F">изометрической</a> камерой, <a href="https://terms.spirzen.ru/glossary/%D0%9B#%D0%BB%D1%83%D1%82">лутом</a> и процедурными подземельями.</p>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/Diablo2_1.png" alt="Diablo2_1.png"></p>
+<p>Действие разворачивается в мире <strong>Санктуарий</strong>. Игрок ведёт героя через подземелья, убивает монстров, получает опыт, улучшает характеристики и собирает экипировку со случайными свойствами. Сюжет строится вокруг войны Небес, <a href="#%D0%BB%D0%BE%D1%80-%D0%B8-%D0%BC%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F">Пылающего Ада</a> и <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%B8%D0%B0%D0%B1%D0%BB%D0%BE">Великих воплощений зла</a>, главное из которых — <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%B8%D0%B0%D0%B1%D0%BB%D0%BE">Диабло</a>, повелитель ужаса.</p>
+<hr>
+<h2 id="история-серий-и-дополнений">История серий и дополнений</h2>
+<p>Хронология релизов:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Часть</th>
+<th align="left">Год</th>
+<th align="left">Студия</th>
+<th align="left">Кратко</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Diablo</td>
+<td align="left">1996</td>
+<td align="left">Condor → Blizzard North</td>
+<td align="left">Три класса, <a href="https://terms.spirzen.ru/glossary/B#battlenet">Battle.net</a>, рождение Action RPG</td>
+</tr>
+<tr>
+<td align="left">Diablo II + Lord of Destruction</td>
+<td align="left">2000–2001</td>
+<td align="left">Blizzard North</td>
+<td align="left">Пять актов, <a href="https://terms.spirzen.ru/glossary/%D0%93#%D0%B3%D1%80%D0%B8%D0%BD%D0%B4">гринд</a>, рунные слова</td>
+</tr>
+<tr>
+<td align="left">Diablo III + Reaper of Souls</td>
+<td align="left">2012–2014</td>
+<td align="left">Blizzard Irvine</td>
+<td align="left">Онлайн-обязательность, рифты, Loot 2.0</td>
+</tr>
+<tr>
+<td align="left">Diablo Immortal</td>
+<td align="left">2022</td>
+<td align="left">NetEase + Blizzard</td>
+<td align="left">Мобильная free-to-play</td>
+</tr>
+<tr>
+<td align="left">Diablo IV</td>
+<td align="left">2023+</td>
+<td align="left">Blizzard</td>
+<td align="left">Открытый мир, возврат к мрачному тону</td>
+</tr>
+</tbody>
+</table>
+<p>Первые две части создавала <strong>Blizzard North</strong> (бывшая Condor) в Калифорнии; с третьей части основную разработку вела штаб-квартира Blizzard в Irvine.</p>
+<hr>
+<h2 id="diablo-1996">Diablo (1996)</h2>
+<p>Первая часть вышла 31 декабря 1996 года и стала эталоном <a href="https://terms.spirzen.ru/glossary/R#rpg">Action RPG</a>. Игрок спускается из деревни <strong>Тристрам</strong> в шестнадцать уровней подземелий и выбирает одного из трёх классов — <strong>Воина</strong>, <strong>Разбойницу</strong> или <strong>Волшебника</strong>. За игрой стоит история студии <strong>Condor</strong>, которая упростила хардкорный <a href="https://terms.spirzen.ru/glossary/%D0%A0#%D1%80%D0%BE%D0%B3%D0%B0%D0%BB%D0%B8%D0%BA">рогалик</a> до формата, понятного широкой аудитории.</p>
+<hr>
+<h3 id="истоки-condor-и-рождение-идеи">Истоки Condor и рождение идеи</h3>
+<p><strong>Дэвид Брейвик</strong> (род. 1968) с детства программировал и играл в настольные <a href="https://terms.spirzen.ru/glossary/R#rpg">RPG</a> вроде Dungeons &#x26; Dragons. Название "Diablo" он придумал в 1984 году, живя в Калифорнии у горы Mount Diablo.</p>
+<p>Соратники — братья <strong>Эрик</strong> и <strong>Макс Шифер</strong>. Макс отвечал за архитектуру локаций, Эрик проектировал подземелья. В компании FMB Ives троица сделала платформер <strong>Gordo 106</strong> (Atari Lynx, 1993). Продажи провалились, но команда основала <strong>Condor Software</strong> (1993).</p>
+<p>Чтобы платить зарплаты, Condor взяла заказ на файтинг <strong>Justice League Task Force</strong> (Sunsoft). В штат пришёл композитор <strong>Мэтт Ульман</strong>. На выставке CES 1994 команда показывала заказную игру и параллельно искала издателя для Diablo по <strong>дизайн-документу</strong> — текстовому описанию механик, сюжета и технических требований.</p>
+<hr>
+<h3 id="rogue-кризис-rpg-и-новая-формула">Rogue, кризис RPG и новая формула</h3>
+<p>В середине 1990-х издатели опасались перегруженных партийных <a href="https://terms.spirzen.ru/glossary/R#rpg">RPG</a> с длинным текстом и багами. При этом аудитория D&#x26;D давно делилась на ролевиков и на тех, кто предпочитает "рубить и собирать золото".</p>
+<p>Из второй группы в 1980 году выросла текстовая игра <strong>Rogue</strong> — прародитель <a href="https://terms.spirzen.ru/glossary/%D0%A0#%D1%80%D0%BE%D0%B3%D0%B0%D0%BB%D0%B8%D0%BA">рогаликов</a>. Типичные правила жанра:</p>
+<ul>
+<li>одна жизнь — при смерти сохранение удаляется;</li>
+<li><a href="https://terms.spirzen.ru/glossary/%D0%9F#%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D0%B4%D1%83%D1%80%D0%BD%D0%B0%D1%8F-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F">процедурная генерация</a> этажей и предметов;</li>
+<li>пошаговый бой — враг и герой ходят по очереди.</li>
+</ul>
+<p>Diablo взяла эту основу и упростила управление:</p>
+<ul>
+<li><strong>Мышь</strong> заменила длинные комбинации клавиш Rogue.</li>
+<li><strong>Три класса</strong> вместо десятков рас и профессий.</li>
+<li><strong>Сохранения в городе</strong> смягчили permadeath (полная потеря персонажа при одной смерти).</li>
+</ul>
+<p>Брейвик шутливо называл результат "рогаликом для мам" — вход в жанр стал заметно ниже.</p>
+<hr>
+<h3 id="слияние-с-blizzard-и-переход-в-реальное-время">Слияние с Blizzard и переход в реальное время</h3>
+<p>На CES 1994 Condor познакомилась со студией <strong>Silicon &#x26; Synapse</strong>, которая делала другую версию Justice League. Обе команды сблизились из-за любви к ПК. Silicon &#x26; Synapse переименовалась в <strong>Blizzard Entertainment</strong>, заработала на WarCraft и <strong>купила Condor</strong>, переименовав её в <strong>Blizzard North</strong>.</p>
+<p>Брейвик изначально программировал <strong>пошаговый</strong> бой. Blizzard настаивала на <strong>real-time</strong> — действия происходят непрерывно, без очереди ходов. Брейвик переписал прототип за несколько часов и убедился, что темп стал выше. Так оформился поджанр <strong>Action RPG</strong>.</p>
+<p>Атмосферу усилили кат-сцены от художников Blizzard. В финале герой вонзает <strong>камень души</strong> себе в лоб — один из самых обсуждаемых моментов серии. Популярность подстегнул диск Microsoft с демо DirectX (около двух миллионов копий).</p>
+<p><strong>Мультиплеер</strong> добавили в последний момент. Код был сырой, но за первый год на <a href="https://terms.spirzen.ru/glossary/B#battlenet">Battle.net</a> зарегистрировалось полтора миллиона аккаунтов; весь сервис работал на одном физическом сервере.</p>
+<hr>
+<h3 id="особенности-игрового-процесса">Особенности игрового процесса</h3>
+<ul>
+<li><strong>Процедурные подземелья</strong> — планировка, монстры и <a href="https://terms.spirzen.ru/glossary/%D0%9B#%D0%BB%D1%83%D1%82">лут</a> меняются при каждом новом спуске (<a href="https://terms.spirzen.ru/glossary/%D0%9F#%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D0%B4%D1%83%D1%80%D0%BD%D0%B0%D1%8F-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F">процедурная генерация</a>).</li>
+<li><strong>Автокарта</strong> — игра сама рисует пройденные коридоры; новичку не нужно заранее знать лабиринт.</li>
+<li><strong>Четыре зоны</strong> — у каждой свой алгоритм генерации (монастырь, катакомбы, пещеры, ад).</li>
+<li><strong>Прокачка</strong> — за уровень даётся 5 очков в характеристики:
+<ul>
+<li><strong>сила</strong> — урон в ближнем бою;</li>
+<li><strong>ловкость</strong> — точность и броня;</li>
+<li><strong>интеллект</strong> — запас маны;</li>
+<li><strong>живучесть</strong> — запас здоровья.</li>
+</ul>
+</li>
+<li><strong>Заклинания</strong> лежат в подземелье свитками и книгами; игра не выдаёт их автоматически с уровнем.</li>
+</ul>
+<hr>
+<h3 id="классы-персонажей">Классы персонажей</h3>
+<ul>
+<li><strong>Воин</strong> — ближний бой, много здоровья, умеет чинить оружие и броню. Проще всего для новичка, но страдает от лучников на ранних этажах.</li>
+<li><strong>Разбойница</strong> — лук, дистанция, обнаружение ловушек. Требует тактики (выманивать врагов в узкие проходы). Обычно качает только ловкость.</li>
+<li><strong>Волшебник</strong> — магия на расстоянии. В начале не хватает маны, к концу игры становится самым сильным классом.</li>
+</ul>
+<hr>
+<h3 id="лут-инвентарь-и-психология-добычи">Лут, инвентарь и психология добычи</h3>
+<p>Главный мотиватор — <strong>случайная награда</strong>. Из Rogue переняли <strong>неопознанные предметы</strong>: пока вещь не идентифицирована у торговца, свойства скрыты, и каждый дроп ощущается как "лотерея".</p>
+<p>Цвета редкости:</p>
+<ul>
+<li><strong>белый</strong> — обычный предмет без бонусов;</li>
+<li><strong>синий</strong> — магический, с одним-двумя свойствами;</li>
+<li><strong>золотой</strong> — уникальный, с фиксированным набором свойств.</li>
+</ul>
+<p>Имена генерировались процедурно: к "мечу" добавлялись суффиксы вроде "быстроты" или "огня". Игра почти не наказывала игрока голодом или безумием — каждый следующий скелет мог принести редкий топор. Так работает <strong>переменное подкрепление</strong> (variable reward): награда не гарантирована, но ожидается постоянно.</p>
+<p><strong>Инвентарь</strong> — сетка как в Tetris, идею позаимствовали из X-COM. Крупное оружие занимает несколько клеток, зелья — одну. Мало места заставляет выбирать, что нести дальше.</p>
+<hr>
+<h3 id="сюжет-локации-и-монстры">Сюжет, локации и монстры</h3>
+<p><strong>Тристрам</strong> — деревня-хаб с церковью на окраине. Отсюда игрок спускается в подземелья.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Зона</th>
+<th align="left">Что внутри</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Монастырь</td>
+<td align="left">Самая "чистая" зона; комната босса <strong>Мясника</strong></td>
+</tr>
+<tr>
+<td align="left">Катакомбы</td>
+<td align="left">Хаотичные коридоры</td>
+</tr>
+<tr>
+<td align="left">Пещеры</td>
+<td align="left">Лава, узкие проходы</td>
+</tr>
+<tr>
+<td align="left">Ад</td>
+<td align="left">Финальные уровни перед <strong>Diablo</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Сюжет.</strong> <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%B8%D0%B0%D0%B1%D0%BB%D0%BE">Диабло</a> веками спал в камне души. Он подчинил архиепископа <strong>Лазаря</strong>, свёл с ума короля <strong>Леорика</strong>. Сын короля <strong>Альбрехт</strong> стал телом для демона; вокруг Тристрама расплодились нежить и черти.</p>
+<p><strong>Монстры</strong> — скелеты, суккубы, адвокаты дьявола. Из-за лимита памяти один спрайт перекрашивали в разные цвета, меняя силу врага. На одном этаже могло быть не больше <strong>трёх типов</strong> монстров.</p>
+<p><strong>Коровий уровень</strong> — мем из кликов по декоративным коровам в Тристраме. Blizzard ответила чит-кодом в StarCraft ("there is no cow level"); полноценный секретный уровень появился в Diablo II.</p>
+<hr>
+<h3 id="музыка-и-мультиплеер">Музыка и мультиплеер</h3>
+<p><strong>Мэтт Ульман</strong> случайно набрал знаменитый аккорд темы Тристрама на 12-струнной гитаре. В подземельях звучит эмбиент с криками и ударами — давящая атмосфера.</p>
+<p>В <strong>кооперативе</strong>:</p>
+<ul>
+<li>здоровье монстров умножается на четыре;</li>
+<li>действует <strong>friendly fire</strong> — свои заклинания и стрелы бьют союзников;</li>
+<li>несмотря на сырой сетевой код, кооп стал частью успеха игры.</li>
+</ul>
+<hr>
+<h3 id="как-игра-ощущается-сегодня">Как игра ощущается сегодня</h3>
+<ul>
+<li>персонаж <strong>не бегает</strong>, только ходит;</li>
+<li><strong>пиксель-хантинг</strong> — лут в темноте ищут кликами по полу;</li>
+<li>у врагов <strong>нет полоски здоровья</strong>.</li>
+</ul>
+<p>Механики 1996 года до сих пор определяют <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%B8%D0%B0%D0%B1%D0%BB%D0%BE%D0%B8%D0%B4">диаблоиды</a>.</p>
+<hr>
+<h3 id="hellfire-1997">Hellfire (1997)</h3>
+<p>После релиза команда выгорела за восьмимесячный <strong>кранч</strong> (режим сверхурочной работы перед дедлайном) и передала дополнение студии <strong>Synergistic Software</strong>.</p>
+<p>Hellfire добавил:</p>
+<ul>
+<li>зоны <strong>Склеп</strong> и <strong>Улей</strong>;</li>
+<li>класс <strong>Монах</strong>;</li>
+<li>быструю ходьбу по Тристраму.</li>
+</ul>
+<p>В коде остались вырезанные <strong>Бард</strong> и <strong>Варвар</strong> (доступны через моды). Battle.net дополнение официально не поддерживало. Лор Hellfire в основной канон не входит, но механики повлияли на серию.</p>
+<hr>
+<h3 id="порт-на-playstation-1998">Порт на PlayStation (1998)</h3>
+<p><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/112">Electronic Arts</a> выпустила порт на PS1:</p>
+<ul>
+<li>разрешение <strong>320×200</strong> (PC-версия — 640×480);</li>
+<li>управление на <strong>геймпаде</strong>;</li>
+<li><strong>локальный кооператив</strong> на одном экране.</li>
+</ul>
+<p>Для российских игроков известен пиратский "пацанский" перевод Kudos с переосмысленными диалогами.</p>
+<hr>
+<h2 id="diablo-ii-2000">Diablo II (2000)</h2>
+<p>Вторая часть — одна из самых влиятельных <a href="https://terms.spirzen.ru/glossary/R#rpg">Action RPG</a> в истории. Сюжет продолжается через несколько лет: герой первой части, одержимый <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%B8%D0%B0%D0%B1%D0%BB%D0%BE">Диабло</a>, уходит на восток <strong>Тёмным странником</strong>. Игрок идёт по его следу и параллельно слушает рассказ старика <strong>Мариуса</strong> в кат-сценах.</p>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/Diablo2.png" alt="Diablo2.png"></p>
+<p>Разработка шла без формального дизайн-документа: идеи рождались на собраниях, часть механик Брейвик придумывал в душе.</p>
+<hr>
+<h3 id="разработка-в-blizzard-north">Разработка в Blizzard North</h3>
+<p>После Diablo I команда взяла полугодовой отпуск, затем села за сиквел.</p>
+<ul>
+<li><strong>Воксельный движок</strong> — эксперимент с объёмными пикселями; герои и монстры выглядели плохо, от идеи отказались.</li>
+<li><strong>2D-спрайты</strong> с продвинутым освещением и <a href="https://terms.spirzen.ru/glossary/%D0%98#%D0%B8%D0%B7%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F">изометрией</a> — финальный визуальный стиль.</li>
+<li><strong>"Бумажная кукла"</strong> — каждый предмет на персонаже виден на модели; то же для некоторых врагов.</li>
+<li>Релиз перенесли с 1999 на <strong>2000 год</strong>; разработчики жили в офисе. <strong>Эрик Шифер</strong> уехал на свадьбу прямо с рабочего места.</li>
+</ul>
+<hr>
+<h3 id="что-изменилось-по-сравнению-с-первой-частью">Что изменилось по сравнению с первой частью</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Аспект</th>
+<th align="left">Diablo (1996)</th>
+<th align="left">Diablo II (2000)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Темп боя</td>
+<td align="left">Псевдо-пошаговый</td>
+<td align="left">Полный real-time</td>
+</tr>
+<tr>
+<td align="left">Передвижение</td>
+<td align="left">Только ходьба</td>
+<td align="left"><strong>Бег</strong> и шкала выносливости (стamina)</td>
+</tr>
+<tr>
+<td align="left">Локации</td>
+<td align="left">Подземелья</td>
+<td align="left">Подземелья <strong>и</strong> открытые зоны</td>
+</tr>
+<tr>
+<td align="left">Навыки</td>
+<td align="left">Случайные книги</td>
+<td align="left"><strong>Древо навыков</strong> (30 на класс)</td>
+</tr>
+<tr>
+<td align="left">Смерть</td>
+<td align="left">Перезагрузка сейва</td>
+<td align="left">Возрождение в городе, <strong>corp run</strong> за телом</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Открытый воздух</strong> в студии обсуждали спорно: боялись потерять гнетущий хоррор тесных коридоров. Компромисс дал смену дня и ночи, погоду и контраст между полем и склепом.</p>
+<p><strong>Бесшовные акты</strong> — карта генерируется целиком для одного акта, без экранов загрузки между зонами. <strong>ИИ по дистанции</strong> — враги "просыпаются" только рядом с игроком, иначе процессор не тянул бы огромные карты. От активированного врага можно убежать.</p>
+<hr>
+<h3 id="древо-навыков-и-классы">Древо навыков и классы</h3>
+<p>В первой части книги заклинаний выпадали случайно. Во второй каждый класс получил <strong>три ветки по десять навыков</strong> (всего 30), по аналогии с деревом технологий Civilization.</p>
+<ul>
+<li><strong>Амазонка</strong> — лук, арбалет, дротики; боезапас ограничен.</li>
+<li><strong>Паладин</strong> — ауры, усиливающие группу (идею подсмотрели у Барда в EverQuest); популяризировал классовые щиты.</li>
+<li><strong>Волшебница</strong> — огонь, лёд, молнии; топовые посохи стоят очень дорого.</li>
+<li><strong>Некромант</strong> — призыв и проклятия; навык <strong>"Взрыв трупа"</strong> начался как шутка на совещании.</li>
+<li><strong>Варвар</strong> — двуручное оружие, высокая скорость; "ману" назвали <strong>энергией</strong>, заклинания — <strong>способностями</strong>; появились <strong>гнёзда</strong> под камни.</li>
+</ul>
+<p><strong>Смерть в одиночной игре.</strong> Персонаж воскресает голым в городе, теряет часть золота. За телом и экипировкой нужно вернуться самому — <strong>corpse run</strong> через толпу врагов.</p>
+<hr>
+<h3 id="сюжет-по-актам">Сюжет по актам</h3>
+<p>Две линии идут параллельно: действия игрока и исповедь <strong>Мариуса</strong> о пути за Тёмным странником.</p>
+<p><strong>Акт I — Лагерь разбойниц</strong></p>
+<ul>
+<li>кладбище и босс <strong>Кровавая ворона</strong> (отсылка к первой части);</li>
+<li>спасение <strong>Декарда Каина</strong> из руин Тристрама;</li>
+<li>труп <strong>Вирта</strong> с деревянной ногой — ключ к коровьему уровню;</li>
+<li>финальный босс <strong>Андариэль</strong> (споры с цензурой из-за дизайна).</li>
+</ul>
+<p><strong>Акт II — Лут-Голейн</strong></p>
+<ul>
+<li>восточная пустыня, <strong>Хорадрический куб</strong> для крафта;</li>
+<li><strong>Тайное святилище</strong> — лабиринт "в космосе";</li>
+<li>босс <strong>Дуриэль</strong> в тесной комнате с ледяным уроном.</li>
+</ul>
+<p><strong>Акт III — Кураст</strong></p>
+<ul>
+<li>болота-лабиринт;</li>
+<li>квест с органами жреца <strong>Калима</strong> (изначально планировали "съедобные" органы — отказались);</li>
+<li>враги <strong>фетиши</strong> с шаманами;</li>
+<li>босс <strong>Мефисто</strong>.</li>
+</ul>
+<p><strong>Акт IV — Преисподняя</strong></p>
+<ul>
+<li>всего четыре локации — самый короткий акт;</li>
+<li><strong>Адская кузня</strong>, пять печатей, финальный <strong>Diablo</strong>.</li>
+</ul>
+<hr>
+<h3 id="лут-гринд-и-сложности">Лут, гринд и сложности</h3>
+<p>Новые типы предметов:</p>
+<ul>
+<li><strong>серый</strong> — с гнездом под камень;</li>
+<li><strong>тёмно-золотой</strong> — уникальный;</li>
+<li><strong>зелёный</strong> — часть <strong>сета</strong> (бонус за полный комплект);</li>
+<li><strong>руны</strong> — комбинируются в <strong>рунные слова</strong> на предметах.</li>
+</ul>
+<p><strong>Хорадрический куб</strong>, <strong>талисманы</strong> и <strong>камни</strong> расширили крафт.</p>
+<p>Мир <strong>обновляется</strong> при каждом заходе; боссов можно убивать снова и снова (<strong>фарм</strong>). Blizzard добавила штраф к опыту и <a href="https://terms.spirzen.ru/glossary/%D0%9B#%D0%BB%D1%83%D1%82">луту</a> при повторных убийствах одного босса.</p>
+<p>Постоянный фарм превратил "может, сейчас выпадет" в расчёт вероятностей — так закрепился <strong><a href="https://terms.spirzen.ru/glossary/%D0%93#%D0%B3%D1%80%D0%B8%D0%BD%D0%B4">гринд</a></strong>. Сложности <strong>Nightmare</strong> и <strong>Hell</strong> дают врагам <strong>иммунитеты</strong> к физике или магии.</p>
+<hr>
+<h3 id="мультиплеер-звук-и-патчи">Мультиплеер, звук и патчи</h3>
+<ul>
+<li><strong>Ладдер</strong> — таблица топ-1000 игроков на <a href="https://terms.spirzen.ru/glossary/B#battlenet">Battle.net</a>.</li>
+<li>Гонка за <strong>99 уровнем</strong> породила тактику "добить босса через портал в следующей сессии".</li>
+<li><strong>Мэтт Ульман</strong> и <strong>Скотт Питерсон</strong> добились <strong>аудио-читаемости</strong> — по звуку понятно, что упало и какой удар прошёл. Звук камней записывали разбиванием бокалов.</li>
+<li>Версия <strong>1.01</strong> — наёмников нельзя воскрешать, маленький сундук, нет "починить всё". Патчи до <strong>1.14</strong> добавили ману у торговцев и ивенты <strong>Uber Diablo</strong>, <strong>Pandemonium</strong>.</li>
+</ul>
+<hr>
+<h3 id="lord-of-destruction-2001">Lord of Destruction (2001)</h3>
+<p>Расширение завершает сюжет <strong>Баала</strong>. Разрабатывалось около года без кранча первой игры.</p>
+<p><strong>Акт V — горы варваров</strong></p>
+<ul>
+<li>снег и финальный босс <strong>Baal</strong>;</li>
+<li><strong>Шенк Надзиратель</strong> — пасхалка в честь продюсера Фила Шенка;</li>
+<li>бой с <strong>тремя древними варварами</strong> на вершине;</li>
+<li><strong>Тираэль</strong> уничтожает осквернённый <strong>Камень мира</strong>.</li>
+</ul>
+<p><strong>Новые классы</strong></p>
+<ul>
+<li><strong>Ассасин</strong> — когти, ловушки, невидимость;</li>
+<li><strong>Друид</strong> — волк и медведь (формы птицы и оленя отвергли как неугрожающие).</li>
+</ul>
+<hr>
+<h2 id="diablo-iii-2012">Diablo III (2012)</h2>
+<p>Третья часть вышла в <strong>мае 2012 года</strong> — через десять лет после анонса (2008). За это время распалась <strong>Blizzard North</strong>, ушли Брейвик и Шиферы, новая команда <strong>переписала игру с нуля</strong>. Релиз сопровождался перегрузкой серверов и скандалом с аукционом; спасение принесло дополнение <strong>Reaper of Souls</strong> (2014).</p>
+<hr>
+<h3 id="кризис-в-blizzard-north-и-проект-икс">Кризис в Blizzard North и "Проект ИКС"</h3>
+<p>После Diablo II студия ушла в длительный отпуск. Основатели не хотели бесконечно делать один и тот же сиквел и искали новые IP в рамках <strong>"Проекта ИКС"</strong>.</p>
+<p>Отменённые или замороженные идеи:</p>
+<ul>
+<li>второе дополнение к Diablo II с классом <strong>клирик</strong> (лекарь);</li>
+<li><strong>Iron Monkey</strong> — классическая <a href="https://terms.spirzen.ru/glossary/R#rpg">RPG</a>;</li>
+<li><strong>Titan City</strong> — супергерои;</li>
+<li><strong>Project Head Hunter</strong> — <a href="https://terms.spirzen.ru/glossary/M#mmo">MMO</a> в духе Blade Runner;</li>
+<li><strong>Star Blo / Diablo Star</strong> — sci-fi экшен с полётами между планетами;</li>
+<li><strong>Dragon's</strong> — эпизодическая игра про драконов (закрыта после внутреннего скандала и проблем с артом).</li>
+</ul>
+<p>Пока решения не принимались, часть команды играла в Counter-Strike. Штат вырос до 60+ человек; Брейвик перестал знать сотрудников в лицо, начались конфликты.</p>
+<hr>
+<h3 id="конец-blizzard-north-и-новая-команда">Конец Blizzard North и новая команда</h3>
+<p>В 2003 <strong>Vivendi</strong> (владелец Blizzard) урезала бюджеты. Брейвик и Шиферы попытались уйти как рычаг давления — как перед релизом Diablo II. На этот раз Vivendi приняла отставку <strong>30 июня 2003 года</strong>. Blizzard North закрыли, сотрудников переводили в Irvine по одному.</p>
+<p>Новая команда полностью переделала Diablo III. На релизе фанаты увидели знакомые архетипы:</p>
+<ul>
+<li><strong>Варвар</strong> и <strong>Чародей</strong> — прямые наследники D2;</li>
+<li><strong>Охотник на демонов</strong> — дальний бой Амазонки + ловушки Ассасина;</li>
+<li><strong>Колдун</strong> (Witch Doctor) — вуду-версия Некроманта;</li>
+<li><strong>Монах</strong> — отсылка к Hellfire.</li>
+</ul>
+<p>Структура актов повторяла D2 (город → пустыня → снег). Главное техническое новшество — полностью <strong>3D-движок</strong> (<a href="https://terms.spirzen.ru/glossary/3#3d-%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0">3D-графика</a>).</p>
+<hr>
+<h3 id="смена-стиля-и-механик">Смена стиля и механик</h3>
+<p><strong>Визуальный стиль</strong> после World of Warcraft стал ярче и "мультяшнее", чем мрачная готика первых частей. Много цветных спецэффектов — в больших боях экран перегружается. Камеру приблизили.</p>
+<p><strong>Навыки</strong></p>
+<ul>
+<li>дерева навыков нет;</li>
+<li>способности открываются с уровнем автоматически;</li>
+<li>игрок назначает их на <strong>6 кнопок</strong>;</li>
+<li><strong>руны</strong> меняют эффект умения;</li>
+<li><strong>билд</strong> можно сбросить в любой момент.</li>
+</ul>
+<p><strong>Ресурсы и лечение</strong></p>
+<ul>
+<li>пояс с десятками зелий убрали;</li>
+<li>зелье — способность с <strong>кулдауном</strong> (перезарядкой);</li>
+<li>из врагов падают <strong>сферы здоровья</strong>;</li>
+<li>у каждого класса свой ресурс (<strong>ярость</strong>, <strong>энергия</strong>, <strong>дух</strong> и т.д.).</li>
+</ul>
+<p><strong>Инвентарь</strong></p>
+<ul>
+<li>предметы занимают <strong>одну ячейку</strong> — Tetris-упаковки нет;</li>
+<li>классовые ограничения на оружие сняты.</li>
+</ul>
+<p>Семь классов: <strong>Варвар</strong>, <strong>Колдун</strong>, <strong>Чародей</strong>, <strong>Монах</strong>, <strong>Охотник на демонов</strong>, <strong>Крестоносец</strong> (Reaper of Souls), <strong>Некромант</strong> (2017).</p>
+<hr>
+<h3 id="сюжет-лор-и-проблемы-запуска">Сюжет, лор и проблемы запуска</h3>
+<p><strong>Сюжет кампании</strong></p>
+<ul>
+<li>на собор падает "звезда" — ангел <strong>Тираэль</strong>;</li>
+<li>герой собирает его меч, сражается с <strong>Мясником</strong>, <strong>Леориком</strong>, <strong>Белиалом</strong>, <strong>Азмоданом</strong>;</li>
+<li><strong>Адрия</strong> предаёт группу; её дочь <strong>Лия</strong> — сосуд для <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%B8%D0%B0%D0%B1%D0%BB%D0%BE">Диабло</a>;</li>
+<li><strong>Чёрный камень души</strong> объединяет силу семи воплощений зла; финал — штурм Небес.</li>
+</ul>
+<p>Игрока называют <strong>нефалемом</strong> — потомком ангелов и демонов. Это контрастирует с первыми частями, где герой был "простым" человеком.</p>
+<p><strong>Лор (кратко).</strong> Ангел <strong>Инарий</strong> и <strong>Лилит</strong> создали <strong>Санктуарий</strong> и спрятали его <strong>Камнем мира</strong>. Подробнее — в разделе <a href="#%D0%BB%D0%BE%D1%80-%D0%B8-%D0%BC%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F">Лор и мифология</a>.</p>
+<p><strong>Error 37.</strong> Игра требует <strong>постоянного онлайна</strong>, даже в одиночной кампании. В первые дни серверы легли; клиент показывал <strong>Error 37</strong> ("игровые серверы недоступны"). План продать 7 млн копий за год выполнили за несколько дней — инфраструктура не выдержала.</p>
+<p><strong>Аукционный дом.</strong> Онлайн частично оправдывали защитой торговли за <strong>реальные деньги</strong> и игровое золото. Игроки фармили золото на статичных маршрутах (например, разбивали горшки в акте), а не сражались с монстрами. Аукцион закрыли <strong>осенью 2013 года</strong>.</p>
+<hr>
+<h3 id="reaper-of-souls-2014">Reaper of Souls (2014)</h3>
+<p>Дополнение перезапустило репутацию игры.</p>
+<ul>
+<li><strong>Малтаэль</strong> — бывший ангел мудрости, ставший ангелом смерти;</li>
+<li>локации <strong>Вестмарш</strong> и <strong>Пандемонium</strong> вернули мрачный тон;</li>
+<li>класс <strong>Крестоносец</strong>;</li>
+<li><strong>Loot 2.0</strong> — <a href="https://terms.spirzen.ru/glossary/%D0%9B#%D0%BB%D1%83%D1%82">лут</a> привязан к классу, легендарки сильно меняют билд;</li>
+<li><strong>Парагон 2.0</strong> — прогресс после 70 уровня;</li>
+<li><strong>Режим приключений</strong> — бесконечные <strong>рифты</strong> (Nephalem Rifts) без сюжета; появились <strong>сезоны</strong>.</li>
+</ul>
+<p><strong>Консоли</strong> (PS3, Xbox 360, позже PS4/Xbox One): радиальное меню предметов, <strong>перекаты</strong>, упрощённый инвентарь — удобнее для игры с геймпада.</p>
+<hr>
+<h3 id="rise-of-the-necromancer-2017">Rise of the Necromancer (2017)</h3>
+<p>DLC вернул <strong>Некроманта</strong>, добавил уникальные предметы и режим <strong>Портал дерзаний</strong> для проверки билдов.</p>
+<hr>
+<h3 id="судьба-основателей-blizzard-north">Судьба основателей Blizzard North</h3>
+<ul>
+<li><strong>Дэвид Брейвик</strong> — Flagship Studios, <strong>Hellgate: London</strong>; позже <strong>Marvel Heroes</strong>, инди <strong>It Lurks Below</strong>.</li>
+<li><strong>Эрик и Макс Шифер</strong> — <strong>Runic Games</strong>, серия <strong>Torchlight</strong>. Вторую часть фанаты часто сравнивают с "ожидаемой" Diablo III.</li>
+</ul>
+<p>После ухода основателей серию продолжила команда Blizzard в Irvine — с другим визуальным языком, другой экономикой и упором на бесконечный эндгейм.</p>
+<p><strong>Смотрите также:</strong> <a href="#diablo-iv-2023">Diablo IV (2023)</a>, <a href="#diablo-immortal-2022">Diablo Immortal (2022)</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/122">122 — обзор инноваций в индустрии</a>.</p>
+<hr>
+<h2 id="diablo-ii-resurrected-2021">Diablo II Resurrected (2021)</h2>
+<p>Ремастер Diablo II (2021): оригинальный геймплей сохранён, <a href="https://terms.spirzen.ru/glossary/3#3d-%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0">3D-графика</a> и модели перерисованы в высоком разрешении.</p>
+<hr>
+<h3 id="технические-особенности">Технические особенности</h3>
+<ul>
+<li><strong>Графика</strong> — перерисовка спрайтов и окружения до 4K.</li>
+<li><strong>Режимы</strong> — переключение между классической 2D-картинкой и новой 3D-моделью.</li>
+<li><strong>Мультиплеер</strong> — кроссплатформенная игра.</li>
+<li><strong>Общий сундук</strong> — хранилище предметов на весь аккаунт.</li>
+</ul>
+<hr>
+<h2 id="diablo-iv-2023">Diablo IV (2023)</h2>
+<p>Четвёртая часть (2023) вернула мрачный тон первых игр и добавила <strong>открытый мир</strong> без загрузок между регионами. Подробнее о тренде open world — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/122">обзоре инноваций</a>.</p>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/Diablo4.png" alt="Diablo4.png"></p>
+<hr>
+<h3 id="особенности-мира">Особенности мира</h3>
+<ul>
+<li><strong>Открытый мир</strong> — пять крупных регионов без загрузочных экранов между зонами.</li>
+<li><strong>Процедурные подземелья</strong> — <a href="https://terms.spirzen.ru/glossary/%D0%9F#%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D0%B4%D1%83%D1%80%D0%BD%D0%B0%D1%8F-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F">процедурная генерация</a> планировки при каждом заходе.</li>
+<li><strong>Динамические события</strong> — активности в мире меняют поведение монстров и награды.</li>
+<li><strong>Классы</strong> — Варвар, Чародей, Друид, Разбойник, Некромант (+ Наследник духов в дополнении).</li>
+</ul>
+<hr>
+<h3 id="vessel-of-hatred-2024">Vessel of Hatred (2024)</h3>
+<p>Первое крупное дополнение к четвертой части, продолжающее сюжетную линию.</p>
+<hr>
+<h4>Нововведения</h4>
+<ul>
+<li><strong>Новый регион</strong> — Наханту, джунгли, полные древних тайн и опасностей.</li>
+<li><strong>Новый класс</strong>: Наследник духов, использующий силы четырех духов-хранителей.</li>
+<li><strong>Захват Мефисто</strong>: Сюжетная линия, связанная с попыткой заточить Владыку Ненависти в камень души.</li>
+<li><strong>Новые механики</strong>: Внедрение системы путешествий между регионами и новых типов заданий.</li>
+</ul>
+<hr>
+<h3 id="lord-of-hatred-2026">Lord of Hatred (2026)</h3>
+<p>Второе крупное дополнение к игре, выпущенное 28 апреля 2026 года, которое завершает противостояние с воплощением зла.</p>
+<hr>
+<h4>Нововведения</h4>
+<p><strong>Новые классы</strong></p>
+<ul>
+<li><strong>Паладин</strong> — защитник со Священным светом, может принимать облик ангела.</li>
+<li><strong>Чернокнижник</strong> — демонология и превращение в исполинское чудовище.</li>
+</ul>
+<p><strong>Новый регион</strong> — Острова Сковоса (Skovos), родина амазонок; земли осквернены влиянием Мефисто.</p>
+<p><strong>Сюжет</strong> — Мефисто восстаёт в теле пророка Акарата; экспедиция к Купелям Творения и изгнание в Бездну.</p>
+<p><strong>Механики</strong></p>
+<ul>
+<li><strong>Хорадримский куб</strong> — крафт и настройка экипировки;</li>
+<li><strong>талисманы и сетовые бонусы</strong>;</li>
+<li><strong>War Plans</strong> — пользовательские цепочки эндгейм-активностей;</li>
+<li><strong>Echoing Hatred</strong> — волны врагов для проверки билда;</li>
+<li><strong>рыбалка</strong> как нес боевая активность;</li>
+<li>переработка древ умений, рост cap уровня, <strong>Loot Filter</strong>.</li>
+</ul>
+<hr>
+<h2 id="diablo-immortal-2022">Diablo Immortal (2022)</h2>
+<p>Мобильная версия серии, ориентированная на быструю игру и микроплатежи.</p>
+<hr>
+<h3 id="особенности-платформы">Особенности платформы</h3>
+<ul>
+<li><strong>Управление</strong> — виртуальные стики и кнопки на сенсорном экране.</li>
+<li><strong>Онлайн</strong> — постоянное подключение к интернету, кооператив.</li>
+<li><strong>Классы</strong> — восемь архетипов, включая Бурю и Рыцаря крови.</li>
+<li><strong>Монетизация</strong> — внутриигровые покупки и <a href="https://terms.spirzen.ru/glossary/%D0%9B#%D0%BB%D1%83%D1%82%D0%B1%D0%BE%D0%BA%D1%81">лутбоксы</a>; см. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/115">DLC и монетизация</a>.</li>
+</ul>
+<hr>
+<h2 id="сравнительная-таблица-частей-серии">Сравнительная таблица частей серии</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Название</th>
+<th align="left">Год выхода</th>
+<th align="left">Основной движок</th>
+<th align="left">Ключевая особенность</th>
+<th align="left">Количество классов</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Diablo</strong></td>
+<td align="left">1996</td>
+<td align="left">Proprietary</td>
+<td align="left">Процедурная генерация, 3 класса</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left"><strong>Diablo II</strong></td>
+<td align="left">2000</td>
+<td align="left">Proprietary</td>
+<td align="left">Ветки навыков, куб, руны</td>
+<td align="left">5 (+2 в LoD)</td>
+</tr>
+<tr>
+<td align="left"><strong>Diablo III</strong></td>
+<td align="left">2012</td>
+<td align="left">Proprietary</td>
+<td align="left">Полоса действий, аукцион, парогон</td>
+<td align="left">7</td>
+</tr>
+<tr>
+<td align="left"><strong>Diablo IV</strong></td>
+<td align="left">2023</td>
+<td align="left">Proprietary</td>
+<td align="left">Открытый мир, динамические события</td>
+<td align="left">5 (+1 в дополнении)</td>
+</tr>
+<tr>
+<td align="left"><strong>Immortal</strong></td>
+<td align="left">2022</td>
+<td align="left">Mobile</td>
+<td align="left">Сенсорное управление, онлайн-экономика</td>
+<td align="left">8</td>
+</tr>
+</tbody>
+</table>
+<p>Каждая часть серии Diablo развивает идеи предшественников, сохраняя ядро жанра — убийство монстров, получение опыта и поиск легендарной экипировки. Развитие технологий позволяет студиям предлагать всё более глубокие миры и сложные механики, оставаясь верными духу тёмного фэнтези.</p>
+<hr>
+<h2 id="лор-и-мифология">Лор и мифология</h2>
+<p><strong>Лор</strong> — внутренняя история и правила вымышленного мира. В Diablo лор строится на противостоянии <strong>Небес</strong> (порядок) и <strong>Пылающего Ада</strong> (хаос); люди живут в скрытом мире <strong>Санктуарий</strong>.</p>
+<hr>
+<h3 id="космогония-рождение-вселенной">Космогония. Рождение вселенной</h3>
+<p>В начале существовала лишь Пустота. Из неё возникло первое совершенное существо, известное как <strong>Ану</strong>, или Идеальный Алмаз. Ану содержал в себе всё сущее — и добро, и зло, и свет, и тьму.</p>
+<p>Познание себя привело к тому, что Ану изверг из себя всё негативное и дисгармоничное. Это действие породило его противника — семиглавого дракона <strong>Татамета</strong>, Первородное Зло. Дракон состоял исключительно из хаоса и разрушения.</p>
+<p>Между Ану и Татаметом произошла космическая битва, которая закончилась взаимным уничтожением обоих божеств. Взрыв их энергий создал саму вселенную. Останки Ану образовали Высшие Небеса и Хрустальную Арку, на которой покоятся ангелы. Тело Татамета превратилось в Пылающую Преисподнюю, ставшую обителью демонов.</p>
+<pre><code class="language-mermaid">%%{init: { "theme": "default", "themeVariables": { "fontSize": "13px", "fontFamily": "Segoe UI, Tahoma, sans-serif" } }}%%
+flowchart TD
+    P[ПЕРВОЗДАННАЯ ПУСТОТА] --> A[АНУ&#x3C;br/>Совершенство]
+    P --> T[ТАМЕТ&#x3C;br/>Хаос]
+    
+    A -- Битва --> T
+    
+    subgraph Cosmos [Вселенная после взрыва]
+        direction TB
+        N[ВЫСШИЕ НЕБЕСА&#x3C;br/>Хрустальная Арка / Ангелы]
+        H[ПЫЛАЮЩАЯ ПРЕИСПОДНЯЯ&#x3C;br/>7 Глав Дракона / Демоны]
+    end
+    
+    A --> Cosmos
+    T --> Cosmos
+</code></pre>
+<hr>
+<h3 id="слы-вселенной">Слы Вселенной</h3>
+<h4>Ангелы</h4>
+<p>Ангелы — сущности, рожденные из остатков <strong>Ану</strong>. Они олицетворяют порядок и живут на <strong>Хрустальной арке</strong> под управлением <strong>Ангельского совета</strong> (Ангирис).</p>
+<hr>
+<h4>Демоны</h4>
+<p>Демоны произошли из голов дракона Татамета. Они являются воплощением Хаоса, страсти и разрушения. Демоны правят Пылающим Адом и постоянно стремятся захватить контроль над миром смертных, чтобы распространить свой хаос на всё сущее.</p>
+<hr>
+<h3 id="воплощения-зла">Воплощения Зла</h3>
+<p>Ад разделен на иерархию повелителей демонов, известных как Великие Воплощения Зла. Эти сущности обладают огромной властью и представляют различные аспекты зла.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Имя</th>
+<th align="left">Статус</th>
+<th align="left">Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Диабло</strong></td>
+<td align="left">Владыка Ужаса</td>
+<td align="left">Олицетворяет страх и ужас. Главный антагонист первой части серии.</td>
+</tr>
+<tr>
+<td align="left"><strong>Баал</strong></td>
+<td align="left">Владыка Разрушения</td>
+<td align="left">Олицетворяет разрушение и безумие. Стремится уничтожить Камень Мироздания.</td>
+</tr>
+<tr>
+<td align="left"><strong>Мефисто</strong></td>
+<td align="left">Владыка Ненависти</td>
+<td align="left">Олицетворяет ненависть и корысть. Мастер манипуляций и интриг.</td>
+</tr>
+<tr>
+<td align="left"><strong>Андариэль</strong></td>
+<td align="left">Дева Мучений</td>
+<td align="left">Младшее Воплощение, олицетворяющее боль и страдание.</td>
+</tr>
+<tr>
+<td align="left"><strong>Дюриэль</strong></td>
+<td align="left">Владыка Боли</td>
+<td align="left">Младшее Воплощение, отвечающее за физическую боль и пытки.</td>
+</tr>
+<tr>
+<td align="left"><strong>Белиал</strong></td>
+<td align="left">Владыка Лжи</td>
+<td align="left">Младшее Воплощение, использующее обман и иллюзии.</td>
+</tr>
+<tr>
+<td align="left"><strong>Азмодан</strong></td>
+<td align="left">Владыка Греха</td>
+<td align="left">Младшее Воплощение, поощряющее пороки и грехи смертных.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="санктуарий-тайный-мир">Санктуарий. Тайный мир</h3>
+<p>Санктуарий — скрытый мир, который ангел <strong>Инарий</strong> и демонисса <strong>Лилит</strong> создали вдали от Вечной войны. Их дети — <strong>нефалемы</strong> (потомки ангелов и демонов) стали предками людей; в Diablo III главный герой тоже называется нефалемом.</p>
+<p>Для сокрытия Санктуария от наблюдения высших сил был создан <strong>Камень Мироздания</strong>. Этот артефакт скрывал мир в небытии, делая его невидимым для ангелов и демонов.</p>
+<hr>
+<h4>Война Греха</h4>
+<p>В истории Санктуария шла тайная война двух сил:</p>
+<ul>
+<li><strong>Триединство</strong> — культ трёх Великих воплощений зла (Diablo, Baal, Mefisto).</li>
+<li><strong>Собор Света</strong> — организация Инария для защиты людей.</li>
+</ul>
+<p>Эта война привела к гибели многих магов-хорадримов, которые пытались заключать демонов в камни душ, чтобы предотвратить их возвращение в мир смертных.</p>
+<hr>
+<h2 id="геймплей-и-механики">Геймплей и механики</h2>
+<p>Цикл <strong>"убей → собери → повтори"</strong> (kill-loot-repeat) лежит в основе всей серии:</p>
+<ol>
+<li>Убить монстров и получить <strong>опыт</strong> (уровень персонажа).</li>
+<li>Подобрать <strong><a href="https://terms.spirzen.ru/glossary/%D0%9B#%D0%BB%D1%83%D1%82">лут</a></strong> — оружие и броню со случайными свойствами.</li>
+<li>Стать сильнее и пройти сложнее контент или <strong><a href="https://terms.spirzen.ru/glossary/%D0%93#%D0%B3%D1%80%D0%B8%D0%BD%D0%B4">фармить</a></strong> редкие вещи.</li>
+</ol>
+<p>Подробнее о <a href="https://terms.spirzen.ru/glossary/%D0%9F#%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D0%B4%D1%83%D1%80%D0%BD%D0%B0%D1%8F-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F">процедурной генерации</a> подземелий — в разделах про Diablo I и II выше.</p>
+<hr>
+<h3 id="классы-героев">Классы Героев</h3>
+<p>Каждый класс в Diablo представляет собой специфический подход к решению задач боя и управления ресурсами. Выбор класса определяет стиль прохождения и тактику.</p>
+<table>
+<thead>
+<tr>
+<th>Класс</th>
+<th>Игры серии</th>
+<th>Тип урона / Роль</th>
+<th>Ключевые особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Воин (Warrior)</td>
+<td>Diablo I</td>
+<td>Ближний бой (Melee)</td>
+<td>Мастер холодного оружия и щитов. Имеет самый высокий показатель защиты и здоровья в первой части.</td>
+</tr>
+<tr>
+<td>Разбойница (Rogue)</td>
+<td>Diablo I</td>
+<td>Дальний бой (Ranged)</td>
+<td>Эксперт в стрельбе из лука. Быстро обнаруживает и обезвреживает ловушки на уровнях подземелья.</td>
+</tr>
+<tr>
+<td>Маг (Sorcerer)</td>
+<td>Diablo I</td>
+<td>Магический (Caster)</td>
+<td>Обладает наибольшим запасом маны. Эффективно изучает и применяет заклинания из найденных книг.</td>
+</tr>
+<tr>
+<td>Монах (Monk)</td>
+<td>D1: Hellfire</td>
+<td>Ближний бой (Melee)</td>
+<td>Сражается посохами или голыми руками. Способен атаковать сразу нескольких врагов по дуге.</td>
+</tr>
+<tr>
+<td>Бард (Bard)</td>
+<td>D1: Hellfire</td>
+<td>Гибридный (Melee/Ranged)</td>
+<td>Скрытый класс. Может эффективно использовать два оружия одновременно (по одному в каждой руке).</td>
+</tr>
+<tr>
+<td>Варвар (Barbarian)</td>
+<td>D1: Hellfire, DII, DIII, DIV</td>
+<td>Ближний бой (Melee)</td>
+<td>Использует ресурс "Ярость". Наносит огромный физический урон вблизи и выдерживает сильные удары.</td>
+</tr>
+<tr>
+<td>Амазонка (Amazon)</td>
+<td>Diablo II</td>
+<td>Дальний / Средний бой</td>
+<td>Специализируется на луках, арбалетах, дротиках и копьях. Призывает валькирию себе на помощь.</td>
+</tr>
+<tr>
+<td>Некромант (Necromancer)</td>
+<td>DII, DIII, DIV</td>
+<td>Призыв / Магия</td>
+<td>Поднимает армии скелетов и големов из трупов врагов. Использует проклятия, костяную магию и яд.</td>
+</tr>
+<tr>
+<td>Паладин (Paladin)</td>
+<td>Diablo II</td>
+<td>Ближний бой / Защита</td>
+<td>Использует священные ауры для усиления себя и союзников. Эффективно блокирует удары щитом.</td>
+</tr>
+<tr>
+<td>Волшебница (Sorceress)</td>
+<td>Diablo II, DIV</td>
+<td>Магический (Caster)</td>
+<td>Повелительница стихий огня, льда и молнии. Зависима от маны, обладает высокой мобильностью за счет телепортации.</td>
+</tr>
+<tr>
+<td>Ассасин (Assassin)</td>
+<td>DII: LoD</td>
+<td>Ближний бой / Ловушки</td>
+<td>Использует боевые искусства с механиков заряжающих ударов. Устанавливает автономные смертоносные турели-ловушки.</td>
+</tr>
+<tr>
+<td>Друид (Druid)</td>
+<td>DII: LoD, DIV</td>
+<td>Гибридный / Призыв</td>
+<td>Принимает облик волка или медведя. Призывает питомцев и повелевает силами природы (земля, буря).</td>
+</tr>
+<tr>
+<td>Колдун (Witch Doctor)</td>
+<td>Diablo III</td>
+<td>Призыв / Магия вуду</td>
+<td>Использует ресурс "Мана". Призывает зомби и собак, насылает чуму, проклятия и ментальный контроль.</td>
+</tr>
+<tr>
+<td>Охотник на демонов (Demon Hunter)</td>
+<td>Diablo III</td>
+<td>Дальний бой (Ranged)</td>
+<td>Тратит "Ненависть" на атаку и "Концентрацию" на акробатические трюки, скрытность и расстановку ловушек.</td>
+</tr>
+<tr>
+<td>Монах (Monk)</td>
+<td>Diablo III</td>
+<td>Ближний бой (Melee)</td>
+<td>Тратит "Дух" на стремительные серии ударов, мантры поддержки и мгновенные перемещения к цели.</td>
+</tr>
+<tr>
+<td>Чародей (Wizard)</td>
+<td>Diablo III</td>
+<td>Магический (Caster)</td>
+<td>Использует "Магическую энергию". Управляет временем, чистой тайной магией, расщепляющими лучами и метеоритами.</td>
+</tr>
+<tr>
+<td>Крестоносец (Crusader)</td>
+<td>DIII: RoS</td>
+<td>Ближний / Средний бой</td>
+<td>Тяжелобронированный воин. Накапливает "Гнев", использует огромные ростовые щиты и светлую магию.</td>
+</tr>
+<tr>
+<td>Разбойник (Rogue)</td>
+<td>Diablo IV</td>
+<td>Гибридный (Melee/Ranged)</td>
+<td>Комбинирует кинжалы и луки. Наносит быстрые серии ударов, использует скрытность, ловушки и ядовитые насыщения.</td>
+</tr>
+<tr>
+<td>Наследник духов (Spiritborn)</td>
+<td>DIV: VoH</td>
+<td>Ближний бой (Melee)</td>
+<td>Призывает силу четырех латиноамериканских духов-хранителей (Ягуар, Горилла, Орёл, Сороконожка) для быстрых комбо.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="система-прогрессии">Система Прогрессии</h3>
+<p>Прогрессия персонажа в Diablo строится на двух основных уровнях:</p>
+<ol>
+<li>
+<p><strong>Вертикальная прогрессия (Уровни)</strong>:</p>
+<ul>
+<li>Игрок получает опыт за убийство монстров и выполнение заданий.</li>
+<li>Накопление опыта ведет к повышению уровня персонажа.</li>
+<li>Каждый новый уровень открывает доступ к новым навыкам или позволяет улучшить существующие.</li>
+<li>Характеристики (сила, ловкость, выносливость, энергия) распределяются вручную или автоматически.</li>
+</ul>
+</li>
+<li>
+<p><strong>Горизонтальная прогрессия (Paragon)</strong>:</p>
+<ul>
+<li>После достижения максимального уровня персонажа открывается система Парегон.</li>
+<li>Опыт продолжает накапливаться, но теперь он идет в общий пул учетной записи.</li>
+<li>Игрок получает очки навыков для распределения по категориям — основные характеристики, атакующие, защитные и вспомогательные параметры.</li>
+<li>Эта система создает долгосрочную цель для игроков, позволяя бесконечно улучшать своего героя даже после завершения сюжетной кампании.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="система-лута-loot-system">Система Лута (Loot System)</h3>
+<p>Генерация предметов в Diablo является одним из самых сложных алгоритмических процессов в игровой индустрии. Она сочетает в себе детерминированные правила и элементы случайности.</p>
+<table>
+<thead>
+<tr>
+<th>Качество (Редкость)</th>
+<th>Diablo I</th>
+<th>Diablo II</th>
+<th>Diablo III</th>
+<th>Diablo IV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Обычное (Normal)</td>
+<td>Белый</td>
+<td>Белый</td>
+<td>Белый</td>
+<td>Белый</td>
+</tr>
+<tr>
+<td>Низкое (Low Quality)</td>
+<td>—</td>
+<td>Серый</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Гнездовое (Socketed)</td>
+<td>—</td>
+<td>Серый</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Магическое (Magic)</td>
+<td>Синий</td>
+<td>Сний</td>
+<td>Синий</td>
+<td>Сний</td>
+</tr>
+<tr>
+<td>Редкое (Rare)</td>
+<td>—</td>
+<td>Желтый</td>
+<td>Желтый</td>
+<td>Желтый</td>
+</tr>
+<tr>
+<td>Сет заготовки (Crafted)</td>
+<td>—</td>
+<td>Оранжевый</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Легендарное (Legendary)</td>
+<td>—</td>
+<td>—</td>
+<td>Оранжевый</td>
+<td>Оранжевый</td>
+</tr>
+<tr>
+<td>Комплектное (Set)</td>
+<td>—</td>
+<td>Зеленый</td>
+<td>Зеленый</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Уникальное (Unique)</td>
+<td>Золотой</td>
+<td>Золотой</td>
+<td>—</td>
+<td>Уникальный (Светло-золотой)</td>
+</tr>
+<tr>
+<td>Священное (Sacred)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Редкое / Легендарное / Уникальное</td>
+</tr>
+<tr>
+<td>Предковое (Ancestral)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Редкое / Легендарное / Уникальное</td>
+</tr>
+<tr>
+<td>Эфирное (Ethereal)</td>
+<td>—</td>
+<td>Прозрачное</td>
+<td>Прозрачное (Сезонное)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Древнее (Ancient)</td>
+<td>—</td>
+<td>—</td>
+<td>Оранжевое / Зеленое</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Первозданное (Primal)</td>
+<td>—</td>
+<td>—</td>
+<td>Красная рамка</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Эпохальное (Mythic)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Фиолетовый (Ранее Uber Unique)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Diablo I: Простая система. Всего три типа: обычные, синие магические и золотые уникальные предметы.</li>
+<li>Diablo II: Введены серые предметы (с гнездами или сломанные), желтые редкие и зеленые комплекты.</li>
+<li>Diablo III: Уникальные предметы заменены легендарными. Позже добавлены Древние и Первозданные версии для эндгейма.</li>
+<li>Diablo IV: Введены градации мощи мира (Священные и Предковые). Сет-предметы полностью убраны. Самые редкие предметы переименованы из Uber Unique в Мифические.</li>
+</ul>
+<hr>
+<h4>Таблицы добычи (Drop Tables)</h4>
+<p>Каждый монстр в игре привязан к определенному уровню локации (Area Level). Этот уровень определяет максимально возможный уровень выпадающих предметов. Чем выше уровень сложности и локация, тем мощнее может быть найденная экипировка.</p>
+<hr>
+<h4>Генератор случайных чисел (RNG)</h4>
+<p>При убийстве монстра система генерирует предмет на основе следующих параметров:</p>
+<ul>
+<li><strong>Тип предмета</strong> — Оружие, броня, украшения или расходные материалы.</li>
+<li><strong>Качество</strong> — Обычный, Магический, Редкий, Легендарный или Сетовый.</li>
+<li><strong>Уровень</strong>: Определяется уровнем монстра и сложности игры.</li>
+</ul>
+<hr>
+<h4>Пул аффиксов</h4>
+<p>Каждый тип предмета имеет строго определенный набор возможных свойств (аффиксов). Например, меч может иметь свойства, увеличивающие урон, скорость атаки или шанс критического удара. Система выбирает случайное количество свойств из этого пула, создавая уникальный предмет.</p>
+<hr>
+<h2 id="архитектура-выполнения">Архитектура Выполнения</h2>
+<p>Серия Diablo, особенно начиная со второй части, представляет собой сложную клиент-серверную архитектуру. Игра не является полностью автономной на стороне клиента; она требует постоянного взаимодействия с центральными серверами для обеспечения целостности данных и безопасности.</p>
+<hr>
+<h3 id="клиент-серверное-взаимодействие">Клиент-серверное взаимодействие</h3>
+<p>Основной принцип архитектуры Diablo — авторитаризм сервера. Клиент играет роль терминала, отправляющего команды ввода, в то время как все критически важные расчеты происходят на сервере.</p>
+<pre><code class="language-mermaid">flowchart LR
+    subgraph Client [КЛИЕНТ ИГРЫ]
+        C1[Предсказание ввода]
+        C2[Рендеринг графики]
+        C3[Локальная физика]
+    end
+
+    subgraph Server [ИГРОВОЙ СЕРВЕР]
+        S1[Валидация действий]
+        S2[Расчет ИИ и урона]
+        S3[Генерация RNG]
+    end
+
+    subgraph DB [БАЗА ДАННЫХ]
+        D1[Профили персонажей]
+        D2[Инвентарь и предметы]
+    end
+
+    Client &#x3C;-->|"Сетевой трафик (UDP/TCP)"| Server
+    Server &#x3C;-->|"Записи / Чтение"| DB
+</code></pre>
+<hr>
+<h4>Серверная логика</h4>
+<ul>
+<li><strong>Валидация действий</strong>: Сервер проверяет каждое действие игрока на соответствие правилам игры. Если игрок пытается совершить невозможное действие (например, пройти сквозь стену), сервер блокирует его.</li>
+<li><strong>Расчет урона</strong>: Все расчеты урона, попаданий и эффектов заклинаний выполняются на сервере. Это предотвращает использование читов, модифицирующих память клиента.</li>
+<li><strong>Генерация случайных чисел (RNG)</strong>: Определение выпадения предметов происходит на сервере. Клиент не знает заранее, какой предмет упадет, что исключает возможность подделки лута.</li>
+</ul>
+<hr>
+<h4>Клиентская логика</h4>
+<ul>
+<li><strong>Предсказание ввода (Client-side Prediction)</strong>: Чтобы минимизировать задержку (пинг), клиент мгновенно отображает движение персонажа при получении команды от клавиатуры или мыши. Если сервер возвращает другие координаты, клиент корректирует позицию ("резиновый банджи-эффект").</li>
+<li><strong>Рендеринг</strong>: Отрисовка сотен объектов, эффектов заклинаний и динамического освещения выполняется на стороне клиента с использованием графических API (DirectX, Vulkan).</li>
+<li><strong>Локальная физика</strong>: Физика смерти монстров и разрушения окружения часто обрабатывается на клиенте для экономии ресурсов сервера, так как эти процессы не влияют на игровой баланс.</li>
+</ul>
+<hr>
+<h3 id="хранение-данных">Хранение данных</h3>
+<p>Прогресс персонажа и его инвентарь хранятся в транзакционных базах данных. Каждый предмет в игре имеет уникальный глобальный идентификатор (GUID), что позволяет системе отслеживать каждую вещь и предотвращать дублирование (дюп) предметов.</p>
+<p>Система синхронизирует данные между разными платформами, позволяя игрокам продолжать игру на разных устройствах. Инвентарь персонажа обновляется в реальном времени при взаимодействии с сервером.</p>
+<hr>
+<h2 id="культурное-влияние-и-наследие">Культурное Влияние и Наследие</h2>
+<p>Diablo изменила ландшафт индустрии видеоигр, внедрив концепции, которые стали стандартом для современных проектов.</p>
+<hr>
+<h3 id="развитие-жанров">Развитие Жанров</h3>
+<p>Механика Loot-Shooter, основанная на постоянном поиске и улучшении экипировки, была напрямую вдохновлена Diablo. Без этой системы не существовало бы таких успешных серий, как Borderlands, Destiny или The Division.</p>
+<hr>
+<h3 id="геймерский-сленг">Геймерский Сленг</h3>
+<p>Терминология серии прочно вошла в язык игроков:</p>
+<ul>
+<li><strong><a href="https://terms.spirzen.ru/glossary/%D0%93#%D0%B3%D1%80%D0%B8%D0%BD%D0%B4">Фарм</a></strong> — повтор одного маршрута ради <a href="https://terms.spirzen.ru/glossary/%D0%9B#%D0%BB%D1%83%D1%82">лут</a> или опыта.</li>
+<li><strong>Билд</strong> — набор навыков, характеристик и предметов под один стиль игры.</li>
+<li><strong>Ран</strong> (run) — одно прохождение локации или босса ради конкретной награды.</li>
+</ul>
+<hr>
+<h3 id="эстетика-grimdark">Эстетика Grimdark</h3>
+<p>Музыкальное сопровождение, созданное Мэттом Ульменом, стало культовым. Использование 12-струнной гитары в теме города Тристрам создало эталон мрачной атмосферы, определившей визуальный и звуковой стиль целого поколения игр в жанре темного фэнтези.</p>
+<hr>
+<h3 id="влияние-на-экономику-игр">Влияние на Экономику Игр</h3>
+<p>Диалоги вокруг аукциона в Diablo III вызвали широкие дискуссии о роли реальных денег в виртуальной экономике. Закрытие аукциона показало важность баланса между коммерческими интересами разработчиков и сохранением игрового процесса, основанного на усилиях самого игрока.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-diablo">Что такое Diablo?</a></li><li class="article-toc__item"><a href="#история-серий-и-дополнений">История серий и дополнений</a></li><li class="article-toc__item"><a href="#diablo-1996">Diablo (1996)</a></li><li class="article-toc__item is-h3"><a href="#истоки-condor-и-рождение-идеи">Истоки Condor и рождение идеи</a></li><li class="article-toc__item is-h3"><a href="#rogue-кризис-rpg-и-новая-формула">Rogue, кризис RPG и новая формула</a></li><li class="article-toc__item is-h3"><a href="#слияние-с-blizzard-и-переход-в-реальное-время">Слияние с Blizzard и переход в реальное время</a></li><li class="article-toc__item is-h3"><a href="#особенности-игрового-процесса">Особенности игрового процесса</a></li><li class="article-toc__item is-h3"><a href="#классы-персонажей">Классы персонажей</a></li><li class="article-toc__item is-h3"><a href="#лут-инвентарь-и-психология-добычи">Лут, инвентарь и психология добычи</a></li><li class="article-toc__item is-h3"><a href="#сюжет-локации-и-монстры">Сюжет, локации и монстры</a></li><li class="article-toc__item is-h3"><a href="#музыка-и-мультиплеер">Музыка и мультиплеер</a></li><li class="article-toc__item is-h3"><a href="#как-игра-ощущается-сегодня">Как игра ощущается сегодня</a></li><li class="article-toc__item is-h3"><a href="#hellfire-1997">Hellfire (1997)</a></li><li class="article-toc__item is-h3"><a href="#порт-на-playstation-1998">Порт на PlayStation (1998)</a></li><li class="article-toc__item"><a href="#diablo-ii-2000">Diablo II (2000)</a></li><li class="article-toc__item is-h3"><a href="#разработка-в-blizzard-north">Разработка в Blizzard North</a></li><li class="article-toc__item is-h3"><a href="#что-изменилось-по-сравнению-с-первой-частью">Что изменилось по сравнению с первой частью</a></li><li class="article-toc__item is-h3"><a href="#древо-навыков-и-классы">Древо навыков и классы</a></li><li class="article-toc__item is-h3"><a href="#сюжет-по-актам">Сюжет по актам</a></li><li class="article-toc__item is-h3"><a href="#лут-гринд-и-сложности">Лут, гринд и сложности</a></li><li class="article-toc__item is-h3"><a href="#мультиплеер-звук-и-патчи">Мультиплеер, звук и патчи</a></li><li class="article-toc__item is-h3"><a href="#lord-of-destruction-2001">Lord of Destruction (2001)</a></li><li class="article-toc__item"><a href="#diablo-iii-2012">Diablo III (2012)</a></li><li class="article-toc__item is-h3"><a href="#кризис-в-blizzard-north-и-проект-икс">Кризис в Blizzard North и &quot;Проект ИКС&quot;</a></li><li class="article-toc__item is-h3"><a href="#конец-blizzard-north-и-новая-команда">Конец Blizzard North и новая команда</a></li><li class="article-toc__item is-h3"><a href="#смена-стиля-и-механик">Смена стиля и механик</a></li><li class="article-toc__item is-h3"><a href="#сюжет-лор-и-проблемы-запуска">Сюжет, лор и проблемы запуска</a></li><li class="article-toc__item is-h3"><a href="#reaper-of-souls-2014">Reaper of Souls (2014)</a></li><li class="article-toc__item is-h3"><a href="#rise-of-the-necromancer-2017">Rise of the Necromancer (2017)</a></li><li class="article-toc__item is-h3"><a href="#судьба-основателей-blizzard-north">Судьба основателей Blizzard North</a></li><li class="article-toc__item"><a href="#diablo-ii-resurrected-2021">Diablo II Resurrected (2021)</a></li><li class="article-toc__item is-h3"><a href="#технические-особенности">Технические особенности</a></li><li class="article-toc__item"><a href="#diablo-iv-2023">Diablo IV (2023)</a></li><li class="article-toc__item is-h3"><a href="#особенности-мира">Особенности мира</a></li><li class="article-toc__item is-h3"><a href="#vessel-of-hatred-2024">Vessel of Hatred (2024)</a></li><li class="article-toc__item is-h3"><a href="#lord-of-hatred-2026">Lord of Hatred (2026)</a></li><li class="article-toc__item"><a href="#diablo-immortal-2022">Diablo Immortal (2022)</a></li><li class="article-toc__item is-h3"><a href="#особенности-платформы">Особенности платформы</a></li><li class="article-toc__item"><a href="#сравнительная-таблица-частей-серии">Сравнительная таблица частей серии</a></li><li class="article-toc__item"><a href="#лор-и-мифология">Лор и мифология</a></li><li class="article-toc__item is-h3"><a href="#космогония-рождение-вселенной">Космогония. Рождение вселенной</a></li><li class="article-toc__item is-h3"><a href="#слы-вселенной">Слы Вселенной</a></li><li class="article-toc__item is-h3"><a href="#воплощения-зла">Воплощения Зла</a></li><li class="article-toc__item is-h3"><a href="#санктуарий-тайный-мир">Санктуарий. Тайный мир</a></li><li class="article-toc__item"><a href="#геймплей-и-механики">Геймплей и механики</a></li><li class="article-toc__item is-h3"><a href="#классы-героев">Классы Героев</a></li><li class="article-toc__item is-h3"><a href="#система-прогрессии">Система Прогрессии</a></li><li class="article-toc__item is-h3"><a href="#система-лута-loot-system">Система Лута (Loot System)</a></li><li class="article-toc__item"><a href="#архитектура-выполнения">Архитектура Выполнения</a></li><li class="article-toc__item is-h3"><a href="#клиент-серверное-взаимодействие">Клиент-серверное взаимодействие</a></li><li class="article-toc__item is-h3"><a href="#хранение-данных">Хранение данных</a></li><li class="article-toc__item"><a href="#культурное-влияние-и-наследие">Культурное Влияние и Наследие</a></li><li class="article-toc__item is-h3"><a href="#развитие-жанров">Развитие Жанров</a></li><li class="article-toc__item is-h3"><a href="#геймерский-сленг">Геймерский Сленг</a></li><li class="article-toc__item is-h3"><a href="#эстетика-grimdark">Эстетика Grimdark</a></li><li class="article-toc__item is-h3"><a href="#влияние-на-экономику-игр">Влияние на Экономику Игр</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

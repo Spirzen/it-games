@@ -1,0 +1,1252 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Godot — первая 2D-игра за вечер — Игры IT Universe</title><meta name="description" content="Установка Godot 4, сцена, GDScript, движение персонажа и экспорт — пошаговый маршрут для новичка."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Godot — первая 2D-игра за вечер</span></li></ol></nav><header class="portal-hero"> <h1>Godot — первая 2D-игра за вечер</h1> <p>Установка Godot 4, сцена, GDScript, движение персонажа и экспорт — пошаговый маршрут для новичка.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Godot — первая 2D-игра за вечер" data-url="/games/9-04-razrabotka-igr/207">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Godot — первая 2D-игра за вечер">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Godot — первая 2D-игра за вечер</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Godot</span></p>
+<p><strong>Godot</strong> — бесплатный <a href="./112">игровой движок</a> с открытым исходным кодом. В нём вы собираете игру из <strong>сцен</strong> (файлов с деревом узлов), пишете логику на <strong>GDScript</strong> (язык, похожий на <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/intro">Python</a>) и экспортируете результат на ПК, веб или мобильные платформы. Эта статья ведёт от установки до полноценного прототипа <strong>2D-платформера</strong> с прыжком, монетами, счётом, интерфейсом, звуковыми заготовками и экраном поражения.</p>
+<p>Сравнение Godot с Unity, Unreal и Roblox — в <a href="./113">Видах игровых движков</a>. Общий <a href="./intro">маршрут геймдева</a> и <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">игровой цикл на Pygame</a> помогут, если вы уже пробовали код без редактора. Для школьников есть короткая версия — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-11-dlya-detey/2-video-games/27">Godot и Construct 3</a>.</p>
+<hr>
+<h2 id="расширенный-словарь">Расширенный словарь</h2>
+<p>Перед установкой полезно пройтись по терминам. Каждый пункт объяснён так, чтобы его понял человек без опыта в геймдеве.</p>
+<h3 id="основные-понятия">Основные понятия</h3>
+<ul>
+<li><strong>Игровой движок</strong> — программа, которая рисует кадры на экране, обрабатывает нажатия клавиш и мыши, считает физику и запускает ваш код. Подробнее — <a href="./112">Игровой движок</a>.</li>
+<li><strong>Godot Engine</strong> — конкретный движок версии 4.x. Скачивается с <a href="https://godotengine.org/download">godotengine.org</a>. Редактор и "игровой рантайм" (программа, которая запускает игру) идут в одном пакете.</li>
+<li><strong>Проект</strong> — папка на диске с настройками, сценами, скриптами и ресурсами (картинки, звуки). Godot хранит главный файл настроек <code>project.godot</code>.</li>
+<li><strong>Сцена (scene)</strong> — файл с расширением <code>.tscn</code> (текстовый) или <code>.scn</code> (бинарный). Внутри — дерево <strong>узлов</strong>. Сцена может быть персонажем, уровнем, меню или монетой.</li>
+<li><strong>Узел (node)</strong> — один элемент дерева сцены. У узла есть тип (например, спрайт, коллайдер, камера), имя и дочерние узлы. Аналогия — элемент DOM в <a href="https://spirzen.ru/encyclopedia/3-data-markup/3-09-html/intro">HTML</a> или GameObject в <a href="./3">Unity</a>.</li>
+<li><strong>Дерево сцены</strong> — иерархия узлов слева в редакторе. Родитель задаёт систему координат и наследование поведения для детей.</li>
+<li><strong>Ресурс (resource)</strong> — данные, которые переиспользуют: текстура, звук, шрифт, тайлсет. Файлы <code>.tres</code> или встроенные в <code>.tscn</code>.</li>
+<li><strong>Инстанс (instance)</strong> — вставленная копия другой сцены. Уровень "инстансит" <code>player.tscn</code>, чтобы не дублировать персонажа вручную.</li>
+<li><strong>Main Scene</strong> — сцена, с которой игра начинается при запуске. Назначается в настройках проекта.</li>
+</ul>
+<h3 id="языки-и-скрипты">Языки и скрипты</h3>
+<ul>
+<li><strong>GDScript</strong> — встроенный язык Godot. Синтаксис близок к <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/intro">Python</a>: отступы, <code>func</code>, <code>var</code>, без фигурных скобок для блоков. Документация — <a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html">GDScript reference</a>.</li>
+<li><strong>Скрипт</strong> — файл <code>.gd</code>, прикреплённый к узлу. Один узел — один основной скрипт (хотя можно подключать и другие через <code>preload</code>).</li>
+<li><strong><code>extends</code></strong> — строка в начале скрипта, указывающая тип узла, к которому он привязан. Скрипт наследует методы и свойства этого типа.</li>
+<li><strong>Сигнал (signal)</strong> — механизм событий Godot. Узел "излучает" сигнал, другие узлы подписываются и реагируют. Похоже на события в <a href="https://spirzen.ru/encyclopedia/1-basics/1-25-interfeys/intro">GUI</a>.</li>
+<li><strong>Autoload (синглтон)</strong> — скрипт, который Godot загружает один раз при старте игры и делает доступным глобально по имени. Удобен для счёта, музыки, сохранений.</li>
+</ul>
+<h3 id="2d-узлы-и-физика">2D-узлы и физика</h3>
+<ul>
+<li><strong>Node2D</strong> — базовый 2D-узел с позицией, поворотом и масштабом. Корень уровня часто именно он.</li>
+<li><strong>Sprite2D</strong> — показывает картинку (текстуру) на экране.</li>
+<li><strong>CharacterBody2D</strong> — тело персонажа для платформеров. Вы сами задаёте скорость, движок помогает скользить вдоль полов через <code>move_and_slide()</code>.</li>
+<li><strong>StaticBody2D</strong> — неподвижное тело (пол, стена, платформа). Не двигается от столкновений.</li>
+<li><strong>RigidBody2D</strong> — тело с полной физикой (падает, отскакивает). Для ящиков и снарядов.</li>
+<li><strong>Area2D</strong> — зона-триггер без твёрдого отражения. Монета, дверь, зона урона — типичные примеры.</li>
+<li><strong>CollisionShape2D</strong> — невидимая форма (прямоугольник, круг, капсула), по которой движок понимает столкновения. Без неё физика "не видит" объект.</li>
+<li><strong>TileMap</strong> — слой из плиток (тайлов) по сетке. Стандартный способ строить уровни платформера.</li>
+<li><strong>TileSet</strong> — набор плиток с коллизией и текстурами для <code>TileMap</code>.</li>
+<li><strong>Camera2D</strong> — камера, задающая, какая часть 2D-мира видна на экране.</li>
+<li><strong>ParallaxBackground</strong> — фон из нескольких слоёв, которые двигаются с разной скоростью и создают глубину.</li>
+</ul>
+<h3 id="ввод-ui-и-звук">Ввод, UI и звук</h3>
+<ul>
+<li><strong>Input Map</strong> — таблица в настройках проекта: логические <strong>действия</strong> ("move_left", "jump") и привязанные к ним клавиши, кнопки геймпада.</li>
+<li><strong>CanvasLayer</strong> — слой интерфейса, рисуется поверх игрового мира и не двигается вместе с камерой (если не настроено иначе).</li>
+<li><strong>Label</strong> — текстовый элемент UI (счёт, заголовок).</li>
+<li><strong>Control</strong> — базовый узел для UI (кнопки, панели).</li>
+<li><strong>AudioStreamPlayer</strong> — проигрывает звук или музыку один раз или в цикле.</li>
+<li><strong>AudioStreamPlayer2D</strong> — звук в 2D-пространстве с затуханием по расстоянию.</li>
+</ul>
+<h3 id="рендер-и-экспорт">Рендер и экспорт</h3>
+<ul>
+<li><strong>Forward+</strong> — рендерер по умолчанию в Godot 4 для desktop. Для простого 2D подходит и он, и <strong>Mobile</strong>.</li>
+<li><strong>Export preset</strong> — профиль сборки под Windows, Linux, Web, Android и другие платформы.</li>
+<li><strong>Export templates</strong> — бинарные шаблоны, которые Godot подставляет при сборке. При первом экспорте редактор предложит их скачать.</li>
+<li><strong>PCK</strong> — архив с ресурсами игры. Может идти рядом с <code>.exe</code> или внутри него.</li>
+</ul>
+<h3 id="отладка">Отладка</h3>
+<ul>
+<li><strong>Remote debugger</strong> — отладчик, когда игра запущена отдельным окном, а редактор остаётся открытым.</li>
+<li><strong>Breakpoint (точка останова)</strong> — строка скрипта, на которой выполнение останавливается для просмотра переменных.</li>
+<li><strong><code>print()</code></strong> — вывод текста в консоль редактора. Самый простой способ понять, что происходит в коде.</li>
+</ul>
+<hr>
+<h2 id="что-понадобится">Что понадобится</h2>
+<table>
+<thead>
+<tr>
+<th>Требование</th>
+<th>Зачем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://godotengine.org/download">Godot 4.3+</a></td>
+<td>Редактор и рантайм в одном установщике</td>
+</tr>
+<tr>
+<td>2–4 часа спокойной работы</td>
+<td>На полный проход по статье с платформером</td>
+</tr>
+<tr>
+<td>Базовое знакомство с Python или другим скриптовым языком</td>
+<td>GDScript читается с первого раза</td>
+</tr>
+<tr>
+<td>Мышь и клавиатура</td>
+<td>Редактор рассчитан на desktop</td>
+</tr>
+</tbody>
+</table>
+<p>Официальная документация — <a href="https://docs.godotengine.org/">docs.godotengine.org</a>. Официальные туториалы дублируют многие шаги; здесь акцент на связке с энциклопедией и на одном сквозном примере.</p>
+<hr>
+<h2 id="установка-godot-4">Установка Godot 4</h2>
+<p>Godot распространяется как <strong>portable</strong>-архив (распаковал и запустил) или через менеджеры пакетов. Регистрация не нужна. Лицензия MIT — движок бесплатен для любых проектов.</p>
+<h3 id="windows">Windows</h3>
+<ol>
+<li>Откройте <a href="https://godotengine.org/download">godotengine.org/download</a>.</li>
+<li>В блоке <strong>Godot Engine</strong> выберите <strong>Standard version</strong> (не .NET, если вы только начинаете — GDScript достаточно).</li>
+<li>Скачайте <strong>64-bit</strong> архив <code>.zip</code>.</li>
+<li>Распакуйте в папку без кириллицы и пробелов в пути, например <code>C:\Tools\Godot\</code>.</li>
+<li>Запустите <code>Godot_v4.x-stable_win64.exe</code>.</li>
+<li>При первом запуске Windows может показать предупреждение SmartScreen — нажмите "Подробнее" → "Выполнить в любом случае" (файл с официального сайта).</li>
+<li>По желанию создайте ярлык на рабочем столе.</li>
+</ol>
+<p><strong>Системные требования (ориентир)</strong></p>
+<ul>
+<li>Windows 10/11 64-bit</li>
+<li>4 GB RAM (8 GB комфортнее)</li>
+<li>Видеокарта с поддержкой Vulkan или Direct3D 12 для Forward+</li>
+</ul>
+<h3 id="linux">Linux</h3>
+<p><strong>Вариант A — архив с сайта</strong></p>
+<ol>
+<li>Скачайте <strong>Linux x86_64</strong> с <a href="https://godotengine.org/download">godotengine.org/download</a>.</li>
+<li>Распакуйте: <code>unzip Godot_v4.x-stable_linux.x86_64.zip</code>.</li>
+<li>Сделайте файл исполняемым: <code>chmod +x Godot_v4.x-stable_linux.x86_64</code>.</li>
+<li>Запустите из терминала: <code>./Godot_v4.x-stable_linux.x86_64</code>.</li>
+</ol>
+<p><strong>Вариант B — Flatpak</strong></p>
+<pre><code class="language-bash">flatpak install flathub org.godotengine.Godot
+flatpak run org.godotengine.Godot
+</code></pre>
+<p><strong>Вариант C — дистрибутивный пакет</strong></p>
+<ul>
+<li>Ubuntu/Debian: проверьте <code>apt</code>, но версия в репозитории часто отстаёт — надёжнее официальный архив.</li>
+<li>Fedora: аналогично через <code>dnf</code>, либо Flatpak.</li>
+</ul>
+<p>На Wayland и X11 Godot 4 работает; при глюках окна попробуйте запуск с переменной <code>GODOT_DISABLE_WAYLAND=1</code> (см. <a href="https://docs.godotengine.org/en/stable/tutorials/platform/linux/index.html">документацию по Linux</a>).</p>
+<h3 id="macos">macOS</h3>
+<ol>
+<li>Скачайте <strong>macOS.universal</strong> (Apple Silicon + Intel) с официального сайта.</li>
+<li>Распакуйте и перетащите <code>Godot.app</code> в <strong>Applications</strong>.</li>
+<li>При первом запуске macOS может заблокировать приложение от неизвестного разработчика: <strong>System Settings → Privacy &#x26; Security → Open Anyway</strong>.</li>
+<li>Для экспорта на iOS позже понадобится Xcode — в этой статье мы его не затрагиваем.</li>
+</ol>
+<h3 id="проверка-установки">Проверка установки</h3>
+<ol>
+<li>Запустите Godot.</li>
+<li>В <strong>Project Manager</strong> нажмите <strong>New Project</strong>.</li>
+<li>Если открылось окно выбора рендерера и папки — установка прошла успешно.</li>
+</ol>
+<hr>
+<h2 id="создание-проекта-firstplatformer">Создание проекта FirstPlatformer</h2>
+<ol>
+<li><strong>Project Manager → New Project</strong>.</li>
+<li><strong>Project Name</strong> — <code>FirstPlatformer</code>.</li>
+<li><strong>Project Path</strong> — пустая папка, например <code>Documents/Godot/FirstPlatformer</code>.</li>
+<li><strong>Renderer</strong> — <strong>Forward+</strong> (desktop) или <strong>Mobile</strong> (если целите слабые устройства). Для чистого 2D разница минимальна.</li>
+<li>Нажмите <strong>Create &#x26; Edit</strong>.</li>
+</ol>
+<p>Откроется редактор с пустой сценой. Основные панели:</p>
+<ul>
+<li><strong>Scene</strong> (слева вверху) — дерево узлов.</li>
+<li><strong>FileSystem</strong> (слева внизу) — файлы проекта.</li>
+<li><strong>Inspector</strong> (справа) — свойства выбранного узла.</li>
+<li><strong>Viewport</strong> (центр) — вид сцены.</li>
+</ul>
+<p>Сохраняйте работу часто: <strong>Ctrl+S</strong> (Windows/Linux) или <strong>Cmd+S</strong> (macOS). Подробнее о среде разработки — <a href="https://spirzen.ru/encyclopedia/4-code-dev/4-14-razrabotka-i-otladka/intro">Разработка и отладка</a>.</p>
+<hr>
+<h2 id="настройка-input-map">Настройка Input Map</h2>
+<p>Вместо жёсткой привязки к стрелкам удобнее завести <strong>свои</strong> имена действий. Тогда сменить управление (WASD вместо стрелок) можно без правки скрипта.</p>
+<ol>
+<li><strong>Project → Project Settings</strong>.</li>
+<li>Вкладка <strong>Input Map</strong>.</li>
+<li>В поле <strong>Add New Action</strong> введите <code>move_left</code> → <strong>Add</strong>.</li>
+<li>Разверните <code>move_left</code> → <strong>+</strong> → <strong>Key</strong> → нажмите <strong>A</strong> или <strong>Left Arrow</strong> → <strong>OK</strong>.</li>
+<li>Аналогично создайте действия:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Клавиши (пример)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>move_left</code></td>
+<td>A, Left</td>
+</tr>
+<tr>
+<td><code>move_right</code></td>
+<td>D, Right</td>
+</tr>
+<tr>
+<td><code>jump</code></td>
+<td>Space, W, Up</td>
+</tr>
+<tr>
+<td><code>ui_pause</code></td>
+<td>Escape</td>
+</tr>
+</tbody>
+</table>
+<ol start="6">
+<li>Для геймпада: <strong>+ → Joy Button</strong> или <strong>Joy Axis</strong> на том же действии.</li>
+</ol>
+<p><strong>Как читать действия в коде</strong></p>
+<ul>
+<li><code>Input.is_action_pressed("move_left")</code> — клавиша удерживается.</li>
+<li><code>Input.is_action_just_pressed("jump")</code> — нажата один раз за кадр (идеально для прыжка).</li>
+<li><code>Input.get_axis("move_left", "move_right")</code> — число от -1 до 1 (влево/вправо/нейтраль).</li>
+</ul>
+<p>Встроенные <code>ui_left</code>, <code>ui_right</code>, <code>ui_accept</code> тоже работают, но для учебного проекта лучше явные имена — код читается понятнее.</p>
+<hr>
+<h2 id="сцена-игрока-player">Сцена игрока Player</h2>
+<h3 id="структура-узлов">Структура узлов</h3>
+<ol>
+<li><strong>Scene → New Scene</strong>.</li>
+<li>Корневой узел — <strong>CharacterBody2D</strong>, имя <code>Player</code>.</li>
+<li>Дочерние узлы:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Узел</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sprite2D</strong></td>
+<td>Картинка героя</td>
+</tr>
+<tr>
+<td><strong>CollisionShape2D</strong></td>
+<td>Форма для физики</td>
+</tr>
+<tr>
+<td><strong>Camera2D</strong></td>
+<td>Камера следует за игроком (добавим позже)</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>Выберите <strong>CollisionShape2D</strong> → в Inspector у <strong>Shape</strong> нажмите <strong><code>&#x3C;empty></code></strong> → <strong>New RectangleShape2D</strong> → задайте размер под спрайт (например 32×48).</li>
+<li>Если нет текстуры — временно добавьте <strong>ColorRect</strong> (как ребёнок Sprite2D) или используйте встроенную иконку: <strong>Sprite2D → Texture → Load</strong> → любой PNG из папки <code>icon.svg</code> проекта.</li>
+<li><strong>Scene → Save Scene As</strong> → <code>player.tscn</code>.</li>
+</ol>
+<h3 id="полный-скрипт-движения">Полный скрипт движения</h3>
+<p>Выберите корень <code>Player</code> → <strong>Attach Script</strong> → язык <strong>GDScript</strong> → <strong>Create</strong>.</p>
+<pre><code class="language-gdscript">extends CharacterBody2D
+
+## Скорость бега по горизонтали (пикселей в секунду)
+const SPEED = 300.0
+## Импульс прыжка (отрицательный Y — вверх в Godot)
+const JUMP_VELOCITY = -420.0
+
+func _physics_process(delta: float) -> void:
+    # Гравитация, если не стоим на полу
+    if not is_on_floor():
+        velocity += get_gravity() * delta
+
+    # Прыжок — только один раз при нажатии и только на земле
+    if Input.is_action_just_pressed("jump") and is_on_floor():
+        velocity.y = JUMP_VELOCITY
+
+    # Горизонтальное движение
+    var direction := Input.get_axis("move_left", "move_right")
+    if direction != 0.0:
+        velocity.x = direction * SPEED
+    else:
+        # Плавное торможение без нажатой клавиши
+        velocity.x = move_toward(velocity.x, 0.0, SPEED)
+
+    move_and_slide()
+</code></pre>
+<h3 id="построчное-объяснение">Построчное объяснение</h3>
+<table>
+<thead>
+<tr>
+<th>Строка</th>
+<th>Что делает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>extends CharacterBody2D</code></td>
+<td>Скрипт привязан к телу персонажа и получает его методы</td>
+</tr>
+<tr>
+<td><code>const SPEED = 300.0</code></td>
+<td>Константа скорости; <code>const</code> не меняется во время игры</td>
+</tr>
+<tr>
+<td><code>const JUMP_VELOCITY = -420.0</code></td>
+<td>В Godot ось Y направлена вниз, поэтому прыжок — отрицательное число</td>
+</tr>
+<tr>
+<td><code>func _physics_process(delta)</code></td>
+<td>Вызывается каждый <strong>физический</strong> кадр (~60 раз/с). <code>delta</code> — секунды с прошлого кадра</td>
+</tr>
+<tr>
+<td><code>is_on_floor()</code></td>
+<td>Встроенная проверка после <code>move_and_slide()</code> — стоим ли на поверхности</td>
+</tr>
+<tr>
+<td><code>get_gravity()</code></td>
+<td>Вектор гравитации из настроек проекта (<strong>Project Settings → Physics → 2D</strong>)</td>
+</tr>
+<tr>
+<td><code>velocity += get_gravity() * delta</code></td>
+<td>Накапливаем падение: чем дольше в воздухе, тем выше скорость вниз</td>
+</tr>
+<tr>
+<td><code>Input.is_action_just_pressed("jump")</code></td>
+<td>True только на кадре нажатия — нельзя "зажать" бесконечный прыжок</td>
+</tr>
+<tr>
+<td><code>Input.get_axis("move_left", "move_right")</code></td>
+<td>-1 влево, +1 вправо, 0 если ничего не нажато</td>
+</tr>
+<tr>
+<td><code>move_toward(velocity.x, 0.0, SPEED)</code></td>
+<td>Плавно уменьшает горизонтальную скорость к нулю</td>
+</tr>
+<tr>
+<td><code>move_and_slide()</code></td>
+<td>Двигает тело, учитывает коллизии и скольжение вдоль стен</td>
+</tr>
+</tbody>
+</table>
+<p>Аналог этого цикла в коде без редактора — <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312"><em>игровой цикл</em> на Pygame</a>.</p>
+<h3 id="улучшение-coyote-time-необязательно">Улучшение — coyote time (необязательно)</h3>
+<p>Короткое "прощение" после схода с платформы — игрок успевает нажать прыжок:</p>
+<pre><code class="language-gdscript">var coyote_timer := 0.0
+const COYOTE_TIME = 0.12
+
+func _physics_process(delta: float) -> void:
+    if is_on_floor():
+        coyote_timer = COYOTE_TIME
+    else:
+        coyote_timer = max(coyote_timer - delta, 0.0)
+
+    if Input.is_action_just_pressed("jump") and coyote_timer > 0.0:
+        velocity.y = JUMP_VELOCITY
+        coyote_timer = 0.0
+    # ... остальной код гравитации и move_and_slide
+</code></pre>
+<hr>
+<h2 id="слои-коллизии-и-маски">Слои коллизии и маски</h2>
+<p>Godot различает <strong>слой</strong> (layer) — "я на слое N" и <strong>маску</strong> (mask) — "я сталкиваюсь со слоями, где бит N включён". Это битовые флаги в Inspector у тел и зон.</p>
+<h3 id="зачем-нужны-слои">Зачем нужны слои</h3>
+<p>Без слоёв все объекты сталкиваются со всеми. С слоями вы разделяете:</p>
+<ul>
+<li>игрок</li>
+<li>земля и платформы</li>
+<li>монеты (триггеры)</li>
+<li>враги</li>
+<li>проектили</li>
+</ul>
+<h3 id="рекомендуемая-схема-для-платформера">Рекомендуемая схема для платформера</h3>
+<p><strong>Project → Project Settings → Layer Names → 2D Physics</strong></p>
+<table>
+<thead>
+<tr>
+<th>Номер слоя</th>
+<th>Имя</th>
+<th>Кто использует</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>world</code></td>
+<td>Пол, стены, TileMap</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>player</code></td>
+<td>CharacterBody2D игрока</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>pickups</code></td>
+<td>Монеты Area2D</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>hazards</code></td>
+<td>Шипы, ямы</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Настройка Player (CharacterBody2D)</strong></p>
+<ul>
+<li><strong>Collision Layer</strong> — включить бит 2 (<code>player</code>).</li>
+<li><strong>Collision Mask</strong> — включить бит 1 (<code>world</code>) и при необходимости 4 (<code>hazards</code>).</li>
+</ul>
+<p><strong>Настройка пола (StaticBody2D)</strong></p>
+<ul>
+<li><strong>Collision Layer</strong> — бит 1 (<code>world</code>).</li>
+<li><strong>Collision Mask</strong> — можно оставить пустым (пол не "ищет" столкновения сам).</li>
+</ul>
+<p><strong>Настройка монеты (Area2D)</strong></p>
+<ul>
+<li><strong>Collision Layer</strong> — бит 3 (<code>pickups</code>).</li>
+<li><strong>Collision Mask</strong> — бит 2 (<code>player</code>) — зона реагирует только на игрока.</li>
+</ul>
+<p>Монета не должна физически блокировать игрока — для этого подходит <strong>Area2D</strong> вместо StaticBody2D.</p>
+<hr>
+<h2 id="сцена-монеты-coin">Сцена монеты Coin</h2>
+<ol>
+<li><strong>New Scene</strong> → корень <strong>Area2D</strong> → имя <code>Coin</code>.</li>
+<li>Дети: <strong>Sprite2D</strong>, <strong>CollisionShape2D</strong> (круг или прямоугольник поменьше спрайта).</li>
+<li><strong>Attach Script</strong>:</li>
+</ol>
+<pre><code class="language-gdscript">extends Area2D
+
+signal collected
+
+func _ready() -> void:
+    # Подписываемся на вход тела в зону
+    body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node2D) -> void:
+    if body.is_in_group("player"):
+        collected.emit()
+        queue_free()
+</code></pre>
+<ol start="4">
+<li><strong>Scene → Save Scene As</strong> → <code>coin.tscn</code>.</li>
+</ol>
+<p><strong>Построчно</strong></p>
+<ul>
+<li><code>signal collected</code> — объявление собственного сигнала; другие скрипты могут на него подписаться.</li>
+<li><code>_ready()</code> — вызывается один раз, когда узел попал в дерево сцены.</li>
+<li><code>body_entered.connect(...)</code> — при входе CharacterBody2D/RigidBody2D вызовется <code>_on_body_entered</code>.</li>
+<li><code>body.is_in_group("player")</code> — проверка группы вместо сравнения <code>body.name == "Player"</code>.</li>
+<li><code>queue_free()</code> — безопасное удаление узла в конце кадра.</li>
+</ul>
+<p>На узле <code>Player</code> в Inspector вкладка <strong>Node → Groups</strong> → добавьте группу <code>player</code>.</p>
+<hr>
+<h2 id="autoload-для-глобального-счёта">Autoload для глобального счёта</h2>
+<p>Счёт монет удобно хранить в одном месте, доступном из любой сцены.</p>
+<h3 id="создание-gamestate">Создание GameState</h3>
+<ol>
+<li>Создайте файл <code>game_state.gd</code> в корне проекта (ПКМ в FileSystem → <strong>Create New → Script</strong>).</li>
+<li>Содержимое:</li>
+</ol>
+<pre><code class="language-gdscript">extends Node
+
+var coins := 0
+var lives := 3
+
+signal coins_changed(new_total: int)
+signal lives_changed(new_total: int)
+signal game_over
+
+func add_coin() -> void:
+    coins += 1
+    coins_changed.emit(coins)
+
+func lose_life() -> void:
+    lives -= 1
+    lives_changed.emit(lives)
+    if lives &#x3C;= 0:
+        game_over.emit()
+
+func reset_run() -> void:
+    coins = 0
+    lives = 3
+    coins_changed.emit(coins)
+    lives_changed.emit(lives)
+</code></pre>
+<ol start="3">
+<li><strong>Project → Project Settings → Autoload</strong>.</li>
+<li><strong>Path</strong> — выберите <code>game_state.gd</code>.</li>
+<li><strong>Node Name</strong> — <code>GameState</code> (именно так к нему обращаются в коде).</li>
+<li><strong>Enable</strong> → <strong>Add</strong>.</li>
+</ol>
+<p>Теперь из любого скрипта: <code>GameState.add_coin()</code>, <code>GameState.coins</code>.</p>
+<p>Это тот же паттерн "глобального сервиса", что и синглтоны в приложениях — см. <a href="https://spirzen.ru/encyclopedia/4-code-dev/4-04-proekt-i-freymvorki/intro">Проект и фреймворки</a>.</p>
+<h3 id="связь-монеты-с-gamestate">Связь монеты с GameState</h3>
+<p>Вариант A — в скрипте уровня инстансить монеты и подписываться на сигнал.
+Вариант B — прямо в <code>coin.gd</code>:</p>
+<pre><code class="language-gdscript">func _on_body_entered(body: Node2D) -> void:
+    if body.is_in_group("player"):
+        GameState.add_coin()
+        queue_free()
+</code></pre>
+<hr>
+<h2 id="уровень-level-с-tilemap">Уровень Level с TileMap</h2>
+<p>Ручные платформы из StaticBody2D подходят для пробы; для реального уровня используйте <strong>TileMap</strong>.</p>
+<h3 id="tileset-из-одной-текстуры">TileSet из одной текстуры</h3>
+<ol>
+<li><strong>New Scene</strong> → <strong>Node2D</strong> → имя <code>Level</code>.</li>
+<li>Добавьте дочерний <strong>TileMap</strong>.</li>
+<li>В Inspector у <strong>TileMap → Tile Set</strong> → <strong>New TileSet</strong>.</li>
+<li>Откройте TileSet (клик по ресурсу) → <strong>+ → Atlas</strong> → укажите текстуру тайлов (16×16 или 32×32 сетка).</li>
+<li>Выделите тайлы в редакторе TileSet → <strong>Paint → Physics</strong> → нарисуйте коллизию на тайлах "земли".</li>
+</ol>
+<h3 id="рисование-уровня">Рисование уровня</h3>
+<ol>
+<li>Выберите <strong>TileMap</strong> → инструмент <strong>Paint</strong> на панели сверху.</li>
+<li>Рисуйте платформы в viewport.</li>
+<li><strong>Instance Child Scene</strong> (кнопка цепочки на панели Scene) → <code>player.tscn</code> — поместите игрока над полом.</li>
+<li>Разместите несколько инстансов <code>coin.tscn</code>.</li>
+</ol>
+<h3 id="пол-без-tilemap-быстрый-старт">Пол без TileMap (быстрый старт)</h3>
+<p>Если текстур ещё нет:</p>
+<ol>
+<li><strong>StaticBody2D</strong> → имя <code>Ground</code>.</li>
+<li><strong>CollisionShape2D</strong> — широкий <strong>RectangleShape2D</strong> (например 2000×40).</li>
+<li><strong>ColorRect</strong> или <strong>Sprite2D</strong> для отображения.</li>
+<li>Позиция Y — низ экрана (например y = 500 при высоте viewport 648).</li>
+</ol>
+<hr>
+<h2 id="интерфейс-счёт-и-жизни">Интерфейс — счёт и жизни</h2>
+<ol>
+<li>В сцене <code>Level</code> добавьте <strong>CanvasLayer</strong> → имя <code>UI</code>.</li>
+<li>Внутри <strong>MarginContainer</strong> → <strong>VBoxContainer</strong> → два <strong>Label</strong>:
+<ul>
+<li><code>CoinsLabel</code> — текст "Монеты: 0"</li>
+<li><code>LivesLabel</code> — текст "Жизни: 3"</li>
+</ul>
+</li>
+<li>На корень <code>Level</code> <strong>Attach Script</strong>:</li>
+</ol>
+<pre><code class="language-gdscript">extends Node2D
+
+@onready var coins_label: Label = $UI/MarginContainer/VBoxContainer/CoinsLabel
+@onready var lives_label: Label = $UI/MarginContainer/VBoxContainer/LivesLabel
+
+func _ready() -> void:
+    GameState.coins_changed.connect(_on_coins_changed)
+    GameState.lives_changed.connect(_on_lives_changed)
+    GameState.game_over.connect(_on_game_over)
+    _on_coins_changed(GameState.coins)
+    _on_lives_changed(GameState.lives)
+
+func _on_coins_changed(total: int) -> void:
+    coins_label.text = "Монеты: %d" % total
+
+func _on_lives_changed(total: int) -> void:
+    lives_label.text = "Жизни: %d" % total
+
+func _on_game_over() -> void:
+    get_tree().change_scene_to_file("res://game_over.tscn")
+</code></pre>
+<p><strong>Построчно</strong></p>
+<ul>
+<li><code>@onready var ... = $UI/...</code> — ссылка на узел по пути; заполняется после входа в дерево.</li>
+<li><code>GameState.coins_changed.connect(...)</code> — UI обновляется при изменении счёта, а не каждый кадр.</li>
+<li><code>get_tree().change_scene_to_file(...)</code> — загрузка другой сцены (экран Game Over).</li>
+</ul>
+<p>Основы UI — <a href="https://spirzen.ru/encyclopedia/1-basics/1-25-interfeys/intro">Интерфейс</a>. Стилизация Label через <strong>Theme</strong> — следующий шаг после прототипа.</p>
+<hr>
+<h2 id="звуковые-заготовки">Звуковые заготовки</h2>
+<p>Godot не требует отдельного "аудиодвижка" — достаточно узлов <strong>AudioStreamPlayer</strong>.</p>
+<h3 id="звук-подбора-монеты">Звук подбора монеты</h3>
+<ol>
+<li>Импортируйте <code>.wav</code> или <code>.ogg</code> в проект (перетащите в FileSystem).</li>
+<li>В <code>coin.gd</code> добавьте:</li>
+</ol>
+<pre><code class="language-gdscript">@onready var pickup_sound: AudioStreamPlayer = $PickupSound
+
+func _on_body_entered(body: Node2D) -> void:
+    if body.is_in_group("player"):
+        GameState.add_coin()
+        if pickup_sound:
+            pickup_sound.play()
+        await pickup_sound.finished
+        queue_free()
+</code></pre>
+<ol start="3">
+<li>В сцене <code>Coin</code> добавьте дочерний <strong>AudioStreamPlayer</strong> → имя <code>PickupSound</code> → <strong>Stream</strong> — ваш файл.</li>
+</ol>
+<p><code>await pickup_sound.finished</code> — скрипт ждёт конца звука перед удалением (опционально; можно удалять сразу).</p>
+<h3 id="фоновая-музыка">Фоновая музыка</h3>
+<ol>
+<li>В <code>Level</code> добавьте <strong>AudioStreamPlayer</strong> → имя <code>Music</code>.</li>
+<li><strong>Autoplay</strong> — включено, <strong>Stream</strong> — музыка <code>.ogg</code>, <strong>Bus</strong> — Master или отдельная шина Music.</li>
+</ol>
+<p>Шины (<strong>Audio → Bus Layout</strong>) позволяют регулировать громкость SFX и музыки отдельно в настройках игры.</p>
+<hr>
+<h2 id="экран-game-over-и-перезапуск">Экран Game Over и перезапуск</h2>
+<ol>
+<li><strong>New Scene</strong> → <strong>Control</strong> (корень) → имя <code>GameOver</code>.</li>
+<li><strong>Label</strong> — "Игра окончена", <strong>Button</strong> — "Заново".</li>
+<li>Скрипт на корне:</li>
+</ol>
+<pre><code class="language-gdscript">extends Control
+
+func _ready() -> void:
+    $RetryButton.pressed.connect(_on_retry_pressed)
+
+func _on_retry_pressed() -> void:
+    GameState.reset_run()
+    get_tree().change_scene_to_file("res://level.tscn")
+</code></pre>
+<ol start="4">
+<li>Сохраните <code>game_over.tscn</code>.</li>
+<li><strong>Project → Project Settings → Application → Run → Main Scene</strong> — укажите <code>level.tscn</code>.</li>
+</ol>
+<h3 id="потеря-жизни-при-падении">Потеря жизни при падении</h3>
+<p>На <code>Player</code> добавьте:</p>
+<pre><code class="language-gdscript">@export var fall_limit_y := 800.0
+
+func _physics_process(delta: float) -> void:
+    # ... движение ...
+    if global_position.y > fall_limit_y:
+        GameState.lose_life()
+        global_position = Vector2(100, 400)  # точка респавна — подстройте под уровень
+        velocity = Vector2.ZERO
+</code></pre>
+<p>При <code>lives &#x3C;= 0</code> сработает сигнал <code>game_over</code> из GameState.</p>
+<hr>
+<h2 id="camera2d">Camera2D</h2>
+<ol>
+<li>Откройте <code>player.tscn</code>.</li>
+<li>Добавьте <strong>Camera2D</strong> как ребёнка <code>Player</code>.</li>
+<li>В Inspector:
+<ul>
+<li><strong>Enabled</strong> — включено</li>
+<li><strong>Position Smoothing → Enabled</strong> — плавное следование</li>
+<li><strong>Limit</strong> — границы уровня (left, top, right, bottom), чтобы камера не показывала пустоту за картой</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-gdscript"># Опционально в скрипте Level — передать лимиты камере при старте
+func _ready() -> void:
+    var cam = $Player/Camera2D
+    cam.limit_left = 0
+    cam.limit_right = 4000
+    cam.limit_bottom = 648
+    cam.limit_top = 0
+</code></pre>
+<p>Если камера одна на сцену и не привязана к игроку — используйте <strong>RemoteTransform2D</strong> или скрипт, копирующий позицию игрока каждый кадр.</p>
+<hr>
+<h2 id="параллакс-фон">Параллакс-фон</h2>
+<ol>
+<li>В <code>Level</code> добавьте <strong>ParallaxBackground</strong>.</li>
+<li>Внутри — один или несколько <strong>ParallaxLayer</strong>.</li>
+<li>На каждый слой — <strong>Sprite2D</strong> или <strong>TextureRect</strong> с картинкой неба, гор, облаков.</li>
+<li>У <strong>ParallaxLayer</strong> свойство <strong>Motion Scale</strong> — <code>(0.2, 0)</code> для дальнего фона, <code>(0.5, 0)</code> для среднего. Чем меньше число, тем медленнее слой двигается относительно камеры.</li>
+</ol>
+<p><strong>Scroll Base Offset</strong> смещает начальную позицию. <strong>Mirroring</strong> повторяет текстуру для бесконечного горизонта.</p>
+<p>Без готовых ассетов временно используйте <strong>ColorRect</strong> на заднем плане (Z-index ниже TileMap) — <a href="https://spirzen.ru/encyclopedia/3-data-markup/3-10-css/intro">CSS</a>-аналогия: слои рисования.</p>
+<hr>
+<h2 id="главная-сцена-и-первый-запуск">Главная сцена и первый запуск</h2>
+<ol>
+<li><strong>Project → Project Settings → Application → Run</strong>.</li>
+<li><strong>Main Scene</strong> — <code>level.tscn</code> (или ваш путь).</li>
+<li><strong>Display → Window</strong> — <strong>Viewport Width/Height</strong> (например 1152×648), <strong>Stretch Mode</strong> — <code>canvas_items</code>, <strong>Aspect</strong> — <code>keep</code>.</li>
+<li><strong>F5</strong> или кнопка <strong>Play</strong> — запуск с отладчиком.</li>
+</ol>
+<p>Если экран чёрный — почти всегда не назначена Main Scene или игрок spawned под землёй.</p>
+<hr>
+<h2 id="отладка">Отладка</h2>
+<h3 id="консоль-и-print">Консоль и print</h3>
+<pre><code class="language-gdscript">func _physics_process(delta: float) -> void:
+    print("velocity=", velocity, " on_floor=", is_on_floor())
+</code></pre>
+<p>Вывод виден во вкладке <strong>Output</strong> внизу редактора. Для частых сообщений используйте <code>print_rich()</code> или условный флаг <code>DEBUG</code>.</p>
+<h3 id="точки-останова">Точки останова</h3>
+<ol>
+<li>Откройте скрипт <code>.gd</code>.</li>
+<li>Кликните слева от номера строки — появится красная точка.</li>
+<li><strong>F5</strong> — при достижении строки игра остановится.</li>
+<li>Панель <strong>Debugger → Stack &#x26; Variables</strong> — текущие локальные переменные.</li>
+</ol>
+<h3 id="remote-debugger">Remote debugger</h3>
+<p>Когда игра запущена отдельным окном, редактор остаётся подключённым:</p>
+<ul>
+<li>вкладка <strong>Remote</strong> в Scene tree — живое дерево узлов;</li>
+<li><strong>Remote Inspector</strong> — свойства в рантайме;</li>
+<li>ошибки GDScript дублируются в <strong>Output</strong>.</li>
+</ul>
+<h3 id="типичные-сообщения-об-ошибках">Типичные сообщения об ошибках</h3>
+<table>
+<thead>
+<tr>
+<th>Текст</th>
+<th>Смысл</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Invalid get index 'x' on base 'Nil'</code></td>
+<td>Обращение к узлу, которого нет (опечатка в <code>$Path</code>)</td>
+</tr>
+<tr>
+<td><code>Attempt to call function in null instance</code></td>
+<td>Метод вызван у освобождённого объекта</td>
+</tr>
+<tr>
+<td><code>Collision shape not set</code></td>
+<td>У CollisionShape2D пустой Shape</td>
+</tr>
+</tbody>
+</table>
+<p>Подробнее о процессе разработки — <a href="https://spirzen.ru/encyclopedia/4-code-dev/4-14-razrabotka-i-otladka/111">Разработка и отладка</a>.</p>
+<hr>
+<h2 id="экспорт-на-платформы">Экспорт на платформы</h2>
+<p><strong>Project → Export</strong> → <strong>Add…</strong> — выберите пресет.</p>
+<p>При первом экспорте Godot предложит скачать <strong>export templates</strong> — согласитесь (<strong>Editor → Manage Export Templates → Download and Install</strong>).</p>
+<h3 id="windows-desktop">Windows Desktop</h3>
+<ol>
+<li>Пресет <strong>Windows Desktop</strong>.</li>
+<li><strong>Runnable</strong> — включено.</li>
+<li><strong>Export Path</strong> — <code>builds/FirstPlatformer.exe</code>.</li>
+<li><strong>Export Project</strong>.</li>
+</ol>
+<p>Результат — <code>.exe</code> и рядом <code>.pck</code> (или один embedded, если включено <strong>Embed PCK</strong>). Распространяйте оба файла в одной папке.</p>
+<h3 id="linux">Linux</h3>
+<ol>
+<li>Пресет <strong>Linux/X11</strong> (или <strong>Wayland</strong> при необходимости).</li>
+<li>Экспорт даст бинарник без расширения и <code>.pck</code>.</li>
+<li>На целевой машине: <code>chmod +x FirstPlatformer</code>.</li>
+</ol>
+<h3 id="web-html5">Web (HTML5)</h3>
+<ol>
+<li>Пресет <strong>Web</strong>.</li>
+<li><strong>Export Path</strong> — папка <code>builds/web/index.html</code>.</li>
+<li>После экспорта нужен <a href="https://spirzen.ru/encyclopedia/4-code-dev/4-17-veb-razrabotka/intro">локальный HTTP-сервер</a> — браузер блокирует WASM при открытии файла напрямую через <code>file://</code>.</li>
+</ol>
+<pre><code class="language-bash"># Python 3
+python -m http.server 8060 --directory builds/web
+</code></pre>
+<p>Откройте <code>http://localhost:8060</code>.</p>
+<p>Ограничения Web-экспорта — нет многопоточности как на desktop, размер загрузки больше. Документация — <a href="https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_web.html">Exporting for the Web</a>.</p>
+<h3 id="android-обзор">Android (обзор)</h3>
+<ol>
+<li>Установите <a href="https://docs.godotengine.org/en/stable/tutorials/export/android_gradle_build.html">Android SDK</a> и JDK 17.</li>
+<li><strong>Editor → Editor Settings → Export → Android</strong> — пути к SDK и debug keystore.</li>
+<li>Пресет <strong>Android</strong> → package name, версии, иконки.</li>
+<li>Подключите устройство с USB-отладкой → <strong>Export Project</strong> или <strong>One-Click Deploy</strong>.</li>
+</ol>
+<p>Для первой игры достаточно desktop; мобильный экспорт — отдельная неделя настройки.</p>
+<h3 id="таблица-пресетов">Таблица пресетов</h3>
+<table>
+<thead>
+<tr>
+<th>Платформа</th>
+<th>Формат</th>
+<th>Примечание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td><code>.exe</code> + <code>.pck</code></td>
+<td>Запуск на Win 10+</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>бинарник + <code>.pck</code></td>
+<td>Проверьте libc на старых дистрибутивах</td>
+</tr>
+<tr>
+<td>Web</td>
+<td><code>.html</code> + <code>.wasm</code> + <code>.pck</code></td>
+<td>Только через HTTP</td>
+</tr>
+<tr>
+<td>Android</td>
+<td><code>.apk</code> / <code>.aab</code></td>
+<td>Нужен SDK и подпись</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td><code>.app</code></td>
+<td>Codesign для распространения вне Mac</td>
+</tr>
+</tbody>
+</table>
+<p>Публикация в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11435">Steam</a> или <a href="https://itch.io/">itch.io</a> — шаг после стабильного билда. См. <a href="https://spirzen.ru/encyclopedia/1-basics/1-28-marketing-i-rasprostranenie/intro">Маркетинг и распространение</a>.</p>
+<hr>
+<h2 id="производительность-2d">Производительность 2D</h2>
+<p>Godot 4 быстр для 2D, но на слабых машинах и Web полезны привычки:</p>
+<ul>
+<li><strong>Один TileMap</strong> на слой вместо сотен StaticBody2D — меньше объектов физики.</li>
+<li><strong>Отключайте процесс</strong> у объектов вне экрана: <code>visibility_notifier.visible = false</code> → <code>set_process(false)</code>.</li>
+<li><strong>Object pooling</strong> — переиспользуйте пули и монеты вместо <code>queue_free</code> + новый инстанс каждый раз (актуально при сотнях объектов).</li>
+<li><strong>Текстуры</strong> — степени двойки (256, 512), атласы вместо тысяч мелких PNG.</li>
+<li><strong>Particles2D</strong> — ограничивайте amount; на mobile снижайте.</li>
+<li><strong>Profiler</strong> — <strong>Debugger → Monitors</strong> при запуске игры: FPS, объектов, draw calls.</li>
+<li><strong>VisibleOnScreenNotifier2D</strong> — не рисовать анимации вне камеры.</li>
+</ul>
+<p>Для pixel art включите <strong>Project Settings → Rendering → Textures → Canvas Textures → Default Texture Filter → Nearest</strong>.</p>
+<hr>
+<h2 id="сравнение-движков-для-2d-новичка">Сравнение движков для 2D-новичка</h2>
+<table>
+<thead>
+<tr>
+<th>Критерий</th>
+<th>Godot 4</th>
+<th>Unity</th>
+<th>Unreal Engine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Лицензия</td>
+<td>MIT, бесплатно</td>
+<td>Бесплатно до порога выручки</td>
+<td>Бесплатно с роялти после порога</td>
+</tr>
+<tr>
+<td>Язык по умолчанию</td>
+<td>GDScript</td>
+<td>C#</td>
+<td>C++ / Blueprints</td>
+</tr>
+<tr>
+<td>2D из коробки</td>
+<td>Сильный TileMap, 2D-узлы</td>
+<td>2D есть, экосистема больше 3D</td>
+<td>2D возможен, фокус на 3D</td>
+</tr>
+<tr>
+<td>Размер установки</td>
+<td>~100 MB portable</td>
+<td>Крупный Hub + модули</td>
+<td>Очень крупный</td>
+</tr>
+<tr>
+<td>Открытый код</td>
+<td>Да</td>
+<td>Нет</td>
+<td>Исходники доступны, не OSI</td>
+</tr>
+<tr>
+<td>Веб-экспорт</td>
+<td>WASM, настраивается</td>
+<td>WebGL (ограничения)</td>
+<td>Pixel Streaming, тяжело</td>
+</tr>
+<tr>
+<td>Кривая обучения для платформера</td>
+<td>Низкая–средняя</td>
+<td>Средняя</td>
+<td>Высокая для чистого 2D</td>
+</tr>
+<tr>
+<td>Сообщество и ассеты</td>
+<td>Растёт, Asset Library</td>
+<td>Огромное</td>
+<td>Огромное, 3D-уклон</td>
+</tr>
+</tbody>
+</table>
+<p>Подробнее — <a href="./113">Виды игровых движков</a>. Альтернатива без кода — <a href="./203">Roblox Studio — первая игра</a>.</p>
+<hr>
+<h2 id="частые-вопросы-faq">Частые вопросы (FAQ)</h2>
+<p><strong>Godot 3 или Godot 4?</strong>
+Для новых проектов берите <strong>Godot 4</strong>. Тutorials и Asset Library постепенно переехали; API 3.x устаревает.</p>
+<p><strong>Нужен ли .NET / C#?</strong>
+Нет. GDScript покрывает учебный платформер и большинство indie-2D. C# в Godot 4 на части платформ ограничен — см. официальную таблицу поддержки.</p>
+<p><strong>Где взять бесплатные спрайты и тайлы?</strong>
+<a href="https://kenney.nl/assets">Kenney.nl</a>, <a href="https://opengameart.org/">OpenGameArt.org</a>, itch.io asset packs. Укажите авторов в credits.</p>
+<p><strong>Почему персонаж дёргается на склонах?</strong>
+Проверьте форму CollisionShape2D, <code>floor_max_angle</code> у CharacterBody2D, используйте <code>move_and_slide()</code> один раз за <code>_physics_process</code>.</p>
+<p><strong>Как сделать двойной прыжок?</strong>
+Счётчик прыжков: при <code>jump</code> уменьшайте <code>jumps_left</code>; на полу сбрасывайте в 2.</p>
+<p><strong>Как сохранить прогресс?</strong>
+<code>FileAccess.open("user://save.json", FileAccess.WRITE)</code> и JSON — см. <a href="https://spirzen.ru/encyclopedia/3-data-markup/3-04-konfiguratsii-i-dannye/intro">Конфигурации и данные</a>.</p>
+<p><strong>Можно ли писать на Python?</strong>
+Напрямую нет. GDScript похож; логику из <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">Pygame-практикума</a> переносят почти строка в строку.</p>
+<p><strong>Как повернуть спрайт в сторону бега?</strong>
+<code>sprite_2d.flip_h = direction &#x3C; 0</code> или смена <code>animation</code> в <strong>AnimatedSprite2D</strong>.</p>
+<p><strong>Игра тормозит в редакторе, но не в экспорте</strong>
+Редактор тяжелее; сравнивайте <strong>F5</strong> и <strong>Export</strong>. Закройте лишние панели профайлера.</p>
+<p><strong>Как поставить игру на itch.io?</strong>
+Zip с <code>.exe</code> + <code>.pck</code> или Web-папку; в настройках проекта itch укажите главный html или exe.</p>
+<p><strong>Area2D не срабатывает</strong>
+Проверьте <strong>Monitoring</strong>, collision mask/layer, что игрок — <strong>CharacterBody2D</strong>, а не только Sprite2D.</p>
+<p><strong>Ошибка "Main scene not found"</strong>
+Main Scene в Project Settings указывает на удалённый файл — переназначьте.</p>
+<p><strong>Как сделать паузу?</strong>
+<code>get_tree().paused = true</code> и <strong>Process Mode</strong> у UI — <code>When Paused</code>.</p>
+<p><strong>Есть ли мультиплеер?</strong>
+Есть <a href="https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html">High-level multiplayer API</a>; для первой игры не обязателен.</p>
+<p><strong>Как версионировать проект в Git?</strong>
+Коммитьте <code>project.godot</code>, сцены, скрипты; в <code>.gitignore</code> добавьте <code>.godot/</code> (кэш импорта). См. <a href="https://spirzen.ru/encyclopedia/4-code-dev/4-13-osnovy-raboty-s-git/intro">Основы Git</a>.</p>
+<p><strong>Где учиться дальше официально?</strong>
+<a href="https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html">Your first 2D game</a> — пошаговый дубликат с официальными ассетами.</p>
+<hr>
+<h2 id="расширенная-таблица-неполадок">Расширенная таблица неполадок</h2>
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Вероятная причина</th>
+<th>Что сделать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Персонаж проваливается сквозь пол</td>
+<td>Нет CollisionShape2D у пола</td>
+<td>Добавьте форму, включите слой <code>world</code></td>
+</tr>
+<tr>
+<td>Проваливание на краях тайлов</td>
+<td>Щели между тайлами</td>
+<td>Включите snap в TileMap; проверьте collision polygon</td>
+</tr>
+<tr>
+<td>Прыжок не работает</td>
+<td><code>is_on_floor()</code> false</td>
+<td>Утолщите пол; проверьте collision mask игрока</td>
+</tr>
+<tr>
+<td>Прыжок срабатывает в воздухе</td>
+<td>Используете <code>is_action_pressed</code> вместо <code>just_pressed</code></td>
+<td>Замените на <code>is_action_just_pressed</code></td>
+</tr>
+<tr>
+<td>Игрок застревает в стене</td>
+<td>CollisionShape больше спрайта</td>
+<td>Уменьшите форму или включите separation в move_and_slide</td>
+</tr>
+<tr>
+<td>Монета не исчезает</td>
+<td>Неверная mask у Area2D</td>
+<td>Mask должен включать слой игрока</td>
+</tr>
+<tr>
+<td>Счёт не обновляется</td>
+<td>Autoload не подключён</td>
+<td>Project Settings → Autoload → GameState</td>
+</tr>
+<tr>
+<td>UI не видно</td>
+<td>Label за пределами экрана</td>
+<td>Anchor/margin у Control; CanvasLayer</td>
+</tr>
+<tr>
+<td>Чёрный экран</td>
+<td>Нет Main Scene / камеры</td>
+<td>Назначьте Main Scene; Camera2D enabled</td>
+</tr>
+<tr>
+<td>Розовые текстуры</td>
+<td>Файл не импортирован</td>
+<td>Подождите импорт; проверьте путь <code>res://</code></td>
+</tr>
+<tr>
+<td>Ошибка при экспорте Web</td>
+<td>Нет templates</td>
+<td>Editor → Manage Export Templates</td>
+</tr>
+<tr>
+<td><code>.exe</code> не запускается на другом ПК</td>
+<td>Антивirus / отсутствует <code>.pck</code></td>
+<td>Копируйте всю папку builds; подпишите exe позже</td>
+</tr>
+<tr>
+<td>Звук не слышно</td>
+<td>Bus muted / Stream пустой</td>
+<td>Audio bus; проверьте <code>@onready</code> путь</td>
+</tr>
+<tr>
+<td>Игра ускоряется на 144 Hz мониторе</td>
+<td>Логика в <code>_process</code> без delta</td>
+<td>Физику держите в <code>_physics_process</code></td>
+</tr>
+<tr>
+<td>Сцена не сохраняется</td>
+<td>Нет прав на папку</td>
+<td>Перенесите проект из Program Files</td>
+</tr>
+<tr>
+<td>Скрипт "не меняется"</td>
+<td>Не сохранён <code>.gd</code></td>
+<td>Ctrl+S на скрипте и сцене</td>
+</tr>
+<tr>
+<td>Параллакс дёргается</td>
+<td>Motion Scale слишком большой</td>
+<td>Уменьшите до 0.1–0.5</td>
+</tr>
+<tr>
+<td>TileMap коллизия только сверху</td>
+<td>One Way Collision</td>
+<td>Настройте в TileSet physics layers</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="полный-чеклист-платформера">Полный чеклист платформера</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Godot 4 установлен, проект <code>FirstPlatformer</code> создан</li>
+<li class="task-list-item"><input type="checkbox" disabled> Input Map: <code>move_left</code>, <code>move_right</code>, <code>jump</code></li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>player.tscn</code> — CharacterBody2D, коллизия, скрипт движения</li>
+<li class="task-list-item"><input type="checkbox" disabled> Группа <code>player</code> на узле Player</li>
+<li class="task-list-item"><input type="checkbox" disabled> Слои физики названы и назначены</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>coin.tscn</code> — Area2D, GameState.add_coin()</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>game_state.gd</code> в Autoload как GameState</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>level.tscn</code> — пол или TileMap, игрок, монеты, UI</li>
+<li class="task-list-item"><input type="checkbox" disabled> Camera2D у игрока с limit</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>game_over.tscn</code> и lose_life при падении</li>
+<li class="task-list-item"><input type="checkbox" disabled> Main Scene назначена</li>
+<li class="task-list-item"><input type="checkbox" disabled> F5 — игра playable</li>
+<li class="task-list-item"><input type="checkbox" disabled> Export Windows или Web проверен</li>
+</ul>
+<p>Дизайн уровней и playtest — <a href="./117">Гейм-дизайн</a> и <a href="./1176">прототип с playtest</a>.</p>
+<hr>
+<h2 id="куда-дальше-маршрут-обучения">Куда дальше — маршрут обучения</h2>
+<h3 id="неделя-1-основы-вы-здесь">Неделя 1 — основы (вы здесь)</h3>
+<ul>
+<li>Пройти эту статью до чеклиста</li>
+<li>Официальный <a href="https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html">Your first 2D game</a></li>
+<li><a href="./113">Виды игровых движков</a> — контекст выбора инструмента</li>
+</ul>
+<h3 id="неделя-2-контент-и-полировка">Неделя 2 — контент и полировка</h3>
+<ul>
+<li><strong>AnimatedSprite2D</strong> — анимации бега и прыжка</li>
+<li><strong>TileMap</strong> с автотайлами (terrain)</li>
+<li><strong>Theme</strong> и <strong>Button</strong> — главное меню</li>
+<li><a href="./117">Гейм-дизайн</a> — баланс прыжка и длины уровня</li>
+</ul>
+<h3 id="неделя-3-системы">Неделя 3 — системы</h3>
+<ul>
+<li>Сохранения через <code>user://</code> и JSON</li>
+<li><strong>SceneTree.change_scene</strong> — несколько уровней</li>
+<li>Простой враг на <strong>CharacterBody2D</strong> или патруль по <strong>Path2D</strong></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro">Практикум на Python</a> — те же идеи без редактора для понимания "под капотом"</li>
+</ul>
+<h3 id="месяц-2-углубление">Месяц 2 — углубление</h3>
+<ul>
+<li><a href="./125">Каталог open-source клонов</a> — разбор чужих Godot-проектов</li>
+<li>Shaders 2D (<strong>CanvasItem</strong>)</li>
+<li><strong>NavigationAgent2D</strong> для врагов</li>
+<li>Экспорт на Android или Steam — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/intro">игровая индустрия</a></li>
+</ul>
+<h3 id="параллельные-треки">Параллельные треки</h3>
+<ul>
+<li><a href="./203">Roblox Studio — первая игра</a> — онлайн-платформа с готовой аудиторией</li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-11-dlya-detey/2-video-games/27">Godot и Construct 3</a> — упрощённый вход для детей</li>
+<li><a href="./3">Unity</a> — если нужна 3D или C#-экосистема</li>
+<li><a href="./intro">Разработка игр — intro</a> — общая карта раздела</li>
+</ul>
+<h3 id="полезные-ссылки">Полезные ссылки</h3>
+<ul>
+<li><a href="https://godotengine.org/">godotengine.org</a> — загрузки и новости</li>
+<li><a href="https://docs.godotengine.org/">docs.godotengine.org</a> — справочник API</li>
+<li><a href="https://godotengine.org/asset-library/">Godot Asset Library</a> — плагины и демо</li>
+<li><a href="https://forum.godotengine.org/">Форум Godot</a> — вопросы сообщества</li>
+</ul>
+<hr>
+<h2 id="структура-папок-проекта">Структура папок проекта</h2>
+<p>Упорядоченная структура упрощает поиск файлов, когда сцен больше десяти.</p>
+<pre><code>FirstPlatformer/
+├── project.godot
+├── game_state.gd          # Autoload
+├── scenes/
+│   ├── player.tscn
+│   ├── coin.tscn
+│   ├── level.tscn
+│   ├── game_over.tscn
+│   └── main_menu.tscn     # позже
+├── scripts/               # общие скрипты без сцены
+├── assets/
+│   ├── sprites/
+│   ├── audio/
+│   └── fonts/
+└── builds/                # экспорт (в .gitignore)
+</code></pre>
+<p>Пути в коде всегда начинаются с <code>res://</code> — корень проекта Godot. Пользовательские сохранения пишут в <code>user://</code> (отдельная папка ОС, не в репозитории).</p>
+<p>Переименование файлов в FileSystem безопаснее, чем в проводнике — Godot обновит ссылки в <code>.tscn</code>.</p>
+<hr>
+<h2 id="animatedsprite2d-анимации-бега">AnimatedSprite2D — анимации бега</h2>
+<p>Когда появится spritesheet (несколько кадров на одной картинке):</p>
+<ol>
+<li>Замените <strong>Sprite2D</strong> на <strong>AnimatedSprite2D</strong> у <code>Player</code>.</li>
+<li><strong>Sprite Frames → New SpriteFrames</strong>.</li>
+<li>Откройте редактор SpriteFrames внизу → <strong>Add Animation</strong> → <code>run</code>, <code>idle</code>, <code>jump</code>.</li>
+<li>Перетащите кадры из FileSystem в timeline анимации.</li>
+<li>В скрипте:</li>
+</ol>
+<pre><code class="language-gdscript">@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+
+func _physics_process(delta: float) -> void:
+    # ... гравитация и move_and_slide ...
+    if not is_on_floor():
+        anim.play("jump")
+    elif abs(velocity.x) > 10.0:
+        anim.play("run")
+    else:
+        anim.play("idle")
+    anim.flip_h = velocity.x &#x3C; 0
+</code></pre>
+<p><strong>FPS</strong> анимации настраивается в SpriteFrames (обычно 8–12 для pixel art). <strong>Loop</strong> для <code>run</code> и <code>idle</code> включён; для <code>jump</code> — однократное проигрывание.</p>
+<hr>
+<h2 id="главное-меню-заготовка">Главное меню (заготовка)</h2>
+<ol>
+<li><strong>New Scene</strong> → <strong>Control</strong> → имя <code>MainMenu</code>, anchors — full rect.</li>
+<li><strong>VBoxContainer</strong> по центру → <strong>Label</strong> "First Platformer" → <strong>Button</strong> "Играть" → <strong>Button</strong> "Выход".</li>
+<li>Скрипт:</li>
+</ol>
+<pre><code class="language-gdscript">extends Control
+
+func _ready() -> void:
+    $VBoxContainer/PlayButton.pressed.connect(_on_play)
+    $VBoxContainer/QuitButton.pressed.connect(_on_quit)
+
+func _on_play() -> void:
+    GameState.reset_run()
+    get_tree().change_scene_to_file("res://scenes/level.tscn")
+
+func _on_quit() -> void:
+    get_tree().quit()
+</code></pre>
+<ol start="4">
+<li><strong>Main Scene</strong> в Project Settings → <code>main_menu.tscn</code>.</li>
+</ol>
+<p>Кнопка "Выход" на Web не закрывает вкладку — там скрывают её или показывают "В меню".</p>
+<hr>
+<h2 id="git-и-gitignore-для-godot">Git и .gitignore для Godot</h2>
+<p>Версионирование через <a href="https://spirzen.ru/encyclopedia/4-code-dev/4-13-osnovy-raboty-s-git/intro">Git</a> сохраняет историю сцен и скриптов.</p>
+<p>Пример <code>.gitignore</code> в корне проекта:</p>
+<pre><code># Godot 4+ specific
+.godot/
+*.translation
+
+# Imported assets (регенерируются при импорте)
+*.import
+
+# Export
+builds/
+export_presets.cfg
+
+# OS
+.DS_Store
+Thumbs.db
+</code></pre>
+<p>Коммитьте:</p>
+<ul>
+<li><code>project.godot</code></li>
+<li><code>.gd</code>, <code>.tscn</code>, <code>.tres</code></li>
+<li>исходные PNG, WAV, OGG</li>
+</ul>
+<p>Не коммитьте <code>.godot/</code> — это кэш импорта; он создаётся заново при открытии проекта.</p>
+<p><strong>Первый коммит</strong></p>
+<pre><code class="language-bash">git init
+git add project.godot scenes/ scripts/ assets/ game_state.gd .gitignore
+git commit -m "Initial Godot platformer prototype"
+</code></pre>
+<p>При конфликте в <code>.tscn</code> (текстовый формат) Godot иногда мёржит автоматически; при сложном конфликте проще пересобрать сцену в редакторе.</p>
+<hr>
+<h2 id="сигналы-как-альтернатива-прямому-вызову-gamestate">Сигналы как альтернатива прямому вызову GameState</h2>
+<p>В <code>coin.gd</code> можно излучать только сигнал без прямого вызова <code>GameState</code> — уровень решает, что делать:</p>
+<pre><code class="language-gdscript"># coin.gd
+signal picked_up
+
+func _on_body_entered(body: Node2D) -> void:
+    if body.is_in_group("player"):
+        picked_up.emit()
+        queue_free()
+</code></pre>
+<pre><code class="language-gdscript"># level.gd — в _ready после инстанса монет
+for coin in $Coins.get_children():
+    if coin.has_signal("picked_up"):
+        coin.picked_up.connect(_on_coin_picked_up)
+
+func _on_coin_picked_up() -> void:
+    GameState.add_coin()
+    $UI/MarginContainer/VBoxContainer/CoinsLabel.text = "Монеты: %d" % GameState.coins
+</code></pre>
+<p>Плюс — монета не знает о глобальном состоянии; минус — больше проводки на уровне. Для учебного проекта оба подхода допустимы.</p>
+<hr>
+<h2 id="настройки-физики-2d">Настройки физики 2D</h2>
+<p><strong>Project → Project Settings → Physics → 2D</strong></p>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Значение по умолчанию</th>
+<th>Когда менять</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Default Gravity</strong></td>
+<td>980 px/s²</td>
+<td>Меньше — "лунная" гравитация; больше — тяжёлый прыжок</td>
+</tr>
+<tr>
+<td><strong>Default Linear Damp</strong></td>
+<td>0</td>
+<td>Сопротивление воздуха для RigidBody2D</td>
+</tr>
+<tr>
+<td><strong>Sleep Threshold</strong></td>
+<td>0.1</td>
+<td>Оптимизация тел в покое</td>
+</tr>
+</tbody>
+</table>
+<p>Для платформера часто ставят gravity <strong>980–1200</strong> и подбирают <code>JUMP_VELOCITY</code> экспериментально. Меняйте одну константу за раз и проверяйте <strong>F5</strong>.</p>
+<p><strong>Project Settings → Layer Names → 2D Physics</strong> — именуйте все 32 слоя сразу, даже если используете четыре. Через месяц вы забудете, какой бит за что отвечает.</p>
+<hr>
+<h2 id="режимы-process-mode">Режимы Process Mode</h2>
+<p>У каждого узла свойство <strong>Process Mode</strong> (Inspector → Node):</p>
+<ul>
+<li><strong>Inherit</strong> — как у родителя</li>
+<li><strong>Pausable</strong> — останавливается при <code>get_tree().paused = true</code></li>
+<li><strong>When Paused</strong> — работает только на паузе (UI меню паузы)</li>
+<li><strong>Always</strong> — игнорирует паузу (музыка, Autoload-таймеры)</li>
+<li><strong>Disabled</strong> — код <code>_process</code> / <code>_physics_process</code> не вызывается</li>
+</ul>
+<p>UI паузы вешайте на <strong>CanvasLayer</strong> с <strong>When Paused</strong>; игровой мир — <strong>Pausable</strong>.</p>
+<hr>
+<h2 id="итог">Итог</h2>
+<p>За один вечер можно пройти путь от установки <a href="https://godotengine.org/download">Godot 4</a> до playable 2D-платформера с монетами, счётом через <strong>Autoload</strong>, UI, камерой, заготовками под звук и экраном поражения. GDScript переносит привычки из <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/intro">Python</a>; сцены и сигналы — навыки, которые масштабируются на большие проекты. Следующий шаг — официальный туториал, TileMap-арт и <a href="./intro">маршрут геймдева</a> по вашему жанру.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#расширенный-словарь">Расширенный словарь</a></li><li class="article-toc__item is-h3"><a href="#основные-понятия">Основные понятия</a></li><li class="article-toc__item is-h3"><a href="#языки-и-скрипты">Языки и скрипты</a></li><li class="article-toc__item is-h3"><a href="#2d-узлы-и-физика">2D-узлы и физика</a></li><li class="article-toc__item is-h3"><a href="#ввод-ui-и-звук">Ввод, UI и звук</a></li><li class="article-toc__item is-h3"><a href="#рендер-и-экспорт">Рендер и экспорт</a></li><li class="article-toc__item is-h3"><a href="#отладка">Отладка</a></li><li class="article-toc__item"><a href="#что-понадобится">Что понадобится</a></li><li class="article-toc__item"><a href="#установка-godot-4">Установка Godot 4</a></li><li class="article-toc__item is-h3"><a href="#windows">Windows</a></li><li class="article-toc__item is-h3"><a href="#linux">Linux</a></li><li class="article-toc__item is-h3"><a href="#macos">macOS</a></li><li class="article-toc__item is-h3"><a href="#проверка-установки">Проверка установки</a></li><li class="article-toc__item"><a href="#создание-проекта-firstplatformer">Создание проекта FirstPlatformer</a></li><li class="article-toc__item"><a href="#настройка-input-map">Настройка Input Map</a></li><li class="article-toc__item"><a href="#сцена-игрока-player">Сцена игрока Player</a></li><li class="article-toc__item is-h3"><a href="#структура-узлов">Структура узлов</a></li><li class="article-toc__item is-h3"><a href="#полный-скрипт-движения">Полный скрипт движения</a></li><li class="article-toc__item"><a href="#скорость-бега-по-горизонтали-пикселей-в-секунду">Скорость бега по горизонтали (пикселей в секунду)</a></li><li class="article-toc__item"><a href="#импульс-прыжка-отрицательный-y-вверх-в-godot">Импульс прыжка (отрицательный Y — вверх в Godot)</a></li><li class="article-toc__item is-h3"><a href="#построчное-объяснение">Построчное объяснение</a></li><li class="article-toc__item is-h3"><a href="#улучшение-coyote-time-необязательно">Улучшение — coyote time (необязательно)</a></li><li class="article-toc__item"><a href="#слои-коллизии-и-маски">Слои коллизии и маски</a></li><li class="article-toc__item is-h3"><a href="#зачем-нужны-слои">Зачем нужны слои</a></li><li class="article-toc__item is-h3"><a href="#рекомендуемая-схема-для-платформера">Рекомендуемая схема для платформера</a></li><li class="article-toc__item"><a href="#сцена-монеты-coin">Сцена монеты Coin</a></li><li class="article-toc__item"><a href="#autoload-для-глобального-счёта">Autoload для глобального счёта</a></li><li class="article-toc__item is-h3"><a href="#создание-gamestate">Создание GameState</a></li><li class="article-toc__item is-h3"><a href="#связь-монеты-с-gamestate">Связь монеты с GameState</a></li><li class="article-toc__item"><a href="#уровень-level-с-tilemap">Уровень Level с TileMap</a></li><li class="article-toc__item is-h3"><a href="#tileset-из-одной-текстуры">TileSet из одной текстуры</a></li><li class="article-toc__item is-h3"><a href="#рисование-уровня">Рисование уровня</a></li><li class="article-toc__item is-h3"><a href="#пол-без-tilemap-быстрый-старт">Пол без TileMap (быстрый старт)</a></li><li class="article-toc__item"><a href="#интерфейс-счёт-и-жизни">Интерфейс — счёт и жизни</a></li><li class="article-toc__item"><a href="#звуковые-заготовки">Звуковые заготовки</a></li><li class="article-toc__item is-h3"><a href="#звук-подбора-монеты">Звук подбора монеты</a></li><li class="article-toc__item is-h3"><a href="#фоновая-музыка">Фоновая музыка</a></li><li class="article-toc__item"><a href="#экран-game-over-и-перезапуск">Экран Game Over и перезапуск</a></li><li class="article-toc__item is-h3"><a href="#потеря-жизни-при-падении">Потеря жизни при падении</a></li><li class="article-toc__item"><a href="#camera2d">Camera2D</a></li><li class="article-toc__item"><a href="#параллакс-фон">Параллакс-фон</a></li><li class="article-toc__item"><a href="#главная-сцена-и-первый-запуск">Главная сцена и первый запуск</a></li><li class="article-toc__item"><a href="#отладка">Отладка</a></li><li class="article-toc__item is-h3"><a href="#консоль-и-print">Консоль и print</a></li><li class="article-toc__item is-h3"><a href="#точки-останова">Точки останова</a></li><li class="article-toc__item is-h3"><a href="#remote-debugger">Remote debugger</a></li><li class="article-toc__item is-h3"><a href="#типичные-сообщения-об-ошибках">Типичные сообщения об ошибках</a></li><li class="article-toc__item"><a href="#экспорт-на-платформы">Экспорт на платформы</a></li><li class="article-toc__item is-h3"><a href="#windows-desktop">Windows Desktop</a></li><li class="article-toc__item is-h3"><a href="#linux">Linux</a></li><li class="article-toc__item is-h3"><a href="#web-html5">Web (HTML5)</a></li><li class="article-toc__item is-h3"><a href="#android-обзор">Android (обзор)</a></li><li class="article-toc__item is-h3"><a href="#таблица-пресетов">Таблица пресетов</a></li><li class="article-toc__item"><a href="#производительность-2d">Производительность 2D</a></li><li class="article-toc__item"><a href="#сравнение-движков-для-2d-новичка">Сравнение движков для 2D-новичка</a></li><li class="article-toc__item"><a href="#частые-вопросы-faq">Частые вопросы (FAQ)</a></li><li class="article-toc__item"><a href="#расширенная-таблица-неполадок">Расширенная таблица неполадок</a></li><li class="article-toc__item"><a href="#полный-чеклист-платформера">Полный чеклист платформера</a></li><li class="article-toc__item"><a href="#куда-дальше-маршрут-обучения">Куда дальше — маршрут обучения</a></li><li class="article-toc__item is-h3"><a href="#неделя-1-основы-вы-здесь">Неделя 1 — основы (вы здесь)</a></li><li class="article-toc__item is-h3"><a href="#неделя-2-контент-и-полировка">Неделя 2 — контент и полировка</a></li><li class="article-toc__item is-h3"><a href="#неделя-3-системы">Неделя 3 — системы</a></li><li class="article-toc__item is-h3"><a href="#месяц-2-углубление">Месяц 2 — углубление</a></li><li class="article-toc__item is-h3"><a href="#параллельные-треки">Параллельные треки</a></li><li class="article-toc__item is-h3"><a href="#полезные-ссылки">Полезные ссылки</a></li><li class="article-toc__item"><a href="#структура-папок-проекта">Структура папок проекта</a></li><li class="article-toc__item"><a href="#animatedsprite2d-анимации-бега">AnimatedSprite2D — анимации бега</a></li><li class="article-toc__item"><a href="#главное-меню-заготовка">Главное меню (заготовка)</a></li><li class="article-toc__item"><a href="#git-и-gitignore-для-godot">Git и .gitignore для Godot</a></li><li class="article-toc__item"><a href="#сигналы-как-альтернатива-прямому-вызову-gamestate">Сигналы как альтернатива прямому вызову GameState</a></li><li class="article-toc__item"><a href="#настройки-физики-2d">Настройки физики 2D</a></li><li class="article-toc__item"><a href="#режимы-process-mode">Режимы Process Mode</a></li><li class="article-toc__item"><a href="#итог">Итог</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/113"> Виды игровых движков  </a> </li><li> <a href="/games/9-04-razrabotka-igr/intro"> Разработка игр — о разделе  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312" target="_blank" rel="noopener noreferrer"> Разработка игр на Python  ↗ </a> </li><li> <a href="https://kids.spirzen.ru/kids/2-video-games/27" target="_blank" rel="noopener noreferrer"> Godot и Construct 3  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

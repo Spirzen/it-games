@@ -1,0 +1,1838 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>TypeScript — OnlineCardGame — Игры IT Universe</title><meta name="description" content="Пошаговый практикум — карточный roguelike в браузере на TypeScript, React и Vite: архитектура, dispatch, 16 этапов, cardEffects, PWA и деплой. Эталон — OnlineCardGame («Приключения Урала Батыра»)."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">TypeScript — OnlineCardGame</span></li></ol></nav><header class="portal-hero"> <h1>TypeScript — OnlineCardGame</h1> <p>Пошаговый практикум — карточный roguelike в браузере на TypeScript, React и Vite: архитектура, dispatch, 16 этапов, cardEffects, PWA и деплой. Эталон — OnlineCardGame («Приключения Урала Батыра»).</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="TypeScript — OnlineCardGame" data-url="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="TypeScript — OnlineCardGame">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>TypeScript — OnlineCardGame</h1>
+<div class="article-tags">
+  <span class="tag tag-inprogress">В РАЗРАБОТКЕ</span>
+</div>
+<p><span class="complexity-badge">Разработчику</span>
+<span class="complexity-badge">Средний уровень</span></p>
+<div class="callout callout--info">
+  <div class="callout-title">Формат практикума</div>
+  <div class="callout-body">
+  <p>Материалы трека приводятся к единому формату: <strong>полные листинги для копирования</strong> на каждом этапе, блок <strong>"Разбор"</strong> и раздел <strong>"Полная ревизия"</strong> в конце статьи.</p>
+  <ul>
+    <li>Гарантированно запускаемые эталоны для сверки сейчас: <a href="https://github.com/Spirzen/BattleCity">Python — Battle City</a> (GitHub), <a href="https://github.com/Spirzen/Match3">Python — Match3</a> (GitHub, <code>match3.py</code>), <a href="./3.md#full-revision">Python — Ping Pong</a> (<code>#full-revision</code>).</li>
+    <li>Раздел полной ревизии в этой статье ещё в работе — идите по этапам по порядку; если код перестал запускаться, сравните проект с этими эталонами.</li>
+  </ul>
+  </div>
+</div>
+<h2 id="как-проходить-практикум">Как проходить практикум</h2>
+<ul>
+<li>Копируйте <strong>целиком</strong> файлы из блоков кода каждого этапа.</li>
+<li>После каждого этапа <strong>запускайте</strong> проект (команда указана в главе) и пройдите чек-лист самопроверки.</li>
+<li>Если застряли — методология в разделе <a href="./intro.md">Практикум разработки игр — о разделе</a>; для сверки готовые треки <a href="https://github.com/Spirzen/BattleCity">Battle City</a>, <a href="https://github.com/Spirzen/Match3">Match3</a> и <a href="./3.md#full-revision">Ping Pong</a>.</li>
+</ul>
+<hr>
+<h2 id="о-практикуме">О практикуме</h2>
+<p>Соберём <strong>карточный roguelike</strong> в духе <em>Slay the Spire</em> прямо в браузере — колода, рука, энергия на ход, намерения врагов, процедурная карта из 15 этапов, награды, дары, лавка и привал. Стек — <strong>TypeScript 5.8</strong>, <strong>React 19</strong>, <strong>Vite 6</strong>; игровая логика — чистый TS без игровых движков, UI — React-компоненты.</p>
+<div class="callout callout--info">
+  <div class="callout-title">Эталонный проект</div>
+  <div class="callout-body">
+  <p>Полная реализация — <strong>"Приключения Урала Батыра"</strong>: карточный roguelike по <a href="https://skazki.rustih.ru/ural-batyr/">башкирскому эпосу "Урал-батыр"</a>, 76+ карт с лор-текстами, четыре батыра, три части эпоса на карте, 15 даров, 12 врагов (финал — Шульген), 9 событий, редактор карт, PWA и звук. Репозиторий <a href="https://github.com/Spirzen/OnlineCardGame">Spirzen/OnlineCardGame</a>. Играть онлайн — <a href="https://spirzen.github.io/OnlineCardGame/">spirzen.github.io/OnlineCardGame</a>. Практикум ведёт к той же архитектуре папок и модулей; на каждом этапе проект <strong>собирается и запускается</strong>, даже если это только меню или один бой на простых карточках.</p>
+  </div>
+</div>
+<div class="callout callout--info">
+  <div class="callout-title">Для кого материал</div>
+  <div class="callout-body">
+  <p>Нужны базовый JavaScript, знакомство с React (компоненты, хуки, props) и основы TypeScript из статей <a href="/encyclopedia/5-languages/5-01-javascript/intro">JavaScript — о разделе</a> и <a href="/encyclopedia/5-languages/5-01-javascript/30">TypeScript</a>. Опыт deckbuilder-ов полезен, но механики вводим по одной.</p>
+  </div>
+</div>
+<p><strong>Управление в финальной версии практикума</strong></p>
+<table>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Управление</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Клик по карте, врагу, узлу карты, кнопкам</td>
+<td><strong>Мышь</strong></td>
+</tr>
+<tr>
+<td>Завершить ход в бою</td>
+<td><strong>E</strong> (или кнопка "Конец хода")</td>
+</tr>
+<tr>
+<td>Меню / выход</td>
+<td>Кнопки на экране</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Маршрут чтения</strong></p>
+<ol>
+<li><a href="#architecture">Архитектура</a> — экраны, бой, данные, React-слой.</li>
+<li><a href="#dependencies">Зависимости и структура папок</a>.</li>
+<li><a href="#stage-0">Этап 0 — минимальный запуск</a>.</li>
+<li>Этапы 1–15 — одна механика за шаг.</li>
+<li><a href="#final-checklist">Итоговая самопроверка и эталон</a>.</li>
+<li><a href="#content-reference">Справочник — отличия от эталона</a> — что перенести после базового прототипа.</li>
+</ol>
+<p>Имя папки проекта в примерах — <code>online-card-game/</code>; локально можно клонировать <a href="https://github.com/Spirzen/OnlineCardGame">OnlineCardGame</a> и сравнивать файлы после каждого этапа.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Параллельный трек на Python</div>
+  <div class="callout-body">
+  <p>Тот же жанр и та же архитектура модулей разобраны в главе <a href="/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/7">Python — карточная стратегия</a> (эталон AutoBattler). Сравните <code>CombatManager</code> в TS и Python — правила боя совпадают, меняется только слой отрисовки (React вместо Pygame).</p>
+  </div>
+</div>
+<h3 id="что-получится-в-эталоне">Что получится в эталоне</h3>
+<table>
+<thead>
+<tr>
+<th>Подсистема</th>
+<th>Содержание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Батыры</td>
+<td>Урал Батыр, Хумай, Акбузат, Янбирде — разные стартовые колоды</td>
+</tr>
+<tr>
+<td>Карта</td>
+<td>15 этапов, три части эпоса, финал — Шульген</td>
+</tr>
+<tr>
+<td>Бой</td>
+<td>энергия, блок, сила, уязвимость, яд, оглушение, намерения, мульти-таргет</td>
+</tr>
+<tr>
+<td>Контент</td>
+<td>76+ карт с лором, 15 даров, 12 врагов, 9 событий</td>
+</tr>
+<tr>
+<td>Лор</td>
+<td>эпос "Урал-батыр", развёрнутые тексты карт, врагов и встреч</td>
+</tr>
+<tr>
+<td>Мета</td>
+<td>localStorage, ежедневный seed, топ батыров</td>
+</tr>
+<tr>
+<td>UX</td>
+<td>PWA, звук, анимации, редактор карт, просмотр колоды</td>
+</tr>
+</tbody>
+</table>
+<h3 id="игровой-цикл-как-в-готовой-игре">Игровой цикл (как в готовой игре)</h3>
+<pre><code class="language-mermaid">flowchart LR
+  A[Меню] --> B[Выбор батыра]
+  B --> C[Стартовый дар]
+  C --> D[Карта похода]
+  D --> E{Узел}
+  E -->|Бой| F[Сражение]
+  E -->|Лавка| G[Лавка кочевника]
+  E -->|Привал| H[Отдых / Кузница]
+  E -->|Событие| I[Выбор]
+  E -->|Клад| J[Дар]
+  F --> K[Награда]
+  K --> D
+  D -->|15 этап| L[Шульген / Поражение]
+</code></pre>
+<h3 id="карта-этапов-практикума">Карта этапов практикума</h3>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Фокус</th>
+<th>Запускается</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Vite + React</td>
+<td>тёмная страница</td>
+</tr>
+<tr>
+<td>1–2</td>
+<td>settings, types, Card, JSON</td>
+<td>палитра типов карт</td>
+</tr>
+<tr>
+<td>3–4</td>
+<td>Deck, Hand, Player</td>
+<td>логика в консоли / тестах</td>
+</tr>
+<tr>
+<td>5–6</td>
+<td>Enemy, CombatManager</td>
+<td>бой без UI</td>
+</tr>
+<tr>
+<td>7–9</td>
+<td>useGame, экраны, роутер</td>
+<td>меню → заглушки</td>
+</tr>
+<tr>
+<td>8</td>
+<td>CombatScreen, CardView</td>
+<td><strong>первый играбельный бой</strong></td>
+</tr>
+<tr>
+<td>10–11</td>
+<td>GameMap, награды</td>
+<td>полный цикл узел → бой → карта</td>
+</tr>
+<tr>
+<td>12–13</td>
+<td>реликвии, классы, лавка, костёр</td>
+<td>мета-прогрессия в забеге</td>
+</tr>
+<tr>
+<td>14</td>
+<td>RNG, stats, Vitest</td>
+<td>детерминизм и сохранения</td>
+</tr>
+<tr>
+<td>15</td>
+<td>PWA, sfx, FX, редактор</td>
+<td>уровень эталона</td>
+</tr>
+</tbody>
+</table>
+<h3 id="мини-глоссарий-deckbuilder">Мини-глоссарий deckbuilder</h3>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Значение в коде</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Забег (run)</strong></td>
+<td>одна попытка от меню до победы/смерти; объект <code>RunState</code></td>
+</tr>
+<tr>
+<td><strong>Колода (deck)</strong></td>
+<td>все карты игрока; стопки <code>drawPile</code> + <code>discardPile</code></td>
+</tr>
+<tr>
+<td><strong>Рука (hand)</strong></td>
+<td>карты, доступные в текущем ходу; <code>Player.hand</code></td>
+</tr>
+<tr>
+<td><strong>Энергия</strong></td>
+<td>ресурс на розыгрыш карт за ход; <code>Player.energy</code></td>
+</tr>
+<tr>
+<td><strong>Блок</strong></td>
+<td>временная броня до конца хода; <code>Player.block</code></td>
+</tr>
+<tr>
+<td><strong>Намерение (intent)</strong></td>
+<td>что враг сделает на своей фазе; <code>Enemy.currentIntent</code></td>
+</tr>
+<tr>
+<td><strong>Реликвия</strong></td>
+<td>пассивный предмет на весь забег; <code>Player.relics[]</code></td>
+</tr>
+<tr>
+<td><strong>Элита / босс</strong></td>
+<td>бой с множителем HP; флаги в <code>enterNode</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="architecture"></span></p>
+<h2 id="архитектура">Архитектура</h2>
+<p>Карточный roguelike — это <strong>забег</strong> (run): карта узлов → события → сражения → усиление колоды → босс. Бой — отдельная подсистема с собственным конечным автоматом. В браузерной версии React отвечает за <strong>отображение</strong>, а правила живут в модулях <code>src/game/</code> без привязки к DOM.</p>
+<h3 id="жанровые-опоры">Жанровые опоры</h3>
+<table>
+<thead>
+<tr>
+<th>Идея</th>
+<th>Откуда в жанре</th>
+<th>Как реализуем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Карта путей</td>
+<td><em>Slay the Spire</em></td>
+<td><code>GameMap</code>, узлы <code>combat</code> / <code>rest</code> / <code>shop</code> …</td>
+</tr>
+<tr>
+<td>Энергия и рука каждый ход</td>
+<td><em>Hearthstone</em>, <em>Slay the Spire</em></td>
+<td><code>Player.energy</code>, добор в <code>CombatManager</code></td>
+</tr>
+<tr>
+<td>Намерения врагов</td>
+<td><em>Slay the Spire</em></td>
+<td><code>Enemy.planIntent()</code>, иконка на UI</td>
+</tr>
+<tr>
+<td>Несколько врагов</td>
+<td><em>Darkest Dungeon</em></td>
+<td><code>Encounter</code>, выбор цели атаки</td>
+</tr>
+<tr>
+<td>Реликвии</td>
+<td><em>Slay the Spire</em></td>
+<td>пассивные объекты на <code>Player.relics</code></td>
+</tr>
+<tr>
+<td>Контент в данных</td>
+<td>моддинг</td>
+<td><code>data/cards.json</code>, <code>enemies.json</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="цикл-приложения-react-vite">Цикл приложения (React + Vite)</h3>
+<pre><code class="language-mermaid">flowchart TD
+    A[main.tsx] --> B[GameProvider / useGame]
+    B --> C{run.screen}
+    C -->|menu| D[MenuScreen]
+    C -->|map| E[MapScreen]
+    C -->|combat| F[CombatScreen]
+    D --> G[dispatch action]
+    G --> H[RunState / CombatManager]
+    H --> B
+    F --> G
+    E --> G
+</code></pre>
+<p><code>App.tsx</code> — <strong>оркестратор UI</strong>: он не считает урон карт напрямую, а передаёт действия в <code>RunState</code> через <code>dispatch</code>. Перерисовка — через React Context и счётчик <code>tick</code>.</p>
+<h3 id="экраны-забега-конечный-автомат-ui">Экраны забега (конечный автомат UI)</h3>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --> MENU
+    MENU --> CLASS_SELECT : новый забег
+    CLASS_SELECT --> RELIC_PICK
+    RELIC_PICK --> MAP
+    MAP --> COMBAT : узел бой/элита/босс
+    COMBAT --> REWARD : победа
+    REWARD --> MAP
+    MAP --> SHOP : лавка
+    MAP --> REST : костёр
+    SHOP --> MAP
+    REST --> MAP
+    COMBAT --> GAME_OVER : HP = 0
+    MAP --> VICTORY : босс повержен
+    MENU --> CARD_EDITOR : редактор
+    CARD_EDITOR --> MENU
+</code></pre>
+<p>Поле <code>RunState.screen</code> переключает ветку в <code>GameRouter</code>. Логика боя живёт в <code>CombatManager</code>, пока <code>screen === 'combat'</code>.</p>
+<h3 id="конечный-автомат-боя">Конечный автомат боя</h3>
+<p>Внутри экрана <code>combat</code> работает отдельный автомат — UI его не дублирует, только читает <code>combat.state</code>:</p>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --> player_turn : initCombat
+    player_turn --> player_turn : playCard
+    player_turn --> enemy_turn : endPlayerTurn
+    enemy_turn --> player_turn : startNextTurn
+    enemy_turn --> victory : allDead
+    player_turn --> victory : allDead
+    enemy_turn --> defeat : player HP = 0
+    player_turn --> defeat : player HP = 0
+    victory --> [*]
+    defeat --> [*]
+</code></pre>
+<p>Константы в <code>CombatManager</code> — <code>STATE_PLAYER_TURN</code>, <code>STATE_ENEMY_TURN</code>, <code>STATE_VICTORY</code>, <code>STATE_DEFEAT</code>. Флаг <code>combatOver</code> блокирует дальнейшие клики; <code>useGame</code> по нему вызывает <code>run.onCombatVictory()</code> или <code>run.onCombatDefeat()</code>.</p>
+<h3 id="слои-приложения">Слои приложения</h3>
+<table>
+<thead>
+<tr>
+<th>Слой</th>
+<th>Ответственность</th>
+<th>Модули</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Данные</strong></td>
+<td>Карты, враги, реликвии из JSON</td>
+<td><code>src/data/*</code>, импорт в <code>card.ts</code></td>
+</tr>
+<tr>
+<td><strong>Модель</strong></td>
+<td>Сущности и правила без React</td>
+<td><code>card.ts</code>, <code>player.ts</code>, <code>enemy.ts</code>, <code>combat.ts</code>, <code>relic.ts</code></td>
+</tr>
+<tr>
+<td><strong>Забег</strong></td>
+<td>Карта, золото, смена экранов</td>
+<td><code>runState.ts</code>, <code>map.ts</code></td>
+</tr>
+<tr>
+<td><strong>Представление</strong></td>
+<td>React-экраны и виджеты</td>
+<td><code>components/*</code></td>
+</tr>
+<tr>
+<td><strong>Состояние UI</strong></td>
+<td>Context, dispatch, эффекты</td>
+<td><code>hooks/useGame.tsx</code>, <code>hooks/useFx.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<p>Правило для поддерживаемости: <strong>урон и блок считаются в <code>CombatManager</code></strong>, React только вызывает <code>dispatch(&#x26;#123; type: 'PLAY_CARD', … &#x26;#125;)</code> и <code>dispatch(&#x26;#123; type: 'END_TURN' &#x26;#125;)</code>.</p>
+<h3 id="поток-данных-в-бою">Поток данных в бою</h3>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant UI as CombatScreen
+    participant Hook as useGame
+    participant Run as RunState
+    participant Combat as CombatManager
+    participant Player
+    participant Encounter
+
+    UI->>Hook: dispatch PLAY_CARD
+    Hook->>Combat: playCard(i, target)
+    Combat->>Player: spendEnergy, hand.remove
+    Combat->>Encounter: damage enemy
+    UI->>Hook: dispatch END_TURN
+    Hook->>Combat: endPlayerTurn()
+    Combat->>Player: discard hand, startTurn draw
+    Combat->>Encounter: execute intents
+    Combat-->>Run: victory / defeat
+    Run-->>Hook: tick++
+    Hook-->>UI: re-render
+</code></pre>
+<h3 id="целевая-структура-файлов">Целевая структура файлов</h3>
+<p>К концу практикума (и в <a href="https://github.com/Spirzen/OnlineCardGame">OnlineCardGame</a>) дерево выглядит так:</p>
+<pre><code>online-card-game/
+├── index.html
+├── vite.config.ts
+├── tsconfig.json
+├── tsconfig.app.json
+├── package.json
+├── public/
+│   └── favicon.svg
+└── src/
+    ├── main.tsx                 # точка входа React
+    ├── App.tsx                  # GameRouter, провайдеры
+    ├── vite-env.d.ts
+    ├── data/
+    │   ├── cards.json
+    │   ├── enemies.json
+    │   └── relics.json
+    ├── game/
+    │   ├── types.ts             # CardData, Screen, …
+    │   ├── settings.ts          # константы баланса
+    │   ├── locale.ts            # строки UI
+    │   ├── rng.ts               # seeded PRNG
+    │   ├── card.ts              # Card, Deck, Hand
+    │   ├── cardEffects.ts       # бонусы карт (этап 15+)
+    │   ├── player.ts
+    │   ├── enemy.ts
+    │   ├── combat.ts
+    │   ├── relic.ts
+    │   ├── map.ts
+    │   ├── runState.ts
+    │   ├── classes.ts
+    │   ├── upgrade.ts
+    │   ├── events.ts
+    │   ├── stats.ts             # localStorage
+    │   ├── sfx.ts               # процедурный звук
+    │   └── game.test.ts
+    ├── hooks/
+    │   ├── useGame.tsx          # Context + dispatch
+    │   └── useFx.tsx            # анимации
+    ├── components/
+    │   ├── MenuScreen.tsx
+    │   ├── MapScreen.tsx
+    │   ├── CombatScreen.tsx
+    │   ├── CardView.tsx
+    │   ├── Screens.tsx          # reward, shop, rest …
+    │   └── …
+    └── styles/
+        └── global.css
+</code></pre>
+<p>На <strong>этапах 0–6</strong> достаточно <code>src/game/</code> с несколькими файлами и одного экрана. Папку <code>data/</code> добавляем на <strong>этапе 2</strong>, React-компоненты — с <strong>этапа 7</strong>.</p>
+<h3 id="диаграмма-классов-целевая">Диаграмма классов (целевая)</h3>
+<pre><code class="language-mermaid">classDiagram
+    class RunState {
+        +screen Screen
+        +player Player
+        +gameMap GameMap
+        +combat CombatManager
+        +enterNode()
+    }
+    class CombatManager {
+        +state string
+        +encounter Encounter
+        +playCard()
+        +endPlayerTurn()
+    }
+    class Player {
+        +hp energy gold
+        +deck Deck
+        +hand Hand
+        +relics Relic[]
+    }
+    class Card {
+        +id type cost value
+    }
+    class Enemy {
+        +hp intent
+    }
+    RunState --> Player
+    RunState --> CombatManager
+    CombatManager --> Player
+    CombatManager --> Encounter
+    Player --> Deck
+    Player --> Hand
+    Deck --> Card
+    Hand --> Card
+    Encounter --> Enemy
+</code></pre>
+<h3>Справочник модулей <code>src/game/</code> (эталон)</h3>
+<table>
+<thead>
+<tr>
+<th>Модуль</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>runState.ts</code></td>
+<td>состояние забега, переходы между экранами, <code>enterNode</code>, лавка, костёр</td>
+</tr>
+<tr>
+<td><code>combat.ts</code></td>
+<td>пошаговый бой, <code>playCard</code>, <code>endPlayerTurn</code>, лог боя</td>
+</tr>
+<tr>
+<td><code>map.ts</code></td>
+<td>генерация 15 этажей, связи узлов, <code>selectNode</code></td>
+</tr>
+<tr>
+<td><code>card.ts</code> / <code>cardEffects.ts</code></td>
+<td>карты, колода, ~40 эффектов при розыгрыше</td>
+</tr>
+<tr>
+<td><code>player.ts</code></td>
+<td>HP, энергия, статусы, колода, рука</td>
+</tr>
+<tr>
+<td><code>enemy.ts</code></td>
+<td>враги, намерения, элиты и боссы</td>
+</tr>
+<tr>
+<td><code>relic.ts</code></td>
+<td>реликвии и триггеры начала/конца боя</td>
+</tr>
+<tr>
+<td><code>upgrade.ts</code></td>
+<td>улучшение карт в кузнице</td>
+</tr>
+<tr>
+<td><code>rng.ts</code></td>
+<td>детерминированный PRNG с seed</td>
+</tr>
+<tr>
+<td><code>stats.ts</code></td>
+<td>статистика сессии в <code>localStorage</code></td>
+</tr>
+<tr>
+<td><code>customCards.ts</code></td>
+<td>пользовательские карты из редактора</td>
+</tr>
+<tr>
+<td><code>events.ts</code></td>
+<td>случайные события на карте</td>
+</tr>
+<tr>
+<td><code>classes.ts</code></td>
+<td>определения классов персонажей</td>
+</tr>
+<tr>
+<td><code>locale.ts</code></td>
+<td>все строки интерфейса</td>
+</tr>
+<tr>
+<td><code>sfx.ts</code></td>
+<td>процедурный звук (Web Audio API)</td>
+</tr>
+</tbody>
+</table>
+<h3>Таблица действий <code>dispatch</code></h3>
+<p>Все клики UI сводятся к дискретным действиям в <code>useGame.tsx</code>. Это упрощает отладку: достаточно поставить <code>console.log</code> в <code>applyAction</code>.</p>
+<table>
+<thead>
+<tr>
+<th><code>type</code></th>
+<th>Когда вызывается</th>
+<th>Метод <code>RunState</code> / <code>CombatManager</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BEGIN_RUN</code></td>
+<td>"Новый забег"</td>
+<td><code>beginRunSetup(false)</code></td>
+</tr>
+<tr>
+<td><code>BEGIN_DAILY</code></td>
+<td>"Ежедневный забег"</td>
+<td><code>beginRunSetup(true)</code></td>
+</tr>
+<tr>
+<td><code>SELECT_CLASS</code></td>
+<td>выбор класса</td>
+<td><code>selectClass</code></td>
+</tr>
+<tr>
+<td><code>PICK_STARTER_RELIC</code></td>
+<td>стартовая реликвия</td>
+<td><code>pickStarterRelic</code> → <code>startRunWithClass</code></td>
+</tr>
+<tr>
+<td><code>SELECT_NODE</code></td>
+<td>клик по узлу карты</td>
+<td><code>gameMap.selectNode</code> → <code>enterNode</code></td>
+</tr>
+<tr>
+<td><code>PLAY_CARD</code></td>
+<td>клик по карте в бою</td>
+<td><code>combat.playCard</code></td>
+</tr>
+<tr>
+<td><code>END_TURN</code></td>
+<td>кнопка / клавиша E</td>
+<td><code>combat.endPlayerTurn</code></td>
+</tr>
+<tr>
+<td><code>SELECT_CARD</code> / <code>SELECT_ENEMY</code></td>
+<td>выбор цели</td>
+<td>поля <code>selectedCardIndex</code>, <code>selectedEnemyIndex</code></td>
+</tr>
+<tr>
+<td><code>PICK_REWARD</code> / <code>SKIP_REWARD</code></td>
+<td>экран награды</td>
+<td><code>pickRewardCard</code> / <code>skipReward</code></td>
+</tr>
+<tr>
+<td><code>REST_HEAL</code> / <code>OPEN_SMITH</code> / <code>SMITH_UPGRADE</code></td>
+<td>костёр</td>
+<td><code>restHeal</code>, <code>openSmith</code>, <code>smithUpgrade</code></td>
+</tr>
+<tr>
+<td><code>BUY_CARD</code> / <code>BUY_RELIC</code> / <code>REMOVE_CARD</code> / <code>LEAVE_SHOP</code></td>
+<td>лавка</td>
+<td>соответствующие методы с ценами</td>
+</tr>
+<tr>
+<td><code>PICK_EVENT</code> / <code>CONTINUE_EVENT</code></td>
+<td>случайное событие</td>
+<td><code>pickEventChoice</code>, <code>continueFromEvent</code></td>
+</tr>
+<tr>
+<td><code>TOGGLE_DECK</code></td>
+<td>просмотр колоды</td>
+<td><code>deckModalOpen</code></td>
+</tr>
+<tr>
+<td><code>GO_MENU</code> / <code>OPEN_STATS</code> / <code>OPEN_EDITOR</code></td>
+<td>навигация</td>
+<td><code>goToMenu</code>, <code>openStats</code>, <code>openCardEditor</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="схема-записи-карты-в-json">Схема записи карты в JSON</h3>
+<p>Минимальные поля — <code>id</code>, <code>name</code>, <code>type</code>, <code>cost</code>, <code>value</code>, <code>description</code>, <code>rarity</code>. Расширения из эталона:</p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Пример</th>
+<th>Эффект</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>effect</code></td>
+<td>string</td>
+<td><code>"vulnerable"</code></td>
+<td>статус при попадании</td>
+</tr>
+<tr>
+<td><code>effect_value</code></td>
+<td>number</td>
+<td><code>2</code></td>
+<td>сила эффекта</td>
+</tr>
+<tr>
+<td><code>effect2</code></td>
+<td>string</td>
+<td><code>"weak"</code></td>
+<td>второй статус</td>
+</tr>
+<tr>
+<td><code>aoe</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>урон/дебафф по всем врагам</td>
+</tr>
+<tr>
+<td><code>block</code></td>
+<td>number</td>
+<td><code>5</code></td>
+<td>броня в дополнение к <code>value</code></td>
+</tr>
+<tr>
+<td><code>draw</code></td>
+<td>number</td>
+<td><code>2</code></td>
+<td>добор карт</td>
+</tr>
+<tr>
+<td><code>energy_gain</code></td>
+<td>number</td>
+<td><code>1</code></td>
+<td>+энергия при розыгрыше</td>
+</tr>
+<tr>
+<td><code>lifesteal</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>исцление от урона</td>
+</tr>
+<tr>
+<td><code>bonuses</code></td>
+<td>array</td>
+<td><code>[&#x26;#123;id, value, target&#x26;#125;]</code></td>
+<td>несколько эффектов через <code>cardEffects.ts</code></td>
+</tr>
+<tr>
+<td><code>upgraded</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>метка после кузницы</td>
+</tr>
+</tbody>
+</table>
+<p>Новую карту в эталоне достаточно добавить в <code>cards.json</code> — TypeScript подхватит её через <code>CardData</code> в <code>types.ts</code>.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Данные карт в JSON</div>
+  <div class="callout-body">
+  <p>Дизайнер баланса правит <code>src/data/cards.json</code> без переписывания логики. Код знает <strong>типы</strong> (<code>attack</code>, <code>block</code>, <code>buff</code>…) и <strong>эффекты</strong> (<code>vulnerable</code>, <code>draw</code>…), числа лежат в данных — так устроен и полный OnlineCardGame.</p>
+  </div>
+</div>
+<div class="callout callout--tip">
+  <div class="callout-title">Логика без React</div>
+  <div class="callout-body">
+  <p>Классы в <code>src/game/</code> тестируются через Vitest без jsdom. UI подписывается на изменения через Context — для бота или мультиплеера вызываются те же методы <code>CombatManager</code>.</p>
+  </div>
+</div>
+<hr>
+<p><span id="dependencies"></span></p>
+<h2 id="зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</h2>
+<h3 id="требования">Требования</h3>
+<ul>
+<li><strong>Node.js 18+</strong> (рекомендуется 20 LTS).</li>
+<li><strong>npm</strong>, pnpm или yarn.</li>
+<li>Браузер с поддержкой ES2022.</li>
+</ul>
+<h3 id="создание-проекта-с-нуля-альтернатива-клону">Создание проекта с нуля (альтернатива клону)</h3>
+<pre><code class="language-bash">npm create vite@latest online-card-game -- --template react-ts
+cd online-card-game
+npm install
+npm run dev
+</code></pre>
+<p>Vite откроет dev-сервер (обычно <code>http://localhost:5173</code>) с шаблонным React-приложением.</p>
+<h3 id="клон-эталона-для-сверки">Клон эталона для сверки</h3>
+<pre><code class="language-bash">git clone https://github.com/Spirzen/OnlineCardGame.git
+cd OnlineCardGame
+npm install
+npm run dev
+</code></pre>
+<p>Главное меню "Приключения Урала Батыра" на русском, кнопка "Новый поход". Практикум можно проходить <strong>параллельно</strong> в своей папке, сверяя готовые модули с одноимёнными файлами в репозитории.</p>
+<h3 id="зависимости-эталона">Зависимости эталона</h3>
+<p><code>package.json</code> (основное):</p>
+<div class="itu-code-embed" data-example="json/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-001" data-title="Зависимости эталона" data-min-height="480"> </div>
+<p>На <strong>этапах 0–12</strong> достаточно React + Vite + TypeScript. PWA (<code>vite-plugin-pwa</code>) и Vitest добавим позже.</p>
+<h3><code>vite.config.ts</code> (минимум для этапа 0)</h3>
+<pre><code class="language-typescript">
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  base: './',
+});
+</code></pre>
+<p><code>base: './'</code> нужен для деплоя на GitHub Pages — относительные пути к ассетам.</p>
+<h3><code>tsconfig.app.json</code> — важные флаги</h3>
+<pre><code class="language-json">{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "resolveJsonModule": true,
+    "noEmit": true
+  },
+  "include": ["src"]
+}
+</code></pre>
+<p><code>resolveJsonModule: true</code> позволяет <code>import cards from '../data/cards.json'</code>.</p>
+<div class="callout callout--warning">
+  <div class="callout-title">Кодировка JSON</div>
+  <div class="callout-body">
+  <p>Файлы в <code>src/data/</code> сохраняйте в <strong>UTF-8</strong> — иначе кириллица в названиях карт сломается при сборке на Windows.</p>
+  </div>
+</div>
+<h3 id="деплой-на-github-pages">Деплой на GitHub Pages</h3>
+<p>После этапа 15 (или раньше, если нужна демо-ссылка):</p>
+<pre><code class="language-bash">npm run build
+# содержимое dist/ — статический сайт
+</code></pre>
+<ol>
+<li>В репозитории GitHub включите <strong>Pages</strong> → Source: <strong>GitHub Actions</strong> или ветка <code>gh-pages</code> с папкой <code>/dist</code>. Workflow — <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1134">CI/CD рецепты</a>, пошаговый кейс — <a href="/lab/%D0%9A%D0%B5%D0%B9%D1%81%D1%8B/3">GitHub Pages</a>.</li>
+<li>В <code>vite.config.ts</code> обязательно <code>base: './'</code> — иначе на <code>username.github.io/RepoName/</code> не подгрузятся JS/CSS.</li>
+<li>Проверка локально: <code>npm run preview</code> и открыть указанный URL.</li>
+</ol>
+<div class="callout callout--info">
+  <div class="callout-title">Структура tsconfig</div>
+  <div class="callout-body">
+  <p>В эталоне два файла — <code>tsconfig.json</code> (references) и <code>tsconfig.app.json</code> (компиляция <code>src/</code>). Тесты подключают <code>vitest/globals</code> через <code>types</code> в <code>tsconfig.app.json</code> или отдельный <code>tsconfig.node.json</code> для конфига Vite.</p>
+  </div>
+</div>
+<h3 id="рекомендуемая-настройка-редактора">Рекомендуемая настройка редактора</h3>
+<ul>
+<li><strong>VS Code / Cursor</strong> — расширения ESLint (если добавите), Prettier; встроенный TypeScript language service подсветит ошибки <code>strict</code>.</li>
+<li>При сохранении включите format on save для единообразия кавычек в TSX.</li>
+<li>DevTools → вкладка <strong>Components</strong> (React DevTools) помогает отследить, перерисовался ли <code>CombatScreen</code> после <code>dispatch</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-0"></span></p>
+<h2 id="этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</h2>
+<p><strong>Цель</strong> — Vite + React + TypeScript, тёмный экран с подписью этапа, hot reload при сохранении файлов.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">HMR и игровое состояние</div>
+  <div class="callout-body">
+  <p>При hot reload React может пересоздать <code>GameProvider</code> и сбросить забег. Для проверки боевой логики на поздних этапах используйте полное обновление страницы (F5).</p>
+  </div>
+</div>
+<h3 id="файлы">Файлы</h3>
+<p><code>index.html</code>:</p>
+<pre><code class="language-html">&#x3C;!doctype html>
+&#x3C;html lang="ru">
+  &#x3C;head>
+    &#x3C;meta charset="UTF-8" />
+    &#x3C;meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    &#x3C;title>Карточный roguelike — этап 0&#x3C;/title>
+  &#x3C;/head>
+  &#x3C;body>
+    &#x3C;div id="root">&#x3C;/div>
+    &#x3C;script type="module" src="/src/main.tsx">&#x3C;/script>
+  &#x3C;/body>
+&#x3C;/html>
+</code></pre>
+<p><code>src/main.tsx</code>:</p>
+<pre><code class="language-typescript">
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+import './styles/global.css';
+
+createRoot(document.getElementById('root')!).render(
+  &#x3C;StrictMode>
+    
+  &#x3C;/StrictMode>,
+);
+</code></pre>
+<p><code>src/App.tsx</code>:</p>
+<pre><code class="language-typescript">export default function App() {
+  return (
+    &#x3C;div className="app">
+      &#x3C;h1>Карточный roguelike&#x3C;/h1>
+      &#x3C;p>Этап 0 — проект собран, dev-сервер работает.&#x3C;/p>
+    &#x3C;/div>
+  );
+}
+</code></pre>
+<p><code>src/styles/global.css</code>:</p>
+<div class="itu-code-embed" data-example="css/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-002" data-title="Файлы" data-min-height="444"> </div>
+<p>На <strong>этапе 15</strong> замените фон на дизайн-систему эталона — CSS-переменные в <code>:root</code> (<code>--bg-deep</code>, <code>--gold</code>, <code>--font-display</code>), слои <code>.aurora</code> и <code>.stars</code> в <code>App.tsx</code>, шрифты Cinzel и Outfit из Google Fonts (см. <code>index.html</code> эталона).</p>
+<h3 id="запуск">Запуск</h3>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Браузер открывается без ошибок в консоли.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Изменение текста в <code>App.tsx</code> сразу видно на странице (HMR).</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>npm run build</code> завершается успешно.</li>
+</ul>
+<hr>
+<p><span id="stage-1"></span></p>
+<h2 id="этап-1-настройки-и-типы">Этап 1 — настройки и типы</h2>
+<p><strong>Цель</strong> — вынести константы в <code>settings.ts</code>, описать типы карт и экранов в <code>types.ts</code>.</p>
+<h3><code>src/game/settings.ts</code></h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-003" data-title="`src/game/settings.ts`" data-min-height="624"> </div>
+<h3><code>src/game/types.ts</code></h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-004" data-title="`src/game/types.ts`" data-min-height="678"> </div>
+<p>Обновите <code>App.tsx</code> — импортируйте <code>CARD_TYPE_COLORS</code> и покажите палитру типов карт цветными квадратами.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> TypeScript не ругается на <code>strict: true</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Константы карт и узлов импортируются из одного файла <code>settings.ts</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-2"></span></p>
+<h2 id="этап-2-модель-карты-и-json">Этап 2 — модель карты и JSON</h2>
+<p><strong>Цель</strong> — класс <code>Card</code>, загрузка базы из <code>src/data/cards.json</code>, фабрика <code>createCard</code>.</p>
+<h3><code>src/data/cards.json</code></h3>
+<div class="itu-code-embed" data-example="json/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-005" data-title="`src/data/cards.json`" data-min-height="624"> </div>
+<h3><code>src/game/card.ts</code> (начало файла)</h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-006" data-title="`src/game/card.ts` (начало файла)" data-min-height="720"> </div>
+<p>Проверка в консоли браузера или временном скрипте:</p>
+<pre><code class="language-typescript">
+import { createStartingDeck } from './game/card';
+
+console.log(createStartingDeck().length, createStartingDeck()[0].name);
+// 10 "Удар"
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Импорт JSON работает (<code>resolveJsonModule</code>).</li>
+<li class="task-list-item"><input type="checkbox" disabled> У каждой карты есть <code>type</code>, <code>cost</code>, <code>value</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-3"></span></p>
+<h2 id="этап-3-колода-и-рука">Этап 3 — колода и рука</h2>
+<p><strong>Цель</strong> — <code>Deck</code> (стопка добора, сброс, перетасовка) и <code>Hand</code> (лимит карт).</p>
+<p>Дополните <code>src/game/card.ts</code>:</p>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-007" data-title="Этап 3 — колода и рука" data-min-height="720"> </div>
+<p>На <strong>этапе 14</strong> заменим <code>Math.random()</code> в <code>shuffle</code> на <code>rngInt</code> из <code>rng.ts</code> для детерминированных забегов.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Пустая стопка добора перетасовывает сброс.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Рука не принимает 11-ю карту при <code>MAX_HAND = 10</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-4"></span></p>
+<h2 id="этап-4-игрок-hp-энергия-блок">Этап 4 — игрок (HP, энергия, блок)</h2>
+<p><strong>Цель</strong> — <code>Player</code> с боевым сбросом состояния и экономикой урона/брони.</p>
+<h3><code>src/game/player.ts</code></h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-008" data-title="`src/game/player.ts`" data-min-height="720"> </div>
+<p>Временная заглушка <code>src/game/relic.ts</code> (полная версия на этапе 12):</p>
+<pre><code class="language-typescript">export class Relic {
+  id: string;
+  name: string;
+  effect: string;
+  value: number;
+
+  constructor(data: { id: string; name: string; effect: string; value: number }) {
+    this.id = data.id;
+    this.name = data.name;
+    this.effect = data.effect;
+    this.value = data.value;
+  }
+}
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>takeDamage(10)</code> при <code>block = 5</code> оставляет 45 HP из 50.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>vulnerable = 2</code> умножает входящий урон ×1.5.</li>
+</ul>
+<hr>
+<p><span id="stage-5"></span></p>
+<h2 id="этап-5-враг-и-намерения">Этап 5 — враг и намерения</h2>
+<p><strong>Цель</strong> — <code>Enemy</code> с циклом намерений, <code>Encounter</code> для группы врагов, данные из JSON.</p>
+<h3><code>src/data/enemies.json</code></h3>
+<div class="itu-code-embed" data-example="json/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-009" data-title="`src/data/enemies.json`" data-min-height="390"> </div>
+<h3><code>src/game/enemy.ts</code> (ядро)</h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-010" data-title="`src/game/enemy.ts` (ядро)" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После <code>executeIntent</code> намерение на <strong>следующий</strong> ход уже спланировано.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>getLivingEnemies()</code> не возвращает мёртвых.</li>
+</ul>
+<hr>
+<p><span id="stage-6"></span></p>
+<h2 id="этап-6-менеджер-боя">Этап 6 — менеджер боя</h2>
+<p><strong>Цель</strong> — <code>CombatManager</code> — розыгрыш карт, ход игрока, фаза врагов, победа/поражение.</p>
+<h3 id="порядок-одного-полного-хода">Порядок одного полного хода</h3>
+<ol>
+<li><strong>Старт боя</strong> — <code>initCombat</code> — <code>resetCombat</code>, добор <code>STARTING_HAND</code> карт, <code>turn = 1</code>.</li>
+<li><strong>Фаза игрока</strong> — <code>playCard</code> сколько угодно раз, пока хватает энергии; каждая карта → <code>resolveCard</code> → сброс в <code>discardPile</code>.</li>
+<li><strong>Конец хода</strong> — <code>endPlayerTurn</code>: сброс руки, <code>enemyPhase</code> для каждого живого врага (<code>executeIntent</code> + планирование следующего намерения).</li>
+<li><strong>Проверки</strong> — все враги мертвы → победа; HP игрока 0 → поражение.</li>
+<li><strong>Новый ход</strong> — <code>startNextTurn</code>: <code>player.startTurn</code>, добор <code>DRAW_PER_TURN</code>, снова фаза игрока.</li>
+</ol>
+<p>В эталоне между шагами 3 и 5 вставлены хуки <code>processPlayerEndTurn</code> / <code>processPlayerStartTurn</code> из <code>cardEffects.ts</code> (реген, металлическая броня, шипы).</p>
+<h3><code>src/game/combat.ts</code> (упрощённая версия)</h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-011" data-title="`src/game/combat.ts` (упрощённая версия)" data-min-height="720"> </div>
+<p>Проверка без UI — временный файл или Vitest:</p>
+<pre><code class="language-typescript">
+import { Player } from './player';
+import { createCombatEncounter } from './enemy';
+import { CombatManager } from './combat';
+
+const p = new Player();
+const c = new CombatManager(p, createCombatEncounter());
+c.playCard(0, 0);
+c.endPlayerTurn();
+console.log(c.log);
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Карта с <code>cost > energy</code> не розыгрывается.</li>
+<li class="task-list-item"><input type="checkbox" disabled> После "конец хода" враг атакует, игрок получает новую руку.</li>
+<li class="task-list-item"><input type="checkbox" disabled> HP = 0 переводит бой в поражение.</li>
+</ul>
+<hr>
+<p><span id="stage-7"></span></p>
+<h2 id="этап-7-react-context-и-главное-меню">Этап 7 — React Context и главное меню</h2>
+<p><strong>Цель</strong> — <code>useGame</code> с <code>RunState</code>, <code>dispatch</code> и первый экран <code>MenuScreen</code>.</p>
+<h3><code>src/game/runState.ts</code> (минимум)</h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-012" data-title="`src/game/runState.ts` (минимум)" data-min-height="354"> </div>
+<h3><code>src/hooks/useGame.tsx</code></h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-013" data-title="`src/hooks/useGame.tsx`" data-min-height="720"> </div>
+<div class="callout callout--tip">
+  <div class="callout-title">RunState в useRef</div>
+  <div class="callout-body">
+  <code>RunState</code> — мутабельный объект с десятками полей. Храним один экземпляр в <code>useRef</code>, а после каждого <code>dispatch</code> увеличиваем <code>tick</code>, чтобы React перерисовал дерево. Так устроен эталонный <code>useGame.tsx</code>.
+  </div>
+</div>
+<h3><code>src/components/MenuScreen.tsx</code></h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-014" data-title="`src/components/MenuScreen.tsx`" data-min-height="372"> </div>
+<h3><code>src/App.tsx</code> — роутер экранов</h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-015" data-title="`src/App.tsx` — роутер экранов" data-min-height="444"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Кнопка "Новый забег" меняет экран на заглушку карты.</li>
+<li class="task-list-item"><input type="checkbox" disabled> В консоли нет предупреждений React о ключах или контексте.</li>
+</ul>
+<hr>
+<p><span id="stage-8"></span></p>
+<h2 id="этап-8-экран-боя-и-карточки">Этап 8 — экран боя и карточки</h2>
+<p><strong>Цель</strong> — <code>CombatScreen</code>, <code>CardView</code>, <code>PlayerHUD</code>; розыгрыш карт мышью.</p>
+<h3 id="выбор-цели-таргетинг">Выбор цели (таргетинг)</h3>
+<p>Когда врагов больше одного, атакующие карты требуют двух кликов — сначала карта, затем враг (или наоборот):</p>
+<pre><code class="language-mermaid">flowchart TD
+    A[Клик по карте] --> B{cardNeedsTarget?}
+    B -->|нет| C[playCard сразу]
+    B -->|да| D{враг уже выбран?}
+    D -->|да| E[playCard с targetIndex]
+    D -->|нет, 1 враг| F[playCard target 0]
+    D -->|нет, 2+ врага| G[SELECT_CARD — подсветка]
+    H[Клик по врагу] --> I{карта выбрана?}
+    I -->|да| E
+    I -->|нет| J[SELECT_ENEMY — подсветка]
+</code></pre>
+<p>Логика в эталоне — <code>CombatScreen.onCardClick</code> / <code>onEnemyClick</code> и ветка <code>PLAY_CARD</code> в <code>useGame.tsx</code>:</p>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-016" data-title="Выбор цели (таргетинг)" data-min-height="390"> </div>
+<p>Клавиша <strong>E</strong> / <strong>У</strong> — <code>useEffect</code> с <code>keydown</code> в <code>CombatScreen</code> вызывает <code>dispatch(&#x26;#123; type: 'END_TURN' &#x26;#125;)</code>.</p>
+<h3><code>src/components/CardView.tsx</code></h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-017" data-title="`src/components/CardView.tsx`" data-min-height="552"> </div>
+<h3><code>src/components/CombatScreen.tsx</code> (скелет)</h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-018" data-title="`src/components/CombatScreen.tsx` (скелет)" data-min-height="720"> </div>
+<p>Расширьте <code>useGame.tsx</code> — добавьте действия <code>PLAY_CARD</code>, <code>END_TURN</code>, <code>SELECT_ENEMY</code>, <code>SELECT_CARD</code> (см. эталонный файл). В <code>RunState</code> добавьте поле <code>combat: CombatManager | null</code> и метод <code>startTestCombat()</code> для отладки:</p>
+<pre><code class="language-typescript">
+import { CombatManager } from './combat';
+import { createCombatEncounter } from './enemy';
+
+startTestCombat() {
+  this.combat = new CombatManager(this.player, createCombatEncounter());
+  this.screen = 'combat';
+}
+</code></pre>
+<p>CSS для карт (фрагмент <code>global.css</code>):</p>
+<div class="itu-code-embed" data-example="css/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-019" data-title="`src/components/CombatScreen.tsx` (скелет)" data-min-height="534"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Клик по карте тратит энергию и обновляет HP врага.</li>
+<li class="task-list-item"><input type="checkbox" disabled> "Конец хода" запускает атаку врага и новый добор.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Недоступные карты визуально отличаются (нет класса <code>--playable</code>).</li>
+<li class="task-list-item"><input type="checkbox" disabled> При двух врагах без выбранной цели карта только подсвечивается.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Клавиша E завершает ход.</li>
+</ul>
+<div class="callout callout--info">
+  <div class="callout-title">Эталон CardView</div>
+  <div class="callout-body">
+  <p>В репозитории <code>CardView.tsx</code> оборачивает карту в <code>Tooltip</code> с детальным описанием, использует CSS-переменную <code>--card-accent</code>, варианты <code>hand</code> / <code>combat</code> / <code>reward</code> / <code>shop</code>. Компоненты <code>PlayerHUD</code> и <code>EnemyPanel</code> показывают полоски HP, блок, статусы и иконку намерения.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-9"></span></p>
+<h2 id="этап-9-полный-роутер-экранов">Этап 9 — полный роутер экранов</h2>
+<p><strong>Цель</strong> — как в эталонном <code>App.tsx</code> — словарь экранов, <code>BannerOverlay</code>, подключение всех заглушек.</p>
+<p>Обновите <code>App.tsx</code>:</p>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-020" data-title="Этап 9 — полный роутер экранов" data-min-height="480"> </div>
+<p>Каждый экран — функциональный компонент с <code>useGame()</code>. Пустые экраны (<code>ShopScreen</code>, <code>RestScreen</code>) пока возвращают кнопку "На карту" с <code>dispatch(&#x26;#123; type: 'GO_MAP' &#x26;#125;)</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Переключение <code>run.screen</code> меняет содержимое без перезагрузки страницы.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Нет "мигания" при смене экрана (при желании добавьте CSS-переход как в эталоне <code>screen-wrap--transition</code>).</li>
+</ul>
+<hr>
+<p><span id="stage-10"></span></p>
+<h2 id="этап-10-процедурная-карта">Этап 10 — процедурная карта</h2>
+<p><strong>Цель</strong> — <code>GameMap</code> с 15 этажами, развилками и доступностью узлов.</p>
+<h3 id="веса-типов-узлов-эталон">Веса типов узлов (эталон)</h3>
+<p>В <code>GameMap.randomNodeType</code> вероятности заданы явно — это баланс "скучных" боёв и редких элит:</p>
+<table>
+<thead>
+<tr>
+<th>Тип узла</th>
+<th>Вес</th>
+<th>Примечание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>combat</code></td>
+<td>45</td>
+<td>основной контент</td>
+</tr>
+<tr>
+<td><code>elite</code></td>
+<td>12</td>
+<td>с 3-го этажа (<code>floor &#x3C; 3</code> → 0)</td>
+</tr>
+<tr>
+<td><code>event</code></td>
+<td>17</td>
+<td>случайный текст + выбор</td>
+</tr>
+<tr>
+<td><code>shop</code></td>
+<td>10</td>
+<td>трата золота</td>
+</tr>
+<tr>
+<td><code>treasure</code></td>
+<td>8</td>
+<td>выбор реликвии</td>
+</tr>
+<tr>
+<td><code>rest</code></td>
+<td>8</td>
+<td>лечение / кузница</td>
+</tr>
+</tbody>
+</table>
+<p>Каждый 5-й этаж (кроме первого и последнего) принудительно получает <code>rest</code> на первой колонке — предсказуемая передышка перед блоком сложнее.</p>
+<h3><code>src/game/map.ts</code> (ядро)</h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-021" data-title="`src/game/map.ts` (ядро)" data-min-height="720"> </div>
+<h3><code>src/components/MapScreen.tsx</code></h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-022" data-title="`src/components/MapScreen.tsx`" data-min-height="660"> </div>
+<p>Добавьте в <code>settings.ts</code> константы <code>NODE_COLORS</code> и <code>NODE_ICONS</code> (как в эталоне).</p>
+<p>В <code>RunState.startNewRun()</code>:</p>
+<pre><code class="language-typescript">
+import { GameMap } from './map';
+
+startNewRun() {
+  this.player = new Player();
+  this.gameMap = new GameMap();
+  this.combat = null;
+  this.screen = 'map';
+}
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После первого узла доступны только соседи следующего этажа.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Узел босса на последнем этаже.</li>
+</ul>
+<hr>
+<p><span id="stage-11"></span></p>
+<h2 id="этап-11-связка-карта-бой-награда">Этап 11 — связка карта → бой → награда</h2>
+<p><strong>Цель</strong> — <code>enterNode</code>, победа переводит на экран <code>reward</code>, выбор карты добавляет её в колоду.</p>
+<h3><code>RunState.enterNode</code> и награды</h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-023" data-title="`RunState.enterNode` и награды" data-min-height="696"> </div>
+<h3><code>getRewardCards</code> в <code>card.ts</code></h3>
+<pre><code class="language-typescript">export function getRewardCards(count = 3): Card[] {
+  const pool = cardDb.filter((c) => c.rarity !== 'basic');
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count).map((d) => createCard(d));
+}
+</code></pre>
+<p>В <code>useGame</code> после <code>playCard</code>, если <code>combat.combatOver &#x26;&#x26; combat.victory</code>, вызывайте <code>run.onCombatVictory()</code>.</p>
+<h3><code>completeNode</code> — завершение узла</h3>
+<p>Центральный метод эталона — вызывается после награды, лавки, костра, события:</p>
+<pre><code class="language-typescript">completeNode() {
+  if (this.gameMap &#x26;&#x26; this.pendingNode) {
+    this.gameMap.completeCurrentNode();
+    if (this.gameMap.isBossFloor() &#x26;&#x26; this.pendingNode.completed) {
+      this.recordRunEnd(true);
+      this.screen = 'victory';
+      return;
+    }
+  }
+  this.screen = 'map';
+  this.pendingNode = null;
+  this.combat = null;
+}
+</code></pre>
+<p>Победа над боссом на 15-м этаже → экран <code>victory</code> и запись в статистику. Любой другой узел → возврат на карту.</p>
+<h3><code>RewardScreen</code></h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-024" data-title="`RewardScreen`" data-min-height="462"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Колода растёт после выбора карты.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Возврат на карту, текущий узел отмечен пройденным.</li>
+</ul>
+<hr>
+<p><span id="stage-12"></span></p>
+<h2 id="этап-12-реликвии-и-классы">Этап 12 — реликвии и классы</h2>
+<p><strong>Цель</strong> — стартовая реликвия, экраны <code>class_select</code> и <code>relic_pick</code>, хуки в начале боя.</p>
+<h3><code>src/data/relics.json</code></h3>
+<div class="itu-code-embed" data-example="json/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-025" data-title="`src/data/relics.json`" data-min-height="390"> </div>
+<h3><code>src/game/relic.ts</code> — триггеры</h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-026" data-title="`src/game/relic.ts` — триггеры" data-min-height="714"> </div>
+<p>В <code>CombatManager.initCombat()</code> после добора карт вызовите <code>applyRelicOnCombatStart</code> для каждой реликвии. В <code>onCombatVictory()</code> — <code>applyRelicOnCombatEnd</code>.</p>
+<h3>Классы (<code>src/game/classes.ts</code>)</h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-027" data-title="Классы (`src/game/classes.ts`)" data-min-height="390"> </div>
+<p>Поток забега: <code>menu</code> → <code>class_select</code> → <code>relic_pick</code> → <code>map</code> (как в эталонном <code>runState.ts</code>).</p>
+<h3>Три класса (эталон <code>classes.ts</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Класс</th>
+<th>HP</th>
+<th>Стартовая колода (суть)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Воин</strong> ⚔</td>
+<td>85</td>
+<td>4× Удар, 4× Защита, Сокрушение, Железная волна</td>
+</tr>
+<tr>
+<td><strong>Плут</strong> 🗡</td>
+<td>75</td>
+<td>5× Удар, 3× Защита, Плечи напряг, Боевой транс</td>
+</tr>
+<tr>
+<td><strong>Страж</strong> 🛡</td>
+<td>90</td>
+<td>3× Удар, 5× Защита, Истинная стойкость, Пылающий гнев</td>
+</tr>
+</tbody>
+</table>
+<p><code>createStartingDeck(classId)</code> читает массив <code>&#x26;#123; id, count &#x26;#125;</code> из <code>CLASSES</code> и разворачивает его в <code>Deck</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После победы HP растёт при <code>burning_blood</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Враги начинают бой с уязвимостью при <code>bag_of_marbles</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Три класса дают разные стартовые колоды (расширьте <code>createStartingDeck(classId)</code>).</li>
+</ul>
+<hr>
+<p><span id="stage-13"></span></p>
+<h2 id="этап-13-лавка-и-костёр">Этап 13 — лавка и костёр</h2>
+<p><strong>Цель</strong> — узлы <code>shop</code> и <code>rest</code>, трата золота, лечение и кузница.</p>
+<table>
+<thead>
+<tr>
+<th>Узел</th>
+<th>Логика</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>rest</strong></td>
+<td>лечение 25% max HP или экран <code>smith</code> (кузница)</td>
+</tr>
+<tr>
+<td><strong>shop</strong></td>
+<td>покупка карты за 50 золота, реликвии за 150, удаление карты за 75</td>
+</tr>
+</tbody>
+</table>
+<p><code>restHeal</code> в эталоне:</p>
+<pre><code class="language-typescript">restHeal() {
+  this.player.heal(Math.floor(this.player.maxHp / 4));
+  this.completeNode();
+}
+</code></pre>
+<p>Покупка карты:</p>
+<pre><code class="language-typescript">buyCard(index: number) {
+  const card = this.shopCards[index];
+  if (!card || this.player.gold &#x3C; 50) return;
+  this.player.gold -= 50;
+  this.player.addCardToDeck(card);
+  this.shopCards.splice(index, 1);
+}
+</code></pre>
+<h3>Улучшение карт (<code>src/game/upgrade.ts</code>)</h3>
+<pre><code class="language-typescript">
+import type { Card } from './card';
+
+export function upgradeCard(card: Card): Card {
+  const up = card.copy();
+  up.upgraded = true;
+  if (up.type === 'attack') up.value += 3;
+  else if (up.type === 'block') up.value += 3;
+  else up.cost = Math.max(0, up.cost - 1);
+  return up;
+}
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Золото уменьшается при покупке.</li>
+<li class="task-list-item"><input type="checkbox" disabled> На костре HP не превышает максимум.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Улучшенная карта помечена <code>upgraded: true</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-14"></span></p>
+<h2 id="этап-14-rng-статистика-ежедневный-забег">Этап 14 — RNG, статистика, ежедневный забег</h2>
+<p><strong>Цель</strong> — детерминированный PRNG с seed, сохранение мета-прогресса в <code>localStorage</code>.</p>
+<h3 id="ежедневный-забег">Ежедневный забег</h3>
+<p><code>beginRunSetup(daily)</code> в <code>RunState</code>:</p>
+<ul>
+<li>обычный забег — <code>runSeed = randomSeed()</code> (XOR времени и <code>Math.random</code>);</li>
+<li>ежедневный — <code>runSeed = dailySeed()</code> = <code>YYYYMMDD</code> из текущей даты.</li>
+</ul>
+<p>Один seed → одна и та же карта узлов, одни и те же награды и события у всех игроков в этот день. Отдельное поле <code>stats.dailyBestFloor</code> хранит рекорд именно для daily-режима.</p>
+<pre><code class="language-typescript">beginRunSetup(daily = false) {
+  this.isDailyRun = daily;
+  this.runSeed = daily ? dailySeed() : randomSeed();
+  this.screen = 'class_select';
+}
+
+selectClass(classId: string) {
+  setActiveRng(new SeededRNG(this.runSeed));
+  // …
+}
+</code></pre>
+<h3><code>src/game/rng.ts</code></h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-028" data-title="`src/game/rng.ts`" data-min-height="660"> </div>
+<p>Замените <code>Math.random()</code> в <code>Deck.shuffle</code>, <code>GameMap.generate</code> и <code>getRewardCards</code> на функции из <code>rng.ts</code>.</p>
+<h3><code>src/game/stats.ts</code></h3>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-029" data-title="`src/game/stats.ts`" data-min-height="516"> </div>
+<p>В <code>RunState.recordRunEnd(won)</code> обновляйте <code>bestFloor</code>, <code>totalWins</code>, сохраняйте через <code>saveSessionStats</code>.</p>
+<h3 id="vitest">Vitest</h3>
+<p><code>src/game/game.test.ts</code>:</p>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-030" data-title="Vitest" data-min-height="516"> </div>
+<p>Добавьте в <code>vite.config.ts</code>:</p>
+<pre><code class="language-typescript">/// &#x3C;reference types="vitest/config" />
+export default defineConfig({
+  // ...
+  test: { globals: true },
+});
+</code></pre>
+<pre><code class="language-bash">npm test
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Два забега с одним <code>runSeed</code> дают одинаковую карту узлов.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Второй забег показывает статистику в меню.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>npm test</code> проходит без ошибок.</li>
+</ul>
+<hr>
+<p><span id="stage-15"></span></p>
+<h2 id="этап-15-pwa-звук-эффекты-редактор-полировка">Этап 15 — PWA, звук, эффекты, редактор (полировка)</h2>
+<p><strong>Цель</strong> — довести прототип до уровня эталона — установка как приложение, UX, расширенный контент.</p>
+<h3 id="pwa-и-offline">PWA и offline</h3>
+<pre><code class="language-bash">npm install -D vite-plugin-pwa
+</code></pre>
+<p>Фрагмент <code>vite.config.ts</code> из эталона:</p>
+<div class="itu-code-embed" data-example="typescript/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-9-031" data-title="PWA и offline" data-min-height="426"> </div>
+<p>После <code>npm run build</code> Chrome предложит "Установить приложение". Offline-кэш подхватывает уже загруженные ресурсы через Workbox.</p>
+<h3>Звук (<code>src/game/sfx.ts</code>)</h3>
+<p>Процедурные звуки через <strong>Web Audio API</strong> — отдельные mp3 не нужны. Класс <code>SfxEngine</code> генерирует короткие осцилляторные "блипы":</p>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Когда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>click()</code></td>
+<td>любая кнопка меню</td>
+</tr>
+<tr>
+<td><code>attack()</code></td>
+<td>карта типа attack / creature</td>
+</tr>
+<tr>
+<td><code>block()</code></td>
+<td>карта block</td>
+</tr>
+<tr>
+<td><code>card()</code></td>
+<td>buff / debuff / draw</td>
+</tr>
+<tr>
+<td><code>turn()</code></td>
+<td>конец хода</td>
+</tr>
+<tr>
+<td><code>victory()</code> / <code>defeat()</code></td>
+<td>исход боя</td>
+</tr>
+<tr>
+<td><code>boss()</code> / <code>elite()</code></td>
+<td>баннер при входе в бой</td>
+</tr>
+<tr>
+<td><code>toggleMute()</code></td>
+<td>кнопка в меню</td>
+</tr>
+</tbody>
+</table>
+<p>Вызовы расставлены в <code>useGame.applyAction</code> — UI остаётся "глухим" к деталям синтеза.</p>
+<h3>Эффекты (<code>src/hooks/useFx.tsx</code>)</h3>
+<p>Второй Context параллельно <code>useGame</code>:</p>
+<ul>
+<li><code>spawn('damage', &#x26;#123; value, x, y &#x26;#125;)</code> — всплывающее число урона;</li>
+<li><code>spawn('slash')</code>, <code>spawn('block')</code>, <code>spawn('heal')</code>;</li>
+<li><code>shake()</code> — CSS-класс тряски на <code>.combat-area</code>;</li>
+<li><code>useScreenTransition(screen)</code> — короткая анимация смены экрана.</li>
+</ul>
+<p><code>CombatScreen</code> хранит <code>prevHp</code> в <code>useRef</code> и при падении HP вызывает <code>spawn</code> + <code>shake</code>.</p>
+<h3 id="дизайн-система-css">Дизайн-система CSS</h3>
+<p>Эталонный <code>global.css</code> (~1600 строк) строится на переменных:</p>
+<pre><code class="language-css">:root {
+  --bg-deep: #06040f;
+  --gold: #ffd75a;
+  --accent: #8c5ae0;
+  --hp: #dc4650;
+  --block: #4696dc;
+  --energy: #ffc832;
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+}
+</code></pre>
+<p>Слои <code>.aurora</code> + <code>.stars</code> в <code>App.tsx</code> дают фон без Canvas. Карты используют <code>.card</code>, <code>.card--playable</code>, <code>.card--selected</code>; узлы карты — <code>.map-node</code>, <code>.map-node--available</code>.</p>
+<h3 id="редактор-карт">Редактор карт</h3>
+<p>Экран <code>card_editor</code> (<code>ExtraScreens.tsx</code>):</p>
+<ol>
+<li>Форма — имя, тип, стоимость, значение, описание.</li>
+<li><code>customCards.ts</code> — <code>saveCustomCard</code>, <code>loadCustomCards</code> в <code>localStorage</code>.</li>
+<li><code>getRewardCards</code> / <code>getShopCards</code> объединяют базу JSON с кастомными картами (<code>custom: true</code>, rarity <code>custom</code>).</li>
+</ol>
+<h3>Случайные события (<code>events.ts</code>)</h3>
+<p>Пять событий в массиве <code>GAME_EVENTS</code>. Каждое — <code>title</code>, <code>description</code>, массив <code>choices</code> с функцией <code>apply(player)</code>:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Суть</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shrine</code></td>
+<td>+15 HP или золото за урон</td>
+</tr>
+<tr>
+<td><code>merchant</code></td>
+<td>подарок золота или зелье</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>риск через пропасть</td>
+</tr>
+<tr>
+<td><code>altar</code></td>
+<td>+1 max HP или +1 max energy</td>
+</tr>
+<tr>
+<td><code>trap</code></td>
+<td>гарантированный или 50% урон</td>
+</tr>
+</tbody>
+</table>
+<p>При входе в узел <code>event</code> — <code>rngPick(GAME_EVENTS)</code>, экран <code>EventScreen</code>, после выбора — <code>continueFromEvent</code> → <code>completeNode</code>.</p>
+<h3>Модуль <code>cardEffects.ts</code> — карта расширения</h3>
+<p>После базового <code>resolveCard</code> подключите обработчики по одному. Группы эффектов в эталоне:</p>
+<table>
+<thead>
+<tr>
+<th>Группа</th>
+<th>Примеры <code>effect</code> / <code>bonus.id</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Статусы на враге</td>
+<td><code>vulnerable</code>, <code>weak</code>, <code>poison</code>, <code>burn</code>, <code>stun</code>, <code>mark</code></td>
+</tr>
+<tr>
+<td>Статусы на игроке</td>
+<td><code>strength</code>, <code>dexterity</code>, <code>frail</code>, <code>metallicize</code>, <code>thorns</code></td>
+</tr>
+<tr>
+<td>Урон</td>
+<td><code>pierce</code>, <code>double_hit</code>, <code>echo</code>, <code>lifesteal</code>, <code>execute</code></td>
+</tr>
+<tr>
+<td>Цикл хода</td>
+<td><code>end_turn_draw</code>, <code>end_turn_block</code>, <code>next_turn_energy</code>, <code>draw</code>, <code>energy</code></td>
+</tr>
+<tr>
+<td>Discard-механики</td>
+<td><code>discard_damage</code>, <code>discard_block</code>, <code>discard_draw</code></td>
+</tr>
+</tbody>
+</table>
+<p>Точка входа — <code>applyOnPlayBonuses(combat, card, targetIndex, messages)</code>; конец хода — <code>processPlayerEndTurn</code> / <code>processPlayerStartTurn</code>.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Как добавить один новый эффект</div>
+  <div class="callout-body">
+  <p>1) Константа в <code>cardEffects.ts</code>. 2) Ветка в <code>applyBonus</code> или <code>resolveCard</code>. 3) Запись в <code>cards.json</code>. 4) Тест в <code>game.test.ts</code>. 5) Проверка в браузере на одном враге.</p>
+  </div>
+</div>
+<h3 id="локализация">Локализация</h3>
+<p><code>src/game/locale.ts</code> — объект <code>LOCALE</code> со всеми строками UI. Компоненты импортируют константы, а не литералы — удобно для будущего i18n.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> "Установить приложение" доступно в Chrome после production-сборки.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Звук отключается кнопкой в меню.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Кастомная карта появляется в награде после сохранения в редакторе.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Баннер "БОСС" / "ЭЛИТА" мигает при входе в бой (<code>BannerOverlay</code>).</li>
+<li class="task-list-item"><input type="checkbox" disabled> Модальное окно колоды (<code>DeckModal</code>) открывается с карты и из боя.</li>
+</ul>
+<hr>
+<p><span id="content-reference"></span></p>
+<h2 id="справочник-отличия-учебного-прототипа-от-эталона">Справочник — отличия учебного прототипа от эталона</h2>
+<p>Если после этапа 14 прототип уже играбелен, используйте эту таблицу как чек-лист "что ещё перенести из репозитория":</p>
+<table>
+<thead>
+<tr>
+<th>Файл эталона</th>
+<th>Что добавляет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cardEffects.ts</code></td>
+<td>~40 эффектов, AOE, echo, discard-платежи</td>
+</tr>
+<tr>
+<td><code>events.ts</code> + <code>EventScreen</code></td>
+<td>5 narrative-событий на карте</td>
+</tr>
+<tr>
+<td><code>customCards.ts</code> + <code>CardEditorScreen</code></td>
+<td>моддинг без пересборки</td>
+</tr>
+<tr>
+<td><code>sfx.ts</code></td>
+<td>звуковая обратная связь</td>
+</tr>
+<tr>
+<td><code>useFx.tsx</code> + <code>FxOverlay.tsx</code></td>
+<td>juice — числа урона, тряска</td>
+</tr>
+<tr>
+<td><code>DeckModal.tsx</code></td>
+<td>просмотр колоды в забеге</td>
+</tr>
+<tr>
+<td><code>ExtraScreens.tsx</code></td>
+<td>class/relic/stats/smith/editor</td>
+</tr>
+<tr>
+<td><code>stats.ts</code> + leaderboard</td>
+<td>мета между сессиями</td>
+</tr>
+<tr>
+<td><code>global.css</code> (полный)</td>
+<td>визуал уровня коммерческого web-roguelike</td>
+</tr>
+</tbody>
+</table>
+<h3 id="формулы-баланса-для-самостоятельной-настройки">Формулы баланса (для самостоятельной настройки)</h3>
+<table>
+<thead>
+<tr>
+<th>Механика</th>
+<th>Формула в коде</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Уязвимость</td>
+<td>входящий урон × 1.5 (<code>Math.floor</code>)</td>
+</tr>
+<tr>
+<td>Слабость</td>
+<td>исходящий урон × 0.75</td>
+</tr>
+<tr>
+<td>Хрупкость</td>
+<td>блок × 0.75</td>
+</tr>
+<tr>
+<td>Улучшение attack/block</td>
+<td><code>value += 3</code></td>
+</tr>
+<tr>
+<td>Улучшение прочих</td>
+<td><code>cost -= 1</code> (мин. 0)</td>
+</tr>
+<tr>
+<td>Лечение на костре</td>
+<td><code>maxHp / 4</code> (эталон)</td>
+</tr>
+<tr>
+<td>Цена карты в лавке</td>
+<td>50 з (− скидка реликвии)</td>
+</tr>
+<tr>
+<td>Удаление карты</td>
+<td>75 з</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="final-checklist"></span></p>
+<h2 id="итоговая-самопроверка-и-эталон">Итоговая самопроверка и эталон</h2>
+<h3 id="чек-лист-учебного-прототипа">Чек-лист учебного прототипа</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Критерий</th>
+<th>Да / нет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>npm run dev</code> и <code>npm run build</code> без ошибок</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Карты и враги грузятся из JSON</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Колода, рука, сброс, перетасовка</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Энергия, блок, уязвимость работают</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Несколько врагов, выбор цели атаки</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Намерения врагов видны до их хода</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Карта узлов, переход в бой</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Награда — добавление карты в колоду</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Хотя бы одна реликвия влияет на бой</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Код разбит на <code>game/*</code>, <code>components/*</code>, <code>data/*</code></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Vitest покрывает урон и upgrade</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Статистика сохраняется в localStorage</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Ежедневный seed даёт одинаковую карту</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>События / редактор / PWA (этап 15)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="порядок-чтения-эталона-после-практикума">Порядок чтения эталона после практикума</h3>
+<ol>
+<li><code>types.ts</code> + <code>settings.ts</code> — контракты.</li>
+<li><code>card.ts</code> → <code>player.ts</code> → <code>enemy.ts</code> — сущности.</li>
+<li><code>combat.ts</code> + <code>cardEffects.ts</code> — правила боя.</li>
+<li><code>runState.ts</code> + <code>map.ts</code> — забег.</li>
+<li><code>useGame.tsx</code> — мост UI ↔ логика.</li>
+<li><code>CombatScreen.tsx</code> + <code>CardView.tsx</code> — представление.</li>
+<li><code>global.css</code> — визуал.</li>
+</ol>
+<h3 id="сравнение-с-onlinecardgame">Сравнение с OnlineCardGame</h3>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Практикум (минимум)</th>
+<th><a href="https://github.com/Spirzen/OnlineCardGame">OnlineCardGame</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Карт в базе</td>
+<td>3–10</td>
+<td>76+ с лор-текстами</td>
+</tr>
+<tr>
+<td>Эффекты</td>
+<td>удар, блок, уязвимость</td>
+<td>~40 в <code>cardEffects.ts</code></td>
+</tr>
+<tr>
+<td>Батыров</td>
+<td>1–3 (упрощённо)</td>
+<td>4 с уникальными колодами и цитатами из эпоса</td>
+</tr>
+<tr>
+<td>Этапов карты</td>
+<td>8–15</td>
+<td>15 в трёх частях эпоса</td>
+</tr>
+<tr>
+<td>События / лор</td>
+<td>базовые</td>
+<td>9 сцен + <code>acts.ts</code>, <code>expand-lore.mjs</code></td>
+</tr>
+<tr>
+<td>Редактор карт</td>
+<td>этап 15</td>
+<td>полный UI + JSON</td>
+</tr>
+<tr>
+<td>Звук</td>
+<td>—</td>
+<td>процедурный <code>sfx.ts</code></td>
+</tr>
+<tr>
+<td>PWA</td>
+<td>этап 15</td>
+<td>Workbox + manifest</td>
+</tr>
+<tr>
+<td>Переходы UI</td>
+<td>базовые</td>
+<td>баннеры элит и Шульгена, степная палитра</td>
+</tr>
+</tbody>
+</table>
+<p>После прохождения этапов откройте эталон и пройдите по файлам в порядке: <code>types.ts</code> → <code>card.ts</code> → <code>combat.ts</code> → <code>runState.ts</code> → <code>useGame.tsx</code> → <code>CombatScreen.tsx</code> — увидите те же швы, но с полным контентом и полировкой.</p>
+<h3 id="типичные-ошибки">Типичные ошибки</h3>
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Вероятная причина</th>
+<th>Что сделать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Белый экран</td>
+<td>ошибка TS/JS в консоли</td>
+<td>откройте DevTools → Console</td>
+</tr>
+<tr>
+<td>UI не обновляется после боя</td>
+<td>забыли <code>setTick</code> в dispatch</td>
+<td>каждый <code>dispatch</code> должен инкрементировать <code>tick</code></td>
+</tr>
+<tr>
+<td>Карты не кликаются</td>
+<td><code>canPlayCard</code> false</td>
+<td>проверьте энергию и <code>STATE_PLAYER_TURN</code></td>
+</tr>
+<tr>
+<td>Враг бьёт дважды за ход</td>
+<td><code>planIntent</code> не в конце <code>executeIntent</code></td>
+<td>планируйте намерение после действия</td>
+</tr>
+<tr>
+<td>Колода "теряет" карты</td>
+<td>при <code>resetCombat</code> не собрали discard</td>
+<td><code>getAllCards()</code> как в эталоне</td>
+</tr>
+<tr>
+<td>JSON не грузится</td>
+<td>нет <code>resolveJsonModule</code></td>
+<td>проверьте <code>tsconfig.app.json</code></td>
+</tr>
+<tr>
+<td>HMR сбрасывает забег</td>
+<td>hot reload пересоздаёт Provider</td>
+<td>для теста забега — полная перезагрузка страницы</td>
+</tr>
+<tr>
+<td>GitHub Pages — пустая страница</td>
+<td>неверный <code>base</code></td>
+<td><code>base: './'</code> в <code>vite.config.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="идеи-для-расширения-самостоятельно">Идеи для расширения (самостоятельно)</h3>
+<ul>
+<li>Статус-эффекты <strong>яд</strong>, <strong>кровотечение</strong>, <strong>оглушение</strong> — поля на <code>Enemy</code> и тики в <code>enemyPhase</code>.</li>
+<li><strong>Существа</strong> (<code>CARD_CREATURE</code>) — карта остаётся на поле и атакует каждый ход.</li>
+<li><strong>События</strong> на карте (<code>events.ts</code>) — текст и выбор с последствиями.</li>
+<li><strong>Таблица лидеров</strong> — топ забегов в <code>SessionStats.leaderboard</code>.</li>
+<li><strong>Мультиплеер</strong> — вынести <code>CombatManager</code> на WebSocket-сервер; UI остаётся тем же.</li>
+</ul>
+<hr>
+<h2 id="связанные-материалы">Связанные материалы</h2>
+<ul>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro">Практикум разработки игр — о разделе</a> — другие треки (Battle City, Python-карточная стратегия).</li>
+<li><a href="https://spirzen.ru/encyclopedia/5-languages/5-01-javascript/30">TypeScript</a> — типы, интерфейсы, strict mode.</li>
+<li><a href="https://spirzen.ru/encyclopedia/3-data-markup/3-09-html/22">Веб-игры на HTML5 и Canvas</a> — браузер как платформа для игр.</li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/7">Python — карточная стратегия</a> — тот же жанр на Pygame для сравнения архитектуры.</li>
+<li>Эталонный код — <a href="https://github.com/Spirzen/OnlineCardGame">github.com/Spirzen/OnlineCardGame</a> ("Приключения Урала Батыра"), играть — <a href="https://spirzen.github.io/OnlineCardGame/">spirzen.github.io/OnlineCardGame</a>.</li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#как-проходить-практикум">Как проходить практикум</a></li><li class="article-toc__item"><a href="#о-практикуме">О практикуме</a></li><li class="article-toc__item is-h3"><a href="#что-получится-в-эталоне">Что получится в эталоне</a></li><li class="article-toc__item is-h3"><a href="#игровой-цикл-как-в-готовой-игре">Игровой цикл (как в готовой игре)</a></li><li class="article-toc__item is-h3"><a href="#карта-этапов-практикума">Карта этапов практикума</a></li><li class="article-toc__item is-h3"><a href="#мини-глоссарий-deckbuilder">Мини-глоссарий deckbuilder</a></li><li class="article-toc__item"><a href="#архитектура">Архитектура</a></li><li class="article-toc__item is-h3"><a href="#жанровые-опоры">Жанровые опоры</a></li><li class="article-toc__item is-h3"><a href="#цикл-приложения-react-vite">Цикл приложения (React + Vite)</a></li><li class="article-toc__item is-h3"><a href="#экраны-забега-конечный-автомат-ui">Экраны забега (конечный автомат UI)</a></li><li class="article-toc__item is-h3"><a href="#конечный-автомат-боя">Конечный автомат боя</a></li><li class="article-toc__item is-h3"><a href="#слои-приложения">Слои приложения</a></li><li class="article-toc__item is-h3"><a href="#поток-данных-в-бою">Поток данных в бою</a></li><li class="article-toc__item is-h3"><a href="#целевая-структура-файлов">Целевая структура файлов</a></li><li class="article-toc__item is-h3"><a href="#диаграмма-классов-целевая">Диаграмма классов (целевая)</a></li><li class="article-toc__item is-h3"><a href="#справочник-модулей-srcgame-эталон">Справочник модулей `src/game/` (эталон)</a></li><li class="article-toc__item is-h3"><a href="#таблица-действий-dispatch">Таблица действий `dispatch`</a></li><li class="article-toc__item is-h3"><a href="#схема-записи-карты-в-json">Схема записи карты в JSON</a></li><li class="article-toc__item"><a href="#зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</a></li><li class="article-toc__item is-h3"><a href="#требования">Требования</a></li><li class="article-toc__item is-h3"><a href="#создание-проекта-с-нуля-альтернатива-клону">Создание проекта с нуля (альтернатива клону)</a></li><li class="article-toc__item is-h3"><a href="#клон-эталона-для-сверки">Клон эталона для сверки</a></li><li class="article-toc__item is-h3"><a href="#зависимости-эталона">Зависимости эталона</a></li><li class="article-toc__item is-h3"><a href="#viteconfigts-минимум-для-этапа-0">`vite.config.ts` (минимум для этапа 0)</a></li><li class="article-toc__item is-h3"><a href="#tsconfigappjson-важные-флаги">`tsconfig.app.json` — важные флаги</a></li><li class="article-toc__item is-h3"><a href="#деплой-на-github-pages">Деплой на GitHub Pages</a></li><li class="article-toc__item is-h3"><a href="#рекомендуемая-настройка-редактора">Рекомендуемая настройка редактора</a></li><li class="article-toc__item"><a href="#этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</a></li><li class="article-toc__item is-h3"><a href="#файлы">Файлы</a></li><li class="article-toc__item is-h3"><a href="#запуск">Запуск</a></li><li class="article-toc__item"><a href="#этап-1-настройки-и-типы">Этап 1 — настройки и типы</a></li><li class="article-toc__item is-h3"><a href="#srcgamesettingsts">`src/game/settings.ts`</a></li><li class="article-toc__item is-h3"><a href="#srcgametypests">`src/game/types.ts`</a></li><li class="article-toc__item"><a href="#этап-2-модель-карты-и-json">Этап 2 — модель карты и JSON</a></li><li class="article-toc__item is-h3"><a href="#srcdatacardsjson">`src/data/cards.json`</a></li><li class="article-toc__item is-h3"><a href="#srcgamecardts-начало-файла">`src/game/card.ts` (начало файла)</a></li><li class="article-toc__item"><a href="#этап-3-колода-и-рука">Этап 3 — колода и рука</a></li><li class="article-toc__item"><a href="#этап-4-игрок-hp-энергия-блок">Этап 4 — игрок (HP, энергия, блок)</a></li><li class="article-toc__item is-h3"><a href="#srcgameplayerts">`src/game/player.ts`</a></li><li class="article-toc__item"><a href="#этап-5-враг-и-намерения">Этап 5 — враг и намерения</a></li><li class="article-toc__item is-h3"><a href="#srcdataenemiesjson">`src/data/enemies.json`</a></li><li class="article-toc__item is-h3"><a href="#srcgameenemyts-ядро">`src/game/enemy.ts` (ядро)</a></li><li class="article-toc__item"><a href="#этап-6-менеджер-боя">Этап 6 — менеджер боя</a></li><li class="article-toc__item is-h3"><a href="#порядок-одного-полного-хода">Порядок одного полного хода</a></li><li class="article-toc__item is-h3"><a href="#srcgamecombatts-упрощённая-версия">`src/game/combat.ts` (упрощённая версия)</a></li><li class="article-toc__item"><a href="#этап-7-react-context-и-главное-меню">Этап 7 — React Context и главное меню</a></li><li class="article-toc__item is-h3"><a href="#srcgamerunstatets-минимум">`src/game/runState.ts` (минимум)</a></li><li class="article-toc__item is-h3"><a href="#srchooksusegametsx">`src/hooks/useGame.tsx`</a></li><li class="article-toc__item is-h3"><a href="#srccomponentsmenuscreentsx">`src/components/MenuScreen.tsx`</a></li><li class="article-toc__item is-h3"><a href="#srcapptsx-роутер-экранов">`src/App.tsx` — роутер экранов</a></li><li class="article-toc__item"><a href="#этап-8-экран-боя-и-карточки">Этап 8 — экран боя и карточки</a></li><li class="article-toc__item is-h3"><a href="#выбор-цели-таргетинг">Выбор цели (таргетинг)</a></li><li class="article-toc__item is-h3"><a href="#srccomponentscardviewtsx">`src/components/CardView.tsx`</a></li><li class="article-toc__item is-h3"><a href="#srccomponentscombatscreentsx-скелет">`src/components/CombatScreen.tsx` (скелет)</a></li><li class="article-toc__item"><a href="#этап-9-полный-роутер-экранов">Этап 9 — полный роутер экранов</a></li><li class="article-toc__item"><a href="#этап-10-процедурная-карта">Этап 10 — процедурная карта</a></li><li class="article-toc__item is-h3"><a href="#веса-типов-узлов-эталон">Веса типов узлов (эталон)</a></li><li class="article-toc__item is-h3"><a href="#srcgamemapts-ядро">`src/game/map.ts` (ядро)</a></li><li class="article-toc__item is-h3"><a href="#srccomponentsmapscreentsx">`src/components/MapScreen.tsx`</a></li><li class="article-toc__item"><a href="#этап-11-связка-карта-бой-награда">Этап 11 — связка карта → бой → награда</a></li><li class="article-toc__item is-h3"><a href="#runstateenternode-и-награды">`RunState.enterNode` и награды</a></li><li class="article-toc__item is-h3"><a href="#getrewardcards-в-cardts">`getRewardCards` в `card.ts`</a></li><li class="article-toc__item is-h3"><a href="#completenode-завершение-узла">`completeNode` — завершение узла</a></li><li class="article-toc__item is-h3"><a href="#rewardscreen">`RewardScreen`</a></li><li class="article-toc__item"><a href="#этап-12-реликвии-и-классы">Этап 12 — реликвии и классы</a></li><li class="article-toc__item is-h3"><a href="#srcdatarelicsjson">`src/data/relics.json`</a></li><li class="article-toc__item is-h3"><a href="#srcgamerelicts-триггеры">`src/game/relic.ts` — триггеры</a></li><li class="article-toc__item is-h3"><a href="#классы-srcgameclassests">Классы (`src/game/classes.ts`)</a></li><li class="article-toc__item is-h3"><a href="#три-класса-эталон-classests">Три класса (эталон `classes.ts`)</a></li><li class="article-toc__item"><a href="#этап-13-лавка-и-костёр">Этап 13 — лавка и костёр</a></li><li class="article-toc__item is-h3"><a href="#улучшение-карт-srcgameupgradets">Улучшение карт (`src/game/upgrade.ts`)</a></li><li class="article-toc__item"><a href="#этап-14-rng-статистика-ежедневный-забег">Этап 14 — RNG, статистика, ежедневный забег</a></li><li class="article-toc__item is-h3"><a href="#ежедневный-забег">Ежедневный забег</a></li><li class="article-toc__item is-h3"><a href="#srcgamerngts">`src/game/rng.ts`</a></li><li class="article-toc__item is-h3"><a href="#srcgamestatsts">`src/game/stats.ts`</a></li><li class="article-toc__item is-h3"><a href="#vitest">Vitest</a></li><li class="article-toc__item"><a href="#этап-15-pwa-звук-эффекты-редактор-полировка">Этап 15 — PWA, звук, эффекты, редактор (полировка)</a></li><li class="article-toc__item is-h3"><a href="#pwa-и-offline">PWA и offline</a></li><li class="article-toc__item is-h3"><a href="#звук-srcgamesfxts">Звук (`src/game/sfx.ts`)</a></li><li class="article-toc__item is-h3"><a href="#эффекты-srchooksusefxtsx">Эффекты (`src/hooks/useFx.tsx`)</a></li><li class="article-toc__item is-h3"><a href="#дизайн-система-css">Дизайн-система CSS</a></li><li class="article-toc__item is-h3"><a href="#редактор-карт">Редактор карт</a></li><li class="article-toc__item is-h3"><a href="#случайные-события-eventsts">Случайные события (`events.ts`)</a></li><li class="article-toc__item is-h3"><a href="#модуль-cardeffectsts-карта-расширения">Модуль `cardEffects.ts` — карта расширения</a></li><li class="article-toc__item is-h3"><a href="#локализация">Локализация</a></li><li class="article-toc__item"><a href="#справочник-отличия-учебного-прототипа-от-эталона">Справочник — отличия учебного прототипа от эталона</a></li><li class="article-toc__item is-h3"><a href="#формулы-баланса-для-самостоятельной-настройки">Формулы баланса (для самостоятельной настройки)</a></li><li class="article-toc__item"><a href="#итоговая-самопроверка-и-эталон">Итоговая самопроверка и эталон</a></li><li class="article-toc__item is-h3"><a href="#чек-лист-учебного-прототипа">Чек-лист учебного прототипа</a></li><li class="article-toc__item is-h3"><a href="#порядок-чтения-эталона-после-практикума">Порядок чтения эталона после практикума</a></li><li class="article-toc__item is-h3"><a href="#сравнение-с-onlinecardgame">Сравнение с OnlineCardGame</a></li><li class="article-toc__item is-h3"><a href="#типичные-ошибки">Типичные ошибки</a></li><li class="article-toc__item is-h3"><a href="#идеи-для-расширения-самостоятельно">Идеи для расширения (самостоятельно)</a></li><li class="article-toc__item"><a href="#связанные-материалы">Связанные материалы</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр — о разделе  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-01-javascript/30" target="_blank" rel="noopener noreferrer"> TypeScript  ↗ </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-01-javascript/intro" target="_blank" rel="noopener noreferrer"> JavaScript — о разделе  ↗ </a> </li><li> <a href="https://spirzen.ru/encyclopedia/3-data-markup/3-09-html/22" target="_blank" rel="noopener noreferrer"> Веб-игры на HTML5 и Canvas  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

@@ -1,0 +1,1216 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>The Elder Scrolls — Игры IT Universe</title><meta name="description" content="Серия The Elder Scrolls — ролевые игры с открытым миром, глубоким лором и свободой действий игрока."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">The Elder Scrolls</span></li></ol></nav><header class="portal-hero"> <h1>The Elder Scrolls</h1> <p>Серия The Elder Scrolls — ролевые игры с открытым миром, глубоким лором и свободой действий игрока.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="The Elder Scrolls" data-url="/games/9-03-igrovaya-industriya/game-studies/111">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="The Elder Scrolls">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>The Elder Scrolls</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="что-такое-the-elder-scrolls">Что такое The Elder Scrolls</h2>
+<p><strong>The Elder Scrolls</strong> (сокращённо <a href="https://terms.spirzen.ru/glossary/T#the-elder-scrolls">TES</a>) — серия <a href="https://terms.spirzen.ru/glossary/%D0%96#%D0%B6%D0%B0%D0%BD%D1%80">ролевых игр</a> с <a href="https://terms.spirzen.ru/glossary/%D0%A4#%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82">открытым миром</a>: игрок свободно ходит по карте, выбирает <a href="https://terms.spirzen.ru/glossary/%D0%97#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5">квесты</a> и развивает персонажа. Разработчик — <strong>Bethesda Game Studios</strong>, издатель — <strong>Bethesda Softworks</strong>. Действие разворачивается во <a href="#%D0%BD%D0%B8%D1%80%D0%BD-%D0%B8-%D1%82%D0%B0%D0%BC%D1%80%D0%B8%D1%8D%D0%BB">вымышленном мире Тамриэль</a> — континенте с девятью провинциями, собственной мифологией и десятками культур.</p>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/TESO.png" alt="TESO.png"></p>
+<p>С <strong>1994 года</strong> (первая часть <a href="#the-elder-scrolls-arena"><em>Arena</em></a>) серия выросла из эксперимента в один из самых узнаваемых брендов индустрии. Главные номерные части — <a href="#the-elder-scrolls-iii-morrowind"><em>Morrowind</em></a>, <a href="#the-elder-scrolls-iv-oblivion"><em>Oblivion</em></a>, <a href="#the-elder-scrolls-v-skyrim"><em>Skyrim</em></a>. Параллельно выходили <a href="#%D1%81%D0%BF%D0%B8%D0%BD-%D0%BE%D1%84%D1%84%D1%8B-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5-skyrim">спин-оффы</a>, среди которых <a href="https://terms.spirzen.ru/glossary/M#mmo-massively-multiplayer-online">многопользовательская</a> <a href="#the-elder-scrolls-online"><em>The Elder Scrolls Online</em></a>.</p>
+<hr>
+<h2 id="игры-серии-tes">Игры серии TES</h2>
+<table>
+<thead>
+<tr>
+<th>Название игры (ENG / RUS)</th>
+<th>Год выпуска</th>
+<th>Платформы</th>
+<th>Тип проекта / Жанр</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Elder Scrolls: Arena</td>
+<td>1994</td>
+<td>MS-DOS, PC</td>
+<td>Основная игра (RPG)</td>
+</tr>
+<tr>
+<td>The Elder Scrolls II: Daggerfall</td>
+<td>1996</td>
+<td>MS-DOS, PC</td>
+<td>Основная игра (RPG)</td>
+</tr>
+<tr>
+<td>An Elder Scrolls Legend: Battlespire</td>
+<td>1997</td>
+<td>MS-DOS, PC</td>
+<td>Спин-офф (RPG / Экшен)</td>
+</tr>
+<tr>
+<td>The Elder Scrolls Adventures: Redguard</td>
+<td>1998</td>
+<td>MS-DOS, PC</td>
+<td>Спин-офф (Приключение)</td>
+</tr>
+<tr>
+<td>The Elder Scrolls III: Morrowind</td>
+<td>2002</td>
+<td>PC, Xbox</td>
+<td>Основная игра (RPG)</td>
+</tr>
+<tr>
+<td>The Elder Scrolls Travels: Stormhold</td>
+<td>2003</td>
+<td>Java, J2ME</td>
+<td>Мобильный спин-офф</td>
+</tr>
+<tr>
+<td>The Elder Scrolls Travels: Dawnstar</td>
+<td>2004</td>
+<td>Java, J2ME</td>
+<td>Мобильный спин-офф</td>
+</tr>
+<tr>
+<td>The Elder Scrolls Travels: Shadowkey</td>
+<td>2004</td>
+<td>N-Gage</td>
+<td>Мобильный спин-офф</td>
+</tr>
+<tr>
+<td>The Elder Scrolls IV: Oblivion</td>
+<td>2006</td>
+<td>PC, Xbox 360, PS3</td>
+<td>Основная игра (RPG)</td>
+</tr>
+<tr>
+<td>The Elder Scrolls IV: Shivering Isles</td>
+<td>2007</td>
+<td>PC, Xbox 360, PS3</td>
+<td>Крупное расширение для TES IV</td>
+</tr>
+<tr>
+<td>The Elder Scrolls V: Skyrim</td>
+<td>2011</td>
+<td>PC, Xbox 360, PS3</td>
+<td>Основная игра (RPG)</td>
+</tr>
+<tr>
+<td>The Elder Scrolls Online</td>
+<td>2014</td>
+<td>PC, Xbox, PS, Mac</td>
+<td>MMORPG</td>
+</tr>
+<tr>
+<td>The Elder Scrolls: Legends</td>
+<td>2017</td>
+<td>PC, iOS, Android</td>
+<td>ККИ (Карточная игра)</td>
+</tr>
+<tr>
+<td>The Elder Scrolls V: Skyrim VR</td>
+<td>2017</td>
+<td>PC VR, PS VR</td>
+<td>VR-версия</td>
+</tr>
+<tr>
+<td>The Elder Scrolls: Blades</td>
+<td>2019</td>
+<td>iOS, Android, Switch</td>
+<td>Мобильный спин-офф (RPG)</td>
+</tr>
+<tr>
+<td>The Elder Scrolls: Castles</td>
+<td>2024</td>
+<td>iOS, Android</td>
+<td>Симулятор управления замком</td>
+</tr>
+<tr>
+<td>The Elder Scrolls IV: Oblivion Remastered</td>
+<td>2025</td>
+<td>PC, консоли</td>
+<td>Ремастер Oblivion с улучшенной графикой</td>
+</tr>
+<tr>
+<td>The Elder Scrolls VI</td>
+<td>В разработке</td>
+<td>Уточняется</td>
+<td>Основная игра (RPG)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="the-elder-scrolls-online">The Elder Scrolls Online</h2>
+<p>Подробнее об истории создания, геймплее, монетизации и роли <strong>Мэтта Фирора</strong> — в разделе <a href="#%D1%81%D0%BF%D0%B8%D0%BD-%D0%BE%D1%84%D1%84%D1%8B-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5-skyrim">Спин-оффы после Skyrim</a>. Ниже — полный список <a href="https://terms.spirzen.ru/glossary/%D0%90#%D0%B0%D0%B4%D0%B4%D0%BE%D0%BD">дополнений</a> и глав.</p>
+<p>Контент в игре делится на три типа:</p>
+<ul>
+<li><strong>Главы</strong> — крупные ежегодные расширения с новой зоной и сюжетом</li>
+<li><strong>Сюжетные DLC</strong> — отдельные регионы меньшего масштаба</li>
+<li><strong>Подземелья (Dungeon DLC)</strong> — наборы из двух групповых <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%B0%D0%BD%D0%B6-dungeon">данжей</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Название дополнения (ENG / RUS)</th>
+<th>Год выхода</th>
+<th>Тип контента</th>
+<th>Ключевые нововведения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Imperial City / Имперский город</td>
+<td>2015</td>
+<td>Сюжетное DLC / PvP</td>
+<td>Зона Имперского города, Канализация, PvPvE-механики</td>
+</tr>
+<tr>
+<td>Orsinium / Орсиниум</td>
+<td>2015</td>
+<td>Сюжетное DLC</td>
+<td>Зона Ротгар, одиночная Вихревая арена (Maelstrom)</td>
+</tr>
+<tr>
+<td>Thieves Guild / Гильдия воров</td>
+<td>2016</td>
+<td>Сюжетное DLC</td>
+<td>Зона Проклятие Хью, ветка навыков воров, триал Пасть Лорхаджа</td>
+</tr>
+<tr>
+<td>Dark Brotherhood / Темное Братство</td>
+<td>2016</td>
+<td>Сюжетное DLC</td>
+<td>Зона Золотой Берег, ветка навыков скрытных убийств</td>
+</tr>
+<tr>
+<td>Shadows of the Hist / Тени Хиста</td>
+<td>2016</td>
+<td>Подземелья</td>
+<td>Руины Маззатуна, Колыбель Теней</td>
+</tr>
+<tr>
+<td>Morrowind / Морровинд</td>
+<td>2017</td>
+<td>Глава</td>
+<td>Зона Вварденфелл, класс Хранитель (Warden), триал Залы Фабрикации</td>
+</tr>
+<tr>
+<td>Horns of the Reach / Рога Предела</td>
+<td>2017</td>
+<td>Подземелья</td>
+<td>Кузница Кровавого Корня, Владение Фолкрит</td>
+</tr>
+<tr>
+<td>Clockwork City / Заводной город</td>
+<td>2017</td>
+<td>Сюжетное DLC</td>
+<td>Зона Заводной город, трансмутация экипировки, мини-триал</td>
+</tr>
+<tr>
+<td>Dragon Bones / Драконьи кости</td>
+<td>2018</td>
+<td>Подземелья</td>
+<td>Пик Призывательницы Чешуи, Логово Клыка</td>
+</tr>
+<tr>
+<td>Summerset / Саммерсет</td>
+<td>2018</td>
+<td>Глава</td>
+<td>Зона Саммерсет, ветка Ордена Псиджиков, Ювелирное дело</td>
+</tr>
+<tr>
+<td>Wolfhunter / Охотник на волков</td>
+<td>2018</td>
+<td>Подземелья</td>
+<td>Крепость Лунного Охотника, Марш Жертвоприношений</td>
+</tr>
+<tr>
+<td>Murkmire / Муркмайр</td>
+<td>2018</td>
+<td>Сюжетное DLC</td>
+<td>Зона Муркмайр (Чернотопье), Арена Тюрьмы Блэкроуз</td>
+</tr>
+<tr>
+<td>Wrathstone / Камень Гнева</td>
+<td>2019</td>
+<td>Подземелья</td>
+<td>Глубины Малатара, Морозное Хранилище</td>
+</tr>
+<tr>
+<td>Elsweyr / Эльсвейр</td>
+<td>2019</td>
+<td>Глава</td>
+<td>Зона Северный Эльсвейр, класс Некромант, драконы</td>
+</tr>
+<tr>
+<td>Scalebreaker / Сокрушитель чешуи</td>
+<td>2019</td>
+<td>Подземелья</td>
+<td>Гнездо Ломтис, Логово Маарселока</td>
+</tr>
+<tr>
+<td>Dragonhold / Оплот Драконов</td>
+<td>2019</td>
+<td>Сюжетное DLC</td>
+<td>Зона Южный Эльсвейр, финал сезона драконов</td>
+</tr>
+<tr>
+<td>Harrowstorm / Мрачная буря</td>
+<td>2020</td>
+<td>Подземелья</td>
+<td>Нечестивая Могила, Ледяной Предел</td>
+</tr>
+<tr>
+<td>Greymoor / Греймур</td>
+<td>2020</td>
+<td>Глава</td>
+<td>Западный Скайрим, Черный Предел, Система Ревностей (мифики)</td>
+</tr>
+<tr>
+<td>Stonethorn / Каменный шип</td>
+<td>2020</td>
+<td>Подземелья</td>
+<td>Сады Сатрапа, Замок Шипов</td>
+</tr>
+<tr>
+<td>Markarth / Маркарт</td>
+<td>2020</td>
+<td>Сюжетное DLC</td>
+<td>Зона Предел, одиночная арена Vateshran Hollows</td>
+</tr>
+<tr>
+<td>Flames of Ambition / Огонь амбиций</td>
+<td>2021</td>
+<td>Подземелья</td>
+<td>Вилла Черного Змея, Котел</td>
+</tr>
+<tr>
+<td>Blackwood / Черный Лес</td>
+<td>2021</td>
+<td>Глава</td>
+<td>Зона Черный Лес, Система Спутников (компаньонов)</td>
+</tr>
+<tr>
+<td>Waking Flame / Пробуждающееся пламя</td>
+<td>2021</td>
+<td>Подземелья</td>
+<td>Оплот Красного Лепестка, Ужасный Подвал</td>
+</tr>
+<tr>
+<td>The Deadlands / Мертвые Земли</td>
+<td>2021</td>
+<td>Сюжетное DLC</td>
+<td>Зона Мертвые Земли (Обливион), финал сюжета Мерунеса Дагона</td>
+</tr>
+<tr>
+<td>Ascending Tide / Растущая волна</td>
+<td>2022</td>
+<td>Подземелья</td>
+<td>Коралловое Гнездо, Тайная Гавань</td>
+</tr>
+<tr>
+<td>High Isle / Высокий остров</td>
+<td>2022</td>
+<td>Глава</td>
+<td>Архипелаг Сстрес, карточная мини-игра "Легенды наград"</td>
+</tr>
+<tr>
+<td>Lost Depths / Затерянные глубины</td>
+<td>2022</td>
+<td>Подземелья</td>
+<td>Анклав Земляного Корня, Кузница Свалок</td>
+</tr>
+<tr>
+<td>Firesong / Пламенная песнь</td>
+<td>2022</td>
+<td>Сюжетное DLC</td>
+<td>Зона Гален, финал истории "Бретонское наследие"</td>
+</tr>
+<tr>
+<td>Scribes of Fate / Писцы Судьбы</td>
+<td>2023</td>
+<td>Подземелья</td>
+<td>Зал Книжников, Спрятанная Роща</td>
+</tr>
+<tr>
+<td>Necrom / Некром</td>
+<td>2023</td>
+<td>Глава</td>
+<td>Полуостров Телванни, Апокриф, класс Мастер Рун (Arcanist)</td>
+</tr>
+<tr>
+<td>Scions of Ithelia / Потомки Ителии</td>
+<td>2024</td>
+<td>Подземелья</td>
+<td>Завеса Иллюзий, Забытые Хранилища Ителии</td>
+</tr>
+<tr>
+<td>Gold Road / Золотая Дорога</td>
+<td>2024</td>
+<td>Глава</td>
+<td>Западный Вельд, механика Чарописи (Scribing)</td>
+</tr>
+<tr>
+<td>Fallen Banners / Павшие Знамена</td>
+<td>2025</td>
+<td>Подземелья / PvP</td>
+<td>Новые групповые подземелья и PvP-карты</td>
+</tr>
+<tr>
+<td>Feast of Shadows / Пир Теней</td>
+<td>2025</td>
+<td>Подземелья</td>
+<td>Набор тематических групповых подземелий</td>
+</tr>
+<tr>
+<td>Solstice / Солнцестояние</td>
+<td>2025</td>
+<td>Сюжетное DLC</td>
+<td>Компактная сюжетная зона</td>
+</tr>
+</tbody>
+</table>
+<p>Если вы планируете играть с подпиской ESO Plus, вам автоматически откроются абсолютно все дополнения и главы из этого списка, за исключением самой последней актуальной главы.</p>
+<hr>
+<h3 id="нирн-и-тамриэль">Нирн и Тамриэль</h3>
+<p>Планета <strong>Нирн</strong> — дом смертных рас и центр событий вселенной. По мифам, её создали <a href="#%D0%B0%D1%8D%D0%B4%D1%80%D0%B0-%D0%B8-%D0%B4%D0%B0%D1%8D%D0%B4%D1%80%D0%B0">Аэдра</a> обманом: бог <strong>Лорхан</strong> пожертвовал собой, и его душа стала планетой. Две луны — <strong>Массер</strong> и <strong>Секунда</strong> — влияют на приливы магии. Солнце — "дыра" в реальности, через которую в мир проникает свет из плана богов <strong>Этериус</strong>.</p>
+<p>Центральным местом действия большинства игр серии служит континент <strong>Тамриэль</strong>, название которого с языка альдмерис переводится как "краса зари" или "красота рассвета". Это единственный материк, детально проработанный и показанный во всех основных частях серии. География Тамриэля разнообразна: от субарктических снежных равнин Скайрима на севере до тропических джунглей Валенвуд и пустынь Эльсвейра на юге. Центральная провинция — Сродил, где расположена столица Империи Тамриэля.</p>
+<p>Тамриэль разделен на девять провинций, каждая из которых характеризуется уникальным климатом, архитектурой и доминирующей расой:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Провинция</th>
+<th align="left">Доминирующая раса</th>
+<th align="left">Климат и особенности</th>
+<th align="left">Культурный аналог</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Скайрим</strong></td>
+<td align="left">Норды</td>
+<td align="left">Субарктический, горы, снег</td>
+<td align="left">Древняя Скандинавия</td>
+</tr>
+<tr>
+<td align="left"><strong>Сродил</strong></td>
+<td align="left">Имперцы</td>
+<td align="left">Умеренный, плодородные равнины</td>
+<td align="left">Римская империя</td>
+</tr>
+<tr>
+<td align="left"><strong>Морровинд</strong></td>
+<td align="left">Данмеры (Тёмные эльфы)</td>
+<td align="left">Вулканический, пепельные пустоши</td>
+<td align="left">Ближний Восток, Египет</td>
+</tr>
+<tr>
+<td align="left"><strong>Хай Рок</strong></td>
+<td align="left">Бретонцы</td>
+<td align="left">Умеренный, леса и замки</td>
+<td align="left">Франция, Бретань</td>
+</tr>
+<tr>
+<td align="left"><strong>Эльсвейр</strong></td>
+<td align="left">Каджиты</td>
+<td align="left">Пустынный, песчаные дюны</td>
+<td align="left">Северная Африка, Аравия</td>
+</tr>
+<tr>
+<td align="left"><strong>Валенвуд</strong></td>
+<td align="left">Босмеры (Лесные эльфы)</td>
+<td align="left">Влажные тропические джунгли</td>
+<td align="left">Южная Америка, Амазонка</td>
+</tr>
+<tr>
+<td align="left"><strong>Хаммерфелл</strong></td>
+<td align="left">Редгарды</td>
+<td align="left">Жаркие степи и скалы</td>
+<td align="left">Народы Северной Африки</td>
+</tr>
+<tr>
+<td align="left"><strong>Чернотопье</strong></td>
+<td align="left">Аргонианы</td>
+<td align="left">Болотистые тропики</td>
+<td align="left">Древний Египет, болота</td>
+</tr>
+<tr>
+<td align="left"><strong>Саммерсет</strong></td>
+<td align="left">Альтмеры (Высокие эльфы)</td>
+<td align="left">Остров, умеренный климат</td>
+<td align="left">Античная Греция</td>
+</tr>
+</tbody>
+</table>
+<p>Девятая провинция, <strong>Орсиниум</strong>, исторически являлась государством орков, но её статус менялся в зависимости от эпохи. Кроме того, существуют другие материки, такие как Акавир, Йокуда и Атмора, которые упоминаются в лоре, но редко показываются напрямую в играх основной линейки.</p>
+<p>Башни — это мистические структуры, разбросанные по всему Тамриэлю, которые удерживают реальность от распада. Они служат точками связи между физическим миром и высшими планами бытия. Падение одной из Башен может привести к катастрофическим последствиям, таким как открытие врат в Обливион или изменение самой природы времени.</p>
+<hr>
+<h3 id="аэдра-и-даэдра">Аэдра и Даэдра</h3>
+<p>Космология вселенной The Elder Scrolls строится на дуализме двух групп божественных сущностей: <strong>Аэдра</strong> и <strong>Даэдра</strong>.</p>
+<p><strong>Аэдра</strong> — это боги-творцы, которые пожертвовали частью своей силы для создания мира смертных (Мундуса). Они стали ограничены временем и пространством, подвержены старению и смерти. Пантеон Аэдра включает Девять Божеств, которым поклоняется большая часть населения Империи. Основатель империи Тайбер Септим стал девятым богом, получившим имя Талос. Эти божества редко вмешиваются напрямую в дела смертных, предпочитая направлять их через пророчества и знаки.</p>
+<p><strong>Даэдра</strong> — это сущности, отказавшиеся участвовать в создании мира и сохранившие свою полную силу и бессмертие. Они обитают в Обливионе, отдельном плане бытия, который состоит из множества измерений, управляемых Принцами Даэдра. Хотя часто даэдра изображаются как злобные демоны, их природа не является однозначной. Они действуют вне человеческих представлений о добре и зле, руководствуясь своими собственными мотивами, которые могут быть разрушительными, но также и развлекательными или даже нейтральными.</p>
+<p>Принцы Даэдра — это 17 могущественных лордов, каждый из которых правит своим планом в Обливионе и воплощает определенную сферу влияния:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Принц Даэдра</th>
+<th align="left">Сфера влияния</th>
+<th align="left">Характеристика</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Азура</strong></td>
+<td align="left">Рассвет и закат, магия</td>
+<td align="left">Частично связана с судьбой смертных</td>
+</tr>
+<tr>
+<td align="left"><strong>Боэтия</strong></td>
+<td align="left">Заговоры, убийства, хитрость</td>
+<td align="left">Учит через предательство и вероломство</td>
+</tr>
+<tr>
+<td align="left"><strong>Хермеус Мора</strong></td>
+<td align="left">Знания, память, время</td>
+<td align="left">Хранитель свитков, дарует знания ценой безумия</td>
+</tr>
+<tr>
+<td align="left"><strong>Шеогорат</strong></td>
+<td align="left">Безумие, хаос, творчество</td>
+<td align="left">Принц безумия, чьи планы непредсказуемы</td>
+</tr>
+<tr>
+<td align="left"><strong>Мерунес Дагон</strong></td>
+<td align="left">Разрушение, насилие, война</td>
+<td align="left">Главный антагонист многих сюжетных линий</td>
+</tr>
+<tr>
+<td align="left"><strong>Нокутинал</strong></td>
+<td align="left">Ночь, тайна, удача</td>
+<td align="left">Принцесса ночи, покровительствует ворам</td>
+</tr>
+<tr>
+<td align="left"><strong>Сандвин</strong></td>
+<td align="left">Праздники, пьянство, разврат</td>
+<td align="left">Любит веселье и оргии, редко вредит напрямую</td>
+</tr>
+<tr>
+<td align="left"><strong>Молаг Бал</strong></td>
+<td align="left">Рабство, порабощение, власть</td>
+<td align="left">Стремится подчинить себе все живое</td>
+</tr>
+<tr>
+<td align="left"><strong>Велкан</strong></td>
+<td align="left">Любовь, брак, семья</td>
+<td align="left">Пожизненный союзник смертных</td>
+</tr>
+<tr>
+<td align="left"><strong>Хирсин</strong></td>
+<td align="left">Охота, дикая природа</td>
+<td align="left">Принц охоты, связан с оборотнями</td>
+</tr>
+<tr>
+<td align="left"><strong>Феба</strong></td>
+<td align="left">Исцеление, здоровье, жизнь</td>
+<td align="left">Один из немногих принцев, связанных с добром</td>
+</tr>
+<tr>
+<td align="left"><strong>Мефала</strong></td>
+<td align="left">Любовь, измена, интриги</td>
+<td align="left">Смвол тройственности и скрытых смыслов</td>
+</tr>
+<tr>
+<td align="left"><strong>Клавикус Вайл</strong></td>
+<td align="left">Магия, сделки, иллюзии</td>
+<td align="left">Торговец желаниями, мастер манипуляций</td>
+</tr>
+<tr>
+<td align="left"><strong>Перей</strong></td>
+<td align="left">Истина, справедливость, закон</td>
+<td align="left">Принц, требующий соблюдения законов</td>
+</tr>
+<tr>
+<td align="left"><strong>Йогар</strong></td>
+<td align="left">Земля, стабильность, строительство</td>
+<td align="left">Связан с землей и камнем</td>
+</tr>
+<tr>
+<td align="left"><strong>Гараг</strong></td>
+<td align="left">Смерть, покой, загробная жизнь</td>
+<td align="left">Правитель царства мертвых</td>
+</tr>
+<tr>
+<td align="left"><strong>Тана</strong></td>
+<td align="left">Война, битвы, героизм</td>
+<td align="left">Принц войны, вдохновляет на подвиги</td>
+</tr>
+</tbody>
+</table>
+<p>Обливион — это хаотическое измерение, состоящее из планов Даэдра. Каждый план отражает суть своего повелителя. Например, план Шеогората наполнен абсурдом и галлюцинациями, а план Молаг Бала — мрачными крепостями и пытками. Через врата в Обливион даэдра могут вторгаться в мир смертных, вызывая кризисы и войны.</p>
+<hr>
+<h3 id="боги-драконы-и-расы">Боги, Драконы и Расы</h3>
+<p>Вселенная The Elder Scrolls населена множеством разумных рас, каждая из которых имеет свою историю, культуру и физические особенности.</p>
+<p><strong>Акатош</strong> — бог-дракон Времени, глава имперского пантеона. Он является символом вечности и порядка. Акатош создал драконов как осколки своей души, чтобы они служили ему и защищали мир.</p>
+<p><strong>Дова (Драконы)</strong> — бессмертные существа, являющиеся прямыми потомками Акатоша. Они обладают способностью говорить на драконьем языке (Довазуле), использовать Крики (Thu'um) — мощные заклинания, основанные на словах силы, и поглощать души других драконов. Драконы считались вымершими до событий пятой игры, но позже выяснилось, что они просто спали в течение веков.</p>
+<p>Люди в Тамриэле делятся на четыре основные группы:</p>
+<ul>
+<li><strong>Имперцы</strong> — жители центральной провинции Сродил, составляющие основу Империи. Они известны своим дипломатическим умением и терпимостью.</li>
+<li><strong>Норды</strong> — жители северного Скайрима. Они славятся своей воинственностью, любовью к битвам и уважением к предкам. Их культура сильно напоминает скандинавскую.</li>
+<li><strong>Редгарды</strong> — жители пустынного Хаммерфелла. Они являются мастерами ближнего боя и известны своей независимостью и гордостью.</li>
+<li><strong>Бретонцы</strong> — полуэльфы, проживающие в Хай Роке. Они наследуют магические способности эльфов и военную стойкость людей, занимая промежуточное положение между двумя расами.</li>
+</ul>
+<p>Меры (Эльфы) включают в себя четыре подгруппы:</p>
+<ul>
+<li><strong>Альтмеры (Высокие эльфы)</strong> — жители острова Саммерсет. Они считаются самыми красивыми и интеллектуальными эльфами, обладающими сильной магией и гордостью.</li>
+<li><strong>Босмеры (Лесные эльфы)</strong> — жители Валенвуд. Они быстры, ловки и прекрасно адаптированы к жизни в лесах.</li>
+<li><strong>Данмеры (Тёмные эльфы)</strong> — жители Морровинда. После проклятия их кожа стала серой, а глаза — красными. Они известны своей жесткостью, магией и сложной религиозной системой.</li>
+<li><strong>Орсимеры (Орки)</strong> — некогда считавшиеся монстрами, теперь признаны полноценной расой. Они живут в небольших поселениях по всему Тамриэлю и славятся своей силой и честностью.</li>
+</ul>
+<p>Зверорасы представляют собой две уникальные расы, отличающиеся от людей и эльфов:</p>
+<ul>
+<li><strong>Каджиты</strong> — кошачьи существа, происходящие из Эльсвейра. Они известны своей ловкостью, торговыми навыками и любовью к приключениям.</li>
+<li><strong>Аргонианы</strong> — рептилоподобные существа, населяющие Чернотопье. Они обладают способностью к регенерации и тесно связаны с природой болот.</li>
+</ul>
+<hr>
+<h2 id="геймплей">Геймплей</h2>
+<h3 id="философия-дизайна">Философия дизайна</h3>
+<p>Основа геймплея — принцип <strong>"будь, кем хочешь, и делай, что хочешь"</strong>. <a href="https://terms.spirzen.ru/glossary/%D0%97#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5">Сюжет</a> можно проходить, игнорировать или смешивать с побочными линиями. Игрок вступает во фракции, торгует, крафтит или исследует мир без жёстких рамок класса.</p>
+<p>Развитие персонажа завязано на <a href="https://terms.spirzen.ru/glossary/%D0%9D#%D0%BD%D0%B0%D0%B2%D1%8B%D0%BA">навыки</a>: чем чаще используешь меч, тем сильнее владение мечом. Уровень растёт от практики, а не от ручного распределения очков опыта.</p>
+<p>Мир реагирует на действия:</p>
+<ul>
+<li><a href="https://terms.spirzen.ru/glossary/N#npc">NPC</a> помнят прошлые встречи</li>
+<li>Фракции меняют отношение после поступков игрока</li>
+<li>Время суток влияет на расписание жителей (ночью лавки закрыты)</li>
+</ul>
+<p><a href="https://terms.spirzen.ru/glossary/%D0%9F#%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D0%B4%D1%83%D1%80%D0%BD%D0%B0%D1%8F-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F">Процедурная генерация</a> создаёт случайные <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%B0%D0%BD%D0%B6-dungeon">подземелья</a> и задания — мир кажется живым даже вне основного сюжета.</p>
+<p>Предметы интерактивны: их можно брать, перетаскивать, использовать как оружие или часть головоломки.</p>
+<hr>
+<h3 id="архитектура-выполнения">Архитектура выполнения</h3>
+<p><a href="https://terms.spirzen.ru/glossary/%D0%98#%D0%B8%D0%B3%D1%80%D0%BE%D0%B2%D0%BE%D0%B9-%D0%B4%D0%B2%D0%B8%D0%B6%D0%BE%D0%BA">Игровой движок</a> серии менялся с каждым поколением:</p>
+<ul>
+<li><strong>Gamebryo</strong> — Morrowind, Oblivion и ранний Skyrim; поддерживал интерактивные объекты и <a href="https://terms.spirzen.ru/glossary/M#%D0%BC%D0%BE%D0%B4">моды</a></li>
+<li><strong>Creation Engine</strong> — создан для Skyrim и позже; оптимизирован под огромные <a href="https://terms.spirzen.ru/glossary/%D0%A4#%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82">открытые миры</a></li>
+<li><strong>Papyrus</strong> — скриптовый язык для <a href="https://terms.spirzen.ru/glossary/%D0%97#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5">квестов</a>, диалогов и поведения <a href="https://terms.spirzen.ru/glossary/N#npc">NPC</a></li>
+<li><strong>Radiant AI</strong> — расписания и потребности NPC (работа, сон, еда, реакция на игрока)</li>
+</ul>
+<p>Мир разбит на <strong>ячейки</strong> (cells): каждая подгружается отдельно, поэтому карта может быть огромной без перегрузки памяти. Открытая архитектура движка упростила работу сообщества моддеров.</p>
+<hr>
+<h2 id="влияние-на-индустрию">Влияние на Индустрию</h2>
+<h3 id="культурный-след">Культурный след</h3>
+<p>The Elder Scrolls оказала огромное влияние на развитие игровой индустрии. Серия популяризировала концепцию бесшовных открытых миров, где игрок может свободно перемещаться между локациями без экранов загрузки. Этот стандарт стал обязательным для современных RPG.</p>
+<p>Моддинг-комьюнити превратило игры в долгоживущие платформы-песочницы. Тысячи модификаций расширяют возможности оригинальных игр, добавляя новый контент и исправляя ошибки. Некоторые моды становятся настолько качественными, что их сложно отличить от официального контента.</p>
+<p>Мемы, возникшие в игре, стали частью поп-культуры. Фраза "Раньше меня тоже вела дорога приключений, но потом мне прострелили колено" из Skyrim стала одним из самых известных интернет-мемов. Другие фразы и ситуации также широко используются в интернете.</p>
+<p>Экономический успех серии доказал коммерческую сверхприбыльность комплексных RPG. Продажи превысили 59 миллионов копий по всему миру. Четверть игр серии получала награду "Лучшая игра года" от различных изданий. Этот успех стимулировал разработчиков создавать подобные проекты.</p>
+<hr>
+<h3 id="история-релизов">История релизов</h3>
+<p>Серия началась с <strong>The Elder Scrolls: Arena</strong>, выпущенной весной 1994 года после двух лет разработки и смены жанра. Игра заложила основы открытого мира, абсолютной свободы игрока и каноничного лора Тамриэля — подробнее в разделе <a href="#the-elder-scrolls-arena">The Elder Scrolls: Arena</a>.</p>
+<p><strong>The Elder Scrolls II: Daggerfall</strong> вышла в сентябре 1996 года — амбициозный сиквел с рекордным масштабом мира и прокачкой через <a href="https://terms.spirzen.ru/glossary/%D0%9D#%D0%BD%D0%B0%D0%B2%D1%8B%D0%BA">навыки</a>. Подробнее — в разделе <a href="#the-elder-scrolls-ii-daggerfall">The Elder Scrolls II: Daggerfall</a>.</p>
+<p><strong>The Elder Scrolls III: Morrowind</strong> вышла в <strong>мае 2002 года</strong> и буквально вытащила Bethesda из петли банкротства — подробнее в разделе <a href="#the-elder-scrolls-iii-morrowind">The Elder Scrolls III: Morrowind</a>.</p>
+<p><strong>The Elder Scrolls IV: Oblivion</strong> вышла в <strong>марте 2006 года</strong> — next-gen сиквел, создававшийся с прицелом на <strong>Xbox 360</strong> и разделивший фанатов на два лагеря. Подробнее — в разделе <a href="#the-elder-scrolls-iv-oblivion">The Elder Scrolls IV: Oblivion</a>.</p>
+<p><strong>The Elder Scrolls V: Skyrim</strong> вышла <strong>11 ноября 2011 года</strong> (11.11.11) — самый успешный проект серии, забравший награды "Игра года" и продавшийся тиражом более <strong>7 млн</strong> копий за первые дни (к <strong>2023 году</strong> — более <strong>60 млн</strong>). Подробнее — в разделе <a href="#the-elder-scrolls-v-skyrim">The Elder Scrolls V: Skyrim</a>.</p>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/Skyrim.png" alt="Skyrim.png"></p>
+<p><strong>The Elder Scrolls Online</strong> вышла в <strong>2014 году</strong> — масштабная ММО во <strong>Второй эре</strong>, за <strong>1000 лет</strong> до <em>Skyrim</em>. Подробнее — в <a href="#%D1%81%D0%BF%D0%B8%D0%BD-%D0%BE%D1%84%D1%84%D1%8B-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5-skyrim">разделе "Спин-оффы после Skyrim"</a>.</p>
+<p><strong>The Elder Scrolls VI</strong> находится в разработке. Анонс состоялся в 2018 году, активная разработка началась в 2023 году. Ожидается выход игры не ранее 2026 года.</p>
+<hr>
+<h3 id="история-разработки-серии">История разработки серии</h3>
+<p>Издатель <strong>Bethesda Softworks</strong> был основан в <strong>1986 году</strong> Кристофером Уивером как подразделение Media Technology Limited — скромный эксперимент по выходу на рынок ПК-игр. Дебютом студии стал симулятор американского футбола <strong>Gridiron!</strong>; издатель <strong>Electronic Arts</strong> заинтересовался проектом, но вокруг портов разгорелся крупный досудебный скандал: EA обвиняли в намеренном затягивании релиза, чтобы перенять механики в будущую серию <em>Madden</em>. В <strong>1990 году</strong> Bethesda переехала из города Бетесда в <strong>Роквилл</strong> (штат Мэриленд) и выпустила шутер от первого лица по фильму "Терминатор". Игра выделялась небольшим, но полностью открытым миром: чтобы найти Сару Коннор, игроку приходилось пользоваться внутриигровым телефонным справочником — ранний опыт, который позже отразится в дизайне <em>Arena</em>.</p>
+<p>Работа над серией началась в <strong>1992 году</strong>, когда <strong>Тэд Питерсон</strong>, <strong>Виджей Лакшман</strong> и <strong>Джулиан Ле Фэй</strong> — фанаты <em>Wizardry</em>, <em>Ultima Underworld</em> и настольных RPG — решили сделать фэнтези-проект. Изначально <strong>Arena</strong> задумывалась как масштабная спортивная игра про гладиаторские бои: команда бойцов должна была путешествовать по городам, участвовать в турнирах и стать Гранд-чемпионами в столице. Постепенно в проект добавили побочные квесты, подземелья и лор; города разделили на девять провинций с уникальными расами, а главный герой лишился напарников. Так гладиаторский экшен превратился в полноценную RPG от первого лица — при этом самих арен в финальной версии не оказалось вовсе. Смена концепта сдвинула релиз с конца 1993 года на весну <strong>1994-го</strong>; первый тираж составил всего <strong>3000 дискет</strong> — ошибку заказа Bethesda исправила самостоятельно, занимаясь и разработкой, и изданием.</p>
+<p>После <em>Arena</em> последовал амбициозный <strong>Daggerfall</strong> (1996), затем провальные спин-оффы <strong>Battlespire</strong> и <strong>Redguard</strong> — подробнее в соответствующих разделах ниже. Bethesda оказалась на грани банкротства; спасение пришло с <strong>Morrowind</strong> (2002) и сделкой с Microsoft по эксклюзиву для Xbox. <strong>Oblivion</strong> (2006) стала консольным триумфом и главным next-gen проектом эпохи — подробнее ниже. <strong>Skyrim</strong> (2011) на <strong>Creation Engine</strong> стала культурным феноменом и самым продаваемым проектом серии — подробнее ниже. После неё Bethesda активно выпускала спин-оффы — <strong>Legends</strong>, <strong>Blades</strong> и <strong>TES Online</strong>; подробнее в <a href="#%D1%81%D0%BF%D0%B8%D0%BD-%D0%BE%D1%84%D1%84%D1%8B-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5-skyrim">соответствующем разделе</a>. <strong>TES VI</strong> анонсирована на E3 2018; активная разработка началась в <strong>2023</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Игра</th>
+<th>Год</th>
+<th>Ключевые лиды</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arena</td>
+<td>1994</td>
+<td>Виджай Лакшман, Тед Петерсен</td>
+</tr>
+<tr>
+<td>Daggerfall</td>
+<td>1996</td>
+<td>Джулиан Ле Фэй</td>
+</tr>
+<tr>
+<td>Battlespire</td>
+<td>1997</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Redguard</td>
+<td>1998</td>
+<td>Тодд Говард</td>
+</tr>
+<tr>
+<td>Morrowind</td>
+<td>2002</td>
+<td>Тодд Говард, Кен Ролстон</td>
+</tr>
+<tr>
+<td>Oblivion</td>
+<td>2006</td>
+<td>Тодд Говард</td>
+</tr>
+<tr>
+<td>Skyrim</td>
+<td>2011</td>
+<td>Тодд Говард, Эмиль Пальяруло</td>
+</tr>
+<tr>
+<td>TES VI</td>
+<td>TBA</td>
+<td>В разработке</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="модификации">Модификации</h3>
+<p>Для <strong>Morrowind</strong>, <strong>Oblivion</strong> и <strong>Skyrim</strong> Bethesda выпускает редакторы (<strong>Construction Set</strong> / <strong>Creation Kit</strong>). Сообщество создаёт тысячи модов — от правок баланса до тотальных конверсий уровня <strong>Skywind</strong> и <strong>Enderal</strong>. Моддинг продлил жизнь <strong>Skyrim</strong> на второе десятилетие и стал частью коммерческой модели (Special Edition, Creation Club).</p>
+<hr>
+<h3 id="детали-разработки">Детали разработки</h3>
+<p>Разработка каждой игры серии требует огромных усилий. Команда Bethesda удваивает и утраивает количество сотрудников перед началом работы над новой частью. Процесс создания включает детальную проработку лора, создание уникальных ландшафтов, проектирование архитектуры и программирование сложных систем.</p>
+<p>Композитор Джереми Соул написал музыку для всех основных игр серии. Его композиции стали неотъемлемой частью атмосферы игр и получили множество наград.</p>
+<p>Сценаристы и дизайнеры используют принципы системного подхода для создания лора. Они избегают прямых параллелей с реальным миром, но заимствуют элементы культур и мифологии, создавая уникальный и самобытный мир.</p>
+<hr>
+<h2 id="the-elder-scrolls-arena">The Elder Scrolls: Arena</h2>
+<p><strong>The Elder Scrolls: Arena</strong> (1994) — первая часть серии и эксперимент, который определил ДНК всей франшизы: открытый континент, свобода действий, глубокий (хотя и сырой) лор и RPG-механики в духе настольных игр.</p>
+<h3 id="сюжет-и-структура-кампании">Сюжет и структура кампании</h3>
+<p>События начинаются в <strong>389 году Третьей Эры</strong>. Придворный маг <strong>Ягар Тарн</strong> предаёт императора <strong>Уриэля Септима VII</strong>, заточая его в параллельном измерении — <strong>Обливионе</strong>. Сам Тарн принимает облик правителя, убивает несогласных (включая свою ученицу <strong>Рию Сильмейн</strong>) и раскалывает <strong>Посох Хаоса</strong> на восемь частей, пряча обломки по всему Тамриэлю.</p>
+<p>Главный герой — бывший придворный, которого Тарн бросает в имперскую темницу. Именно здесь зародилась традиция серии начинать игру с заключения. К герою является призрак Рии Сильмейн и направляет его на сбор посоха и спасение империи.</p>
+<p>Геймплей кампании механичен и повторяется <strong>восемь раз</strong>: Рия телепатически называет очередной лабиринт; игрок опрашивает прохожих, находит нужную организацию в провинции, выполняет для неё квест в обмен на координаты, зачищает подземелье с обломком посоха и переходит к следующему кругу. Игроки чаще запоминают атмосферу конкретных данжей, чем сюжетные повороты:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Подземелье</th>
+<th align="left">Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Стоунхип</strong></td>
+<td align="left">Затопленный роскошный дворец с гоблинами и крысами</td>
+</tr>
+<tr>
+<td align="left"><strong>Логово Клыка</strong></td>
+<td align="left">Заброшенная гномья шахта с первыми сложными загадками</td>
+</tr>
+<tr>
+<td align="left"><strong>Крепость Льда</strong> и <strong>Лабиринтиан</strong> (Скайрим)</td>
+<td align="left">Ледяные големы и огромный запутанный комплекс</td>
+</tr>
+<tr>
+<td align="left"><strong>Кристальная башня</strong> (Саммерсет)</td>
+<td align="left">Вертикальный данж — нужно подниматься вверх, а не спускаться вниз</td>
+</tr>
+<tr>
+<td align="left"><strong>Вулкан Дагот Ур</strong> (Морровинд)</td>
+<td align="left">Лава и гномьи развалины</td>
+</tr>
+</tbody>
+</table>
+<p>Финал разворачивается в недрах императорского дворца: игрок пробивается сквозь полчища монстров, может проигнорировать самого Тарна и разбить <strong>Огненный камень</strong>, уничтожив предателя. Герой получает титул <strong>Вечного Чемпиона</strong>.</p>
+<h3 id="открытый-мир-и-свобода">Открытый мир и свобода</h3>
+<p>Название "Арена" авторы оправдали художественно: провинции вечно враждуют между собой, и весь континент называют ареной. Это заложило каноничную для серии тему <strong>расизма и нетерпимости</strong> между народами Тамриэля.</p>
+<p>Для <strong>1994 года</strong> игра козыряла полноценным <strong>3D</strong> — окружение состояло из огромных вокселей, из-за чего дальность прорисовки ограничивалась парой метров, а графика со временем "состарилась" заметно сильнее, чем у многих современников. У домов в городах буквально отсутствовали крыши. Все девять провинций на поверхности отличались лишь фоновой картинкой пейзажа, цветом кожи прохожих и текстурами зданий.</p>
+<p>Главная фишка — <strong>абсолютная свобода</strong>. Игрок может полностью игнорировать сюжет и брать случайные побочные квесты у правителей (экономика при этом поломана: за зачистку сложного данжа могут дать 900 монет, а за простую доставку флага — 9000). Прохожие работают аналоговыми навигаторами — отмечают на карте лавку или таверну. В городах есть магазины, таверны для отдыха и <strong>Гильдия Магов</strong> (вступить нельзя, но сервисы доступны). Динамически меняются время суток (ночью лавки закрываются, на улицах появляются монстры) и времена года. Перемещение между городами возможно только через <strong>фаст-тревел</strong> — пространство за стенами бесконечно, пусто и служит лишь декорацией.</p>
+<h3 id="ролевая-система">Ролевая система</h3>
+<p>Система базируется на восьми классических характеристиках в духе <em>Dungeons &#x26; Dragons</em>: <strong>Сила</strong>, <strong>Интеллект</strong>, <strong>Сила воли</strong>, <strong>Ловкость</strong>, <strong>Скорость</strong>, <strong>Выносливость</strong>, <strong>Харизма</strong> и <strong>Удача</strong>. Первичных и вторичных навыков (как в последующих частях) ещё нет; попадание зависит от ловкости и удачи, урон — от силы. Очки характеристик при создании персонажа и при повышении уровня определяются чистым рандомом — разброс на старте может достигать 20 пунктов при потолке в 100, что позволяет создать как сильного, так и откровенно слабого героя. <strong>Скорость</strong> практически бесполезна: убежать от врагов без хитростей нельзя.</p>
+<p>Доступны <strong>18 классов</strong>, разделённых на три архетипа — <strong>Воры</strong>, <strong>Воины</strong> и <strong>Маги</strong>. Класс можно выбрать вручную или через ситуативный психологический тест. У каждого класса жёсткие перки и ограничения: рыцари сами чинят вещи, но не учат магию; чародеи поглощают чужие заклинания, но не регенерируют ману естественно.</p>
+<p>Лор первой части заметно отличается от канона поздних игр:</p>
+<ul>
+<li>эльфов называют просто <strong>Высокими</strong>, <strong>Тёмными</strong> и <strong>Лесными</strong> (термины Альтмер, Данмер и Босмер появятся позже);</li>
+<li><strong>каджиты</strong> выглядят как разукрашенные люди без кошачьих морд;</li>
+<li>играть за <strong>имперцев</strong> нельзя — Сродил представлен только столицей;</li>
+<li><strong>орки</strong> — только враги в дикой природе; играбельной расой они станут позже</li>
+</ul>
+<h3 id="боевая-система-и-сложность">Боевая система и сложность</h3>
+<p>Чтобы ударить оружием ближнего боя, нужно зажать правую кнопку мыши и водить курсор — направление движения активирует рубящий, колющий или размашистый удар. Любой класс может использовать магические свитки и предметы с пассивными чарами; маги обладают возможностью <strong>самостоятельно конструировать заклинания</strong>, настраивая дальность, силу и эффекты.</p>
+<p>Игра не щадит геймера: враги наносят огромный урон, боевка сводится к закликиванию и судорожному питью лечебных зелий; монстры спавнятся прямо из воздуха, и чем выше уровень героя, тем жёстче подкидывает система. Неудачная карманная кража в магазине карается <strong>мгновенной смертью</strong> персонажа — при этом, если убить прибежавших стражников, игра считает, что всё снова в порядке. В проекте полно багов и вылетов.</p>
+<p>Частично популярность связывают и с маркетингом эпохи: на обложке красовалась провокационная иллюстрация (для Франции выпускали более скромный бокс-арт), а в тавернах на столах регулярно танцевали пиксельные полуобнажённые NPC.</p>
+<h3 id="наследие-первой-части">Наследие первой части</h3>
+<p>Несмотря на нагромождение проблем в интерфейсе, ржавые механики и устаревшую графику, <em>Arena</em> стала уникальным детищем своих создателей. Она подарила игрокам беспрецедентное для 1994 года чувство свободы, открыв целый континент для исследований. Первый тираж в 3000 копий быстро исчерпался, но <strong>"сарафанное радио"</strong> и восторженные отзывы прессы — <strong>Computer Gaming World</strong> назвал игру <strong>"Ролевой игрой года" (1995)</strong> — обеспечили долгоиграющие продажи. Критики хвалили масштаб мира и побочные квесты, ругали однообразие провинций и схематичный сюжет. В <strong>2004 году</strong> Bethesda выпустила <em>Arena</em> бесплатно; для современных ОС нужен DOSBox.</p>
+<hr>
+<h2 id="the-elder-scrolls-ii-daggerfall">The Elder Scrolls II: Daggerfall</h2>
+<p><strong>The Elder Scrolls II: Daggerfall</strong> (1996) — попытка Bethesda перенести настольные RPG в компьютерный формат. Игра одновременно задала каноничный лор серии, рекордный масштаб открытого мира и эталон "сырого, но революционного" релиза, который мгновенно получил в народе прозвище <strong>Buggerfall</strong>.</p>
+<h3 id="разработка">Разработка</h3>
+<p>После умеренного успеха <em>Arena</em> разработчики на время обещали выпускать к ней самостоятельные модули-расширения, но быстро забросили эту идею. Лицензионные проекты по "Терминатору" приносили деньги, но не давали творческой свободы — в итоге авторы решили делать полноценный сиквел.</p>
+<p>Изначально игру хотели назвать <strong>Mournhold</strong> и отправить игрока в <strong>Морровинд</strong>, но концепцию пересмотрели в первый же день. Местом действия стали провинции <strong>Хай Рок</strong> и <strong>Хаммерфелл</strong>, разделённые <strong>заливом Илиак</strong>. Название <em>Daggerfall</em> — от англ. <em>dagger</em> ("кинжал") и намёк на <em>backstab</em> ("удар в спину"), то есть политическое предательство.</p>
+<p>На выставках <strong>CES 1995</strong> и первой в истории <strong>E3</strong> разработчики обещали живой интерактивный мир из <strong>40 воюющих королевств</strong>, осады городов, покупку и меблировку замков, а также продвинутый движок <strong>X Engine</strong> с честным полигональным 3D. Игра вышла в <strong>сентябре 1996 года</strong>; первую партию в <strong>100 тысяч дисков</strong> раскупили за пару дней. Bethesda спешила с релизом, поскольку панически боялась лобового столкновения с набиравшей обороты первой <em>Diablo</em> от Blizzard — но игроки тут же столкнулись с колоссальным количеством багов, вылетов и провалов сквозь текстуры.</p>
+<h3 id="сюжет-лор-и-прорыв-дракона">Сюжет, лор и Прорыв Дракона</h3>
+<p>Император <strong>Уриэль Септим VII</strong> в FMV-катсцене с живыми актёрами отправляет главного героя на корабле в <strong>Даггерфолл</strong> с двумя поручениями: упокоить дух убитого короля <strong>Лизандуса</strong>, который призраком терроризирует подданных, и найти личное письмо, отправленное королеве. Корабль терпит крушение, и герой начинает путь в тёмной пещере — ещё одна традиция серии "старт с катастрофы".</p>
+<p>Сюжет рассыпается на независимые цепочки заданий от трёх политических центров. Письмо искал агент <strong>Клинков</strong> (имперской разведки); в тексте император беспокоился, что ведьма <strong>Нульфага</strong> знает, где прячется <strong>Мантелла</strong> — магический камень, впитавший душу <strong>Подземного Короля</strong> и служащий батарейкой для <strong>Нумидиума</strong>, гигантского механического голема, с помощью которого империя когда-то объединила Тамриэль. Письмо перехватывает король орков <strong>Готворг</strong>, борющийся за права своей расы, и пересказывает его некроманту <strong>Маннимарко</strong> (Король Червей). Игрок должен активировать Нумидиум и выбрать, кому отдать контроль.</p>
+<p>Игра предлагала <strong>шесть противоречащих друг другу концовок</strong> — отдать Мантеллу Подземному Королю, Клинкам, Королю Червей, Готворгу и т.д. Чтобы не делать какую-то одну концовку каноном, сценаристы придумали <strong>Прорыв Дракона</strong> (<em>Dragon Break</em>, <em>Деформация Запада</em>): в этот миг континуум <strong>Акатоша</strong> (дракона времени) раскалывается, мультивселенная сходится в одну точку, и все финалы происходят одновременно — орки получают гражданство, Король Червей становится богом, Подземный Король обретает покой, а Нумидиум снова ломается.</p>
+<p>Именно в <em>Daggerfall</em> лор TES приобрёл свой фирменный вид: появились внутриигровые рукописные книги конкретных авторов с <strong>противоречивыми трактовками</strong> исторических событий Санктуария — принцип, который определит всю дальнейшую серию.</p>
+<h3 id="ролевая-система-и-отыгрыш">Ролевая система и отыгрыш</h3>
+<p>Список рас и восемь базовых характеристик остались прежними (с забавным сокращением <strong>PER</strong> для харизмы), но опросник предыстории стал гораздо глубже. Вместо убийства монстров опыт теперь начисляется строго за <strong>отыгрыш роли</strong> по системе <strong>use-based</strong>: махание мечом качает владение оружием, бег — скорость, торговля — меркантильность. Появились воровские навыки, школы магии (включая <strong>Тауматургию</strong>) и лингвистические скиллы. Можно выбирать тон общения с NPC (вежливый, грубый или обычный), а также изучать <strong>девять языков монстров</strong>, чтобы те первыми не нападали в бою.</p>
+<p>Прокачка математически невероятно сложна — на вероятность попадания влияет абсолютно всё, вплоть до <strong>фазы луны</strong>. При этом в коде зашит критический баг: как только один из главных навыков достигает <strong>100%</strong>, герой перестаёт получать уровни — а если главный навык упёрся в сотку до <strong>10-го уровня</strong>, сюжетную кампанию физически невозможно продолжить.</p>
+<p>В игре появилось <strong>пять крупных гильдий</strong> (включая нелегальные <strong>Гильдию Воров</strong> и <strong>Тёмное Братство</strong>), уникальные рыцарские ордена в каждом регионе и чёткий пантеон <strong>Храмов Восьми Божеств</strong> (Акатош, Мара, Дибелла, Аркей и др.). В определённые дни года в храмах или ковенах ведьм за огромные деньги можно провести ритуал вызова <strong>Лордов Даэдра</strong> (Мерунес Дагон, Молаг Бал, Шеогорат) ради получения уникальных именных артефактов вроде <strong>Ваббаджека</strong>, которые кочуют по серии вплоть до <em>Skyrim</em>. Также можно стать <strong>вампиром</strong> определённого клана или <strong>оборотнем</strong> (волком или кабаном), зависимым от полнолуния.</p>
+<h3 id="масштаб-открытого-мира">Масштаб открытого мира</h3>
+<p>Площадь игрового мира составляет около <strong>160 тысяч квадратных километров</strong> — примерно в 3000 раз больше <em>Red Dead Redemption 2</em> и в 615 раз больше <em>Assassin's Creed Odyssey</em>. На карте раскидано более <strong>40 королевств</strong> и около <strong>5000 населённых пунктов</strong> (городов, ферм, крепостей).</p>
+<p>Города обзавелись массой специализированных лавок. Из-за того, что золото в игре имеет <strong>физический вес</strong>, ввели <strong>банки</strong>, где можно хранить сбережения, брать ссуды и покупать недвижимость. Сохранилась смена времён года и суток — ночью лавки закрываются, на улицах появляются чудовища.</p>
+<p>По миру можно передвигаться <strong>пешком без экранов загрузки</strong>, но такой путь займёт недели реального времени. По сути, вся гигантская территория — плоский зелёный лист, сгенерированный алгоритмами: на нём нет дорог, рек или мостов, а города и NPC — безликие клоны с идентичной архитектурой и репликами.</p>
+<p>Подземелья <em>Daggerfall</em> — циклопические многоэтажные лабиринты без внутренней логики. На всю игру есть всего <strong>3–4 набора текстур стен</strong> (в <em>Arena</em> было 16). Трёхмерная автокарта ужасно неудобна; случайные рычаги могут быть замаскированы под настенные факелы, а квестовый предмет — например, кольцо — может лежать в кармане случайного монстра посреди огромной локации, которую нужно прочёсывать два часа.</p>
+<h3 id="баги-контент-и-проблемы-интерфейса">Баги, контент и проблемы интерфейса</h3>
+<p>Озвучка данжей наполнена жуткими воплями; враги отрисованы агрессивно-мускулистыми, а кровь в боях хлещет фонтанами. Игра под завязку забита обнажёнкой: полностью голые спрайты встречаются в храмах, тавернах и на экране инвентаря персонажа женского пола (хотя заниматься сексом механика не позволяет). Bethesda намеренно пошла на этот шаг ради скандального пиара: игра получила максимальный возрастной ценз, подверглась атаке активистов и за счёт этого стала безумно популярной.</p>
+<p>Баги делятся на три типа:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Тип</th>
+<th align="left">Примеры</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Технические</strong></td>
+<td align="left">Провалы под текстуры, вылеты; скрытые поломки триггеров — вы берёте предмет в данже, скрипт не срабатывает, квестодатель не принимает его, а следующее задание не активируется, о чём узнаёте лишь спустя 10 часов</td>
+</tr>
+<tr>
+<td align="left"><strong>Кривые механики</strong></td>
+<td align="left">Главный навык на 100% до 10-го уровня блокирует прогресс по сюжету</td>
+</tr>
+<tr>
+<td align="left"><strong>UX-проблемы</strong></td>
+<td align="left">Нет текстовых плашек о выполнении квестов; на карте города персонаж — круглая точка без стрелки направления; интерфейс автоматически надевает весь поднятый с земли хлам; без записи в блокнот, в каком из 5000 городов положили деньги в банк, их не найти — маркеров нет</td>
+</tr>
+</tbody>
+</table>
+<h3 id="battlespire-и-redguard">Battlespire и Redguard</h3>
+<p>После провала <em>Daggerfall</em> <strong>Джулиан Ле Фэй</strong> планировал полноценную <strong>TES III: Tribunal</strong> на том же движке с процедурной генерацией и заделом под MMO в реальном времени, но концепт похоронили. Студия решила выпускать небольшие спин-оффы для минимизации рисков.</p>
+<p><strong>An Elder Scrolls Legend: Battlespire</strong> (1997) — узкокоридорный хардкорный фэнтезийный боевик. <strong>Мерунес Дагон</strong> захватывает парящую между Мундусом и Обливионом имперскую академию боевых магов <strong>Battlespire</strong>. В игре отключили иммунитет к смерти — лечиться сном стало нельзя, враги били смертельно больно. Проект козырял детальным созданием персонажа на 1–2 часа и встроенным мультиплеером, но из-за кривого геймдизайна, вылетов раз в полчаса и устаревших спрайтовых врагов на фоне полностью трёхмерного <em>Quake</em> провалился и едва окупился.</p>
+<p>После краха <em>Battlespire</em> <strong>Джулиан Ле Фэй</strong> и старожилы в депрессии покинули Bethesda. Творческий руль перехватил <strong>Тодд Говард</strong>, работавший до этого дизайнером на <em>SkyNET</em> и продюсером <em>Daggerfall</em>. Он нанял новую команду и в <strong>1998 году</strong> выпустил экшен <strong>The Elder Scrolls Adventures: Redguard</strong>.</p>
+<p><em>Redguard</em> отказался от процедурной пустоты в пользу <strong>ручной проработки</strong>: игрокам подарили небольшой, но харизматичный, разбитый на биомы остров <strong>Строс М'Кай</strong> со своей архитектурой. Здесь впервые показали <strong>двемеров</strong> и проработали расу <strong>каджитов</strong>. Изменение внешнего вида каджитов (от обычных людей с хвостом до пушистых кошколюдей) сценаристы <strong>Майкл Киркбрайд</strong> и <strong>Курт Кульман</strong> объяснили лором: существует <strong>20 видов каджитов</strong>, а то, каким родится существо, строго зависит от <strong>фазы луны</strong> в момент рождения. Киркбрайд также написал для лицензионного издания легендарную книгу <strong>"Карманный путеводитель по Империи"</strong>, которая сразу знакомила игрока с географией и историей Тамриэля.</p>
+<p>Несмотря на потрясающий лор, <em>Redguard</em> обладал отвратительным геймдизайном — <strong>85% унылого бега</strong> и инертный платформинг — из-за чего продался смехотворным тиражом, а запланированные сиквелы про <strong>Аргонию</strong> были отменены. После <strong>трёх финансовых провалов подряд</strong> Bethesda Softworks оказалась на грани тотального банкротства и закрытия франшизы — её вытащит <strong>The Elder Scrolls III: Morrowind</strong>.</p>
+<h3 id="наследие">Наследие</h3>
+<p>В <strong>2019 году</strong> ключевые отцы-основатели серии — <strong>Тэд Питерсон</strong>, <strong>Джулиан Ле Фэй</strong> и <strong>Виджей Лакшман</strong> — объединились в студию <strong>Once Lost Games</strong> для создания духовной наследницы <em>Daggerfall</em> — <strong>The Wayward Realms</strong>. Проект после долгих лет молчания и внутренних перестановок периодически появляется в девлогах.</p>
+<p>Сообщество моддеров поддерживает <em>Daggerfall</em> через проект <strong>Daggerfall Unity</strong> — современный ремейк на Unity с исправленными багами и улучшенным интерфейсом. В <strong>2009 году</strong> Bethesda выпустила оригинальную <em>Daggerfall</em> бесплатно.</p>
+<p>Сообщество моддеров поддерживает <em>Daggerfall</em> через проект <strong>Daggerfall Unity</strong> — современный ремейк на Unity с исправленными багами и улучшенным интерфейсом. В <strong>2009 году</strong> Bethesda выпустила оригинальную <em>Daggerfall</em> бесплатно.</p>
+<hr>
+<h2 id="the-elder-scrolls-iii-morrowind">The Elder Scrolls III: Morrowind</h2>
+<p><strong>The Elder Scrolls III: Morrowind</strong> (2002) — одна из самых культовых, "ламповых" и атмосферных RPG в истории. Игра перевернула представление геймеров о свободе в виртуальных мирах и стала финансовым и творческим спасением Bethesda после череды провалов.</p>
+<h3 id="разработка-и-финансовое-спасение">Разработка и финансовое спасение</h3>
+<p>В конце 90-х на консольный рынок стремительно ворвалась <strong>PlayStation 2</strong>. <strong>Microsoft</strong> ответила выпуском <strong>Xbox</strong> и искала перспективные ПК-проекты для стартовой линейки — так на радар попали ранние наработки по <strong>TES III</strong>. Microsoft предложила Bethesda крупное финансирование в обмен на <strong>консольную эксклюзивность</strong> (игра не выходила на PS2).</p>
+<p>К этому моменту студия держалась исключительно на вере <strong>Тодда Говарда</strong>, который вдохновлял коллег идеей, что "самое тёмное время — перед рассветом". Кредиты после прошлых провалов уже не выдавали. Чтобы получать финансирование, основатель <strong>Кристофер Уивер</strong> создал <strong>ZeniMax Media</strong> — через это юридическое лицо деньги доходили до разработчиков и давали финансовую подушку.</p>
+<p>Получив средства, Говард устроил масштабную перезагрузку команды. Весь <strong>1998–1999 год</strong> ушёл на <strong>Construction Set</strong> — редактор, в который Тодд верил не меньше, чем в саму игру: "чтобы сделать хорошую игру, нужны отличные инструменты". Вместо собственного движка студия арендовала сторонний <strong>NetImmerse</strong> (позже <strong>Gamebryo</strong>).</p>
+<p>Главным решением стал <strong>полный отказ от процедурной генерации</strong> <em>Daggerfall</em>. Мир собирали исключительно вручную — у каждого дома должен был быть хозяин, внутри лежали вилки, ложки и подушки. В угоду оптимизации материковую часть провинции <strong>Морровинд</strong> вырезали, оставив только вулканический остров <strong>Вварденфелл</strong> — около <strong>23 км²</strong>, что составляло лишь <strong>0,01%</strong> от масштабов <em>Daggerfall</em>. Команда трудилась в режиме перманентного "ровно-кранчевого" прессинга, понимая, что ещё один провал закроет студию навсегда.</p>
+<h3 id="иная-rpg-и-художественный-стиль">"Иная RPG" и художественный стиль</h3>
+<p>На рубеже веков в RPG доминировали изометрические партийные игры по правилам <em>D&#x26;D</em> — <em>Baldur's Gate</em>, <em>Icewind Dale</em>, <em>Arcanum</em>. Шутеры давно ушли в 3D, а ролевки полагались на воображение и текстовые логи. На этом фоне вышли революционная <em>Gothic</em> (маленький, но живой мир) и <em>Diablo II</em> (условности доведены до абсолюта). <em>Morrowind</em> оказалась "белой вороной": проигрывала многим в глубине влияния на сюжет, но дарила беспрецедентный <strong>3D-симулятор жизни</strong> на территории, напичканной руинами и склепами.</p>
+<p>Bethesda не пошла на компромиссы ради слабых ПК, ориентируясь на мощное железо будущего. Художественный язык <em>Morrowind</em> поляризовал аудиторию — "неведомая мумба-юмба" вместо привычного европейского фэнтези:</p>
+<ul>
+<li>Леса засажены гигантскими грибами</li>
+<li><strong>Силт-страйдеры</strong> — гигантские насекомые, на которых ездят по миру</li>
+<li>Скот — <strong>гуары</strong> (динозавроподобные ящерицы)</li>
+<li>Враги — паровые роботы <strong>двемеров</strong> и "лавкрафтовские" монстры</li>
+</ul>
+<p>В отличие от прошлых частей, игра не бросала в хардкорный данж со старта. Обучение сократили до прогулки по трюму и канцелярской возни в имперской канцелярии, куда нативно вплели выбор расы, класса, созвездия и характеристик.</p>
+<h3 id="география-вварденфелла">География Вварденфелла</h3>
+<p>Формообразующий элемент — <strong>Красная гора</strong>, гигантский вулкан в центре острова. Вварденфелл поделён на <strong>девять климатических зон</strong>:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Регион</th>
+<th align="left">Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Горький берег</strong></td>
+<td align="left">Заболоченное побережье из сотен островков; здесь <strong>Сейда Нин</strong> (первая локация игрока) и базы контрабандистов</td>
+</tr>
+<tr>
+<td align="left"><strong>Западное нагорье</strong></td>
+<td align="left">Горное каменистое плато; <strong>Балмора</strong> — ламповый город на реке Одай, столица Великого Дома <strong>Хлаалу</strong> (кубическая архитектура); рядом <strong>Кальдера</strong> — имперское шахтёрское поселение, где добывают <strong>эбонит</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Аскадианские острова</strong></td>
+<td align="left">Грибные равнины на юге; <strong>Вивек</strong> — город из семи пирамид-мегаблоков, соединённых мостами, с канализацией, лодочниками и <strong>Министерством Правды</strong> (левитирующий булыжник); <strong>Эбенгард</strong> — имперская крепость-столица</td>
+</tr>
+<tr>
+<td align="left"><strong>Побережье Азуры</strong></td>
+<td align="left">Скалистый восточный архипелаг; башни-грибы Великого Дома <strong>Телванни</strong> (<strong>Тель Фир</strong>, <strong>Тель Мора</strong>, <strong>Садрит Мора</strong>) — для общения с магами жизненно необходима <strong>левитация</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Грейзленд</strong></td>
+<td align="left">Северо-восточные холмистые равнины; здесь живут кочевники-<strong>эшлендеры</strong> — радикальные традиционалисты, презирающие Империю</td>
+</tr>
+<tr>
+<td align="left"><strong>Эшленд</strong></td>
+<td align="left">Мёртвое серое пространство вокруг Красной горы; пепельные бури приносят болезни; <strong>Альд'рун</strong> — столица Дома <strong>Редоран</strong>, база <strong>Скар</strong> расположена под панцирем Императорского краба; <strong>Призрачный Предел</strong> сдерживает заразу</td>
+</tr>
+<tr>
+<td align="left"><strong>Молаг Амур</strong></td>
+<td align="left">Каньоны, лавовые озёра и туман; обитают преимущественно вампиры</td>
+</tr>
+<tr>
+<td align="left"><strong>Шигорад</strong></td>
+<td align="left">Суровый северный остров со столицей <strong>Дагон Фел</strong> и двемерскими руинами</td>
+</tr>
+</tbody>
+</table>
+<h3 id="сюжет-лор-и-деконструкция-избранного">Сюжет, лор и деконструкция "избранного"</h3>
+<p>Главного героя, страдающего хроническим недосыпом, освобождают по секретному приказу императора и отправляют в Балмору к главе <strong>Клинков</strong> — <strong>Каю Косадесу</strong>. Кай сообщает, что протагонист гипотетически подходит под древнее пророчество о <strong>Нереварине</strong> — реинкарнации великого короля <strong>кимеров</strong> <strong>Неревара</strong>, который объединил эльфов, но был загадочно убит. Пророчества туманны, запутаны и противоречат друг другу (в одном Нереварина и вовсе называют Драконорождённым).</p>
+<p>Чтобы доказать статус, герою приходится заниматься адской <strong>дипломатической бюрократией</strong>: бегать по трём Великим домам и четырём племенам эшлендеров, собирая признание. Даже найдя <strong>Божественный пруф</strong> — кольцо Азуры, которое убивает любого, кроме Неревара, — герой всё равно вынужден давать взятки, искать жену для вождя эшлендеров и рассказывать анекдоты ради галочки в бумагах.</p>
+<p>Древний лор: во время <strong>Войны Первого Совета</strong> двемерский тональный архитектор <strong>Кагренак</strong> нашёл под Красной горой <strong>Сердце Лорхана</strong> и решил запитать им голема <strong>Нумидиума</strong>. Кимеры возмутились; в великой битве раса <strong>двемеров</strong> бесследно исчезла. По официальной версии <strong>Трибунала</strong>, друг Неревара <strong>Ворин Дагот</strong> соблазнился силой Сердца и предал короля; советники <strong>Вивек</strong>, <strong>Сота Сил</strong> и <strong>Альмалексия</strong> убили его, но сами нарушили клятву, напитались от Сердца и стали бессмертными живыми богами. <strong>Азура</strong> прокляла кимеров, сделав их серокожими <strong>данмерами</strong>. По тайной версии, Трибунал сам отравил Неревара. <strong>Майкл Киркбрайд</strong> написал <strong>"36 Проповедей Вивека"</strong>, где акростихом зашифровал признание: первые буквы абзацев 36-го тома и шифр 29-го складываются во фразу о подлом убийстве наставника.</p>
+<p><strong>Ворин Дагот</strong> не умер — он стал <strong>Дагот Уром</strong>, обосновался в вулкане и построил голема <strong>Акулахана</strong> (Нумидиум 2.0), насылая моровые бури. Изначально Bethesda планировала дать игроку присоединиться к Дагот Уру, но механику вырезали. В финале <strong>Вивек</strong> выдаёт <strong>Перчатку Призрачного Стража</strong>; герой забирает инструменты Кагренака (<strong>Разделитель</strong> и <strong>Рассекатель</strong>) и уничтожает Сердце, лишая силы и Дагот Ура, и сам Трибунал. В финальном диалоге на пафосный вопрос Дагот Ура герой может честно ответить: "Да я тут вообще мимо крокодил, мне сказали тебя шлёпнуть".</p>
+<h3 id="свобода-прогулки-дневник-и-тактильность">Свобода прогулки, дневник и тактильность</h3>
+<p><em>Morrowind</em> — игра-<strong>прогулка</strong>. В ней <strong>нет автоматических меток</strong> на карте; задания выдаются текстовыми ориентирами ("от Балморы на юг до моста, потом на восток до перекрёстка"). Это заставляло всматриваться в окружение, читать указатели на дорогах и изучать мир.</p>
+<p>Лог заданий оформлен как <strong>аутентичная записная книжка</strong> — герой заносит события в календарном порядке. Решение атмосферное, но неудобное: к концу игры дневник разрастается до <strong>300 страниц</strong>, где невозможно отсортировать активные квесты от закрытых.</p>
+<p>Сами квесты прямолинейны (принеси, укради, убей) и лишены твистов — если заказали убийство, цель умрёт в <strong>100% случаев</strong>. Зато игра дарит полную <strong>логистическую свободу исполнения</strong>: как залезть в поместье и где лежит шкатулка — решает игрок, исходя из навыков. Быстрое перемещение ограничено сеткой <strong>силт-страйдеров</strong>, лодок и телепортов <strong>Гильдии Магов</strong>; до финальной точки всегда приходится топать пешком.</p>
+<p>Мир невероятно приземлён: можно <strong>убить любого сюжетного NPC</strong> — игра выведет "Поток судьбы прерван", но позволит жить дальше. Все вещи в домах и лавках (кроме мебели) расставлены вручную, поощряя виртуальный <strong>букинизм</strong> — сбор книг с шуршащими страницами. Чтобы получить одобрение советника Хлаалу <strong>Крассиуса Курио</strong> (автора "Похотливой аргонианской девы"), перед ним нужно буквально <strong>раздеться до нижнего белья</strong> — обнажёнку после <em>Daggerfall</em> из игры вырезали, но намёк остался.</p>
+<h3 id="ролевая-система-баланс-и-бой">Ролевая система, баланс и бой</h3>
+<p>Староверы обвиняли <em>Morrowind</em> в упрощении: число навыков урезали до <strong>27</strong> (боевые, магические и воровские), появился выбор <strong>знаков зодиака</strong> и <strong>первая в серии частичная озвучка</strong> — NPC шаблонно, но экспрессивно комментируют проходящего героя. Прокачка осталась <strong>use-based</strong>, но убрали ограничение <em>Daggerfall</em> на стопорение уровней при 100% навыке — на 50-м уровне можно превратиться в "Терминатора".</p>
+<p><strong>Атлетика</strong> на старте делает героя медленным, как "хромую черепаху" — игроки оставляли персонажа бежать в угол перед уходом из игры. Главная беда ближнего боя — зависимость попадания от <strong>полоски выносливости</strong>: при постоянном беге стамина на нуле, точность падает на четверть. Боёвка превращается в бросок кубиков в упор; <strong>скальные наездники</strong> (летающие стаи с мерзким криком) стали самыми ненавистными врагами серии. Удары мышью заменили на клавиши <strong>W/A/S/D</strong> (добавили опцию "всегда лучший удар"); блокирование щитом стало автоматическим.</p>
+<p><strong>Магия</strong> реализована великолепно: заклинания конструируются вручную у специалистов, чары вшиваются в камни душ и предметы. <strong>Слойная одежда</strong> позволяет напялить тапки, штаны, рубаху, наплечники, наручи, полный комплект брони, мантию, амулет и два кольца — "новогодняя гирлянда" пассивных баффов. <strong>Алхимия</strong> — варка зелий из ингредиентов через реторты и перегонные кубы.</p>
+<p>Атмосферу исследования подчёркивает музыка <strong>Джереми Соула</strong>; среди фанатов ходит теория, что барабанная дробь в главном меню символизирует <strong>Сердце Лорхана</strong>, которое предстоит разбить.</p>
+<h3 id="релиз-дополнения-и-мобильные-спин-оффы">Релиз, дополнения и мобильные спин-оффы</h3>
+<p>Релиз в <strong>мае 2002 года</strong> произвёл эффект разорвавшейся бомбы: продано более <strong>5 млн</strong> копий. Критики сравнивали <em>Morrowind</em> по значимости с <em>GTA III</em> и <em>Max Payne</em>. Однако из-за внутренних споров и выгорания ключевые авторы — <strong>Майкл Киркбрайд</strong>, <strong>Дуглас Гудолл</strong>, <strong>Кен Ролстон</strong> — вскоре покинули студию.</p>
+<p><strong>Tribunal</strong> (2002) отправил игрока в закрытый <strong>Морнхолд</strong> — столицу материкового Морровинда. Сюжет крутится вокруг сошедшей с ума <strong>Альмалексии</strong>: потеряв бессмертие, она убивает <strong>Сота Сила</strong> и пытается запугать жителей генератором бурь. Аддон критиковали за нарушение духа оригинала — игрока заперли в городе, подземелья превратили в однообразные лабиринты с бесконечно респавнящимися гоблинами. Спасал <strong>Музей артефактов</strong>; из мемов — квест <strong>Шеогората</strong>, где нужно защекотать до смерти гигантскую блоху (<strong>нетча</strong>) обычной вилкой.</p>
+<p>В оригинале у торговцев Вварденфелла было критически мало золота (<strong>~1500 монет</strong>) — топовые доспехи за 30 тысяч продать было невозможно. Игроки фармили "пасхальных" торговцев — <strong>Ползуна</strong> (скампа) и <strong>краба-торговца</strong>; в Морнхолде запасы наконец накрутили нормально.</p>
+<p><strong>Bloodmoon</strong> (2003) — "Вварденфелл на минималках": заснеженный <strong>Солстхейм</strong> с суровыми <strong>нордами</strong>. Империя добывает эбонит, но в конфликт вмешиваются <strong>оборотни</strong> принца <strong>Хирсина</strong>; игрок может сам стать вервольфом. В <strong>Game of the Year Edition</strong> добавили броню с декольтированными сосками и торговлю стрелами в Вивеке.</p>
+<p>На волне успеха <strong>Тодд Говард</strong> запустил мобильную трилогию <strong>TES Travels</strong>: <strong>Stormhold</strong> (2003) и <strong>Dawnstar</strong> (2004) на кнопочных телефонах копировали геймплей <em>Arena</em> — процедурные коридоры, унылый чарген. <strong>Shadowkey</strong> (2004) для <strong>Nokia N-Gage</strong> щеголял 3D-открытым миром, но слабое железо не вытянуло проект: дальность прорисовки упала до нуля, фреймрейт лагал.</p>
+<h3 id="наследие">Наследие</h3>
+<p><em>Morrowind</em> стала поворотной точкой серии: ручной мир, Construction Set, каноничный лор Морровинда и философия "игра-прогулка без маркеров". Сообщество моддеров до сих пор поддерживает проект; <strong>OpenMW</strong> — альтернативный движок с открытым исходным кодом. Проект <strong>Skywind</strong> — фанатская реконструкция <em>Morrowind</em> на движке <em>Skyrim</em>.</p>
+<hr>
+<h2 id="the-elder-scrolls-iv-oblivion">The Elder Scrolls IV: Oblivion</h2>
+<p><strong>The Elder Scrolls IV: Oblivion</strong> (2006) — яркий и технологически амбициозный сиквел. Разработка шла "вслепую" под консоли нового поколения; игра сделала упор на доступность, симуляцию жизни <a href="https://terms.spirzen.ru/glossary/N#npc">NPC</a> и гильдейские сюжеты — в отличие от лорового эксперимента <em>Morrowind</em>.</p>
+<h3 id="разработка-и-консольный-триумф">Разработка и консольный триумф</h3>
+<p>Неожиданно для Bethesda консольный порт <em>Morrowind</em> для <strong>Xbox</strong> принёс значительно больше прибыли, чем ПК-версия — за три года продано <strong>4 млн</strong> копий. Это заставило <strong>Тодда Говарда</strong> и команду делать <em>Oblivion</em> с прицелом на консоли, а именно на маячивший на горизонте <strong>Xbox 360</strong>.</p>
+<p>Студия лицензировала движок <strong>Gamebryo</strong> (наследник NetImmerse), прикрутила физику <strong>Havok</strong> и внедрила <strong>Radiant AI</strong> — систему симуляции расписаний и потребностей NPC. Разработка стартовала в <strong>2002 году</strong> по контракту с Microsoft: игра должна была стать <strong>стартовым эксклюзивом Xbox 360</strong> в ноябре <strong>2005 года</strong>. Проблема в том, что финального железа консоли ещё не существовало — Bethesda работала наугад, фантазируя о мощностях. Релиз сдвинули на <strong>март 2006 года</strong>, частично ради финансовых отчётов издателя <strong>Take-Two</strong>.</p>
+<p>Несмотря на перенос, на релизе игра собрала шквал наград уровня <strong>"Игра года"</strong> и <strong>"RPG года"</strong>, принесла Bethesda огромные доходы и стала главным <strong>next-gen</strong> проектом своего времени.</p>
+<h3 id="старт-игры-лица-и-главный-сюжет">Старт игры, лица и главный сюжет</h3>
+<p>В <em>Oblivion</em> Bethesda заменила пресеты лиц <strong>редактором с миллионами ползунков</strong> — на деле "<strong>генератор кошмаров</strong>": опухшие лица, пластиковые причёски, бороды заменены текстурой "размазанного дегтя", эльфы похожи на людей со сплющенными головами, орки — на зелёных хряков. Зверорасам (<strong>каджитам</strong> и <strong>аргонианам</strong>) наконец сделали человеческие ступни.</p>
+<p>Игра традиционно стартует в <strong>тюрьме</strong>. Героя развлекает каменная стена (демонстрация шейдеров) и кандалы, которые можно физически раскачивать. В камеру заявляется <strong>Уриэль Септим VII</strong> (озвучен <strong>Патриком Стюартом</strong>) — он бежит от убийц культа <strong>"Мифический Рассвет"</strong>, уже зарезавших троих его сыновей. Тоннели служат обучением бою, магии, ловушкам и взлому. В конце императора убивают, но он успевает отдать <strong>Амулет Королей</strong> и поручает найти лидера <strong>Клинков</strong> — <strong>Джоффри</strong>.</p>
+<p>Мир <em>Oblivion</em> населён некомпетентными службами: <strong>Клинки</strong> проспали убийство всей царской династии; стража посадила героя в секретную камеру-проход, которая должна была быть пустой.</p>
+<p>Главный сюжет многие критики считают слабым. Герой находит <strong>Джоффри</strong>, узнаёт о незаконнорождённом сыне императора — <strong>Мартине Септиме</strong>, работающем монахом в <strong>Кватче</strong>. Город разрушен, открываются первые <strong>Врата Обливиона</strong> — из них лезут даэдра <strong>Мерунеса Дагона</strong>. Герой закрывает врата, спасает Мартина и ведёт войну с "Мифическим Рассветом" под руководством <strong>Манкара Каморана</strong>. Единственный по-настоящему живой персонаж сюжета — <strong>Мартин</strong>: от нежелания лезть в политику он дорастает до бремени лидера и совершает самопожертвование в <strong>Имперском городе</strong>, оборачиваясь драконом <strong>Акатоша</strong>, чтобы изгнать Дагона. Героя нарекают <strong>Чемпионом Сиродила</strong>.</p>
+<h3 id="врата-обливиона-и-данжи">Врата Обливиона и данжи</h3>
+<p><strong>Врата Обливиона</strong> открываются по всей провинции и работают как "<strong>вышки</strong>" — первые интригуют: багровое небо, лава, даэдра, странные башни; пробившись наверх и вытащив <strong>Сигильный камень</strong>, врата закрываются. Когда их становятся десятки, они превращаются в однообразное месиво одинаковых кусков левел-дизайна. Этап сбора ополчения у городов перед финалом можно пропустить.</p>
+<p><strong>Сиродил</strong> усыпан сотнями данжей трёх типов: обычные <strong>пещеры</strong> (гоблины, разбойники), <strong>катакомбы</strong> под фортами и руины <strong>айлейдов</strong> — древних "диких" эльфов. Одних пещер <strong>93</strong>. Все строились <strong>процедурной генерацией</strong> с лёгкой ручной доводкой — данжи лишены контекста: "видел одни айлейдские руины — видел все". Они служат коридорами для прокачки боевых навыков.</p>
+<h3 id="гильдейские-цепочки">Гильдейские цепочки</h3>
+<p>Поскольку магистральный сюжет слаб, авторы бросили силы на побочные квесты — <strong>гильдейские ветки</strong> стали лучшей частью игры.</p>
+<p><strong>Гильдия Бойцов</strong> начинается с обмана ожиданий: героя отправляют разбираться с "крысами" в подвале <strong>Арвены Телас</strong> (отсылка к <em>Morrowind</em>), но хозяйка обожает своих крыс, а нападают <strong>пумы</strong>; затем выясняется, что соседка-<strong>аргонианка</strong> выманивала крыс мясом. Квест даёт <strong>Fallout</strong>-подобную свободу выбора — сдать соседку или промолчать. Дальше — война с конкурентами <strong>"Чёрный Лес"</strong> из Чернотопья: героя напаивают галлюциногенным <strong>соком Хист</strong>, под которым он "зачищает деревню от гоблинов" — на деле это мирные жители. Финал — штурм штаба и уничтожение Хиста.</p>
+<p>Из боёвки вырезали настольные броски кубиков: нажал кнопку — удар, попал по хитбоксу — урон; блок — щит или оружие. Шоукейс — <strong>Арена</strong> в Имперском городе (афиша копирует обложку <em>Arena</em>): гладиаторские бои ради денег и титула <strong>Великого Чемпиона</strong>.</p>
+<p><strong>Гильдия Магов</strong>: волшебники разобщены; чтобы попасть в <strong>Университет Волшебства</strong>, нужно обойти все города и выполнить поручения глав филиалов. Далее — война с <strong>Маннимарко</strong> (Король Червей): секта под носом у властей, <strong>Архимаг Ганнибал Травен</strong> жертвует собой, а великий некромант в финальной дуэли сливается как рядовой моб.</p>
+<p><strong>Гильдия Воров</strong> — лучшая ветка по механикам: для продвижения нужно <strong>реально воровать</strong> и сдавать хабар скупщикам. <strong>Radiant AI</strong> делает кражу интересной — торговец днём у прилавка, вечером в таверне, ночью спит. Но у предметов появился маркер <strong>"ворованное"</strong>, который видят обычные торговцы. Взлом превратился в <strong>тайминг-мини-игру</strong> со штифтами отмычки. Финал — <strong>Великое ограбление</strong>: проникновение в сокровищницу Дворца и кража <strong>Древнего Свитка</strong> (первое "живое" появление артефакта в серии) — записи пророчеств <strong>Аэдра</strong>, чтение которой ослепляет жрецов мотылька. Свиток нужен <strong>Серому Лису</strong>, чтобы переписать историю и снять с <strong>Ноктинал</strong> проклятие капюшона — в награду герой получает <strong>Капюшон Серого Лиса</strong>.</p>
+<p><strong>Тёмное Братство</strong> — шедевр дизайна: для вступления нужно хладнокровно убить невинного NPC; ночью приходит <strong>Люсьен Лашанс</strong>. Квесты работают как симулятор хитмена. Лучшая миссия — <strong>"Детектив наоборот"</strong>: героя запирают в особняке с пятью гостями; нужно убить всех так, чтобы никто не заподозрил маньяка. Финал трагичен: в убежище <strong>Чейдинхола</strong> заводится предатель, и Лашанс приказывает провести <strong>"Очищение"</strong> — вырезать всю гильдию. В награду — бессмертный конь <strong>Тенегрива</strong>. В конце выясняется, что предатель подставил самого Лашанса.</p>
+<h3 id="одиночные-квесты-мир-и-города">Одиночные квесты, мир и города</h3>
+<p>Мир наполнен запоминающимися побочками: художник пропал внутри собственной картины; в <strong>Олсвеле</strong> жители стали невидимыми из-за мага-недоучки; купленный особняк в <strong>Анвиле</strong> проклят призраками некроманта; заснув в таверне-корабле, герой просыпается посреди пиратского налёта.</p>
+<p>В серию вернулись <strong>лошади</strong>, но ездить на них — сомнительное удовольствие: скорость почти не отличается от бега прокачанного героя, они неповоротливы, зато взбираются по вертикальным скалам. К <strong>Чемпиону Арены</strong> намертво прилипает назойливый фанат <strong>Adoring Fan</strong> — позже Bethesda увековечила его в <em>Starfield</em>.</p>
+<p>Мир <strong>Сиродила</strong> ощущается пустым: в лесах мало движения, <strong>80%</strong> точек интереса — серые процедурные данжи. Но пастельная палитра европейского домашнего фэнтези и музыка <strong>Джереми Соула</strong> создают парадоксальную атмосферу покоя. Враги спавнятся только у данжей.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Город</th>
+<th align="left">Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Анвил</strong></td>
+<td align="left">Прибрежный торговый город с гаванью и замком на островке</td>
+</tr>
+<tr>
+<td align="left"><strong>Коррол</strong></td>
+<td align="left">Консервативный, архитектура в духе Вварденфелла; <strong>Великий Дуб</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Брума</strong></td>
+<td align="left">Север у подножия гор; нордские бревенчатые избы</td>
+</tr>
+<tr>
+<td align="left"><strong>Чейдинхол</strong></td>
+<td align="left">Восток у границы с Морровиндом; многоэтажные узкие дома; граф — <strong>данмер</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Лейавин</strong></td>
+<td align="left">Южный разноцветный город; много <strong>каджитов</strong> и <strong>аргониан</strong>; мэр-расист держит пыточную для зверорас</td>
+</tr>
+<tr>
+<td align="left"><strong>Бравил</strong></td>
+<td align="left">Беднейшие трущобы на воде; дома на крышах друг друга</td>
+</tr>
+<tr>
+<td align="left"><strong>Скинград</strong></td>
+<td align="left">Богатый каменный город вина и ферм; граф <strong>Янус Гассилдор</strong> — <strong>вампир</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Кватч</strong></td>
+<td align="left">Разрушен в начале сюжета — остались <strong>Руины</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Имперский город</strong></td>
+<td align="left">Столица из концентрических кругов-секторов с <strong>Башней Белого Золота</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="боевая-система-и-прокачка">Боевая система и прокачка</h3>
+<p>Количество навыков урезали — копья, арбалеты и топоры слились в <strong>режущее</strong> и <strong>дробящее</strong> оружие. У навыков появились <strong>ранговые бонусы</strong> (акробат-мастер прыгает по воде; взломщик выше 25 уровня не сбрасывает штифты при ошибке). В отличие от немощного старта <em>Morrowind</em>, герой <em>Oblivion</em> <strong>быстро</strong> бегает, метко стреляет и имеет автореген маны — превращаясь в "супергероя".</p>
+<h3 id="дополнения-и-скандалы">Дополнения и скандалы</h3>
+<p>В <strong>апреле 2006</strong> Bethesda выпустила для Xbox скандальное DLC <strong>Horse Armor</strong> — броня для лошади за <strong>$2.5</strong>. Игроки назвали покупку косметики за реальные деньги "концом игровой индустрии".</p>
+<p><strong>Knights of the Nine</strong> (2006) — первое крупное сюжетное DLC: древний <strong>Умарил Неоперённый</strong> уничтожает церкви; герой совершает паломничество, возродит орден <strong>Рыцарей Девяти</strong> и собирает святые артефакты. DLC ввело в пантеон девятое божество <strong>Талос</strong> (Тайбера Септима).</p>
+<p>Серия TES одержимо завязана на <strong>цифру 9</strong>: 9 провинций в <em>Arena</em>, 9 божеств, 9 биомов <em>Morrowind</em>, 9 городов Сиродила и ровно <strong>9 DLC</strong> для <em>Oblivion</em>.</p>
+<p><strong>Shivering Isles</strong> (2007) — жемчужина аддонов: царство <strong>Шеогората</strong>. В мир вторгается <strong>Jyggalag</strong> — принц Порядка. Шео отправляет героя в безумные квесты ради <strong>Мантлинга</strong> — буквального замещения бога собой. <strong>Острова</strong> делятся на <strong>Mania</strong> (психоделический грибной рай) и <strong>Dementia</strong> (лавкрафтовский хоррор-болото). В финале выясняется, что Jyggalag и Шеогорат — одно лицо, проклятое другими принцами. Аддон разрабатывался параллельно с <em>Fallout 3</em> и служил тестовой площадкой для его ассетов.</p>
+<h3 id="наследие">Наследие</h3>
+<p><em>Oblivion</em> разделила фанатов: одни хвалили доступность, гильдии и Radiant AI, другие скучали по лоровой глубине и "игре-прогулке" <em>Morrowind</em>. Игра задала шаблон "европейского домашнего фэнтези" для западных RPG и доказала коммерческую мощь консольного RPG. В <strong>2025 году</strong> вышел <strong>Oblivion Remastered</strong> на Unreal Engine 5 с сохранением оригинального геймплея.</p>
+<hr>
+<h2 id="the-elder-scrolls-v-skyrim">The Elder Scrolls V: Skyrim</h2>
+<p><strong>The Elder Scrolls V: Skyrim</strong> (2011) — культурный феномен и коммерческий пик серии. К моменту разработки <strong>Bethesda Game Studios</strong> уже была одной из главных звёзд индустрии; анонс прозвучал в <strong>декабре 2010 года</strong> на <strong>Spike Video Game Awards</strong> лаконичным тизером с музыкой <strong>Джереми Соула</strong>. Игра вышла <strong>11.11.11</strong> в золотую эпоху RPG и конкурировала с <em>Dragon Age 2</em>, <em>Ведьмак 2</em>, <em>Deus Ex: Human Revolution</em> и <em>Dark Souls</em> — большинство соперников на релизе пострадали от технических или геймдизайнерских проблем, что помогло <em>Skyrim</em> забрать главные награды.</p>
+<h3 id="концепция-и-движок">Концепция и движок</h3>
+<p>У разработчиков не было чёткого ориентира от фанатов, куда двигаться после <em>Morrowind</em> и <em>Oblivion</em>. Тогда авторы решили добавить то, чего серии не хватало — <strong>драконов</strong> и <strong>драконий язык</strong> (<strong>Ту'ум</strong>, <strong>Крики</strong>), что автоматически определило сеттинг — северную провинцию <strong>Скайрим</strong>. Для проекта создали <strong>Creation Engine</strong> — оптимизированный под огромные открытые миры наследник Gamebryo с улучшенной графикой, физикой и ИИ.</p>
+<h3 id="сюжет-драконорождённого">Сюжет Драконорождённого</h3>
+<p>Игра начинается со знаменитой сцены в <strong>повозке</strong> и <strong>казни в Хелгене</strong>: внезапно появляется <em>Alduin</em> (Пожиратель Миров), и герой спасается бегством. Игрок — <strong>Довакин</strong> (Драконорождённый): паломничество к <strong>Седобородым</strong> на <strong>Высокий Хротгар</strong>, обучение <strong>Крикам</strong>, финал в <strong>Совнгарде</strong> — местной аналогии Вальгаллы.</p>
+<p>Главный сюжет критикуют за парадокс "невидимой угрозы": игра много говорит об опасности <em>Alduin</em>, но за весь мейн-квест драконы разрушают ровно <strong>одну деревню</strong> и <strong>одну сторожевую башню</strong>. Сам <em>Alduin</em> появляется в сюжете всего <strong>четыре раза</strong>, почти не взаимодействует с героем лично, не наносит ощутимого урона открытому миру и визуально мало отличается от рядовых рептилий.</p>
+<h3 id="гражданская-война">Гражданская война</h3>
+<p>Параллельно идёт конфликт <strong>Империи</strong> (<strong>генерал Туллий</strong>) и <strong>Братьев Бури</strong> (<strong>Ульфрик Буревестник</strong>). На старте конфликт подан однобоко — имперцы ведут героя на плаху без разбора, — но позже раскрывается глубже: Империя ослабла после <strong>Великой войны</strong> против <strong>Альдмерского Доминиона</strong> и вынуждена терпеть агентов <strong>Талмора</strong>.</p>
+<p>Внутриигровые досье Талмора намекают, что Ульфрик побывал в эльфийском плену и его восстание выгодно эльфам для ослабления Империи. Однако Ульфрик вряд ли осознанный шпион: он искренне ненавидит <strong>меров</strong> и в случае победы планирует идти на них войной.</p>
+<p>Обе ветки квестов <strong>зеркальны и скучны</strong>: зачистка однотипных <strong>фортов</strong>, где враги спавнятся прямо перед лицом, а глобально в мире меняются лишь <strong>ярлыки</strong> в городах.</p>
+<h3 id="гильдейские-ветки-и-боевая-система">Гильдейские ветки и боевая система</h3>
+<p>Боевая система наконец ушла от "закадрового бросания кубиков": появились <strong>добивания</strong>, физическое ощущение оружия и <strong>раздельное управление руками</strong> — по мечу в каждую или комбинации заклинаний. Магия стала зрелищнее и разнообразнее.</p>
+<p><strong>Соратники</strong> (гильдия бойцов) предлагают твист с превращением членов круга в <strong>оборотней</strong>, но линия быстро скатывается в рутинную месть <strong>"Серебряной руке"</strong> — охотникам на вервольфов.</p>
+<p><strong>Коллегия Винтерхолда</strong> обещает сюжет с <strong>Оком Магнуса</strong> и орденом <strong>Псиджиков</strong>, но почти все миссии коридорные и сводятся к убийству врагов. В <strong>Лабиринтиане</strong> у игрока постоянно высасывают ману, подталкивая забросить посох и взять лук.</p>
+<p><strong>Гильдия Воров</strong> базируется в <strong>Рифтене</strong>. Сюжет уводит от "благородных Робин Гудов" <em>Oblivion</em> к <strong>рэкету</strong>, выбиванию долгов и зачистке пещер; линия уходит в мистику <strong>Соловьёв</strong> и возвращение <strong>Скелетного Ключа</strong> <strong>Ноктюрнал</strong>.</p>
+<p><strong>Тёмное Братство</strong> — самая атмосферная цепочка: <strong>Авентус Аретино</strong>, сиротский приют, похищение <strong>Астрид</strong>, конфликт с шутом <strong>Цицероном</strong>, цель — <strong>убийство императора</strong>. Минусы: излишняя <strong>заскриптованность</strong>, линейность операций (в отличие от свободы <em>Oblivion</em>) и слабый ИИ. Скрытность из-за глупости NPC стала абсолютной "имбой" — скрытный лучник уничтожает всё без сопротивления.</p>
+<h3 id="ролевая-модель-мир-и-города">Ролевая модель, мир и города</h3>
+<p><em>Skyrim</em> полностью избавилась от опросников и <strong>классов</strong> при создании персонажа. Вырезаны навыки <strong>атлетики</strong> и <strong>акробатики</strong>; характеристики сокращены до трёх — <strong>магия</strong>, <strong>здоровье</strong>, <strong>запас сил</strong>. "Рождение под знаком" заменили сменяемыми баффами от <strong>камней стояний</strong>. Это уничтожило уникальность классов — маг легко становится мечником и наоборот, — но сделало игру комфортной для массового игрока.</p>
+<p>Мир <em>Skyrim</em> силён <strong>художественным наполнением</strong> — лосось в реках, <strong>мамонты</strong> и <strong>великаны</strong>, быт жителей. Скайрим ощущается живым провинциальным севером.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Город</th>
+<th align="left">Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Вайтран</strong></td>
+<td align="left">Центральный город под мудрым <strong>Балгруфом</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Виндхельм</strong></td>
+<td align="left">Заснеженный север; расистская атмосфера к <strong>данмерам</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Винтерхолд</strong></td>
+<td align="left">Разрушенный город; штаб <strong>Коллегии магов</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Рифтен</strong></td>
+<td align="left">Воровская столица провинции</td>
+</tr>
+<tr>
+<td align="left"><strong>Маркарт</strong></td>
+<td align="left">Выдолбленный в скале <strong>двемеровский</strong> город; <strong>Изгои</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Солитьюд</strong></td>
+<td align="left">Столица на гигантской <strong>каменной арке</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Фолкрит</strong></td>
+<td align="left">Малый город у границы</td>
+</tr>
+<tr>
+<td align="left"><strong>Морфал</strong></td>
+<td align="left">Болотный северный посёлок</td>
+</tr>
+<tr>
+<td align="left"><strong>Донстар</strong></td>
+<td align="left">Портовый город на северо-западе</td>
+</tr>
+</tbody>
+</table>
+<p>Игрок может взять в путешествие <strong>спутников</strong> и даже сыграть <strong>свадьбу</strong> в храме <strong>Мары</strong>. Механика поверхностна: супруг сидит дома, генерирует немного денег и не реагирует на то, что Довакин уходит на смертный бой с <em>Alduin</em>.</p>
+<h3 id="дополнения-и-переиздания">Дополнения и переиздания</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Дополнение</th>
+<th align="left">Содержание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Hearthfire</strong></td>
+<td align="left">Строительство дома и усыновление детей — задел для механик <em>Fallout 4</em></td>
+</tr>
+<tr>
+<td align="left"><strong>Dawnguard</strong></td>
+<td align="left">Война <strong>Стражей Рассвета</strong> с вампирами; <strong>Каирн Душ</strong>, <strong>Снежный эльф</strong>, <strong>Serana</strong> — лучший компаньон с личной драмой</td>
+</tr>
+<tr>
+<td align="left"><strong>Dragonborn</strong></td>
+<td align="left">Остров <strong>Солстхейм</strong> (ностальгия по <em>Morrowind</em>); противостояние с первым Драконорождённым <strong>Мираком</strong> в измерении <strong>Хермеуса Моры</strong></td>
+</tr>
+</tbody>
+</table>
+<p>За десять лет Bethesda выпустила <strong>пять переизданий</strong>: <strong>Legendary Edition</strong> (2013), <strong>Special Edition</strong> (2016) с <strong>Creation Club</strong> и обновлённым освещением, порты на <strong>Nintendo Switch</strong> и <strong>VR</strong> (2017), <strong>Anniversary Edition</strong> (2021) на улучшенном многопоточном движке к десятилетию игры.</p>
+<h3 id="культурное-наследие">Культурное наследие</h3>
+<p><em>Skyrim</em> стала <strong>фабрикой мемов</strong>: интернет-культура превратила баги в массовые феномены — "космическая программа <strong>великанов</strong>" (отправка игрока дубиной в стратосферу), бесконечные фразы стражников про <strong>"стрелу в колене"</strong> и <strong>"сладкий рулет"</strong>. <strong>Тодд Говард</strong> сам стал мемным "продавцом Скайрима".</p>
+<p>Коммерческий успех изменил вектор студии: руководство поняло, что играм необязательно делать революцию или иметь глубокий сюжет — достаточно тонны контента в красивой обёртке. Критики связывают это с упрощением идей в <em>Fallout 4</em>, <em>Fallout 76</em> и <em>Starfield</em>. По той же причине полноценные ремейки <em>Morrowind</em> или <em>Oblivion</em> технически слишком дороги: эти миры собраны вручную, с уникальным левел-дизайном каждого предмета.</p>
+<p>Несмотря на упрощения, <em>Skyrim</em> остаётся великим <strong>"симулятором прогулок"</strong> и непревзойдённой песочницей, которую сообщество благодаря модам может превратить во что угодно.</p>
+<hr>
+<h2 id="спин-оффы-после-skyrim">Спин-оффы после Skyrim</h2>
+<p>После успеха <a href="#the-elder-scrolls-v-skyrim"><em>Skyrim</em></a> Bethesda выпустила три крупных проекта вне основной линейки <a href="https://terms.spirzen.ru/glossary/%D0%96#%D0%B6%D0%B0%D0%BD%D1%80">RPG</a>:</p>
+<ul>
+<li><a href="#the-elder-scrolls-legends"><strong>The Elder Scrolls: Legends</strong></a> — <a href="https://terms.spirzen.ru/glossary/%D0%9A#%D0%BA%D0%BA%D0%B8">коллекционная карточная игра</a> (ККИ)</li>
+<li><a href="#the-elder-scrolls-blades"><strong>The Elder Scrolls: Blades</strong></a> — мобильная игра с <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%BE%D0%BD%D0%B0%D1%82">донатом</a> и таймерами</li>
+<li><a href="#the-elder-scrolls-online"><strong>The Elder Scrolls Online</strong></a> — <a href="https://terms.spirzen.ru/glossary/M#mmo-massively-multiplayer-online">MMORPG</a> во <a href="#the-elder-scrolls-online">Второй эре</a></li>
+</ul>
+<p>Каждый проект по-своему показал, как студия работает с аудиторией за пределами одиночных синглов.</p>
+<h3 id="the-elder-scrolls-legends">The Elder Scrolls: Legends</h3>
+<p><strong>Legends</strong> — цифровая ККИ по мотивам вселенной <a href="https://terms.spirzen.ru/glossary/T#the-elder-scrolls">TES</a>. Анонс прозвучал на <strong>E3 2015</strong>, разработку вела <strong>Dire Wolf Digital</strong>, релиз — <strong>май 2017</strong>.</p>
+<p>В <strong>2010-х</strong> после <em>Hearthstone</em> (2013) крупные издатели массово пробовали жанр. <em>Legends</em> повторяла базовую схему <em>Hearthstone</em>:</p>
+<ul>
+<li><strong>Мана</strong> растёт каждый ход</li>
+<li>Цель — обнулить <strong>очки здоровья</strong> (ХП) противника</li>
+<li>Игрок по очереди выкладывает <strong>карты</strong> с существами и заклинаниями</li>
+</ul>
+<p>Отличия от <em>Hearthstone</em>:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Механика</th>
+<th align="left">Что делает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Два фронта</strong></td>
+<td align="left">Поле делится на левую и правую линии; у каждой свои правила (на "линии тени" карта скрыта первый ход)</td>
+</tr>
+<tr>
+<td align="left"><strong>Руны и пророчества</strong></td>
+<td align="left">Каждые 5 потерянных ХП ломают <strong>руну</strong> героя и дают карту; карты с "Пророчеством" можно сыграть бесплатно в ход соперника</td>
+</tr>
+<tr>
+<td align="left"><strong>Двухцветные колоды</strong></td>
+<td align="left">Карты привязаны к атрибутам TES (сила, ловкость, выносливость); колода собирается из двух цветов</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Слабые стороны:</strong></p>
+<ul>
+<li><strong>Баланс</strong> часто ломался — одни колоды доминировали над остальными</li>
+<li><strong>Длинные матчи</strong> — мана росла до 12, партии затягивались</li>
+<li><strong>Медленный интерфейс</strong> — игра ощущалась статичной</li>
+<li><strong>Монетизация</strong> — бустеры за реальные деньги; валюту можно фармить, но медленно</li>
+</ul>
+<p>В <strong>2018</strong> проект передали <strong>Sparkypants Studios</strong> (обновили UI), но в <strong>декабре 2019</strong> Bethesda <strong>заморозила</strong> поддержку.</p>
+<p><strong>Суд за название Scrolls.</strong> Отдельный эпизод — иск Bethesda к <strong>Mojang</strong>: издатель считал, что карточная игра <em>Scrolls</em> перепутают с TES. Mojang выиграли, но переименовали проект в <em>Caller's Bane</em> — он быстро закрылся.</p>
+<h3 id="the-elder-scrolls-blades">The Elder Scrolls: Blades</h3>
+<p><strong>Blades</strong> — мобильная игра в сеттинге TES. Анонс — <strong>E3 2018</strong>, ранний доступ — <strong>2019</strong>. Тизеры показывали графику "уровня консоли" и <a href="https://terms.spirzen.ru/glossary/F#fps-first-person-shooter">вид от первого лица</a>, создавая впечатление полноценной RPG.</p>
+<p>На практике <em>Blades</em> ближе к <em>Fallout Shelter</em> (2015) — симулятору базы с микроплатежами.</p>
+<p><strong>Два игровых цикла:</strong></p>
+<ul>
+<li><strong>Город</strong> — герой восстанавливает разрушенный родной посёлок: жилые дома, кузни, алхимические лаборатории</li>
+<li><strong>Вылазки</strong> — короткие линейные уровни в лесах и <a href="https://terms.spirzen.ru/glossary/%D0%94#%D0%B4%D0%B0%D0%BD%D0%B6-dungeon">подземельях</a>; при застое включается светящийся <strong>маркер пути</strong></li>
+</ul>
+<p><strong>Бой</strong> — только <strong>1 на 1</strong>. Время замирает; игрок <strong>свайпает</strong> влево-вправо для атаки и блока. Дальнего боя и тактики почти нет.</p>
+<p><strong>Монетизация</strong> — главная претензия критиков:</p>
+<ul>
+<li>Ресурсов на постройку постоянно не хватает</li>
+<li><strong>Таймеры</strong> блокируют прогресс на часы реального времени</li>
+<li>Ускорение — за деньги</li>
+</ul>
+<p>Мир выглядит однообразно: мало рас и локаций, типичное "серое фэнтези".</p>
+<p>Несмотря на низкие оценки прессы, за <strong>первую неделю</strong> раннего доступа игра принесла Bethesda <strong>более $1 млн</strong> при скромном бюджете. Последний патч — <strong>январь 2022</strong>; обновлений больше нет, но проект продолжает приносить доход.</p>
+<h3 id="the-elder-scrolls-online">The Elder Scrolls Online</h3>
+<p><a href="https://terms.spirzen.ru/glossary/T#the-elder-scrolls"><strong>The Elder Scrolls Online</strong></a> (TESO, <strong>2014</strong>) — <a href="https://terms.spirzen.ru/glossary/M#mmo-massively-multiplayer-online">многопользовательская RPG</a>, где тысячи игроков одновременно населяют один мир Тамриэля. Руководит отдельная студия <strong>ZeniMax Online Studios (ZOS)</strong>; creative lead — <strong>Мэтт Фирор</strong> (сингловые части курирует <strong>Тодд Говард</strong>).</p>
+<h4>Как появилась игра</h4>
+<ul>
+<li><strong>1990-е</strong> — идея онлайн-TES была рано: интернет и серверы не тянули нагрузку; после провалов <em>Battlespire</em> и <em>Redguard</em> Bethesda была на грани банкротства</li>
+<li><strong>2007</strong> — на волне популярности <a href="https://terms.spirzen.ru/glossary/W#world-of-warcraft-wow">World of Warcraft</a> основали <strong>ZOS</strong></li>
+<li><strong>2014</strong> — открыли сервера после <strong>5 лет</strong> разработки; старт ровный, без скандала и без революции</li>
+</ul>
+<h4>Мэтт Фирор</h4>
+<p><strong>Мэтт Фирор</strong> — ветеран <a href="https://terms.spirzen.ru/glossary/M#mmo-massively-multiplayer-online">MMO</a>-дизайна:</p>
+<ul>
+<li><strong>1995</strong> — сооснователь <strong>Mythic Entertainment</strong> (ранние онлайн-эксперименты вроде <em>Godzilla Online</em>)</li>
+<li><strong>2001</strong> — <strong>Dark Age of Camelot</strong>: три фракции на одном острове, упор на <a href="https://terms.spirzen.ru/glossary/P#pvp-player-versus-player">PvP</a> — эту схему перенесли в <strong>войну Альянсов</strong> TESO</li>
+<li><strong>2007</strong> — ZeniMax наняла Фирора; по его шутке, офис Mythic стоял через дорогу от Bethesda</li>
+</ul>
+<h4>Геймплей и сеттинг</h4>
+<p><strong>Временная линия.</strong> События TESO — <strong>Вторая эра</strong>, примерно за <strong>1000 лет</strong> до <em>Skyrim</em>. Империи <strong>Тайбера Септима</strong> ещё нет. Тамриэль поделён между <strong>тремя Альянсами</strong>, которые воюют за <strong>Сиродил</strong>. <strong>Вивек</strong> только строит город, <strong>Балмора</strong> цела, <strong>Кватч</strong> не разрушен.</p>
+<p><strong>Управление и бой.</strong></p>
+<ul>
+<li><a href="https://terms.spirzen.ru/glossary/F#fps-first-person-shooter">Вид от первого лица</a> добавили после успеха <em>Skyrim</em> — для фанатов сингла</li>
+<li>Атаки привязаны к кнопкам движения; на панель выносят ограниченное число <strong>умений</strong></li>
+<li>Враги подсвечивают опасные зоны атаки красным — проще увернуться</li>
+</ul>
+<p><strong>Для кого игра.</strong> TESO удобна <strong>соло</strong>: <a href="https://terms.spirzen.ru/glossary/P#pvp-player-versus-player">PvP</a> изолирован в отдельных зонах, <a href="https://terms.spirzen.ru/glossary/%D0%97#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5">квесты</a> полностью озвучены (среди актёров — <strong>Кейт Бекинсейл</strong>, <strong>Альфред Молина</strong>, <strong>Джон Клиз</strong>). Прокачка широкая, но <strong>новичкам</strong> дают много силы с первых минут.</p>
+<p><strong>Карта.</strong> За <strong>10 лет</strong> живой службы в игре появились зоны от <strong>Саммерсета</strong> до <strong>Чернотопья</strong> и <strong>Эльсвейра</strong> — больше половины континента.</p>
+<h4>Монетизация и канон</h4>
+<p><strong>Эволюция модели:</strong></p>
+<ul>
+<li><strong>2014</strong> — обязательная <strong>ежемесячная подписка</strong>; часть аудитории отвернулась</li>
+<li>Позже — <strong>Buy-to-Play</strong> (купил базовую игру — играешь без лимита по времени)</li>
+<li>Подписка <strong>ESO Plus</strong> стала <strong>опциональной</strong> (доступ к старым <a href="https://terms.spirzen.ru/glossary/%D0%90#%D0%B0%D0%B4%D0%B4%D0%BE%D0%BD">DLC</a> и бонусам крафта)</li>
+<li><strong>One Tamriel</strong> — уровни локаций уравняли, ветераны и новички могут исследовать мир вместе</li>
+</ul>
+<p><strong>Лор.</strong> Bethesda наняла <strong>Лоуренса Шика</strong> — он согласовал сюжет TESO с синглами. Сегодня события MMO считаются <strong>каноном</strong> серии.</p>
+<p>Полный список глав и <a href="https://terms.spirzen.ru/glossary/%D0%90#%D0%B0%D0%B4%D0%B4%D0%BE%D0%BD">дополнений</a> — <a href="#the-elder-scrolls-online">в начале статьи</a>.</p>
+<h3 id="наследие-спин-оффов">Наследие спин-оффов</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Проект</th>
+<th align="left">Итог</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>TES Online</strong></td>
+<td align="left">Входит в <strong>топ-5</strong> <a href="https://terms.spirzen.ru/glossary/M#mmo-massively-multiplayer-online">MMO</a> мира; регулярно получает новые зоны и сюжеты</td>
+</tr>
+<tr>
+<td align="left"><strong>Legends</strong></td>
+<td align="left">Закрыта поддержка в 2019; типичный "эксперимент эпохи ККИ"</td>
+</tr>
+<tr>
+<td align="left"><strong>Blades</strong></td>
+<td align="left">Заморожена в 2022, но доказала прибыльность мобильного гринда</td>
+</tr>
+</tbody>
+</table>
+<p>Пока <a href="#oblivion-remastered-%D0%B8-%D0%B1%D1%83%D0%B4%D1%83%D1%89%D0%B5%D0%B5"><strong>TES VI</strong></a> годами остаётся в разработке, <strong>TESO</strong> — главный живой контакт фанатов с Тамриэлем. <em>Legends</em> и <em>Blades</em> показывают другую сторону политики Bethesda: нишевые проекты закрывают, а мобильные — оставляют, если они приносят деньги.</p>
+<hr>
+<h2 id="критика-награды-и-наследие-отдельных-частей">Критика, награды и наследие отдельных частей</h2>
+<h3 id="книги-внутри-игр">Книги внутри игр</h3>
+<p>Серия славится <strong>находимыми книгами</strong> — десятки томов по истории, магии и религии Тамриэля в каждой части. В <strong>Daggerfall</strong> впервые появились тексты конкретных авторов с <strong>противоречивыми</strong> версиями одних и тех же событий — принцип "ненадёжного летописца", ставший визитной карточкой лора. В <strong>Morrowind</strong> <strong>Майкл Киркбрайд</strong> написал <strong>"36 Проповедей Вивека"</strong> с зашифрованными признаниями Трибунала. В <strong>Arena</strong> сюжет частично пересказан в книге "Подлинная Барензия", встречающейся в Daggerfall, Morrowind, Oblivion и Skyrim; для <em>Redguard</em> Киркбрайд создал <strong>"Карманный путеводитель по Империи"</strong>, знакомящий с географией и историей всего Тамриэля. Это создаёт ощущение единой летописи и стимулирует исследование мира вне основного квеста.</p>
+<hr>
+<h3 id="oblivion-remastered-и-будущее">Oblivion Remastered и будущее</h3>
+<p>Подробнее об оригинальной <em>Oblivion</em> — в <a href="#the-elder-scrolls-iv-oblivion">разделе выше</a>. <strong>The Elder Scrolls IV: Oblivion Remastered</strong> (2025) обновил графику классики на Unreal Engine 5 при сохранении оригинального геймплея. <strong>TES VI</strong> остаётся в активной разработке с 2023 года; ожидаемый сеттинг — <strong>Хаммерфелл</strong> или <strong>Высокий Рок</strong> (официально не подтверждено).</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-the-elder-scrolls">Что такое The Elder Scrolls</a></li><li class="article-toc__item"><a href="#игры-серии-tes">Игры серии TES</a></li><li class="article-toc__item"><a href="#the-elder-scrolls-online">The Elder Scrolls Online</a></li><li class="article-toc__item is-h3"><a href="#нирн-и-тамриэль">Нирн и Тамриэль</a></li><li class="article-toc__item is-h3"><a href="#аэдра-и-даэдра">Аэдра и Даэдра</a></li><li class="article-toc__item is-h3"><a href="#боги-драконы-и-расы">Боги, Драконы и Расы</a></li><li class="article-toc__item"><a href="#геймплей">Геймплей</a></li><li class="article-toc__item is-h3"><a href="#философия-дизайна">Философия дизайна</a></li><li class="article-toc__item is-h3"><a href="#архитектура-выполнения">Архитектура выполнения</a></li><li class="article-toc__item"><a href="#влияние-на-индустрию">Влияние на Индустрию</a></li><li class="article-toc__item is-h3"><a href="#культурный-след">Культурный след</a></li><li class="article-toc__item is-h3"><a href="#история-релизов">История релизов</a></li><li class="article-toc__item is-h3"><a href="#история-разработки-серии">История разработки серии</a></li><li class="article-toc__item is-h3"><a href="#модификации">Модификации</a></li><li class="article-toc__item is-h3"><a href="#детали-разработки">Детали разработки</a></li><li class="article-toc__item"><a href="#the-elder-scrolls-arena">The Elder Scrolls: Arena</a></li><li class="article-toc__item is-h3"><a href="#сюжет-и-структура-кампании">Сюжет и структура кампании</a></li><li class="article-toc__item is-h3"><a href="#открытый-мир-и-свобода">Открытый мир и свобода</a></li><li class="article-toc__item is-h3"><a href="#ролевая-система">Ролевая система</a></li><li class="article-toc__item is-h3"><a href="#боевая-система-и-сложность">Боевая система и сложность</a></li><li class="article-toc__item is-h3"><a href="#наследие-первой-части">Наследие первой части</a></li><li class="article-toc__item"><a href="#the-elder-scrolls-ii-daggerfall">The Elder Scrolls II: Daggerfall</a></li><li class="article-toc__item is-h3"><a href="#разработка">Разработка</a></li><li class="article-toc__item is-h3"><a href="#сюжет-лор-и-прорыв-дракона">Сюжет, лор и Прорыв Дракона</a></li><li class="article-toc__item is-h3"><a href="#ролевая-система-и-отыгрыш">Ролевая система и отыгрыш</a></li><li class="article-toc__item is-h3"><a href="#масштаб-открытого-мира">Масштаб открытого мира</a></li><li class="article-toc__item is-h3"><a href="#баги-контент-и-проблемы-интерфейса">Баги, контент и проблемы интерфейса</a></li><li class="article-toc__item is-h3"><a href="#battlespire-и-redguard">Battlespire и Redguard</a></li><li class="article-toc__item is-h3"><a href="#наследие">Наследие</a></li><li class="article-toc__item"><a href="#the-elder-scrolls-iii-morrowind">The Elder Scrolls III: Morrowind</a></li><li class="article-toc__item is-h3"><a href="#разработка-и-финансовое-спасение">Разработка и финансовое спасение</a></li><li class="article-toc__item is-h3"><a href="#иная-rpg-и-художественный-стиль">&quot;Иная RPG&quot; и художественный стиль</a></li><li class="article-toc__item is-h3"><a href="#география-вварденфелла">География Вварденфелла</a></li><li class="article-toc__item is-h3"><a href="#сюжет-лор-и-деконструкция-избранного">Сюжет, лор и деконструкция &quot;избранного&quot;</a></li><li class="article-toc__item is-h3"><a href="#свобода-прогулки-дневник-и-тактильность">Свобода прогулки, дневник и тактильность</a></li><li class="article-toc__item is-h3"><a href="#ролевая-система-баланс-и-бой">Ролевая система, баланс и бой</a></li><li class="article-toc__item is-h3"><a href="#релиз-дополнения-и-мобильные-спин-оффы">Релиз, дополнения и мобильные спин-оффы</a></li><li class="article-toc__item is-h3"><a href="#наследие">Наследие</a></li><li class="article-toc__item"><a href="#the-elder-scrolls-iv-oblivion">The Elder Scrolls IV: Oblivion</a></li><li class="article-toc__item is-h3"><a href="#разработка-и-консольный-триумф">Разработка и консольный триумф</a></li><li class="article-toc__item is-h3"><a href="#старт-игры-лица-и-главный-сюжет">Старт игры, лица и главный сюжет</a></li><li class="article-toc__item is-h3"><a href="#врата-обливиона-и-данжи">Врата Обливиона и данжи</a></li><li class="article-toc__item is-h3"><a href="#гильдейские-цепочки">Гильдейские цепочки</a></li><li class="article-toc__item is-h3"><a href="#одиночные-квесты-мир-и-города">Одиночные квесты, мир и города</a></li><li class="article-toc__item is-h3"><a href="#боевая-система-и-прокачка">Боевая система и прокачка</a></li><li class="article-toc__item is-h3"><a href="#дополнения-и-скандалы">Дополнения и скандалы</a></li><li class="article-toc__item is-h3"><a href="#наследие">Наследие</a></li><li class="article-toc__item"><a href="#the-elder-scrolls-v-skyrim">The Elder Scrolls V: Skyrim</a></li><li class="article-toc__item is-h3"><a href="#концепция-и-движок">Концепция и движок</a></li><li class="article-toc__item is-h3"><a href="#сюжет-драконорождённого">Сюжет Драконорождённого</a></li><li class="article-toc__item is-h3"><a href="#гражданская-война">Гражданская война</a></li><li class="article-toc__item is-h3"><a href="#гильдейские-ветки-и-боевая-система">Гильдейские ветки и боевая система</a></li><li class="article-toc__item is-h3"><a href="#ролевая-модель-мир-и-города">Ролевая модель, мир и города</a></li><li class="article-toc__item is-h3"><a href="#дополнения-и-переиздания">Дополнения и переиздания</a></li><li class="article-toc__item is-h3"><a href="#культурное-наследие">Культурное наследие</a></li><li class="article-toc__item"><a href="#спин-оффы-после-skyrim">Спин-оффы после Skyrim</a></li><li class="article-toc__item is-h3"><a href="#the-elder-scrolls-legends">The Elder Scrolls: Legends</a></li><li class="article-toc__item is-h3"><a href="#the-elder-scrolls-blades">The Elder Scrolls: Blades</a></li><li class="article-toc__item is-h3"><a href="#the-elder-scrolls-online">The Elder Scrolls Online</a></li><li class="article-toc__item is-h3"><a href="#наследие-спин-оффов">Наследие спин-оффов</a></li><li class="article-toc__item"><a href="#критика-награды-и-наследие-отдельных-частей">Критика, награды и наследие отдельных частей</a></li><li class="article-toc__item is-h3"><a href="#книги-внутри-игр">Книги внутри игр</a></li><li class="article-toc__item is-h3"><a href="#oblivion-remastered-и-будущее">Oblivion Remastered и будущее</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

@@ -1,0 +1,2172 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Разработка на Roblox — Игры IT Universe</title><meta name="description" content="Roblox Cloud - это глобальная распределённая система, управляемая Roblox Corporation. Не подвергается прямому влиянию разработчика игры, но предоставляет сервисы через API."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Разработка на Roblox</span></li></ol></nav><header class="portal-hero"> <h1>Разработка на Roblox</h1> <p>Roblox Cloud - это глобальная распределённая система, управляемая Roblox Corporation. Не подвергается прямому влиянию разработчика игры, но предоставляет сервисы через API.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Разработка на Roblox" data-url="/games/9-04-razrabotka-igr/2">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Разработка на Roblox">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Разработка на Roblox</h1>
+<div class="itu-play-embed" data-example="spinoff/game-dev-studio-demo" data-src="" data-title="Игровая студия" data-min-height="560" data-play-props="{}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="разработка-на-roblox">Разработка на Roblox</h2>
+<p>Платформа Roblox представляет собой экосистему, объединяющую пользователей и разработчиков для создания, публикации и взаимодействия с виртуальными мирами. Её ключевая особенность — возможность разработки трёхмерных игр без необходимости владения профессиональными 3D-редакторами или сложными игровыми движками. Основным инструментом для разработки выступает <strong>Roblox Studio</strong> — приложение, предоставляющее доступ к редактору сцены, системе физики, средствам визуализации и полнофункциональному языку программирования Lua.</p>
+<p>Разработка на Roblox ориентирована как на начинающих, так и на опытных программистов. Низкий порог входа позволяет освоить основы геймдева уже на начальных этапах обучения, однако масштабируемость платформы и поддержка скриптования открывают возможности для реализации сложных механик, многопользовательского взаимодействия и даже экономических систем. Продвинутая тема экономики и магазина — в отдельной статье: <a href="./202">Внутриигровая экономика Roblox</a>.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">С чего начать (учебный маршрут)</div>
+  <div class="callout-body">
+  <p>Эта статья — справочник по архитектуре и API. Для первой игры идите по порядку: <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/203">Studio и Place</a> → <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/204">практикум "обби"</a> → по желанию <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/205">королевская битва</a> и <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/206">механика и продвижение</a>.</p>
+<p>Полный маршрут — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/intro">о разделе</a>.</p>
+</div>
+</div>
+<hr>
+<h2 id="основы">Основы</h2>
+<p>Roblox поддерживает как простые мини-игры (например, паркур или гонки), так и сложные многопользовательские проекты с экономикой, прогрессией, кастомной физикой и серверной логикой. Платформа масштабируется вместе с вашими навыками — начав с перетаскивания блоков, вы можете перейти к проектированию распределённых систем, работающих с тысячами игроков одновременно.</p>
+<hr>
+<h3 id="система-roblox">Система Roblox</h3>
+<p>Roblox — <strong>платформа с клиент-серверной архитектурой и интегрированной средой разработки</strong>.<br>
+Она состоит из трёх уровней:</p>
+<table>
+<thead>
+<tr>
+<th>Уровень</th>
+<th>Роль</th>
+<th>Примеры компонентов</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Платформа (Roblox Cloud)</strong></td>
+<td>Хостинг, аутентификация, платёжная система, DataStore, DevHub</td>
+<td>Marketplace, DataStoreService, Developer Products</td>
+</tr>
+<tr>
+<td><strong>Сервер игры (Game Server)</strong></td>
+<td>Выполняет авторитетную логику: движение, коллизии, экономика</td>
+<td><code>Workspace</code>, <code>ServerScriptService</code>, <code>Players</code>, физика</td>
+</tr>
+<tr>
+<td><strong>Клиент (Roblox Player)</strong></td>
+<td>Отображает игру, обрабатывает ввод, показывает GUI</td>
+<td><code>StarterGui</code>, <code>LocalScript</code>, рендер, звук</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Важно</strong>: при запуске игры в Studio вы запускаете <em>локальный сервер + один клиент</em> — это эмуляция реального окружения. Но архитектура остаётся прежней: сервер и клиент — разные процессы.</p>
+</blockquote>
+<p>Roblox Cloud - это глобальная распределённая система, управляемая Roblox Corporation. Не подвергается прямому влиянию разработчика игры, но предоставляет сервисы через API.</p>
+<p>Roblox построена по принципу <strong>разделения ответственности</strong> между облачной инфраструктурой, игровым сервером и клиентом. Эта структура гарантирует безопасность, масштабируемость и согласованность состояния во всех сессиях.</p>
+<p>Представьте, что игрок нажимает кнопку "Купить меч". На клиенте отображается надпись "Покупка успешна", и меч появляется в руках. Однако если проверка баланса выполнена только на клиенте, злоумышленник может изменить код через DevConsole и получить предмет бесплатно. Поэтому <strong>вся критическая логика — на сервере</strong>, а клиент лишь отображает результат.</p>
+<hr>
+<h3 id="платформа-roblox-cloud">Платформа (Roblox Cloud)</h3>
+<p>Это глобальная распределённая система, управляемая Roblox Corporation. Не подвергается прямому влиянию разработчика игры, но предоставляет <strong>сервисы через API</strong>. Она обеспечивает аутентификацию, хостинг, платёжные операции, хранение данных и аналитику.</p>
+<hr>
+<h4>Компоненты и их назначение</h4>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Описание</th>
+<th>Доступ из игры</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Authentication &#x26; Identity</strong></td>
+<td>Управление аккаунтами, сессиями, ролевой моделью (RBAC)</td>
+<td><code>game.Players.LocalPlayer.UserId</code>, <code>UserOwnsGamePassAsync()</code></td>
+<td>Все <code>Player</code> объекты содержат только публичную информацию (Name, DisplayName); приватные данные (email, возраст) недоступны.</td>
+</tr>
+<tr>
+<td><strong>Game Hosting &#x26; Matchmaking</strong></td>
+<td>Выделение и управление игровыми серверами (Game Server), балансировка нагрузки, регион-маршрутизация</td>
+<td><code>game.JobId</code>, <code>game.PlaceId</code></td>
+<td>Сервер игры существует <em>не дольше 6 часов</em> (лимит idle-time); при завершении все данные должны быть сохранены в DataStore.</td>
+</tr>
+<tr>
+<td><strong>DataStoreService</strong></td>
+<td>Постоянное хранилище данных игроков и игры. Поддерживает атомарные обновления (<code>UpdateAsync</code>) с квотами и повторами при сбоях — не полноценная СУБД.</td>
+<td><code>DataStoreService:GetDataStore()</code></td>
+<td>Основные типы: <code>DataStore</code> (ранее GlobalDataStore) и <code>OrderedDataStore</code>. Лимиты и квоты см. <a href="https://create.roblox.com/docs/cloud-services/datastores">документацию DataStore</a>.</td>
+</tr>
+<tr>
+<td><strong>MarketplaceService</strong></td>
+<td>Обработка покупок через Robux, возвратов, проверки владения Game Pass.</td>
+<td><code>MarketplaceService:PromptPurchase()</code>, <code>.PromptPurchaseFinished</code></td>
+<td>Все операции — асинхронные. Подтверждение приходит <em>только после финальной авторизации на сервере Roblox</em>.</td>
+</tr>
+<tr>
+<td><strong>DevHub &#x26; Creator Dashboard</strong></td>
+<td>Система управления ассетами, монетизацией, аналитикой, Developer Products.</td>
+<td>Только вне игры (веб-интерфейс)</td>
+<td>Регистрация Developer Product требует: уникального <code>ProductId</code>, названия, описания, цены. После публикации — изменение цены невозможно (только создание нового продукта).</td>
+</tr>
+<tr>
+<td><strong>UGC &#x26; Asset Delivery</strong></td>
+<td>Хостинг и доставка пользовательских ассетов (модели, анимации, текстуры).</td>
+<td><code>rbxassetid://...</code>, <code>rbxthumb://...</code></td>
+<td>Все ассеты проходят модерацию. Использование непроверенных внешних ресурсов (<code>http://</code>) запрещено политикой.</td>
+</tr>
+<tr>
+<td><strong>Telemetry &#x26; Analytics</strong></td>
+<td>Сбор метрик: retention, DAU, crash reports, performance stats.</td>
+<td>Только через встроенные события (<code>.ChildAdded</code>, <code>HttpService</code> запрещён для отправки)</td>
+<td>Данные доступны разработчику в DevHub. Прямой экспорт (например, в Google Analytics) блокируется.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Важные ограничения платформы</h4>
+<ul>
+<li><strong>Нет доступа к файловой системе</strong> — даже для временных файлов.</li>
+<li><strong>Нет прямого HTTP-выхода</strong> — <code>HttpService</code> разрешён только для ограниченного набора whitelisted-хостов (например, Discord webhooks — только с включённой опцией в Settings).</li>
+<li><strong>Время на сервере — UTC</strong>, без доступа к локальному времени игрока.</li>
+<li><strong>Память</strong> ограничена: ~1.5–2.5 GB RAM на сервер (в зависимости от региона и тарифа). Переполнение → OOM-kill.</li>
+</ul>
+<hr>
+<h3 id="сервер-игры-game-server">Сервер игры (Game Server)</h3>
+<p>Это экземпляр движка Roblox, развернутый в облаке или локально (в Studio). Выполняет <strong>авторитетную (authoritative)</strong> логику — то есть любое его решение считается окончательным. Например, если сервер говорит, что игрок мёртв, то он мёртв — даже если клиент продолжает показывать анимацию бега.</p>
+<hr>
+<h4>Компоненты</h4>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Назначение</th>
+<th>Примеры</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DataModel</strong></td>
+<td>Корень иерархии объектов. Содержит: <code>Workspace</code>, <code>Players</code>, <code>Lighting</code>, <code>ReplicatedFirst</code> и др.</td>
+<td><code>game</code>, <code>DataModel</code> — синонимы.</td>
+</tr>
+<tr>
+<td><strong>Workspace</strong></td>
+<td>Сцена физического мира. Все <code>BasePart</code>, <code>Model</code>, <code>Terrain</code>, персонажи — здесь.</td>
+<td>Физика (PhysX), рендер, коллизии.</td>
+</tr>
+<tr>
+<td><strong>Players</strong></td>
+<td>Коллекция подключённых игроков. Управляет жизненным циклом <code>Player</code> и <code>Character</code>.</td>
+<td><code>game.Players.PlayerAdded</code>, <code>player.CharacterAdded</code>.</td>
+</tr>
+<tr>
+<td><strong>ServerScriptService</strong></td>
+<td>Контейнер <strong>только для серверных скриптов</strong> (<code>Script</code>). Автоматически запускается при загрузке.</td>
+<td>Логика победы, экономика, инициализация уровней.</td>
+</tr>
+<tr>
+<td><strong>ReplicatedStorage</strong></td>
+<td>Общий контейнер для объектов, доступных <em>и серверу, и клиентам</em>.</td>
+<td>Каталоги предметов, общие <code>ModuleScript</code>, <code>RemoteEvent</code>.</td>
+</tr>
+<tr>
+<td><strong>PhysicsService</strong></td>
+<td>Управление группами коллизий, физическими параметрами.</td>
+<td><code>CreateCollisionGroup</code>, <code>CollisionGroupSetCollidable</code>.</td>
+</tr>
+<tr>
+<td><strong>LogService</strong></td>
+<td>Централизованный логгер для сервера.</td>
+<td><code>LogService.MessageOut:Connect(...)</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Жизненный цикл сервера</h4>
+<ol>
+<li>
+<p><strong>Инициализация</strong><br>
+Загружаются — <code>DataModel</code>, <code>Workspace</code>, <code>Lighting</code>, <code>ReplicatedStorage</code>, <code>ServerScriptService</code>. Выполняются <code>Script</code> в порядке создания.</p>
+</li>
+<li>
+<p><strong>Ожидание игроков</strong><br>
+Сервер работает в фоне, обрабатывая события (например, таймеры), но не запускает <code>Character</code> до подключения.</p>
+</li>
+<li>
+<p><strong>Подключение игрока</strong></p>
+<ul>
+<li>Создаётся <code>Player</code> в <code>game.Players</code>.</li>
+<li>Вызывается <code>PlayerAdded</code>.</li>
+<li>Клонируются <code>StarterPlayer</code>, <code>StarterGui</code>, <code>StarterPack</code> → в <code>player</code>.</li>
+<li>Сервер создаёт <code>player.Character</code> (если не отключено <code>player:LoadCharacter()</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Игровой процесс</strong></p>
+<ul>
+<li>Физика, события, скрипты работают синхронно с тиком движка (~30–60 FPS).</li>
+<li>Сервер отправляет обновления клиентам через <strong>репликацию</strong> (изменения свойств, событий, объектов).</li>
+</ul>
+</li>
+<li>
+<p><strong>Отключение игрока</strong></p>
+<ul>
+<li><code>Character</code> уничтожается → <code>player.Character = nil</code>.</li>
+<li>Вызывается <code>PlayerRemoving</code>.</li>
+<li>Данные игрока сохраняются (если предусмотрено).</li>
+</ul>
+</li>
+<li>
+<p><strong>Завершение сессии</strong><br>
+Сервер останавливается через 6 часов бездействия или при ручной остановке. Все несохранённые данные теряются.</p>
+</li>
+</ol>
+<hr>
+<h4>Ключевые принципы</h4>
+<ul>
+<li>
+<p><strong>Репликация идёт только "сверху вниз"</strong>:<br>
+<code>Server → Client</code>, но не наоборот — кроме специально разрешённых <code>RemoteEvent</code>/<code>RemoteFunction</code>.</p>
+</li>
+<li>
+<p><strong>Сервер не имеет GUI</strong> — ни <code>ScreenGui</code>, ни <code>TextLabel</code>, ни рендер.<br>
+Всё, что видит игрок, — результат репликации на клиент.</p>
+</li>
+<li>
+<p><strong>Нет доступа к <code>LocalPlayer</code></strong> — <code>game.Players.LocalPlayer</code> всегда <code>nil</code> на сервере.</p>
+</li>
+</ul>
+<hr>
+<h3 id="клиент-roblox-player">Клиент (Roblox Player)</h3>
+<p>Это приложение, установленное на устройстве игрока (Windows, macOS, iOS, Android, Xbox, VR). Отвечает за <strong>локальную интерактивность и рендер</strong>. Клиент — это глаза, уши и руки игрока. Он отображает мир, реагирует на ввод и отправляет запросы на сервер.</p>
+<hr>
+<h4>Компоненты</h4>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Назначение</th>
+<th>Примеры</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Renderer</strong></td>
+<td>3D-рендеринг сцены (PBR, динамическое и запечённое освещение, пост-обработка).</td>
+<td>Тени, отражения, эффекты камеры.</td>
+</tr>
+<tr>
+<td><strong>InputManager</strong></td>
+<td>Обработка клавиатуры, мыши, тача, геймпада.</td>
+<td><code>UserInputService.InputBegan</code>, <code>ContextActionService</code>.</td>
+</tr>
+<tr>
+<td><strong>SoundService</strong></td>
+<td>Воспроизведение звуков и музыки.</td>
+<td><code>Sound:Play()</code>, <code>SoundService.RespectFilteringEnabled</code>.</td>
+</tr>
+<tr>
+<td><strong>StarterGui</strong></td>
+<td><em>Шаблон</em> GUI. Не отображается — клонируется в <code>player.PlayerGui</code> при входе.</td>
+<td><code>ScreenGui</code>, <code>Frame</code>, <code>TextButton</code>.</td>
+</tr>
+<tr>
+<td><strong>LocalScript</strong></td>
+<td>Клиентские скрипты. Должны быть в <code>PlayerScripts</code>, <code>StarterGui</code>, <code>Backpack</code>.</td>
+<td>Анимации камеры, HUD, обработка кликов.</td>
+</tr>
+<tr>
+<td><strong>PlayerScripts</strong></td>
+<td>Специальный контейнер в <code>StarterPlayerScripts</code>. Загружается <em>после</em> <code>Character</code>.</td>
+<td><code>Animate.lua</code>, пользовательские <code>LocalScript</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Жизненный цикл клиента</h4>
+<ol>
+<li>
+<p><strong>Загрузка</strong><br>
+Подключается к Game Server, запрашивает <code>DataModel</code>.</p>
+</li>
+<li>
+<p><strong>Инициализация</strong><br>
+Принимает <code>Workspace</code>, <code>Lighting</code>, клонирует <code>Starter*</code> → в свой контекст.</p>
+</li>
+<li>
+<p><strong>Создание персонажа</strong><br>
+После получения <code>player.Character</code> — запускаются <code>LocalScript</code> в <code>PlayerScripts</code>.</p>
+</li>
+<li>
+<p><strong>Интерактивность</strong></p>
+<ul>
+<li>Обработка ввода → отправка <code>RemoteEvent:FireServer()</code>.</li>
+<li>Обновление GUI в ответ на <code>RemoteEvent.OnClientEvent</code>.</li>
+<li>Рендер в реальном времени.</li>
+</ul>
+</li>
+<li>
+<p><strong>Отключение</strong><br>
+При выходе — остановка всех скриптов, очистка памяти.</p>
+</li>
+</ol>
+<hr>
+<h4>Ограничения клиента</h4>
+<ul>
+<li>
+<p><strong>Нет доступа к другим игрокам</strong>, кроме <code>LocalPlayer</code>.<br>
+<code>game.Players:GetPlayers()</code> возвращает всех, но <code>player.Character</code> других игроков — только позиция и ориентация (без <code>Humanoid.Health</code>, если не реплицируется).</p>
+</li>
+<li>
+<p><strong>Нет авторитетного изменения <code>Workspace</code> с клиента</strong> — при <code>FilteringEnabled</code> локальные правки частей не реплицируются на сервер; для игровой логики используйте <code>RemoteEvent</code>/<code>RemoteFunction</code>.</p>
+</li>
+<li>
+<p><strong>Локальные данные не сохраняются</strong> — <code>PlayerGui</code>, <code>Backpack</code>, <code>leaderstats</code> уничтожаются при выходе, если не синхронизированы с сервером.</p>
+</li>
+<li>
+<p><strong>Девконсоль (F9)</strong> позволяет:</p>
+<ul>
+<li>Выполнять Lua-код (но только в локальной сессии);</li>
+<li>Изменять свойства объектов (но только нереплицируемые);</li>
+<li>Не даёт доступа к <code>ServerScriptService</code>, <code>DataStore</code>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="взаимодействие-уровней">Взаимодействие уровней</h3>
+<h4>Пример — покупка предмета за монеты</h4>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Платформа</th>
+<th>Сервер</th>
+<th>Клиент</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Инициация</strong></td>
+<td>—</td>
+<td>—</td>
+<td><code>button:Click() → BuyEvent:FireServer("Item_001", txId)</code></td>
+</tr>
+<tr>
+<td><strong>2. Валидация</strong></td>
+<td>—</td>
+<td>Проверка <code>txId</code>, баланса, наличия предмета</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>3. Транзакция</strong></td>
+<td>—</td>
+<td><code>CurrencyManager:Spend(); Inventory:Unlock(); DataStore:UpdateAsync()</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>4. Подтверждение</strong></td>
+<td>—</td>
+<td><code>BuyEvent:FireClient(player, "Success")</code></td>
+<td>Получает событие → обновляет GUI</td>
+</tr>
+<tr>
+<td><strong>5. Сохранение</strong></td>
+<td><code>DataStore</code> принимает запись, реплицирует в резервные ноды</td>
+<td>Операция завершена</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Ни один этап не может быть пропущен. Пропуск валидации на сервере = уязвимость к читерству.</p>
+</blockquote>
+<hr>
+<h2 id="порядок-инициализации">Порядок инициализации</h2>
+<p>Процесс запуска делится на три фазы — <strong>инициализация мира (server-only)</strong>, <strong>подключение игрока (server)</strong>, <strong>инициализация клиента (client)</strong>. Каждая фаза имеет строгий порядок и набор событий.</p>
+<hr>
+<h3 id="фаза-1-инициализация-сервера-до-подключения-игроков">Фаза 1. Инициализация сервера (до подключения игроков)</h3>
+<p>Происходит при запуске <code>game</code>, локально в Studio (<code>Play</code>) или в облаке (Production Server). Выполняется <strong>один раз за сессию сервера</strong>.</p>
+<hr>
+<h4>Шаг 1.1. Загрузка <code>DataModel</code></h4>
+<ul>
+<li>Создаётся корневой объект <code>DataModel</code> (<code>game</code>).</li>
+<li>Инициализируются <strong>системные сервисы</strong>:
+<ul>
+<li><code>Workspace</code></li>
+<li><code>Players</code></li>
+<li><code>Lighting</code></li>
+<li><code>ReplicatedStorage</code></li>
+<li><code>ServerScriptService</code></li>
+<li><code>SoundService</code></li>
+<li><code>HttpService</code> (если разрешён)</li>
+<li>и др.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⚠️ <code>ReplicatedFirst</code>, <code>StarterGui</code>, <code>StarterPlayer</code> — <em>не создаются автоматически</em>. Они появляются <strong>только если присутствуют в <code>.rbxlx</code></strong> или были добавлены вручную.</p>
+</blockquote>
+<hr>
+<h4>Шаг 1.2. Выполнение <code>Script</code> в <code>ServerScriptService</code></h4>
+<ul>
+<li>Скрипты запускаются <strong>в порядке их создания</strong> (не алфавитном, не по имени).</li>
+<li><strong>Параллельное выполнение</strong>:
+<ul>
+<li>Если скрипт содержит <code>while true do task.wait()</code>, он <em>не блокирует</em> загрузку других скриптов.</li>
+<li><code>task.spawn()</code> и <code>coroutine</code> позволяют инициировать фоновые процессы.</li>
+</ul>
+</li>
+<li><strong>Доступные сервисы</strong>:
+<ul>
+<li><code>game:GetService("Workspace")</code> ✅</li>
+<li><code>game.Players:GetPlayers()</code> → <code>{}</code> (пустая таблица)</li>
+<li><code>game.Players.LocalPlayer</code> → <code>nil</code> (сервер не имеет LocalPlayer)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4>Шаг 1.3. Инициализация <code>Workspace</code></h4>
+<ul>
+<li>Физика <strong>ещё не запущена</strong>: <code>Workspace:IsLoaded()</code> → <code>false</code>.</li>
+<li>Коллизии, гравитация, <code>Touched</code> — неактивны.</li>
+<li>Можно создавать объекты (<code>Part</code>, <code>Model</code>), но они не участвуют в симуляции, пока <code>Workspace.Loaded</code> не станет <code>true</code>.</li>
+</ul>
+<hr>
+<h4>Шаг 1.4. Событие <code>Workspace.Loaded</code></h4>
+<ul>
+<li><strong>Флаг <code>Workspace.Loaded = true</code> устанавливается</strong>.</li>
+<li>Запускается физический движок (PhysX).</li>
+<li>Объекты в <code>Workspace</code> становятся <em>физическими</em>:
+<ul>
+<li><code>Anchored = false</code> → начинают падать.</li>
+<li><code>Touched</code>, <code>TouchEnded</code> — активны.</li>
+<li><code>BasePart:GetConnectedParts()</code> — работает.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>✅ Рекомендуется — откладывать физически значимые операции (например, <code>:MoveTo()</code>, <code>ApplyImpulse()</code>) до <code>Workspace.Loaded:Wait()</code>.</p>
+</blockquote>
+<hr>
+<h4>Шаг 1.5. Инициализация <code>Lighting</code></h4>
+<ul>
+<li>Устанавливаются параметры по умолчанию (время суток, туман, Ambient).</li>
+<li>После <code>Workspace.Loaded</code> — начинает влиять на рендер.</li>
+</ul>
+<hr>
+<h3 id="фаза-2-подключение-игрока-серверная-сторона">Фаза 2. Подключение игрока (серверная сторона)</h3>
+<p>Происходит при первом подключении игрока к серверу. Может повторяться для каждого игрока.</p>
+<hr>
+<h4>Шаг 2.1. Событие <code>Players.PlayerAdded</code></h4>
+<ul>
+<li>Создаётся объект <code>player</code> (класс <code>Player</code>) и добавляется в <code>game.Players</code>.</li>
+<li>Свойства <code>player</code>:
+<ul>
+<li><code>player.Name</code>, <code>player.DisplayName</code> ✅</li>
+<li><code>player.UserId</code> ✅</li>
+<li><code>player.Character</code> → <strong><code>nil</code></strong></li>
+<li><code>player.PlayerGui</code> → <strong><code>nil</code></strong></li>
+<li><code>player.Backpack</code> → <strong><code>nil</code></strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⚠️ Попытка доступа к <code>player.Character.Humanoid</code> здесь → <code>attempt to index nil</code>.</p>
+</blockquote>
+<hr>
+<h4>Шаг 2.2. Клонирование Starter-контейнеров</h4>
+<p>Последовательность строго фиксирована:</p>
+<table>
+<thead>
+<tr>
+<th>Порядок</th>
+<th>Действие</th>
+<th>Куда клонируется</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>StarterPlayerScripts</code></td>
+<td>→ <code>player.PlayerScripts</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>StarterCharacterScripts</code></td>
+<td>→ <code>player.CharacterScripts</code> (только при создании <code>Character</code>)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>StarterPlayer</code></td>
+<td>→ <code>player</code> (свойства, атрибуты, скрипты)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>StarterGui</code></td>
+<td>→ <code>player.PlayerGui</code> (<strong>создаётся пустой <code>PlayerGui</code>, затем клонируются дочерние элементы</strong>)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>StarterPack</code></td>
+<td>→ <code>player.Backpack</code> (<strong>создаётся <code>Backpack</code>, затем клонируются инструменты</strong>)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🔍 Важно:</p>
+<ul>
+<li><code>StarterGui</code> и <code>StarterPack</code> <strong>не клонируются напрямую</strong> — создаются <em>контейнеры</em> (<code>PlayerGui</code>, <code>Backpack</code>), и в них копируются дети.</li>
+<li>Если <code>StarterGui</code> пуст — <code>player.PlayerGui</code> всё равно создаётся (как пустая папка).</li>
+<li>Клонирование <strong>не включает</strong> <code>LocalScript</code> в <code>StarterPlayer</code> → они становятся <code>Script</code> в <code>player.PlayerScripts</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>Шаг 2.3. Инициализация <code>PlayerGui</code> и <code>Backpack</code></h4>
+<ul>
+<li><code>player.PlayerGui</code> и <code>player.Backpack</code> становятся <strong>не-<code>nil</code></strong>.</li>
+<li>Но: GUI ещё <strong>не отображается</strong> — рендер не начался.</li>
+</ul>
+<hr>
+<h4>Шаг 2.4. Создание персонажа (<code>Character</code>)</h4>
+<ul>
+<li>Вызывается внутренне <code>player:LoadCharacter()</code> (если <code>player.Character</code> = <code>nil</code> и не отключено в настройках).</li>
+<li>Происходит <strong>асинхронно</strong> — обычно через 0.1–0.5 сек после <code>PlayerAdded</code>.</li>
+<li>Этапы создания персонажа:
+<ol>
+<li>Создаётся <code>Model</code> → <code>player.Character</code>.</li>
+<li>В него клонируется <strong>R15/R6 rig</strong> (в зависимости от настроек).</li>
+<li>Применяются ассеты (одежда, лицо, тело — из аккаунта игрока).</li>
+<li>Запускается <code>Animator</code>, <code>Humanoid</code>, <code>HumanoidRootPart</code>.</li>
+<li>Вызывается событие <code>player.CharacterAdded</code>.</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>⚠️ <code>player.CharacterAdded</code> <strong>не гарантирует</strong>, что:</p>
+<ul>
+<li><code>HumanoidRootPart</code> уже существует (может быть задержка из-за загрузки мешей);</li>
+<li><code>Humanoid.Health > 0</code> (иногда <code>Humanoid</code> инициализируется с <code>Health = 0</code>, затем <code>Health = 100</code>).</li>
+</ul>
+</blockquote>
+<hr>
+<h4>Шаг 2.5. Событие <code>player.CharacterAdded</code></h4>
+<ul>
+<li>Сигнализирует, что <code>player.Character</code> ≠ <code>nil</code> и содержит базовую иерархию.</li>
+<li><strong>Рекомендуемая практика</strong>:</li>
+</ul>
+<pre><code class="language-lua">  player.CharacterAdded:Connect(function(character)
+      local hrp = character:WaitForChild("HumanoidRootPart", 5)
+      if not hrp then return end
+      local humanoid = character:WaitForChild("Humanoid", 5)
+      if not humanoid or humanoid.Health &#x3C;= 0 then
+          -- Дождаться полной инициализации
+          humanoid.HealthChanged:Wait()
+      end
+      -- Теперь можно: hrp.Position, humanoid:MoveTo(), и т.д.
+  end)
+</code></pre>
+<hr>
+<h3 id="фаза-3-инициализация-клиента-локальная-машина-игрока">Фаза 3. Инициализация клиента (локальная машина игрока)</h3>
+<p>Запускается <strong>после</strong> того, как сервер отправил клиенту <code>DataModel</code> и <code>player.Character</code>.</p>
+<hr>
+<h4>Шаг 3.1. Получение <code>DataModel</code> на клиенте</h4>
+<ul>
+<li>Клиент получает синхронизированную копию <code>Workspace</code>, <code>Lighting</code>, <code>ReplicatedStorage</code>.</li>
+<li><code>game.ReplicatedFirst</code> клонируется → <code>game.StarterGui</code> → <code>PlayerGui</code> (<strong>локальная копия</strong>).</li>
+</ul>
+<hr>
+<h4>Шаг 3.2. Создание <code>LocalPlayer</code></h4>
+<ul>
+<li><code>game.Players.LocalPlayer</code> → ссылка на <strong>собственного игрока</strong>.</li>
+<li>Доступ к другим игрокам:
+<ul>
+<li><code>game.Players:GetPlayers()</code> ✅</li>
+<li><code>player.Character</code> других игроков — только <code>PrimaryPart</code>, <code>Humanoid.Health</code> (если разрешено), <code>Position</code> (реплицируется).</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4>Шаг 3.3. Запуск <code>LocalScript</code></h4>
+<ul>
+<li><code>LocalScript</code> выполняются <strong>только в следующих контейнерах</strong>:
+<ul>
+<li><code>PlayerScripts</code></li>
+<li><code>PlayerGui</code> и его дети</li>
+<li><code>Backpack</code> и его дети</li>
+<li><code>StarterPlayerScripts</code> (клонируется в <code>PlayerScripts</code>)</li>
+</ul>
+</li>
+<li><code>LocalScript</code> в <code>Workspace</code>, <code>ReplicatedStorage</code>, <code>ServerScriptService</code> — <strong>игнорируются</strong>.</li>
+</ul>
+<hr>
+<h4>Шаг 3.4. Событие <code>PlayerGui.Initialized</code></h4>
+<ul>
+<li>Гарантирует, что весь GUI загружен и отображается.</li>
+<li>Аналог <code>CharacterAdded</code> для интерфейса:</li>
+</ul>
+<pre><code class="language-lua">  player.PlayerGui.Initialized:Connect(function()
+      -- Безопасно искать ScreenGui, Frame, Button
+  end)
+</code></pre>
+<hr>
+<h4>Шаг 3.5. Запуск <code>StarterCharacterScripts</code> на клиенте</h4>
+<ul>
+<li><code>LocalScript</code>, клонированные из <code>StarterCharacterScripts</code>, запускаются <strong>после</strong> <code>CharacterAdded</code>.</li>
+<li>Именно здесь работает <code>Animate.lua</code> — анимации движения/прыжка.</li>
+</ul>
+<hr>
+<h3 id="доступность-объектов-по-времени">Доступность объектов по времени</h3>
+<table>
+<thead>
+<tr>
+<th>Временная метка</th>
+<th><code>player.Character</code></th>
+<th><code>player.PlayerGui</code></th>
+<th><code>Humanoid</code></th>
+<th><code>HumanoidRootPart</code></th>
+<th><code>LocalPlayer</code></th>
+<th><code>Workspace.Loaded</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PlayerAdded</code></td>
+<td><code>nil</code></td>
+<td><code>nil</code></td>
+<td>—</td>
+<td>—</td>
+<td><code>nil</code> (сервер) / ✅ (клиент)</td>
+<td>?</td>
+</tr>
+<tr>
+<td>После клонирования <code>StarterGui</code></td>
+<td><code>nil</code></td>
+<td>✅ (пустой)</td>
+<td>—</td>
+<td>—</td>
+<td>✅</td>
+<td>?</td>
+</tr>
+<tr>
+<td><code>CharacterAdded</code></td>
+<td>✅ (Model)</td>
+<td>✅</td>
+<td>✅ (но <code>Health</code> может быть 0)</td>
+<td>✅ (иногда с задержкой)</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>Humanoid.Health > 0</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🔎 Примечание: <code>Workspace.Loaded</code> обычно происходит <em>до</em> первого <code>PlayerAdded</code>, но в сложных сценах (большие мешы, скрипты инициализации) — может быть позже.</p>
+</blockquote>
+<hr>
+<h3 id="типичные-ошибки-и-как-их-избежать">Типичные ошибки и как их избежать</h3>
+<table>
+<thead>
+<tr>
+<th>Ошибка</th>
+<th>Причина</th>
+<th>Решение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attempt to index nil with 'Humanoid'</code></td>
+<td>Доступ к <code>player.Character.Humanoid</code> в <code>PlayerAdded</code></td>
+<td>Использовать <code>player.CharacterAdded:Wait()</code> или <code>:Connect()</code></td>
+</tr>
+<tr>
+<td>GUI не отображается</td>
+<td><code>LocalScript</code> ищет <code>ScreenGui</code> сразу после <code>PlayerAdded</code></td>
+<td>Дождаться <code>player.PlayerGui.Initialized</code> или использовать <code>player.PlayerGui:WaitForChild("MyGui")</code></td>
+</tr>
+<tr>
+<td>Скрипт не запускается</td>
+<td><code>LocalScript</code> размещён в <code>ReplicatedStorage</code></td>
+<td>Перенести в <code>StarterGui</code> или <code>StarterPlayerScripts</code></td>
+</tr>
+<tr>
+<td><code>RemoteEvent</code> не срабатывает</td>
+<td><code>RemoteEvent</code> создан на клиенте, а не в <code>ReplicatedStorage</code></td>
+<td>Создавать <code>RemoteEvent</code> в <code>ReplicatedStorage</code> на сервере до подключения игроков</td>
+</tr>
+<tr>
+<td>Предмет не появляется в инвентаре</td>
+<td>Попытка <code>tool.Parent = player.Backpack</code> до <code>PlayerAdded</code></td>
+<td>Выполнять в <code>PlayerAdded</code> или <code>CharacterAdded</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="как-проверить-порядок-самому">Как проверить порядок самому?</h3>
+<p>Добавьте в <code>ServerScriptService</code> этот скрипт:</p>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-2-001" data-title="Как проверить порядок самому?" data-min-height="642"> </div>
+<hr>
+<h2><code>Instance</code></h2>
+<p><code>Instance</code> — базовый класс (в терминах ООП — <em>суперкласс</em>), от которого наследуются <strong>все объекты</strong> в среде Roblox. Это <em>активный субъект</em>, участвующий в репликации, сериализации, событийной модели и управлении памятью.</p>
+<p>Наследуется всё — <code>Part</code>, <code>Model</code>, <code>Script</code>, <code>RemoteEvent</code>, <code>Player</code>, <code>Folder</code>, <code>DataModel</code>.</p>
+<hr>
+<h3 id="техническое-определение">Техническое определение</h3>
+<ul>
+<li><strong>Тип</strong>: <code>DataType.Instance</code> (в Lua — <code>typeof(obj) == "Instance"</code>).</li>
+<li><strong>Наследование</strong>: иерархия классов реализована в C++ ядре движка; в Lua доступна только через <code>obj.ClassName</code>, <code>obj:IsA("Part")</code>.</li>
+<li><strong>Уникальный идентификатор</strong>: каждому <code>Instance</code> присваивается GUID при создании (<code>obj:GetDebugId()</code> → строка вида <code>"1234567890"</code>). Не путать с <code>obj.Name</code> (не уникален) или <code>obj.UserId</code> (только для <code>Player</code>).</li>
+</ul>
+<blockquote>
+<p>✅ Проверка:</p>
+<pre><code class="language-lua">local part = Instance.new("Part")
+print(typeof(part))        -- "Instance"
+print(part.ClassName)      -- "Part"
+print(part:IsA("BasePart"))-- true (Part &#x3C;: BasePart &#x3C;: Instance)
+</code></pre>
+</blockquote>
+<hr>
+<h3>Структура <code>Instance</code></h3>
+<p>Каждый экземпляр состоит из четырёх взаимосвязанных компонентов. Нарушение целостности одного — делает объект неработоспособным.</p>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Назначение</th>
+<th>Реализация</th>
+<th>Доступность</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Класс (Class Info)</strong></td>
+<td>Определяет метаданные: список свойств, методов, событий, наследование.</td>
+<td>Загружается из <code>rbxmx</code>-манифестов при старте движка. Неизменяем.</td>
+<td>Только для чтения (<code>ClassName</code>, <code>IsA()</code>, <code>GetFullName()</code>)</td>
+</tr>
+<tr>
+<td><strong>Состояние (State)</strong></td>
+<td>Текущие значения свойств (<code>Position</code>, <code>Name</code>, <code>Enabled</code> и т.д.).</td>
+<td>Хранится в памяти; сериализуется в <code>.rbxlx</code>/<code>.rbxl</code>.</td>
+<td>Чтение/запись через <code>obj.Property = value</code></td>
+</tr>
+<tr>
+<td><strong>Поведение (Methods &#x26; Events)</strong></td>
+<td>Логика: методы (<code>:Clone()</code>) и точки расширения (<code>.Touched</code>).</td>
+<td>Часть класса; методы — вызовы C++ функций.</td>
+<td>Вызов через <code>obj:Method()</code> или <code>obj.Event:Connect()</code></td>
+</tr>
+<tr>
+<td><strong>Контекст (Hierarchy)</strong></td>
+<td>Положение в дереве (<code>Parent</code>, дети, <code>Ancestors</code>).</td>
+<td>Управляется через <code>Parent</code>-ссылку; критично для репликации и сборки мусора.</td>
+<td>Изменение через <code>obj.Parent = parent</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Пример</strong>:</p>
+<pre><code class="language-lua">local part = Instance.new("Part")
+part.Name = "Cube"
+-- На этом этапе объект существует в памяти, но не виден и не участвует в физике.
+part.Parent = workspace
+-- Теперь объект активен: рендерится, реагирует на коллизии, реплицируется.
+</code></pre>
+<blockquote>
+<p>⚠️ <strong>Важно</strong>:</p>
+<ul>
+<li>Свойства, методы и события <strong>не определяются динамически</strong> (как в JavaScript). Они зашиты в класс.</li>
+<li>Попытка <code>part.NewProperty = 42</code> <strong>не создаёт</strong> новое свойство — это создаёт <em>локальную переменную в таблице Lua</em>, не связанную с <code>Instance</code>.</li>
+<li>Для хранения пользовательских данных используйте <code>obj:SetAttribute("key", value)</code> или <code>Folder</code> с <code>IntValue</code>/<code>StringValue</code>.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="класс-экземпляр-переменная">Класс, экземпляр, переменная</h3>
+<table>
+<thead>
+<tr>
+<th>Понятие</th>
+<th>Что это</th>
+<th>Где хранится</th>
+<th>Жизненный цикл</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Класс</strong> (<code>Part</code>, <code>Script</code>)</td>
+<td>Метаописание: какие свойства/методы есть, как сериализуется, как ведёт себя в физике.</td>
+<td>В C++ библиотеке движка (<code>rbx-core.dll</code> и др.). Загружается один раз при старте.</td>
+<td>Вечный — пока работает движок.</td>
+</tr>
+<tr>
+<td><strong>Экземпляр</strong> (<code>workspace.Ground</code>)</td>
+<td>Конкретный объект в сцене. Имеет состояние и позицию в иерархии.</td>
+<td>В куче (heap) движка. Имеет ссылочный счётчик.</td>
+<td>От <code>Instance.new()</code> / клонирования — до <code>:Destroy()</code> или сборки мусора.</td>
+</tr>
+<tr>
+<td><strong>Переменная в скрипте</strong> (<code>local p = workspace.Ground</code>)</td>
+<td><strong>Ссылка (указатель)</strong> на экземпляр. Не содержит данных — только адрес.</td>
+<td>В Lua-стеке/куче.</td>
+<td>До выхода из области видимости или переприсваивания.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Пример, демонстрирующий разницу</h4>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-2-002" data-title="Пример, демонстрирующий разницу" data-min-height="390"> </div>
+<blockquote>
+<p>🔍 При отладке в Studio:<br>
+— Выделение <code>part1</code> и <code>part2</code> в Explorer — разные элементы.<br>
+— <code>print(part1, part2)</code> → разные <code>DebugId</code>.</p>
+</blockquote>
+<hr>
+<h3 id="свойства">Свойства</h3>
+<p>Свойства доступный через точечную нотацию: <code>part.Size</code>, <code>script.Disabled</code>.</p>
+<p>Наиболее важные методы:</p>
+<ul>
+<li><code>:Clone()</code> — создаёт глубокую копию объекта и всех детей. Возвращает новый экземпляр с <code>Parent = nil</code>.</li>
+<li><code>:Destroy()</code> — немедленно удаляет объект из памяти и отключает все события. Безопасен для повторного вызова.</li>
+<li><code>:FindFirstChild(name, recursive?)</code> — ищет ребёнка по имени. Не вызывает ошибку, если не найден.</li>
+<li><code>:WaitForChild(name, timeout?)</code> — блокирующий поиск, полезен при инициализации:</li>
+</ul>
+<pre><code class="language-lua">local hrp = character:WaitForChild("HumanoidRootPart", 5)
+</code></pre>
+<hr>
+<h4>Типы свойств</h4>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Примеры</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Базовые (Base)</strong></td>
+<td><code>Name</code> (<code>string</code>), <code>Parent</code> (<code>Instance?</code>), <code>Archivable</code> (<code>bool</code>)</td>
+<td>Есть у всех <code>Instance</code>. Изменение <code>Name</code> не влияет на репликацию.</td>
+</tr>
+<tr>
+<td><strong>Класс-специфичные</strong></td>
+<td><code>Part.Size</code> (<code>Vector3</code>), <code>Script.Source</code> (<code>string</code>), <code>RemoteEvent.OnServerEvent</code> (<code>RBXScriptSignal</code>)</td>
+<td>Определены в классе. Недоступны в других классах (<code>Part.Script</code> → ошибка).</td>
+</tr>
+<tr>
+<td><strong>Сериализуемые</strong></td>
+<td>Почти все, кроме <code>LocalScript.Disabled</code>, <code>Player.UserId</code></td>
+<td>Сохраняются в <code>.rbxlx</code>. Несериализуемые — игнорируются при сохранении.</td>
+</tr>
+<tr>
+<td><strong>Реплицируемые</strong></td>
+<td><code>Part.Position</code>, <code>StringValue.Value</code>, <code>Player.DisplayName</code></td>
+<td>Изменения отправляются клиентам. Не реплицируются: <code>LocalScript</code>, <code>Player.UserId</code>, <code>Folder.ChildAdded</code> и др.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Доступ к свойствам</h4>
+<ul>
+<li><strong>Чтение</strong>: <code>obj.Property</code> — всегда возвращает текущее значение (может быть <code>nil</code>, если свойство не инициализировано).</li>
+<li><strong>Запись</strong>: <code>obj.Property = value</code> — валидируется типом:</li>
+</ul>
+<pre><code class="language-lua">  part.Size = "hello"  -- ошибка: "Unable to cast string to Vector3"
+</code></pre>
+<ul>
+<li><strong>Отсутствующее свойство</strong>:</li>
+</ul>
+<pre><code class="language-lua">  print(part.NonExistent)  -- nil (без ошибки)
+  part.NonExistent = 5     -- игнорируется (не создаёт свойство)
+</code></pre>
+<hr>
+<h4>Событие <code>.Changed</code></h4>
+<p>Срабатывает <strong>после</strong> успешного изменения многих свойств (например, <code>Size</code>, <code>Name</code>). Смена родителя отражается в <strong><code>AncestryChanged</code></strong>, а не в <code>Changed</code>.</p>
+<pre><code class="language-lua">part.Changed:Connect(function(property)
+	print("Свойство", property, "изменено на", part[property])
+end)
+
+part.Size = Vector3.new(2, 2, 2)
+-- Вывод: "Свойство Size изменено на 2, 2, 2"
+part.Name = "NewCube"
+-- Вывод: "Свойство Name изменено на NewCube"
+</code></pre>
+<blockquote>
+<p>⚠️ Не используйте <code>.Changed</code> для критичной логики (например, сохранения):<br>
+— Оно срабатывает при <em>любом</em> изменении, включая репликацию.<br>
+— Не гарантирует порядок относительно других событий.<br>
+— Для отслеживания <code>Parent</code> подписывайтесь на <code>AncestryChanged</code>.</p>
+</blockquote>
+<hr>
+<h3 id="методы">Методы</h3>
+<p>Методы — вызовы C++ функций через Lua-обёртку. Они <strong>не копируются при клонировании</strong> — поведение определяется классом.</p>
+<hr>
+<h4>Наиболее важные методы</h4>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Назначение</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:Clone()</code></td>
+<td>Создаёт глубокую копию объекта и всех детей.</td>
+<td>Возвращает <strong>новый экземпляр</strong> с <code>Parent = nil</code>. Требует <code>obj.Archivable = true</code> (по умолчанию <code>true</code>).</td>
+</tr>
+<tr>
+<td><code>:Destroy()</code></td>
+<td>Уничтожает объект и всех детей.</td>
+<td>Немедленно удаляет из памяти; события отключаются; <code>Parent</code> = <code>nil</code>. Безопасно вызывать повторно.</td>
+</tr>
+<tr>
+<td><code>:FindFirstChild(name, recursive?)</code></td>
+<td>Поиск ребёнка по имени.</td>
+<td>Не вызывает ошибку, если не найден → возвращает <code>nil</code>. <code>recursive = true</code> — поиск во всей подветке.</td>
+</tr>
+<tr>
+<td><code>:WaitForChild(name, timeout?)</code></td>
+<td>Блокирующий поиск (с ожиданием).</td>
+<td>Используется при инициализации (<code>Character:WaitForChild("HumanoidRootPart")</code>). При <code>timeout</code> → <code>nil</code>.</td>
+</tr>
+<tr>
+<td><code>:GetChildren()</code></td>
+<td>Возвращает таблицу прямых детей.</td>
+<td>Не рекурсивно. Порядок — как в Explorer (по времени создания).</td>
+</tr>
+<tr>
+<td><code>:IsDescendantOf(parent)</code></td>
+<td>Проверка принадлежности к ветке.</td>
+<td>Используется для проверки контекста (<code>if tool:IsDescendantOf(player.Backpack) then</code>).</td>
+</tr>
+<tr>
+<td><code>:ClearAllChildren()</code></td>
+<td>Удаляет всех детей (но не сам объект).</td>
+<td>Эквивалентно <code>for _, c in ipairs(obj:GetChildren()) do c:Destroy() end</code>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>✅ Рекомендация:<br>
+Всегда используйте <code>:Destroy()</code>, а не <code>obj.Parent = nil</code>.<br>
+— <code>obj.Parent = nil</code> оставляет объект в памяти, если есть ссылки (утечка).<br>
+— <code>:Destroy()</code> гарантирует освобождение ресурсов.</p>
+</blockquote>
+<hr>
+<h3 id="события">События</h3>
+<p>События в Roblox — это экземпляры <code>RBXScriptSignal</code>. Они предоставляют два основных метода:</p>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Назначение</th>
+<th>Возвращаемое значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:Connect(callback)</code></td>
+<td>Подписка на событие.</td>
+<td><code>RBXScriptConnection</code> — объект соединения.</td>
+</tr>
+<tr>
+<td><code>:Wait()</code></td>
+<td>Блокирующее ожидание события.</td>
+<td>Значения, переданные в <code>Fire(...)</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Пример работы с соединением</h4>
+<pre><code class="language-lua">local connection = workspace.Part.Touched:Connect(function(hit)
+	print("Коснулся", hit.Name)
+end)
+
+-- Отмена подписки
+connection:Disconnect()  -- событие больше не будет вызываться
+
+-- Проверка состояния
+print(connection.Connected)  -- false после Disconnect()
+</code></pre>
+<blockquote>
+<p>⚠️ Утечки памяти:<br>
+— Если не вызвать <code>:Disconnect()</code>, соединение остаётся в памяти даже после <code>:Destroy()</code> объекта.<br>
+— Особенно критично в <code>LocalScript</code>: при выходе игрока соединения не отключаются автоматически.</p>
+</blockquote>
+<hr>
+<h3>Диагностика и отладка <code>Instance</code></h3>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Метод</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Узнать класс</td>
+<td><code>obj.ClassName</code></td>
+<td><code>"Part"</code></td>
+</tr>
+<tr>
+<td>Проверить тип</td>
+<td><code>obj:IsA("BasePart")</code></td>
+<td><code>true</code> для <code>Part</code>, <code>MeshPart</code></td>
+</tr>
+<tr>
+<td>Полный путь</td>
+<td><code>obj:GetFullName()</code></td>
+<td><code>"Workspace.Ground"</code></td>
+</tr>
+<tr>
+<td>Отладочный ID</td>
+<td><code>obj:GetDebugId()</code></td>
+<td><code>"123456789"</code> (уникален в сессии)</td>
+</tr>
+<tr>
+<td>Проверить, уничтожен ли</td>
+<td><code>not obj or not obj.Parent</code></td>
+<td>Ненадёжно; лучше отслеживать вручную</td>
+</tr>
+<tr>
+<td>Проверить, клонируемый ли</td>
+<td><code>obj.Archivable</code></td>
+<td><code>true</code> по умолчанию для большинства объектов</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🛠️ Совет: при отладке используйте <code>warn(obj:GetFullName(), obj.ClassName, obj:GetDebugId())</code> — это выводит кликабельную ссылку в Output Studio.</p>
+</blockquote>
+<hr>
+<h3 id="основные-понятия">Основные понятия</h3>
+<h4><code>Instance</code></h4>
+<p>В Roblox <strong>всё — объект типа <code>Instance</code></strong>:</p>
+<ul>
+<li><code>Workspace</code>, <code>Part</code>, <code>Script</code>, <code>RemoteEvent</code>, <code>Player</code>, <code>Folder</code>, <code>DataModel</code>.</li>
+</ul>
+<p>Каждый <code>Instance</code> обладает:</p>
+<ul>
+<li><strong>Классом</strong> — определяет <em>возможности</em> объекта (например, у <code>Part</code> есть <code>Size</code>, <code>Anchored</code>; у <code>RemoteEvent</code> — <code>FireServer</code>, <code>OnServerEvent</code>).</li>
+<li><strong>Свойствами</strong> — данные, которые можно читать/писать (<code>Name</code>, <code>Parent</code>, <code>Transparency</code>, <code>Position</code>).</li>
+<li><strong>Методами</strong> — действия, которые можно вызвать (<code>:Clone()</code>, <code>:Destroy()</code>, <code>:FindFirstChild()</code>).</li>
+<li><strong>Событиями</strong> — сигналы, на которые можно подписаться (<code>.Touched</code>, <code>.Changed</code>, <code>MouseButton1Click</code>).</li>
+</ul>
+<blockquote>
+<p>⚠️ Не путайте:</p>
+<ul>
+<li><strong>Класс</strong> — абстрактное описание (например, <code>Part</code>).</li>
+<li><strong>Экземпляр</strong> — конкретный объект в сцене (например, <code>Ground</code> в <code>Workspace</code>).</li>
+<li><strong>Переменная в скрипте</strong> — ссылка на экземпляр, а не его копия.</li>
+</ul>
+</blockquote>
+<hr>
+<h4>Иерархия</h4>
+<p>Любой <code>Instance</code> имеет <em>ровно одного</em> родителя (<code>Parent</code>) и может иметь <em>много</em> детей.</p>
+<pre><code class="language-lua">-- Создание объекта и привязка к иерархии
+local part = Instance.new("Part")
+part.Name = "MyCube"
+part.Parent = workspace  -- ← важнейшая строка: без неё объект "висит в воздухе"
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Контекст</th>
+<th>Как работает <code>Parent</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>В <strong>Explorer</strong></td>
+<td>Дочерние объекты отступлены, скрытие родителя скрывает детей</td>
+</tr>
+<tr>
+<td>В <strong>коде</strong></td>
+<td><code>game.Workspace.MyCube</code> — синтаксический сахар для <code>game:GetService("Workspace"):FindFirstChild("MyCube")</code></td>
+</tr>
+<tr>
+<td>При <strong>клонировании</strong></td>
+<td><code>:Clone()</code> копирует всю подветку, но <em>отвязывает</em> от родителя — нужно вручную задать <code>Parent</code>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>✅ Пример ошибки:</p>
+<pre><code class="language-lua">local part = Instance.new("Part")
+part.Position = Vector3.new(0, 10, 0)
+part.Anchored = true
+-- ... и ничего не происходит
+</code></pre>
+<p>Причина: <code>part.Parent == nil</code>. Объект создан, но не добавлен в сцену → не рендерится и не участвует в физике.</p>
+</blockquote>
+<hr>
+<h3 id="контейнеры-и-сервисы">Контейнеры и сервисы</h3>
+<h4>Что такое контейнер?</h4>
+<p><strong>Контейнер</strong> — это <code>Instance</code>, который может содержать другие объекты.<br>
+Основные типы:</p>
+<table>
+<thead>
+<tr>
+<th>Контейнер</th>
+<th>Тип</th>
+<th>Роль</th>
+<th>Доступ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Workspace</code></td>
+<td><code>Model</code></td>
+<td>Все видимые объекты мира</td>
+<td>Сервер + клиент</td>
+</tr>
+<tr>
+<td><code>ReplicatedStorage</code></td>
+<td><code>Folder</code></td>
+<td>Данные и объекты для обмена</td>
+<td>Сервер + клиент</td>
+</tr>
+<tr>
+<td><code>ServerScriptService</code></td>
+<td><code>Folder</code></td>
+<td>Серверные скрипты</td>
+<td>Только сервер</td>
+</tr>
+<tr>
+<td><code>StarterGui</code></td>
+<td><code>Folder</code></td>
+<td>Шаблоны GUI для игроков</td>
+<td>Только сервер (клонируется)</td>
+</tr>
+<tr>
+<td><code>Players</code></td>
+<td><code>Players</code></td>
+<td>Коллекция подключённых игроков</td>
+<td>Сервер + клиент (только свой игрок)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Сервис</strong> — специальный контейнер, предоставляющий API (например, <code>MarketplaceService</code>, <code>PhysicsService</code>).<br>
+Доступ к сервисам:</p>
+<pre><code class="language-lua">local ds = game:GetService("DataStoreService")
+local phys = game:GetService("PhysicsService")
+</code></pre>
+</blockquote>
+<hr>
+<h4>Как объект попадает в игру?</h4>
+<ol>
+<li><strong>Ручное размещение в Studio</strong> → сохраняется в <code>.rbxlx</code> → загружается сервером при старте.</li>
+<li><strong>Клонирование из <code>Starter*</code></strong> → при заходе игрока.</li>
+<li><strong>Создание через <code>Instance.new()</code></strong> → динамически, во время игры.</li>
+</ol>
+<p>→ Только объекты с <code>Parent ~= nil</code> и находящиеся в <code>Workspace</code>, <code>Lighting</code>, <code>Players</code> и т.п. становятся <em>активными</em>.</p>
+<hr>
+<h2 id="добавление-скрипта-к-объекту">Добавление скрипта к объекту</h2>
+<p>Этот раздел можно использовать как <strong>универсальный алгоритм</strong> для любого объекта — <code>Part</code>, <code>Model</code>, <code>Tool</code>, <code>ScreenGui</code>, <code>ImageButton</code>. Следуйте шагам строго — это гарантирует корректную работу и избегание распространённых ошибок.</p>
+<hr>
+<h3 id="шаг-1-создание-объекта-в-сцене">Шаг 1. Создание объекта в сцене</h3>
+<h4>Действия в Studio</h4>
+<ol>
+<li>
+<p>Откройте вкладку <strong>Home</strong> → нажмите <strong>Part</strong><br>
+→ в <code>Workspace</code> появится <code>Part</code> (по умолчанию — <code>Position = (0, 5, 0)</code>, <code>Size = (2, 2, 2)</code>, <code>Anchored = false</code>).</p>
+</li>
+<li>
+<p>В <strong>Explorer</strong> найдите объект:</p>
+</li>
+</ol>
+<pre><code>   Workspace
+   └── Part ── [выделите его]
+</code></pre>
+<ol start="3">
+<li>В <strong>Properties</strong> задайте:
+<ul>
+<li><code>Name = "Button"</code> (для идентификации в коде),</li>
+<li><code>Anchored = true</code> (чтобы не падал),</li>
+<li><code>Color = BrickColor.new("Bright green")</code> (визуальная обратная связь),</li>
+<li><code>CanCollide = false</code> (чтобы игрок мог пройти сквозь него — опционально).</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>✅ Почему <code>Anchored = true</code>?<br>
+Если <code>Anchored = false</code>, объект подчиняется физике: упадёт, может улететь при столкновении → поведение непредсказуемо. Для интерактивных элементов (кнопок, триггеров) — почти всегда <code>true</code>.</p>
+</blockquote>
+<hr>
+<h3 id="шаг-2-добавление-скрипта-к-объекту">Шаг 2. Добавление скрипта к объекту</h3>
+<h4>Действия в Studio</h4>
+<ol>
+<li>Убедитесь, что <code>Button</code> выделен в <strong>Explorer</strong>.</li>
+<li>ПКМ по <code>Button</code> → <strong>Insert Object…</strong> → выберите <strong>Script</strong><br>
+→ создаётся <code>Script</code> <strong>внутри <code>Button</code></strong> (в иерархии: <code>Workspace.Button.Script</code>).</li>
+</ol>
+<blockquote>
+<p>⚠️ Критическое правило:<br>
+— Скрипт, помещённый <strong>внутрь объекта</strong>, имеет прямой доступ к нему через <code>script.Parent</code>.<br>
+— Это надёжнее, чем <code>workspace:FindFirstChild("Button")</code>, потому что:<br>
+  • не зависит от имени;<br>
+  • не требует поиска;<br>
+  • работает даже при переименовании объекта.</p>
+</blockquote>
+<hr>
+<h4>Что произошло технически</h4>
+<ul>
+<li>Создан экземпляр класса <code>Script</code> (не <code>LocalScript</code>, не <code>ModuleScript</code>).</li>
+<li>Его свойство <code>Parent</code> установлено в <code>Button</code>.</li>
+<li>Скрипт автоматически запущен (сервером), так как находится в <code>Workspace</code> — зона видимости сервера.</li>
+</ul>
+<hr>
+<h3 id="шаг-3-базовый-шаблон-скрипта">Шаг 3. Базовый шаблон скрипта</h3>
+<p>Замените содержимое <code>Script</code> на следующий код — это <strong>универсальный шаблон</strong>, пригодный для 90 % простых интерактивных объектов:</p>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-2-003" data-title="Шаг 3. Базовый шаблон скрипта" data-min-height="720"> </div>
+<hr>
+<h3 id="разбор-шаблона-по-блокам">Разбор шаблона по блокам</h3>
+<table>
+<thead>
+<tr>
+<th>Блок</th>
+<th>Зачем нужен</th>
+<th>Что будет, если убрать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>local object = script.Parent</code></td>
+<td>Прямая привязка к контексту. Надёжнее <code>workspace.Button</code>.</td>
+<td>При переименовании/копировании — сломается.</td>
+</tr>
+<tr>
+<td><code>IsA("BasePart"/"Model")</code></td>
+<td>Защита от размещения скрипта в <code>Folder</code>, <code>IntValue</code> и др.</td>
+<td>Ошибка <code>attempt to index nil</code> при <code>Touched</code>.</td>
+</tr>
+<tr>
+<td>Проверка <code>hit.Parent</code> + <code>Humanoid</code></td>
+<td>Игнорировать касания частей без персонажа (мусор, снаряды).</td>
+<td>Сработает на любом <code>Part</code>, не привязанном к модели игрока.</td>
+</tr>
+<tr>
+<td><code>hit:IsDescendantOf(object)</code></td>
+<td>Защита от self-touch (например, при <code>Anchored = false</code>).</td>
+<td>Объект может активировать сам себя.</td>
+</tr>
+<tr>
+<td><code>enabled</code> + <code>Destroying</code></td>
+<td>Гарантированная отмена подписки.</td>
+<td>Утечка памяти при удалении объекта.</td>
+</tr>
+<tr>
+<td><code>TweenService</code> / <code>Model:ScaleTo()</code></td>
+<td>Плавное изменение: у <code>Part</code> — твин свойств, у <code>Model</code> — <code>ScaleTo</code>.</td>
+<td>Резкое <code>Size = ...</code> выглядит дёргано.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="шаг-4-расширение-другие-типы-взаимодействия">Шаг 4. Расширение — другие типы взаимодействия</h3>
+<p>Тот же шаблон работает для <strong>любого события</strong> — нужно только заменить:</p>
+<table>
+<thead>
+<tr>
+<th>Тип взаимодействия</th>
+<th>Что изменить в шаблоне</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Нажатие мышью (в GUI)</strong></td>
+<td>Объект: <code>TextButton</code> в <code>ScreenGui</code>; Событие: <code>MouseButton1Click</code>; Проверка: не нужна (GUI — только клиент)</td>
+</tr>
+<tr>
+<td><strong>Использование инструмента</strong></td>
+<td>Объект: <code>Tool</code> в <code>Backpack</code>; Событие: <code>Activated</code>; Место скрипта: <strong>внутри <code>Tool</code></strong> → будет <code>Script</code>, а не <code>LocalScript</code></td>
+</tr>
+<tr>
+<td><strong>Вход в зону (Region3)</strong></td>
+<td>Объект: <code>Part</code> как триггер; Логика: <code>while true do task.wait(); if hrp.Position inside region then ...</code>; Событие: не используется — polling</td>
+</tr>
+<tr>
+<td><strong>Клиентская анимация (камера, HUD)</strong></td>
+<td>Скрипт: <strong><code>LocalScript</code></strong>, размещённый в <code>StarterGui/Button</code>; Событие: <code>MouseButton1Click</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Пример — кнопка в GUI (клиентская версия)</h4>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-2-004" data-title="Пример — кнопка в GUI (клиентская версия)" data-min-height="444"> </div>
+<blockquote>
+<p>✅ Правило безопасности:<br>
+— Клиент может <strong>инициировать</strong> действие, но не выполнять его напрямую.<br>
+— Реальная логика (начисление монет, выдача предмета) — только после <code>FireServer</code> → серверная валидация.</p>
+</blockquote>
+<hr>
+<h3 id="события">События</h3>
+<p>События — это <em>точки расширения</em>, в которые можно "подключить" код.</p>
+<pre><code class="language-lua">-- Подписка на событие
+workspace.Part.Touched:Connect(function(hit)
+   print("Столкнулся с", hit.Name)
+end)
+</code></pre>
+<p>Как это работает:</p>
+<ol>
+<li>Происходит физическое столкновение → движок вызывает событие <code>.Touched</code>.</li>
+<li>Система ищет все активные <code>:Connect()</code> на этом событии.</li>
+<li>Для каждого — создаётся задача, выполняемая в порядке подписки.</li>
+</ol>
+<blockquote>
+<p>✅ Важно:</p>
+<ul>
+<li><code>:Connect()</code> возвращает <strong>соединение (<code>RBXScriptConnection</code>)</strong> — его можно <code>.Disconnect()</code>.</li>
+<li>События <em>не блокируют</em> основной поток: обработчики запускаются асинхронно.</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="игрок">Игрок</h2>
+<p><code>player.Character</code> — это объект типа <code>Model</code>, размещённый непосредственно в <code>Workspace</code>. Он представляет <strong>физическую форму игрока в мире</strong> — тело, анимации, коллизии, передвижение. Его наличие необязательно — игрок может быть в игре без персонажа (например, в интерфейсном меню), но любое взаимодействие с 3D-миром требует его загрузки.</p>
+<p>Персонаж создаётся, существует и уничтожается в рамках строго определённого цикла, управляемого движком. На каждый этап приходится конкретное событие и состояние объекта.</p>
+<ul>
+<li>
+<p><strong>Состояние <code>player.Character = nil</code></strong><br>
+Это начальное и конечное состояние. Оно возникает:</p>
+<ul>
+<li>до первого вызова <code>player:LoadCharacter()</code> (обычно сразу после <code>PlayerAdded</code>);</li>
+<li>после <code>player:UnloadCharacter()</code> (например, при смерти, телепортации в меню);</li>
+<li>при выходе игрока (<code>PlayerRemoving</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Создание персонажа</strong><br>
+Происходит вызовом <code>player:LoadCharacter()</code>, который инициирует:</p>
+<ol>
+<li>Создание пустого <code>Model</code> → присваивается <code>player.Character</code>.</li>
+<li>Клонирование <strong>базового скелета</strong> (R6 или R15, в зависимости от настроек аккаунта):
+<ul>
+<li>R6 — 6 частей — <code>Head</code>, <code>Torso</code>, <code>Left/Right Arm</code>, <code>Left/Right Leg</code>;</li>
+<li>R15 — 15 частей — добавлены <code>Upper/LowerTorso</code>, <code>Left/RightHand</code>, суставы.</li>
+</ul>
+</li>
+<li>Установка <code>PrimaryPart = HumanoidRootPart</code> — точка привязки для перемещения.</li>
+<li>Добавление системных объектов:
+<ul>
+<li><code>Humanoid</code> — контроллер здоровья, состояния (Running, Jumping), смерти;</li>
+<li><code>Animator</code> — управление анимациями (через <code>AnimationTrack</code>);</li>
+<li><code>HumanoidDescription</code> — описание внешности (тело, лицо, одежда);</li>
+<li><code>StarterGear</code> — экипировка по умолчанию (если настроена в <code>StarterPlayer</code>).</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Событие <code>CharacterAdded</code></strong><br>
+Генерируется <strong>после</strong> присвоения <code>player.Character = model</code>, но <strong>до</strong> полной загрузки всех частей. На момент события:</p>
+<ul>
+<li><code>model:FindFirstChild("Humanoid")</code> может вернуть <code>nil</code>, если загрузка мешей задержана;</li>
+<li><code>Humanoid.Health</code> часто равен <code>0</code> в первый тик, затем устанавливается в <code>100</code>;</li>
+<li><code>HumanoidRootPart</code> может отсутствовать на 1–2 кадра (особенно при медленной загрузке ассетов).</li>
+</ul>
+</li>
+<li>
+<p><strong>Полная инициализация</strong><br>
+Состояние "персонаж готов" наступает, когда:</p>
+<ul>
+<li><code>Humanoid.Health > 0</code>;</li>
+<li><code>HumanoidRootPart</code> существует и имеет <code>CFrame</code>;</li>
+<li><code>Animator</code> загрузил базовые анимации (<code>idle</code>, <code>walk</code>, <code>jump</code>).</li>
+</ul>
+<p>Рекомендуемый способ ожидания:</p>
+</li>
+</ul>
+<pre><code class="language-lua">  player.CharacterAdded:Connect(function(char)
+      local hrp = char:WaitForChild("HumanoidRootPart", 5)
+      local hum = char:WaitForChild("Humanoid", 5)
+      if not (hrp and hum) then return end
+      hum.HealthChanged:Connect(function(health)
+          if health > 0 then
+              -- Персонаж полностью инициализирован
+          end
+      end)
+  end)
+</code></pre>
+<ul>
+<li><strong>Уничтожение персонажа</strong><br>
+Инициируется <code>player:UnloadCharacter()</code> или автоматически при:
+<ul>
+<li><code>Humanoid.Health &#x3C;= 0</code> (если включено автовоскрешение — создаётся новый);</li>
+<li>телепортации в зону без физики;</li>
+<li>выходе из игры.<br>
+Перед уничтожением генерируется событие <code>CharacterRemoving</code>, позволяющее сохранить состояние (позиция, инвентарь в руках).</li>
+</ul>
+</li>
+</ul>
+<p>Объект <code>player</code> (тип <code>Player</code>) содержит:</p>
+<table>
+<thead>
+<tr>
+<th>Свойство / Дочерний объект</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.UserId</code></td>
+<td>Уникальный ID в системе Roblox</td>
+</tr>
+<tr>
+<td><code>.Name</code></td>
+<td>Отображаемое имя</td>
+</tr>
+<tr>
+<td><code>.Character</code></td>
+<td>Модель персонажа (м.б. <code>nil</code> при входе/выходе)</td>
+</tr>
+<tr>
+<td><code>.PlayerGui</code></td>
+<td>GUI, отображаемый <em>только этому</em> игроку</td>
+</tr>
+<tr>
+<td><code>.Backpack</code></td>
+<td>Инвентарь вне экипировки</td>
+</tr>
+<tr>
+<td><code>.leaderstats</code> (соглашение)</td>
+<td>Папка для счётчиков (уровень, монеты)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <code>player.Character</code> может быть <code>nil</code> не только при входе, но и при смерти, телепортации, смене персонажа.</p>
+</blockquote>
+<hr>
+<h3 id="обязательные-компоненты-персонажа">Обязательные компоненты персонажа</h3>
+<p>Ниже — минимальный набор объектов, без которых персонаж <strong>не будет функционировать</strong> как игровая сущность.</p>
+<ul>
+<li>
+<p><strong><code>HumanoidRootPart</code></strong><br>
+Это <code>Part</code> (обычно <code>BallSocket</code> или <code>Block</code>), служащий <strong>точкой опоры</strong> для физики и перемещения. Именно его <code>CFrame</code> используется движком для:</p>
+<ul>
+<li>расчёта позиции игрока в мире;</li>
+<li>привязки камеры;</li>
+<li>определения центра масс в физике.<br>
+Если <code>HumanoidRootPart</code> отсутствует или <code>nil</code>, методы вроде <code>Humanoid:MoveTo()</code> игнорируются.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>Humanoid</code></strong><br>
+Контроллер состояния персонажа. Его свойства управляют поведением:</p>
+<ul>
+<li><code>Health</code>, <code>MaxHealth</code> — система жизни;</li>
+<li><code>WalkSpeed</code>, <code>JumpPower</code> — физические параметры;</li>
+<li><code>State</code> (<code>Enum.HumanoidStateType</code>) — текущее действие (Walking, Jumping, Dead);</li>
+<li><code>SeatPart</code> — если персонаж сидит, ссылается на <code>Seat</code>.<br>
+Методы <code>:TakeDamage()</code>, <code>:Sit()</code>, <code>:MoveTo()</code> вызывают изменения состояния и генерируют события (<code>Touched</code>, <code>Died</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong><code>Animator</code></strong><br>
+Отвечает за проигрывание анимаций. Работает с <code>Animation</code> (ассеты, загруженные из библиотеки или <code>AnimationIds</code>).<br>
+Важно: <code>Animator</code> не создаётся вручную — он добавляется автоматически при загрузке персонажа.</p>
+</li>
+<li>
+<p><strong>Скелет (R6/R15)</strong><br>
+Иерархия <code>Part</code> и <code>JointInstance</code> (<code>BallSocketConstraint</code>, <code>HingeConstraint</code>).<br>
+Пример R15:</p>
+</li>
+</ul>
+<pre><code>  Character
+  ├── HumanoidRootPart
+  ├── LowerTorso
+  │   ├── LeftLeg
+  │   └── RightLeg
+  ├── UpperTorso
+  │   ├── LeftArm
+  │   └── RightArm
+  │   └── Head
+  └── ...
+</code></pre>
+<p>Коллизии между частями отключены (<code>CanCollide = false</code>), чтобы избежать самопроизвольных падений.</p>
+<p>Разработчик может добавлять в персонажа:</p>
+<ul>
+<li><code>Tool</code> — экипированный предмет (в <code>Backpack</code> или прямо в <code>Character</code>);</li>
+<li><code>ProximityPrompt</code> — интерактивные подсказки;</li>
+<li><code>Script</code>/<code>LocalScript</code> — поведение, привязанное к персонажу (например, <code>Animate.lua</code> — клонируется из <code>StarterCharacterScripts</code>).</li>
+</ul>
+<hr>
+<h3 id="инвентарь">Инвентарь</h3>
+<p>Термин <em>"инвентарь"</em> в Roblox не имеет единого объекта-контейнера. Вместо этого используется <strong>двухуровневая система</strong>, разделённая на:</p>
+<ul>
+<li><strong><code>Backpack</code></strong> — серверный контейнер для предметов, <em>не экипированных</em> в текущий момент;</li>
+<li><strong><code>PlayerGui</code> + <code>Character</code></strong> — клиентские места отображения (GUI) и экипировки (в руках).</li>
+</ul>
+<p>Это разделение отражает архитектурный принцип: сервер управляет <em>состоянием</em>, клиент — <em>отображением</em>.</p>
+<hr>
+<h4><code>Backpack</code> — серверное хранилище</h4>
+<ul>
+<li>
+<p>Это объект типа <code>Backpack</code>, дочерний по отношению к <code>player</code>.</p>
+</li>
+<li>
+<p>Создаётся автоматически при подключении игрока, если в <code>StarterPack</code> есть хотя бы один предмет или явно вызвано <code>player:FindFirstChild("Backpack")</code> (ленивая инициализация).</p>
+</li>
+<li>
+<p><strong>Содержимое</strong> — только объекты типа <code>Tool</code> (и его наследники, например, <code>HopperBin</code>).<br>
+Другие типы (<code>Part</code>, <code>Folder</code>, <code>IntValue</code>) <strong>игнорируются</strong> движком: они не отображаются в интерфейсе, не подчиняются логике экипировки.</p>
+</li>
+<li>
+<p><strong>Жизненный цикл предмета в <code>Backpack</code></strong>:</p>
+<ol>
+<li>Игрок подбирает предмет → сервер вызывает <code>tool.Parent = player.Backpack</code>.</li>
+<li>Предмет появляется в клиентском инвентаре (рендерится через <code>StarterGui/BackpackFrame</code>).</li>
+<li>При нажатии — клиент отправляет <code>tool:Activate()</code>, сервер получает <code>tool.Activated</code>.</li>
+<li>Сервер проверяет:<br>
+— <code>tool:IsDescendantOf(player.Backpack)</code> → можно экипировать;<br>
+— <code>player.Character</code> существует → можно поместить в руки.</li>
+<li>Сервер вызывает <code>tool.Parent = player.Character</code> → предмет переходит в персонаж.</li>
+</ol>
+</li>
+<li>
+<p><strong>Ограничения</strong>:</p>
+<ul>
+<li>Максимум 10 предметов в <code>Backpack</code> по умолчанию (настраивается через <code>StarterPlayer.MaxBackpackItems</code>).</li>
+<li>Предметы в <code>Backpack</code> <strong>не участвуют в физике</strong>, даже если <code>CanCollide = true</code>.</li>
+<li><code>Backpack</code> доступен только на сервере; клиент видит его содержимое через репликацию, но не может напрямую изменять.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4>Экипировка — предметы в руках</h4>
+<p>Когда предмет "в руках", он находится <strong>внутри <code>Character</code></strong>, обычно в <code>Torso</code> или <code>UpperTorso</code>.<br>
+Типичная иерархия:</p>
+<pre><code>Character
+└── UpperTorso
+    └── Sword (Tool)
+        ├── Handle (Part) — видимая модель
+        └── Script — логика атаки
+</code></pre>
+<ul>
+<li><strong>Активация</strong>: вызов <code>tool:Activate()</code> на клиенте → <code>tool.Activated</code> на сервере.</li>
+<li><strong>Деактивация</strong>: <code>tool:Deactivate()</code> или смена оружия → сервер перемещает <code>tool.Parent = player.Backpack</code>.</li>
+</ul>
+<blockquote>
+<p>🔐 Безопасность:<br>
+— Клиент не может вызвать <code>tool.Parent = workspace</code> напрямую — сервер отклонит операцию.<br>
+— Сервер должен проверять, что <code>tool</code> принадлежит игроку:</p>
+<pre><code class="language-lua">tool.AncestryChanged:Connect(function(_, newParent)
+    if newParent ~= player.Character and newParent ~= player.Backpack then
+        tool.Parent = player.Backpack  -- возврат в инвентарь
+    end
+end)
+</code></pre>
+</blockquote>
+<hr>
+<h4>Визуальное отображение (GUI)</h4>
+<p>Инвентарь <strong>не имеет встроенного GUI</strong>. Его отображение — обязанность разработчика.</p>
+<ul>
+<li>
+<p>Типичный подход:</p>
+<ol>
+<li>В <code>StarterGui</code> создаётся <code>ScreenGui</code> с <code>Frame</code> и <code>ImageButton</code> для каждого слота.</li>
+<li>На клиенте <code>LocalScript</code> подписывается на:
+<ul>
+<li><code>player.Backpack.ChildAdded</code> → отобразить новый предмет;</li>
+<li><code>player.Backpack.ChildRemoved</code> → убрать иконку;</li>
+<li><code>Humanoid.EquipTool</code> / <code>UnequipTool</code> → подсветить активный слот.</li>
+</ul>
+</li>
+<li>Для иконок используются <code>ImageLabel</code> с <code>rbxassetid://...</code> (ассеты из Marketplace или загруженные через DevHub).</li>
+</ol>
+</li>
+<li>
+<p><strong>Важно</strong>:<br>
+GUI должен обновляться <strong>только на клиенте</strong>, но данные — браться с сервера через <code>RemoteEvent</code>. Например:</p>
+</li>
+</ul>
+<pre><code class="language-lua">  -- Сервер
+  inventoryUpdate:FireClient(player, { "Sword", "Shield", nil, ... })
+
+  -- Клиент
+  inventoryUpdate.OnClientEvent:Connect(function(slots)
+      for i, itemName in ipairs(slots) do
+          slotsGUI[i].Icon.Image = getIconId(itemName)
+      end
+  end)
+</code></pre>
+<hr>
+<h4>Постоянное хранение</h4>
+<p>Ни <code>Backpack</code>, ни <code>Character</code> не сохраняются между сессиями. Для долговременного инвентаря используется:</p>
+<ul>
+<li><strong><code>DataStore</code></strong> — сохранение списка <code>Tool</code> по <code>ProductId</code> или имени:</li>
+</ul>
+<pre><code class="language-lua">  DataStore:SetAsync("Inventory_" .. player.UserId, { "Sword", "Potion" })
+</code></pre>
+<ul>
+<li><strong><code>leaderstats</code> (соглашение)</strong> — временные счётчики в рамках сессии:</li>
+</ul>
+<pre><code class="language-lua">  local leaderstats = Instance.new("Folder")
+  leaderstats.Name = "leaderstats"
+  leaderstats.Parent = player
+
+  local coins = Instance.new("IntValue")
+  coins.Name = "Coins"
+  coins.Value = 100
+  coins.Parent = leaderstats
+</code></pre>
+<blockquote>
+<p>⚠️ <code>leaderstats</code> — это <em>не системный объект</em>, а соглашение сообщества. Его использование не гарантируется, но поддерживается всеми популярными фреймворками (например, <code>StarterPlayerScripts/Chat</code>).</p>
+</blockquote>
+<hr>
+<h3 id="взаимодействие">Взаимодействие</h3>
+<p>Цикл "взять → экипировать → использовать → убрать" выглядит так:</p>
+<ol>
+<li>Сервер создаёт <code>Tool</code> в <code>Workspace</code> (например, <code>Sword</code>).</li>
+<li>Игрок касается предмета → сервер проверяет расстояние и права → <code>sword.Parent = player.Backpack</code>.</li>
+<li>Клиент получает репликацию → отображает иконку в GUI.</li>
+<li>Игрок нажимает кнопку → клиент вызывает <code>sword:Activate()</code>.</li>
+<li>Сервер получает <code>sword.Activated</code> → проверяет:
+<ul>
+<li><code>sword.Parent == player.Backpack</code> — можно экипировать;</li>
+<li><code>player.Character</code> существует — можно поместить в руки.</li>
+</ul>
+</li>
+<li>Сервер: <code>sword.Parent = player.Character.UpperTorso</code>.</li>
+<li>Клиент: запускает анимацию, показывает эффекты.</li>
+<li>При использовании (удар) — клиент отправляет <code>RemoteEvent:FireServer("Attack")</code>, сервер валидирует и применяет урон.</li>
+</ol>
+<p>Любой пропущенный шаг (например, отсутствие проверки <code>Parent</code> на сервере) приводит к уязвимости или ошибке.</p>
+<hr>
+<h2 id="транзакции-экономика-и-магазин">Транзакции, экономика и магазин</h2>
+<p>Подробный разбор серверных транзакций, проектирования магазина, DataStore, Developer Products и пошагового гайда вынесен в отдельную статью:</p>
+<p>→ <strong><a href="./202">Внутриигровая экономика Roblox</a></strong> — идемпотентность покупок, каталог, <code>CurrencyManager</code>, тестирование в Studio.</p>
+<p>Кратко: покупки за внутриигровую валюту <strong>проверяются и исполняются только на сервере</strong>; клиент отправляет запрос через <code>RemoteEvent</code> и обновляет UI после ответа. Покупки за Robux — через <code>MarketplaceService:PromptPurchase</code> и <code>PromptPurchaseFinished</code> (см. <a href="#%D0%BC%D0%BE%D0%BD%D0%B5%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F">Монетизация</a>).</p>
+<hr>
+<h2 id="ландшафт">Ландшафт</h2>
+<p>Ландшафт (объект <code>Terrain</code>) — это специализированный компонент среды, предназначенный для создания <strong>непрерывных, объёмных, деформируемых поверхностей</strong> крупного масштаба — гор, пещер, рек, рельефа местности. В отличие от сборки из отдельных <code>Part</code>, ландшафт представляет собой <strong>единое воксельное поле</strong>, управляемое движком на уровне низкоуровневых операций. Его существование обусловлено необходимостью баланса между визуальной сложностью, физической достоверностью и производительностью при масштабах, недостижимых через классический подход с <code>BasePart</code>.</p>
+<hr>
+<h3 id="внутреннее-устройство">Внутреннее устройство</h3>
+<p>Ландшафт организован как трёхмерная регулярная сетка ячеек — <strong>вокселей</strong> (volume pixels). Каждый воксель имеет фиксированный размер — <strong>2 × 2 × 2 метра</strong> (это значение неизменно и не настраивается). Вся доступная для редактирования область делится на <strong>чанки</strong> размером 64 × 64 × 64 вокселя (то есть 128 × 128 × 128 метров в мире). Чанки загружаются и выгружаются динамически по мере перемещения игрока, что позволяет работать с картами размером до 8192 × 8192 × 512 метров (теоретический лимит), не перегружая память.</p>
+<p>Каждый воксель хранит несколько атрибутов:</p>
+<ul>
+<li><strong>Материал</strong> — определяет визуальный вид и физические свойства (земля, камень, вода, песок и др.; всего 36 встроенных материалов).</li>
+<li><strong>Форма</strong> — геометрия внутри вокселя — пусто, полный куб, наклонная плоскость (ramp), угловая поверхность (wedge) и комбинации (например, "четверть куба"). Это позволяет создавать плавные склоны без ступенчатых переходов.</li>
+<li><strong>Цвет</strong> — корректирующий оттенок (tint), накладываемый на базовую текстуру материала.</li>
+</ul>
+<p>Движок генерирует <strong>единый меш</strong> на каждый чанк, объединяя все воксели с одинаковым материалом и смежными гранями. Этот процесс называется <strong>mesh stitching</strong>. Благодаря ему количество отрисовываемых объектов остаётся пропорциональным числу чанков, а не числу вокселей — что даёт решающее преимущество в производительности при больших ландшафтах.</p>
+<hr>
+<h3 id="физическое-поведение">Физическое поведение</h3>
+<p>Физика ландшафта реализована на основе воксельной коллизионной сетки, а не полигональных мешей. Это означает, что коллизии рассчитываются <strong>не по точной геометрии поверхности</strong>, а по упрощённой сетке, где каждый воксель представляет собой куб или призму. Точность коллизий зависит от разрешения формы внутри вокселя, но даже в максимальном качестве она уступает <code>MeshPart</code> с высокополигональной коллизией.</p>
+<p>Ключевые особенности:</p>
+<ul>
+<li>Объекты с <code>CanCollide = true</code> взаимодействуют с ландшафтом как с твёрдой поверхностью; <code>Anchored = false</code> части падают и останавливаются на ней.</li>
+<li><code>Touched</code> и <code>TouchEnded</code> работают, но с задержкой и возможными "дрожаниями" при движении вдоль наклонных поверхностей (из-за дискретности вокселей).</li>
+<li>Физические свойства (трение, упругость) наследуются от материала: <code>Material.Grass</code> имеет низкое трение, <code>Material.Ice</code> — ещё ниже, <code>Material.Sand</code> — высокое сопротивление.</li>
+<li>Вода (<code>Material.Water</code>) — визуальный эффект с ограниченной глубиной (максимум 20 метров). Объекты под водой получают замедление через <code>Humanoid.WalkSpeed</code>, но потоков, течений или плавучести нет.</li>
+</ul>
+<p>Важно: ландшафт <strong>не участвует в динамической физике</strong> — его нельзя толкнуть, разрушить или переместить физическим воздействием. Любые изменения должны инициироваться программно или через инструменты редактора.</p>
+<hr>
+<h3 id="редактирование">Редактирование</h3>
+<p>В Studio ландшафт редактируется через панель <strong>Terrain</strong>, доступную при выделении объекта <code>Terrain</code> в <code>Workspace</code>. Основные инструменты:</p>
+<ul>
+<li><strong>Raise/Lower</strong> — изменение высоты поверхности;</li>
+<li><strong>Smooth</strong> — сглаживание рельефа;</li>
+<li><strong>Paint</strong> — смена материала;</li>
+<li><strong>Fill</strong> — заливка объёма (например, создание куба земли);</li>
+<li><strong>Erase</strong> — удаление вокселей (создание пустоты, пещер);</li>
+<li><strong>Region Paste</strong> — копирование фрагментов между местами или играми.</li>
+</ul>
+<p>Программное управление осуществляется через API объекта <code>Terrain</code>, доступного как <code>workspace.Terrain</code>. Ключевые методы:</p>
+<ul>
+<li>
+<p><code>:FillBlock(region: Region3, material: Enum.Material)</code><br>
+Заполняет указанный куб материалом. <code>Region3</code> должен быть выровнен по воксельной сетке (координаты кратны 2).</p>
+</li>
+<li>
+<p><code>:FillWedge(region: Region3, material: Enum.Material)</code><br>
+Заполняет клин (полезно для склонов).</p>
+</li>
+<li>
+<p><code>:ReadVoxels(region: Region3, resolution: number)</code><br>
+Возвращает трёхмерный массив данных вокселей в заданной области. <code>resolution</code> = 4 — стандартное разрешение (1 воксель = 1 элемент массива).</p>
+</li>
+<li>
+<p><code>:WriteVoxels(region — Region3, resolution: number, Данные: VoxelData)</code><br>
+Записывает данные в ландшафт. Используется для процедурной генерации (например, шум Перлина → высота → материал).</p>
+</li>
+<li>
+<p><code>:PlaceAsync(region: Region3, instances: {Instance})</code><br>
+Встраивает стандартные <code>Part</code>, <code>MeshPart</code> в ландшафт (например, камни на поверхности), сохраняя их физику и скрипты.</p>
+</li>
+</ul>
+<p>Ограничения API:</p>
+<ul>
+<li>Все операции <strong>синхронные и блокирующие</strong> — при работе с большими областями (> 1 млн вокселей) возможны фризы.</li>
+<li>Максимальная область в одном вызове — 2048 × 2048 × 256 вокселей.</li>
+<li>Изменения мгновенно реплицируются всем клиентам (в отличие от <code>Part</code>, где можно скрыть промежуточные состояния).</li>
+</ul>
+<hr>
+<h3 id="производительность-и-масштабируемость">Производительность и масштабируемость</h3>
+<p>Ландшафт оптимизирован для <strong>статических или медленно меняющихся</strong> сцен. Его преимущества проявляются при площади поверхности свыше 500 × 500 метров:</p>
+<ul>
+<li>1 чанк = 1 draw call для рендера, 1 физический объект для движка;</li>
+<li>в то время как сборка из <code>Part</code> того же размера потребовала бы тысяч draw call’ов и объектов физики.</li>
+</ul>
+<p>Однако у ландшафта есть узкие места:</p>
+<ul>
+<li><strong>Изменение в реальном времени</strong> (например, копание тоннелей игроками) требует частых вызовов <code>:FillBlock()</code>, что создаёт нагрузку на CPU и сеть (из-за репликации).</li>
+<li><strong>LOD (Level of Detail)</strong> для ландшафта отсутствует — чанки всегда рендерятся в полном разрешении.</li>
+<li><strong>Ограничения на материалы</strong>: нельзя использовать кастомные текстуры напрямую — только через <code>Terrain:DecorateAsync()</code> с предварительно загруженными ассетами.</li>
+</ul>
+<p>Для гибридных решений рекомендуется:</p>
+<ul>
+<li>использовать <code>Terrain</code> для базового рельефа (горы, реки);</li>
+<li>добавлять детализацию через <code>Part</code>/<code>MeshPart</code> (камни, деревья, здания);</li>
+<li>избегать частого изменения вокселей — кэшировать операции, применять изменения пакетно.</li>
+</ul>
+<hr>
+<h3 id="совместимость-и-ограничения-платформы">Совместимость и ограничения платформы</h3>
+<ul>
+<li>Ландшафт поддерживается на всех платформах, включая мобильные устройства и консоли.</li>
+<li>В мобильных сборках используется упрощённый шейдер рендера — детали текстур и тени могут быть снижены.</li>
+<li>Максимальная высота по оси Y — 500 метров (вокселей выше <code>y = 250</code> не существует); максимальная глубина — −200 метров.</li>
+<li>Невозможно создать "плавающие" острова без опоры — воксели в воздухе удаляются автоматически, если не поддерживаются снизу (настройка <code>workspace.Terrain.AutoStretchFill</code>).</li>
+</ul>
+<hr>
+<h3>Когда использовать ландшафт, а когда — <code>Part</code></h3>
+<p>Выбор обусловлен задачей, а не предпочтениями:</p>
+<ul>
+<li>
+<p><strong>Используйте <code>Terrain</code>, если</strong>:</p>
+<ul>
+<li>требуется непрерывный рельеф (горы, долины, пещеры);</li>
+<li>карта превышает 300 × 300 метров;</li>
+<li>важна производительность на слабых устройствах;</li>
+<li>допустимы приблизительные коллизии.</li>
+</ul>
+</li>
+<li>
+<p><strong>Используйте <code>Part</code>/<code>MeshPart</code>, если</strong>:</p>
+<ul>
+<li>нужна точная геометрия (архитектура, интерьеры);</li>
+<li>важны детальные коллизии (платформер, паркур);</li>
+<li>объекты должны быть динамическими (движущиеся платформы, разрушаемые стены);</li>
+<li>требуется кастомная текстура на отдельном элементе.</li>
+</ul>
+</li>
+</ul>
+<p>Гибридный подход (ландшафт + декор из <code>Part</code>) — стандартная практика в профессиональных проектах.</p>
+<hr>
+<h2 id="добавление-удаление-изменение-объектов">Добавление, удаление, изменение объектов</h2>
+<h3 id="через-интерфейс-studio">Через интерфейс (Studio)</h3>
+<ul>
+<li><strong>Добавить</strong>: <code>Home → Part</code> / <code>Model</code> / <code>Script</code>.</li>
+<li><strong>Удалить</strong>: выделить → Delete / ПКМ → Delete.</li>
+<li><strong>Изменить свойство</strong>: выделить → <code>Properties</code> → ввести значение.</li>
+</ul>
+<hr>
+<h3 id="через-код">Через код</h3>
+<table>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Код</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Создать</td>
+<td><code>local p = Instance.new("Part")</code></td>
+</tr>
+<tr>
+<td>Разместить</td>
+<td><code>p.Parent = workspace</code></td>
+</tr>
+<tr>
+<td>Изменить свойство</td>
+<td><code>p.Size = Vector3.new(5, 1, 5)</code></td>
+</tr>
+<tr>
+<td>Найти по имени</td>
+<td><code>workspace:FindFirstChild("Ground")</code></td>
+</tr>
+<tr>
+<td>Найти по пути</td>
+<td><code>game.Players.Player1.PlayerGui.ScoreLabel</code></td>
+</tr>
+<tr>
+<td>Удалить</td>
+<td><code>p:Destroy()</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>✅ <code>:Destroy()</code> предпочтительнее <code>p.Parent = nil</code>, потому что:<br>
+— отключает события;<br>
+— освобождает память;<br>
+— не оставляет "висячих" ссылок.</p>
+</blockquote>
+<hr>
+<h2 id="монетизация">Монетизация</h2>
+<h3 id="что-такое-robux">Что такое Robux?</h3>
+<ul>
+<li>Валюта платформы Roblox.</li>
+<li>Приобретается за реальные деньги.</li>
+<li><strong>Разработчик не управляет балансом Robux игрока</strong> — только запрашивает покупку.</li>
+</ul>
+<hr>
+<h3 id="как-работает-покупка-за-robux">Как работает покупка за Robux?</h3>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Player
+    participant Client
+    participant RobloxServer
+    participant GameServer
+
+    Player->>Client: Нажимает “Купить”
+    Client->>RobloxServer: PromptPurchase(productId)
+    RobloxServer->>Player: Окно оплаты (Roblox UI)
+    Player->>RobloxServer: Подтверждает платёж
+    RobloxServer->>GameServer: PromptPurchaseFinished(player, productId, true)
+    GameServer->>GameServer: Валидация и выдача предмета
+    GameServer->>Client: FireClient("PurchaseSuccess")
+    Client->>Player: Показывает результат
+</code></pre>
+<blockquote>
+<p>⚠️ <strong>Запрещено</strong>:</p>
+<ul>
+<li>Запрашивать платёж из <code>LocalScript</code> без подтверждения через <code>PromptPurchase</code>.</li>
+<li>Выдавать предмет до получения <code>PromptPurchaseFinished</code>.</li>
+<li>Использовать <code>RemoteEvent</code> для имитации покупки за Robux.</li>
+</ul>
+</blockquote>
+<p>Пошаговый магазин на внутриигровых монетах и интеграция с Developer Products — в статье <strong><a href="./202">Внутриигровая экономика Roblox</a></strong>.</p>
+<hr>
+<h2 id="архитектура-проекта-в-roblox-studio">Архитектура проекта в Roblox Studio</h2>
+<h3 id="структура-сцены">Структура сцены</h3>
+<p>Каждый проект в Roblox Studio строится вокруг понятия <strong>места (Place)</strong> — файла, содержащего всю информацию об игровом мире — объекты, скрипты, настройки, ресурсы. Проект хранится в виде <code>.rbxl</code> или <code>.rbxlx</code>, что позволяет сохранять состояние сцены между сессиями редактирования.</p>
+<p>Центральным элементом редактора является окно <strong>Explorer</strong>, отображающее иерархию всех объектов в текущем месте. Объекты организованы в древовидную структуру, где каждый узел может содержать дочерние элементы. Это позволяет группировать связанные компоненты, например, помещая все элементы игровой среды в папку <code>Game Environment</code>.</p>
+<p>Пример:</p>
+<pre><code>Workspace
+├── Game Environment
+│   ├── Ground
+│   ├── Obstacle
+│   └── Platforms
+├── StarterGui
+└── ReplicatedStorage
+</code></pre>
+<p>Такая организация способствует поддержке чистоты кода и упрощает навигацию по проекту.</p>
+<hr>
+<h3 id="основные-контейнеры">Основные контейнеры</h3>
+<ul>
+<li><strong>Workspace</strong> — корневой контейнер для всех видимых объектов в игровом мире — персонажи, платформы, препятствия.</li>
+<li><strong>StarterGui</strong> — содержит элементы графического интерфейса (GUI), которые автоматически клонируются для каждого игрока при подключении.</li>
+<li><strong>ReplicatedStorage</strong> — используется для хранения данных и объектов, доступных как на сервере, так и на клиенте.</li>
+<li><strong>ServerScriptService</strong> — место для размещения серверных скриптов, управляющих логикой игры.</li>
+<li><strong>Lighting</strong> — хранит параметры освещения, времени суток, тумана.</li>
+<li><strong>Players</strong> — содержит данные о каждом игроке, включая его персонажа (<code>Character</code>) и инвентарь.</li>
+</ul>
+<p>Правильное использование этих контейнеров обеспечивает предсказуемое поведение объектов и корректную работу системы репликации.</p>
+<hr>
+<h2 id="интерфейс-roblox-studio">Интерфейс Roblox Studio</h2>
+<h3 id="основные-панели">Основные панели</h3>
+<p>Интерфейс Roblox Studio состоит из нескольких ключевых компонентов:</p>
+<ol>
+<li><strong>Главная область (Viewport)</strong> — трёхмерное пространство, в котором происходит редактирование сцены.</li>
+<li><strong>Панель инструментов (Toolbar)</strong> — расположена сверху, содержит инструменты для выбора, перемещения, изменения размеров объектов, а также запуска и остановки игры.</li>
+<li><strong>Explorer</strong> — дерево объектов сцены, позволяющее добавлять, удалять и переупорядочивать элементы.</li>
+<li><strong>Properties</strong> — отображает и позволяет изменять свойства выбранного объекта (размер, положение, цвет, прозрачность, коллизии и др.).</li>
+<li><strong>Toolbox</strong> — библиотека готовых моделей, эффектов, скриптов и материалов.</li>
+<li><strong>Output</strong> — консоль, выводящая сообщения от скриптов, ошибки, предупреждения и результаты выполнения команд.</li>
+</ol>
+<p>Доступ к этим панелям осуществляется через меню <strong>View</strong>. Например, чтобы открыть консоль, необходимо выбрать <code>View → Output</code>.</p>
+<hr>
+<h3 id="управление-камерой">Управление камерой</h3>
+<p>Управление вьюпортом аналогично другим 3D-редакторам:</p>
+<ul>
+<li><strong>W, A, S, D</strong> — перемещение камеры.</li>
+<li><strong>Колесо мыши</strong> — масштабирование.</li>
+<li><strong>ПКМ + движение мыши</strong> — вращение камеры.</li>
+<li><strong>Зажатие Q</strong> — орбитальное вращение вокруг центра.</li>
+</ul>
+<p>Эти действия позволяют эффективно навигировать по сцене и точно размещать объекты.</p>
+<hr>
+<h2 id="создание-игровой-среды">Создание игровой среды</h2>
+<h3 id="базовые-объекты-part-и-basepart">Базовые объекты — Part и BasePart</h3>
+<p>Все физические объекты в Roblox основаны на классе <code>BasePart</code>. Наиболее часто используется <code>Part</code> — параллелепипед, который можно масштабировать, вращать и раскрашивать.</p>
+<hr>
+<h4>Пример — создание земли</h4>
+<ol>
+<li>В Explorer создайте папку <code>Game Environment</code>.</li>
+<li>Внутри неё добавьте новый <code>Part</code> и назовите его <code>Ground</code>.</li>
+<li>Используйте инструмент <strong>Resize</strong> для изменения размеров (например, 100×1×100).</li>
+<li>В Properties установите материал: <code>Grass</code> или <code>Concrete</code>.</li>
+<li>При необходимости измените цвет через свойство <code>Color</code>.</li>
+</ol>
+<hr>
+<h3 id="работа-с-ландшафтом">Работа с ландшафтом</h3>
+<p>Для создания естественного рельефа используется встроенный <strong>Terrain Editor</strong>.</p>
+<hr>
+<h4>Шаги</h4>
+<ol>
+<li>Перейдите в меню <code>View → Terrain</code>.</li>
+<li>Выберите инструмент:
+<ul>
+<li><strong>Raise/Lower</strong> — изменение высоты поверхности.</li>
+<li><strong>Smooth</strong> — сглаживание переходов.</li>
+<li><strong>Paint</strong> — нанесение текстур (трава, песок, камень).</li>
+</ul>
+</li>
+<li>Для добавления воды используйте режим <strong>Water</strong>, задав уровень и форму водоёма.</li>
+</ol>
+<p>Ландшафт поддерживает многослойную текстуризацию и может быть экспортирован/импортирован для повторного использования.</p>
+<hr>
+<h2 id="программирование-на-lua-в-roblox">Программирование на Lua в Roblox</h2>
+<h3 id="основы-lua">Основы Lua</h3>
+<p>Roblox использует диалект Lua 5.1 с расширениями API, специфичными для платформы. Язык интерпретируется в реальном времени, что позволяет быстро тестировать изменения.</p>
+<p>Типичный скрипт в Roblox:</p>
+<pre><code class="language-lua">local part = script.Parent
+
+part.Touched:Connect(function(hit)
+    print("Объект задет: " .. hit.Name)
+end)
+</code></pre>
+<hr>
+<h3 id="типы-скриптов">Типы скриптов</h3>
+<ul>
+<li><strong>Script</strong> — выполняется на сервере. Используется для логики, требующей надёжности (например, проверка победы).</li>
+<li><strong>LocalScript</strong> — выполняется на клиенте. Подходит для GUI, анимаций, ввода с клавиатуры.</li>
+<li><strong>ModuleScript</strong> — содержит переиспользуемый код, импортируется через <code>require()</code>.</li>
+</ul>
+<hr>
+<h3 id="обработка-событий">Обработка событий</h3>
+<p>События — основа реактивной архитектуры в Roblox. Большинство объектов имеют встроенные события:</p>
+<pre><code class="language-lua">-- Обработка клика по кнопке
+script.Parent.MouseButton1Click:Connect(function(player)
+    print(player.Name .. " нажал кнопку")
+end)
+
+-- Изменение положения персонажа
+game.Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(char)
+        char:WaitForChild("HumanoidRootPart").Touched:Connect(function(hit)
+            -- Логика столкновения
+        end)
+    end)
+end)
+</code></pre>
+<hr>
+<h3 id="асинхронность-и-задержки">Асинхронность и задержки</h3>
+<p>Для отложенного выполнения используется <code>task.wait()</code> (аналог <code>delay()</code>):</p>
+<pre><code class="language-lua">task.spawn(function()
+    task.wait(5)
+    print("Прошло 5 секунд")
+end)
+</code></pre>
+<hr>
+<h2 id="физика-и-коллизии">Физика и коллизии</h2>
+<h3 id="система-физики">Система физики</h3>
+<p>Roblox включает встроенную физическую модель, основанную на двигателе NVIDIA PhysX. Все <code>BasePart</code> по умолчанию участвуют в симуляции, если не отключено свойство <code>Anchored</code>.</p>
+<hr>
+<h4>Ключевые свойства</h4>
+<ul>
+<li><code>Anchored</code> — фиксирует объект в пространстве.</li>
+<li><code>CanCollide</code> — определяет, будет ли объект сталкиваться с другими.</li>
+<li><code>Massless</code> — игнорирует влияние массы при столкновениях.</li>
+<li><code>Gravity</code> — включение/выключение гравитации для части.</li>
+</ul>
+<hr>
+<h3 id="physicsservice">PhysicsService</h3>
+<p>Для точного управления взаимодействием между объектами используется <code>PhysicsService</code>, позволяющий назначать объекты в разные группы коллизий:</p>
+<pre><code class="language-lua">local PhysicsService = game:GetService("PhysicsService")
+
+PhysicsService:CreateCollisionGroup("Player")
+PhysicsService:CollisionGroupSetCollidable("Player", "Obstacle", false)
+</code></pre>
+<hr>
+<h2 id="графический-интерфейс-gui">Графический интерфейс (GUI)</h2>
+<h3 id="элементы-интерфейса">Элементы интерфейса</h3>
+<p>GUI создаётся с помощью объектов внутри <code>StarterGui</code>. Основные типы:</p>
+<ul>
+<li><code>ScreenGui</code> — контейнер для 2D-интерфейса.</li>
+<li><code>Frame</code> — прямоугольная область.</li>
+<li><code>TextButton</code>, <code>ImageButton</code> — кнопки.</li>
+<li><code>TextLabel</code>, <code>TextBox</code> — отображение и ввод текста.</li>
+</ul>
+<hr>
+<h4>Пример — кнопка старта</h4>
+<pre><code class="language-lua">local screenGui = Instance.new("ScreenGui")
+local button = Instance.new("TextButton")
+
+button.Size = UDim2.new(0, 150, 0, 50)
+button.Position = UDim2.new(0.5, -75, 0.5, -25)
+button.Text = "Start Game"
+button.Parent = screenGui
+
+button.MouseButton1Click:Connect(function()
+    print("Игра начата!")
+end)
+
+screenGui.Parent = game.StarterGui
+</code></pre>
+<hr>
+<h3 id="координатная-система-gui">Координатная система GUI</h3>
+<p>Используется относительная система координат через <code>UDim2</code>, где:</p>
+<ul>
+<li><code>Scale</code> — часть от размера родителя (0–1).</li>
+<li><code>Offset</code> — фиксированный сдвиг в пикселях.</li>
+</ul>
+<hr>
+<h2 id="система-уровней-и-прогресса">Система уровней и прогресса</h2>
+<h3 id="реализация-уровней">Реализация уровней</h3>
+<p>Система уровней может быть построена на основе накопления опыта (XP). При достижении порога — повышение уровня.</p>
+<div class="itu-code-embed" data-example="lua/sp-9-9-04-razrabotka-igr-2-005" data-title="Реализация уровней" data-min-height="336"> </div>
+<hr>
+<h3 id="хранение-данных">Хранение данных</h3>
+<p>Для сохранения прогресса используется <strong>DataStore</strong>:</p>
+<pre><code class="language-lua">local DataStoreService = game:GetService("DataStoreService")
+local playerStore = DataStoreService:GetDataStore("PlayerData")
+
+-- Сохранение
+playerStore:SetAsync("Player_"..player.UserId, playerData)
+
+-- Загрузка
+local data = playerStore:GetAsync("Player_"..player.UserId)
+</code></pre>
+<blockquote>
+<p><strong>Важно</strong>: DataStore имеет ограничения на частоту вызовов и требует обработки ошибок.</p>
+</blockquote>
+<hr>
+<h2 id="мультиплеер-и-репликация">Мультиплеер и репликация</h2>
+<h3 id="сервер-клиент-архитектура">Сервер-клиент архитектура</h3>
+<p>Roblox использует авторитетный сервер:</p>
+<ul>
+<li>Все критические решения принимаются на сервере.</li>
+<li>Клиенты получают только визуальные и интерфейсные обновления.</li>
+</ul>
+<hr>
+<h3 id="remoteevents-и-remotefunctions">RemoteEvents и RemoteFunctions</h3>
+<p>Для передачи данных между клиентом и сервером используются:</p>
+<ul>
+<li><code>RemoteEvent</code> — односторонняя отправка (например, клик по кнопке).</li>
+<li><code>RemoteFunction</code> — запрос с ответом (например, получение данных игрока).</li>
+</ul>
+<hr>
+<h4>Пример</h4>
+<p><strong>ServerScript</strong></p>
+<pre><code class="language-lua">local remoteEvent = game.ReplicatedStorage.RemoteEvent
+
+remoteEvent.OnServerEvent:Connect(function(player, action)
+    if action == "Jump" then
+        -- Выполнить действие на сервере
+    end
+end)
+</code></pre>
+<p><strong>LocalScript</strong></p>
+<pre><code class="language-lua">remoteEvent:FireServer("Jump")
+</code></pre>
+<hr>
+<h2 id="анимации-и-моделирование">Анимации и моделирование</h2>
+<h3 id="создание-анимаций">Создание анимаций</h3>
+<p>Анимации создаются в <strong>Animation Editor</strong>:</p>
+<ol>
+<li>Выделите персонажа или часть.</li>
+<li>Откройте <code>Window → Animation Editor</code>.</li>
+<li>Добавьте ключевые кадры для свойств (позиция, вращение).</li>
+<li>Экспортируйте анимацию в <code>AnimationController</code>.</li>
+</ol>
+<hr>
+<h3 id="скриптовое-управление-анимациями">Скриптовое управление анимациями</h3>
+<pre><code class="language-lua">local animator = character:WaitForChild("Animator")
+local animation = Instance.new("Animation")
+animation.AnimationId = "rbxassetid://123456789"
+
+local track = animator:LoadAnimation(animation)
+track:Play()
+</code></pre>
+<hr>
+<h2 id="тестирование-и-отладка">Тестирование и отладка</h2>
+<h3 id="консоль-вывода-output">Консоль вывода (Output)</h3>
+<p>Окно <code>Output</code> показывает:</p>
+<ul>
+<li>Результаты <code>print()</code>.</li>
+<li>Ошибки выполнения скриптов.</li>
+<li>Предупреждения о производительности.</li>
+</ul>
+<hr>
+<h3 id="инструменты-отладки">Инструменты отладки</h3>
+<ul>
+<li><code>Debug → Stats</code> — мониторинг FPS, памяти, количества частей.</li>
+<li><code>Test → Play</code> — запуск локальной сессии.</li>
+<li><code>TeleportService</code> — тестирование перехода между местами.</li>
+</ul>
+<hr>
+<h2 id="публикация-проекта">Публикация проекта</h2>
+<h3 id="подготовка-к-публикации">Подготовка к публикации</h3>
+<ol>
+<li>Убедитесь, что все скрипты протестированы.</li>
+<li>Проверьте права доступа к ассетам.</li>
+<li>Настройте настройки места — название, описание, теги.</li>
+<li>Установите уровень приватности (публичный, друзья, приватный).</li>
+</ol>
+<hr>
+<h3 id="процесс-публикации">Процесс публикации</h3>
+<ol>
+<li>Нажмите <strong>Publish to Roblox</strong>.</li>
+<li>Выберите существующее место или создайте новое.</li>
+<li>Загрузите изменения.</li>
+<li>Получите ссылку для распространения.</li>
+</ol>
+<p>После публикации игра становится доступна другим пользователям. Возможна интеграция с системой monetization (продажа предметов за Robux).</p>
+<hr>
+<h2 id="методология-разработки">Методология разработки</h2>
+<h3 id="итеративный-подход">Итеративный подход</h3>
+<ol>
+<li><strong>Прототипирование</strong> — создание минимального воспроизводимого примера (MVP).</li>
+<li><strong>Тестирование</strong> — проверка на разных устройствах и соединениях.</li>
+<li><strong>Оптимизация</strong> — снижение количества частей, использование <code>MeshPart</code> вместо сложных конструкций.</li>
+<li><strong>Сбор обратной связи</strong> — анализ действий игроков, исправление багов.</li>
+</ol>
+<hr>
+<h3 id="рекомендации">Рекомендации</h3>
+<ul>
+<li>Начинайте с простых проектов (платформеры, мини-игры).</li>
+<li>Используйте готовые ресурсы из Toolbox.</li>
+<li>Документируйте код и структуру проекта.</li>
+<li>Регулярно сохраняйте и коммитьте изменения (при использовании внешних систем контроля версий).</li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#разработка-на-roblox">Разработка на Roblox</a></li><li class="article-toc__item"><a href="#основы">Основы</a></li><li class="article-toc__item is-h3"><a href="#система-roblox">Система Roblox</a></li><li class="article-toc__item is-h3"><a href="#платформа-roblox-cloud">Платформа (Roblox Cloud)</a></li><li class="article-toc__item is-h3"><a href="#сервер-игры-game-server">Сервер игры (Game Server)</a></li><li class="article-toc__item is-h3"><a href="#клиент-roblox-player">Клиент (Roblox Player)</a></li><li class="article-toc__item is-h3"><a href="#взаимодействие-уровней">Взаимодействие уровней</a></li><li class="article-toc__item"><a href="#порядок-инициализации">Порядок инициализации</a></li><li class="article-toc__item is-h3"><a href="#фаза-1-инициализация-сервера-до-подключения-игроков">Фаза 1. Инициализация сервера (до подключения игроков)</a></li><li class="article-toc__item is-h3"><a href="#фаза-2-подключение-игрока-серверная-сторона">Фаза 2. Подключение игрока (серверная сторона)</a></li><li class="article-toc__item is-h3"><a href="#фаза-3-инициализация-клиента-локальная-машина-игрока">Фаза 3. Инициализация клиента (локальная машина игрока)</a></li><li class="article-toc__item is-h3"><a href="#доступность-объектов-по-времени">Доступность объектов по времени</a></li><li class="article-toc__item is-h3"><a href="#типичные-ошибки-и-как-их-избежать">Типичные ошибки и как их избежать</a></li><li class="article-toc__item is-h3"><a href="#как-проверить-порядок-самому">Как проверить порядок самому?</a></li><li class="article-toc__item"><a href="#instance">`Instance`</a></li><li class="article-toc__item is-h3"><a href="#техническое-определение">Техническое определение</a></li><li class="article-toc__item is-h3"><a href="#структура-instance">Структура `Instance`</a></li><li class="article-toc__item is-h3"><a href="#класс-экземпляр-переменная">Класс, экземпляр, переменная</a></li><li class="article-toc__item is-h3"><a href="#свойства">Свойства</a></li><li class="article-toc__item is-h3"><a href="#методы">Методы</a></li><li class="article-toc__item is-h3"><a href="#события">События</a></li><li class="article-toc__item is-h3"><a href="#диагностика-и-отладка-instance">Диагностика и отладка `Instance`</a></li><li class="article-toc__item is-h3"><a href="#основные-понятия">Основные понятия</a></li><li class="article-toc__item is-h3"><a href="#контейнеры-и-сервисы">Контейнеры и сервисы</a></li><li class="article-toc__item"><a href="#добавление-скрипта-к-объекту">Добавление скрипта к объекту</a></li><li class="article-toc__item is-h3"><a href="#шаг-1-создание-объекта-в-сцене">Шаг 1. Создание объекта в сцене</a></li><li class="article-toc__item is-h3"><a href="#шаг-2-добавление-скрипта-к-объекту">Шаг 2. Добавление скрипта к объекту</a></li><li class="article-toc__item is-h3"><a href="#шаг-3-базовый-шаблон-скрипта">Шаг 3. Базовый шаблон скрипта</a></li><li class="article-toc__item is-h3"><a href="#разбор-шаблона-по-блокам">Разбор шаблона по блокам</a></li><li class="article-toc__item is-h3"><a href="#шаг-4-расширение-другие-типы-взаимодействия">Шаг 4. Расширение — другие типы взаимодействия</a></li><li class="article-toc__item is-h3"><a href="#события">События</a></li><li class="article-toc__item"><a href="#игрок">Игрок</a></li><li class="article-toc__item is-h3"><a href="#обязательные-компоненты-персонажа">Обязательные компоненты персонажа</a></li><li class="article-toc__item is-h3"><a href="#инвентарь">Инвентарь</a></li><li class="article-toc__item is-h3"><a href="#взаимодействие">Взаимодействие</a></li><li class="article-toc__item"><a href="#транзакции-экономика-и-магазин">Транзакции, экономика и магазин</a></li><li class="article-toc__item"><a href="#ландшафт">Ландшафт</a></li><li class="article-toc__item is-h3"><a href="#внутреннее-устройство">Внутреннее устройство</a></li><li class="article-toc__item is-h3"><a href="#физическое-поведение">Физическое поведение</a></li><li class="article-toc__item is-h3"><a href="#редактирование">Редактирование</a></li><li class="article-toc__item is-h3"><a href="#производительность-и-масштабируемость">Производительность и масштабируемость</a></li><li class="article-toc__item is-h3"><a href="#совместимость-и-ограничения-платформы">Совместимость и ограничения платформы</a></li><li class="article-toc__item is-h3"><a href="#когда-использовать-ландшафт-а-когда-part">Когда использовать ландшафт, а когда — `Part`</a></li><li class="article-toc__item"><a href="#добавление-удаление-изменение-объектов">Добавление, удаление, изменение объектов</a></li><li class="article-toc__item is-h3"><a href="#через-интерфейс-studio">Через интерфейс (Studio)</a></li><li class="article-toc__item is-h3"><a href="#через-код">Через код</a></li><li class="article-toc__item"><a href="#монетизация">Монетизация</a></li><li class="article-toc__item is-h3"><a href="#что-такое-robux">Что такое Robux?</a></li><li class="article-toc__item is-h3"><a href="#как-работает-покупка-за-robux">Как работает покупка за Robux?</a></li><li class="article-toc__item"><a href="#архитектура-проекта-в-roblox-studio">Архитектура проекта в Roblox Studio</a></li><li class="article-toc__item is-h3"><a href="#структура-сцены">Структура сцены</a></li><li class="article-toc__item is-h3"><a href="#основные-контейнеры">Основные контейнеры</a></li><li class="article-toc__item"><a href="#интерфейс-roblox-studio">Интерфейс Roblox Studio</a></li><li class="article-toc__item is-h3"><a href="#основные-панели">Основные панели</a></li><li class="article-toc__item is-h3"><a href="#управление-камерой">Управление камерой</a></li><li class="article-toc__item"><a href="#создание-игровой-среды">Создание игровой среды</a></li><li class="article-toc__item is-h3"><a href="#базовые-объекты-part-и-basepart">Базовые объекты — Part и BasePart</a></li><li class="article-toc__item is-h3"><a href="#работа-с-ландшафтом">Работа с ландшафтом</a></li><li class="article-toc__item"><a href="#программирование-на-lua-в-roblox">Программирование на Lua в Roblox</a></li><li class="article-toc__item is-h3"><a href="#основы-lua">Основы Lua</a></li><li class="article-toc__item is-h3"><a href="#типы-скриптов">Типы скриптов</a></li><li class="article-toc__item is-h3"><a href="#обработка-событий">Обработка событий</a></li><li class="article-toc__item is-h3"><a href="#асинхронность-и-задержки">Асинхронность и задержки</a></li><li class="article-toc__item"><a href="#физика-и-коллизии">Физика и коллизии</a></li><li class="article-toc__item is-h3"><a href="#система-физики">Система физики</a></li><li class="article-toc__item is-h3"><a href="#physicsservice">PhysicsService</a></li><li class="article-toc__item"><a href="#графический-интерфейс-gui">Графический интерфейс (GUI)</a></li><li class="article-toc__item is-h3"><a href="#элементы-интерфейса">Элементы интерфейса</a></li><li class="article-toc__item is-h3"><a href="#координатная-система-gui">Координатная система GUI</a></li><li class="article-toc__item"><a href="#система-уровней-и-прогресса">Система уровней и прогресса</a></li><li class="article-toc__item is-h3"><a href="#реализация-уровней">Реализация уровней</a></li><li class="article-toc__item is-h3"><a href="#хранение-данных">Хранение данных</a></li><li class="article-toc__item"><a href="#мультиплеер-и-репликация">Мультиплеер и репликация</a></li><li class="article-toc__item is-h3"><a href="#сервер-клиент-архитектура">Сервер-клиент архитектура</a></li><li class="article-toc__item is-h3"><a href="#remoteevents-и-remotefunctions">RemoteEvents и RemoteFunctions</a></li><li class="article-toc__item"><a href="#анимации-и-моделирование">Анимации и моделирование</a></li><li class="article-toc__item is-h3"><a href="#создание-анимаций">Создание анимаций</a></li><li class="article-toc__item is-h3"><a href="#скриптовое-управление-анимациями">Скриптовое управление анимациями</a></li><li class="article-toc__item"><a href="#тестирование-и-отладка">Тестирование и отладка</a></li><li class="article-toc__item is-h3"><a href="#консоль-вывода-output">Консоль вывода (Output)</a></li><li class="article-toc__item is-h3"><a href="#инструменты-отладки">Инструменты отладки</a></li><li class="article-toc__item"><a href="#публикация-проекта">Публикация проекта</a></li><li class="article-toc__item is-h3"><a href="#подготовка-к-публикации">Подготовка к публикации</a></li><li class="article-toc__item is-h3"><a href="#процесс-публикации">Процесс публикации</a></li><li class="article-toc__item"><a href="#методология-разработки">Методология разработки</a></li><li class="article-toc__item is-h3"><a href="#итеративный-подход">Итеративный подход</a></li><li class="article-toc__item is-h3"><a href="#рекомендации">Рекомендации</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

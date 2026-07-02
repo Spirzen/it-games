@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Гейм-дизайн — Игры IT Universe</title><meta name="description" content="Гейм-дизайн — три уровня опыта, MDA, механики и баланс; вход в углублённый маршрут и связь с Unity."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Гейм-дизайн</span></li></ol></nav><header class="portal-hero"> <h1>Гейм-дизайн</h1> <p>Гейм-дизайн — три уровня опыта, MDA, механики и баланс; вход в углублённый маршрут и связь с Unity.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Гейм-дизайн" data-url="/games/9-04-razrabotka-igr/117">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Гейм-дизайн">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Гейм-дизайн</h1>
+<div class="itu-play-embed" data-example="spinoff/game-design-mda-play" data-src="" data-title="MDA — механики, динамика, эстетика" data-min-height="520" data-play-props="{}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="гейм-дизайн">Гейм-дизайн</h2>
+<p>Гейм-дизайн отвечает на вопрос: <strong>что игрок будет чувствовать и делать</strong>, а не "на каком языке это написать". Программист воплощает правила в коде, художник — в визуале, звукорежиссёр — в аудио, а гейм-дизайнер связывает их в <strong>согласованный опыт</strong>: от первой минуты до финальных титров.</p>
+<p>Эта глава — <strong>вход в гейм-дизайн</strong> — три уровня анализа, этапы, документы, этика. Углублённые темы — в цепочке глав 1172–1176 (таблица ниже). Пошаговая работа в Unity (движение, UI, физика) — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">практической главе</a>.</p>
+<hr>
+<h2 id="три-уровня-механики-геймплей-опыт">Три уровня — механики, геймплей, опыт</h2>
+<p>Практикующие дизайнеры часто разбирают игру на <strong>три связанных уровня</strong>. Модель родилась из <strong>MDA</strong> (Hunicke, LeBlanc, 2004), но в студиях используют термины, привычные в индустрии.</p>
+<table>
+<thead>
+<tr>
+<th>Уровень</th>
+<th>Суть</th>
+<th>Пример (покер)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Механики</strong></td>
+<td>Объекты ("существительные") и действия ("глаголы"), правила</td>
+<td>карты, фишки, ставка, сброс</td>
+</tr>
+<tr>
+<td><strong>Геймплей</strong></td>
+<td>Динамика во времени — решения, взаимодействие игроков</td>
+<td>блеф, расчёт шансов, торги</td>
+</tr>
+<tr>
+<td><strong>Опыт игрока</strong></td>
+<td>Субъективные ощущения</td>
+<td>азарт, статус, общение с друзьями</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Замысел дизайнера ≠ опыт игрока.</strong> Игрок видит только правила и объекты; то, что он почувствует, зависит от его решений. Дизайн — <strong>диалог</strong> — вы задаёте рамки, игрок действует внутри них — иногда так, как вы задумали, иногда иначе.</p>
+<p><strong>Два направления работы:</strong></p>
+<ul>
+<li><strong>Сверху вниз</strong> — от цели опыта ("хочу напряжение исследования") к геймплею и механикам.</li>
+<li><strong>Снизу вверх</strong> — прототип механики → playtest → уточнение опыта.</li>
+</ul>
+<p>На практике оба направления идут <strong>параллельно и итеративно</strong> — план сверху, эксперимент снизу, регулярные прототипы.</p>
+<div class="callout callout--info">
+  <div class="callout-title">Углублённый маршрут по гейм-дизайну</div>
+  <div class="callout-body">
+<p>| Шаг | Глава | Тема |</p>
+<p>|-----|-------|------|</p>
+<p>| 1 | <strong>117</strong> (эта страница) | Три уровня, MDA, этапы, документы |</p>
+<p>| 2 | <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1172">Механики и пространство состояний</a> | Механики, пространство состояний, семейства |</p>
+<p>| 3 | <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1174">Геймплей и core loop</a> | Core loop, мотивация, flow |</p>
+<p>| 4 | <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1173">Системы, петли обратной связи и баланс</a> | Системы, петли обратной связи, баланс |</p>
+<p>| 5 | <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1171">Опыт игрока и мотивационные модели</a> | Опыт игрока, Bartle, Yee |</p>
+<p>| 6 | <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1175">Макроструктура, нарратив и метагейм</a> → <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1176">Прототип и playtest дизайна</a> | Нарратив, прототип и playtest |</p>
+</div>
+  </div>
+<hr>
+<h2 id="mda-и-практическая-терминология">MDA и практическая терминология</h2>
+<p><strong>MDA</strong> (Mechanics — Dynamics — Aesthetics) — классическая "линейка" для разбора игры. Интерактивный разбор — в блоке над текстом; ниже — соответствие MDA и трёх уровней, принятых в индустрии.</p>
+<table>
+<thead>
+<tr>
+<th>MDA (2004)</th>
+<th>Практика / индустрия</th>
+<th>Пример (платформер)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mechanics</strong></td>
+<td>Механики</td>
+<td>"Прыжок = 4 м", "монета = +10 очков"</td>
+</tr>
+<tr>
+<td><strong>Dynamics</strong></td>
+<td>Геймплей + <strong>системы</strong> (отдельный слой)</td>
+<td>Риск прыжка за монетой; экономика очков</td>
+</tr>
+<tr>
+<td><strong>Aesthetics</strong></td>
+<td><strong>Опыт игрока</strong> (не визуал!)</td>
+<td>Напряжение, радость от риска, мастерство</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Почему в студии говорят иначе, чем в MDA:</strong></p>
+<ul>
+<li>Слово <em>dynamics</em> почти не используют для геймплея — говорят <strong>gameplay</strong>.</li>
+<li><em>Aesthetics</em> в индустрии чаще значит <strong>визуальный стиль</strong>, а субъективный отклик называют <strong>player experience</strong>.</li>
+<li><strong>Системы</strong> (цепочки конверсии, петли обратной связи) выделяют отдельно — см. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1173">Системы, петли обратной связи и баланс</a>.</li>
+</ul>
+<p><strong>Как пользоваться:</strong> начните с желаемого <strong>опыта</strong>, опишите <strong>геймплей</strong>, затем <strong>механики</strong>. Если механика не рождает нужный геймплей — меняют правила, а не только арт.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Проверка идеи без кода</div>
+  <div class="callout-body">
+  <p>Опишите механику на бумаге или в таблице: действие игрока → условие успеха → награда → риск. Протестируйте с другом за 10 минут — так дешевле, чем неделя полировки в движке.</p>
+</div>
+  </div>
+<div class="itu-play-embed" data-example="basics/game-genre-toy-play" data-src="" data-title="Жанр игры — интерактив" data-min-height="420" data-play-props="{&quot;genre&quot;:&quot;platformer&quot;,&quot;theme&quot;:&quot;javascript&quot;}"> </div>
+<hr>
+<h2 id="понятие-и-элементы-гейм-дизайна">Понятие и элементы гейм-дизайна</h2>
+<h3 id="геймплей">Геймплей</h3>
+<p>Геймплей — центральный элемент любой видеоигры. Он определяет, что делает игрок, как он взаимодействует с игровым миром и какие задачи перед ним стоят. Геймплей складывается из повторяющихся действий, решений и реакций, которые игрок совершает в ответ на стимулы, предоставляемые игрой. Именно через геймплей игрок познаёт логику игры, учится её языкам и развивает навыки.</p>
+<p>Хороший геймплей всегда имеет чёткую структуру — есть начальное состояние, есть действия, доступные игроку, есть последствия этих действий и есть конечная цель или набор целей. Эта структура может быть линейной, как в классических платформерах, или открытой, как в песочницах вроде Minecraft. В любом случае, геймплей должен давать игроку чувство контроля, предсказуемости и справедливости.</p>
+<hr>
+<h3 id="игровая-механика">Игровая механика</h3>
+<p>Механика — базовый строительный блок: правила и объекты, с которыми игрок взаимодействует. Прыжок в <em>Super Mario Bros.</em> — инструмент для головоломок и уклонений; удар в <em>Dark Souls</em> — риск с учётом выносливости и позиции. Механики формируют <strong>язык игры</strong>.</p>
+<p>Подробнее — <strong>пространство состояний</strong>, семейства механик (control, progression, uncertainty, resource management), явные и неявные правила: <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1172">Механики и пространство состояний</a>.</p>
+<p>Баланс механик — ключевая задача гейм-дизайнера. Сложность должна вызывать интерес, но давать понятную обратную связь при неудаче.</p>
+<hr>
+<h3 id="цели-и-награды">Цели и награды</h3>
+<p>Любая игра предлагает игроку цели. Это могут быть явные задачи — победить босса, достичь финиша, собрать все артефакты — или неявные — исследовать мир, экспериментировать с системами, улучшать персонажа. Цели задают направление и смысл действиям игрока.</p>
+<p>Награды усиливают мотивацию. Они подтверждают успех, дают обратную связь и создают ощущение прогресса. Награды бывают разными — очки, уровни, новые способности, визуальные изменения, доступ к новым зонам. Важно, чтобы награда соответствовала усилию. Если игрок тратит час на выполнение задания, а получает минимальную выгоду, он теряет интерес. Если награда слишком велика за минимальное усилие, игра теряет вызов.</p>
+<p>Прогрессия — это система, которая связывает цели и награды во времени. Игрок должен ощущать, что его усилия накапливаются, что он становится сильнее, умнее, опытнее. Прогрессия может быть линейной (новый уровень → новый навык) или нелинейной (выбор между несколькими путями развития). В обоих случаях она создаёт долгосрочную вовлечённость.</p>
+<hr>
+<h3 id="сюжет-и-нарратив">Сюжет и нарратив</h3>
+<p>Сюжет — история игры; нарратив — способ её подачи через действия игрока. Хороший нарратив согласован с механикой: усталость героя должна отражаться в параметрах, а не только в диалоге.</p>
+<p>Паттерны макроструктуры, open world, pacing и метагейм — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1175">Макроструктура, нарратив и метагейм</a>.</p>
+<hr>
+<h3 id="уровни-и-окружение">Уровни и окружение</h3>
+<p>Уровень — это пространство, в котором разворачивается игровой процесс. Он может быть линейным коридором, открытым полем, лабиринтом или даже абстрактной схемой. Дизайн уровня включает в себя планировку, размещение врагов, препятствий, бонусов, точек сохранения и визуальных ориентиров.</p>
+<p>Хороший уровень обучает игрока без инструкций. Первые секунды должны показать, как играть — где безопасно, где опасно, какие действия возможны. Это достигается через композицию — расположение объектов, освещение, цвета, звуки. Например, ярко освещённый проход часто воспринимается как путь вперёд, а тёмный угол — как место для исследования или угрозы.</p>
+<p>Окружение также несёт нарративную нагрузку. Заброшенный город с обломками машин и следами пожара рассказывает историю катастрофы без единого слова. Архитектура, текстуры, звуковой фон — всё это работает на создание атмосферы и контекста.</p>
+<hr>
+<h3 id="баланс">Баланс</h3>
+<p>Баланс — это настройка параметров игры так, чтобы она оставалась справедливой, интересной и разнообразной. Он затрагивает сложность, экономику, боевые системы, прогрессию и взаимодействие между игроками (в мультиплеере).</p>
+<p>Сложность регулируется через количество врагов, их поведение, урон, здоровье игрока, доступные ресурсы. Идеальный баланс позволяет новичку освоиться, а опытному игроку — найти вызов. Часто используется адаптивная сложность: игра анализирует успехи игрока и подстраивается под него.</p>
+<p>Экономический баланс касается внутренних ресурсов — монет, очков опыта, материалов. Игрок должен иметь возможность зарабатывать и тратить, но система не должна обесцениваться (инфляция) или становиться непреодолимо дорогой (дефляция). Баланс экономики особенно важен в играх с микротранзакциями или долгосрочным развитием.</p>
+<hr>
+<h3 id="пользовательский-интерфейс-и-опыт">Пользовательский интерфейс и опыт</h3>
+<p>Интерфейс — это мост между игроком и игрой. Он включает в себя меню, кнопки, индикаторы здоровья, карты, подсказки. Интерфейс должен быть интуитивным, информативным и невидимым в хорошем смысле — игрок не должен думать, как им пользоваться.</p>
+<p>Пользовательский опыт (UX) шире: это всё, что игрок чувствует при взаимодействии с игрой. UX включает время загрузки, скорость отклика, читаемость текста, удобство управления, ясность целей. Хороший UX устраняет трение — игрок сосредоточен на игре, а не на том, как открыть инвентарь или понять, что делать дальше.</p>
+<hr>
+<h3 id="мотивация-и-вовлечённость">Мотивация и вовлечённость</h3>
+<p>Вовлечённость — это состояние, при котором игрок полностью погружён в игру, теряет ощущение времени и стремится продолжать. Гейм-дизайнер использует множество методов для поддержания этого состояния.</p>
+<p>Достижения дают игроку чувство завершённости и признания. Они могут быть связаны с основным сюжетом или побочными действиями — например, "собрать все секреты" или "победить без получения урона". Награды за выполнение задач усиливают цикл "действие → результат → удовольствие".</p>
+<p>Прогрессия через уровни, ранги, навыки создаёт долгосрочные цели. Игрок видит, как он растёт, и хочет достичь следующей вехи. Особенно эффективна система "почти достиг" — когда игрок видит, что до следующего уровня осталось совсем немного, он продолжает играть.</p>
+<p>Социальные элементы — кооперация, соревнование, обмен — также усиливают вовлечённость. Люди играют не только ради игры, но и ради взаимодействия с другими.</p>
+<hr>
+<h2 id="этапы-гейм-дизайна">Этапы гейм-дизайна</h2>
+<p>Гейм-дизайн — структурированный процесс, проходящий через несколько чётко определённых этапов. Каждый этап решает свои задачи, обеспечивает проверку гипотез и постепенно превращает идею в готовый продукт. Эти этапы могут пересекаться, повторяться или адаптироваться под масштаб проекта, но их логическая последовательность остаётся неизменной.</p>
+<hr>
+<h3 id="1-концепция-concept">1. Концепция (Concept)</h3>
+<p>Концепция — это рождение идеи. На этом этапе формулируется суть игры — что делает её уникальной, какой опыт она предлагает, для кого она создана. Гейм-дизайнер задаёт ключевые вопросы:<br>
+— Какой жанр будет использован?<br>
+— Кто целевая аудитория — дети, подростки, взрослые, хардкорные игроки или новички?<br>
+— Какова основная эмоция, которую игра должна вызывать — напряжение, радость, любопытство, ностальгия?<br>
+— Какие платформы будут поддерживаться — ПК, консоли, мобильные устройства?</p>
+<p>Ответы на эти вопросы фиксируются в виде короткого документа — <strong>концепт-пейпера</strong>. Он содержит логлайн (однострочное описание), ключевые особенности, примеры вдохновения и предварительную оценку рисков. Концепция — это компас, который будет направлять всю дальнейшую работу.</p>
+<hr>
+<h3 id="2-прототипирование-prototyping">2. Прототипирование (Prototyping)</h3>
+<p>Прототип — это минимальная рабочая версия игры, созданная для проверки основной механики. Он не требует графики, звука или полного сюжета. Его цель — ответить на вопрос: "Работает ли идея?"</p>
+<p>Прототип может быть бумажным или цифровым. Цель — проверить ядро геймплея как можно раньше. Подробнее — Kelly Guidelines, playtest дизайна и отличие от QA: <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1176">Прототип и playtest дизайна</a>.</p>
+<hr>
+<h2 id="три-типа-проектной-документации">Три типа проектной документации</h2>
+<p>Перед кодом в Unity полезно зафиксировать замысел на бумаге (или в wiki). Три формата дополняют друг друга:</p>
+<table>
+<thead>
+<tr>
+<th>Документ</th>
+<th>Объём</th>
+<th>Для кого</th>
+<th>Что внутри</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>One-Page (брошюра)</strong></td>
+<td>1 страница</td>
+<td>Вы сами, питч, быстрый прототип</td>
+<td>Концепт, core loop, управление, win/lose, art style</td>
+</tr>
+<tr>
+<td><strong>GDD</strong> (Game Design Document)</td>
+<td>от нескольких до сотен страниц</td>
+<td>Вся команда</td>
+<td>Механики, уровни, нарратив, баланс, UI, прогрессия</td>
+</tr>
+<tr>
+<td><strong>TDD</strong> (Technical Design Document)</td>
+<td>зависит от проекта</td>
+<td>Программисты, TA</td>
+<td>Платформы, архитектура классов, сеть, лимиты FPS/RAM, пайплайн ассетов</td>
+</tr>
+</tbody>
+</table>
+<p>Для <strong>первого учебного проекта</strong> в Unity достаточно One-Page: вы сразу переходите к white-box уровню и скриптам, не тратя недели на полный GDD. Когда механика "щёлкает", расширяйте до GDD; TDD нужен, когда в команде больше одного программиста или есть онлайн/консоли.</p>
+<h3 id="шаблон-one-page-учебный-прототип">Шаблон One-Page (учебный прототип)</h3>
+<p>Скопируйте в Notion, Google Docs или <code>design/one-page.md</code> в репозитории:</p>
+<table>
+<thead>
+<tr>
+<th>Блок</th>
+<th>Пример заполнения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Концепт</strong></td>
+<td>3D-стелс на арене: обход патруля, сбор аптечек, короткие перестрелки</td>
+</tr>
+<tr>
+<td><strong>Core loop</strong></td>
+<td>Разведка → сбор → бой → победа при N предметах — см. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1174">Геймплей и core loop</a></td>
+</tr>
+<tr>
+<td><strong>Управление</strong></td>
+<td>WASD, мышь — камера, ЛКМ — выстрел, Space — прыжок</td>
+</tr>
+<tr>
+<td><strong>Win</strong></td>
+<td>Собрано N предметов, здоровье > 0</td>
+</tr>
+<tr>
+<td><strong>Lose</strong></td>
+<td>Здоровье = 0 или таймер (опционально)</td>
+</tr>
+<tr>
+<td><strong>Art</strong></td>
+<td>White-box примитивы; цвета различают роли</td>
+</tr>
+<tr>
+<td><strong>Референсы</strong></td>
+<td>1–2 игры "как должно ощущаться" (без копирования ассетов)</td>
+</tr>
+</tbody>
+</table>
+<p>Реализация такого прототипа по шагам — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">Разработка на Unity</a> (уровень, движение, UI, NavMesh).</p>
+<hr>
+<h3 id="3-проектирование-design">3. Проектирование (design)</h3>
+<p>После подтверждения жизнеспособности идеи начинается детальное проектирование. Гейм-дизайнер создаёт <strong>Game Design Document (GDD)</strong> — центральный документ, описывающий все аспекты игры:<br>
+— Полный список механик и их взаимодействие<br>
+— Структура уровней и прогрессии<br>
+— Нарратив, персонажи, диалоги<br>
+— Система наград и баланса<br>
+— Интерфейс и управление<br>
+— Технические требования</p>
+<p>GDD служит руководством для всей команды — программистов, художников, звукорежиссёров, аниматоров. Он постоянно обновляется по мере развития проекта, но его наличие гарантирует согласованность видения.</p>
+<p>На этом этапе также проектируются отдельные системы — боевая, экономическая, диалоговая, инвентарь. Каждая система моделируется, описывается и согласуется с другими. Например, система крафта не должна дублировать функции торговли, а боевой баланс — учитывать параметры, получаемые через прокачку.</p>
+<hr>
+<h3 id="4-реализация-implementation">4. Реализация (Implementation)</h3>
+<p>Реализация — это этап воплощения. Дизайнерские решения передаются команде разработчиков. Программисты пишут код, художники создают ассеты, звукорежиссёры записывают эффекты и музыку. Гейм-дизайнер остаётся вовлечённым — он участвует в ежедневных обсуждениях, проверяет соответствие реализации замыслу, вносит корректировки.</p>
+<p>Важную роль играет <strong>интеграция</strong>. Механика прыжка должна работать с анимацией, коллизиями, камерой и звуком. Любое несоответствие — например, задержка между нажатием кнопки и прыжком — разрушает плавность геймплея. Поэтому тесное взаимодействие между дизайнерами и техническими специалистами критически важно.</p>
+<hr>
+<h3 id="5-testing">5. Testing</h3>
+<p>Тестирование — это не просто поиск багов. Это проверка игрового опыта. QA-тестировщики искренне играют в проект, фиксируя всё: от вылетов до несбалансированных врагов, от запутанного интерфейса до скучных уровней.</p>
+<p>Особое внимание уделяется <strong>игровому балансу</strong>. Слишком сильный враг на раннем этапе может отпугнуть новичка. Слишком щедрая система наград — обесценить достижения. Тестировщики помогают найти эту золотую середину.</p>
+<p>Также проводятся <strong>юзабилити-сессии</strong>: наблюдение за тем, как новые игроки осваивают игру без инструкций. Если они не понимают, куда идти или как использовать предмет, значит, дизайн требует доработки.</p>
+<hr>
+<h3 id="6-выпуск-и-поддержка-release-and-support">6. Выпуск и поддержка (Release and Support)</h3>
+<p>После финальной полировки игра публикуется. Но работа не заканчивается. Первые дни после релиза — самые важные. Команда собирает отзывы, исправляет критические ошибки, выпускает хотфиксы.</p>
+<p>Многие современные игры живут годами благодаря <strong>пострелизной поддержке</strong> — добавлению новых уровней, событий, персонажей, сезонных режимов. Это не только продлевает жизнь проекту, но и укрепляет связь с сообществом. Игроки чувствуют, что их мнение услышано, а игра продолжает развиваться.</p>
+<p>Поддержка включает и техническое обслуживание — обновление серверов, совместимость с новыми ОС, защиту от читеров. Успешная игра — это не только хороший старт, но и долгосрочное внимание к своему продукту.</p>
+<hr>
+<h2 id="от-дизайна-к-коду-один-пример-и-дальше-по-треку">От дизайна к коду — один пример и дальше по треку</h2>
+<p>Гейм-дизайнер описывает <strong>механику</strong>; программист выбирает <strong>компоненты движка</strong>. Ниже — минимальный пример "сбор монеты" — триггер (зона), счёт (динамика), звук (обратная связь). Полный разбор движения, UI, NavMesh и Input System — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">Разработка на Unity</a>. Упрощённый <code>CoinPickup</code> + <code>ScoreManager</code> с построчным разбором — <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1136#coin">монетка и счёт в Lab</a>.</p>
+<p><strong>Настройка сцены (Inspector):</strong></p>
+<ol>
+<li>Игрок — <code>Capsule</code> + <code>Rigidbody</code> + тег <code>Player</code>.</li>
+<li>Монета — <code>Sphere</code> + <code>Collider</code> с <strong>Is Trigger</strong> + скрипт ниже.</li>
+<li>Пустой объект <code>GameManager</code> со скриптом <code>GameManager</code> (см. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">главу 3</a>).</li>
+</ol>
+<p><strong>Скрипт на монете:</strong></p>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-117-001" data-title="От дизайна к коду — один пример и дальше по треку" data-min-height="372"> </div>
+<pre><code class="language-csharp">// GameManager.cs — см. полный пример в главе 3
+public class GameManager : MonoBehaviour
+{
+    public void CollectItem(int value = 1) { /* ... */ }
+}
+</code></pre>
+<div class="callout callout--warning">
+  <div class="callout-title">Триггер не сработает, если</div>
+  <div class="callout-body">
+  <p>У монеты или игрока нет коллайдера; у монеты не включён <strong>Is Trigger</strong>; у игрока нет тега `Player`; для 3D-триггеров обычно нужен `Rigidbody` хотя бы на одной стороне.</p>
+</div>
+  </div>
+<p><strong>Дальше по Unity:</strong> ввод и <code>Update</code> → <code>Rigidbody</code> / <code>FixedUpdate</code> → прыжок и стрельба → Canvas и TextMeshPro → <code>Animator</code> → NavMesh → Cinemachine — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">главе 3</a>.</p>
+<hr>
+<h2 id="гейм-дизайнер-как-архитектор-опыта">Гейм-дизайнер как архитектор опыта</h2>
+<p>Гейм-дизайнер — не просто автор правил или сценарист. Это архитектор игрового опыта, ответственный за целостность взаимодействия между игроком и системой. В команде разработчиков он выполняет функцию связующего звена: переводит творческие идеи в технические требования, а технические ограничения — в творческие решения.</p>
+<p>Он работает в постоянном диалоге с программистами, чтобы механики были реализуемы и стабильны. Он согласует визуальный стиль с художниками, чтобы окружение поддерживало нарратив и геймплей. Он обсуждает звуковое сопровождение со звукорежиссёрами, чтобы музыка усиливало напряжение, а звуки давали тактильную обратную связь. Успешный гейм-дизайнер умеет слушать, объяснять и находить компромиссы, не теряя сути замысла.</p>
+<p>Важная черта профессии — способность мыслить системно. Каждое изменение в одной части игры влияет на другие. Увеличение урона оружия может сделать босса слишком лёгким. Добавление нового предмета в инвентарь требует пересмотра баланса экономики. Гейм-дизайнер строит ментальные карты связей, предвидит последствия и тестирует гипотезы до их внедрения.</p>
+<hr>
+<h2 id="психологические-принципы-в-гейм-дизайне">Психологические принципы в гейм-дизайне</h2>
+<p>Игры опираются на цикл <strong>действие → обратная связь → удовольствие → повтор</strong>, теорию <strong>потока (flow)</strong> и потребности <strong>автономии, компетентности и связанности</strong> (теория самодетерминации). Уважительный дизайн вдохновляет, а не эксплуатирует внимание.</p>
+<p>Разбор <strong>core loop</strong>, внутренней и внешней мотивации, расписаний наград и "решения игры" — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1174">Геймплей и core loop</a>.</p>
+<hr>
+<h2 id="этические-аспекты-гейм-дизайна">Этические аспекты гейм-дизайна</h2>
+<p>Современный гейм-дизайн неотделим от этики. Разработчики принимают решения, влияющие на здоровье, поведение и мировосприятие игроков.</p>
+<p><strong>Микротранзакции и лутбоксы</strong> — пример спорных механик. Когда награда становится доступной только за реальные деньги, а не за усилия, игра превращается в коммерческий продукт с приоритетом прибыли над опытом. Многие страны вводят ограничения на такие практики, особенно в играх для детей.</p>
+<p><strong>Доступность</strong> — обязательный элемент современного дизайна. Игры должны быть играбельны людьми с разными возможностями — настройки цветокоррекции для дальтоников, субтитры для слабослышащих, альтернативные схемы управления для людей с ограниченной подвижностью. Доступность — это уважение к аудитории.</p>
+<p><strong>Представление и инклюзивность</strong> — ещё одно этическое направление. Персонажи, миры и истории должны отражать разнообразие реального мира — по гендеру, этнической принадлежности, культуре, сексуальной ориентации. Это расширяет горизонты игроков и даёт каждому возможность увидеть себя в игре.</p>
+<hr>
+<h2 id="современные-тенденции-в-гейм-дизайне">Современные тенденции в гейм-дизайне</h2>
+<p>Игровая индустрия постоянно развивается, и гейм-дизайн адаптируется к новым технологиям и ожиданиям.</p>
+<p><strong>Процедурная генерация</strong> позволяет создавать уникальные уровни, миры и события каждый раз при запуске игры. Это используется в roguelike (Hades, Dead Cells) и песочницах (No Man’s Sky). Такой подход увеличивает реиграбельность и снижает затраты на ручное создание контента.</p>
+<p><strong>Живые сервисы (live service)</strong> превращают игры в постоянно обновляющиеся платформы. Вместо однократного прохождения игрок участвует в сезонных событиях, коллаборациях, обновлениях сюжета. Это требует от дизайнера долгосрочного планирования и гибкости.</p>
+<p><strong>Кросс-платформенность</strong> становится нормой. Игрок должен иметь возможность начать игру на консоли, продолжить на ПК и проверить прогресс в мобильном приложении. Это накладывает требования на унификацию интерфейса, баланса и сетевой архитектуры.</p>
+<p><strong>Эмоциональный дизайн</strong> набирает силу. Игры всё чаще исследуют сложные темы — одиночество, утрата, тревога, надежда. Проекты вроде <em>Gris</em>, <em>Spiritfarer</em> или <em>Night in the Woods</em> доказывают, что игра может быть не только развлечением, но и средством эмоционального выражения и катарсиса.</p>
+<hr>
+<h2 id="литература">Литература</h2>
+<ul>
+<li>Hunicke R., LeBlanc M. <strong>MDA: A Formal Approach to Game Design and Game Research.</strong> — 2004.</li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#гейм-дизайн">Гейм-дизайн</a></li><li class="article-toc__item"><a href="#три-уровня-механики-геймплей-опыт">Три уровня — механики, геймплей, опыт</a></li><li class="article-toc__item"><a href="#mda-и-практическая-терминология">MDA и практическая терминология</a></li><li class="article-toc__item"><a href="#понятие-и-элементы-гейм-дизайна">Понятие и элементы гейм-дизайна</a></li><li class="article-toc__item is-h3"><a href="#геймплей">Геймплей</a></li><li class="article-toc__item is-h3"><a href="#игровая-механика">Игровая механика</a></li><li class="article-toc__item is-h3"><a href="#цели-и-награды">Цели и награды</a></li><li class="article-toc__item is-h3"><a href="#сюжет-и-нарратив">Сюжет и нарратив</a></li><li class="article-toc__item is-h3"><a href="#уровни-и-окружение">Уровни и окружение</a></li><li class="article-toc__item is-h3"><a href="#баланс">Баланс</a></li><li class="article-toc__item is-h3"><a href="#пользовательский-интерфейс-и-опыт">Пользовательский интерфейс и опыт</a></li><li class="article-toc__item is-h3"><a href="#мотивация-и-вовлечённость">Мотивация и вовлечённость</a></li><li class="article-toc__item"><a href="#этапы-гейм-дизайна">Этапы гейм-дизайна</a></li><li class="article-toc__item is-h3"><a href="#1-концепция-concept">1. Концепция (Concept)</a></li><li class="article-toc__item is-h3"><a href="#2-прототипирование-prototyping">2. Прототипирование (Prototyping)</a></li><li class="article-toc__item"><a href="#три-типа-проектной-документации">Три типа проектной документации</a></li><li class="article-toc__item is-h3"><a href="#шаблон-one-page-учебный-прототип">Шаблон One-Page (учебный прототип)</a></li><li class="article-toc__item is-h3"><a href="#3-проектирование-design">3. Проектирование (design)</a></li><li class="article-toc__item is-h3"><a href="#4-реализация-implementation">4. Реализация (Implementation)</a></li><li class="article-toc__item is-h3"><a href="#5-testing">5. Testing</a></li><li class="article-toc__item is-h3"><a href="#6-выпуск-и-поддержка-release-and-support">6. Выпуск и поддержка (Release and Support)</a></li><li class="article-toc__item"><a href="#от-дизайна-к-коду-один-пример-и-дальше-по-треку">От дизайна к коду — один пример и дальше по треку</a></li><li class="article-toc__item"><a href="#гейм-дизайнер-как-архитектор-опыта">Гейм-дизайнер как архитектор опыта</a></li><li class="article-toc__item"><a href="#психологические-принципы-в-гейм-дизайне">Психологические принципы в гейм-дизайне</a></li><li class="article-toc__item"><a href="#этические-аспекты-гейм-дизайна">Этические аспекты гейм-дизайна</a></li><li class="article-toc__item"><a href="#современные-тенденции-в-гейм-дизайне">Современные тенденции в гейм-дизайне</a></li><li class="article-toc__item"><a href="#литература">Литература</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний  </a> </li><li> <a href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop  </a> </li><li> <a href="/games/9-04-razrabotka-igr/1175"> Макроструктура и нарратив  </a> </li><li> <a href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest  </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

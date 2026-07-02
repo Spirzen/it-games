@@ -1,0 +1,443 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Call of Duty — Игры IT Universe</title><meta name="description" content="Call of Duty (дословно Зов долга) представляет собой одну из самых масштабных и коммерчески успешных серий компьютерных игр в жанре шутера от первого лица."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Call of Duty</span></li></ol></nav><header class="portal-hero"> <h1>Call of Duty</h1> <p>Call of Duty (дословно Зов долга) представляет собой одну из самых масштабных и коммерчески успешных серий компьютерных игр в жанре шутера от первого лица.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Call of Duty" data-url="/games/9-03-igrovaya-industriya/game-studies/123">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Call of Duty">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Call of Duty</h1>
+<div class="itu-play-embed" data-example="spinoff/game-franchise-play" data-src="" data-title="Игровая франшиза" data-min-height="520" data-play-props="{&quot;franchise&quot;:&quot;cod&quot;}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="что-такое-call-of-duty">Что такое Call of Duty</h2>
+<p>Call of Duty (дословно "Зов долга") представляет собой одну из самых масштабных и коммерчески успешных серий компьютерных игр в жанре шутера от первого лица. Проект выпускается компанией Activision, а разработку основных частей осуществляют три ключевые студии: Infinity Ward, Treyarch и Sledgehammer Игры. С момента выхода первой части в 2003 году франшиза превратилась в глобальный культурный феномен, определивший стандарты жанра на два десятилетия.</p>
+<p>Серия охватывает огромный временной диапазон событий: от Второй мировой войны и Холодной войны до реалистичного настоящего времени и далекого космического будущего. Каждая основная часть серии отличается уникальным сеттингом, сюжетной линией и игровыми механиками, однако все они объединены общей философией динамичного экшена, кинематографичности повествования и акцентом на многопользовательский режим.</p>
+<p>На текущий момент общие продажи игр серии превысили 400 миллионов копий. Серия включена в Книгу рекордов Гиннесса как самая продаваемая серия шутеров в мире. Это наиболее успешный проект по числу проданных копий, созданный в США. Успех франшизы обусловлен не только качественным геймплеем, но и постоянной эволюцией технологической базы, социальной инфраструктуры вокруг игры и адаптацией под меняющиеся рыночные тренды.</p>
+<hr>
+<h2 id="нарративная-экосистема-и-вселенная">Нарративная экосистема и вселенная</h2>
+<p>Вселенная Call of Duty не является единым линейным нарративом. Она разделена на несколько автономных сюжетных таймлайнов, каждая из которых имеет собственный исторический контекст, тональность и набор персонажей. Пересечения между этими линиями редки, что позволяет разработчикам экспериментировать с жанрами и сеттингами без нарушения канона основной истории.</p>
+<hr>
+<h3 id="линия-modern-warfare-infinity-ward">Линия Modern Warfare (Infinity Ward)</h3>
+<p>Эта подсерия фокусируется на конфликтах XXI века, часто используя реальные геополитические события как основу для вымышленных сюжетов. Тон повествования тяготеет к реализму, драматизму и исследованию "серых зон" морали.</p>
+<p><strong>Основные характеристики:</strong></p>
+<ul>
+<li><strong>Сеттинг:</strong> Техногенные конфликты современности, Ближний Восток, Европа, Россия, Африка.</li>
+<li><strong>Темы:</strong> Геополитический кризис, прокси-войны, терроризм, гражданские войны, борьба спецслужб.</li>
+<li><strong>Ключевой маркер:</strong> Группа оперативников ОТГ-141 во главе с капитаном Джоном Прайсом.</li>
+<li><strong>Стиль повествования:</strong> Кинематографичность, акцент на человеческих судьбах солдат и спецназовцев, высокая степень детализации локаций.</li>
+</ul>
+<p><strong>Хронология событий:</strong></p>
+<ol>
+<li><strong>Call of Duty 4: Modern Warfare (2007):</strong> Начало новой эпохи. Игрок знакомится с майором Алексом Мейсоном, сержантом Григорием Воробьёвым и командой 141. Сюжет описывает конфликт между российским ультранационалистом Владимиром Макаровым и силами западных стран. Игра закрепила новый стандарт качества для шутеров.</li>
+<li><strong>Call of Duty: Modern Warfare 2 (2009):</strong> Продолжение истории через пять лет после событий первой части. Конфликт перерастает в полномасштабную войну между Россией и США. Появляется отряд "Дельфин", который становится центром противостояния.</li>
+<li><strong>Call of Duty: Modern Warfare 3 (2011):</strong> Финал трилогии. Завершение войны против Макарова. Действие разворачивается в Европе и России, включая осаду Нью-Йорка.</li>
+<li><strong>Call of Duty: Modern Warfare (2019):</strong> Мягкий перезапуск (ребут) подсерии. История начинается заново с расследования химической атаки в городе Аль-Ахмар. Появляются новые версии известных персонажей, таких как Прайс и Гордон.</li>
+<li><strong>Call of Duty: Modern Warfare II (2022):</strong> Прямое продолжение перезапуска. Фокус на защите границ США и борьбе с террористической организацией "Аль-Катала".</li>
+<li><strong>Call of Duty: Modern Warfare III (2023):</strong> Завершение арки перезапуска, где команда 141 должна остановить планы Владимира Макарова.</li>
+</ol>
+<hr>
+<h3 id="линия-black-ops-treyarch">Линия Black Ops (Treyarch)</h3>
+<p>Подсерия Black Ops смещает фокус на шпионские интриги, тайные операции ЦРУ, психологические эксперименты и футуристические технологии. Сюжеты часто строятся вокруг конспирологических теорий и скрытых угроз человечеству.</p>
+<p><strong>Основные характеристики:</strong></p>
+<ul>
+<li><strong>Сеттинг:</strong> Холодная война, будущее (2020–2060-е годы), постапокалипсис.</li>
+<li><strong>Темы:</strong> Проживание мозгов, ментальное программирование, холодная война, киберпанк, зомби-апокалипсис.</li>
+<li><strong>Ключевой маркер:</strong> Агент Дэвид Мэйсон, его отец Алекс Мэйсон, и загадочные организации вроде Cordis Die.</li>
+<li><strong>Стиль повествования:</strong> Нелинейность, множественные концовки, элементы научной фантастики и хоррора.</li>
+</ul>
+<p><strong>Хронология событий:</strong></p>
+<ol>
+<li><strong>Call of Duty: World at War (2008):</strong> Предтеча подсерии. Впервые представлен режим "Зомби" и тема Тихоокеанского театра военных действий.</li>
+<li><strong>Call of Duty: Black Ops (2010):</strong> Основная история начинается с допроса Алекса Мейсона. Расследование событий Холодной войны, операций в Кубе, Вьетнаме и СССР. Главный злодей — Рауль Менендес.</li>
+<li><strong>Call of Duty: Black Ops II (2012):</strong> Первая игра с сюжетными развилками и несколькими концовками. Действие происходит в двух временных линиях: 1980-е годы и 2025 год. Противостояние с Раулем Менендесом и китайско-американский конфликт.</li>
+<li><strong>Call of Duty: Black Ops III (2015):</strong> Будущее, 2065 год. Технологии внедряются в тело человека (экзо-скелеты). Сюжет исследует тему потери человечности и искусственного интеллекта.</li>
+<li><strong>Call of Duty: Black Ops 4 (2018):</strong> Первая игра в серии без традиционной сюжетной кампании. Фокус на мультиплеере, режиме "Зомби" и королевской битве "Blackout".</li>
+<li><strong>Call of Duty: Black Ops Cold War (2020):</strong> Приквел к первой части Black Ops. События 1980-х годов, расследование деятельности шпиона "Персей".</li>
+<li><strong>Call of Duty: Black Ops 6 (2024):</strong> Возвращение к классическим элементам кампании. Действие в 1990-х годах, конец Холодной войны.</li>
+<li><strong>Call of Duty: Black Ops 7 (2025):</strong> Продолжение истории Дэвида Мейсона в 2035 году.</li>
+</ol>
+<hr>
+<h3 id="второстепенные-антологии-и-отдельные-проекты">Второстепенные антологии и отдельные проекты</h3>
+<p>Помимо двух главных линий, существуют другие подсерии и самостоятельные проекты, расширяющие вселенную.</p>
+<hr>
+<h4>Подсерия WWII и Vanguard</h4>
+<ul>
+<li><strong>Call of Duty: WWII (2017):</strong> Возвращение к истокам серии. Сеттинг Второй мировой войны, европейский театр военных действий. Акцент на исторической достоверности и братстве солдат.</li>
+<li><strong>Call of Duty — Vanguard (2021):</strong> Охватывает четыре театра военных действий Второй мировой войны — Западный фронт, Сталинград, Тихий океан и Северную Африку.</li>
+</ul>
+<hr>
+<h4>Постапокалипсис и Космос</h4>
+<ul>
+<li><strong>Call of Duty: Ghosts (2013):</strong> Будущее, где США потеряли свое доминирование. Главные герои — отряд элитных бойцов и их собака Лайтхаус.</li>
+<li><strong>Call of Duty: Advanced Warfare (2014):</strong> Футуристическая война с использованием экзо-скелетов. Тема корпоративных войн и экологических катастроф.</li>
+<li><strong>Call of Duty: Infinite Warfare (2016):</strong> Космическая опера. Конфликт между Землей (SATO) и колониями Марса (SDF). Использование космических кораблей и орбитальных платформ.</li>
+</ul>
+<hr>
+<h4>Спин-оффы и мобильные проекты</h4>
+<ul>
+<li><strong>Call of Duty Online:</strong> Бесплатная версия для китайского рынка (закрыта).</li>
+<li><strong>Call of Duty: Mobile:</strong> Условно-бесплатная игра для смартфонов, объединяющая контент из разных частей серии.</li>
+<li><strong>Call of Duty: Warzone / Warzone 2.0:</strong> Крупномасштабная бесплатная королевская битва, интегрирующая механики основных игр.</li>
+</ul>
+<hr>
+<h2 id="геймплей-и-игровая-механика">Геймплей и игровая механика</h2>
+<p>Игровой процесс Call of Duty подчинен жесткой формуле высокоскоростного боевика. Дизайн направлен на обеспечение быстрого темпа, минимального времени на обучение и максимальной динамики сражений.</p>
+<hr>
+<h3 id="базовая-формула-взаимодействия">Базовая формула взаимодействия</h3>
+<p>Процесс боя строится на последовательном выполнении действий, требующих высокой скорости реакции:</p>
+<ol>
+<li><strong>Позиционирование:</strong> Игрок занимает выгодную позицию на карте, используя укрытия и высоту.</li>
+<li><strong>Прицеливание (ADS):</strong> Переход в режим прицеливания через приклад оружия для повышения точности.</li>
+<li><strong>Ликвидация цели (TTK):</strong> Время до убийства (Time-to-Kill) в игре экстремально короткое. Это создает напряжение и требует быстрой стрельбы.</li>
+<li><strong>Награда (Killstreak):</strong> Получение очков за серии убийств, которые можно обменять на мощную поддержку или технику.</li>
+</ol>
+<hr>
+<h3 id="тайминг-и-баланс-урона">Тайминг и баланс урона</h3>
+<p>В серии наблюдается тенденция к сокращению времени до убийства (TTK). В ранних частях серии (например, Call of Duty 4) игроку требовалось несколько секунд непрерывной стрельбы для нейтрализации противника. В современных версиях (Modern Warfare 2, Black Ops Cold War) достаточно одного-двух попаданий в голову или корпус для мгновенного поражения.</p>
+<p>Такой подход меняет метагейм: приоритет смещается с точности стрельбы на скорость принятия решений и реакцию. Игроки учатся предугадывать движения противника и использовать преимущества ближнего боя.</p>
+<hr>
+<h3 id="система-передвижения">Система передвижения</h3>
+<p>Механика перемещения прошла значительную эволюцию от простого бега до сложного паркура.</p>
+<p><strong>Элементы мобильности:</strong></p>
+<ul>
+<li><strong>Бег и приседание:</strong> Базовые действия для изменения профиля цели.</li>
+<li><strong>Подкат (Slide Cancel):</strong> Быстрое скольжение по земле с последующим прыжком или выходом из него. Используется для резкого изменения траектории и сброса прицела противника.</li>
+<li><strong>Дельфин-дайвинг:</strong> Специфическое движение, позволяющее преодолевать препятствия и быстро менять высоту.</li>
+<li><strong>Стеноход (Wall Run):</strong> Возможность бегать по вертикальным поверхностям в определенных режимах и картах.</li>
+<li><strong>Лазание:</strong> Перепрыгивание через барьеры и стены.</li>
+</ul>
+<p>В режиме Blackout и Warzone механика передвижения дополняется возможностью использования транспортных средств и специального снаряжения.</p>
+<hr>
+<h3 id="модификация-оружия">Модификация оружия</h3>
+<p>Оружейная мастерская (Gunsmith) позволяет игрокам создавать уникальные конфигурации оружия, адаптированные под конкретный стиль игры.</p>
+<p><strong>Компоненты модификации:</strong></p>
+<ul>
+<li><strong>Приклады:</strong> Влияют на устойчивость, скорость прицеливания и подвижность.</li>
+<li><strong>Прицелы:</strong> Оптические прицелы различных типов (коллиматорные, коллиматорные с увеличением, тепловизоры).</li>
+<li><strong>Магазины:</strong> Емкость магазина, тип патронов (бронебойные, трассирующие).</li>
+<li><strong>Рукояти:</strong> Улучшение контроля отдачи и стабильности прицела.</li>
+<li><strong>Стволы:</strong> Длинна ствола влияет на дальность и урон.</li>
+<li><strong>Лазеры:</strong> Указатели цели для улучшения точности при стрельбе на ходу.</li>
+</ul>
+<p>Каждый компонент добавляет специфические бонусы или штрафы, что требует от игрока баланса между огневой мощью и маневренностью.</p>
+<hr>
+<h3 id="киллстрики-и-награды">Киллстрики и награды</h3>
+<p>Система наград за серии убийств (Killstreaks) мотивирует игроков к агрессивному стилю игры. Набирая очки за убийства, игрок получает доступ к мощным инструментам поддержки.</p>
+<p><strong>Типы наград:</strong></p>
+<ul>
+<li><strong>Тактическая поддержка:</strong> Дроны наблюдения, сигнальные ракеты, медицинские пакеты.</li>
+<li><strong>Огневая поддержка:</strong> Авианалеты, ракетные удары, артиллерийский огонь.</li>
+<li><strong>Техника:</strong> Танки, вертолеты, бронированные машины.</li>
+<li><strong>Спецсредства:</strong> Ядерные заряды, системы подавления связи.</li>
+</ul>
+<p>В некоторых режимах наличие киллстриков может быть ограничено или заменено на систему очков опыта, выдаваемых за выполнение задач.</p>
+<hr>
+<h2 id="архитектура-выполнения-и-техническая-база">Архитектура выполнения и техническая база</h2>
+<p>Call of Duty работает на проприетарном движке IW Engine (Infinity Ward Engine), который прошел глубокую модернизацию от итерации к итерации. Каждый новый выпуск серии сопровождается существенными улучшениями графики, физики и сетевого кода.</p>
+<hr>
+<h3 id="рендеринг-и-визуализация">Рендеринг и визуализация</h3>
+<p>Графический движок серии постоянно развивается для обеспечения высокого качества изображения и производительности.</p>
+<p><strong>Ключевые технологии:</strong></p>
+<ul>
+<li><strong>Частота кадров:</strong> Приоритет целевых показателей 60 FPS на консолях и 120 FPS на ПК и новых консолях (PS5, Xbox Series X/S). Режимы повышенной частоты кадров обеспечивают более плавную картинку и снижают задержку ввода.</li>
+<li><strong>Потоковая передача:</strong> Технология виртуального текстурирования позволяет мгновенно загружать высокодетализированные текстуры без прерывания процесса игры. Это обеспечивает высокую четкость изображений даже на больших расстояниях.</li>
+<li><strong>Освещение:</strong> Использование физически корректного рендеринга (PBR) для реалистичного отображения материалов и поверхностей. Внедрение трассировки лучей (Ray Tracing) в реальном времени для создания естественных теней, отражений и освещения.</li>
+<li><strong>Динамические эффекты:</strong> Реалистичные взрывы, разрушаемые объекты, погодные условия и эффекты погоды.</li>
+</ul>
+<hr>
+<h3 id="сетевая-архитектура-и-неткод">Сетевая архитектура и неткод</h3>
+<p>Многопользовательский режим требует надежной и отзывчивой сети для обеспечения честной игры.</p>
+<p><strong>Компоненты сети:</strong></p>
+<ul>
+<li><strong>Тикрейт серверов:</strong> Выделенные серверы с высокой частотой обновления данных (обычно 30 или 60 тиков в секунду). Это обеспечивает точную синхронизацию состояния игры между всеми участниками.</li>
+<li><strong>Компенсация задержки:</strong> Алгоритмы предсказания ввода (Lag Compensation) сглаживают влияние пинга. Сервер запоминает состояние игрока и корректирует попадания с учетом задержки передачи данных.</li>
+<li><strong>Инфраструктура:</strong> Облачные серверные кластеры Activision поддерживают кроссплей между различными платформами и регионами.</li>
+<li><strong>Античит:</strong> Проприетарный модуль ядра Ricochet Anti-Cheat для обнаружения инъекций кода, читов и нечестных практик. Система работает на уровне ядра операционной системы для максимального эффекта защиты.</li>
+</ul>
+<hr>
+<h3 id="разработка-и-циклы-выпуска">Разработка и циклы выпуска</h3>
+<p>Разработка игр серии осуществляется по трехлетнему циклу. Три основные студии (Infinity Ward, Treyarch, Sledgehammer Игры) работают по очереди, создавая новую игру каждый год.</p>
+<p><strong>Роли студий:</strong></p>
+<ul>
+<li><strong>Infinity Ward:</strong> Разработчик оригинальной серии и основной движок IW Engine. Часто берет на себя роль ведущего разработчика.</li>
+<li><strong>Treyarch:</strong> Специалист по режимам "Зомби" и глубокой проработке сюжета. Отвечает за инновации в механиках и сеттинге.</li>
+<li><strong>Sledgehammer Игры:</strong> Специализируется на оптимизации и создании качественного контента. Часто помогает другим студиям в разработке крупных проектов.</li>
+</ul>
+<hr>
+<h3 id="инструментарий-разработки">Инструментарий разработки</h3>
+<p>Для создания игр серии используются современные инструменты разработки и управления проектами.</p>
+<p><strong>Основные технологии:</strong></p>
+<ul>
+<li><strong>Движок:</strong> IW Engine (различные версии от 1.0 до 9.0).</li>
+<li><strong>Языки программирования:</strong> C++, C#, Python (для инструментов и скриптов).</li>
+<li><strong>Сстемы контроля версий:</strong> Git (Azure Repos).</li>
+<li><strong>CI/CD:</strong> Автоматизация сборки и развертывания через Azure DevOps.</li>
+<li><strong>Управление данными:</strong> SQL-базы данных для хранения статистики игроков и прогресса.</li>
+</ul>
+<hr>
+<h2 id="история-выхода-основных-игр">История выхода основных игр</h2>
+<p>Ниже представлен полный список основных игр серии Call of Duty с указанием года выпуска, платформы, движка и разработчика.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Название</th>
+<th align="left">Год</th>
+<th align="left">Платформы</th>
+<th align="left">Движок</th>
+<th align="left">Разработчики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Call of Duty</td>
+<td align="left">2003</td>
+<td align="left">Windows, macOS, PS3, X360</td>
+<td align="left">id Tech 3 (IW 1.0)</td>
+<td align="left">Infinity Ward</td>
+</tr>
+<tr>
+<td align="left">Call of Duty 2</td>
+<td align="left">2005</td>
+<td align="left">Windows, macOS, X360</td>
+<td align="left">IW 2.0</td>
+<td align="left">Infinity Ward</td>
+</tr>
+<tr>
+<td align="left">Call of Duty 3</td>
+<td align="left">2006</td>
+<td align="left">PS2, PS3, Wii, Xbox, X360</td>
+<td align="left">Treyarch NGL</td>
+<td align="left">Treyarch</td>
+</tr>
+<tr>
+<td align="left">Call of Duty 4: Modern Warfare</td>
+<td align="left">2007</td>
+<td align="left">Windows, macOS, PS3, X360, Wii</td>
+<td align="left">IW 3.0</td>
+<td align="left">Infinity Ward</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: World at War</td>
+<td align="left">2008</td>
+<td align="left">Windows, PS3, Wii, X360</td>
+<td align="left">IW 3.0 (модиф.)</td>
+<td align="left">Treyarch</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Modern Warfare 2</td>
+<td align="left">2009</td>
+<td align="left">Windows, macOS, PS3, X360</td>
+<td align="left">IW 4.0</td>
+<td align="left">Infinity Ward</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Black Ops</td>
+<td align="left">2010</td>
+<td align="left">Windows, macOS, PS3, Wii, X360</td>
+<td align="left">IW 3.0 (на базе WaW)</td>
+<td align="left">Treyarch</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Modern Warfare 3</td>
+<td align="left">2011</td>
+<td align="left">Windows, PS3, X360, Wii</td>
+<td align="left">MW3 Engine (IW 5.0)</td>
+<td align="left">Infinity Ward, Sledgehammer Игры</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Black Ops II</td>
+<td align="left">2012</td>
+<td align="left">Windows, PS3, Wii U, X360</td>
+<td align="left">Black Ops 2 Engine (IW 3.0)</td>
+<td align="left">Treyarch</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Ghosts</td>
+<td align="left">2013</td>
+<td align="left">Windows, PS3, PS4, Wii U, X360, XONE</td>
+<td align="left">IW 6.0</td>
+<td align="left">Infinity Ward</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Advanced Warfare</td>
+<td align="left">2014</td>
+<td align="left">Windows, PS3, PS4, X360, XONE</td>
+<td align="left">IW 5.0 (модиф.)</td>
+<td align="left">Sledgehammer Игры</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Black Ops III</td>
+<td align="left">2015</td>
+<td align="left">Windows, macOS, PS3, PS4, X360, XONE</td>
+<td align="left">Black Ops 3 Engine (IW 3.0)</td>
+<td align="left">Treyarch</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Infinite Warfare</td>
+<td align="left">2016</td>
+<td align="left">Windows, PS4, XONE</td>
+<td align="left">IW 7.0</td>
+<td align="left">Infinity Ward</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: WWII</td>
+<td align="left">2017</td>
+<td align="left">Windows, PS4, XONE</td>
+<td align="left">IW 7.0 (модиф.)</td>
+<td align="left">Sledgehammer Игры</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Black Ops 4</td>
+<td align="left">2018</td>
+<td align="left">Windows, PS4, XONE</td>
+<td align="left">Black Ops 4 Engine (IW 3.0)</td>
+<td align="left">Treyarch</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Modern Warfare</td>
+<td align="left">2019</td>
+<td align="left">Windows, PS4, XONE</td>
+<td align="left">IW 8.0</td>
+<td align="left">Infinity Ward</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Black Ops Cold War</td>
+<td align="left">2020</td>
+<td align="left">Windows, PS4, PS5, XONE, X</td>
+<td align="left">S</td>
+<td align="left">IW 3.0 (гибрид IW 8.0)</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Vanguard</td>
+<td align="left">2021</td>
+<td align="left">Windows, PS4, PS5, XONE, X</td>
+<td align="left">S</td>
+<td align="left">IW 8.0</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Modern Warfare II</td>
+<td align="left">2022</td>
+<td align="left">Windows, PS4, PS5, XONE, X</td>
+<td align="left">S</td>
+<td align="left">IW 9.0</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Modern Warfare III</td>
+<td align="left">2023</td>
+<td align="left">Windows, PS4, PS5, XONE, X</td>
+<td align="left">S</td>
+<td align="left">IW 9.0</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Black Ops 6</td>
+<td align="left">2024</td>
+<td align="left">Windows, PS4, PS5, XONE, X</td>
+<td align="left">S</td>
+<td align="left">IW 9.0 (модиф.)</td>
+</tr>
+<tr>
+<td align="left">Call of Duty: Black Ops 7</td>
+<td align="left">2025</td>
+<td align="left">Windows, PS5, X</td>
+<td align="left">S</td>
+<td align="left">IW 9.0</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="режим-zombies">Режим Zombies</h2>
+<p>Подрежим кооперативного выживания против волн нежити, впервые появившийся в <strong>Call of Duty: World at War</strong> (2008) и ставший флагманом линейки <strong>Black Ops</strong>.</p>
+<hr>
+<h3 id="эволюция-механик">Эволюция механик</h3>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WaW / BO1</strong></td>
+<td>Раунды, баррикады, "Pack-a-Punch", сюжетные "пасхалки" (Easter eggs)</td>
+</tr>
+<tr>
+<td><strong>BO2</strong></td>
+<td>Миссии TranZit/Die Rise, система построек</td>
+</tr>
+<tr>
+<td><strong>BO3</strong></td>
+<td>Кастомные зомби, сюжетная "Shadows of Evil", древние Apothicons</td>
+</tr>
+<tr>
+<td><strong>BO4</strong></td>
+<td>Кампания Zombies отдельно от мультиплеера; режим <strong>Blackout</strong> (королева битва)</td>
+</tr>
+<tr>
+<td><strong>BO Cold War</strong></td>
+<td>Интеграция с Warzone, Dark Aether</td>
+</tr>
+<tr>
+<td><strong>BO6</strong></td>
+<td>Возврат классической кампании + Zombies</td>
+</tr>
+</tbody>
+</table>
+<p>Игроки открывают секреты карт (радиопередачи, ритуалы, цепочки квестов), прокачивают оружие и кооперируются на 2–4 человек. <strong>Treyarch</strong> традиционно ведёт Zombies; сюжетные арки связывают <strong>Сэм Риктор</strong>, <strong>Эдвард Ричтхофен</strong>, <strong>Максис</strong> и измерение <strong>Aether</strong>.</p>
+<hr>
+<h3 id="zombies-и-warzone">Zombies и Warzone</h3>
+<p>С <strong>Cold War</strong> вселенная Zombies связана с <strong>Call of Duty: Warzone</strong> (2020) — бесплатная королева битва на 150 игроков с интеграцией прогресса Black Ops и сезонными "вторжениями" нежити. Модель <strong>Battle Pass</strong> и кросс-платформенный прогресс сделали Zombies частью ежегодной live-service экосистемы Activision.</p>
+<hr>
+<h2 id="влияние-на-индустрию">Влияние на индустрию</h2>
+<p>Серия Call of Duty оказала фундаментальное влияние на развитие игровой индустрии, переписав правила дистрибуции, монетизации и продвижения видеоигр.</p>
+<hr>
+<h3 id="индустриальный-стандарт-ежегодных-релизов">Индустриальный стандарт ежегодных релизов</h3>
+<p>Франшиза установила модель конвейерной разработки, когда три студии работают по очереди, выпуская новую игру каждый год. Этот подход позволил поддерживать постоянный интерес аудитории и обеспечивать стабильный поток доходов для издателя.</p>
+<hr>
+<h3 id="киберспортивный-плацдарм">Киберспортивный плацдарм</h3>
+<p>Call of Duty стала одной из первых серий, которая системно развивала киберспорт. Создание Call of Duty League (CDL) с миллионными франшизными взносами превратило игру в полноценный профессиональный спорт. Турниры собирают огромные аудитории, а игроки получают высокие зарплаты и спонсорскую поддержку.</p>
+<hr>
+<h3 id="эволюция-f2p-сегмента">Эволюция f2p-сегмента</h3>
+<p>Выпуск Call of Duty: Warzone закрепил доминирование модели free-to-play с элементами внутриигровых покупок. Боевые пропуска (Battle Pass) стали стандартом монетизации, заменив традиционные платные DLC. Эта модель позволила привлечь миллионы новых игроков и создать устойчивую экосистему.</p>
+<hr>
+<h3 id="медийное-доминирование">Медийное доминирование</h3>
+<p>Бренд Call of Duty стал синонимом поп-культурного феномена. Игры серии активно обсуждаются в медиа, появляются фильмы, сериалы и книги по мотивам вселенной. Мерчандайзинг и коллаборации с другими брендами расширили аудиторию за пределы традиционных геймеров.</p>
+<hr>
+<h3 id="технологические-инновации">Технологические инновации</h3>
+<p>Разработка серии стимулировала появление новых технологий в области графики, сетевых протоколов и искусственного интеллекта. Многие решения, внедренные в Call of Duty, позже были использованы в других проектах и отраслях.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-call-of-duty">Что такое Call of Duty</a></li><li class="article-toc__item"><a href="#нарративная-экосистема-и-вселенная">Нарративная экосистема и вселенная</a></li><li class="article-toc__item is-h3"><a href="#линия-modern-warfare-infinity-ward">Линия Modern Warfare (Infinity Ward)</a></li><li class="article-toc__item is-h3"><a href="#линия-black-ops-treyarch">Линия Black Ops (Treyarch)</a></li><li class="article-toc__item is-h3"><a href="#второстепенные-антологии-и-отдельные-проекты">Второстепенные антологии и отдельные проекты</a></li><li class="article-toc__item"><a href="#геймплей-и-игровая-механика">Геймплей и игровая механика</a></li><li class="article-toc__item is-h3"><a href="#базовая-формула-взаимодействия">Базовая формула взаимодействия</a></li><li class="article-toc__item is-h3"><a href="#тайминг-и-баланс-урона">Тайминг и баланс урона</a></li><li class="article-toc__item is-h3"><a href="#система-передвижения">Система передвижения</a></li><li class="article-toc__item is-h3"><a href="#модификация-оружия">Модификация оружия</a></li><li class="article-toc__item is-h3"><a href="#киллстрики-и-награды">Киллстрики и награды</a></li><li class="article-toc__item"><a href="#архитектура-выполнения-и-техническая-база">Архитектура выполнения и техническая база</a></li><li class="article-toc__item is-h3"><a href="#рендеринг-и-визуализация">Рендеринг и визуализация</a></li><li class="article-toc__item is-h3"><a href="#сетевая-архитектура-и-неткод">Сетевая архитектура и неткод</a></li><li class="article-toc__item is-h3"><a href="#разработка-и-циклы-выпуска">Разработка и циклы выпуска</a></li><li class="article-toc__item is-h3"><a href="#инструментарий-разработки">Инструментарий разработки</a></li><li class="article-toc__item"><a href="#история-выхода-основных-игр">История выхода основных игр</a></li><li class="article-toc__item"><a href="#режим-zombies">Режим Zombies</a></li><li class="article-toc__item is-h3"><a href="#эволюция-механик">Эволюция механик</a></li><li class="article-toc__item is-h3"><a href="#zombies-и-warzone">Zombies и Warzone</a></li><li class="article-toc__item"><a href="#влияние-на-индустрию">Влияние на индустрию</a></li><li class="article-toc__item is-h3"><a href="#индустриальный-стандарт-ежегодных-релизов">Индустриальный стандарт ежегодных релизов</a></li><li class="article-toc__item is-h3"><a href="#киберспортивный-плацдарм">Киберспортивный плацдарм</a></li><li class="article-toc__item is-h3"><a href="#эволюция-f2p-сегмента">Эволюция f2p-сегмента</a></li><li class="article-toc__item is-h3"><a href="#медийное-доминирование">Медийное доминирование</a></li><li class="article-toc__item is-h3"><a href="#технологические-инновации">Технологические инновации</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

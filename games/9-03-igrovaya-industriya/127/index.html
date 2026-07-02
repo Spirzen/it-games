@@ -1,0 +1,755 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>UGC-платформы — Roblox, Fortnite Creative и аналоги — Игры IT Universe</title><meta name="description" content="User-generated content, как устроены платформы, где игрок создаёт игры, монетизация и карьера молодого разработчика."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">UGC-платформы — Roblox, Fortnite Creative и аналоги</span></li></ol></nav><header class="portal-hero"> <h1>UGC-платформы — Roblox, Fortnite Creative и аналоги</h1> <p>User-generated content, как устроены платформы, где игрок создаёт игры, монетизация и карьера молодого разработчика.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="UGC-платформы — Roblox, Fortnite Creative и аналоги" data-url="/games/9-03-igrovaya-industriya/127">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="UGC-платформы — Roblox, Fortnite Creative и аналоги">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>UGC-платформы — Roblox, Fortnite Creative и аналоги</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<p><strong>UGC</strong> (user-generated content) в играх — когда <strong>игроки создают контент</strong> для других: миры, режимы, скины, моды. Платформа даёт движок, хостинг, discovery и магазин; автор получает долю выручки. Это главный вход в геймдев для подростков и инди без собственной студии. См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/2">Roblox dev</a>, <a href="./126">live-service</a>, <a href="./115">монетизацию</a>.</p>
+<hr>
+<h2 id="словарь">Словарь</h2>
+<ul>
+<li><strong>UGC</strong> — user-generated content; контент от пользователей.</li>
+<li><strong>Experience / Place</strong> — отдельная игра на Roblox.</li>
+<li><strong>Universe</strong> — связанные places под одним hub (Roblox terminology evolves).</li>
+<li><strong>UEFN</strong> — Unreal Editor for Fortnite; редактор островов.</li>
+<li><strong>Verse</strong> — язык программирования Epic для UEFN.</li>
+<li><strong>Creative 2.0</strong> — Fortnite creative tools до UEFN.</li>
+<li><strong>Luau</strong> — язык Roblox (форк Lua 5.1).</li>
+<li><strong>Roblox Studio</strong> — IDE для создания experiences.</li>
+<li><strong>Robux</strong> — premium валюта Roblox.</li>
+<li><strong>DevEx</strong> — Developer Exchange; вывод Robux в USD.</li>
+<li><strong>Game Pass</strong> — разовая покупка доступа к фичам experience.</li>
+<li><strong>Developer Product</strong> — consumable покупки (валюта, revives).</li>
+<li><strong>Private Server</strong> — платный VIP сервер в experience.</li>
+<li><strong>Premium Payouts</strong> — выплаты за время Premium subscribers в game.</li>
+<li><strong>Impressions / discovery</strong> — алгоритм рекомендаций на home page.</li>
+<li><strong>D1 / D7 / D30 retention</strong> — удержание на 1, 7, 30 день.</li>
+<li><strong>Session length</strong> — средняя длина сессии.</li>
+<li><strong>CCU</strong> — concurrent users online в experience.</li>
+<li><strong>Steam Workshop</strong> — мод-платформа Steam для supported games.</li>
+<li><strong>Datapack / addon</strong> — user content Minecraft Java/Bedrock.</li>
+<li><strong>IP / DMCA</strong> — авторское право и takedown notices.</li>
+<li><strong>Revenue share</strong> — процент автору vs платформе.</li>
+<li><strong>Meta layer</strong> — игра внутри платформы (Roblox obby meta trends).</li>
+</ul>
+<hr>
+<h2 id="платформы-обзор">Платформы — обзор</h2>
+<table>
+<thead>
+<tr>
+<th>Платформа</th>
+<th>Что создают</th>
+<th>Инструмент</th>
+<th>Monetization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Roblox</strong></td>
+<td>Experiences</td>
+<td>Luau, Studio</td>
+<td>Robux, DevEx</td>
+</tr>
+<tr>
+<td><strong>Fortnite UEFN</strong></td>
+<td>Islands</td>
+<td>Verse, Unreal</td>
+<td>Engagement payouts, island codes</td>
+</tr>
+<tr>
+<td><strong>Minecraft</strong></td>
+<td>Servers, maps, datapacks</td>
+<td>Java plugins, Bedrock addons</td>
+<td>Server donations, Marketplace</td>
+</tr>
+<tr>
+<td><strong>Dreams</strong></td>
+<td>Games, assets</td>
+<td>In-engine tools</td>
+<td>Limited commercial</td>
+</tr>
+<tr>
+<td><strong>Steam Workshop</strong></td>
+<td>Mods</td>
+<td>Game-specific SDKs</td>
+<td>Donations, some paid mods</td>
+</tr>
+<tr>
+<td><strong>Garry's Mod / CS2 Workshop</strong></td>
+<td>Maps, skins</td>
+<td>Hammer, Source tools</td>
+<td>Steam market cut</td>
+</tr>
+<tr>
+<td><strong>Rec Room</strong></td>
+<td>Rooms, games</td>
+<td>In-game maker</td>
+<td>Platform-specific</td>
+</tr>
+</tbody>
+</table>
+<p>Учебный маршрут Roblox — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/203">раздел 9.04</a>.</p>
+<hr>
+<h2 id="roblox-deep-dive">Roblox — deep dive</h2>
+<h3 id="экосистема">Экосистема</h3>
+<ul>
+<li><strong>300M+ MAU</strong> (публичные оценки; меняется quarterly).</li>
+<li>Аудитория молодая; core 9–15, но растёт older cohort.</li>
+<li>Mobile + PC + Xbox + VR clients.</li>
+</ul>
+<h3 id="roblox-studio">Roblox Studio</h3>
+<ul>
+<li>Free IDE; drag-and-drop + scripting.</li>
+<li><strong>Toolbox</strong> — assets от community (проверяйте licenses).</li>
+<li><strong>Team Create</strong> — collaborative editing.</li>
+<li><strong>Publishing</strong> — experience goes to Roblox cloud hosting.</li>
+</ul>
+<h3 id="luau-язык">Luau язык</h3>
+<ul>
+<li>Typed Lua evolution; <code>local</code>, tables, modules.</li>
+<li><strong>RemoteEvents / RemoteFunctions</strong> — client-server communication.</li>
+<li><strong>DataStoreService</strong> — persistent player data (with limits and retry logic).</li>
+</ul>
+<p>Пример простого server script:</p>
+<pre><code class="language-lua">local Players = game:GetService("Players")
+
+Players.PlayerAdded:Connect(function(player)
+    print(player.Name .. " joined")
+end)
+</code></pre>
+<p>Подробнее — <a href="https://spirzen.ru/encyclopedia/5-languages/5-15-lua-i-luau/intro">Luau</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/2">Roblox dev</a>.</p>
+<h3 id="monetization-на-roblox">Monetization на Roblox</h3>
+<ul>
+<li><strong>Game Pass</strong> — one-time unlock (VIP, double coins).</li>
+<li><strong>Developer Products</strong> — repeatable purchases.</li>
+<li><strong>Private Servers</strong> — monthly Robux from owner.</li>
+<li><strong>Premium Payouts</strong> — share of pool based on Premium player time in your game.</li>
+<li><strong>Avatar items (UGC)</strong> — separate pipeline for wearable creation (approved creators).</li>
+</ul>
+<h3 id="devex-developer-exchange">DevEx (Developer Exchange)</h3>
+<ul>
+<li>Конвертация earned Robux → USD.</li>
+<li><strong>Requirements</strong> (типично, проверяйте актуальные ToS):
+<ul>
+<li>Verified identity 13+.</li>
+<li>Minimum Robux balance threshold (e.g. 30,000+ historically).</li>
+<li>DevEx portal application approved.</li>
+</ul>
+</li>
+<li><strong>Exchange rate</strong> — не 1:1 с player Robux purchase price; platform takes significant cut before DevEx.</li>
+</ul>
+<h3 id="discovery-algorithm">Discovery algorithm</h3>
+<ul>
+<li>Home page recommendations, Search, Sorts (Popular, Top Earning).</li>
+<li><strong>Thumbnail and title</strong> — CTR critical.</li>
+<li><strong>Retention metrics</strong> — D1/D7 affect ranking strongly.</li>
+<li><strong>Sponsored experiences</strong> — paid placement option.</li>
+</ul>
+<h3 id="analytics-creator-dashboard">Analytics (Creator Dashboard)</h3>
+<ul>
+<li><strong>Overview</strong>: visits, playtime, revenue.</li>
+<li><strong>Engagement</strong>: D1/D7 retention cohorts.</li>
+<li><strong>Monetization</strong>: ARPPU, conversion.</li>
+<li><strong>Acquisition</strong>: source of joins.</li>
+</ul>
+<p>Optimize: if D1 low — onboarding tutorial broken; if D7 low — mid-game loop weak.</p>
+<h3 id="safety-для-teen-developers">Safety для teen developers</h3>
+<ul>
+<li><strong>Chat filters</strong> — automatic moderation.</li>
+<li><strong>Reporting</strong> — player and content reports.</li>
+<li><strong>Do not share personal info</strong> in game or Discord linked publicly.</li>
+<li><strong>Parental controls</strong> — spending limits.</li>
+<li><strong>Third-party Discord servers</strong> — scam "free Robux" phishing.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-11-dlya-detey/2-video-games/27">Godot для детей</a> для альтернатив без platform economy pressure.</p>
+<h3 id="типичные-жанры-на-roblox">Типичные жанры на Roblox</h3>
+<ul>
+<li>Obby (obstacle course).</li>
+<li>Simulator (grind + rebirth).</li>
+<li>Tycoon.</li>
+<li>Roleplay (Brookhaven-style).</li>
+<li>Horror (Doors, Piggy legacy).</li>
+</ul>
+<p>Meta shifts quickly; copy trending genre with twist faster than inventing new genre alone.</p>
+<hr>
+<h2 id="fortnite-uefn-и-verse">Fortnite UEFN и Verse</h2>
+<h3 id="uefn-unreal-editor-for-fortnite">UEFN (Unreal Editor for Fortnite)</h3>
+<ul>
+<li>PC-only editor; based on Unreal Engine 5.</li>
+<li>Publish <strong>islands</strong> players access via Fortnite client.</li>
+<li>Uses Fortnite assets, physics, networking stack.</li>
+</ul>
+<h3 id="verse">Verse</h3>
+<ul>
+<li>Язык Epic для логики островов и будущего <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/129">UE6</a>.</li>
+<li>Статическая типизация, <strong>failable</strong>-выражения, транзакции <code>&#x3C;transacts></code>, асинхронность <code>suspends</code>.</li>
+<li>Скрипты цепляют к <strong>devices</strong> (кнопки, таймеры, спавнеры).</li>
+<li>Полный разбор синтаксиса — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/130">Verse</a>.</li>
+<li>Если знаете <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/4">Blueprints</a> или <a href="https://spirzen.ru/encyclopedia/5-languages/5-06-cpp/22">C++</a> — концепции те же, синтаксис другой.</li>
+</ul>
+<h3 id="monetization-uefn">Monetization UEFN</h3>
+<ul>
+<li><strong>Engagement payouts</strong> — Epic pays creators based on engagement metrics (program rules evolve).</li>
+<li><strong>Island codes</strong> — share <code>1234-5678-9012</code> for direct access.</li>
+<li>Not full Roblox-style open shop yet; model differs watch Epic announcements.</li>
+</ul>
+<h3 id="marketing">Marketing</h3>
+<ul>
+<li>Social clips on TikTok, YouTube Shorts.</li>
+<li>Featured in Fortnite Discover if quality high.</li>
+</ul>
+<h3 id="limits">Limits</h3>
+<ul>
+<li>Cannot export standalone exe; tied to Fortnite platform.</li>
+<li>IP restrictions — no unlicensed Marvel etc. unless Epic collab window.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/4">Unreal</a>, <a href="./126">live-service Fortnite section</a>.</p>
+<hr>
+<h2 id="minecraft">Minecraft</h2>
+<h3 id="java-edition-servers">Java Edition servers</h3>
+<ul>
+<li><strong>Plugins</strong> (Spigot, Paper) — minigames, economy.</li>
+<li>Hosting: self-host VPS or Apex, BisectHosting.</li>
+<li>Monetization: <strong>donations</strong> for ranks (EULA restrictions — no pay-to-win on Mojang rules read official EULA).</li>
+</ul>
+<h3 id="bedrock-marketplace">Bedrock Marketplace</h3>
+<ul>
+<li>Approved creators sell maps, texture packs.</li>
+<li>Application process; revenue share with Mojang.</li>
+</ul>
+<h3 id="datapacks-mods">Datapacks / mods</h3>
+<ul>
+<li>Java datapacks for vanilla-friendly content.</li>
+<li>Forge/Fabric mods — distribution on CurseForge, Modrinth.</li>
+</ul>
+<h3 id="education-edition">Education Edition</h3>
+<ul>
+<li>Classroom use; limited monetization.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-11-dlya-detey/5-kod/intro">программирование для детей</a>.</p>
+<hr>
+<h2 id="steam-workshop">Steam Workshop</h2>
+<h3 id="model">Model</h3>
+<ul>
+<li>Mods for games that enable Workshop (Skyrim, Cities: Skylines, CS2 skins/maps).</li>
+<li><strong>Revenue</strong>: often free mods; some games paid mods with Steam cut 25% platform + game dev share.</li>
+</ul>
+<h3 id="publishing-workflow">Publishing workflow</h3>
+<ul>
+<li>Create item in SDK (Garry's Mod Hammer, etc.).</li>
+<li>Upload to Workshop; subscribe model for players.</li>
+</ul>
+<h3 id="limits">Limits</h3>
+<ul>
+<li>No standalone game; depends on base game ownership.</li>
+<li>IP DMCA takedowns common for unlicensed assets.</li>
+</ul>
+<hr>
+<h2 id="экономика-revenue-share">Экономика revenue share</h2>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Creator share (approx)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roblox DevEx</td>
+<td>~25–30% of player spend reaches creator before tax</td>
+<td>Complex multi-step cut</td>
+</tr>
+<tr>
+<td>Epic UEFN</td>
+<td>Engagement pool</td>
+<td>Not direct player purchase mostly</td>
+</tr>
+<tr>
+<td>Minecraft Marketplace</td>
+<td>~50%+ after platform</td>
+<td>Creator program approval</td>
+</tr>
+<tr>
+<td>Steam Workshop paid</td>
+<td>~25% creator after splits</td>
+<td>Varies by game</td>
+</tr>
+<tr>
+<td>App Store mobile UGC</td>
+<td>70/30 or 85/15 small business</td>
+<td>If standalone app</td>
+</tr>
+</tbody>
+</table>
+<p>Always read <strong>current ToS</strong>; numbers change.</p>
+<hr>
+<h2 id="ip-и-dmca">IP и DMCA</h2>
+<h3 id="risks">Risks</h3>
+<ul>
+<li>Using Marvel characters, copyrighted music, trademark logos → <strong>takedown</strong> or account ban.</li>
+<li><strong>Roblox moderation</strong> automated + reports.</li>
+<li><strong>Epic</strong> strict on Fortnite IP guidelines.</li>
+</ul>
+<h3 id="safe-practices">Safe practices</h3>
+<ul>
+<li>Original art and audio.</li>
+<li>Licensed asset packs from Marketplace with commercial rights.</li>
+<li>Parody not always safe; consult guidelines.</li>
+</ul>
+<h3 id="dmca-process">DMCA process</h3>
+<ul>
+<li>Rights holder sends notice → platform removes content.</li>
+<li>Counter-notice if wrongful (legal process).</li>
+</ul>
+<p>We do not provide legal advice. For RU tax light notes see below.</p>
+<hr>
+<h2 id="аналитика-d1d7-практика">Аналитика D1/D7 — практика</h2>
+<h3 id="definitions">Definitions</h3>
+<ul>
+<li><strong>D1 retention</strong>: players who return day after first session / total new installs.</li>
+<li><strong>D7</strong>: return on day 7 cohort.</li>
+</ul>
+<h3 id="benchmarks-roblox-rough">Benchmarks (Roblox rough)</h3>
+<ul>
+<li>D1 > 20% decent for many genres; top games 40%+.</li>
+<li>D7 > 10% strong; depends genre.</li>
+</ul>
+<h3 id="how-to-improve">How to improve</h3>
+<ul>
+<li><strong>Onboarding</strong>: teach core loop in 60 seconds.</li>
+<li><strong>First session reward</strong>: hook progression.</li>
+<li><strong>Day 2 login bonus</strong>: scheduled push (platform policies on notifications).</li>
+</ul>
+<h3 id="tools">Tools</h3>
+<ul>
+<li>Roblox Analytics dashboard.</li>
+<li>Custom events via AnalyticsService in Luau.</li>
+<li>External: GameAnalytics SDK where supported.</li>
+</ul>
+<hr>
+<h2 id="marketing-on-platform">Marketing on platform</h2>
+<h3 id="on-platform">On-platform</h3>
+<ul>
+<li>Thumbnail A/B testing (update weekly).</li>
+<li>Title SEO keywords ("Simulator", "Tycoon").</li>
+<li>Sponsored ads Roblox if budget.</li>
+<li>Update log posts to followers.</li>
+</ul>
+<h3 id="off-platform">Off-platform</h3>
+<ul>
+<li>TikTok, YouTube Shorts gameplay clips.</li>
+<li>Discord community server for testers.</li>
+<li>Devlogs on Twitter/X.</li>
+</ul>
+<h3 id="influencer">Influencer</h3>
+<ul>
+<li>Pay Roblox YouTuber for sponsored play — ROI track via code deep link if available.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/1-basics/1-28-marketing-i-rasprostranenie/intro">маркeting</a>.</p>
+<hr>
+<h2 id="team-building">Team building</h2>
+<h3 id="solo-vs-team">Solo vs team</h3>
+<ul>
+<li>Solo viable for small obby; simulators often need builder + scripter.</li>
+<li><strong>Split roles</strong>: 3D builder, Luau programmer, UI designer, marketer.</li>
+</ul>
+<h3 id="collaboration-tools">Collaboration tools</h3>
+<ul>
+<li>Roblox Team Create.</li>
+<li>Discord voice while building.</li>
+<li>Trello for task board.</li>
+</ul>
+<h3 id="revenue-split">Revenue split</h3>
+<ul>
+<li>Written agreement between teens and parents involved.</li>
+<li>Percent split before success prevents drama.</li>
+</ul>
+<h3 id="hiring">Hiring</h3>
+<ul>
+<li>Roblox DevForum, Discord hire channels.</li>
+<li>Pay per asset or rev-share; rev-share risky if game flops.</li>
+</ul>
+<hr>
+<h2 id="legal-и-налоги-ru-light-overview">Legal и налоги (RU — light overview)</h2>
+<div class="callout callout--info">
+  <div class="callout-title">Не юридическая консультация</div>
+  <div class="callout-body">
+  <p>Налоги и статус зависят от возраста, суммы и законодательства. Сверяйтесь с бухгалтером и актуальным НК РФ.</p>
+  </div>
+</div>
+<ul>
+<li><strong>DevEx income</strong> — foreign platform payout; may require declaration as income for tax residents RF.</li>
+<li><strong>Self-employed (самозанятый)</strong> — возможен режим при соответствии лимитам и типу дохода; проверьте коды услуг и лимит 2.4M rub/year.</li>
+<li><strong>Minor developer</strong> — income may go through parent/guardian accounting.</li>
+<li><strong>No legal entity required</strong> at small scale; at scale consider ИП.</li>
+</ul>
+<hr>
+<h2 id="карьерная-лadder">Карьерная лadder</h2>
+<ol>
+<li><strong>Tutorial games</strong> — copy Obby Dev tutorial; learn Studio.</li>
+<li><strong>First published experience</strong> — playtest with friends; fix D1.</li>
+<li><strong>Moderate success</strong> — 100+ CCU peak; reinvest in art.</li>
+<li><strong>Hit</strong> — top sort page; DevEx eligible; hire helpers.</li>
+<li><strong>Mini-studio</strong> — 3–5 people brand; multiple experiences.</li>
+<li><strong>Exit to industry</strong> — portfolio → Unity/Unreal junior (<a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/11">дорожная карта</a>).</li>
+<li><strong>Or stay platform-native</strong> — some studios live only on Roblox years.</li>
+</ol>
+<hr>
+<h2 id="моддинг-и-ugc-платформа-сравнение">Моддинг и UGC-платформа — сравнение</h2>
+<table>
+<thead>
+<tr>
+<th>Критерий</th>
+<th>Мод (traditional)</th>
+<th>UGC-платформа</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Хостинг</td>
+<td>Self or game server</td>
+<td>Platform cloud</td>
+</tr>
+<tr>
+<td>Discovery</td>
+<td>Forum, Nexusmods</td>
+<td>In-app algorithm</td>
+</tr>
+<tr>
+<td>Monetization</td>
+<td>Donation, Patreon</td>
+<td>Built-in shop</td>
+</tr>
+<tr>
+<td>Tools</td>
+<td>Game SDK, Blender</td>
+<td>Integrated Studio</td>
+</tr>
+<tr>
+<td>Audience</td>
+<td>Must own base game</td>
+<td>Free-to-play platform</td>
+</tr>
+<tr>
+<td>Legal</td>
+<td>Game EULA mod section</td>
+<td>Platform ToS + DevEx rules</td>
+</tr>
+<tr>
+<td>Age demographic</td>
+<td>Varies</td>
+<td>Often younger on Roblox</td>
+</tr>
+<tr>
+<td>Path to studio</td>
+<td>Portfolio mod</td>
+<td>DevEx revenue proof</td>
+</tr>
+<tr>
+<td>Engine export</td>
+<td>Sometimes</td>
+<td>Rarely leaves platform</td>
+</tr>
+<tr>
+<td>Live updates</td>
+<td>Patch breaks mods</td>
+<td>Platform handles compatibility layer</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="teen-developer-safety-extended">Teen developer safety — extended</h2>
+<ul>
+<li>Enable 2FA on Roblox/Epic accounts.</li>
+<li>Never share password or "verify account" links.</li>
+<li>Adults offering "partnership" in DMs — verify identity.</li>
+<li>Rev-share contracts in writing with guardian for minors.</li>
+<li>Limit playtest invites to trusted friends first.</li>
+<li>Report inappropriate content via platform tools.</li>
+</ul>
+<hr>
+<h2 id="риски-платформы">Риски платформы</h2>
+<ul>
+<li>Algorithm change drops visits overnight.</li>
+<li>Account ban for ToS violation — lost revenue.</li>
+<li>Platform shutdown unlikely for Roblox/Fortnite scale but dependency remains.</li>
+<li><strong>Scope creep</strong> — forever updating live game burnout.</li>
+</ul>
+<p>См. <a href="./126">live-service risks</a>, <a href="./111">студии</a>.</p>
+<hr>
+<h2 id="faq">FAQ</h2>
+<p><strong>Что такое UGC в играх?</strong>
+Контент, созданный игроками для других игроков на платформе.</p>
+<p><strong>С чего начать на Roblox?</strong>
+Roblox Studio + официальные tutorials + Luau basics.</p>
+<p><strong>Что такое Luau?</strong>
+Язык скриптов Roblox на базе Lua.</p>
+<p><strong>Что такое DevEx?</strong>
+Программа вывода заработанных Robux в реальные деньги.</p>
+<p><strong>Сколько Robux нужно для DevEx?</strong>
+Порог меняется; смотрите официальный Roblox DevEx page.</p>
+<p><strong>Сколько процентов берёт Roblox?</strong>
+Большая часть player spend не доходит до creator; effective cut high.</p>
+<p><strong>Что такое Game Pass?</strong>
+Разовая покупка внутри experience.</p>
+<p><strong>Что такое Developer Product?</strong>
+Consumable покупка (coins, revives).</p>
+<p><strong>Что такое Premium Payouts?</strong>
+Выплаты за время Premium подписчиков в вашей игре.</p>
+<p><strong>Что такое UEFN?</strong>
+Unreal Editor for Fortnite для создания островов.</p>
+<p><strong>Что такое Verse?</strong>
+Язык Epic для логики UEFN.</p>
+<p><strong>Можно ли заработать на Fortnite Creative?</strong>
+Engagement payouts по правилам Epic; не прямой Roblox-style shop.</p>
+<p><strong>Что такое island code?</strong>
+Код для прямого доступа к карте в Fortnite.</p>
+<p><strong>Minecraft monetization legal?</strong>
+Читайте Mojang EULA; pay-to-win restrictions on public servers.</p>
+<p><strong>Что такое Steam Workshop?</strong>
+Платформа модов Steam для поддерживаемых игр.</p>
+<p><strong>Что такое D1 retention?</strong>
+Возврат игроков на следующий день после первого визита.</p>
+<p><strong>Что такое D7?</strong>
+Возврат на 7-й день — метрика mid-term engagement.</p>
+<p><strong>Что такое CCU?</strong>
+Concurrent users — одновременно онлайн.</p>
+<p><strong>Как улучшить discovery Roblox?</strong>
+Thumbnail, retention, updates, sponsored if budget.</p>
+<p><strong>Можно ли использовать Marvel в Roblox?</strong>
+Нет без license; DMCA risk.</p>
+<p><strong>Что такое DMCA takedown?</strong>
+Удаление контента по жалобе правообладателя.</p>
+<p><strong>Нужна ли команда?</strong>
+Не обязательно; hit games often 2–3 person team.</p>
+<p><strong>Что такое Team Create?</strong>
+Совместное редактирование в Roblox Studio.</p>
+<p><strong>Что такое RemoteEvent?</strong>
+Client-server messaging в Roblox.</p>
+<p><strong>Что такое DataStore?</strong>
+Persistent storage player data Roblox.</p>
+<p><strong>Как маркетить off-platform?</strong>
+TikTok, YouTube Shorts, Discord community.</p>
+<p><strong>Налоги с DevEx в России?</strong>
+Декларирование дохода; возможен самозанятый — у бухгалтера.</p>
+<p><strong>Можно ли несовершеннолетнему DevEx?</strong>
+С guardian verification per Roblox rules.</p>
+<p><strong>Что такое obby?</strong>
+Obstacle course genre popular on Roblox.</p>
+<p><strong>Что такое simulator genre?</strong>
+Grind loop with rebirth mechanics.</p>
+<p><strong>Чем UGC отличается от modding?</strong>
+Platform hosts all; modding attaches to retail game.</p>
+<p><strong>Что такое revenue share?</strong>
+Деление дохода creator/platform.</p>
+<p><strong>Что такое engagement payout?</strong>
+Epic pays UEFN creators by engagement metrics.</p>
+<p><strong>Что такое Bedrock Marketplace?</strong>
+Official Minecraft store for approved creators.</p>
+<p><strong>Что такое Paper/Spigot?</strong>
+Minecraft server software for plugins.</p>
+<p><strong>Можно ли перейти в AAA из Roblox?</strong>
+Да; portfolio и shipped titles matter.</p>
+<p><strong>Что такое meta layer Roblox?</strong>
+Trending genre expectations (simulator meta 2024 etc.).</p>
+<p><strong>Что такое private server Roblox?</strong>
+Paid server instance owner monetization.</p>
+<p><strong>Безопасность teen dev?</strong>
+2FA, no password share, guardian on contracts.</p>
+<p><strong>Что такое AnalyticsService?</strong>
+Roblox API custom event tracking.</p>
+<p><strong>Что такое Toolbox Roblox?</strong>
+Asset store inside Studio; check licenses.</p>
+<p><strong>Что такое avatar UGC?</strong>
+Wearables created by approved Roblox creators.</p>
+<p><strong>Fortnite UEFN на Mac?</strong>
+Historically PC Windows; check Epic requirements.</p>
+<p><strong>Roblox на Linux?</strong>
+Via Wine/Proton limited; Studio Windows/Mac official.</p>
+<p><strong>Что такое Dreams PS?</strong>
+Media Molecule UGC on PlayStation; limited commercial.</p>
+<p><strong>Что такoe Modrinth?</strong>
+Open mod hosting alternative CurseForge.</p>
+<p><strong>Как split revenue в команде?</strong>
+Written agreement before launch.</p>
+<p><strong>Что такое sponsored experience Roblox?</strong>
+Paid promotion placement on platform.</p>
+<p><strong>Что такое session length?</strong>
+Average time player spends per visit.</p>
+<p><strong>Что такое ARPPU?</strong>
+Average revenue per paying user.</p>
+<p><strong>Что такое conversion?</strong>
+Percent players who purchase.</p>
+<p><strong>Что такое playtime metric?</strong>
+Total hours in experience; affects Premium Payouts.</p>
+<p><strong>Что такое experience vs place?</strong>
+Terminology Roblox; experience is player-facing game unit.</p>
+<p><strong>Можно ли sell game outside Roblox?</strong>
+Not the same product; export limited; rebuild in Unity for Steam.</p>
+<p><strong>Что такое LiveOps на UGC?</strong>
+Weekly updates to keep retention like live-service.</p>
+<p><strong>Связь UGC и live-service?</strong>
+Roblox experiences are mini live-service games — <a href="./126">126</a>.</p>
+<p><strong>Что такое scam free Robux sites?</strong>
+Phishing; never use.</p>
+<p><strong>Что такое Creator Dashboard?</strong>
+Roblox analytics and monetization hub.</p>
+<p><strong>Как learning Luau helps elsewhere?</strong>
+Lua in WoW addons, other engines; concepts transfer.</p>
+<hr>
+<h2 id="roblox-продвинутые-паттерны-luau">Roblox — продвинутые паттерны Luau</h2>
+<h3 id="modulescripts-и-архитектура">ModuleScripts и архитектура</h3>
+<ul>
+<li>Разбивайте логику на <code>ModuleScript</code> в <code>ReplicatedStorage</code> и <code>ServerScriptService</code>.</li>
+<li><strong>Server-authoritative</strong> economy: все покупки валидируйте на сервере, клиент только UI.</li>
+<li><strong>RemoteEvent</strong> с rate limit против exploit spam.</li>
+</ul>
+<h3 id="datastore-best-practices">DataStore best practices</h3>
+<ul>
+<li><code>UpdateAsync</code> с retry на <code>502</code> errors.</li>
+<li>Session locking против duplicate rewards.</li>
+<li>Не храните большие blobs; shard inventory по ключам.</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<ul>
+<li>Pooling objects вместо <code>Instance.new</code> в цикле simulator.</li>
+<li>StreamingEnabled на больших maps — load regions по мере движения.</li>
+</ul>
+<h3 id="testing-pipeline">Testing pipeline</h3>
+<ul>
+<li>Studio Play Solo + Play Server + Clients simulation.</li>
+<li>Пригласите 5–10 testers в private server перед publish.</li>
+</ul>
+<hr>
+<h2 id="minecraft-хостинг-сервера-по-шагам">Minecraft — хостинг сервера по шагам</h2>
+<ol>
+<li>Выберите <strong>Paper</strong> (performance plugins) для Java minigames.</li>
+<li>VPS 2–4 GB RAM для 10–20 игроков vanilla+plugins.</li>
+<li>Upload plugins: LuckPerms (roles), EssentialsX, CoreProtect (rollback grief).</li>
+<li><code>server.properties</code> — whitelist on для closed beta.</li>
+<li>Backup мир ежедневно через cron <code>tar</code> world folder.</li>
+<li>Donation ranks только косметика/perks без PvP advantage — Mojang EULA.</li>
+</ol>
+<p>См. <a href="https://spirzen.ru/encyclopedia/2-system-network/2-06-sistemnoe-administrirovanie/intro">системное администрирование</a>.</p>
+<hr>
+<h2 id="steam-workshop-workflow-для-моддера">Steam Workshop — workflow для моддера</h2>
+<ol>
+<li>Установите SDK игры (Skyrim Creation Kit, etc.).</li>
+<li>Создайте mod package локально; тестируйте clean install.</li>
+<li>Upload через in-game Workshop publisher или SteamCMD где supported.</li>
+<li>Описание + screenshots + tags для discovery.</li>
+<li>Обновления через revision; changelog в description.</li>
+<li>Paid mods только где игра explicitly supports; иначе donation link external policy check.</li>
+</ol>
+<hr>
+<h2 id="кейс-рост-experience-на-roblox-упрощённый">Кейс — рост experience на Roblox (упрощённый)</h2>
+<table>
+<thead>
+<tr>
+<th>Неделя</th>
+<th>Действие</th>
+<th>Метрика</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Publish obby MVP, TikTok clip</td>
+<td>D1 15%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fix onboarding death trap</td>
+<td>D1 28%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Game Pass x2 coins + thumbnail A/B</td>
+<td>Revenue +40%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Update mid-game reward loop</td>
+<td>D7 12% → 18%</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Hire builder part-time rev-share</td>
+<td>CCU 50 peak</td>
+</tr>
+</tbody>
+</table>
+<p>Не гарантия успеха; иллюстрация цикла data-driven updates.</p>
+<hr>
+<h2 id="uefn-и-verse-стартовый-workflow">UEFN и Verse — стартовый workflow</h2>
+<ol>
+<li>Install Epic Games Launcher → Fortnite → UEFN download.</li>
+<li>New project island template Blank or sample gameplay.</li>
+<li>Place <strong>Player Spawner</strong>, <strong>Mutator Zone</strong> devices.</li>
+<li>Verse script attach to device — rotate door, score counter.</li>
+<li><strong>Start session</strong> test in editor; invite friends via island code private.</li>
+<li>Publish when stable; track engagement in Creator Portal analytics.</li>
+<li>Iterate weekly — UEFN rewards consistency like Roblox updates.</li>
+</ol>
+<p>Verse syntax unfamiliar — start Blueprint-like device graph before deep Verse. См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/130">Verse</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/4">Unreal</a>.</p>
+<hr>
+<h2 id="ресурсы-для-обучения">Ресурсы для обучения</h2>
+<ul>
+<li><strong>Roblox</strong> — Creator Hub documentation, DevForum, YouTube AlvinBlox legacy series.</li>
+<li><strong>UEFN</strong> — Epic Creator documentation, Verse language reference.</li>
+<li><strong>Minecraft</strong> — Paper docs, SpigotMC forums.</li>
+<li><strong>Steam Workshop</strong> — game-specific modding wikis (Bethesda, Valve Developer Community).</li>
+<li><strong>General gamedev</strong> — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/11">дорожная карта</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/117">гейм-дизайн</a>.</li>
+</ul>
+<p>Практика важнее курсов: ship small project каждые 2–4 недели.</p>
+<hr>
+<h2 id="см-также">См. также</h2>
+<ul>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/2">Разработка на Roblox</a></li>
+<li><a href="./126">Live-service</a></li>
+<li><a href="./115">Монетизация</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-11-dlya-detey/2-video-games/27">Godot для детей</a></li>
+<li><a href="./1142">Мобильные игры</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/5-languages/5-15-lua-i-luau/intro">Luau</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/11">Дорожная карта геймдева</a></li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#словарь">Словарь</a></li><li class="article-toc__item"><a href="#платформы-обзор">Платформы — обзор</a></li><li class="article-toc__item"><a href="#roblox-deep-dive">Roblox — deep dive</a></li><li class="article-toc__item is-h3"><a href="#экосистема">Экосистема</a></li><li class="article-toc__item is-h3"><a href="#roblox-studio">Roblox Studio</a></li><li class="article-toc__item is-h3"><a href="#luau-язык">Luau язык</a></li><li class="article-toc__item is-h3"><a href="#monetization-на-roblox">Monetization на Roblox</a></li><li class="article-toc__item is-h3"><a href="#devex-developer-exchange">DevEx (Developer Exchange)</a></li><li class="article-toc__item is-h3"><a href="#discovery-algorithm">Discovery algorithm</a></li><li class="article-toc__item is-h3"><a href="#analytics-creator-dashboard">Analytics (Creator Dashboard)</a></li><li class="article-toc__item is-h3"><a href="#safety-для-teen-developers">Safety для teen developers</a></li><li class="article-toc__item is-h3"><a href="#типичные-жанры-на-roblox">Типичные жанры на Roblox</a></li><li class="article-toc__item"><a href="#fortnite-uefn-и-verse">Fortnite UEFN и Verse</a></li><li class="article-toc__item is-h3"><a href="#uefn-unreal-editor-for-fortnite">UEFN (Unreal Editor for Fortnite)</a></li><li class="article-toc__item is-h3"><a href="#verse">Verse</a></li><li class="article-toc__item is-h3"><a href="#monetization-uefn">Monetization UEFN</a></li><li class="article-toc__item is-h3"><a href="#marketing">Marketing</a></li><li class="article-toc__item is-h3"><a href="#limits">Limits</a></li><li class="article-toc__item"><a href="#minecraft">Minecraft</a></li><li class="article-toc__item is-h3"><a href="#java-edition-servers">Java Edition servers</a></li><li class="article-toc__item is-h3"><a href="#bedrock-marketplace">Bedrock Marketplace</a></li><li class="article-toc__item is-h3"><a href="#datapacks-mods">Datapacks / mods</a></li><li class="article-toc__item is-h3"><a href="#education-edition">Education Edition</a></li><li class="article-toc__item"><a href="#steam-workshop">Steam Workshop</a></li><li class="article-toc__item is-h3"><a href="#model">Model</a></li><li class="article-toc__item is-h3"><a href="#publishing-workflow">Publishing workflow</a></li><li class="article-toc__item is-h3"><a href="#limits">Limits</a></li><li class="article-toc__item"><a href="#экономика-revenue-share">Экономика revenue share</a></li><li class="article-toc__item"><a href="#ip-и-dmca">IP и DMCA</a></li><li class="article-toc__item is-h3"><a href="#risks">Risks</a></li><li class="article-toc__item is-h3"><a href="#safe-practices">Safe practices</a></li><li class="article-toc__item is-h3"><a href="#dmca-process">DMCA process</a></li><li class="article-toc__item"><a href="#аналитика-d1d7-практика">Аналитика D1/D7 — практика</a></li><li class="article-toc__item is-h3"><a href="#definitions">Definitions</a></li><li class="article-toc__item is-h3"><a href="#benchmarks-roblox-rough">Benchmarks (Roblox rough)</a></li><li class="article-toc__item is-h3"><a href="#how-to-improve">How to improve</a></li><li class="article-toc__item is-h3"><a href="#tools">Tools</a></li><li class="article-toc__item"><a href="#marketing-on-platform">Marketing on platform</a></li><li class="article-toc__item is-h3"><a href="#on-platform">On-platform</a></li><li class="article-toc__item is-h3"><a href="#off-platform">Off-platform</a></li><li class="article-toc__item is-h3"><a href="#influencer">Influencer</a></li><li class="article-toc__item"><a href="#team-building">Team building</a></li><li class="article-toc__item is-h3"><a href="#solo-vs-team">Solo vs team</a></li><li class="article-toc__item is-h3"><a href="#collaboration-tools">Collaboration tools</a></li><li class="article-toc__item is-h3"><a href="#revenue-split">Revenue split</a></li><li class="article-toc__item is-h3"><a href="#hiring">Hiring</a></li><li class="article-toc__item"><a href="#legal-и-налоги-ru-light-overview">Legal и налоги (RU — light overview)</a></li><li class="article-toc__item"><a href="#карьерная-лadder">Карьерная лadder</a></li><li class="article-toc__item"><a href="#моддинг-и-ugc-платформа-сравнение">Моддинг и UGC-платформа — сравнение</a></li><li class="article-toc__item"><a href="#teen-developer-safety-extended">Teen developer safety — extended</a></li><li class="article-toc__item"><a href="#риски-платформы">Риски платформы</a></li><li class="article-toc__item"><a href="#faq">FAQ</a></li><li class="article-toc__item"><a href="#roblox-продвинутые-паттерны-luau">Roblox — продвинутые паттерны Luau</a></li><li class="article-toc__item is-h3"><a href="#modulescripts-и-архитектура">ModuleScripts и архитектура</a></li><li class="article-toc__item is-h3"><a href="#datastore-best-practices">DataStore best practices</a></li><li class="article-toc__item is-h3"><a href="#performance">Performance</a></li><li class="article-toc__item is-h3"><a href="#testing-pipeline">Testing pipeline</a></li><li class="article-toc__item"><a href="#minecraft-хостинг-сервера-по-шагам">Minecraft — хостинг сервера по шагам</a></li><li class="article-toc__item"><a href="#steam-workshop-workflow-для-моддера">Steam Workshop — workflow для моддера</a></li><li class="article-toc__item"><a href="#кейс-рост-experience-на-roblox-упрощённый">Кейс — рост experience на Roblox (упрощённый)</a></li><li class="article-toc__item"><a href="#uefn-и-verse-стартовый-workflow">UEFN и Verse — стартовый workflow</a></li><li class="article-toc__item"><a href="#ресурсы-для-обучения">Ресурсы для обучения</a></li><li class="article-toc__item"><a href="#см-также">См. также</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/126"> Live-service игры  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/115"> Монетизация  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/111"> Студии и инди  </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

@@ -1,0 +1,725 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Эмуляция ретро-игр — легально и технически — Игры IT Universe</title><meta name="description" content="ROM, дампы, эмуляторы, preservation и отличие пиратства от законного владения копией — гайд для коллекционера и разработчика."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Эмуляция ретро-игр — легально и технически</span></li></ol></nav><header class="portal-hero"> <h1>Эмуляция ретро-игр — легально и технически</h1> <p>ROM, дампы, эмуляторы, preservation и отличие пиратства от законного владения копией — гайд для коллекционера и разработчика.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Эмуляция ретро-игр — легально и технически" data-url="/games/9-03-igrovaya-industriya/128">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Эмуляция ретро-игр — легально и технически">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Эмуляция ретро-игр — легально и технически</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<p><strong>Эмулятор</strong> воспроизводит железо старой консоли на современном ПК, телефоне или специализированном устройстве. Так можно играть в классику NES, Mega Drive, PlayStation — см. <a href="./120">Dendy и NES</a>, <a href="./121">Sega</a>. Тема на стыке <strong>техники, права и культуры сохранения</strong> (game preservation).</p>
+<div class="callout callout--info">
+  <div class="callout-title">Право</div>
+  <div class="callout-body">
+  <p>Законы различаются по странам. Общий принцип: <strong>эмулятор как программа</strong> обычно легален; <strong>неправомерное распространение ROM</strong> — нет. Снимать дамп с <strong>собственного</strong> картриджа или диска там, где это разрешено — иной случай, чем скачивать архивы с пиратских сайтов. Мы не даём юридических консультаций — сверяйтесь с локальным правом.</p>
+  </div>
+</div>
+<hr>
+<h2 id="словарь">Словарь</h2>
+<ul>
+<li><strong>Эмулятор</strong> — программа, имитирующая CPU, GPU, звук и I/O консоли.</li>
+<li><strong>ROM / образ</strong> — файл с содержимым картриджа или диска.</li>
+<li><strong>Дамп (dump)</strong> — копия носителя, снятая с физической кассеты или диска.</li>
+<li><strong>No-Intro / Redump</strong> — community databases verified dumps.</li>
+<li><strong>BIOS</strong> — прошивка консоли; отдельный правовой статус.</li>
+<li><strong>Core</strong> — модуль эмулятора под конкретную платформу в RetroArch.</li>
+<li><strong>Frontend</strong> — оболочка для запуска cores (RetroArch, LaunchBox).</li>
+<li><strong>Save state</strong> — мгновенное сохранение состояния эмулятора.</li>
+<li><strong>In-game save</strong> — оригинальная save battery или memory card эмуляция.</li>
+<li><strong>Runahead</strong> — technique reducing input lag pre-running frames.</li>
+<li><strong>Frame delay / rewind</strong> — retroactive gameplay (rewind feature).</li>
+<li><strong>Shader</strong> — GPU post-processing CRT scanlines, smoothing.</li>
+<li><strong>Netplay</strong> — multiplayer через интернет с rollback или delay.</li>
+<li><strong>Preservation</strong> — сохранение игрового наследия.</li>
+<li><strong>FPGA</strong> — hardware recreation chips (MiSTer) vs software emulation.</li>
+<li><strong>Cycle-accuracy</strong> — точная имитация timing CPU.</li>
+<li><strong>HLE / LLE</strong> — high-level vs low-level emulation BIOS.</li>
+<li><strong>Region lock</strong> — NTSC-U, PAL, NTSC-J differences.</li>
+</ul>
+<hr>
+<h2 id="право-deep-dive-не-юридическая-консультация">Право — deep dive (не юридическая консультация)</h2>
+<h3 id="что-обычно-легально-general-principles-jurisdiction-varies">Что обычно легально (general principles, jurisdiction varies)</h3>
+<ul>
+<li><strong>Скачивание и использование эмулятора</strong> как софта — в большинстве юрисдикций legal.</li>
+<li><strong>Покупка официального re-release</strong> — Steam, GOG, Nintendo Switch Online.</li>
+<li><strong>Homebrew ROM</strong> — автор выпустил freely.</li>
+</ul>
+<h3 id="что-обычно-проблемно">Что обычно проблемно</h3>
+<ul>
+<li><strong>Скачивание commercial ROM</strong> без license — copyright infringement в many countries.</li>
+<li><strong>Distribution ROM archives</strong> — illegal hosting.</li>
+<li><strong>BIOS files</strong> from console if not licensed — separate copyright.</li>
+</ul>
+<h3 id="дамп-собственной-копии">Дамп собственной копии</h3>
+<ul>
+<li>Some jurisdictions allow format-shifting for personal backup you own.</li>
+<li><strong>Others prohibit</strong> circumvention of DRM even for owned copies.</li>
+<li><strong>Tools</strong>: cart dumpers (Retrode), disc drives for PS1/PS2 ripping.</li>
+</ul>
+<h3 id="preservation-argument">Preservation argument</h3>
+<ul>
+<li>Libraries and museums advocate exceptions for obsolete media.</li>
+<li><strong>Internet Archive</strong> and similar operate under specific agreements.</li>
+<li>Not blanket permission for public to download any ROM.</li>
+</ul>
+<h3 id="russia-cis-note-general">Russia / CIS note (general)</h3>
+<ul>
+<li>Author rights governed by ГК РФ; personal use grey areas do not legalize distribution.</li>
+<li>When in doubt consult local lawyer.</li>
+</ul>
+<h3 id="official-alternatives-reduce-legal-risk">Official alternatives reduce legal risk</h3>
+<ul>
+<li>Nintendo Switch Online NES/SNES/Genesis libraries.</li>
+<li>Sega Genesis Mini, PS Classic built-in games.</li>
+<li>GOG DOS classics with license.</li>
+</ul>
+<hr>
+<h2 id="внутренности-эмулятора">Внутренности эмулятора</h2>
+<h3 id="компоненты-эмулируемой-системы">Компоненты эмулируемой системы</h3>
+<ul>
+<li><strong>CPU</strong> — 6502 (NES), 68000 (Genesis), R3000 (PS1).</li>
+<li><strong>PPU/GPU</strong> — graphics chip timing critical for accuracy.</li>
+<li><strong>APU/SPU</strong> — audio synthesis.</li>
+<li><strong>Memory map</strong> — RAM, VRAM, registers.</li>
+<li><strong>Controllers</strong> — input polling each frame or line.</li>
+</ul>
+<h3 id="software-emulation-pipeline">Software emulation pipeline</h3>
+<ol>
+<li>Load ROM into virtual cartridge space.</li>
+<li>Reset vector → CPU starts at entry point.</li>
+<li>Each frame: run CPU cycles, render scanlines, mix audio.</li>
+<li>Output video buffer to screen; audio buffer to DAC.</li>
+</ol>
+<h3 id="accuracy-vs-performance">Accuracy vs performance</h3>
+<ul>
+<li><strong>Cycle-accurate</strong> cores (bsnes) — heavier CPU.</li>
+<li><strong>Fast cores</strong> (Snes9x) — hacks for speed; minor glitches rare.</li>
+</ul>
+<h3 id="hle-bios">HLE BIOS</h3>
+<ul>
+<li><strong>High-level emulation</strong> — reimplement BIOS calls without file.</li>
+<li><strong>LLE</strong> — run actual BIOS dump; needed for some edge cases PS1.</li>
+</ul>
+<hr>
+<h2 id="retroarch-полный-гайд">RetroArch — полный гайд</h2>
+<h3 id="установка">Установка</h3>
+<ul>
+<li>Download from <a href="https://www.retroarch.com/">retroarch.com</a> for Windows, Linux, macOS, Android.</li>
+<li>Install to user-writable path on Linux for updates.</li>
+</ul>
+<h3 id="первый-запуск">Первый запуск</h3>
+<ol>
+<li><strong>Online Updater → Core Downloader</strong> — install cores (Nestopia, Snes9x, Genesis Plus GX, Beetle PSX).</li>
+<li><strong>Online Updater → Assets</strong> — icons, backgrounds optional.</li>
+<li><strong>Settings → Input</strong> — bind keyboard or gamepad.</li>
+<li><strong>Settings → Video</strong> — fullscreen, vsync, aspect ratio Integer Scale.</li>
+</ol>
+<h3 id="load-content">Load Content</h3>
+<ul>
+<li><strong>Main Menu → Load Content</strong> → select ROM file.</li>
+<li>RetroArch picks core by extension or ask core association.</li>
+<li><strong>Playlist</strong> — scan directory for library browser.</li>
+</ul>
+<h3 id="core-options">Core options</h3>
+<ul>
+<li>Per-core <strong>Options</strong> menu: region, overclock, audio sync.</li>
+<li><strong>Save core options</strong> as game-specific override.</li>
+</ul>
+<h3 id="input">Input</h3>
+<ul>
+<li><strong>Port 1 controls</strong> — map B, A, Start.</li>
+<li><strong>Hotkeys</strong> — save state, load state, fast forward (bind carefully).</li>
+</ul>
+<h3 id="shaders">Shaders</h3>
+<ul>
+<li><strong>Quick Menu → Shaders → Load Shader Preset</strong>.</li>
+<li>Popular: <code>crt-royale</code>, <code>zfast</code>, <code>scanlines</code>.</li>
+<li>GPU cost varies; CRT heavy on integrated graphics.</li>
+</ul>
+<h3 id="save-states-vs-in-game-saves">Save states vs in-game saves</h3>
+<ul>
+<li><strong>Save state</strong> — snapshot anywhere; fragile across core versions.</li>
+<li><strong>In-game save</strong> — <code>.srm</code> battery files; safer long-term.</li>
+</ul>
+<h3 id="netplay">Netplay</h3>
+<ul>
+<li><strong>Main Menu → Netplay</strong> — host or join; requires port forward or relay.</li>
+<li>Same core and ROM hash required for sync.</li>
+</ul>
+<h3 id="retroachievements">RetroAchievements</h3>
+<ul>
+<li>Login account; unlock achievements in supported cores.</li>
+<li>Requires known ROM hash from database.</li>
+</ul>
+<h3 id="directory-configuration">Directory configuration</h3>
+<ul>
+<li><strong>Settings → Directory</strong> — separate folders for saves, states, system (BIOS).</li>
+</ul>
+<hr>
+<h2 id="настройка-по-платформам">Настройка по платформам</h2>
+<h3 id="nes-dendy">NES / Dendy</h3>
+<ul>
+<li><strong>Cores</strong>: Mesen (accuracy), Nestopia, FCEUmm (fast).</li>
+<li><strong>Extensions</strong>: <code>.nes</code>, <code>.fds</code> (Famicom Disk).</li>
+<li><strong>Palette</strong>: core option for NTSC vs PAL colors.</li>
+<li><strong>Zapper light gun</strong>: requires mouse mapping.</li>
+<li>См. <a href="./120">Dendy и NES</a>.</li>
+</ul>
+<h3 id="snes">SNES</h3>
+<ul>
+<li><strong>Cores</strong>: bsnes (accuracy), Snes9x (balance).</li>
+<li><strong>Special chips</strong>: Super FX (Star Fox) — need bsnes performance core.</li>
+<li><strong>MSU-1</strong> mod audio — advanced setup.</li>
+</ul>
+<h3 id="sega-mega-drive-genesis">Sega Mega Drive / Genesis</h3>
+<ul>
+<li><strong>Core</strong>: Genesis Plus GX.</li>
+<li><strong>Extensions</strong>: <code>.md</code>, <code>.bin</code>, <code>.sms</code> (Master System).</li>
+<li><strong>6-button controller</strong> — map for fighting games.</li>
+<li>См. <a href="./121">Sega Mega Drive</a>.</li>
+</ul>
+<h3 id="playstation-1">PlayStation 1</h3>
+<ul>
+<li><strong>Cores</strong>: Beetle PSX HW, SwanStation.</li>
+<li><strong>BIOS</strong>: required for LLE; place in <code>system</code> folder — must be dump from <strong>your</strong> console where legal.</li>
+<li><strong>Formats</strong>: <code>.cue/.bin</code>, <code>.chd</code> compressed recommended.</li>
+<li><strong>DualShock</strong>, analog sticks — core input settings.</li>
+<li><strong>PGXP</strong> — geometry precision enhancement optional.</li>
+</ul>
+<h3 id="playstation-2-brief">PlayStation 2 (brief)</h3>
+<ul>
+<li><strong>PCSX2</strong> standalone (not always RetroArch); BIOS required; heavier hardware.</li>
+</ul>
+<h3 id="other-cores-worth-knowing">Other cores worth knowing</h3>
+<ul>
+<li><strong>MGBA</strong> — Game Boy Advance.</li>
+<li><strong>Dolphin</strong> — GameCube/Wii standalone.</li>
+<li><strong>Citra</strong> — 3DS standalone.</li>
+<li><strong>DuckStation</strong> — PS1 alternative standalone.</li>
+</ul>
+<hr>
+<h2 id="bios-практика">BIOS — практика</h2>
+<h3 id="когда-нужен">Когда нужен</h3>
+<ul>
+<li>PS1, PS2, Saturn, Dreamcast typically.</li>
+<li>NES/SNES/Genesis often <strong>no BIOS</strong> in RetroArch.</li>
+</ul>
+<h3 id="где-положить">Где положить</h3>
+<ul>
+<li>RetroArch <code>system/</code> directory (Settings → Directory shows path).</li>
+</ul>
+<h3 id="hle-alternatives">HLE alternatives</h3>
+<ul>
+<li>Some cores emulate BIOS without file; compatibility gaps possible.</li>
+</ul>
+<h3 id="legal">Legal</h3>
+<ul>
+<li>Downloading BIOS from random site — same copyright issues as ROM.</li>
+<li>Dump from own hardware with tools where permitted.</li>
+</ul>
+<hr>
+<h2 id="shaders-и-видео">Shaders и видео</h2>
+<h3 id="crt-simulation">CRT simulation</h3>
+<ul>
+<li>Scanlines mimic tube TV; <strong>integer scaling</strong> keeps crisp pixels.</li>
+<li><strong>Bilinear filtering off</strong> for authentic blocky look.</li>
+</ul>
+<h3 id="upscaling">Upscaling</h3>
+<ul>
+<li><strong>xBR, hq2x</strong> — edge smoothing; subjective preference.</li>
+<li><strong>4K integer scale</strong> — 1080p monitor 6x scale NES 256→1536.</li>
+</ul>
+<h3 id="hdr-and-weird-setups">HDR and weird setups</h3>
+<ul>
+<li>RetroArch supports HDR modes experimental; niche.</li>
+</ul>
+<h3 id="frame-pacing">Frame pacing</h3>
+<ul>
+<li><strong>Vsync on</strong>, <strong>audio sync on</strong> — prevents crackling.</li>
+<li><strong>Hard GPU sync</strong> option some cores.</li>
+</ul>
+<hr>
+<h2 id="save-states-и-rewind">Save states и rewind</h2>
+<h3 id="save-states">Save states</h3>
+<ul>
+<li>Slot 0–9 hotkeys.</li>
+<li><strong>Version lock</strong>: don't rely states across core updates.</li>
+</ul>
+<h3 id="rewind">Rewind</h3>
+<ul>
+<li>RetroArch feature records buffer; CPU cost high.</li>
+<li>Great for hard platformers learning.</li>
+</ul>
+<h3 id="runahead">Runahead</h3>
+<ul>
+<li>Reduces lag by speculating frames; needs extra CPU headroom.</li>
+</ul>
+<hr>
+<h2 id="netplay-и-multiplayer">Netplay и multiplayer</h2>
+<h3 id="retroarch-netplay">RetroArch netplay</h3>
+<ul>
+<li>Host creates session; clients join via lobby.</li>
+<li><strong>Same ROM</strong> mandatory (hash match).</li>
+<li>Latency handling: input delay frames.</li>
+</ul>
+<h3 id="standalone-emulators">Standalone emulators</h3>
+<ul>
+<li><strong>Dolphin netplay</strong> — GameCube popular.</li>
+<li><strong>Fightcade</strong> — fighting games rollback netcode.</li>
+</ul>
+<h3 id="kaillera-legacy">Kaillera (legacy)</h3>
+<ul>
+<li>Old P2P; largely replaced.</li>
+</ul>
+<hr>
+<h2 id="preservation-projects">Preservation projects</h2>
+<h3 id="internet-archive">Internet Archive</h3>
+<ul>
+<li>Software library with licensed and donated materials.</li>
+<li>Not general ROM piracy hub; curated collections.</li>
+</ul>
+<h3 id="strong-national-museum-of-play">Strong National Museum of Play</h3>
+<ul>
+<li>Physical and digital preservation research.</li>
+</ul>
+<h3 id="no-intro-redump">No-Intro / Redump</h3>
+<ul>
+<li>Verify dump correctness against good dumps database.</li>
+<li>For collectors ensuring <strong>their</strong> dumps clean.</li>
+</ul>
+<h3 id="hidden-palace">Hidden Palace</h3>
+<ul>
+<li>Prototype leaks documentation for history; legal controversy case by case.</li>
+</ul>
+<h3 id="game-history-for-developers">Game history for developers</h3>
+<ul>
+<li>Study mechanics via <strong>legal copies</strong> — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/intro">игроведение</a>.</li>
+</ul>
+<hr>
+<h2 id="официальные-альтернативы">Официальные альтернативы</h2>
+<h3 id="mini-consoles">Mini consoles</h3>
+<ul>
+<li>NES Classic, SNES Classic, Genesis Mini — plug and play licensed.</li>
+<li>Limited library; no regional oddities.</li>
+</ul>
+<h3 id="subscriptions">Subscriptions</h3>
+<ul>
+<li><strong>Nintendo Switch Online</strong> — growing retro library.</li>
+<li><strong>Apple Arcade</strong> — some classics.</li>
+<li><strong>Antstream</strong> — streaming retro legally.</li>
+</ul>
+<h3 id="digital-stores">Digital stores</h3>
+<ul>
+<li><strong>GOG</strong> — DOS, Win95 classics owned forever rhetoric.</li>
+<li><strong>Steam</strong> — Sega packs, Capcom bundles.</li>
+<li><strong>PlayStation Store</strong> — PS1 classics on PS4/5.</li>
+</ul>
+<h3 id="remasters">Remasters</h3>
+<ul>
+<li>Final Fantasy, Monkey Island — modern ports with QoL; different feel than emulation.</li>
+</ul>
+<hr>
+<h2 id="hardware-emulation-устройства">Hardware emulation устройства</h2>
+<h3 id="mister-fpga">MiSTer FPGA</h3>
+<ul>
+<li><strong>FPGA</strong> recreates chips at hardware level; low latency.</li>
+<li>Cores for NES, SNES, Genesis, PS1 (experimental), etc.</li>
+<li>Requires DE-10 Nano board + setup learning curve.</li>
+</ul>
+<h3 id="analogue-pocket">Analogue Pocket</h3>
+<ul>
+<li>Premium hardware playing cart dumps ( adapters ) with FPGA cores.</li>
+</ul>
+<h3 id="retro-handhelds">Retro handhelds</h3>
+<ul>
+<li>Anbernic, Miyoo Mini — run RetroArch Android/Linux.</li>
+<li>Ship without ROMs legally; user provides.</li>
+</ul>
+<h3 id="steam-deck">Steam Deck</h3>
+<ul>
+<li>RetroArch via Desktop mode excellent — <a href="./11438">Linux gaming</a>.</li>
+</ul>
+<hr>
+<h2 id="эмуляция-и-официальный-порт">Эмуляция и официальный порт</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Эмуляция</th>
+<th>Официальный порт</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Графика</td>
+<td>Shaders, integer scale</td>
+<td>Remastered textures</td>
+</tr>
+<tr>
+<td>Право</td>
+<td>Depends on ROM source</td>
+<td>Clean purchase</td>
+</tr>
+<tr>
+<td>Ностальгия</td>
+<td>Original timing feel</td>
+<td>May alter music/ratio</td>
+</tr>
+<tr>
+<td>Achievements</td>
+<td>RetroAchievements third-party</td>
+<td>Platform trophies</td>
+</tr>
+<tr>
+<td>Mods</td>
+<td>ROM hacks</td>
+<td>Usually none</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Free emulator + owned game</td>
+<td>Store price</td>
+</tr>
+<tr>
+<td>Online</td>
+<td>Netplay DIY</td>
+<td>Official if exists</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="популярные-эмуляторы-standalone">Популярные эмуляторы (standalone)</h2>
+<table>
+<thead>
+<tr>
+<th>Платформа</th>
+<th>Эмуляторы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NES</td>
+<td>Mesen, FCEUX, Nestopia</td>
+</tr>
+<tr>
+<td>SNES</td>
+<td>bsnes, Snes9x</td>
+</tr>
+<tr>
+<td>Mega Drive</td>
+<td>Genesis Plus GX, BlastEm</td>
+</tr>
+<tr>
+<td>PlayStation</td>
+<td>DuckStation, Beetle PSX</td>
+</tr>
+<tr>
+<td>GameCube/Wii</td>
+<td>Dolphin</td>
+</tr>
+<tr>
+<td>Nintendo DS</td>
+<td>melonDS</td>
+</tr>
+<tr>
+<td>3DS</td>
+<td>Citra</td>
+</tr>
+<tr>
+<td>"Всё в одном"</td>
+<td>RetroArch, OpenEmu (macOS)</td>
+</tr>
+</tbody>
+</table>
+<p>Open-source clones catalog — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/125">9.04/125</a>.</p>
+<hr>
+<h2 id="практический-workflow-коллекционера">Практический workflow коллекционера</h2>
+<ol>
+<li>Buy original cart/disc you want.</li>
+<li>Dump legally if jurisdiction allows.</li>
+<li>Verify against No-Intro hash.</li>
+<li>Store ROM in personal backup folder.</li>
+<li>Play via RetroArch with correct core.</li>
+<li>Prefer in-game saves for long RPGs.</li>
+<li>Keep physical media as authoritative backup.</li>
+</ol>
+<hr>
+<h2 id="риски-пиратских-сборников">Риски пиратских сборников</h2>
+<ul>
+<li>Malware in <code>.exe</code> packagers.</li>
+<li>Bad dumps corrupt saves.</li>
+<li>No respect for game history metadata.</li>
+</ul>
+<hr>
+<h2 id="faq">FAQ</h2>
+<p><strong>Эмулятор legal?</strong>
+Software yes; ROM legality separate.</p>
+<p><strong>Можно скачать ROM если купил картридж?</strong>
+Depends on country; not universally legal to download copy even if own physical.</p>
+<p><strong>Что такое ROM?</strong>
+File image cartridge/disc contents.</p>
+<p><strong>Что такое dump?</strong>
+Copy made from physical media.</p>
+<p><strong>Нужен ли BIOS для NES?</strong>
+Usually no in RetroArch.</p>
+<p><strong>Нужен ли BIOS для PS1?</strong>
+Often yes; use LLE or HLE per core.</p>
+<p><strong>Что такое RetroArch?</strong>
+Frontend running many emulator cores.</p>
+<p><strong>Что такое core?</strong>
+Specific emulator module inside RetroArch.</p>
+<p><strong>Что такое save state?</strong>
+Instant save anywhere; not always portable.</p>
+<p><strong>Что такое .srm file?</strong>
+Battery save emulation file.</p>
+<p><strong>Что такое CHD format?</strong>
+Compressed disc image; saves space PS1.</p>
+<p><strong>Что такое cue/bin?</strong>
+CD image pair PS1 rips.</p>
+<p><strong>Что такое shader CRT?</strong>
+Filter mimicking tube TV scanlines.</p>
+<p><strong>Что такое integer scaling?</strong>
+Pixel perfect upscale whole number multiples.</p>
+<p><strong>Что такое bsnes?</strong>
+Accuracy-focused SNES core.</p>
+<p><strong>Что такое Mesen?</strong>
+High accuracy NES emulator/core.</p>
+<p><strong>Что такое Genesis Plus GX?</strong>
+Sega multi-system core RetroArch.</p>
+<p><strong>Что такое DuckStation?</strong>
+Popular standalone PS1 emulator.</p>
+<p><strong>Что такое Dolphin?</strong>
+GameCube/Wii emulator.</p>
+<p><strong>Что такое netplay?</strong>
+Online multiplayer emulated games.</p>
+<p><strong>Что такое rollback netcode?</strong>
+Predict and rollback for fighting games low lag.</p>
+<p><strong>Что такое RetroAchievements?</strong>
+Achievement system for emulated games.</p>
+<p><strong>Что такое MiSTer?</strong>
+FPGA hardware emulation platform.</p>
+<p><strong>Что такое Analogue Pocket?</strong>
+Handheld FPGA for carts.</p>
+<p><strong>Что такое preservation?</strong>
+Saving games for history when media decays.</p>
+<p><strong>Что такое No-Intro?</strong>
+Good dump verification database.</p>
+<p><strong>Что такое homebrew?</strong>
+New games released for retro hardware freely.</p>
+<p><strong>Что такое ROM hack?</strong>
+Modified ROM fan game; distribute patch not full ROM often.</p>
+<p><strong>Mini consoles legal?</strong>
+Yes licensed products from Nintendo/Sega.</p>
+<p><strong>Nintendo Switch Online retro legal?</strong>
+Yes subscription license.</p>
+<p><strong>GOG games need emulator?</strong>
+Sometimes bundled with DOSBox; legal purchase.</p>
+<p><strong>Эмуляция на Android?</strong>
+RetroArch Android; connect gamepad.</p>
+<p><strong>Эмуляция на Steam Deck?</strong>
+Excellent Desktop RetroArch — <a href="./11438">11438</a>.</p>
+<p><strong>Что такое runahead?</strong>
+Lag reduction technique RetroArch.</p>
+<p><strong>Что такое rewind?</strong>
+Play backwards buffer feature.</p>
+<p><strong>Что такое cycle accuracy?</strong>
+Precise hardware timing emulation.</p>
+<p><strong>Что такое HLE?</strong>
+High-level BIOS emulation without file.</p>
+<p><strong>Что такое LLE?</strong>
+Low-level using BIOS dump.</p>
+<p><strong>Что такое region NTSC PAL?</strong>
+TV standard framerate differences 60 vs 50 Hz.</p>
+<p><strong>Что такое Zapper?</strong>
+NES light gun needs mouse emulate.</p>
+<p><strong>Что такое Super FX chip?</strong>
+SNES cartridge chip Star Fox; needs capable core.</p>
+<p><strong>Что такое MSU-1?</strong>
+SNES audio enhancement mod.</p>
+<p><strong>Почему audio crackles?</strong>
+Sync settings wrong; try audio sync on.</p>
+<p><strong>Где хранить BIOS RetroArch?</strong>
+system folder in RetroArch directory.</p>
+<p><strong>Можно стримить эмуляцию?</strong>
+Platform ToS; use legal content to avoid DMCA strikes.</p>
+<p><strong>Что такое Fightcade?</strong>
+Rollback netplay fighting games.</p>
+<p><strong>Что такое OpenEmu?</strong>
+macOS emulator frontend.</p>
+<p><strong>Что такое LaunchBox?</strong>
+Windows game library frontend including emulators.</p>
+<p><strong>Эмуляция vs remaster?</strong>
+Emulation original; remaster updated assets.</p>
+<p><strong>Что такое piracy "5000 in 1"?</strong>
+Illegal multicart often malware.</p>
+<p><strong>Что такое Redump?</strong>
+Disc dump verification project.</p>
+<p><strong>Что такое Hidden Palace?</strong>
+Game prototype preservation site.</p>
+<p><strong>Эмуляция для game dev study?</strong>
+Analyze mechanics owned copies — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/intro">game studies</a>.</p>
+<p><strong>Что такое PGXP PS1?</strong>
+Enhanced 3D precision PS1 emulation.</p>
+<p><strong>Что такое SwanStation?</strong>
+PS1 core fork Beetle lineage.</p>
+<p><strong>Что такое MGBA?</strong>
+GBA core accurate.</p>
+<p><strong>Что такое melonDS?</strong>
+Nintendo DS emulator.</p>
+<p><strong>Что такое Citra?</strong>
+Nintendo 3DS emulator.</p>
+<p><strong>Что такое PCSX2?</strong>
+PlayStation 2 emulator.</p>
+<p><strong>Что такое frame delay netplay?</strong>
+Input lag frames for sync.</p>
+<p><strong>Что такое playlist RetroArch?</strong>
+Scanned library all ROMs folder.</p>
+<p><strong>Какой core для точности SNES?</strong>
+bsnes mercury or performance variant.</p>
+<p><strong>Какой core для слабого PC?</strong>
+Snes9x, FCEUmm fast cores.</p>
+<p><strong>Что такое Anbernic?</strong>
+Chinese retro handheld hardware.</p>
+<p><strong>Что такое Steam Link для retro?</strong>
+Stream PC RetroArch to TV.</p>
+<p><strong>Эмуляция и авторское право РФ?</strong>
+Distribution illegal; personal backup grey — lawyer for specifics.</p>
+<p><strong>Что такое format shifting?</strong>
+Copy to new media format legal debate.</p>
+<p><strong>Что такое Internet Archive games?</strong>
+Curated legal collections not all ROMs.</p>
+<p><strong>Можно ли продавать Raspberry Pi с ROM?</strong>
+No if includes unlicensed ROMs.</p>
+<p><strong>Что такое Lakka?</strong>
+Linux distro dedicated RetroArch.</p>
+<p><strong>Что такое Batocera?</strong>
+Retro gaming OS for Pi and PC.</p>
+<p><strong>Что такое EmulationStation?</strong>
+Frontend themeable alternative RetroArch menu.</p>
+<p><strong>Что такое bezels overlays?</strong>
+Decorative TV frame around game image.</p>
+<p><strong>Что такое hotkey save state?</strong>
+Keyboard shortcut F2/F4 etc bind in RetroArch.</p>
+<p><strong>Что такое core updater?</strong>
+Download latest emulator cores online RetroArch.</p>
+<p><strong>Что такое disk control tray PS1?</strong>
+Emulated swap discs multi-disc games.</p>
+<p><strong>Что такое PBP format?</strong>
+PSP compressed PS1 format also emulated.</p>
+<p><strong>Что такое retro gaming legal safest path?</strong>
+Buy official mini/subscription/digital licensed ports.</p>
+<hr>
+<h2 id="batocera-lakka-и-dedicated-os">Batocera, Lakka и dedicated OS</h2>
+<h3 id="batocera">Batocera</h3>
+<ul>
+<li>Bootable USB или dedicated PC; RetroArch preconfigured.</li>
+<li>Supports x86, Raspberry Pi, handhelds.</li>
+<li>Easy family couch setup без Windows.</li>
+</ul>
+<h3 id="lakka">Lakka</h3>
+<ul>
+<li>Lightweight Linux distro = RetroArch basically.</li>
+<li>Good for old laptops as emulation station.</li>
+</ul>
+<h3 id="emulationstation-de">EmulationStation-DE</h3>
+<ul>
+<li>Polished frontend multi-emulator; manual core config.</li>
+</ul>
+<h3 id="выбор">Выбор</h3>
+<ul>
+<li><strong>PC gaming dual-use</strong> — RetroArch on desktop enough.</li>
+<li><strong>Living room</strong> — Batocera box behind TV.</li>
+</ul>
+<hr>
+<h2 id="troubleshooting-частые-проблемы">Troubleshooting — частые проблемы</h2>
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Возможная причина</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Black screen</td>
+<td>Wrong core BIOS region</td>
+<td>Change core option region AUTO</td>
+</tr>
+<tr>
+<td>Audio crackle</td>
+<td>Sync off</td>
+<td>Audio sync ON, adjust buffer</td>
+</tr>
+<tr>
+<td>Input lag</td>
+<td>vsync + slow GPU</td>
+<td>Runahead 1–2 frames; faster core</td>
+</tr>
+<tr>
+<td>Save state crash</td>
+<td>Core version changed</td>
+<td>Use in-game saves</td>
+</tr>
+<tr>
+<td>PS1 wrong speed</td>
+<td>PAL game NTSC mode</td>
+<td>Set region correctly</td>
+</tr>
+<tr>
+<td>Netplay desync</td>
+<td>Different ROM hash</td>
+<td>Same verified dump all players</td>
+</tr>
+<tr>
+<td>Shader won't load</td>
+<td>GPU too weak</td>
+<td>lighter <code>zfast</code> preset</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="см-также">См. также</h2>
+<ul>
+<li><a href="./120">Dendy и NES</a>, <a href="./121">Sega Mega Drive</a>, <a href="./122">Легенды</a></li>
+<li><a href="./1143">Игровые консоли</a></li>
+<li><a href="./11438">Linux-гейминг и Proton</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/125">Каталог open-source клонов</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/intro">Игроведение</a></li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#словарь">Словарь</a></li><li class="article-toc__item"><a href="#право-deep-dive-не-юридическая-консультация">Право — deep dive (не юридическая консультация)</a></li><li class="article-toc__item is-h3"><a href="#что-обычно-легально-general-principles-jurisdiction-varies">Что обычно легально (general principles, jurisdiction varies)</a></li><li class="article-toc__item is-h3"><a href="#что-обычно-проблемно">Что обычно проблемно</a></li><li class="article-toc__item is-h3"><a href="#дамп-собственной-копии">Дамп собственной копии</a></li><li class="article-toc__item is-h3"><a href="#preservation-argument">Preservation argument</a></li><li class="article-toc__item is-h3"><a href="#russia-cis-note-general">Russia / CIS note (general)</a></li><li class="article-toc__item is-h3"><a href="#official-alternatives-reduce-legal-risk">Official alternatives reduce legal risk</a></li><li class="article-toc__item"><a href="#внутренности-эмулятора">Внутренности эмулятора</a></li><li class="article-toc__item is-h3"><a href="#компоненты-эмулируемой-системы">Компоненты эмулируемой системы</a></li><li class="article-toc__item is-h3"><a href="#software-emulation-pipeline">Software emulation pipeline</a></li><li class="article-toc__item is-h3"><a href="#accuracy-vs-performance">Accuracy vs performance</a></li><li class="article-toc__item is-h3"><a href="#hle-bios">HLE BIOS</a></li><li class="article-toc__item"><a href="#retroarch-полный-гайд">RetroArch — полный гайд</a></li><li class="article-toc__item is-h3"><a href="#установка">Установка</a></li><li class="article-toc__item is-h3"><a href="#первый-запуск">Первый запуск</a></li><li class="article-toc__item is-h3"><a href="#load-content">Load Content</a></li><li class="article-toc__item is-h3"><a href="#core-options">Core options</a></li><li class="article-toc__item is-h3"><a href="#input">Input</a></li><li class="article-toc__item is-h3"><a href="#shaders">Shaders</a></li><li class="article-toc__item is-h3"><a href="#save-states-vs-in-game-saves">Save states vs in-game saves</a></li><li class="article-toc__item is-h3"><a href="#netplay">Netplay</a></li><li class="article-toc__item is-h3"><a href="#retroachievements">RetroAchievements</a></li><li class="article-toc__item is-h3"><a href="#directory-configuration">Directory configuration</a></li><li class="article-toc__item"><a href="#настройка-по-платформам">Настройка по платформам</a></li><li class="article-toc__item is-h3"><a href="#nes-dendy">NES / Dendy</a></li><li class="article-toc__item is-h3"><a href="#snes">SNES</a></li><li class="article-toc__item is-h3"><a href="#sega-mega-drive-genesis">Sega Mega Drive / Genesis</a></li><li class="article-toc__item is-h3"><a href="#playstation-1">PlayStation 1</a></li><li class="article-toc__item is-h3"><a href="#playstation-2-brief">PlayStation 2 (brief)</a></li><li class="article-toc__item is-h3"><a href="#other-cores-worth-knowing">Other cores worth knowing</a></li><li class="article-toc__item"><a href="#bios-практика">BIOS — практика</a></li><li class="article-toc__item is-h3"><a href="#когда-нужен">Когда нужен</a></li><li class="article-toc__item is-h3"><a href="#где-положить">Где положить</a></li><li class="article-toc__item is-h3"><a href="#hle-alternatives">HLE alternatives</a></li><li class="article-toc__item is-h3"><a href="#legal">Legal</a></li><li class="article-toc__item"><a href="#shaders-и-видео">Shaders и видео</a></li><li class="article-toc__item is-h3"><a href="#crt-simulation">CRT simulation</a></li><li class="article-toc__item is-h3"><a href="#upscaling">Upscaling</a></li><li class="article-toc__item is-h3"><a href="#hdr-and-weird-setups">HDR and weird setups</a></li><li class="article-toc__item is-h3"><a href="#frame-pacing">Frame pacing</a></li><li class="article-toc__item"><a href="#save-states-и-rewind">Save states и rewind</a></li><li class="article-toc__item is-h3"><a href="#save-states">Save states</a></li><li class="article-toc__item is-h3"><a href="#rewind">Rewind</a></li><li class="article-toc__item is-h3"><a href="#runahead">Runahead</a></li><li class="article-toc__item"><a href="#netplay-и-multiplayer">Netplay и multiplayer</a></li><li class="article-toc__item is-h3"><a href="#retroarch-netplay">RetroArch netplay</a></li><li class="article-toc__item is-h3"><a href="#standalone-emulators">Standalone emulators</a></li><li class="article-toc__item is-h3"><a href="#kaillera-legacy">Kaillera (legacy)</a></li><li class="article-toc__item"><a href="#preservation-projects">Preservation projects</a></li><li class="article-toc__item is-h3"><a href="#internet-archive">Internet Archive</a></li><li class="article-toc__item is-h3"><a href="#strong-national-museum-of-play">Strong National Museum of Play</a></li><li class="article-toc__item is-h3"><a href="#no-intro-redump">No-Intro / Redump</a></li><li class="article-toc__item is-h3"><a href="#hidden-palace">Hidden Palace</a></li><li class="article-toc__item is-h3"><a href="#game-history-for-developers">Game history for developers</a></li><li class="article-toc__item"><a href="#официальные-альтернативы">Официальные альтернативы</a></li><li class="article-toc__item is-h3"><a href="#mini-consoles">Mini consoles</a></li><li class="article-toc__item is-h3"><a href="#subscriptions">Subscriptions</a></li><li class="article-toc__item is-h3"><a href="#digital-stores">Digital stores</a></li><li class="article-toc__item is-h3"><a href="#remasters">Remasters</a></li><li class="article-toc__item"><a href="#hardware-emulation-устройства">Hardware emulation устройства</a></li><li class="article-toc__item is-h3"><a href="#mister-fpga">MiSTer FPGA</a></li><li class="article-toc__item is-h3"><a href="#analogue-pocket">Analogue Pocket</a></li><li class="article-toc__item is-h3"><a href="#retro-handhelds">Retro handhelds</a></li><li class="article-toc__item is-h3"><a href="#steam-deck">Steam Deck</a></li><li class="article-toc__item"><a href="#эмуляция-и-официальный-порт">Эмуляция и официальный порт</a></li><li class="article-toc__item"><a href="#популярные-эмуляторы-standalone">Популярные эмуляторы (standalone)</a></li><li class="article-toc__item"><a href="#практический-workflow-коллекционера">Практический workflow коллекционера</a></li><li class="article-toc__item"><a href="#риски-пиратских-сборников">Риски пиратских сборников</a></li><li class="article-toc__item"><a href="#faq">FAQ</a></li><li class="article-toc__item"><a href="#batocera-lakka-и-dedicated-os">Batocera, Lakka и dedicated OS</a></li><li class="article-toc__item is-h3"><a href="#batocera">Batocera</a></li><li class="article-toc__item is-h3"><a href="#lakka">Lakka</a></li><li class="article-toc__item is-h3"><a href="#emulationstation-de">EmulationStation-DE</a></li><li class="article-toc__item is-h3"><a href="#выбор">Выбор</a></li><li class="article-toc__item"><a href="#troubleshooting-частые-проблемы">Troubleshooting — частые проблемы</a></li><li class="article-toc__item"><a href="#см-также">См. также</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-03-igrovaya-industriya/120"> Dendy и NES  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/122"> Легенды  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли  </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

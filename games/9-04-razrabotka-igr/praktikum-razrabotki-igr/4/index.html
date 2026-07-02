@@ -1,0 +1,1500 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Python — Racing — Игры IT Universe</title><meta name="description" content="Пошаговый практикум — гоночная мини-игра на Python и Pygame: 16 этапов, овальная трасса, круги и ИИ; полная ревизия файлов после этапа 14 для сверки (#full-revision)."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Python — Racing</span></li></ol></nav><header class="portal-hero"> <h1>Python — Racing</h1> <p>Пошаговый практикум — гоночная мини-игра на Python и Pygame: 16 этапов, овальная трасса, круги и ИИ; полная ревизия файлов после этапа 14 для сверки (#full-revision).</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Python — Racing" data-url="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Python — Racing">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Python — Racing</h1>
+<p><span class="complexity-badge">Разработчику</span>
+<span class="complexity-badge">Начальный уровень</span></p>
+<div class="callout callout--info">
+  <div class="callout-title">Формат практикума</div>
+  <div class="callout-body">
+  <p>Материалы трека приводятся к единому формату: <strong>полные листинги для копирования</strong> на каждом этапе, блок <strong>"Разбор"</strong> и раздел <strong>"Полная ревизия"</strong> в конце статьи.</p>
+  <ul>
+    <li>Гарантированно запускаемые эталоны для сверки: <a href="https://github.com/Spirzen/BattleCity">Battle City</a>, <a href="https://github.com/Spirzen/Match3">Match3</a>, <a href="./3.md#full-revision">Ping Pong</a>, <a href="./5.md#full-revision">Tetris</a>, <a href="./4.md#full-revision">Racing</a> (<code>#full-revision</code>).</li>
+    <li>В этой статье <a href="#full-revision">полная ревизия</a> (<code>#full-revision</code>) покрывает этапы 0–14 — овал, круги, таймер, два соперника, меню, отсчёт, пауза и финиш. Этапы 15–16 (мини-карта, nitro) — по желанию.</li>
+  </ul>
+  </div>
+</div>
+<h2 id="как-проходить-практикум">Как проходить практикум</h2>
+<ul>
+<li>Копируйте <strong>целиком</strong> файлы из блоков кода каждого этапа.</li>
+<li>После каждого этапа <strong>запускайте</strong> проект (команда указана в главе) и пройдите чек-лист самопроверки.</li>
+<li>Если застряли — методология в разделе <a href="./intro.md">Практикум разработки игр — о разделе</a>; для сверки — <a href="#full-revision">полная ревизия</a> в конце этой статьи и эталоны <a href="https://github.com/Spirzen/BattleCity">Battle City</a>, <a href="https://github.com/Spirzen/Match3">Match3</a>, <a href="./3.md#full-revision">Ping Pong</a>.</li>
+</ul>
+<hr>
+<h2 id="о-практикуме">О практикуме</h2>
+<p>Соберём <strong>аркадные гонки сверху</strong> (top-down) на <strong>Python 3</strong> и <strong>Pygame</strong> — овальная трасса, машина с ускорением и поворотом, столкновения с бордюром, <strong>контрольные точки</strong>, <strong>круги</strong>, таймер заезда и простые <strong>соперники по waypoints</strong>. Графика — цветные фигуры (без внешних спрайтов), зато с полным разбором физики, коллизий и состояний гонки.</p>
+<p>Жанр <strong>top-down racing</strong> — вид "с камеры над трассой", как в ранних Micro Machines или Hot Wheels. Альтернатива для отдельного проекта — <strong>вертикальный скроллер</strong> (машина внизу, дорога едет на игрока); здесь выбран овал, потому что он наглядно учит <strong>непрерывную физику</strong>, <strong>секторный подсчёт кругов</strong> и <strong>ИИ по точкам маршрута</strong>.</p>
+<div class="callout callout--info">
+  <div class="callout-title">Для кого материал</div>
+  <div class="callout-body">
+  <p>Нужны базовые Python (классы, списки, <code>math</code>) и знакомство с Pygame из статьи <a href="/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a>. Каждый этап — <strong>запускаемый код</strong>: после шага проект можно запустить и увидеть новую механику.</p>
+  </div>
+</div>
+<p><strong>Управление в финальной версии</strong></p>
+<table>
+<thead>
+<tr>
+<th>Клавиша</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>W</code> или <code>↑</code></td>
+<td>Газ</td>
+</tr>
+<tr>
+<td><code>S</code> или <code>↓</code></td>
+<td>Тормоз / задний ход</td>
+</tr>
+<tr>
+<td><code>A</code> или <code>←</code></td>
+<td>Поворот влево (при движении)</td>
+</tr>
+<tr>
+<td><code>D</code> или <code>→</code></td>
+<td>Поворот вправо (при движении)</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>Пауза</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>Перезапуск заезда</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>Старт из меню</td>
+</tr>
+<tr>
+<td><code>Shift</code></td>
+<td>Nitro (этап 16)</td>
+</tr>
+<tr>
+<td><code>F1</code></td>
+<td>Режим отладки — секторы и waypoints</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Маршрут чтения</strong></p>
+<ol>
+<li><a href="#architecture">Архитектура</a> — как устроен проект до первой строки кода.</li>
+<li><a href="#dependencies">Зависимости и структура папок</a> — окружение и файлы.</li>
+<li><a href="#stage-0">Этап 0 — минимальный запуск</a> — окно и игровой цикл.</li>
+<li><a href="#stage-1">Этапы 1–14</a> — базовый прототип, по одной механике за шаг.</li>
+<li><a href="#full-revision">Полная ревизия файлов</a> — эталон после этапа 14 для построчной сверки.</li>
+<li><a href="#stage-15">Этапы 15–16</a> — позиция в гонке, nitro и полировка (опционально).</li>
+<li><a href="#tuning">Настройка "руления"</a> — таблица параметров физики.</li>
+<li><a href="#debug-mode">Отладка на трассе</a> — визуализация секторов и waypoints.</li>
+<li><a href="#final-checklist">Итоговая структура и самопроверка</a>.</li>
+</ol>
+<h3 id="содержание-этапов">Содержание этапов</h3>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Тема</th>
+<th>Новая механика</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><a href="#stage-0">Минимальный запуск</a></td>
+<td>Окно, цикл, <code>clock.tick</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td><a href="#stage-1">Конфиг и фон</a></td>
+<td><code>config.py</code>, палитра</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="#stage-2">Овальная трасса</a></td>
+<td>Эллипсы, линия разметки</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="#stage-3">Машина игрока</a></td>
+<td>Класс <code>Car</code>, поворот спрайта</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="#stage-4">Газ и трение</a></td>
+<td><code>speed</code>, <code>FRICTION</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="#stage-5">Движение и поворот</a></td>
+<td><code>move</code>, <code>steer</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="#stage-6">Бордюр</a></td>
+<td><code>Track.clamp_car</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="#stage-7">Секторы</a></td>
+<td><code>RaceProgress</code>, круги</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="#stage-8">Таймер круга</a></td>
+<td><code>perf_counter</code>, best lap</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="#stage-9">Старт/финиш и сброс</a></td>
+<td>Черта, клавиша <code>R</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="#stage-10">ИИ соперник</a></td>
+<td>Waypoints по овалу</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="#stage-11">Столкновения</a></td>
+<td>Несколько машин, отталкивание</td>
+</tr>
+<tr>
+<td>12</td>
+<td><a href="#stage-12">HUD</a></td>
+<td>Скорость, круг, время</td>
+</tr>
+<tr>
+<td>13</td>
+<td><a href="#stage-13">Состояния заезда</a></td>
+<td>Меню, отсчёт, пауза</td>
+</tr>
+<tr>
+<td>14</td>
+<td><a href="#stage-14">Класс <code>Game</code></a></td>
+<td>Модули, тонкий <code>main.py</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td><a href="#stage-15">Позиция и мини-карта</a></td>
+<td>Место в гонке, radar</td>
+</tr>
+<tr>
+<td>16</td>
+<td><a href="#stage-16">Nitro и следы шин</a></td>
+<td>Буст, полировка</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="что-должно-получиться">Что должно получиться</h2>
+<table>
+<thead>
+<tr>
+<th>Механика</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Трасса</td>
+<td>Овальное кольцо — асфальт между внутренним и внешним эллипсом</td>
+</tr>
+<tr>
+<td>Машина</td>
+<td>Ускорение, трение, поворот зависит от скорости</td>
+</tr>
+<tr>
+<td>Бордюр</td>
+<td>Выезд за асфальт — отскок и потеря скорости</td>
+</tr>
+<tr>
+<td>Круги</td>
+<td>Четыре сектора-триггера; полный круг только при проходе по порядку</td>
+</tr>
+<tr>
+<td>Таймер</td>
+<td>Время текущего круга и лучший круг</td>
+</tr>
+<tr>
+<td>Соперники</td>
+<td>1–3 машины по замкнутому маршруту waypoints</td>
+</tr>
+<tr>
+<td>Заезд</td>
+<td>Обратный отсчёт 3–2–1–GO, меню, пауза, финиш после N кругов</td>
+</tr>
+<tr>
+<td>Позиция</td>
+<td>Место в гонке по прогрессу круга и сектора</td>
+</tr>
+<tr>
+<td>Nitro</td>
+<td>Кратковременный буст по <code>Shift</code> с перезарядкой</td>
+</tr>
+</tbody>
+</table>
+<h3 id="сравнение-подходов-к-гонкам-в-pygame">Сравнение подходов к гонкам в Pygame</h3>
+<table>
+<thead>
+<tr>
+<th>Подход</th>
+<th>Камера</th>
+<th>Сложность</th>
+<th>Чему учит</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Top-down (этот практикум)</strong></td>
+<td>Статичная сверху</td>
+<td>Средняя</td>
+<td>Угол, скорость, секторы, waypoints</td>
+</tr>
+<tr>
+<td>Вертикальный скроллер</td>
+<td>Дорога движется вниз</td>
+<td>Ниже</td>
+<td>Спавн препятствий, скорость мира</td>
+</tr>
+<tr>
+<td>Псевдо-3D (OutRun)</td>
+<td>Перспектива по линиям дороги</td>
+<td>Выше</td>
+<td>Проекция, сегменты трассы</td>
+</tr>
+<tr>
+<td>Tilemap-трек</td>
+<td>Сверху или изометрия</td>
+<td>Средняя</td>
+<td>Тайлы, A*, сетка</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="architecture"></span></p>
+<h2 id="архитектура">Архитектура</h2>
+<p>Прежде чем писать код, зафиксируем <strong>из чего состоит гонка</strong> и <strong>как данные текут по кадру</strong>.</p>
+<h3 id="игровой-цикл">Игровой цикл</h3>
+<pre><code class="language-mermaid">flowchart TD
+    A[Старт] --> B[Инициализация Pygame]
+    B --> C{running?}
+    C -->|да| D[Обработка событий]
+    D --> E[Обновление состояния]
+    E --> F[Отрисовка]
+    F --> G[clock.tick FPS]
+    G --> C
+    C -->|нет| H[pygame.quit]
+</code></pre>
+<p>На каждом кадре внутри <strong>обновления</strong> (когда состояние <code>RACING</code>):</p>
+<ol>
+<li>Прочитать удерживаемые клавиши (<code>get_pressed</code>).</li>
+<li>Применить газ/тормоз и трение к скорости игрока.</li>
+<li>Повернуть машину, если скорость выше порога.</li>
+<li>Сдвинуть позицию по углу и скорости.</li>
+<li>Проверить границы трассы — при выезде вернуть на асфальт и урезать скорость.</li>
+<li>Обновить прогресс по секторам и счётчик кругов.</li>
+<li>Обновить соперников по waypoints.</li>
+<li>Проверить столкновения машин (упрощённо — отталкивание).</li>
+<li>Обновить таймеры и проверить финиш.</li>
+</ol>
+<h3 id="слои-приложения">Слои приложения</h3>
+<table>
+<thead>
+<tr>
+<th>Слой</th>
+<th>Ответственность</th>
+<th>Примеры</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ввод</strong></td>
+<td>Клавиатура, пауза, меню</td>
+<td><code>KEYDOWN</code>, <code>get_pressed</code></td>
+</tr>
+<tr>
+<td><strong>Трасса</strong></td>
+<td>Геометрия, коллизии с бордюром</td>
+<td><code>Track</code>, эллипсы</td>
+</tr>
+<tr>
+<td><strong>Физика</strong></td>
+<td>Скорость, угол, трение</td>
+<td><code>Car.update</code></td>
+</tr>
+<tr>
+<td><strong>Прогресс</strong></td>
+<td>Секторы, круги, финиш</td>
+<td><code>RaceProgress</code></td>
+</tr>
+<tr>
+<td><strong>ИИ</strong></td>
+<td>Движение соперников</td>
+<td><code>WaypointFollower</code></td>
+</tr>
+<tr>
+<td><strong>Правила</strong></td>
+<td>Состояния заезда, таймер</td>
+<td><code>GameState</code></td>
+</tr>
+<tr>
+<td><strong>Представление</strong></td>
+<td>Трасса, машины, HUD</td>
+<td><code>draw_track</code>, <code>draw_hud</code></td>
+</tr>
+</tbody>
+</table>
+<p>Слой <strong>правил</strong> меняет состояние; слой <strong>представления</strong> только читает его и рисует кадр.</p>
+<h3 id="координатная-система">Координатная система</h3>
+<p>Вид <strong>сверху</strong>, ось <strong>Y направлена вниз</strong> (как в Pygame). Угол машины — в <strong>градусах</strong>, <code>0°</code> — вправо, рост угла — по часовой стрелке (стандарт <code>pygame.transform.rotate</code>).</p>
+<pre><code>Экран (пиксели)
+┌────────────────────────────────────────┐
+│  трава (фон)                           │
+│    ╭────────────────────────╮          │
+│    │  внутренний газон       │         │
+│    ╰────────────────────────╯          │
+│         асфальт (кольцо)               │
+│    старт / финиш — нижняя дуга         │
+└────────────────────────────────────────┘
+</code></pre>
+<p>Рекомендуемые константы (все модули берут размеры из <strong><code>config.py</code></strong>):</p>
+<table>
+<thead>
+<tr>
+<th>Константа</th>
+<th>Значение</th>
+<th>Смысл</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SCREEN_W</code>, <code>SCREEN_H</code></td>
+<td><code>960</code>, <code>540</code></td>
+<td>Окно 16:9</td>
+</tr>
+<tr>
+<td><code>FPS</code></td>
+<td><code>60</code></td>
+<td>Кадров в секунду</td>
+</tr>
+<tr>
+<td><code>TRACK_CX</code>, <code>TRACK_CY</code></td>
+<td>центр экрана</td>
+<td>Центр овала</td>
+</tr>
+<tr>
+<td><code>OUTER_RX</code>, <code>OUTER_RY</code></td>
+<td><code>420</code>, <code>220</code></td>
+<td>Внешний эллипс</td>
+</tr>
+<tr>
+<td><code>INNER_RX</code>, <code>INNER_RY</code></td>
+<td><code>220</code>, <code>110</code></td>
+<td>Внутренний эллипс</td>
+</tr>
+<tr>
+<td><code>CAR_W</code>, <code>CAR_H</code></td>
+<td><code>44</code>, <code>22</code></td>
+<td>Габарит машины</td>
+</tr>
+<tr>
+<td><code>MAX_SPEED</code></td>
+<td><code>8.0</code></td>
+<td>Пикселей за кадр</td>
+</tr>
+<tr>
+<td><code>TOTAL_LAPS</code></td>
+<td><code>3</code></td>
+<td>Кругов до финиша</td>
+</tr>
+</tbody>
+</table>
+<p>Проверка "машина на асфальте" — через <strong>нормализованное расстояние до эллипса</strong>:</p>
+<pre><code class="language-python">def ellipse_norm(x, y, cx, cy, rx, ry):
+    dx, dy = x - cx, y - cy
+    return (dx / rx) ** 2 + (dy / ry) ** 2
+</code></pre>
+<p>Точка на <strong>кольце</strong>, если <code>inner_norm >= 1.0</code> и <code>outer_norm &#x3C;= 1.0</code> (с небольшим запасом <code>EPS</code>).</p>
+<h3 id="модель-физики-машины">Модель физики машины</h3>
+<p>Машина — <strong>material point + heading</strong> — храним <code>(x, y, angle, speed)</code>. Это упрощение без бокового сноса; для аркады его достаточно.</p>
+<table>
+<thead>
+<tr>
+<th>Переменная</th>
+<th>Единица</th>
+<th>Роль</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>speed</code></td>
+<td>px/кадр</td>
+<td>Скalar скорости вдоль <code>angle</code>; отрицательная — задний ход</td>
+</tr>
+<tr>
+<td><code>angle</code></td>
+<td>градусы</td>
+<td>Курс; <code>0°</code> — вправо, <code>90°</code> — вниз</td>
+</tr>
+<tr>
+<td><code>ACCELERATION</code></td>
+<td>px/кадр²</td>
+<td>Прирост при газе</td>
+</tr>
+<tr>
+<td><code>FRICTION</code></td>
+<td>0…1</td>
+<td>Множитель каждый кадр; <code>0.96</code> ≈ лёгкое сопротивление</td>
+</tr>
+</tbody>
+</table>
+<p>Обновление за кадр (состояние <code>RACING</code>):</p>
+<pre><code class="language-text">speed += gas * ACCELERATION - brake * BRAKE
+speed *= FRICTION
+speed = clamp(speed, MIN_SPEED, MAX_SPEED)
+if |speed| > STEER_MIN_SPEED:
+    angle += turn_input * TURN_SPEED * sign(speed)
+x += cos(radians(angle)) * speed
+y += sin(radians(angle)) * speed
+</code></pre>
+<p>Поворот <strong>зависит от знака скорости</strong> — при заднем ходе руль "инвертируется", как у настоящего автомобиля.</p>
+<div class="callout callout--note">
+  <div class="callout-title">Пиксели и "км/ч"</div>
+  <div class="callout-body">
+  <p>В HUD скорость показываем как <code>abs(speed) <em> 10</code> — условные km/h для красоты. Реальная физика завязана на px/кадр и <code>FPS</code>; при смене <code>FPS</code> умножайте ускорение на <code>dt </em> 60</code>, если переходите на обновление через <code>dt</code>.</p>
+  </div>
+</div>
+<h3 id="порядок-обновления-кадра">Порядок обновления кадра</h3>
+<p>Порядок вызовов <strong>фиксирован</strong> — иначе круги и столкновения "дрожат":</p>
+<table>
+<thead>
+<tr>
+<th>Шаг</th>
+<th>Действие</th>
+<th>Почему именно здесь</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ввод → <code>apply_input</code>, <code>steer</code></td>
+<td>Решаем, куда едем</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>move</code></td>
+<td>Меняем позицию</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>track.clamp_car</code></td>
+<td>Не даём уехать с асфальта</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>progress.update</code></td>
+<td>Секторы после финальной позиции</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ИИ соперников + <code>clamp_car</code></td>
+<td>Соперники в тех же правилах</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>collide_with</code></td>
+<td>Разводим пересечения</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Проверка <code>finished</code></td>
+<td>Финиш после логики</td>
+</tr>
+</tbody>
+</table>
+<h3 id="секторы-и-круги">Секторы и круги</h3>
+<p>Трассу делим на <strong>4 сектора</strong> по углу от центра (<code>atan2</code>). Игрок должен пройти секторы <strong>0 → 1 → 2 → 3 → 0</strong> подряд; только тогда засчитывается <strong>полный круг</strong>. Так нельзя "накрутить" круг, проехав туда-сюда на одном участке.</p>
+<pre><code class="language-mermaid">flowchart LR
+    S0["Сектор 0\n(справа)"] --> S1["Сектор 1\n(низ)"]
+    S1 --> S2["Сектор 2\n(слева)"]
+    S2 --> S3["Сектор 3\n(верх)"]
+    S3 --> S0
+    S0 -->|"после S3"| LAP["+1 круг"]
+</code></pre>
+<p>Схема секторов на овале (вид сверху, центр — <code>TRACK_CX</code>, <code>TRACK_CY</code>):</p>
+<pre><code class="language-text">              сектор 3 (верх)
+                   │
+     сектор 2 ─────┼───── сектор 0 (право)
+      (лево)       │
+              сектор 1 (низ, старт)
+</code></pre>
+<p>Угол считается через <code>atan2(dy, dx)</code> в градусах <code>[0, 360)</code>; границы секторов — кратные 90°. Старт на нижней дуге попадает в <strong>сектор 1</strong>, поэтому <code>RaceProgress</code> инициализируется с <code>next_sector = 2</code>.</p>
+<h3 id="конечный-автомат-состояний">Конечный автомат состояний</h3>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --> MENU
+    MENU --> COUNTDOWN : Enter
+    COUNTDOWN --> RACING : GO
+    RACING --> PAUSED : P
+    PAUSED --> RACING : P
+    RACING --> FINISHED : все круги пройдены
+    RACING --> FINISHED : время вышло (опционально)
+    FINISHED --> COUNTDOWN : R
+    MENU --> [*] : Esc
+    RACING --> [*] : Esc
+</code></pre>
+<p>Состояния <code>MENU</code>, <code>COUNTDOWN</code>, <code>RACING</code>, <code>PAUSED</code>, <code>FINISHED</code> — отдельные ветки в <code>update()</code> и <code>draw()</code>.</p>
+<h3 id="структура-файлов-целевая">Структура файлов (целевая)</h3>
+<p>До <strong>этапа 5</strong> достаточно <code>main.py</code> и <code>config.py</code>. Дальше код <strong>раскладываем по модулям</strong>.</p>
+<pre><code>racing/
+├── main.py              # точка входа, цикл while
+├── config.py            # константы, цвета, FPS
+├── assets/              # позже — звуки и спрайты
+├── game/
+│   ├── __init__.py
+│   ├── car.py           # Car — физика и отрисовка
+│   ├── track.py         # Track — эллипсы, коллизии, рисование
+│   ├── progress.py      # RaceProgress — секторы и круги
+│   ├── ai.py            # WaypointFollower для соперников
+│   ├── hud.py           # скорость, круг, таймер
+│   └── states.py        # Game — состояния заезда
+└── requirements.txt
+</code></pre>
+<h3 id="диаграмма-объектов">Диаграмма объектов</h3>
+<pre><code class="language-mermaid">classDiagram
+    class Game {
+        +state
+        +player Car
+        +rivals Car[]
+        +track Track
+        +progress RaceProgress
+        +update()
+        +draw()
+    }
+    class Car {
+        +x y angle speed
+        +update(keys, track)
+        +draw(surface)
+    }
+    class Track {
+        +is_on_track(x, y)
+        +clamp_to_track(car)
+        +draw(surface)
+    }
+    class RaceProgress {
+        +sector lap
+        +on_car_moved(x, y)
+    }
+    Game --> Car
+    Game --> Track
+    Game --> RaceProgress
+    Car --> Track : коллизии
+</code></pre>
+<div class="callout callout--tip">
+  <div class="callout-title">Почему овал, а не tilemap</div>
+  <div class="callout-body">
+  <p>Для гонок удобна <strong>непрерывная</strong> траектория: скорость и угол меняются плавно. Овальное кольцо задаётся двумя эллипсами — минимум геометрии, максимум ощущения "трассы". Позже ту же архитектуру можно перенести на полигональную трассу из точек.</p>
+  </div>
+</div>
+<h3 id="ии-соперников-waypoints">ИИ соперников — waypoints</h3>
+<p>Соперник не "знает" физику — каждый кадр <strong>тянется к следующей точке</strong> маршрута:</p>
+<pre><code class="language-mermaid">flowchart LR
+    W0[waypoint i] --> W1[waypoint i+1]
+    W1 --> W2[...]
+    W2 --> W0
+    Car[Car x,y] -->|вектор к W[i]| W0
+</code></pre>
+<p>Точки строятся по параметрическому овалу (<code>cos/sin</code> с радиусом между inner и outer). Когда расстояние до точки &#x3C; порога — индекс увеличивается. Скорость ИИ <strong>константа</strong>; разнообразие — разный <code>speed</code> и сдвиг стартового <code>index</code>, чтобы машины не ехали в хвост.</p>
+<h3 id="словарь-терминов">Словарь терминов</h3>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Значение в проекте</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Waypoint</strong></td>
+<td>Точка <code>(x, y)</code> на маршруте; цель для ИИ</td>
+</tr>
+<tr>
+<td><strong>Сектор</strong></td>
+<td>Четверть овала по углу; триггер прогресса</td>
+</tr>
+<tr>
+<td><strong>Круг (lap)</strong></td>
+<td>Полный проход секторов 0→1→2→3→0</td>
+</tr>
+<tr>
+<td><strong>Clamp</strong></td>
+<td>Возврат машины на допустимый эллипс</td>
+</tr>
+<tr>
+<td><strong>HUD</strong></td>
+<td>Наложенный UI — скорость, круг, таймер</td>
+</tr>
+<tr>
+<td><strong>dt</strong></td>
+<td>Длительность кадра в секундах (<code>tick / 1000</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="dependencies"></span></p>
+<h2 id="зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</h2>
+<h3 id="требования">Требования</h3>
+<ul>
+<li><strong>Python 3.10+</strong></li>
+<li><strong>Pygame 2.5+</strong> — единственная внешняя библиотека</li>
+</ul>
+<h3 id="установка">Установка</h3>
+<pre><code class="language-bash">mkdir racing &#x26;&#x26; cd racing
+python -m venv .venv
+</code></pre>
+<p>Активация виртуального окружения:</p>
+<ul>
+<li><strong>Windows (PowerShell):</strong> <code>.venv\Scripts\Activate.ps1</code></li>
+<li><strong>Linux / macOS:</strong> <code>source .venv/bin/activate</code></li>
+</ul>
+<pre><code class="language-bash">pip install pygame
+python -c "import pygame; print('Pygame', pygame.version.ver)"
+</code></pre>
+<p>Файл <code>requirements.txt</code>:</p>
+<pre><code>pygame>=2.5.0
+</code></pre>
+<h3 id="первичная-структура">Первичная структура</h3>
+<p>На <strong>этапе 0</strong> создайте только <code>main.py</code>. Файл <code>config.py</code> появится на этапе 1, папку <code>game/</code> — ближе к финалу.</p>
+<h3 id="если-pygame-не-ставится">Если Pygame не ставится</h3>
+<table>
+<thead>
+<tr>
+<th>Сообщение</th>
+<th>Что сделать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft Visual C++ 14.0 is required</code> (старые версии)</td>
+<td>Обновите pip и Pygame до 2.5+, либо поставьте <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/">Build Tools</a></td>
+</tr>
+<tr>
+<td><code>No module named 'pygame'</code></td>
+<td>Активируйте <code>.venv</code> — в приглашении должно быть <code>(.venv)</code></td>
+</tr>
+<tr>
+<td>Окно сразу закрывается</td>
+<td>Запускайте из терминала <code>python main.py</code>, читайте traceback</td>
+</tr>
+<tr>
+<td>Чёрный экран на Linux/WSL</td>
+<td>Нужен графический сервер (WSLg или X11); в headless CI Pygame не откроет окно</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout--tip">
+  <div class="callout-title">Как проходить практикум</div>
+  <div class="callout-body">
+  <p>Создайте папку <code>racing/</code>, копируйте код <strong>после каждого этапа</strong>, запускайте <code>python main.py</code>. Если что-то сломалось — сверьтесь с блоком "Самопроверка" в конце этапа.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-0"></span></p>
+<h2 id="этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</h2>
+<p><strong>Цель</strong> — окно, цикл событий, выход по крестику и <code>Esc</code>, стабильные 60 FPS.</p>
+<p>Создайте <code>main.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-001" data-title="Этап 0 — минимальный запускаемый код" data-min-height="534"> </div>
+<p>Запуск:</p>
+<pre><code class="language-bash">python main.py
+</code></pre>
+<p><strong>Самопроверка этапа 0</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Окно открывается без traceback.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Фон зелёный (трава), без мерцания.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>Esc</code> и крестик закрывают программу.</li>
+</ul>
+<h3>Зачем <code>clock.tick(FPS)</code></h3>
+<p><code>clock.tick(60)</code> <strong>ограничивает</strong> частоту кадров и возвращает миллисекунды с прошлого кадра. Без него цикл крутится на максимальной скорости CPU — окно мерцает, а физика на слабом и мощном ПК ведёт себя по-разному. С этапа 13 используем <code>dt = tick / 1000.0</code> для отсчёта 3–2–1.</p>
+<p>На следующих этапах <strong>не удаляем</strong> цикл — только расширяем тело <code>while</code>.</p>
+<hr>
+<p><span id="stage-1"></span></p>
+<h2 id="этап-1-конфиг-и-фон">Этап 1 — конфиг и фон</h2>
+<p><strong>Цель</strong> — вынести настройки в <code>config.py</code>, зафиксировать палитру и размер окна.</p>
+<p><code>config.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-002" data-title="Этап 1 — конфиг и фон" data-min-height="354"> </div>
+<p>Обновите <code>main.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-003" data-title="Этап 1 — конфиг и фон" data-min-height="480"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Импорт <code>config</code> без ошибок.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Размер окна 960×540.</li>
+</ul>
+<hr>
+<p><span id="stage-2"></span></p>
+<h2 id="этап-2-овальная-трасса">Этап 2 — овальная трасса</h2>
+<p><strong>Цель</strong> — нарисовать кольцо асфальта между двумя эллипсами и <strong>стартовую разметку</strong> в шахматном стиле.</p>
+<p>Добавьте в <code>main.py</code> функции отрисовки (позже перенесём в <code>track.py</code>):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-004" data-title="Этап 2 — овальная трасса" data-min-height="588"> </div>
+<p>В цикле вместо одного <code>fill</code>:</p>
+<pre><code class="language-python">screen.fill(C.COLOR_GRASS)
+draw_track(screen)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Видно серое кольцо и зелёный "остров" внутри.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Трасса по центру экрана.</li>
+<li class="task-list-item"><input type="checkbox" disabled> На нижней дуге — бело-чёрная черта и жёлтая линия финиша.</li>
+</ul>
+<hr>
+<p><span id="stage-3"></span></p>
+<h2 id="этап-3-машина-игрока-статичная">Этап 3 — машина игрока (статичная)</h2>
+<p><strong>Цель</strong> — класс <code>Car</code>, отрисовка повёрнутого прямоугольника, стартовая позиция на нижней дуге.</p>
+<p>Добавьте в <code>main.py</code> (или создайте <code>game/car.py</code> и импортируйте):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-005" data-title="Этап 3 — машина игрока (статичная)" data-min-height="426"> </div>
+<p>Стартовая точка — <strong>снаружи внутреннего эллипса, снизу по центру</strong>:</p>
+<pre><code class="language-python">start_x = C.TRACK_CX
+start_y = C.TRACK_CY + (C.INNER_RY + C.OUTER_RY) // 2
+player = Car(start_x, start_y, -90, (220, 50, 50))
+</code></pre>
+<p>В цикле после <code>draw_track(screen)</code>:</p>
+<pre><code class="language-python">player.draw(screen)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Красная машина стоит на асфальте внизу овала.</li>
+<li class="task-list-item"><input type="checkbox" disabled> "Лобовое стекло" смотрит по направлению движения (вверх при <code>angle = -90</code>).</li>
+</ul>
+<hr>
+<p><span id="stage-4"></span></p>
+<h2 id="этап-4-газ-тормоз-и-трение">Этап 4 — газ, тормоз и трение</h2>
+<p><strong>Цель</strong> — изменять <code>speed</code> по клавишам <code>W</code>/<code>S</code>, каждый кадр умножать скорость на коэффициент трения.</p>
+<p>В <code>config.py</code> добавьте:</p>
+<pre><code class="language-python">MAX_SPEED = 8.0
+MIN_SPEED = -3.0
+ACCELERATION = 0.18
+BRAKE = 0.28
+FRICTION = 0.96
+</code></pre>
+<p>В класс <code>Car</code> добавьте метод:</p>
+<pre><code class="language-python">def apply_input(self, keys):
+    if keys[pygame.K_w] or keys[pygame.K_UP]:
+        self.speed += C.ACCELERATION
+    if keys[pygame.K_s] or keys[pygame.K_DOWN]:
+        self.speed -= C.BRAKE
+    self.speed *= C.FRICTION
+    self.speed = max(C.MIN_SPEED, min(C.MAX_SPEED, self.speed))
+</code></pre>
+<p>В цикле <strong>перед</strong> отрисовкой:</p>
+<pre><code class="language-python">keys = pygame.key.get_pressed()
+player.apply_input(keys)
+</code></pre>
+<p>Пока <strong>не двигаем</strong> <code>(x, y)</code> — только меняется скорость (на следующем этапе поедем).</p>
+<p>Для отладки выведите скорость на экран (временно):</p>
+<pre><code class="language-python">font = pygame.font.SysFont("consolas", 20)
+# после apply_input:
+txt = font.render(f"speed={player.speed:.2f}", True, (255, 255, 255))
+screen.blit(txt, (12, 12))
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> При зажатом <code>W</code> в заголовке окна или временном <code>print(player.speed)</code> скорость растёт до <code>MAX_SPEED</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> После отпускания клавиш скорость падает к нулю.</li>
+</ul>
+<hr>
+<p><span id="stage-5"></span></p>
+<h2 id="этап-5-движение-и-поворот">Этап 5 — движение и поворот</h2>
+<p><strong>Цель</strong> — сдвиг по углу, поворот <code>A</code>/<code>D</code> только при достаточной скорости.</p>
+<p>В <code>config.py</code>:</p>
+<pre><code class="language-python">TURN_SPEED = 3.2
+STEER_MIN_SPEED = 0.4
+</code></pre>
+<p>Методы <code>Car</code>:</p>
+<pre><code class="language-python">def steer(self, keys):
+    if abs(self.speed) &#x3C; C.STEER_MIN_SPEED:
+        return
+    direction = 1 if self.speed >= 0 else -1
+    if keys[pygame.K_a] or keys[pygame.K_LEFT]:
+        self.angle -= C.TURN_SPEED * direction
+    if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
+        self.angle += C.TURN_SPEED * direction
+
+def move(self):
+    rad = math.radians(self.angle)
+    self.x += math.cos(rad) * self.speed
+    self.y += math.sin(rad) * self.speed
+</code></pre>
+<p>В цикле:</p>
+<pre><code class="language-python">player.apply_input(keys)
+player.steer(keys)
+player.move()
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Машина ездит по овалу при удержании <code>W</code> и лёгкой коррекции <code>A</code>/<code>D</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> На месте (<code>speed ≈ 0</code>) поворот не работает.</li>
+</ul>
+<h3>Сводный <code>main.py</code> после этапа 5</h3>
+<p>Если вы собирали файл по частям, сверьте его с этим вариантом:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-006" data-title="Сводный `main.py` после этапа 5" data-min-height="720"> </div>
+<div class="callout callout--note">
+  <div class="callout-title">Физика в двух словах</div>
+  <div class="callout-body">
+  <p>Скорость — скаляр (пикс/кадр), угол — курс в градусах. Каждый кадр: <code>speed</code> меняется от газа/тормоза и умножается на <code>FRICTION</code>; позиция сдвигается по формулам <code>cos/sin</code>. Это упрощённая модель "танка" — без бокового сноса; для аркады этого достаточно.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-6"></span></p>
+<h2 id="этап-6-коллизии-с-бордюром">Этап 6 — коллизии с бордюром</h2>
+<p><strong>Цель</strong> — не давать машине уехать на газон; при выезде — вернуть на асфальт и урезать скорость.</p>
+<p>Создайте <code>game/track.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-007" data-title="Этап 6 — коллизии с бордюром" data-min-height="720"> </div>
+<p>Создайте пустой <code>game/__init__.py</code>. В <code>main.py</code> импортируйте <code>Track</code>, создайте <code>track = Track()</code> и в цикле <strong>после</strong> <code>player.steer(keys)</code> вызывайте <code>player.move()</code>, затем <code>track.clamp_car(player)</code>; <strong>перед</strong> <code>pygame.display.flip()</code> — <code>track.draw(screen)</code> (вместо прежней <code>draw_track</code> в <code>main.py</code>).</p>
+<h3>Как работает <code>clamp_car</code></h3>
+<p>Идея — проецировать точку на ближайший допустимый эллипс. Если <code>outer_norm > 1</code>, координаты <strong>сжимают</strong> к внешней границе; если <code>outer_norm &#x3C; 1</code> для внутреннего газона — <strong>выталкивают</strong> наружу от inner. Множитель <code>0.55</code> к скорости имитирует удар о бордюр.</p>
+<div class="callout callout--caution">
+  <div class="callout-title">Угол при ударе</div>
+  <div class="callout-body">
+  <p>В этом учебном прототипе угол при столкновении с бордюром <strong>не отражается</strong> — только позиция и скорость. Для реализма добавьте отражение компоненты скорости относительно нормали эллипса (домашнее задание в конце статьи).</p>
+  </div>
+</div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> При резком выезде машина "отскакивает" на асфальт.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Скорость заметно падает после удара о бордюр.</li>
+</ul>
+<hr>
+<p><span id="stage-7"></span></p>
+<h2 id="этап-7-секторы-трассы">Этап 7 — секторы трассы</h2>
+<p><strong>Цель</strong> — определять, в каком секторе (0–3) находится машина, для будущего подсчёта кругов.</p>
+<p><code>game/progress.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-008" data-title="Этап 7 — секторы трассы" data-min-height="660"> </div>
+<p>В <code>config.py</code>:</p>
+<pre><code class="language-python">TOTAL_LAPS = 3
+</code></pre>
+<p>В <code>main.py</code> после <code>clamp_car</code>:</p>
+<pre><code class="language-python">from game.progress import RaceProgress
+
+progress = RaceProgress(player.x, player.y)
+# в цикле:
+progress.update(player.x, player.y)
+</code></pre>
+<p>Для отладки выведите сектор шрифтом:</p>
+<pre><code class="language-python">font = pygame.font.SysFont("consolas", 20)
+label = font.render(f"sector {progress.sector} lap {progress.lap}", True, (255, 255, 255))
+screen.blit(label, (12, 12))
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> При полном обороте по часовой стрелке <code>lap</code> увеличивается на 1.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Срезание через центр <strong>не</strong> даёт лишний круг без прохода всех секторов.</li>
+</ul>
+<div class="callout callout--info">
+  <div class="callout-title">Почему круг не растёт</div>
+  <div class="callout-body">
+  <p>Частая причина — езда <strong>против часовой</strong> или пропуск сектора (срезали внутренний газон и "перепрыгнули" с 1 на 3). Смотрите отладку секторов по <code>F1</code> в разделе <a href="#debug-mode">Отладка на трассе</a>.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-8"></span></p>
+<h2 id="этап-8-таймер-круга-и-лучший-круг">Этап 8 — таймер круга и лучший круг</h2>
+<p><strong>Цель</strong> — засекать время текущего круга и запоминать лучший результат.</p>
+<p>Расширьте <code>RaceProgress</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-009" data-title="Этап 8 — таймер круга и лучший круг" data-min-height="534"> </div>
+<p>Функция форматирования в <code>main.py</code> или <code>game/hud.py</code>:</p>
+<pre><code class="language-python">def format_time(seconds):
+    ms = int((seconds % 1) * 1000)
+    s = int(seconds) % 60
+    m = int(seconds) // 60
+    return f"{m:02d}:{s:02d}.{ms:03d}"
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Таймер текущего круга растёт каждый кадр.</li>
+<li class="task-list-item"><input type="checkbox" disabled> После финиша сектора 3→0 время фиксируется как <code>last_lap_time</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-9"></span></p>
+<h2 id="этап-9-линия-стартафиниша-и-сброс-заезда">Этап 9 — линия старта/финиша и сброс заезда</h2>
+<p><strong>Цель</strong> — нарисовать стартовую черту; по <code>R</code> сбрасывать машину и прогресс.</p>
+<p>В <code>Track.draw</code> добавьте черту на нижней дуге:</p>
+<pre><code class="language-python">finish_x = C.TRACK_CX
+finish_y = C.TRACK_CY + (C.INNER_RY + C.OUTER_RY) // 2
+pygame.draw.line(
+    surface, (255, 255, 0),
+    (finish_x - 30, finish_y),
+    (finish_x + 30, finish_y), 4,
+)
+</code></pre>
+<p>Функция сброса в <code>main.py</code>:</p>
+<pre><code class="language-python">def reset_race():
+    player.x = C.TRACK_CX
+    player.y = C.TRACK_CY + (C.INNER_RY + C.OUTER_RY) // 2
+    player.angle = -90
+    player.speed = 0
+    progress.__init__(player.x, player.y)
+</code></pre>
+<p>Обработка <code>KEYDOWN</code>:</p>
+<pre><code class="language-python">elif event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+    reset_race()
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Жёлтая линия видна на старте.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>R</code> возвращает машину на линию и обнуляет круги.</li>
+</ul>
+<hr>
+<p><span id="stage-10"></span></p>
+<h2 id="этап-10-соперник-по-waypoints">Этап 10 — соперник по waypoints</h2>
+<p><strong>Цель</strong> — одна машина ИИ, едущая по заранее заданным точкам по овалу.</p>
+<p><code>game/ai.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-010" data-title="Этап 10 — соперник по waypoints" data-min-height="720"> </div>
+<p><strong>Look-ahead (опционально)</strong> — смотреть на точку дальше по маршруту, чтобы траектория была плавнее:</p>
+<pre><code class="language-python">def _target_index(self, offset=3):
+    return (self.index + offset) % len(self.waypoints)
+
+def update(self):
+    tx, ty = self.waypoints[self._target_index()]
+    # ... остальное как выше, tx/ty от look-ahead ...
+</code></pre>
+<p>В <code>main.py</code>:</p>
+<pre><code class="language-python">from game.ai import build_oval_waypoints, WaypointFollower
+from game.car import Car
+
+rival = Car(C.TRACK_CX + 120, C.TRACK_CY, 180, (50, 120, 220))
+ai = WaypointFollower(rival, build_oval_waypoints(), speed=4.2)
+# в цикле:
+ai.update()
+rival.draw(screen)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Синяя машина стабильно кружит по овалу без выездов.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Скорость соперника постоянная (можно менять в конструкторе).</li>
+</ul>
+<h3 id="настройка-ии">Настройка ИИ</h3>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Эффект</th>
+<th>Рекомендация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>speed</code></td>
+<td>Средняя скорость соперника</td>
+<td>3.8–4.8 px/кадр</td>
+</tr>
+<tr>
+<td><code>n</code> в <code>build_oval_waypoints(n)</code></td>
+<td>Гладкость траектории</td>
+<td>32–48 точек</td>
+</tr>
+<tr>
+<td>Порог <code>dist &#x3C; 16</code></td>
+<td>Когда переключать waypoint</td>
+<td>12–20 px</td>
+</tr>
+<tr>
+<td><code>rival.index = i * 8</code></td>
+<td>Разводка машин на старте</td>
+<td>Сдвиг 6–10 точек</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="stage-11"></span></p>
+<h2 id="этап-11-несколько-соперников-и-простое-столкновение">Этап 11 — несколько соперников и простое столкновение</h2>
+<p><strong>Цель</strong> — список соперников; при пересечении прямоугольников — лёгкое отталкивание.</p>
+<p>В <code>Car</code> добавьте (метод <code>rect()</code> здесь не нужен — используем axis-aligned <code>Rect</code> по центру):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-011" data-title="Этап 11 — несколько соперников и простое столкновение" data-min-height="354"> </div>
+<p>Создайте список:</p>
+<pre><code class="language-python">rivals = [
+    WaypointFollower(Car(...), build_oval_waypoints(), speed=4.0),
+    WaypointFollower(Car(...), build_oval_waypoints(), speed=4.6),
+]
+</code></pre>
+<p>После движения игрока проверяйте столкновения с каждым <code>rival.car</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> При таране машины разъезжаются.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Скорость игрока падает после контакта.</li>
+</ul>
+<hr>
+<p><span id="stage-12"></span></p>
+<h2 id="этап-12-hud-скорость-круг-таймер">Этап 12 — HUD (скорость, круг, таймер)</h2>
+<p><strong>Цель</strong> — панель статуса поверх трассы с полупрозрачным фоном и подсказкой управления.</p>
+<p><code>game/hud.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-012" data-title="Этап 12 — HUD (скорость, круг, таймер)" data-min-height="624"> </div>
+<p>Параметры <code>position</code> и <code>total_racers</code> заполним на <a href="#stage-15">этапе 15</a>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> HUD читается на фоне трассы.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Номер круга совпадает с логикой <code>RaceProgress</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-13"></span></p>
+<h2 id="этап-13-меню-отсчёт-и-пауза">Этап 13 — меню, отсчёт и пауза</h2>
+<p><strong>Цель</strong> — состояния <code>MENU</code>, <code>COUNTDOWN</code>, <code>RACING</code>, <code>PAUSED</code>, <code>FINISHED</code>.</p>
+<p><code>game/states.py</code> (скелет):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-013" data-title="Этап 13 — меню, отсчёт и пауза" data-min-height="624"> </div>
+<p>В <code>main.py</code> используйте <code>dt = clock.tick(C.FPS) / 1000.0</code>. Пока <code>state != RACING</code>, <strong>не вызывайте</strong> <code>player.apply_input</code> (или обнуляйте скорость).</p>
+<p>Отрисовка оверлеев:</p>
+<pre><code class="language-python">def draw_menu(surface, font):
+    title = font.render("Racing — Enter to start", True, (255, 255, 255))
+    surface.blit(title, (C.SCREEN_W // 2 - title.get_width() // 2, C.SCREEN_H // 2))
+
+def draw_countdown(surface, font, value):
+    text = font.render(str(max(1, int(value + 0.99))), True, (255, 220, 0))
+    rect = text.get_rect(center=(C.SCREEN_W // 2, C.SCREEN_H // 2))
+    surface.blit(text, rect)
+</code></pre>
+<p>При <code>progress.finished</code> переключайте <code>state = FINISHED</code> и показывайте итоговое время.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Enter запускает 3–2–1, затем гонка.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>P</code> ставит паузу и снимает её.</li>
+<li class="task-list-item"><input type="checkbox" disabled> После 3 кругов — экран финиша.</li>
+</ul>
+<hr>
+<p><span id="stage-14"></span></p>
+<h2>Этап 14 — класс <code>Game</code> и чистый <code>main.py</code></h2>
+<p><strong>Цель</strong> — собрать логику в <code>Game</code>, оставить в <code>main.py</code> только инициализацию и цикл.</p>
+<p>Перенесите класс <code>Car</code> в <code>game/car.py</code> (добавьте <code>import config as C</code> и метод <code>collide_with</code> из этапа 11):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-014" data-title="Этап 14 — класс `Game` и чистый `main.py`" data-min-height="720"> </div>
+<p>Пример финального <code>main.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-015" data-title="Этап 14 — класс `Game` и чистый `main.py`" data-min-height="570"> </div>
+<p>Класс <code>Game</code> внутри <code>game/states.py</code> (или <code>game/game.py</code>) хранит <code>player</code>, <code>track</code>, <code>progress</code>, <code>rivals</code>, <code>hud</code>, методы <code>reset</code>, <code>update</code>, <code>draw</code>.</p>
+<p>Пример полной реализации <code>Game</code> (можно скопировать в <code>game/states.py</code> после переноса <code>Car</code>, <code>Track</code>, <code>RaceProgress</code>, <code>HUD</code>, <code>WaypointFollower</code>):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-016" data-title="Этап 14 — класс `Game` и чистый `main.py`" data-min-height="720"> </div>
+<p>Финальный <code>config.py</code> (все константы в одном месте):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-017" data-title="Этап 14 — класс `Game` и чистый `main.py`" data-min-height="516"> </div>
+<div class="callout callout--tip">
+  <div class="callout-title">Куда развивать дальше</div>
+  <div class="callout-body">
+  <p>Этапы 15–16 добавляют позицию, nitro и следы. Полный список идей — в разделе <a href="#future-work">Дальнейшее развитие</a> в конце статьи.</p>
+  </div>
+</div>
+<p><strong>Самопроверка этапа 14</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>main.py</code> короче ~40 строк.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Поведение совпадает с этапом 13.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Все модули в <code>game/</code> импортируются без циклических ошибок.</li>
+</ul>
+<hr>
+<p><span id="stage-15"></span></p>
+<h2 id="этап-15-позиция-в-гонке-и-мини-карта">Этап 15 — позиция в гонке и мини-карта</h2>
+<p><strong>Цель</strong> — показывать место игрока (<code>P1/3</code>) и мини-схему овала с точками машин.</p>
+<h3 id="подсчёт-позиции">Подсчёт позиции</h3>
+<p>Сравниваем <code>progress_score()</code> игрока и каждого соперника. У соперника "виртуальный" прогресс — индекс waypoint, приведённый к той же шкале:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-018" data-title="Подсчёт позиции" data-min-height="318"> </div>
+<p>В <code>Game.update</code> после движения сохраняйте <code>self.position = race_position(...)</code>.</p>
+<h3 id="мини-карта-radar">Мини-карта (radar)</h3>
+<p><code>game/minimap.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-019" data-title="Мини-карта (radar)" data-min-height="570"> </div>
+<p>В <code>Game.draw</code> после HUD: <code>self.minimap.draw(surface, self.player, self.rivals)</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> При обгоне соперника цифра <code>P1</code>, <code>P2</code> меняется.</li>
+<li class="task-list-item"><input type="checkbox" disabled> На мини-карте видны все машины относительно овала.</li>
+</ul>
+<hr>
+<p><span id="stage-16"></span></p>
+<h2 id="этап-16-nitro-и-следы-от-шин">Этап 16 — nitro и следы от шин</h2>
+<p><strong>Цель</strong> — кратковременный буст по <code>Shift</code> и визуальные следы при заносе.</p>
+<h3 id="nitro">Nitro</h3>
+<p>В <code>config.py</code>:</p>
+<pre><code class="language-python">NITRO_BOOST = 0.35
+NITRO_MAX = 100.0
+NITRO_DRAIN = 2.5
+NITRO_RECHARGE = 0.8
+MAX_SPEED_NITRO = 11.0
+</code></pre>
+<p>В <code>Car</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-020" data-title="Nitro" data-min-height="354"> </div>
+<p>В HUD добавьте полоску nitro — <code>pygame.draw.rect</code> шириной пропорционально <code>player.nitro / NITRO_MAX</code>.</p>
+<h3 id="следы-шин">Следы шин</h3>
+<p>Список последних позиций при высокой скорости и резком повороте:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-021" data-title="Следы шин" data-min-height="318"> </div>
+<p>В <code>Game.update</code> после <code>steer</code> вызывайте <code>skids.add(..., turn_delta=...)</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>Shift</code> + <code>W</code> даёт заметный разгон; полоска nitro опустошается.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Без Shift nitro постепенно восстанавливается.</li>
+<li class="task-list-item"><input type="checkbox" disabled> На резких поворотах остаются тёмные следы.</li>
+</ul>
+<hr>
+<p><span id="tuning"></span></p>
+<h2 id="настройка-руления">Настройка "руления"</h2>
+<p>Все ощущения от вождения — в нескольких константах <code>config.py</code>. Меняйте <strong>по одной</strong> и перезапускайте игру.</p>
+<table>
+<thead>
+<tr>
+<th>Константа</th>
+<th>"Слишком"</th>
+<th>Симптом</th>
+<th>Куда крутить</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ACCELERATION</code></td>
+<td>высокая</td>
+<td>Машина "стреляет"</td>
+<td>↓ до 0.12–0.15</td>
+</tr>
+<tr>
+<td><code>FRICTION</code></td>
+<td>низкая (0.90)</td>
+<td>Долгое скольжение</td>
+<td>↑ до 0.96–0.98</td>
+</tr>
+<tr>
+<td><code>FRICTION</code></td>
+<td>высокая (0.99)</td>
+<td>Тормозит слишком резко</td>
+<td>↓</td>
+</tr>
+<tr>
+<td><code>TURN_SPEED</code></td>
+<td>высокая</td>
+<td>Крутится на месте</td>
+<td>↓ до 2.5</td>
+</tr>
+<tr>
+<td><code>MAX_SPEED</code></td>
+<td>высокая</td>
+<td>Слетает с овала</td>
+<td>↓ или ужесточите clamp</td>
+</tr>
+<tr>
+<td><code>STEER_MIN_SPEED</code></td>
+<td>высокая</td>
+<td>Не поворачивает на малой скорости</td>
+<td>↓ до 0.2</td>
+</tr>
+<tr>
+<td><code>BRAKE</code></td>
+<td>низкая</td>
+<td>Плохо тормозит</td>
+<td>↑</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Пресеты</strong></p>
+<table>
+<thead>
+<tr>
+<th>Стиль</th>
+<th>ACCEL</th>
+<th>FRICTION</th>
+<th>TURN</th>
+<th>MAX_SPEED</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Аркада (по умолчанию)</td>
+<td>0.18</td>
+<td>0.96</td>
+<td>3.2</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>Симуляция-lite</td>
+<td>0.10</td>
+<td>0.98</td>
+<td>2.2</td>
+<td>6.5</td>
+</tr>
+<tr>
+<td>Хардкор</td>
+<td>0.22</td>
+<td>0.94</td>
+<td>3.8</td>
+<td>9.5</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="debug-mode"></span></p>
+<h2 id="отладка-на-трассе">Отладка на трассе</h2>
+<p>Добавьте флаг <code>DEBUG = False</code> в <code>config.py</code> и переключение по <code>F1</code>.</p>
+<p><code>game/debug_draw.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-022" data-title="Отладка на трассе" data-min-height="624"> </div>
+<p>В <code>Game.handle_event</code> по <code>F1</code> переключайте <code>C.DEBUG</code>. В <code>draw</code> при <code>DEBUG</code> вызывайте функции выше.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Лог в консоль</div>
+  <div class="callout-body">
+  <p>На время отладки кругов пишите <code>print(sector, next_sector, lap)</code> только при смене сектора — иначе консоль завалится за секунду.</p>
+  </div>
+</div>
+<hr>
+<p><span id="full-revision"></span></p>
+<h2 id="полная-ревизия-файлов">Полная ревизия файлов</h2>
+<p>Эталонный проект после <strong>этапа 14</strong> (проверен импортом <code>from game.states import Game</code>). Скопируйте дерево в папку <code>racing/</code> и запустите <code>python main.py</code> — овальная трасса, круги, таймер, два соперника, меню, отсчёт 3–2–1, пауза и финиш после трёх кругов.</p>
+<h3 id="дерево-проекта">Дерево проекта</h3>
+<pre><code>racing/
+├── main.py
+├── config.py
+├── requirements.txt
+└── game/
+    ├── __init__.py
+    ├── car.py
+    ├── track.py
+    ├── progress.py
+    ├── ai.py
+    ├── hud.py
+    └── states.py   # class Game
+</code></pre>
+<h3><code>requirements.txt</code></h3>
+<p><strong>Разбор.</strong> Единственная внешняя зависимость — Pygame 2.5+.</p>
+<pre><code>pygame>=2.5.0
+</code></pre>
+<h3><code>config.py</code></h3>
+<p><strong>Разбор.</strong> Размеры окна, геометрия овала, физика машины, палитра и число кругов — все модули импортируют <code>config as C</code>.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-023" data-title="`config.py`" data-min-height="516"> </div>
+<h3><code>main.py</code></h3>
+<p><strong>Разбор.</strong> Точка входа — цикл событий, <code>dt</code>, вызовы <code>Game.handle_event</code>, <code>update</code> и <code>draw</code>; импорт <code>from game.states import Game</code>.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-024" data-title="`main.py`" data-min-height="624"> </div>
+<h3><code>game/__init__.py</code></h3>
+<p><strong>Разбор.</strong> Пустой файл — Python считает <code>game</code> пакетом; без него импорты из <code>game.*</code> не сработают.</p>
+<pre><code class="language-python"></code></pre>
+<h3><code>game/car.py</code></h3>
+<p><strong>Разбор.</strong> Физика игрока и соперников — газ, трение, поворот, сдвиг, отталкивание и отрисовка прямоугольника.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-025" data-title="`game/car.py`" data-min-height="720"> </div>
+<h3><code>game/track.py</code></h3>
+<p><strong>Разбор.</strong> Овальная трасса — нормализованные эллипсы, <code>clamp_car</code>, линия финиша и <code>draw</code>.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-026" data-title="`game/track.py`" data-min-height="720"> </div>
+<h3><code>game/progress.py</code></h3>
+<p><strong>Разбор.</strong> Секторы по <code>atan2</code>, счётчик кругов и таймеры круга (<code>perf_counter</code>).</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-027" data-title="`game/progress.py`" data-min-height="720"> </div>
+<h3><code>game/ai.py</code></h3>
+<p><strong>Разбор.</strong> Маршрут по waypoints на среднем радиусе овала; <code>WaypointFollower</code> двигает машину соперника.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-028" data-title="`game/ai.py`" data-min-height="720"> </div>
+<h3><code>game/hud.py</code></h3>
+<p><strong>Разбор.</strong> Панель скорости, круга и таймеров поверх трассы; подсказка управления внизу экрана.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-029" data-title="`game/hud.py`" data-min-height="696"> </div>
+<h3><code>game/states.py</code></h3>
+<p><strong>Разбор.</strong> Класс <code>Game</code> — FSM (<code>State</code>), сборка заезда, обновление кадра, оверлеи меню/отсчёта/паузы/финиша.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-4-030" data-title="`game/states.py`" data-min-height="720"> </div>
+<h3 id="разбор-финальной-архитектуры">Разбор финальной архитектуры</h3>
+<ul>
+<li><strong>Track, ellipse clamp</strong> — <code>ellipse_norm</code> проверяет кольцо между inner и outer; <code>clamp_car</code> проецирует машину на границу и режет скорость при ударе о бордюр.</li>
+<li><strong>RaceProgress, sectors</strong> — четыре сектора по углу от центра; круг засчитывается только при проходе 0→1→2→3→0 подряд.</li>
+<li><strong>WaypointFollower AI</strong> — соперники тянутся к точкам овала; разный <code>speed</code> и сдвиг <code>index</code> разводят машины на старте.</li>
+<li><strong>State enum flow</strong> — <code>MENU</code> → <code>COUNTDOWN</code> (Enter) → <code>RACING</code> → <code>PAUSED</code> (<code>P</code>) → <code>FINISHED</code> после <code>TOTAL_LAPS</code>; <code>R</code> перезапускает заезд.</li>
+<li><strong>HUD overlay</strong> — полупрозрачная панель со скоростью, кругом и таймерами; позиция <code>P&#x26;#123;n&#x26;#125;/3</code> считается в <code>race_position</code> по <code>progress_score</code> и индексу waypoint.</li>
+</ul>
+<h3 id="чек-лист-эталона">Чек-лист эталона</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>Enter</code> запускает отсчёт 3–2–1, затем гонку.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>WASD</code> ведут машину, она остаётся на овале.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Счётчик круга растёт после прохода четырёх секторов по порядку.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Два соперника стабильно едут по трассе.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>P</code> — пауза, <code>R</code> — перезапуск, финиш после трёх кругов.</li>
+</ul>
+<hr>
+<p><span id="final-checklist"></span></p>
+<h2 id="итоговая-структура-и-самопроверка">Итоговая структура и самопроверка</h2>
+<h3 id="дерево-проекта">Дерево проекта</h3>
+<pre><code>racing/
+├── main.py
+├── config.py
+├── requirements.txt
+└── game/
+    ├── __init__.py
+    ├── car.py
+    ├── track.py
+    ├── progress.py
+    ├── ai.py
+    ├── hud.py
+    ├── minimap.py      # этап 15
+    ├── debug_draw.py   # отладка F1
+    └── states.py
+</code></pre>
+<h3 id="чек-лист-готового-прототипа-этап-14">Чек-лист готового прототипа (этап 14)</h3>
+<p>Сверьте поведение с <a href="#full-revision">полной ревизией</a> или пройдите пункты ниже.</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>Enter</code> запускает отсчёт 3–2–1, затем гонку.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>WASD</code> ведут машину, она остаётся на овале.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Счётчик круга растёт после прохода четырёх секторов по порядку.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Два соперника стабильно едут по трассе.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>P</code> — пауза, <code>R</code> — перезапуск, финиш после трёх кругов.</li>
+</ul>
+<p>После <a href="#stage-15">этапов 15–16</a> дополнительно:</p>
+<ul>
+<li>HUD с позицией;</li>
+<li>мини-карта;</li>
+<li>nitro по <code>Shift</code>;</li>
+<li>следы при заносе.</li>
+</ul>
+<h3 id="типичные-ошибки">Типичные ошибки</h3>
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Причина</th>
+<th>Решение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Машина "скользит" боком</td>
+<td>Поворот при нулевой скорости</td>
+<td>Проверьте <code>STEER_MIN_SPEED</code></td>
+</tr>
+<tr>
+<td>Круги не растут</td>
+<td>Секторы проходятся не по порядку</td>
+<td>Езжайте по периметру овала</td>
+</tr>
+<tr>
+<td>ИИ уезжает с трассы</td>
+<td>Слишком высокая <code>speed</code> у follower</td>
+<td>Уменьшите до 3.5–4.5</td>
+</tr>
+<tr>
+<td>Окно "мигает"</td>
+<td>Забыли <code>clock.tick</code></td>
+<td>Вызов в конце цикла</td>
+</tr>
+<tr>
+<td><code>ImportError: game</code></td>
+<td>Нет <code>game/__init__.py</code></td>
+<td>Создайте пустой файл</td>
+</tr>
+<tr>
+<td>Nitro не кончается</td>
+<td>Нет <code>NITRO_DRAIN</code> в цикле</td>
+<td>Списывайте только при <code>Shift</code></td>
+</tr>
+<tr>
+<td>Позиция всегда P1</td>
+<td><code>race_position</code> не вызывается</td>
+<td>Обновляйте после <code>progress.update</code></td>
+</tr>
+<tr>
+<td>Мини-карта пустая</td>
+<td>Забыли <code>Minimap.draw</code></td>
+<td>Вызов после HUD</td>
+</tr>
+<tr>
+<td>Отладка не видна</td>
+<td><code>DEBUG</code> не переключается</td>
+<td>Обработайте <code>K_F1</code> в <code>handle_event</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="future-work"></span></p>
+<h2 id="дальнейшее-развитие">Дальнейшее развитие</h2>
+<p>Идеи <strong>после</strong> прохождения 16 этапов — каждая опирается на уже готовую архитектуру.</p>
+<table>
+<thead>
+<tr>
+<th>Идея</th>
+<th>Сложность</th>
+<th>С чего начать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Полигональная трасса из JSON</td>
+<td>Средняя</td>
+<td>Заменить <code>ellipse_norm</code> на "точка внутри полигона"</td>
+</tr>
+<tr>
+<td>Два игрока на одной клавиатуре</td>
+<td>Низкая</td>
+<td>Второй <code>Car</code>, WASD + стрелки</td>
+</tr>
+<tr>
+<td>Звук мотора по <code>speed</code></td>
+<td>Низкая</td>
+<td><code>pygame.mixer</code>, pitch через <code>set_volume</code></td>
+</tr>
+<tr>
+<td>Таблица рекордов</td>
+<td>Низкая</td>
+<td><code>best_lap_time</code> в <code>records.json</code></td>
+</tr>
+<tr>
+<td>Отражение от бордюра</td>
+<td>Средняя</td>
+<td>Нормаль эллипса + отражение скорости</td>
+</tr>
+<tr>
+<td>Камера следует за машиной</td>
+<td>Средняя</td>
+<td>Сдвиг всех <code>draw</code> на <code>-camera_x, -camera_y</code></td>
+</tr>
+<tr>
+<td>Штрафной таймер за off-track</td>
+<td>Низкая</td>
+<td>Счётчик кадров вне асфальта → +1 сек штрафа</td>
+</tr>
+</tbody>
+</table>
+<h3 id="два-игрока-эскиз">Два игрока — эскиз</h3>
+<pre><code class="language-python">player1 = Car(sx - 20, sy, -90, (220, 50, 50))
+player2 = Car(sx + 20, sy, -90, (50, 220, 100))
+# player1: WASD, player2: стрелки — разные ветки apply_input по keys
+</code></pre>
+<h3 id="запись-лучшего-круга">Запись лучшего круга</h3>
+<pre><code class="language-python">
+import json
+
+from pathlib import Path
+
+RECORDS = Path("records.json")
+
+def save_best(name, seconds):
+    data = json.loads(RECORDS.read_text()) if RECORDS.exists() else {}
+    if name not in data or seconds &#x3C; data[name]:
+        data[name] = seconds
+        RECORDS.write_text(json.dumps(data, indent=2))
+</code></pre>
+<h3 id="связанные-материалы">Связанные материалы</h3>
+<ul>
+<li><a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a> — игровой цикл, события, спрайты.</li>
+<li><a href="https://github.com/Spirzen/BattleCity">Battle City на GitHub</a> — похожая поэтапная структура с коллизиями.</li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro">Практикум разработки игр — о разделе</a> — остальные треки.</li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#как-проходить-практикум">Как проходить практикум</a></li><li class="article-toc__item"><a href="#о-практикуме">О практикуме</a></li><li class="article-toc__item is-h3"><a href="#содержание-этапов">Содержание этапов</a></li><li class="article-toc__item"><a href="#что-должно-получиться">Что должно получиться</a></li><li class="article-toc__item is-h3"><a href="#сравнение-подходов-к-гонкам-в-pygame">Сравнение подходов к гонкам в Pygame</a></li><li class="article-toc__item"><a href="#архитектура">Архитектура</a></li><li class="article-toc__item is-h3"><a href="#игровой-цикл">Игровой цикл</a></li><li class="article-toc__item is-h3"><a href="#слои-приложения">Слои приложения</a></li><li class="article-toc__item is-h3"><a href="#координатная-система">Координатная система</a></li><li class="article-toc__item is-h3"><a href="#модель-физики-машины">Модель физики машины</a></li><li class="article-toc__item is-h3"><a href="#порядок-обновления-кадра">Порядок обновления кадра</a></li><li class="article-toc__item is-h3"><a href="#секторы-и-круги">Секторы и круги</a></li><li class="article-toc__item is-h3"><a href="#конечный-автомат-состояний">Конечный автомат состояний</a></li><li class="article-toc__item is-h3"><a href="#структура-файлов-целевая">Структура файлов (целевая)</a></li><li class="article-toc__item is-h3"><a href="#диаграмма-объектов">Диаграмма объектов</a></li><li class="article-toc__item is-h3"><a href="#ии-соперников-waypoints">ИИ соперников — waypoints</a></li><li class="article-toc__item is-h3"><a href="#словарь-терминов">Словарь терминов</a></li><li class="article-toc__item"><a href="#зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</a></li><li class="article-toc__item is-h3"><a href="#требования">Требования</a></li><li class="article-toc__item is-h3"><a href="#установка">Установка</a></li><li class="article-toc__item is-h3"><a href="#первичная-структура">Первичная структура</a></li><li class="article-toc__item is-h3"><a href="#если-pygame-не-ставится">Если Pygame не ставится</a></li><li class="article-toc__item"><a href="#этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</a></li><li class="article-toc__item is-h3"><a href="#зачем-clocktickfps">Зачем `clock.tick(FPS)`</a></li><li class="article-toc__item"><a href="#этап-1-конфиг-и-фон">Этап 1 — конфиг и фон</a></li><li class="article-toc__item"><a href="#этап-2-овальная-трасса">Этап 2 — овальная трасса</a></li><li class="article-toc__item"><a href="#этап-3-машина-игрока-статичная">Этап 3 — машина игрока (статичная)</a></li><li class="article-toc__item"><a href="#этап-4-газ-тормоз-и-трение">Этап 4 — газ, тормоз и трение</a></li><li class="article-toc__item"><a href="#этап-5-движение-и-поворот">Этап 5 — движение и поворот</a></li><li class="article-toc__item is-h3"><a href="#сводный-mainpy-после-этапа-5">Сводный `main.py` после этапа 5</a></li><li class="article-toc__item"><a href="#этап-6-коллизии-с-бордюром">Этап 6 — коллизии с бордюром</a></li><li class="article-toc__item is-h3"><a href="#как-работает-clampcar">Как работает `clamp_car`</a></li><li class="article-toc__item"><a href="#этап-7-секторы-трассы">Этап 7 — секторы трассы</a></li><li class="article-toc__item"><a href="#этап-8-таймер-круга-и-лучший-круг">Этап 8 — таймер круга и лучший круг</a></li><li class="article-toc__item"><a href="#этап-9-линия-стартафиниша-и-сброс-заезда">Этап 9 — линия старта/финиша и сброс заезда</a></li><li class="article-toc__item"><a href="#этап-10-соперник-по-waypoints">Этап 10 — соперник по waypoints</a></li><li class="article-toc__item is-h3"><a href="#настройка-ии">Настройка ИИ</a></li><li class="article-toc__item"><a href="#этап-11-несколько-соперников-и-простое-столкновение">Этап 11 — несколько соперников и простое столкновение</a></li><li class="article-toc__item"><a href="#этап-12-hud-скорость-круг-таймер">Этап 12 — HUD (скорость, круг, таймер)</a></li><li class="article-toc__item"><a href="#этап-13-меню-отсчёт-и-пауза">Этап 13 — меню, отсчёт и пауза</a></li><li class="article-toc__item"><a href="#этап-14-класс-game-и-чистый-mainpy">Этап 14 — класс `Game` и чистый `main.py`</a></li><li class="article-toc__item"><a href="#этап-15-позиция-в-гонке-и-мини-карта">Этап 15 — позиция в гонке и мини-карта</a></li><li class="article-toc__item is-h3"><a href="#подсчёт-позиции">Подсчёт позиции</a></li><li class="article-toc__item is-h3"><a href="#мини-карта-radar">Мини-карта (radar)</a></li><li class="article-toc__item"><a href="#этап-16-nitro-и-следы-от-шин">Этап 16 — nitro и следы от шин</a></li><li class="article-toc__item is-h3"><a href="#nitro">Nitro</a></li><li class="article-toc__item is-h3"><a href="#следы-шин">Следы шин</a></li><li class="article-toc__item"><a href="#настройка-руления">Настройка &quot;руления&quot;</a></li><li class="article-toc__item"><a href="#отладка-на-трассе">Отладка на трассе</a></li><li class="article-toc__item"><a href="#полная-ревизия-файлов">Полная ревизия файлов</a></li><li class="article-toc__item is-h3"><a href="#дерево-проекта">Дерево проекта</a></li><li class="article-toc__item is-h3"><a href="#requirementstxt">`requirements.txt`</a></li><li class="article-toc__item is-h3"><a href="#configpy">`config.py`</a></li><li class="article-toc__item is-h3"><a href="#mainpy">`main.py`</a></li><li class="article-toc__item is-h3"><a href="#gameinitpy">`game/__init__.py`</a></li><li class="article-toc__item is-h3"><a href="#gamecarpy">`game/car.py`</a></li><li class="article-toc__item is-h3"><a href="#gametrackpy">`game/track.py`</a></li><li class="article-toc__item is-h3"><a href="#gameprogresspy">`game/progress.py`</a></li><li class="article-toc__item is-h3"><a href="#gameaipy">`game/ai.py`</a></li><li class="article-toc__item is-h3"><a href="#gamehudpy">`game/hud.py`</a></li><li class="article-toc__item is-h3"><a href="#gamestatespy">`game/states.py`</a></li><li class="article-toc__item is-h3"><a href="#разбор-финальной-архитектуры">Разбор финальной архитектуры</a></li><li class="article-toc__item is-h3"><a href="#чек-лист-эталона">Чек-лист эталона</a></li><li class="article-toc__item"><a href="#итоговая-структура-и-самопроверка">Итоговая структура и самопроверка</a></li><li class="article-toc__item is-h3"><a href="#дерево-проекта">Дерево проекта</a></li><li class="article-toc__item is-h3"><a href="#чек-лист-готового-прототипа-этап-14">Чек-лист готового прототипа (этап 14)</a></li><li class="article-toc__item is-h3"><a href="#типичные-ошибки">Типичные ошибки</a></li><li class="article-toc__item"><a href="#дальнейшее-развитие">Дальнейшее развитие</a></li><li class="article-toc__item is-h3"><a href="#два-игрока-эскиз">Два игрока — эскиз</a></li><li class="article-toc__item is-h3"><a href="#запись-лучшего-круга">Запись лучшего круга</a></li><li class="article-toc__item is-h3"><a href="#связанные-материалы">Связанные материалы</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр — о разделе  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312" target="_blank" rel="noopener noreferrer"> Разработка игр на Python  ↗ </a> </li><li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro" target="_blank" rel="noopener noreferrer"> Компьютерные игры — о разделе  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

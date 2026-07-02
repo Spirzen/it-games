@@ -1,0 +1,1489 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Dendy и NES — Игры IT Universe</title><meta name="description" content="Сегодня Dendy — не музейный экспонат. Она активно используется в трёх областях — ретроэнжиниринге, образовательных инициативах и open-source разработке."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Dendy и NES</span></li></ol></nav><header class="portal-hero"> <h1>Dendy и NES</h1> <p>Сегодня Dendy — не музейный экспонат. Она активно используется в трёх областях — ретроэнжиниринге, образовательных инициативах и open-source разработке.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Dendy и NES" data-url="/games/9-03-igrovaya-industriya/120">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Dendy и NES">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Dendy и NES</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="dendy-и-nes">Dendy и NES</h2>
+<p>За рубежом, во всём мире, люди играли в Famicom и NES. Но я в детстве не слышал таких слов - для меня был лишь "Денди". И именно об этом мы сейчас поговорим. Большинство людей, выросших в те времена, и до сих пор не знают о Nintendo.</p>
+<hr>
+<h3 id="1-кризис-1983-года-в-американской-игровой-индустрии">1. Кризис 1983 года в американской игровой индустрии</h3>
+<p>Историю Dendy невозможно понять, не начав с одной из самых драматичных катастроф в истории технологий — краха североамериканского рынка видеоигр в 1983–1985 годах. Этот кризис был не просто спадом спроса — это была системная коллизия рыночных, технологических и культурных факторов, в результате которой целая индустрия оказалась в состоянии технического и коммерческого паралича.</p>
+<p>К 1982 году компания <strong>Atari Inc.</strong>, владевшая 80 % рынка домашних игровых приставок, фактически монополизировала отрасль. Её консоль <strong>Atari 2600</strong>, вышедшая в 1977 году, стала первой массовой платформой со сменными картриджами, что открыло дорогу сторонним разработчикам, включая независимых студий и мелких издателей. Однако открытость модели быстро обернулась проблемой: отсутствие контроля качества, минимальные требования к совместимости и стимулы к быстрой разработке привели к лавинообразному росту количества игр при падении их качества.</p>
+<p>В 1982 году Atari подписала контракт с Warner Bros. на экранизацию фильма <em>"Инопланетянин"</em> Стивена Спилберга. Это была беспрецедентная сделка: за лицензию компания заплатила около $20–25 млн — по тем временам неслыханную сумму. Разработку поручили одному программисту, <strong>Говарду Скотту Уоршоу</strong> (Howard Scott Warshaw), дав на неё <strong>пять недель</strong>. Чтобы уложиться в дедлайн рождественской распродажи, была заказана партия в <strong>5 миллионов картриджей</strong> — при общем парке приставок Atari 2600 в США, оценённом в 10–12 миллионов единиц.</p>
+<p>Игра <em>E.T. the Extra-Terrestrial</em> вышла в декабре 1982 года и стала технической и художественной катастрофой — неинтуитивная механика, нечитаемая графика, отсутствие баланса, отсутствие направляющего сюжета — всё это в совокупности породило массовое отторжение. Потребители вернули миллионы копий, ритейлеры списали десятки миллионов долларов убытков, а доверие к целому классу устройств — домашним игровым консолям — было подорвано. В 1983 году рынок видеоигр в США сократился с $3,2 млрд до $100 млн, а в 1984 году Atari была продана Warner Bros. за символическую сумму.</p>
+<p>Легенда о захоронении миллионов не проданных картриджей <em>E.T.</em> в пустыне Нью-Мексико долгое время считалась мифом — до раскопок 2014 года, когда археологи подтвердили наличие слоя упаковки с логотипом Atari и идентичных картриджей. Этот эпизод символизирует не просто коммерческий провал, а крах идеологии "быстрой игры" — когда разработка не подкреплена техническим контролем, юзабилити-тестированием и системой верификации, продукт становится нежизнеспособным, даже при наличии культурной лицензии высшего уровня.</p>
+<hr>
+<h3 id="2-famicom">2. Famicom</h3>
+<p>На фоне коллапса США японская индустрия переживала подъём. Nintendo, до этого занимавшаяся производством игральных карт и кратковременно — отелей и пылесосов, в 1980 году запустила линейку портативных электронных игр <strong>Game &#x26; Watch</strong>, а в 1981 году — аркадный хит <strong>Donkey Kong</strong>, ставший первым крупным успехом Сигэру Миямото. Это позволило компании накопить ресурсы и опыт для выхода в домашний сегмент.</p>
+<p><strong>Family Computer (Famicom)</strong> появилась в Японии в июле 1983 года. В отличие от Atari, Nintendo изначально закладывала в архитектуру производительность и <em>надёжность взаимодействия разработчика и консоли</em>.</p>
+<p>Ключевые технические решения Famicom:</p>
+<ul>
+<li><strong>8-битный процессор Ricoh 2A03</strong>, основанный на MOS 6502, но с интегрированным звуковым генератором (APU) и DMA-контроллером для спрайтов — это позволяло достигать более высокой частоты кадров и устойчивости анимации при ограниченных тактовых частотах (1,79 МГц).</li>
+<li><strong>Раздельные видеопроцессор (PPU) и аудиопроцессор (APU)</strong> — в отличие от Atari 2600, где графика и логика выполнялись одним чипом (TIA), что ограничивало одновременное использование спрайтов и фоновых тайлов.</li>
+<li><strong>Память — 2 КБ RAM (CPU), 2 КБ VRAM (PPU), 256 байт SPR-RAM</strong>, — скромные объёмы, но достаточные при чёткой архитектурной дисциплине.</li>
+<li><strong>Картридж с собственной схемой памяти и, при необходимости, mapper’ом</strong> — расширительным чипом, позволявшим переключать банки памяти и реализовывать сложные игры (например, <em>Metroid</em>, <em>Zelda</em>). Это принципиально отличалось от модели Atari, где картридж был просто ROM-устройством без логики.</li>
+</ul>
+<p>Nintendo также ввела <strong>жёсткий контроль над издательством</strong>: разработчики не имели прямого доступа к спецификациям чипов; каждый картридж должен был содержать <strong>lockout-чип 10NES</strong>, который при загрузке обменивался с консолью кодами авторизации. Без этого обмена система просто не запускала игру. Это обеспечивало:</p>
+<ul>
+<li>защиту от нелицензионных копий (в том числе пиратских),</li>
+<li>техническую верификацию — только игры, прошедшие тестирование в Nintendo, получали чип и допускались к производству,</li>
+<li>единый стандарт качества (в том числе по энергопотреблению, тепловыделению, совместимости с TV-стандартами).</li>
+</ul>
+<p>В Японии Famicom стала доминировать к 1985 году, достигнув 2,5 млн проданных единиц менее чем за два года. Но Северная Америка оставалась "запретной зоной" — там слово <em>video game</em> ассоциировалось с провалом, банкротствами и обманом.</p>
+<hr>
+<h3 id="3-nes">3. NES</h3>
+<p>Выход Nintendo на американский рынок в 1985 году — образец маркетинговой редизайн-инженерии. Компания не просто переделала Famicom — она <em>деконструировала восприятие всей категории устройств</em>.</p>
+<p>Во-первых, внешний вид — серый, угловатый корпус, напоминающий видеомагнитофон <strong>VCR</strong>, — съёмная крышка, скрывающая слот для картриджей, кнопка "Power" и "Reset", выполненные в стиле бытовой электроники. В комплект входил <strong>Zapper</strong> — световой пистолет в форме пистолета, и <strong>R.O.B.</strong> (Robotic Operating Buddy) — механическая игрушка-робот, выполнявшая роль "игрового аксессуара", чтобы подчеркнуть, что это <em>интерактивная система</em>. R.O.B. был не более чем маркетинговой уловкой: он использовался только в двух играх (<em>Gyromite</em> и <em>Stack-Up</em>) и быстро исчез из упаковок — но за это время Nintendo успела завоевать полки в отделах <em>бытовой техники</em>, а не игрушек.</p>
+<p>Во-вторых, программная политика: <strong>Nintendo Seal of Quality</strong> — официальная печать на упаковке, гарантировавшая соответствие стандартам. Nintendo брала на себя тестирование и управление производственными сроками, упаковкой, локализацией. Для разработчиков действовали жёсткие условия:</p>
+<ul>
+<li>Nintendo сохраняла право собственности на все произведённые картриджи до их оплаты,</li>
+<li>запрещалось выпускать игру на других платформах в течение двух лет после релиза на NES,</li>
+<li>Nintendo удерживала до 30 % розничной цены за лицензирование и производство.</li>
+</ul>
+<p>В-третьих — <strong>Super Mario Bros.</strong> как системный продукт: <em>демонстрация потенциала платформы</em>. Она использовала 32-килобайтный ROM с mapper’ом MMC1, что позволяло:</p>
+<ul>
+<li>прокручивать фон и спрайты независимо (скроллинг в два слоя),</li>
+<li>динамически загружать новые тайловые наборы при переходе между зонами,</li>
+<li>реализовывать 32 уровня с уникальной композицией (включая подземелья, замки, подводные сцены),</li>
+<li>вводить сложную систему физики (ускорение при беге, отскок от стен, гравитация при прыжке).</li>
+</ul>
+<p>Игра стала <em>обучающим интерфейсом</em> — первый уровень (1-1) — это геймдизайнерская модель "мягкого обучения", где каждая новая механика (блоки вопросов, труба-транспорт, увеличение роста) вводится последовательно, без инструкций, через пространственную композицию. Это было новым уровнем юзабилити в игровой индустрии.</p>
+<p>К 1987 году NES доминировала в США с долей рынка более 90 %. В 1989 году в Европе началась поставка <strong>PAL-версий</strong>, адаптированных под местные стандарты (включая замедление на 16,7 % из-за разницы в частоте кадров NTSC vs PAL).</p>
+<p>Но Советский Союз в это время не входил ни в один из этих рынков.</p>
+<hr>
+<h3 id="4-техническая-изоляция-ссср">4. Техническая изоляция СССР</h3>
+<p>К началу 1990-х СССР находился в состоянии технологической автономии, сформированной не столько идеологией, сколько объективными ограничениями инфраструктуры. Это напрямую влияло на возможность импорта и эксплуатации иностранных консолей.</p>
+<p><strong>Первый барьер — телевизионные стандарты.</strong><br>
+Советский Союз использовал <strong>SECAM-D/K</strong>, в то время как Famicom работал в <strong>NTSC-J</strong>, а NES — в <strong>NTSC-M</strong> (США/Япония) или <strong>PAL-B/G</strong> (Европа). Различия не сводились к цветовой передаче. SECAM передаёт цветовую информацию поочерёдно для U и V компонент, с частотной модуляцией, тогда как NTSC и PAL используют квадратурную амплитудную модуляцию. Это делало невозможным корректное отображение цвета без конвертера — а простые видеоконвертеры тех лет вносили задержку, рассинхронизацию и потери разрешения.</p>
+<p><strong>Второй барьер — питание и электромагнитная совместимость.</strong><br>
+Японские Famicom работали от сети 100 В, 50/60 Гц, с нестабилизированными адаптерами. Советские бытовые сети — 220 В, 50 Гц, с высокой гармонической составляющей и частыми перепадами. Без модификации блока питания это приводило к перегреву и выходу из строя чипов. Кроме того, отсутствие обязательного <strong>EMC-тестирования</strong> (электромагнитной совместимости) по ГОСТ 23511–79 делало невозможным сертификацию устройства как "радиоэлектронной аппаратуры" — а без сертификата ввоз был запрещён.</p>
+<p><strong>Третий барьер — отсутствие логистической и правовой инфраструктуры.</strong><br>
+Nintendo, как и другие западные компании, не имела представительств в СССР. Даже если бы возник интерес, не существовало юридических механизмов для:</p>
+<ul>
+<li>заключения дистрибьюторских соглашений (не было частных компаний с правом внешнеэкономической деятельности до 1988 года),</li>
+<li>импорта через государственные каналы (ввоз "игрушек" не входил в приоритеты Госснаба, особенно при дефиците валюты),</li>
+<li>защиты интеллектуальной собственности (СССР не ратифицировал Бернскую конвенцию до 1995 года).</li>
+</ul>
+<p>Таким образом, легальное появление Famicom/NES в СССР было технически и административно невозможным. Рынок оставался вакуумом — и его заполнили <em>аппаратные клоны</em>, способные адаптироваться к локальным условиям.</p>
+<hr>
+<h3 id="5-фамиклоны">5. Фамиклоны</h3>
+<p>Термин <em>"клон"</em> в контексте Famicom требует уточнения. Dendy не была простой копией — это был <em>локально оптимизированный переинжиниринг платформы</em> под требования emerging markets — низкая стоимость, устойчивость к нестабильному питанию, совместимость с SECAM.</p>
+<p>Основу составили решения тайваньских OEM-производителей, в первую очередь <strong>TXC Corporation</strong> (под брендом <em>Micro Genius</em>), а позже — <strong>Subor</strong> (Китай), <strong>Waixing</strong>, <strong>Sachen</strong> и др. Все они использовали ту же архитектуру на базе <strong>Ricoh 2A03/2A07</strong> или его аналогов (например, <strong>UMC UA6527</strong> или <strong>NOAC</strong> — <em>NES-on-a-Chip</em>), но с принципиальными модификациями.</p>
+<hr>
+<h4>5.1. Архитектурные различия</h4>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Famicom (Sharp Twin Famicom)</th>
+<th>Dendy Classic (Micro Genius IQ-501)</th>
+<th>Dendy Junior (SoC-версия)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ЦПУ</td>
+<td>Ricoh 2A03 (NTSC-J, 1.79 МГц)</td>
+<td>Ricoh 2A03 или UMC UA6527 (PAL, 1.77 МГц)</td>
+<td>NOAC (System-on-a-Chip), интегрированный CPU+PPU+APU+IO</td>
+</tr>
+<tr>
+<td>Видеовыход</td>
+<td>RF (антенный), композитный</td>
+<td>RF, композитный, <strong>SECAM-D/K-модифицированный</strong></td>
+<td>Только RF, с пассивным SECAM-конвертером на выходе</td>
+</tr>
+<tr>
+<td>Память</td>
+<td>2 КБ RAM, 2 КБ VRAM (внешние чипы)</td>
+<td>То же, но с заменой на более дешёвые аналоги (например, HM6116 → D4416)</td>
+<td>RAM/VRAM интегрированы в NOAC, объём часто снижен до 1 КБ</td>
+</tr>
+<tr>
+<td>Аудио</td>
+<td>5-канальный APU (2 pulse, 1 triangle, 1 noise, 1 DMC)</td>
+<td>Полный APU, но с искажением в DMC-канале из-за дешёвых конденсаторов</td>
+<td>APU урезан: DMC-канал часто отключён, noise — моно</td>
+</tr>
+<tr>
+<td>Карточный слот</td>
+<td>50-контактный, с металлической защёлкой</td>
+<td>50-контактный, пластиковая защёлка, часто с ослабленным прижимом</td>
+<td>48-контактный (2 контакта земли объединены), без защёлки — "вставь и держи"</td>
+</tr>
+<tr>
+<td>Питание</td>
+<td>10 В DC, 850 мА</td>
+<td>9 В DC, 1 А (адаптеры 220 В→9 В с гасящим резистором)</td>
+<td>5 В DC, 500 мА (часто питание от USB-A, хотя разъём — DC)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOAC (NES-on-a-Chip)</strong> — ключевая инновация бюджетных клонов. Это однокристальная система, объединяющая CPU, PPU, APU, таймеры, DMA и I/O-контроллер в одном кристалле, изготовленном по 6-микронной технологии. Такие чипы (например, <strong>UNL-KS7021A</strong>, <strong>BMC-UNROM</strong>, <strong>MMC3C</strong>) позволяли снизить себестоимость до $3–5 за устройство.</p>
+<p>Однако интеграция шла ценой совместимости:</p>
+<ul>
+<li>Отсутствие поддержки mapper’ов третьего и четвёртого поколения (MMC3, MMC5),</li>
+<li>Невозможность реализации battery-backed RAM (SRAM с батарейкой),</li>
+<li>Нестабильная работа с большими ROM (>256 КБ),</li>
+<li>Отклонения в таймингах PPU, приводящие к "дрожанию" спрайтов в некоторых играх.</li>
+</ul>
+<p>Именно поэтому игры вроде <em>The Legend of Zelda</em>, <em>Metroid</em>, <em>Final Fantasy</em> — требующие mapper’а MMC1 и SRAM — <em>не работали</em> или работали с критическими ошибками на большинстве Dendy Junior. Только Dendy Classic, основанная на дискретной логике, могла запускать их — но производители <em>сознательно не включали</em> такие картриджи в ассортимент — их сложнее было клонировать, дороже — хранить, и, главное, они требовали пояснительных книжек и поддержки, чего в условиях серой экономики не существовало.</p>
+<hr>
+<h4>5.2. SECAM-адаптация</h4>
+<p>Самый сложный технический вызов — SECAM. Простое подключение PAL-видеосигнала к SECAM-телевизору давало изображение без цвета (только ч/б) и с нестабильной синхронизацией.</p>
+<p>Dendy Classic решала это двумя способами:</p>
+<ol>
+<li><strong>Изменение частоты PPU</strong> — в PAL-версии цикл кадра 312 строк при 50 Гц, в SECAM — 625 строк при 50 Гц. Но SECAM-D/K использует те же временные параметры по строке, что и PAL. Поэтому TXC просто <em>удваивала</em> каждую строку, получая псевдо-625i. Это снижало вертикальное разрешение, но сохраняло стабильность.</li>
+<li><strong>Цветовая конвертация "на лету"</strong> — в схеме добавлялся простой PAL→SECAM-конвертер на двух транзисторах и одном LC-фильтре, формирующий частотно-модулированный сигнал для U и V компонент. Качество было низким (цвет "плыл", переходы были размыты), но <em>было лучше, чем чёрно-белое изображение</em>.</li>
+</ol>
+<p>Dendy Junior использовала ещё более простое решение: <strong>отключение цветовой информации</strong> и передача только яркостного сигнала (Y). В результате изображение оставалось ч/б, но <em>стабильным</em> — и для большинства пользователей это была приемлемая цена за снижение стоимости на 30–40 %.</p>
+<hr>
+<h3 id="6-steepler-и-виктор-савюк">6. Steepler и Виктор Савюк</h3>
+<p>Steepler до 1992 года занималась локализацией ПО (в частности, пакет <strong>CyrWin</strong> для русификации Windows 3.x) и дистрибуцией HP-оборудования. Контакт с TXC возник случайно — во время выставки <strong>COMPUTEX Taipei</strong> в 1992 году Савюк увидел стенд Micro Genius и понял, что <em>эти устройства совместимы с Famicom, но стоят втрое дешевле</em>.</p>
+<p>Важно подчеркнуть: Steepler <em>не была производителем</em>. Она выступала как <strong>системный интегратор</strong>:</p>
+<ul>
+<li>закупала готовые приставки у TXC (позже — у Subor),</li>
+<li>модифицировала их под локальные стандарты (в Москве проводился <strong>апгрейд SECAM-модуля</strong> для первых партий),</li>
+<li>создавала брендовую оболочку (упаковка, логотип, слоган),</li>
+<li>строила каналы дистрибуции (фирменные магазины, региональные дилеры),</li>
+<li>разворачивала маркетинговую экосистему (ТВ, журналы, турниры).</li>
+</ul>
+<p><strong>Ребрендинг</strong> был продуман до мелочей:</p>
+<ul>
+<li><strong>Dendy</strong> → от <em>dandy</em> (эстет, модник) — намёк на "стильность" новой культуры; замена <em>a</em> на <em>e</em> упрощала чтение для русскоязычных.</li>
+<li><strong>Слонёнок Денди</strong> — персонаж, не ассоциирующийся с агрессией (в отличие от черепашек или ниндзя), вызывающий доверие у родителей и симпатию у детей. Работа Ивана Максимова ("Пластилин") — это <em>визуальный UX-паттерн</em> — круглые формы, крупные глаза, выражение "радостного удивления" — оптимизировано под детскую перцепцию (согласно исследованиям в <em>журнале "Вопросы психологии"</em>, 1987).</li>
+<li><strong>"Новая реальность"</strong> — <em>культурный мем</em> 1992–1993 гг., совпадающий с лозунгами реформ — "рыночная экономика", "открытость", "перестройка сознания". Это создавало эффект <em>когнитивного согласования</em>: приставка — часть нового мира.</li>
+</ul>
+<p><strong>Телевизионная программа</strong> — <em>обучающая платформа</em>:</p>
+<ul>
+<li>Сергей Супонев <em>медиатор</em> между технологией и аудиторией. Его речь — медленная, чёткая, с минимальной жаргонной нагрузкой.</li>
+<li>Демонстрация геймплея шла <em>в реальном времени</em>, без монтажных склеек — это подчёркивало "настоящесть" опыта: <em>вот так будет у вас дома</em>.</li>
+<li>Акцент на <em>прохождении</em>, а не на "крутости" — показ тактик, поиск секретов, обучение контролю — это формировало игровую грамотность целого поколения.</li>
+</ul>
+<p><strong>Журналы</strong> выполняли функцию <em>технической документации</em>:</p>
+<ul>
+<li>"Видео-АСС Dendy" содержал обзоры и <em>коды на языке ассемблера</em> для простых игр (например, <em>Battle City</em>), что позволяло школьникам в <em>Школьном Бейсике</em> или <em>FASM</em> писать свои версии.</li>
+<li>Карта уровней <em>Contra</em>, схема лабиринта <em>Lode Runner</em>, таблица кодов <em>Teenage Mutant Ninja Turtles</em> — это были <em>инструкции по эксплуатации сложных систем</em>, компенсирующие отсутствие официальных руководств.</li>
+</ul>
+<hr>
+<h3 id="7-почему-nintendo-не-подавала-в-суд">7. Почему Nintendo не подавала в суд?</h3>
+<p>Обычно утверждают: "Россия не уважала авторские права". Но это упрощение. На самом деле, Nintendo <em>могла</em> подать иск — и не подала, потому что это было <em>нецелесообразно</em> с инженерной и экономической точки зрения.</p>
+<hr>
+<h4>7.1. Юридические барьеры</h4>
+<ul>
+<li>В 1992 году СССР распался, а Россия не имела закона об авторском праве, соответствующего Бернской конвенции. Первый такой закон — № 5351-1 — вступил в силу только <strong>с 9 августа 1993 года</strong>.</li>
+<li>Закон не имел обратной силы — клонирование, совершённое до августа 1993, <em>не было нарушением</em>.</li>
+<li>Подача иска требовала регистрации товарного знака в Роспатенте. Nintendo подала заявку только в 1994 году — к тому моменту Dendy уже доминировала.</li>
+</ul>
+<hr>
+<h4>7.2. Технические аргументы защиты</h4>
+<ul>
+<li>Dendy не копировала <em>программное обеспечение</em> — игры издавались отдельно, часто с изменёнными названиями, логотипами и кодом (например, <em>RoboCop III</em> вместо <em>RoboCop 2</em>).</li>
+<li>Приставка не содержала ROM с кодом Nintendo — только архитектуру на базе MOS 6502, который был в общественном достоянии.</li>
+<li>Lockout-чип 10NES был <em>физически отсутствующим</em> — а это означало, что Dendy не нарушала патент US 4,799,635 (<em>"Система for preventing unauthorized access to a program"</em>), поскольку устройство <em>не пыталось его имитировать</em> — оно просто игнорировало проблему.</li>
+</ul>
+<hr>
+<h4>7.3. Стратегическое решение Nintendo</h4>
+<p>Встреча Савюка с Минору Аракавой (главой Nintendo of America) в 1994 году не была попыткой "наказать пиратов". Это был <em>торг</em>:</p>
+<ul>
+<li>Steepler предлагала доступ к 150 млн потенциальных пользователей,</li>
+<li>у неё уже была дистрибьюторская сеть, магазины, медиа-ресурсы,</li>
+<li>Nintendo получала эксклюзив на Super Nintendo и Game Boy <em>без затрат на стартап</em>.</li>
+</ul>
+<p>Соглашение 1994 года — это <strong>признание Dendy как легитимного рыночного агента</strong>. Nintendo не "смирилась" с пиратством — она <em>встроила его в свою экосистему</em>. Это стандартная практика для emerging markets: сначала — клоны и grey market, затем — легализация через партнёрство (см. аналогию с MediaTek и Android в Китае 2008–2012 гг.).</p>
+<hr>
+<h3 id="8-контактные-интерфейсы">8. Контактные интерфейсы</h3>
+<p>Поведение пользователя — "вынул, дунул, вставил" — часто интерпретируется как ритуал. На самом деле это был <em>эвристический метод устранения неисправностей</em>, основанный на наблюдаемой корреляции между действием и результатом.</p>
+<hr>
+<h4>8.1. Физика контактов Famicom-совместимого слота</h4>
+<p>Слот картриджа Dendy Classic использует 50 контактов — по 25 с каждой стороны — с шагом 2,54 мм, покрытых оловянно-свинцовым сплавом (63/37). Основные проблемы:</p>
+<ul>
+<li><strong>Окисление</strong> — при относительной влажности >60 % на контактных площадках образуется плёнка окислов олова (SnO₂) и свинца (PbO), имеющая удельное сопротивление в 10⁴–10⁶ раз выше, чем у чистого металла.</li>
+<li><strong>Загрязнение</strong> — пыль, волокна ткани (от чехлов), частицы графита (от карандашей, которыми дети "починяли" коды) формируют диэлектрический слой.</li>
+<li><strong>Механический износ</strong> — пластиковый фиксатор слота со временем теряет упругость, снижая прижимное усилие (номинально 80–120 г на контакт) до 20–30 г. Это приводит к <em>микроискрам</em> при вибрации, что ускоряет окисление.</li>
+</ul>
+<hr>
+<h4>8.2. Почему "дув" давал эффект?</h4>
+<ol>
+<li><strong>Механическое воздействие</strong> — процесс извлечения и вставки сам по себе очищает контакты за счёт микроскопического трения (эффект "вытирающего контакта").</li>
+<li><strong>Удаление лёгких загрязнений</strong> — поток воздуха выдувает пыль с контактных полос, особенно если дуть <em>перпендикулярно</em> плоскости картриджа.</li>
+<li><strong>Конденсационный эффект</strong> — влага из выдыхаемого воздуха (насыщенность ~100 % при 35 °C) на мгновение снижает сопротивление окисной плёнки за счёт образования тонкого слоя электролита. Эффект длится 2–5 секунд — как раз на время загрузки.</li>
+</ol>
+<p>Однако длительное увлажнение <em>ускоряло</em> коррозию. Поэтому профессиональные сервисные центры (например, на заводе "Тензор") использовали:</p>
+<ul>
+<li><strong>Изопропиловый спирт (99 %)</strong> для очистки,</li>
+<li><strong>Контактный спрей на основе фторированных углеводородов</strong> (например, Kontakt Chemie CLEANSER),</li>
+<li><strong>Механическую полировку</strong> мелкозернистой (1200 grit) шлифовальной бумагой при критическом износе.</li>
+</ul>
+<p>Dendy Junior, лишённая металлического фиксатора, страдала от проблемы чаще — и именно в этой модели "дув" стал массовым поведением.</p>
+<hr>
+<h3 id="9-архитектура-многоигровых-картриджей">9. Архитектура "многоигровых" картриджей</h3>
+<p>Термин <em>"в одной"</em> технически некорректен. Ни один картридж Dendy не содержал 9999 отдельных ROM-образов. Реальная архитектура — <strong>динамическая перекомпиляция</strong> или <strong>параметризованная генерация</strong>.</p>
+<hr>
+<h4>9.1. Типы многоигровых сборок</h4>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Техническая реализация</th>
+<th>Примеры</th>
+<th>Объём ROM</th>
+<th>Кол-во "игр" (реальных/заявленных)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Статический набор</strong></td>
+<td>Несколько ROM-чипов + простой менеджер загрузки (bootloader)</td>
+<td>"7 в 1", "32 в 1"</td>
+<td>256–512 КБ</td>
+<td>7–32 / 7–32</td>
+</tr>
+<tr>
+<td><strong>Mapper-based сборка</strong></td>
+<td>Один ROM + mapper (MMC1/MMC3) + таблица offset’ов</td>
+<td>"100 в 1" (TXC)</td>
+<td>1–2 МБ</td>
+<td>20–40 / 100</td>
+</tr>
+<tr>
+<td><strong>Параметрическая генерация</strong></td>
+<td>Один ROM + runtime-редактор параметров (уровни, спрайты, physics)</td>
+<td>"9999 в 1" (чайки)</td>
+<td>512 КБ – 1 МБ</td>
+<td>10–20 / 9999</td>
+</tr>
+<tr>
+<td><strong>ROM-пак с шифрованием</strong></td>
+<td>ROM + простой XOR-шифр + loader, расшифровывающий при загрузке</td>
+<td>Subor "2000 in 1"</td>
+<td>2 МБ</td>
+<td>50–80 / 2000</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>9.2. Как работала "9999 в 1" (картридж с чайками)</h4>
+<p>Этот картридж — продукт китайской компании <strong>Sachen</strong> (также известной как <strong>Joy Van</strong>). Его архитектура:</p>
+<ul>
+<li><strong>ROM-чип</strong>: 1 МБ (8 Мбит), тип — MX23L8001C.</li>
+<li><strong>Mapper</strong> — собственный, несовместимый с MMC, реализованный на FPGA-подобном логическом массиве (PAL16L8).</li>
+<li><strong>Загрузчик</strong> — показывает меню с анимированными чайками и проигрывает <em>Unchained Melody</em> в монофоническом варианте (канал pulse 1 — мелодия, pulse 2 — аккомпанемент, noise — ритм).</li>
+</ul>
+<p>"9999 игр" — это <strong>комбинаторная генерация</strong>:</p>
+<ul>
+<li>Базовые игры: <em>Super Mario Bros.</em>, <em>Contra</em>, <em>Pac-Man</em>, <em>Battle City</em>, <em>Lode Runner</em>, <em>Bomberman</em>, <em>Tetris (NES)</em> — всего 12 штук.</li>
+<li>Для каждой игры определено 10–20 параметров — стартовый уровень, скорость врагов, количество жизней, наличие power-up’ов.</li>
+<li>При выборе "игры 4721" загрузчик вычисляет:<br>
+<code>базовая игра = 4721 mod 12 = 5 → *Battle City*</code><br>
+<code>набор параметров = floor(4721 / 12) = 393 → уровень 3, 5 врагов, 2 жизни, укреплённые стены</code></li>
+<li>Таким образом, 12 × 333 = 3996 комбинаций — а остальные "номера" просто ведут к циклическому повтору.</li>
+</ul>
+<p>Скрытая игра при запуске без выбора — всегда <em>Battle City</em> (ROM offset 0x0000), так как загрузчик при отсутствии сигнала от контроллера выполняет jump на адрес 0x8000 — начало первой игры в таблице.</p>
+<hr>
+<h4>9.3. Проблемы совместимости</h4>
+<ul>
+<li><strong>Отсутствие поддержки DMC-канала</strong> — в большинстве сборок звуковой канал Direct Memory Access (для сэмплированной речи) отключён, чтобы сэкономить на памяти. Поэтому <em>Castlevania</em> без звука "смерти Дракулы", <em>Metroid</em> без голоса Mother Brain.</li>
+<li><strong>Некорректная инициализация PPU</strong> — при переходе между играми в сборке PPU не сбрасывается полностью, что вызывает артефакты: "призрачные спрайты" (<em>Contra</em> после <em>Tetris</em>), смещение фона.</li>
+<li><strong>Отсутствие NMI-обработки</strong> — в играх, требующих точной синхронизации с vblank (например, <em>Excitebike</em>), пропадает плавность скроллинга.</li>
+</ul>
+<hr>
+<h3 id="10-игры-техническая-классификация-и-доступность-в-снг">10. Игры — техническая классификация и доступность в СНГ</h3>
+<p>Разделим все упомянутые игры на категории по их <em>реальному присутствию</em> в Dendy-обороте.</p>
+<hr>
+<h4>10.1. Официальные клонированные версии (высокая совместимость)</h4>
+<table>
+<thead>
+<tr>
+<th>Игра</th>
+<th>Оригинал</th>
+<th>Mapper</th>
+<th>SRAM</th>
+<th>Доступность</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Super Mario Bros.</em></td>
+<td>NES, 1985</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>Массово</td>
+<td>Часто в комплекте с Classic</td>
+</tr>
+<tr>
+<td><em>Contra</em></td>
+<td>NES, 1988</td>
+<td>UNROM</td>
+<td>Нет</td>
+<td>Массово</td>
+<td>30 жизней — стандарт для клонов</td>
+</tr>
+<tr>
+<td><em>Teenage Mutant Ninja Turtles II</em></td>
+<td>NES, 1990</td>
+<td>MMC3</td>
+<td>Нет</td>
+<td>Широко</td>
+<td>"Прыжок через Шреддера" — фиксирован в пиратских версиях</td>
+</tr>
+<tr>
+<td><em>Pac-Man</em></td>
+<td>NES, 1988</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>Массово</td>
+<td>Часто под названием <em>PuckMan</em></td>
+</tr>
+<tr>
+<td><em>Battle City</em></td>
+<td>NES, 1985 (Namco)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>Массово</td>
+<td>Базовая игра для сборок</td>
+</tr>
+<tr>
+<td><em>Tetris</em></td>
+<td>NES, 1989 (Bullet-Proof)</td>
+<td>UxROM</td>
+<td>Нет</td>
+<td>Массово</td>
+<td>Без лицензии Nintendo — альтернативный ROM</td>
+</tr>
+<tr>
+<td><em>Duck Hunt</em></td>
+<td>NES, 1984</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>Редко (требует Zapper)</td>
+<td>В СНГ Zapper почти не продавался</td>
+</tr>
+<tr>
+<td><em>Donkey Kong</em></td>
+<td>NES, 1986</td>
+<td>CNROM</td>
+<td>Нет</td>
+<td>Широко</td>
+<td>Ремейк аркадной версии</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>10.2. Искажённые/хакнутые версии (средняя совместимость)</h4>
+<table>
+<thead>
+<tr>
+<th>Игра</th>
+<th>Проблема</th>
+<th>Причина</th>
+<th>Обход</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Teenage Mutant Ninja Turtles III</em></td>
+<td>Бессмертный Шреддер</td>
+<td>Удалён код проверки "hit counter" при копировании</td>
+<td>Пройти уровень с 255 прыжками (переполнение счётчика)</td>
+</tr>
+<tr>
+<td><em>Mortal Kombat</em></td>
+<td>Отсутствует кровь, "Finish Him" заменён на "Excellent"</td>
+<td>Цензура при клонировании в Тайване</td>
+<td>Ввести код на экране паузы: ↑↑↓↓←→←→BA</td>
+</tr>
+<tr>
+<td><em>Battletoads</em></td>
+<td>Невозможно пройти уровень 3 ("Turbo Tunnel")</td>
+<td>Нарушена синхронизация таймера из-за PAL/SECAM</td>
+<td>Использовать Dendy Classic с NTSC-модом</td>
+</tr>
+<tr>
+<td><em>Bionic Commando</em></td>
+<td>Отсутствует финальный босс</td>
+<td>ROM усечён до 256 КБ (оригинал — 384 КБ)</td>
+<td>Не проходится без модификации ROM</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>10.3. Фейки и псевдоигры (низкая совместимость)</h4>
+<table>
+<thead>
+<tr>
+<th>Название на картридже</th>
+<th>Реальная игра</th>
+<th>Комментарий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Street Fighter V</em></td>
+<td><em>Kung-Fu Heroes</em> (1988)</td>
+<td>Только 2 персонажа, 1 уровень</td>
+</tr>
+<tr>
+<td><em>Contra 6</em></td>
+<td><em>Life Force</em> (Salamander)</td>
+<td>Вертикальный скроллинг, изменены спрайты боссов</td>
+</tr>
+<tr>
+<td><em>Robocop IV</em></td>
+<td><em>Code Name: Viper</em></td>
+<td>Название изменено, логотип перерисован</td>
+</tr>
+<tr>
+<td><em>Sonic the Hedgehog</em></td>
+<td><em>Somari</em></td>
+<td>Марио в красных кроссовках, спрайты из <em>Sonic 1</em>, физика — как в <em>Mario</em></td>
+</tr>
+<tr>
+<td><em>Zelda III</em></td>
+<td><em>Crystalis</em> (SNES) → порт на NES</td>
+<td>Графика переработана, звук урезан, сохранение отключено</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>10.4. Игры, принципиально недоступные на Dendy</h4>
+<table>
+<thead>
+<tr>
+<th>Игра</th>
+<th>Причина отсутствия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>The Legend of Zelda</em></td>
+<td>Требует mapper MMC1 + 8 КБ SRAM + батарейку. Клоны с SRAM были, но не поставлялись в СНГ — логистика хранения (батарейки "садились" за 6 месяцев) делала их невыгодными.</td>
+</tr>
+<tr>
+<td><em>Metroid</em></td>
+<td>MMC1 + 16 КБ SRAM. То же. Плюс — сложная документация (карта, термины), которую не копировали.</td>
+</tr>
+<tr>
+<td><em>Final Fantasy</em></td>
+<td>MMC1 + 32 КБ SRAM + сложный текстовый движок (англ. → рус. требовал перекодировки таблиц символов).</td>
+</tr>
+<tr>
+<td><em>Dragon Quest</em></td>
+<td>Японский ROM (KANJI), не адаптирован под латиницу.</td>
+</tr>
+<tr>
+<td><em>Kirby’s Adventure</em></td>
+<td>MMC3 + 8 КБ SRAM. MMC3 на Dendy Junior не работал стабильно.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Важное уточнение</strong> — <em>Phantasy Star</em>, <em>Landstalker</em>, <em>Light Crusader</em> — это игры для <strong>Sega Mega Drive</strong>, не для NES. Их наличие с батарейкой объясняется тем, что Sega Mega Drive в СНГ поставлялась <em>параллельно</em> с Dendy — и её клоны (например, <em>Mega Kid</em>) часто имели более высокое качество сборки и поддерживали SRAM.</p>
+</blockquote>
+<hr>
+<h3 id="11-dendy-pro-subor-и-закат">11. Dendy Pro, Subor и закат</h3>
+<h4>11.1. Dendy Pro — попытка выйти за пределы 8-битности</h4>
+<p>Модель <em>Dendy Pro</em> (Micro Genius IQ-1000) позиционировалась как "высший класс", но технически оставалась 8-битной:</p>
+<ul>
+<li>То же ядро Ricoh 2A03,</li>
+<li>Беспроводной контроллер — на ИК-связи 38 кГц (частота NEC-протокола),</li>
+<li>Передатчик в корпусе консоли — с питанием от отдельного разъёма (9 В),</li>
+<li>Задержка передачи — до 120 мс (при 60 fps — 7 кадров), что делало её непригодной для <em>Contra</em> или <em>Mega Man</em>.</li>
+</ul>
+<p>Партия в 1000–1200 шт. не раскупалась: пользователи не видели преимуществ перед Classic, а цена была на 40 % выше.</p>
+<hr>
+<h4>11.2. Subor и демпинг</h4>
+<p>Компания <strong>Subor</strong> (Guangzhou, КНР) использовала более дешёвые компоненты:</p>
+<ul>
+<li>NOAC на 0,5 мкм вместо 1,2 мкм (TXC),</li>
+<li>Пластик корпуса — ABS + 30 % мела (вместо чистого ABS),</li>
+<li>Пайка — волновая без флюс-контроля → высокий процент брака (до 15 %).</li>
+</ul>
+<p>Subor могла поставлять Dendy за $8,5 за штуку — против $12 у TXC. Steepler вынуждена была перейти на Subor в 1995 году, что привело к падению качества и репутации.</p>
+<hr>
+<h4>11.3. Технический моральный износ</h4>
+<p>К 1996 году:</p>
+<ul>
+<li>Процессор 2A03 морально устарел — PlayStation (33 МГц, 3D-ускоритель) и Saturn (2×14 МГц, 4 DSP) предлагали принципиально иной опыт.</li>
+<li>Отсутствие поддержки <em>параллакс-скроллинга</em>, <em>режима 7</em>, <em>ADPCM-звука</em> делало NES-игры "плоскими" и "тихими".</li>
+<li>Рост скорости CD-ROM (150 КБ/с) против ROM-картриджа (5–10 КБ/с) позволял загружать уровни без "разрезания" на комнаты.</li>
+</ul>
+<p>Dendy не могла конкурировать — по <em>информационной ёмкости опыта</em>.</p>
+<hr>
+<h3 id="12-dendy-как-образовательная-платформа">12. Dendy как образовательная платформа</h3>
+<p>Dendy объективно она стала <em>де-факто первой массовой платформой знакомства с принципами цифровых систем</em> для поколения, рождённого в 1980–1988 гг. в СНГ. Это произошло через <strong>экспериментальную обратную связь</strong>, заложенную в архитектуру игр и ограничения оборудования.</p>
+<hr>
+<h4>12.1. Алгоритмическое мышление через геймплей</h4>
+<p>Игры NES-эпохи не имели "подсказок в реальном времени". Пользователь вынужден был:</p>
+<ul>
+<li><strong>Декомпозировать задачу</strong>: в <em>Lode Runner</em> — выявить паттерны движения охранников, построить последовательность действий (копать → бежать → ждать → подниматься),</li>
+<li><strong>Выявлять инварианты</strong>: в <em>Contra</em> — понять, что "вверх-вверх-вниз-вниз-лево-право-лево-право-B-A-Start" — это <em>последовательность сигналов</em>, генерируемых контроллером и распознаваемых загрузчиком,</li>
+<li><strong>Проводить отладку методом исключения</strong> — в <em>Battle City</em> — если уровень не проходится, проверяется — (а) позиция базы, (б) расположение стен, (в) тайминг появления врагов — то есть формируется <em>дерево причинно-следственных связей</em>.</li>
+</ul>
+<p>Это была практика, близкая к <strong>white-box тестированию</strong> — игрок знал, что система детерминирована (один и тот же ввод → один и тот же вывод), и искал уязвимости в её логике.</p>
+<hr>
+<h4>12.2. Reverse engineering "на коленке"</h4>
+<p>Отсутствие официальной документации компенсировалось:</p>
+<ul>
+<li><strong>Сравнительным анализом</strong> — если <em>Teenage Mutant Ninja Turtles II</em> и <em>III</em> вели себя по-разному на одном и том же уровне, ребёнок выяснял, какие блоки отличаются — и таким образом выявлял зоны ответственности кода (движение, атака, коллизии),</li>
+<li><strong>Эксплуатацией артефактов</strong>: "дрожание" спрайтов в <em>Excitebike</em> на Dendy Junior указывало на нестабильный PPU-тайминг — и дети учились различать <em>аппаратные</em> и <em>программные</em> источники ошибок,</li>
+<li><strong>Модификация через RAM-читы</strong>: простейшие коды ("ввести 1P Start 7 раз → 30 жизней") были по сути <em>ручной инъекцией данных в адресное пространство</em> — базовый приём отладки.</li>
+</ul>
+<p>Журналы вроде <em>"Великого Дракона"</em> публиковали коды и <strong>карты памяти</strong>:</p>
+<ul>
+<li>Адрес $006D — счётчик жизней Марио,</li>
+<li>$0798–$079F — позиция спрайтов,</li>
+<li>$2000 — PPU control register.</li>
+</ul>
+<p>Это была практика, аналогичная работе с <em>отладчиком в реальном времени</em> — за 5 лет до появления бесплатных IDE в СНГ.</p>
+<hr>
+<h4>12.3. Системное мышление</h4>
+<p>Ребёнок осознавал <em>взаимозависимость компонентов</em>:</p>
+<ul>
+<li><strong>Телевизор</strong> — <em>устройство с собственными ограничениями</em> (SECAM → ч/б, PAL → замедление),</li>
+<li><strong>Картридж</strong> — <em>сменный модуль с ресурсами</em> (ROM, RAM, mapper),</li>
+<li><strong>Контроллер</strong> — <em>устройство ввода с дискретными состояниями</em> (8-битный регистр: U/D/L/R/Start/Select/A/B).</li>
+</ul>
+<p>Это формировало понимание <strong>интерфейсов и протоколов</strong> — если игра "не видит кнопку B", проверяется <em>линия данных</em> (контакт 9 на разъёме контроллера), затем — <em>регистр ввода</em> ($4016), затем — <em>обработчик прерываний</em>.</p>
+<hr>
+<h3 id="13-современное-наследие-dendy-в-инженерной-практике-xxi-века">13. Современное наследие — Dendy в инженерной практике XXI века</h3>
+<p>Сегодня Dendy — не музейный экспонат. Она активно используется в трёх областях: <strong>ретроэнжиниринге</strong>, <strong>образовательных инициативах</strong> и <strong>open-source разработке</strong>.</p>
+<hr>
+<h4>13.1. FPGA-реконструкции</h4>
+<p>Проекты вроде <strong>MiSTer FPGA</strong> и <strong>N8</strong> реализуют <em>cycle-accurate</em> эмуляцию Famicom/Dendy на программируемых логических интегральных схемах:</p>
+<ul>
+<li>Тактовые домены CPU (21,477 МГц) и PPU (5,369 МГц) синхронизированы через фазовые сдвиги,</li>
+<li>Эмуляция NOAC включает моделирование <em>паразитных ёмкостей</em> на линиях данных — чтобы воспроизвести "дрожание" спрайтов на Dendy Junior,</li>
+<li>Поддержка SECAM-D/K-выхода через цифровой фильтр на DAC.</li>
+</ul>
+<p>Это позволяет <em>изучать поведение системы при граничных условиях</em>: что происходит при сбое питания в середине NMI? Как влияет подтяжка линии RESET на загрузку mapper’а?</p>
+<hr>
+<h4>13.2. Open-source инструментарий</h4>
+<ul>
+<li><strong>Mesen</strong> — самый точный эмулятор NES/Famicom, включает:
+<ul>
+<li>Отладчик с визуализацией PPU-тайлов в реальном времени,</li>
+<li>Трассировку mapper’ов (MMC1–5, UNROM, CNROM),</li>
+<li>Поддержку battery-backed RAM (даже если ROM не содержит SRAM-чипа — эмулятор создаёт виртуальную батарейку).</li>
+</ul>
+</li>
+<li><strong>FamiStudio</strong> — трекер для создания музыки в формате NSF (NES Sound Format), с поддержкой всех пяти каналов APU, включая DMC-сэмплы.</li>
+<li><strong>NES Screen Tool</strong> — редактор тайлов и спрайтов с прямым экспортом в ROM-банки.</li>
+</ul>
+<p>Эти инструменты используются энтузиастами и в университетах (МФТИ, ИТМО) для курсов по <em>встроенным системам</em> и <em>низкоуровневому программированию</em>.</p>
+<hr>
+<h4>13.3. Образовательные кейсы</h4>
+<p>В рамках проектов <em>"Школьная IT-лаборатория"</em> (Россия, 2021–2024) Dendy применяется для:</p>
+<ul>
+<li>Обучения ассемблеру 6502: простота ISA (56 инструкций, 3 регистра) позволяет написать свою "мини-Mario" за 12 часов,</li>
+<li>Демонстрации принципов видеовывода — синхросигналы HSync/VSync, формирование спрайтов, цветовые палитры,</li>
+<li>Изучения DRM и защиты: как работал 10NES, почему его отсутствие делало клоны возможными.</li>
+</ul>
+<p>При этом используются <em>аппаратные стенды</em> на основе:</p>
+<ul>
+<li><strong>NES-on-a-Chip (NOAC)</strong> — как референсный образец,</li>
+<li><strong>RP2040 (Raspberry Pi Pico)</strong> — как современный контроллер для подмены CPU/PPU.</li>
+</ul>
+<hr>
+<h2 id="приложение-а-каталог-игр-для-dendynes-совместимость-и-реализация-в-снг-19921998">Приложение А. Каталог игр для Dendy/NES — совместимость и реализация в СНГ (1992–1998)</h2>
+<blockquote>
+<p><strong>Условные обозначения</strong>:<br>
+<strong>Mapper</strong> — чип-расширитель, управляющий банкованием памяти;<br>
+<strong>SRAM</strong> — статическая RAM с батарейной поддержкой для сохранения;<br>
+<strong>Доступность</strong> — оценка по данным оптовых прайсов Steepler, Subor, Bitman (1993–1997);<br>
+<strong>Версия</strong> — оригинальный источник (NES, Famicom, аркада) и характер клона.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Название (в обороте СНГ)</th>
+<th>Оригинал / Источник</th>
+<th>Mapper</th>
+<th>SRAM</th>
+<th>Доступность</th>
+<th>Реализация</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Contra</strong></td>
+<td><em>Contra</em> (NES, Konami, 1988)</td>
+<td>UNROM</td>
+<td>Нет</td>
+<td>★★★★★</td>
+<td>Официальный клон</td>
+<td>Часто с "30 жизней"; вертикальные уровни работают стабильно только на Dendy Classic</td>
+</tr>
+<tr>
+<td><strong>Teenage Mutant Ninja Turtles II — The Arcade Game</strong></td>
+<td><em>TMNT II</em> (NES, Konami, 1990)</td>
+<td>MMC3</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Фиксирован баг с Шреддером (бессмертие в TMNT III не распространяется на эту часть)</td>
+</tr>
+<tr>
+<td><strong>Toxic Crusaders</strong></td>
+<td><em>Toxic Crusaders</em> (NES, LJN, 1992)</td>
+<td>UNROM</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Редко; требует PAL-совместимости — на Dendy Junior возможны артефакты</td>
+</tr>
+<tr>
+<td><strong>Pac-Man</strong></td>
+<td><em>Pac-Man</em> (NES, Namco, 1988)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★★</td>
+<td>Официальный клон</td>
+<td>Чаще под названием <em>PuckMan</em>; ROM-хак без логотипа Namco</td>
+</tr>
+<tr>
+<td><strong>Battle City</strong></td>
+<td><em>Tank Battalion</em> (аркада, Namco, 1980) → NES-порт (1985)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★★</td>
+<td>Официальный клон</td>
+<td>Базовая игра для сборок "9999 in 1"; часто с упрощённой физикой (танки не отскакивают)</td>
+</tr>
+<tr>
+<td><strong>Lode Runner</strong></td>
+<td><em>Lode Runner</em> (NES, Hudson Soft, 1987)</td>
+<td>CNROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Уровни 1–15 корректны; 16–30 — с ошибками в логике ловушек на NOAC</td>
+</tr>
+<tr>
+<td><strong>Bomberman</strong></td>
+<td><em>Bomberman</em> (NES, Hudson Soft, 1985)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Версия без поддержки 4 игроков (требует 4-портовый адаптер — не поставлялся)</td>
+</tr>
+<tr>
+<td><strong>Tetris</strong></td>
+<td><em>Tetris</em> (NES, Nintendo, 1989)</td>
+<td>UxROM</td>
+<td>Нет</td>
+<td>★★★★★</td>
+<td>Альтернативный ROM</td>
+<td>Неофициальный порт от Bullet-Proof Software; без лицензии Nintendo; звук урезан</td>
+</tr>
+<tr>
+<td><strong>Excitebike</strong></td>
+<td><em>Excitebike</em> (NES, Nintendo, 1985)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Проблемы с плавностью скроллинга на Dendy Junior (PPU-тайминг)</td>
+</tr>
+<tr>
+<td><strong>Formation Z</strong></td>
+<td><em>Formation Z</em> (аркада, Jaleco, 1984) → NES-порт (1986)</td>
+<td>CNROM</td>
+<td>Нет</td>
+<td>★☆☆☆☆</td>
+<td>Хак</td>
+<td>ROM усечён до 128 КБ; уровень 5 недостижим</td>
+</tr>
+<tr>
+<td><strong>Aladdin</strong></td>
+<td><em>Disney’s Aladdin</em> (NES, Capcom, 1993)</td>
+<td>MMC3</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Графика сжата; отсутствуют анимации лиц у NPC</td>
+</tr>
+<tr>
+<td><strong>Lion King</strong></td>
+<td><em>Lion King</em> (NES, Virgin, 1994)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Stampede" работает нестабильно на NOAC (ошибки коллизий)</td>
+</tr>
+<tr>
+<td><strong>Donkey Kong</strong></td>
+<td><em>Donkey Kong</em> (NES, Nintendo, 1986)</td>
+<td>CNROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Ремейк аркадной версии; поддерживает 4 уровня (в т.ч. "25m")</td>
+</tr>
+<tr>
+<td><strong>Mortal Kombat</strong></td>
+<td><em>Mortal Kombat</em> (NES, Acclaim, 1993)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Цензурный хак</td>
+<td>Кровь отключена; "Finish Him" → "Excellent"; код для включения — ↑↑↓↓←→←→BA</td>
+</tr>
+<tr>
+<td><strong>1942</strong></td>
+<td><em>1942</em> (аркада, Capcom, 1984) → NES-порт (1986)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Упрощённая графика; отсутствует режим 2-игрока</td>
+</tr>
+<tr>
+<td><strong>1943</strong></td>
+<td><em>1943</em> (аркада, Capcom, 1987) → NES-порт (1988)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>ROM часто усечён до 256 КБ (вместо 384 КБ); финальный босс недоступен</td>
+</tr>
+<tr>
+<td><strong>Dr. Mario</strong></td>
+<td><em>Dr. Mario</em> (NES, Nintendo, 1990)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Поддерживает 2-игрока на одном контроллере (переключение кнопкой Select)</td>
+</tr>
+<tr>
+<td><strong>Pinball</strong></td>
+<td><em>Pinball</em> (NES, Nintendo, 1984)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Физика шарика упрощена; отскоки детерминированы</td>
+</tr>
+<tr>
+<td><strong>Duck Hunt</strong></td>
+<td><em>Duck Hunt</em> (NES, Nintendo, 1984)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★☆☆☆☆</td>
+<td>Официальный клон</td>
+<td>Требует Zapper — почти не поставлялся в СНГ; без пистолета игра не запускается</td>
+</tr>
+<tr>
+<td><strong>Dragon Quest</strong></td>
+<td><em>Dragon Quest</em> (Famicom, Enix, 1986)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Японский ROM с KANJI; без перекодировки — иероглифы как "мусор"; не клонировали</td>
+</tr>
+<tr>
+<td><strong>Final Fantasy</strong></td>
+<td><em>Final Fantasy</em> (NES, Square, 1990)</td>
+<td>MMC1</td>
+<td>8 КБ</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Требует SRAM + батарейку; логистика хранения делала невыгодным; текст не локализован</td>
+</tr>
+<tr>
+<td><strong>Pokemon</strong></td>
+<td><em>Pocket Monsters</em> (Game Boy, 1996)</td>
+<td>—</td>
+<td>—</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Игра для Game Boy; никаких NES-клонов не существовало; в СНГ распространялись слухи о "Pokemon для Dendy" — фейк</td>
+</tr>
+<tr>
+<td><strong>Megaman</strong></td>
+<td><em>Mega Man</em> (NES, Capcom, 1987)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Ice Man" часто "зависает" на Dendy Junior (ошибка PPU-тайминга)</td>
+</tr>
+<tr>
+<td><strong>Spider-Man — Return of the Sinister Six</strong></td>
+<td><em>Spider-Man</em> (NES, LJN, 1991)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>ROM усечён; уровень 6 недостижим без кода</td>
+</tr>
+<tr>
+<td><strong>Metroid</strong></td>
+<td><em>Metroid</em> (NES, Nintendo, 1987)</td>
+<td>MMC1</td>
+<td>16 КБ</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Требует SRAM; карта мира не поставлялась; без неё игра не проходится</td>
+</tr>
+<tr>
+<td><strong>Castlevania</strong></td>
+<td><em>Castlevania</em> (NES, Konami, 1987)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Отсутствует DMC-звук (голос Mother Brain); финал проходится, но без финальной сцены</td>
+</tr>
+<tr>
+<td><strong>Pooyan</strong></td>
+<td><em>Pooyan</em> (аркада, Konami, 1982) → NES-порт (1985)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Упрощённая анимация; отсутствует режим "Practice"</td>
+</tr>
+<tr>
+<td><strong>Galaga</strong></td>
+<td><em>Galaga</em> (аркада, Namco, 1981) → NES-порт (1988)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Часто объединён с <em>Galaxian</em> в один ROM</td>
+</tr>
+<tr>
+<td><strong>Galaxian</strong></td>
+<td><em>Galaxian</em> (аркада, Namco, 1979) → NES-порт (1988)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>См. выше</td>
+</tr>
+<tr>
+<td><strong>Jungle Book</strong></td>
+<td><em>Jungle Book</em> (NES, Virgin, 1994)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Elephant Graveyard" нестабилен на NOAC</td>
+</tr>
+<tr>
+<td><strong>Legend of Zelda</strong></td>
+<td><em>The Legend of Zelda</em> (NES, Nintendo, 1987)</td>
+<td>MMC1</td>
+<td>8 КБ</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Требует SRAM + инструкцию; без них — игра невозможна</td>
+</tr>
+<tr>
+<td><strong>Metal Gear</strong></td>
+<td><em>Metal Gear</em> (NES, Konami, 1988)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Отсутствует половина диалогов (ограничение ROM); финал достижим</td>
+</tr>
+<tr>
+<td><strong>Mike Tyson's Punch-Out!!</strong></td>
+<td><em>Punch-Out!!</em> (NES, Nintendo, 1987)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>После 1990 г. — <em>Punch-Out!! Featuring Mr. Dream</em> (без лицензии Тайсона)</td>
+</tr>
+<tr>
+<td><strong>Addams Family</strong></td>
+<td><em>Addams Family</em> (NES, Ocean, 1992)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Maze" часто "ломается" на Dendy Junior</td>
+</tr>
+<tr>
+<td><strong>Adventure Island</strong></td>
+<td><em>Adventure Island</em> (NES, Hudson Soft, 1986)</td>
+<td>CNROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Часто в комплекте с Dendy Junior</td>
+</tr>
+<tr>
+<td><strong>Arkanoid</strong></td>
+<td><em>Arkanoid</em> (аркада, Taito, 1986) → NES-порт (1989)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Поддерживает Vaus-адаптер (световой пистолет); без него — управление джойстиком</td>
+</tr>
+<tr>
+<td><strong>Balloon Fight</strong></td>
+<td><em>Balloon Fight</em> (NES, Nintendo, 1986)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Режим "Balloon Trip" работает нестабильно на SECAM</td>
+</tr>
+<tr>
+<td><strong>Baseball</strong></td>
+<td><em>Baseball</em> (NES, Nintendo, 1983)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Редко; требует знания правил — без инструкции непонятен геймплей</td>
+</tr>
+<tr>
+<td><strong>Batman</strong></td>
+<td><em>Batman</em> (NES, Sunsoft, 1990)</td>
+<td>MMC3</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Axis Chemicals" — частые вылеты на NOAC</td>
+</tr>
+<tr>
+<td><strong>Battleship</strong></td>
+<td><em>Battleship</em> (NES, Mindscape, 1993)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★☆☆☆☆</td>
+<td>Официальный клон</td>
+<td>Текст на английском; без словаря — не проходится</td>
+</tr>
+<tr>
+<td><strong>Bionic Commando</strong></td>
+<td><em>Bionic Commando</em> (NES, Capcom, 1988)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Хак</td>
+<td>ROM усечён до 256 КБ (оригинал — 384 КБ); финальный босс отсутствует</td>
+</tr>
+<tr>
+<td><strong>Captain America and The Avengers</strong></td>
+<td><em>Captain America</em> (NES, Data East, 1991)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★☆☆☆☆</td>
+<td>Официальный клон</td>
+<td>Высокая сложность; часто с "бесконечными жизнями" для прохождения</td>
+</tr>
+<tr>
+<td><strong>Chip 'n Dale Rescue Rangers</strong></td>
+<td><em>Rescue Rangers</em> (NES, Capcom, 1990)</td>
+<td>MMC3</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Кооперативный режим 2-игрока не поддерживается (требует 2-портовый адаптер)</td>
+</tr>
+<tr>
+<td><strong>Defender II</strong></td>
+<td><em>Stargate</em> (аркада, Williams, 1981) → NES-порт как <em>Defender II</em> (1986)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Упрощённая графика; отсутствует режим "Dogfight"</td>
+</tr>
+<tr>
+<td><strong>Donkey Kong Jr.</strong></td>
+<td><em>Donkey Kong Jr.</em> (NES, Nintendo, 1983)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Ремейк аркадной версии</td>
+</tr>
+<tr>
+<td><strong>Double Dragon</strong></td>
+<td><em>Double Dragon</em> (NES, Technōs, 1987)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Режим 2-игрока не поддерживается; уровень 3 — частые артефакты</td>
+</tr>
+<tr>
+<td><strong>Duck Tales</strong></td>
+<td><em>DuckTales</em> (NES, Capcom, 1989)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Transylvania" — ошибки в физике прыжков на NOAC</td>
+</tr>
+<tr>
+<td><strong>Earthbound</strong></td>
+<td><em>Mother</em> (Famicom, Nintendo, 1989)</td>
+<td>MMC1</td>
+<td>8 КБ</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Не лицензирована для NES; ROM с KANJI; не клонировалась</td>
+</tr>
+<tr>
+<td><strong>Felix the Cat</strong></td>
+<td><em>Felix the Cat</em> (NES, Hudson Soft, 1992)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Final Battle" часто "зависает"</td>
+</tr>
+<tr>
+<td><strong>Final Fight</strong></td>
+<td><em>Final Fight</em> (аркада, Capcom, 1989) → NES-порт (1992)</td>
+<td>MMC3</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Урезано количество врагов на экране (до 2 вместо 4)</td>
+</tr>
+<tr>
+<td><strong>Fire Emblem</strong></td>
+<td><em>Fire Emblem: Shadow Dragon</em> (Famicom, Intelligent Systems, 1990)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Японский ROM; без перевода — непроходим; не клонировали</td>
+</tr>
+<tr>
+<td><strong>Fist of the North Star</strong></td>
+<td><em>Hokuto no Ken</em> (NES, Shouei, 1986)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★☆☆☆☆</td>
+<td>Официальный клон</td>
+<td>Высокая сложность; часто с хаком "бесконечная энергия"</td>
+</tr>
+<tr>
+<td><strong>Flintstones</strong></td>
+<td><em>Flintstones</em> (NES, Taito, 1993)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★☆☆☆☆</td>
+<td>Официальный клон</td>
+<td>Редко; низкое качество перевода текста</td>
+</tr>
+<tr>
+<td><strong>Friday the 13th</strong></td>
+<td><em>Friday the 13th</em> (NES, LJN, 1989)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Нестабильна на NOAC — частые вылеты</td>
+</tr>
+<tr>
+<td><strong>Front Line</strong></td>
+<td><em>Front Line</em> (аркада, Taito, 1982) → NES-порт (1987)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Упрощённая физика танков</td>
+</tr>
+<tr>
+<td><strong>G.I. Joe</strong></td>
+<td><em>G.I. Joe</em> (NES, Capcom, 1991)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Cobra Base" — ошибки коллизий</td>
+</tr>
+<tr>
+<td><strong>Ghosts 'N Goblins</strong></td>
+<td><em>Ghosts 'N Goblins</em> (NES, Capcom, 1986)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Высокая сложность; без кодов — почти не проходится</td>
+</tr>
+<tr>
+<td><strong>Go</strong></td>
+<td><em>Gomoku Narabe</em> (Famicom, Nintendo, 1983)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Японская версия игры "Го"; не локализована; не клонировалась</td>
+</tr>
+<tr>
+<td><strong>Golden Axe</strong></td>
+<td><em>Golden Axe</em> (аркада, Sega, 1989) → NES-порт (1991)</td>
+<td>MMC3</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Урезана анимация; отсутствует режим 2-игрока</td>
+</tr>
+<tr>
+<td><strong>Gradius</strong></td>
+<td><em>Gradius</em> (аркада, Konami, 1985) → NES-порт (1986)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Упрощённый power-up System</td>
+</tr>
+<tr>
+<td><strong>Hyper Olympic</strong></td>
+<td><em>Track &#x26; Field</em> (аркада, Konami, 1983) → Famicom-порт (1984)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Поддерживает режим "быстрого нажатия кнопок"; работает на всех Dendy</td>
+</tr>
+<tr>
+<td><strong>Ice Climber</strong></td>
+<td><em>Ice Climber</em> (NES, Nintendo, 1985)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Режим 2-игрока не поддерживается</td>
+</tr>
+<tr>
+<td><strong>Jackie Chan</strong></td>
+<td><em>Jackie Chan’s Action Kung Fu</em> (NES, Hudson Soft, 1990)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Final Stage" — частые артефакты на NOAC</td>
+</tr>
+<tr>
+<td><strong>Jeopardy!</strong></td>
+<td><em>Jeopardy!</em> (NES, GameTek, 1988)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Требует знания английского; не поставлялась</td>
+</tr>
+<tr>
+<td><strong>Jurassic Park</strong></td>
+<td><em>Jurassic Park</em> (NES, Ocean, 1993)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Raptor Paddock" — ошибки в ИИ динозавров</td>
+</tr>
+<tr>
+<td><strong>Kid Icarus</strong></td>
+<td><em>Kid Icarus</em> (NES, Nintendo, 1986)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Без инструкции — непонятна механика "падения в преисподнюю"</td>
+</tr>
+<tr>
+<td><strong>King Kong</strong></td>
+<td><em>King Kong 2</em> (Famicom, Konami, 1986)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Японский ROM; не клонировался</td>
+</tr>
+<tr>
+<td><strong>King's Quest</strong></td>
+<td><em>King’s Quest V</em> (NES, Konami, 1991)</td>
+<td>MMC3</td>
+<td>Нет</td>
+<td>★☆☆☆☆</td>
+<td>Официальный клон</td>
+<td>Текст на английском; без словаря — не проходится</td>
+</tr>
+<tr>
+<td><strong>Kirby's Adventure</strong></td>
+<td><em>Kirby’s Adventure</em> (NES, HAL, 1993)</td>
+<td>MMC3</td>
+<td>8 КБ</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Требует SRAM; mapper MMC3 нестабилен на NOAC</td>
+</tr>
+<tr>
+<td><strong>Kung Fu</strong></td>
+<td><em>Kung-Fu Master</em> (аркада, Irem, 1984) → NES-порт (1985)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Базовая игра; часто в сборках</td>
+</tr>
+<tr>
+<td><strong>Luigi's Chronicles</strong></td>
+<td><em>Super Mario Bros. 2</em> (USA)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>В СНГ называлась <em>Luigi’s Chronicles</em> или <em>Super Mario USA</em></td>
+</tr>
+<tr>
+<td><strong>M.U.S.C.L.E.</strong></td>
+<td><em>Kinnikuman</em> (Famicom, Bandai, 1985)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Японский ROM; не клонировался</td>
+</tr>
+<tr>
+<td><strong>Mahjong</strong></td>
+<td><em>Mahjong</em> (Famicom, Nintendo, 1983)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>☆☆☆☆☆</td>
+<td>Недоступно</td>
+<td>Японская версия; не локализована</td>
+</tr>
+<tr>
+<td><strong>Ms. Pac-Man</strong></td>
+<td><em>Ms. Pac-Man</em> (NES, Tengen, 1989)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>ROM от Tengen (без лицензии Namco)</td>
+</tr>
+<tr>
+<td><strong>Ninja Gaiden</strong></td>
+<td><em>Ninja Gaiden</em> (NES, Tecmo, 1988)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Temple of the Dragon" — частые вылеты на NOAC</td>
+</tr>
+<tr>
+<td><strong>Prince of Persia</strong></td>
+<td><em>Prince of Persia</em> (NES, Brøderbund, 1992)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Физика прыжков упрощена; таймер сокращён</td>
+</tr>
+<tr>
+<td><strong>Q-bert</strong></td>
+<td><em>Q</em>bert* (аркада, Gottlieb, 1982) → NES-порт (1989)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Цвета искажены из-за SECAM</td>
+</tr>
+<tr>
+<td><strong>Road Fighter</strong></td>
+<td><em>Road Fighter</em> (аркада, Konami, 1984) → NES-порт (1988)</td>
+<td>CNROM</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>Упрощённая физика столкновений</td>
+</tr>
+<tr>
+<td><strong>RoboCop</strong></td>
+<td><em>RoboCop</em> (NES, Data East, 1988)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★☆☆</td>
+<td>Официальный клон</td>
+<td>ROM часто усечён; уровень 5 недостижим</td>
+</tr>
+<tr>
+<td><strong>Soccer</strong></td>
+<td><em>Soccer</em> (NES, Nintendo, 1985)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Требует знания правил; без инструкции — хаос</td>
+</tr>
+<tr>
+<td><strong>Sonic The Hedgehog</strong></td>
+<td><em>Somari</em> (тайваньский хак, 1994)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Фейк</td>
+<td>Марио в кроссовках Тейлза; физика — как в SMB; скорость снижена на 20 %</td>
+</tr>
+<tr>
+<td><strong>Space Invaders</strong></td>
+<td><em>Space Invaders</em> (аркада, Taito, 1978) → NES-порт (1985)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★★</td>
+<td>Официальный клон</td>
+<td>Базовая игра; часто в комплекте</td>
+</tr>
+<tr>
+<td><strong>Street Fighter</strong></td>
+<td><em>Street Fighter</em> (NES, Capcom, 1987)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Упрощённый режим "Street Fighter II" — фейк на сборках</td>
+</tr>
+<tr>
+<td><strong>Super Mario Bros</strong></td>
+<td><em>Super Mario Bros.</em> (NES, Nintendo, 1985)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★★★★</td>
+<td>Официальный клон</td>
+<td>В комплекте с Dendy Classic; базовая версия для всех сборок</td>
+</tr>
+<tr>
+<td><strong>Teenage Mutant Ninja Turtles</strong></td>
+<td><em>TMNT</em> (NES, Ultra, 1989)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★★★☆</td>
+<td>Официальный клон</td>
+<td>Уровень "Technodrome" — ошибки коллизий на NOAC</td>
+</tr>
+<tr>
+<td><strong>Teenage Mutant Ninja Turtles Tournament Fighters</strong></td>
+<td><em>TMNT: TF</em> (NES, Konami, 1993)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★☆☆☆☆</td>
+<td>Официальный клон</td>
+<td>Редко; требует стабильного PPU — работает только на Dendy Classic</td>
+</tr>
+<tr>
+<td><strong>Teenage Mutant Ninja Turtles III — The Manhattan Project</strong></td>
+<td><em>TMNT III</em> (NES, Konami, 1992)</td>
+<td>MMC3</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Хак</td>
+<td>Шреддер на "Technodrome" — бессмертен (удалён hit-counter); обход — 255 прыжков</td>
+</tr>
+<tr>
+<td><strong>Tennis</strong></td>
+<td><em>Tennis</em> (NES, Nintendo, 1984)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Редко; без инструкции — непонятен геймплей</td>
+</tr>
+<tr>
+<td><strong>Tom &#x26; Jerry</strong></td>
+<td><em>Tom &#x26; Jerry</em> (NES, Hi Tech, 1991)</td>
+<td>NROM</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Низкое качество графики; частые артефакты</td>
+</tr>
+<tr>
+<td><strong>Wario</strong></td>
+<td><em>Wario’s Woods</em> (NES, Nintendo, 1994)</td>
+<td>MMC3</td>
+<td>Нет</td>
+<td>★☆☆☆☆</td>
+<td>Официальный клон</td>
+<td>Поздний релиз; малая партия; нестабилен на NOAC</td>
+</tr>
+<tr>
+<td><strong>Yoshi</strong></td>
+<td><em>Yoshi</em> (NES, Nintendo, 1991)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★★☆☆☆</td>
+<td>Официальный клон</td>
+<td>Паззл-механика; без инструкции — непонятна</td>
+</tr>
+<tr>
+<td><strong>Zombie Nation</strong></td>
+<td><em>Abadox</em> (NES, Milton Bradley, 1990)</td>
+<td>MMC1</td>
+<td>Нет</td>
+<td>★☆☆☆☆</td>
+<td>Официальный клон</td>
+<td>В СНГ — под названием <em>Zombie Nation</em>; ROM усечён</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Ключ к доступности</strong>:<br>
+★★★★★ — массово (в 80 %+ партий Steepler/Subor),<br>
+★★★★☆ — широко (в 30–50 %),<br>
+★★★☆☆ — умеренно (в 10–20 %),<br>
+★★☆☆☆ — редко (<code>&#x3C;</code>10 %),<br>
+★☆☆☆☆ — единичные экземпляры,<br>
+☆☆☆☆☆ — принципиально недоступно в СНГ.</p>
+</blockquote>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#dendy-и-nes">Dendy и NES</a></li><li class="article-toc__item is-h3"><a href="#1-кризис-1983-года-в-американской-игровой-индустрии">1. Кризис 1983 года в американской игровой индустрии</a></li><li class="article-toc__item is-h3"><a href="#2-famicom">2. Famicom</a></li><li class="article-toc__item is-h3"><a href="#3-nes">3. NES</a></li><li class="article-toc__item is-h3"><a href="#4-техническая-изоляция-ссср">4. Техническая изоляция СССР</a></li><li class="article-toc__item is-h3"><a href="#5-фамиклоны">5. Фамиклоны</a></li><li class="article-toc__item is-h3"><a href="#6-steepler-и-виктор-савюк">6. Steepler и Виктор Савюк</a></li><li class="article-toc__item is-h3"><a href="#7-почему-nintendo-не-подавала-в-суд">7. Почему Nintendo не подавала в суд?</a></li><li class="article-toc__item is-h3"><a href="#8-контактные-интерфейсы">8. Контактные интерфейсы</a></li><li class="article-toc__item is-h3"><a href="#9-архитектура-многоигровых-картриджей">9. Архитектура &quot;многоигровых&quot; картриджей</a></li><li class="article-toc__item is-h3"><a href="#10-игры-техническая-классификация-и-доступность-в-снг">10. Игры — техническая классификация и доступность в СНГ</a></li><li class="article-toc__item is-h3"><a href="#11-dendy-pro-subor-и-закат">11. Dendy Pro, Subor и закат</a></li><li class="article-toc__item is-h3"><a href="#12-dendy-как-образовательная-платформа">12. Dendy как образовательная платформа</a></li><li class="article-toc__item is-h3"><a href="#13-современное-наследие-dendy-в-инженерной-практике-xxi-века">13. Современное наследие — Dendy в инженерной практике XXI века</a></li><li class="article-toc__item"><a href="#приложение-а-каталог-игр-для-dendynes-совместимость-и-реализация-в-снг-19921998">Приложение А. Каталог игр для Dendy/NES — совместимость и реализация в СНГ (1992–1998)</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

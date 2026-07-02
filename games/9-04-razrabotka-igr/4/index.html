@@ -1,0 +1,414 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Unreal Engine — Игры IT Universe</title><meta name="description" content="Обзор Unreal Engine 5 — установка, Blueprints и C++, рендеринг и сеть; анонс UE6, Verse, UEFN, ИИ через MCP и сроки миграции."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Unreal Engine</span></li></ol></nav><header class="portal-hero"> <h1>Unreal Engine</h1> <p>Обзор Unreal Engine 5 — установка, Blueprints и C++, рендеринг и сеть; анонс UE6, Verse, UEFN, ИИ через MCP и сроки миграции.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Unreal Engine" data-url="/games/9-04-razrabotka-igr/4">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Unreal Engine">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Unreal Engine</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<p>Unreal Engine — кроссплатформенный движок для 3D-проектов — игры, симуляторы, архитектурная визуализация, виртуальное производство. Теоретическую основу (что такое движок, сравнение с Unity и Godot) см. в главах <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/112">Игровой движок</a> и <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/113">Виды игровых движков — Unreal Engine</a>; здесь — практика в редакторе. Справочник API и lifecycle: <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/401">Справочник по Unreal Engine</a>.</p>
+<div class="callout callout--info">
+  <div class="callout-title">Unreal Engine 6</div>
+  <div class="callout-body">
+  <p>На <strong>Unreal Fest Chicago</strong> (июнь 2026) Epic представила <strong>Unreal Engine 6</strong> — единый редактор UE5 и UEFN, язык <strong>Verse</strong>, <strong>Scene Graph</strong>, ИИ-ассистенты через <strong>MCP</strong>. Ранний доступ запланирован на <strong>конец 2027</strong>. Разбор терминов и сроков — в главе <a href="/encyclopedia/9-spinoff/9-04-razrabotka-igr/129">Unreal Engine 6</a>. Учебные проекты сейчас собирают на стабильной <strong>UE 5.x</strong> из Epic Games Launcher.</p>
+</div>
+  </div>
+<hr>
+<h2 id="что-такое-unreal-engine">Что такое Unreal Engine</h2>
+<p>Unreal Engine — программная платформа для интерактивного контента в реальном времени. Движок предоставляет готовые подсистемы — рендеринг, физику, анимацию, звук, сеть, ввод и управление ресурсами. Разработчик собирает сцену из акторов и компонентов, а логику описывает в <strong>Blueprints</strong> (визуальные скрипты) или <strong>C++</strong>.</p>
+<hr>
+<h2 id="история">История</h2>
+<table>
+<thead>
+<tr>
+<th>Версия</th>
+<th>Год</th>
+<th>Заметные изменения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UE1</strong></td>
+<td>1998</td>
+<td>Коммерческий движок вместе с игрой <em>Unreal</em>; рендеринг, физика, UnrealScript</td>
+</tr>
+<tr>
+<td><strong>UE2</strong></td>
+<td>2002</td>
+<td>Улучшенный рендерер, сетевой код; <em>UT2004</em>, <em>Splinter Cell</em></td>
+</tr>
+<tr>
+<td><strong>UE3</strong></td>
+<td>2006</td>
+<td>Kismet (визуальный скриптинг), PBR-материалы; <em>Gears of War</em>, <em>BioShock</em></td>
+</tr>
+<tr>
+<td><strong>UE4</strong></td>
+<td>2014</td>
+<td>Бесплатная лицензия, исходники на GitHub, <strong>Blueprints</strong>; <em>Fortnite</em>, <em>Rocket League</em>, <em>PUBG</em></td>
+</tr>
+<tr>
+<td><strong>UE5</strong></td>
+<td>2022</td>
+<td><strong>Nanite</strong>, <strong>Lumen</strong>, <strong>World Partition</strong>; <em>The Matrix Awakens</em>, кино (<em>The Mandalorian</em>)</td>
+</tr>
+<tr>
+<td><strong>UE6</strong></td>
+<td>2027 (EA) / ~2029 (релиз)</td>
+<td>Единый редактор UE5+UEFN, Verse, Scene Graph, MCP; тизер Paris Major (май 2026), детали Unreal Fest (июнь 2026). <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/129">UE6</a></td>
+</tr>
+</tbody>
+</table>
+<p>:::note
+<em>Sea of Thieves</em> работает на <strong>собственном движке</strong> Rare, а не на Unreal Engine.
+:::</p>
+<hr>
+<h2 id="возможности-и-лицензия">Возможности и лицензия</h2>
+<ul>
+<li><strong>Blueprints</strong> — логика без C++ — события, переменные, вызовы функций движка.</li>
+<li><strong>C++</strong> — системы, оптимизация, плагины; полный исходный код на GitHub (после регистрации в Epic Developer Portal).</li>
+<li><strong>Nanite</strong> — высокодетализированная <strong>статическая</strong> геометрия без ручных LOD.</li>
+<li><strong>Lumen</strong> — динамическое глобальное освещение без предварительного запекания lightmaps.</li>
+<li><strong>Quixel Bridge</strong> — сканированные материалы и модели в редакторе.</li>
+</ul>
+<p><strong>Лицензия:</strong> движок бесплатен; <strong>5% роялти</strong> от валового дохода продукта после порога <strong>$1 000 000</strong> в год (уточняйте актуальные условия в <a href="https://www.unrealengine.com/en-US/license">EULA Epic</a>). Для некоммерческого и части неигрового использования роялти может не применяться.</p>
+<hr>
+<h2 id="установка-и-настройка-окружения">Установка и настройка окружения</h2>
+<ol>
+<li><strong>Epic Games Launcher</strong> — скачайте с <a href="https://www.unrealengine.com/">unrealengine.com</a> и войдите в аккаунт Epic.</li>
+<li><strong>Unreal Engine → Library → +</strong> — установите актуальную версию (рекомендуется последняя стабильная <strong>UE 5.x</strong>).</li>
+<li><strong>IDE для C++</strong> (если планируете нативный код):
+<ul>
+<li><strong>Visual Studio 2022</strong> с рабочей нагрузкой <strong>"Разработка игр на C++"</strong> (Game development with C++), или</li>
+<li><strong>Rider for Unreal Engine</strong> (JetBrains).</li>
+</ul>
+</li>
+<li><strong>Создание проекта:</strong> Projects → New Project → шаблон <strong>Third Person</strong> или <strong>Blank</strong> → выберите <strong>Blueprint</strong> (без C++) или <strong>C++</strong> → Create.</li>
+</ol>
+<p>При первом C++-проекте Launcher предложит установить недостающие компоненты Visual Studio. Сборка из исходников движка — через GitHub и <strong>Unreal Build Tool (UBT)</strong>; для учебных задач достаточно бинарной версии из Launcher.</p>
+<hr>
+<h2 id="интерфейс-редактора">Интерфейс редактора</h2>
+<table>
+<thead>
+<tr>
+<th>Панель</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Viewport</strong></td>
+<td>Просмотр и редактирование сцены (WASD + мышь). <strong>Game View</strong> — вид "как у игрока".</td>
+</tr>
+<tr>
+<td><strong>Content Browser</strong></td>
+<td>Все ассеты проекта: меши, материалы, Blueprints, уровни.</td>
+</tr>
+<tr>
+<td><strong>World Outliner</strong></td>
+<td>Список акторов на уровне; поиск и группировка.</td>
+</tr>
+<tr>
+<td><strong>Details</strong></td>
+<td>Свойства выбранного актора или ассета.</td>
+</tr>
+<tr>
+<td><strong>Modes</strong></td>
+<td>Place Actors, Landscape, Foliage, Modeling и др.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Базовый цикл:</strong> создать уровень → разместить геометрию → назначить материалы → добавить логику (Blueprint или C++) → <strong>Play</strong> в редакторе → <strong>File → Package Project</strong> для сборки.</p>
+<hr>
+<h2 id="архитектура-от-uobject-до-сцены">Архитектура — от UObject до сцены</h2>
+<h3 id="иерархия-типов">Иерархия типов</h3>
+<pre><code>UObject          — базовый объект движка (данные, reflection, GC)
+  └── AActor     — сущность в мире (позиция, поворот, масштаб)
+        └── APawn, ACharacter, ALight, ATriggerBox …
+  └── UActorComponent — логика без transform
+        └── USceneComponent — компонент с transform
+              └── UStaticMeshComponent, UCapsuleComponent, UCameraComponent …
+</code></pre>
+<ul>
+<li><strong>UObject</strong> — сериализация, сборка мусора, редактор, репликация. Сам по себе <strong>не</strong> имеет координат в мире.</li>
+<li><strong>AActor</strong> — "объект сцены": корневой <strong>Root Component</strong> задаёт transform; остальные компоненты крепятся к нему.</li>
+<li><strong>Компоненты</strong> — переиспользуемые части — меш, коллизия, звук, скрипт.</li>
+</ul>
+<p><strong>Пример (аналог Unity):</strong> персонаж — <code>ACharacter</code> с <code>UCapsuleComponent</code> (коллизия), <code>USkeletalMeshComponent</code> (модель), <code>UCharacterMovementComponent</code> (движение) и Blueprint/C++-классом логики.</p>
+<hr>
+<h3 id="игровые-роли-framework">Игровые роли (Framework)</h3>
+<table>
+<thead>
+<tr>
+<th>Класс</th>
+<th>Роль</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AGameModeBase</strong></td>
+<td>Правила матча: класс персонажа по умолчанию, спавн, пауза. Только на сервере в сетевой игре.</td>
+</tr>
+<tr>
+<td><strong>AGameStateBase</strong></td>
+<td>Состояние матча для всех (счёт, таймер).</td>
+</tr>
+<tr>
+<td><strong>APlayerController</strong></td>
+<td>Ввод игрока, камера, UI.</td>
+</tr>
+<tr>
+<td><strong>APawn / ACharacter</strong></td>
+<td>Управляемое тело в мире.</td>
+</tr>
+<tr>
+<td><strong>APlayerState</strong></td>
+<td>Данные игрока (имя, очки), реплицируются клиентам.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>World</strong> содержит один или несколько <strong>Level</strong> (карт). В UE5 крупные открытые миры часто используют <strong>World Partition</strong> — автоматическое разбиение уровня на ячейки со стримингом.</p>
+<hr>
+<h3 id="reflection-uclass-uproperty-ufunction">Reflection — UCLASS, UPROPERTY, UFUNCTION</h3>
+<p>Движок генерирует метаданные из C++-заголовков с помощью <strong>Unreal Header Tool (UHT)</strong>. Макросы связывают код с редактором, Blueprints и сетью:</p>
+<ul>
+<li><code>UCLASS()</code> — класс виден движку и Blueprints.</li>
+<li><code>UPROPERTY(EditAnywhere)</code> — поле редактируется в Details.</li>
+<li><code>UFUNCTION(BlueprintCallable)</code> — функцию можно вызвать из Blueprint.</li>
+<li><code>UFUNCTION(Server, Reliable)</code> — RPC на сервер (сеть).</li>
+</ul>
+<p>Blueprints <strong>не</strong> компилируются в C++: они переводятся в <strong>байткод Blueprint VM</strong> и вызывают C++-функции через reflection. Нативный C++ компилируется UBT отдельно.</p>
+<hr>
+<h2 id="lifecycle-актора">Lifecycle актора</h2>
+<p>Unreal вызывает методы актора в предсказуемом порядке (аналог <code>MonoBehaviour</code> в Unity):</p>
+<table>
+<thead>
+<tr>
+<th>Метод UE</th>
+<th>Аналог Unity</th>
+<th>Когда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PreInitializeComponents</code></td>
+<td>—</td>
+<td>До инициализации компонентов</td>
+</tr>
+<tr>
+<td><code>BeginPlay</code></td>
+<td><code>Start</code></td>
+<td>Старт игры для актора</td>
+</tr>
+<tr>
+<td><code>Tick</code></td>
+<td><code>Update</code></td>
+<td>Каждый кадр (если <code>PrimaryActorTick.bCanEverTick = true</code>)</td>
+</tr>
+<tr>
+<td><code>EndPlay</code></td>
+<td><code>OnDestroy</code></td>
+<td>Удаление или смена уровня</td>
+</tr>
+<tr>
+<td><code>NotifyActorBeginOverlap</code></td>
+<td><code>OnTriggerEnter</code></td>
+<td>Overlap-коллизия (часто через делегаты компонента)</td>
+</tr>
+</tbody>
+</table>
+<p>Подробная таблица — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/401#%D0%B1%D0%BB%D0%BE%D0%BA-1-lifecycle-actor-component-reflection">справочнике</a>.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Ввод</div>
+  <div class="callout-body">
+  <p>В новых проектах UE5 рекомендуется <strong>Enhanced Input</strong> (`UEnhancedInputComponent`, Input Actions/Mapping Context), а не legacy `BindAction`. Шаблоны Third Person уже используют Enhanced Input.</p>
+</div>
+  </div>
+<hr>
+<h2 id="примеры-кода">Примеры кода</h2>
+<h3 id="минимальный-c-actor">Минимальный C++ Actor</h3>
+<div class="itu-code-embed" data-example="cpp/sp-9-9-04-razrabotka-igr-4-001" data-title="Минимальный C++ Actor" data-min-height="426"> </div>
+<div class="itu-code-embed" data-example="cpp/sp-9-9-04-razrabotka-igr-4-002" data-title="Минимальный C++ Actor" data-min-height="390"> </div>
+<p>Создайте класс через <strong>Tools → New C++ Class → Actor</strong>, пересоберите проект (Compile в редакторе или Ctrl+Alt+F11).</p>
+<hr>
+<h3 id="параметр-в-редакторе-и-blueprint">Параметр в редакторе и Blueprint</h3>
+<pre><code class="language-cpp">UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+float MoveSpeed = 600.f;
+</code></pre>
+<p><code>EditAnywhere</code> — поле в Details; <code>BlueprintReadWrite</code> — чтение/запись из Blueprint.</p>
+<hr>
+<h3 id="overlap-триггер-коллизия">Overlap-триггер (коллизия)</h3>
+<p>В конструкторе или <code>BeginPlay</code> подпишитесь на делегат компонента:</p>
+<pre><code class="language-cpp">// Предполагается UBoxComponent* TriggerBox как UPROPERTY
+TriggerBox->OnComponentBeginOverlap.AddDynamic(this, &#x26;AMyPickup::OnOverlapBegin);
+
+UFUNCTION()
+void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
+    UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
+    bool bFromSweep, const FHitResult&#x26; SweepResult);
+</code></pre>
+<p>В Details у коллизии: <strong>Collision Presets</strong> → Overlap для нужного Object Type. Ответы — <strong>Block</strong> (физика), <strong>Overlap</strong> (событие без блокировки), <strong>Ignore</strong>.</p>
+<hr>
+<h3 id="простая-репликация">Простая репликация</h3>
+<pre><code class="language-cpp">// В заголовке
+UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, Category = "Health")
+int32 Health = 100;
+
+// В .cpp
+void AMyCharacter::GetLifetimeReplicatedProps(TArray&#x3C;FLifetimeProperty>&#x26; OutLifetimeProps) const
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    DOREPLIFETIME(AMyCharacter, Health);
+}
+</code></pre>
+<p>На сервере меняйте <code>Health</code> — значение синхронизируется клиентам. RPC (<code>UFUNCTION(Server, Reliable)</code>) — для действий "клиент просит сервер выполнить логику".</p>
+<hr>
+<h3 id="blueprint-без-c">Blueprint (без C++)</h3>
+<ol>
+<li>Content Browser → <strong>Blueprint Class</strong> → родитель <strong>Actor</strong>.</li>
+<li><strong>Event Graph:</strong> <strong>Event BeginPlay</strong> → <strong>Print String</strong> ("Hello").</li>
+<li>Перетащите Blueprint на уровень → <strong>Play</strong>.</li>
+</ol>
+<p>Для движения персонажа удобнее наследовать <strong>Character</strong> или использовать шаблон Third Person.</p>
+<hr>
+<h2 id="blueprints">Blueprints</h2>
+<p>Blueprints — визуальный язык — узлы событий, переменных, функций и потока управления. Логика выполняется виртуальной машиной; тяжёлые операции выносят в C++.</p>
+<p><strong>Когда Blueprint:</strong> прототипы, UI, триггеры уровня, настройка параметров художниками.<br>
+<strong>Когда C++:</strong> hot path (каждый кадр на сотнях объектов), новые компоненты, плагины, изменения движка.</p>
+<hr>
+<h2 id="подсистемы-движка">Подсистемы движка</h2>
+<table>
+<thead>
+<tr>
+<th>Подсистема</th>
+<th>Суть</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Рендеринг</strong></td>
+<td>Deferred shading по умолчанию; Nanite, Lumen, TSR, Material Graph → HLSL</td>
+</tr>
+<tr>
+<td><strong>Физика (Chaos)</strong></td>
+<td>Rigid body, разрушаемость, cloth; симуляция может идти в отдельном потоке</td>
+</tr>
+<tr>
+<td><strong>Анимация</strong></td>
+<td>Skeleton, Animation Sequence, Blend Spaces, Control Rig, IK</td>
+</tr>
+<tr>
+<td><strong>Аудио (MetaSounds)</strong></td>
+<td>Процедурный граф звука; spatial audio, HRTF</td>
+</tr>
+<tr>
+<td><strong>Сеть</strong></td>
+<td>Модель client-server; репликация свойств, RPC, relevancy</td>
+</tr>
+<tr>
+<td><strong>Ресурсы</strong></td>
+<td>Ассеты <code>.uasset</code>, стриминг, World Partition для больших миров</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="рендеринг-ue5-возможности-и-компромиссы">Рендеринг UE5 — возможности и компромиссы</h3>
+<p><strong>Nanite</strong> хранит геометрию кластерами и выбирает детализацию по экрану. Подходит для <strong>крупной статической</strong> архитектуры; <strong>не</strong> заменяет LOD для <strong>скелетных</strong> мешей и мелочи (патроны, UI-модели).</p>
+<p><strong>Lumen</strong> строит упрощённое представление сцены (Surface Cache, SDF) для динамического GI. В закрытых сценах с неизменным светом <strong>baked lighting</strong> часто даёт лучшее качество и стабильнее по FPS. При быстром движении возможны <strong>ghosting</strong> и задержка реакции освещения.</p>
+<p><strong>TSR (Temporal Super Resolution)</strong> рендерит ниже целевого разрешения и восстанавливает картинку по истории кадров. Экономит GPU, но тонкая геометрия (решётки, провода) может мерцать; настройка зависит от платформы и жанра.</p>
+<p><strong>Материалы:</strong> каждая уникальная комбинация параметров может порождать новый шейдер. На DirectX 12 первое использование требует <strong>PSO (Pipeline State Object)</strong> — без <strong>Shader Pipeline Cache</strong> / <strong>PSO Precaching</strong> возможны фризы при входе в новую зону. Подробнее об оптимизации — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/123">Оптимизация игр</a>.</p>
+<hr>
+<h2 id="коллизии">Коллизии</h2>
+<p>Коллизия задаётся <strong>примитивами</strong> (box, sphere, capsule, convex) на компонентах. Два уровня: <strong>broad phase</strong> (быстрый отбор пар) и <strong>narrow phase</strong> (точный контакт). Используется и для физики, и для триггеров, line trace (<code>LineTraceSingleByChannel</code>) и проверки видимости.</p>
+<hr>
+<h2 id="структура-проекта">Структура проекта</h2>
+<pre><code>MyProject/
+├── MyProject.uproject      # описание проекта и модулей
+├── Config/                 # настройки (Input, Game, Engine…)
+├── Content/                # ассеты (не в Git LFS без настройки)
+│   ├── Characters/
+│   ├── Maps/
+│   └── Blueprints/
+└── Source/                 # C++ (если проект с кодом)
+    └── MyProject/
+</code></pre>
+<p>Зависимости между ассетами отслеживает движок: материал → текстуры, уровень → меши и Blueprints.</p>
+<p><strong>Сборка:</strong> компиляция C++ → кукинг ассетов → кэши шейдеров / Nanite → Package Project.</p>
+<hr>
+<h2 id="типичные-ошибки-начинающих">Типичные ошибки начинающих</h2>
+<p><strong>Nanite на всём подряд</strong> — включайте только для крупной статической геометрии с высоким polycount.</p>
+<p><strong>Нет LOD у персонажей</strong> — для Skeletal Mesh Nanite не работает; настройте LOD или платформенные mesh.</p>
+<p><strong>Lumen везде</strong> — в интерьерах с фиксированным светом сравните с lightmaps / static lighting.</p>
+<p><strong>TSR "из коробки"</strong> — проверьте чёткость UI и мелких объектов; при необходимости повысьте internal resolution или отключите TSR на целевой платформе.</p>
+<p><strong>Только <code>stat unit</code></strong> — смотрите также <strong>stat gpu</strong>, <strong>stat scenerendering</strong>, Shader Complexity (режим в Viewport).</p>
+<hr>
+<h2 id="сравнение-с-другими-движками">Сравнение с другими движками</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Unreal Engine 5</th>
+<th>Unity (URP/HDRP)</th>
+<th>Godot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Языки</td>
+<td>C++, Blueprints</td>
+<td>C#</td>
+<td>GDScript, C#</td>
+</tr>
+<tr>
+<td>Сильные стороны</td>
+<td>AAA-графика, открытый код, кино/VP</td>
+<td>2D, мобильные, большое комьюнити</td>
+<td>Лёгкий, MIT, 2D</td>
+</tr>
+<tr>
+<td>Порог входа</td>
+<td>Выше (C++, тяжёлый редактор)</td>
+<td>Ниже для прототипов</td>
+<td>Низкий</td>
+</tr>
+</tbody>
+</table>
+<p><strong>UE5 часто выбирают для:</strong> фотореалистичных игр, linear/action-adventure, архвиз, virtual production, портфолио технического арта.</p>
+<p><strong>UE5 требует больше усилий для:</strong> casual/mobile с минимальным бюджетом на оптимизацию, 2D-only проектов, команд без опыта профилирования GPU. При этом <strong>Fortnite</strong>, <strong>PUBG</strong> и ряд мобильных AAA показывают, что высокий FPS и мобильные платформы <strong>достижимы</strong>, но не "из коробки" без настройки.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-unreal-engine">Что такое Unreal Engine</a></li><li class="article-toc__item"><a href="#история">История</a></li><li class="article-toc__item"><a href="#возможности-и-лицензия">Возможности и лицензия</a></li><li class="article-toc__item"><a href="#установка-и-настройка-окружения">Установка и настройка окружения</a></li><li class="article-toc__item"><a href="#интерфейс-редактора">Интерфейс редактора</a></li><li class="article-toc__item"><a href="#архитектура-от-uobject-до-сцены">Архитектура — от UObject до сцены</a></li><li class="article-toc__item is-h3"><a href="#иерархия-типов">Иерархия типов</a></li><li class="article-toc__item is-h3"><a href="#игровые-роли-framework">Игровые роли (Framework)</a></li><li class="article-toc__item is-h3"><a href="#reflection-uclass-uproperty-ufunction">Reflection — UCLASS, UPROPERTY, UFUNCTION</a></li><li class="article-toc__item"><a href="#lifecycle-актора">Lifecycle актора</a></li><li class="article-toc__item"><a href="#примеры-кода">Примеры кода</a></li><li class="article-toc__item is-h3"><a href="#минимальный-c-actor">Минимальный C++ Actor</a></li><li class="article-toc__item is-h3"><a href="#параметр-в-редакторе-и-blueprint">Параметр в редакторе и Blueprint</a></li><li class="article-toc__item is-h3"><a href="#overlap-триггер-коллизия">Overlap-триггер (коллизия)</a></li><li class="article-toc__item is-h3"><a href="#простая-репликация">Простая репликация</a></li><li class="article-toc__item is-h3"><a href="#blueprint-без-c">Blueprint (без C++)</a></li><li class="article-toc__item"><a href="#blueprints">Blueprints</a></li><li class="article-toc__item"><a href="#подсистемы-движка">Подсистемы движка</a></li><li class="article-toc__item is-h3"><a href="#рендеринг-ue5-возможности-и-компромиссы">Рендеринг UE5 — возможности и компромиссы</a></li><li class="article-toc__item"><a href="#коллизии">Коллизии</a></li><li class="article-toc__item"><a href="#структура-проекта">Структура проекта</a></li><li class="article-toc__item"><a href="#типичные-ошибки-начинающих">Типичные ошибки начинающих</a></li><li class="article-toc__item"><a href="#сравнение-с-другими-движками">Сравнение с другими движками</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6  </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Far Cry — Игры IT Universe</title><meta name="description" content="Франшиза Far Cry представляет собой серию компьютерных игр в жанре шутера от первого лица и action-adventure."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Far Cry</span></li></ol></nav><header class="portal-hero"> <h1>Far Cry</h1> <p>Франшиза Far Cry представляет собой серию компьютерных игр в жанре шутера от первого лица и action-adventure.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Far Cry" data-url="/games/9-03-igrovaya-industriya/game-studies/116">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Far Cry">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Far Cry</h1>
+<div class="itu-play-embed" data-example="spinoff/game-franchise-play" data-src="" data-title="Игровая франшиза" data-min-height="520" data-play-props="{&quot;franchise&quot;:&quot;far-cry&quot;}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="что-такое-far-cry">Что такое Far Cry</h2>
+<p>Франшиза <strong>Far Cry</strong> представляет собой серию компьютерных игр в жанре шутера от первого лица и action-adventure. Первая игра, выпущенная в 2004 году немецкой студией Crytek, продемонстрировала возможности инновационного движка CryEngine. Последующие части, созданные канадской студией Ubisoft Montreal и другими дочерними подразделениями компании Ubisoft, предлагают игрокам обширные открытые миры с высокой степенью свободы действий. На 2026 год серия включает шесть основных частей, множество спин-оффов и дополнений, собрав более 90 миллионов игроков по всему миру.</p>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/FC.png" alt="FC.png"></p>
+<p>Игры серии не объединены единым сюжетом или персонажами. Каждая часть представляет собой отдельную историю, связанную тематически — герой оказывается в дикой местности, отрезанной от цивилизации, и вынужден бороться за выживание против вооруженных врагов и агрессивной природы. Основной антагонист часто выступает в роли полевого командира или диктатора, захватившего власть в регионе.</p>
+<hr>
+<h2 id="игры-серии">Игры серии</h2>
+<table>
+<thead>
+<tr>
+<th>Название игры</th>
+<th>Год выхода</th>
+<th>Тип релиза</th>
+<th>Сеттинг и место действия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Far Cry</td>
+<td>2004</td>
+<td>Основная игра</td>
+<td>Тропический архипелаг в Тихом океане</td>
+</tr>
+<tr>
+<td>Far Cry Instincts</td>
+<td>2005</td>
+<td>Спин-офф / Ремейк для консолей</td>
+<td>Переосмысление первой части с суперспособностями</td>
+</tr>
+<tr>
+<td>Far Cry Instincts: Evolution</td>
+<td>2006</td>
+<td>Дополнение / Сквел к Instincts</td>
+<td>Тропические острова, продолжение истории Instincts</td>
+</tr>
+<tr>
+<td>Far Cry Instincts: Predator</td>
+<td>2006</td>
+<td>Сборник</td>
+<td>Компиляция Instincts и Evolution для Xbox 360</td>
+</tr>
+<tr>
+<td>Far Cry Vengeance</td>
+<td>2006</td>
+<td>Спин-офф</td>
+<td>Эксклюзив для Nintendo Wii на базе Evolution</td>
+</tr>
+<tr>
+<td>Far Cry: Paradise Lost</td>
+<td>2007</td>
+<td>Спин-офф</td>
+<td>Рельсовый шутер для аркадных автоматов</td>
+</tr>
+<tr>
+<td>Far Cry 2</td>
+<td>2008</td>
+<td>Основная игра</td>
+<td>Вымышленная страна в Центральной Африке</td>
+</tr>
+<tr>
+<td>Far Cry 3</td>
+<td>2012</td>
+<td>Основная игра</td>
+<td>Тропический остров Рук Айленд</td>
+</tr>
+<tr>
+<td>Far Cry 3: Blood Dragon</td>
+<td>2013</td>
+<td>Самостоятельный спин-офф</td>
+<td>Ретрофутуристический киберпанк в стиле 80-х</td>
+</tr>
+<tr>
+<td>Far Cry 4</td>
+<td>2014</td>
+<td>Основная игра</td>
+<td>Вымышленный регион Кират в Гималаях</td>
+</tr>
+<tr>
+<td>Far Cry Primal</td>
+<td>2016</td>
+<td>Самостоятельный спин-офф</td>
+<td>Каменный век, Центральная Европа</td>
+</tr>
+<tr>
+<td>Far Cry 5</td>
+<td>2018</td>
+<td>Основная игра</td>
+<td>Округ Хоуп в штате Монтана, США</td>
+</tr>
+<tr>
+<td>Far Cry New Dawn</td>
+<td>2019</td>
+<td>Самостоятельный сиквел-спин-офф</td>
+<td>Постапокалиптический округ Хоуп спустя 17 лет</td>
+</tr>
+<tr>
+<td>Far Cry 6</td>
+<td>2021</td>
+<td>Основная игра</td>
+<td>Вымышленный тропический остров Яра в Карибском море</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="лор-вселенной">Лор вселенной</h2>
+<h3 id="концепция-изоляции">Концепция изоляции</h3>
+<p>Каждая часть франшизы строится на идее изоляции. Герой попадает в замкнутую экосистему, где действуют свои законы, а привычные социальные нормы теряют силу. Географическая оторванность — будь то тропический архипелаг, африканская саванна или доисторическая долина — создает условия для испытания человеческой морали.</p>
+<p>Замкнутая экосистема работает как катализатор деградации. Острова, долины и саванны становятся ареной, где конфликты обостряются до предела. Цивилизация отсутствует или представлена лишь разрушенными следами прошлого. В таких условиях персонаж сталкивается с необходимостью принимать жесткие решения ради выживания.</p>
+<p>Окружающая среда ведет постоянную войну против игрока. Природа не просто фон, она активный участник событий. Дикие животные, климатические явления и отсутствие инфраструктуры создают постоянное давление. Иллюзия полной свободы разбивается о реальность выживания, где каждый шаг требует ресурсов и осторожности.</p>
+<hr>
+<h3 id="персонажи">Персонажи</h3>
+<table>
+<thead>
+<tr>
+<th>Игра</th>
+<th>Главный герой (Протагонист)</th>
+<th>Главный злодей (Антагонист)</th>
+<th>Ключевые союзники / Напарники</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Far Cry</td>
+<td>Джек Карвер (бывший спецназовец)</td>
+<td>Доктор Кригер (безумный ученый)</td>
+<td>Валери Кардинал (агент ЦРУ)</td>
+</tr>
+<tr>
+<td>Far Cry Instincts</td>
+<td>Джек Карвер</td>
+<td>Доктор Кроу</td>
+<td>Ричард "Найтшейд"</td>
+</tr>
+<tr>
+<td>Far Cry 2</td>
+<td>Один из 9 наёмников на выбор (например, Марти Аленкар)</td>
+<td>Шакал (торговец оружием)</td>
+<td>Другие наёмники (Пол Кипрес, Флора Гиллен и др.)</td>
+</tr>
+<tr>
+<td>Far Cry 3</td>
+<td>Джейсон Броди</td>
+<td>Ваас Монтенегро / Хойт Волкер</td>
+<td>Цитра Талугмай, Денис Роджерс, Сэм Бекер, Лиза Сноу</td>
+</tr>
+<tr>
+<td>Far Cry 3: Blood Dragon</td>
+<td>Рекс "Повер" Кольт (кибер-солдат)</td>
+<td>Полковник Слоун</td>
+<td>Доктор Элизабет Дарлинг</td>
+</tr>
+<tr>
+<td>Far Cry 4</td>
+<td>Аджай Гейл</td>
+<td>Пэйган Мин</td>
+<td>Сабал и Амита (лидеры "Золотого пути"), Херк</td>
+</tr>
+<tr>
+<td>Far Cry Primal</td>
+<td>Таккар (охотник племени винджа)</td>
+<td>Улл (удам) / Батари (изила)</td>
+<td>Сейла (сборщица), Тенсей (шаман), Вуг (мастер)</td>
+</tr>
+<tr>
+<td>Far Cry 5</td>
+<td>Помощник шерифа ("Пом")</td>
+<td>Иосиф Сд ("Отец")</td>
+<td>Ник Рай, Мэри Мэй Фэйргрейв, пастор Джером, Херк</td>
+</tr>
+<tr>
+<td>Far Cry New Dawn</td>
+<td>Капитан безопасности</td>
+<td>Микки и Лу (Близняшки)</td>
+<td>Кармина Сд, постаревший Иосиф Сд</td>
+</tr>
+<tr>
+<td>Far Cry 6</td>
+<td>Дани Рохас (мужчина или женщина)</td>
+<td>Антон Кастильо</td>
+<td>Клара Гарсия, Хуан Кортес, "Liberstad"</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Примечание: Персонаж по имени Херк Драбмен-младший является неофициальным талисманом серии и в качестве второстепенного героя или пасхалки появляется почти во всех частях, начиная с Far Cry 3.</p>
+</blockquote>
+<hr>
+<h3 id="роль-острова">Роль Острова</h3>
+<p>Центральное место в нарративе занимает локация. Остров Rook Islands из третьей части стал главным архетипом серии, сочетающим первозданную природу и следы технологического распада. Эта локация демонстрирует, как природа может быть одновременно прекрасной и смертельно опасной.</p>
+<p>Остров выступает как живой персонаж. У каждой локации есть собственная мифология, история и уникальная экосистема хищников. Животные не просто заселяют карту, они взаимодействуют друг с другом и с игроком, создавая динамичную среду. Хищники могут нападать на фракции, меняя ход спланированного боя, или становиться союзниками в охоте.</p>
+<p>Пространственный нарратив подается через окружение. Сюжет раскрывается не только через диалоги, но и через руины, заброшенные бункеры и найденные артефакты. Игрок исследует мир, находя подсказки о прошлом событий и мотивах персонажей. Архитектура локаций продумана так, чтобы направлять внимание игрока и создавать ощущение тайны.</p>
+<hr>
+<h2 id="геймплей">Геймплей</h2>
+<h3 id="системный-дизайн">Системный дизайн</h3>
+<p>Основой игрового процесса является эмерджентность. Случайное пересечение механик создает уникальные ситуации, которые невозможно полностью предсказать заранее. Игрок может использовать окружение, поведение животных и логику врагов для достижения целей нестандартными способами.</p>
+<p>Формула аванпостов стала центральным циклом игры. Зачистка баз врага представляет собой ключевую активность, предлагающую полную свободу тактического выбора. Игрок сам решает, как подойти к цели: провести разведку, найти слабые места обороны или атаковать лобовой силой. Каждый аванпост становится мини-головоломкой, требующей планирования.</p>
+<p>Система предлагает выбор между стелсом и штурмом. Скрытный вариант предполагает незаметное устранение противников, использование укрытий и маскировку. Громкий вариант открывает доступ ко всем видам оружия и позволяет действовать агрессивно. Оба подхода легитимны и влияют на развитие сюжета и реакцию мира на действия героя.</p>
+<hr>
+<h3 id="взаимодействие-с-миром">Взаимодействие с миром</h3>
+<p>Живая природа играет важную роль в геймплее. Дикие животные нападают на вражеские патрули, отвлекая их от игрока или создавая хаос на поле боя. Это позволяет использовать экологические факторы как преимущество в бою. Охота на зверей также дает ресурсы для крафта и улучшения снаряжения.</p>
+<p>Огневая динамика реализована на высоком уровне. Огонь распространяется по сухой траве и деревянным постройкам, создавая зоны опасности. Игрок может поджечь лес, чтобы выкурить врагов, или использовать огонь для защиты своей позиции. Физика огня учитывается в расчетах движения и поведения персонажей.</p>
+<p>Крафт и прогрессия напрямую связаны с исследованием мира. Сбор ресурсов, охота и добыча материалов необходимы для расширения инвентаря и улучшения оружия. Игрок постоянно ищет новые виды боеприпасов, лекарства и инструменты, что стимулирует изучение карты.</p>
+<hr>
+<h2 id="архитектура-выполнения">Архитектура выполнения</h2>
+<h3 id="движок-dunia-engine">Движок Dunia Engine</h3>
+<p>Для серий Far Cry начиная со второй части был разработан собственный игровой движок <strong>Dunia Engine</strong>. Название происходит от арабского слова "мир" или "земля". Движок представляет собой глубоко модифицированную и переписанную версию технологий CryEngine, адаптированную инженерами Ubisoft для задач создания огромных открытых миров.</p>
+<p>Адаптация под Open World потребовала переработки систем стриминга данных. Игра поддерживает бесшовное перемещение между различными типами ландшафта без экранов загрузки. Геометрия и текстуры загружаются динамически в зависимости от положения игрока, что обеспечивает плавность восприятия огромных пространств.</p>
+<hr>
+<h3 id="ключевые-подсистемы">Ключевые подсистемы</h3>
+<p>Процедурная генерация используется для автоматического распределения растительности и элементов ландшафта. Правила размещения деревьев, камней и воды позволяют создавать реалистичные и разнообразные среды без ручного моделирования каждого объекта. Это сокращает время разработки и увеличивает вариативность миров.</p>
+<p>Система ИИ (AI Director) управляет спавном патрулей, хищников и случайных событий вокруг игрока. Система анализирует текущую ситуацию и корректирует сложность, обеспечивая баланс между вызовом и доступностью. Враги реагируют на действия игрока, меняют тактику и координируют атаки.</p>
+<p>Многопоточность является основой производительности. Физика ветра, симуляция огня, логика персонажей и рендеринг выполняются параллельно. Распараллеливание задач позволяет поддерживать высокий уровень детализации при сохранении стабильного FPS даже на слабых системах.</p>
+<pre><code class="language-mermaid">flowchart TD
+    subgraph "Core Systems"
+        A[Dunia Engine Core]
+    end
+    
+    A --> B[Стриминг мешей и текстур]
+    A --> C[Смуляция физики]
+    A --> D[ИИ Директор]
+    A --> E[Рендеринг]
+    
+    B --> F[Бесшовный мир]
+    C --> G[Распространение огня]
+    C --> H[Ветер и погода]
+    D --> I[Менеджмент симуляции жизни]
+    E --> J[Адаптивное освещение]
+    E --> K[Густая фолиация]
+    
+    style A fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style F fill:#e8f5e9,stroke:#2e7d32
+    style G fill:#ffebee,stroke:#c62828
+    style I fill:#fff3e0,stroke:#ef6c00
+    style K fill:#e1f5fe,stroke:#0277bd
+</code></pre>
+<hr>
+<h2 id="влияние-на-индустрию">Влияние на индустрию</h2>
+<h3 id="формирование-стандартов">Формирование стандартов</h3>
+<p>Франшиза сформировала стиль разработки открытых миров, известный как <strong>Ubisoft-style Open World</strong>. Популяризация механики вышек для открытия карты и зачистки лагерей стала отраслевым стандартом. Многие последующие проекты взяли эту модель за основу, адаптируя её под свои нужды.</p>
+<p>UI/UX минимализм в играх серии показал пример интеграции интерфейса в игровой мир. Физическая карта в руках героя, голографические дисплеи и отсутствие лишних значков на экране погружают игрока в атмосферу. Интерфейс не мешает восприятию реальности, а становится частью повествования.</p>
+<hr>
+<h3 id="наследие">Наследие</h3>
+<p>Серия заложила вектор на создание харизматичных злодеев. Персонаж Ваас Монтенегро из третьей части изменил подход к созданию антагонистов в AAA-играх. Его глубина, философия и эмоциональное воздействие на игрока стали эталоном для многих разработчиков.</p>
+<p>Популяризация шутеров-песочниц сместила фокус с линейных коридоров на свободу действий. Игроки получили возможность выбирать путь прохождения, экспериментировать с тактикой и исследовать мир без ограничений. Этот подход определил развитие жанра на десятилетие вперед.</p>
+<hr>
+<h2 id="история-игр-серии">История игр серии</h2>
+<h3 id="far-cry-2004">Far Cry (2004)</h3>
+<p>Первая часть серии вышла в 2004 году и была разработана немецкой компанией <strong>Crytek</strong>. Издателем выступила компания Ubisoft. Игра стала демонстрацией возможностей нового движка <strong>CryEngine</strong>, который использовался для создания фотореалистичной графики и сложных физических систем.</p>
+<hr>
+<h4>Сюжет и сеттинг</h4>
+<p>События разворачиваются на таинственном архипелаге в южной части Тихого океана. Главный герой, бывший спецназовец Джек Карвер, ищет пропавшую журналистку Валери Константин. Яхта Джека подвергается атаке наемников, и он оказывается на острове, полном опасностей.</p>
+<p>Остров является объектом секретных экспериментов по генетической модификации, финансируемых компанией Krieger Corp. Генеральный директор доктор Кригер создает трайгенов — генетически измененных существ, способных к агрессии и быстрому обучению. Эксперименты выходят из-под контроля, и герои оказываются втянутыми в конфликт между наемниками, мутантами и местными жителями.</p>
+<p>Ландшафт острова разнообразен — пляжи, тропические леса, каньоны, болота и действующий вулкан. Интерьеры варьируются от простых хижин до ультрасовременных лабораторий и японских укреплений времен Второй мировой войны.</p>
+<hr>
+<h4>Особенности разработки</h4>
+<p>Crytek создала игру с акцентом на визуальную составляющую и физику. Движок поддерживал технологии PolyBump и High Dynamic Range, что обеспечивало высокое качество освещения и текстур. Карта доступна сразу без загрузок, что было революционным решением для того времени.</p>
+<p>Мультиплеер включал три режима: Free For All, Team Death Match и Assault. Режим Assault требовал захвата трех баз за определенное время, что добавляло стратегическую глубину соревновательному процессу.</p>
+<hr>
+<h4>Проблемы и цензура</h4>
+<p>Игра столкнулась с серьезными проблемами в Германии. Федеральное ведомство по оценке средств массовой информации, наносящих вред молодежи, запретило демоверсию из-за высокого уровня насилия. В полной версии были вырезаны кровавые эффекты, включая физику Ragdoll. Немецкая версия получила статус "Только для 18+", что вызвало возмущение игроков. Позже модификации файлов вернули вырезанный контент, что привело к отзыву первой партии игры.</p>
+<hr>
+<h4>Продажи и наследие</h4>
+<p>Far Cry разошлась тиражом более миллиона копий. Игра получила высокие оценки критиков и стала основой для развития франшизы. Права на бренд позже перешли к Ubisoft, которая продолжила разработку сиквелов уже без участия Crytek.</p>
+<hr>
+<h3 id="far-cry-instincts-2005">Far Cry Instincts (2005)</h3>
+<p>Версия для консоли Xbox, разработанная Ubisoft Montreal. Игра существенно отличалась от PC-версии. Карты стали менее открытыми из-за технических ограничений консолей. Разработчики компенсировали это добавлением новых мультиплеерных режимов и функций, включая систему диких способностей героя.</p>
+<hr>
+<h3 id="far-cry-2-2008">Far Cry 2 (2008)</h3>
+<p>Вторая часть перенесла действие в Африку. Сюжет сосредоточен на гражданской войне между двумя группировками: Объединенным фронтом освобождения и труда и Союзом народного сопротивления. Главный герой — наемник, нанятый для ликвидации торговца оружием по кличке Шакал.</p>
+<hr>
+<h4>Реализм и атмосфера</h4>
+<p>Игра сделала ставку на реализм и мрачную атмосферу. Герой страдает от малярии, оружие изнашивается и ломается, а враги постоянно патрулируют территорию. Малярия требует приема таблеток, иначе здоровье быстро падает. Оружие нуждается в обслуживании, что добавляет элемент управления ресурсами.</p>
+<p>Африканский пейзаж создан на основе реальных фотографий и видео, сделанных разработчиками во время поездок в страну. Звуковое сопровождение и музыка усиливают ощущение жары и напряжения.</p>
+<hr>
+<h4>Сюжет и концовки</h4>
+<p>Шакал объясняет свою мотивацию: он стремится уничтожить всех участников войны, считая их заразой. В финале игроку предлагается выбор — взорвать ящик с динамитом, чтобы перекрыть путь беженцам, или отдать алмазы пограничникам, чтобы спасти людей, после чего покончить с собой. Обе концовки подчеркивают безнадежность ситуации и бессмысленность конфликта.</p>
+<hr>
+<h4>Техническая основа</h4>
+<p>Для игры был создан новый движок <strong>Dunia Engine</strong>. Он поддерживал многопоточность и технологии DirectX 9 и 10. Движок позволял создавать огромные открытые пространства с динамическими погодными условиями и реалистичной симуляцией огня.</p>
+<hr>
+<h3 id="far-cry-3-2012">Far Cry 3 (2012)</h3>
+<p>Третья часть стала революционной для серии. Игра вернулась к островному сеттингу и принесла серию коммерческий успех и признание критиков.</p>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/FC3.png" alt="FC3.png"></p>
+<hr>
+<h4>Сюжет</h4>
+<p>Главный герой Джейсон Броди отправляется на отдых с друзьями на острова Рук. Поездка превращается в кошмар: друзья попадают в плен к пиратам во главе с безумным Ваасом Монтенегро. Джейсон выживает и начинает борьбу за спасение друзей и освобождение острова.</p>
+<p>Ваас Монтенегро стал одним из самых запоминающихся злодеев в истории видеоигр. Его философия, харизма и манера речи произвели огромное впечатление на аудиторию. Цитата "Я уже говорил тебе, что такое безумие?" вошла в поп-культуру.</p>
+<hr>
+<h4>Геймплей и прогрессия</h4>
+<p>Игра ввела систему навыков, разделенную на три ветви: Паук, Акула и Цапля. Игрок получает очки опыта за выполнение заданий и убийства врагов, что позволяет улучшать способности героя. Дерево навыков открывает новые приемы скрытности, стрельбы и выживания.</p>
+<p>Острова Рук стали живым персонажем. Разработчики добавили множество побочных активностей — охота на животных, сбор растений, освобождение аванпостов и участие в мини-играх. Искусственный интеллект животных имитировал естественное поведение, создавая динамичную экосистему.</p>
+<hr>
+<h4>Разработка</h4>
+<p>Команда потратила много времени на создание острова, назвав его "вторым по важности персонажем". Вдохновением послужили фильмы "Апокалипсис сегодня" и сериал "Остаться в живых". Разработчики стремились создать мир, который уважает выбор игрока и предоставляет свободу действий.</p>
+<p>Игра получила награду BAFTA в номинации "Action" и была номинирована на множество других премий. Продажи превысили 10 миллионов копий.</p>
+<hr>
+<h3 id="far-cry-3-blood-dragon-2013">Far Cry 3 — Blood Dragon (2013)</h3>
+<p>Спин-офф, представляющий собой пародию на фантастические боевики 1980-х годов. Действие происходит в альтернативном 2007 году на островах Тихого океана. Главный герой Рекс "Пауэр" Кольт — киборг, сражающийся с армией роботов и кровожадными драконами.</p>
+<p>Игра отличается ярким стилем, неоновой графикой и саундтреком в стиле синтвейв. Сюжет пародирует клише эпохи, а диалоги полны черного юмора. Blood Dragon получила положительные отзывы за уникальный стиль и ностальгию.</p>
+<hr>
+<h3 id="far-cry-4-2014">Far Cry 4 (2014)</h3>
+<p>Действие разворачивается в вымышленном государстве Кират в Гималаях. Главный герой Аджай Гейл возвращается на родину, чтобы развеять прах матери, и оказывается вовлечен в гражданскую войну между правительством и повстанцами "Золотой путь".</p>
+<hr>
+<h4>Персонажи</h4>
+<p>Антагонист Пэйган Мин стал культовым персонажем. Его эксцентричность, розовый костюм и непредсказуемое поведение сделали его одним из самых ярких злодеев серии. Изначально команда хотела сделать его панком-рокером, но отказалась от идеи в пользу более загадочного образа.</p>
+<hr>
+<h4>Сюжет и выбор</h4>
+<p>История исследует темы власти, предательства и морального выбора. Игрок принимает решения, влияющие на судьбу Кирата и лидеров повстанцев. Финал игры зависит от выбора лидера "Золотого пути", что приводит к разным последствиям для страны.</p>
+<hr>
+<h4>Разработка</h4>
+<p>Разработчики посетили Непал, чтобы изучить местную культуру и вдохновиться реальными событиями. Мир игры стал более плотным и разнообразным по сравнению с предыдущими частями. Команда добавила чёрный юмор и сократила число закадровых голосов для лучшего погружения.</p>
+<hr>
+<h3 id="far-cry-primal-2016">Far Cry Primal (2016)</h3>
+<p>Уникальная часть серии, действие которой происходит около 10 000 лет до нашей эры в эпоху мезолита. Обычное оружие и транспорт отсутствуют. Игрок использует каменные орудия, луки и прирученных животных.</p>
+<hr>
+<h4>Особенности</h4>
+<p>Все диалоги записаны на искусственном языке Wenja, основанном на праиндоевропейском. Это требование лингвистов для сохранения аутентичности. Игрок играет за Таккара, охотника, пытающегося восстановить свое племя.</p>
+<p>Приручение животных стало ключевой механикой. Саблезубые тигры, пещерные медведи и волки помогают в бою и разведке. Если питомец погибает, его можно воскресить, найдя Красный лист.</p>
+<p>Игра получила смешанные отзывы. Критики похвалили мир и атмосферу, но отметили однообразие геймплея и отсутствие запоминающихся злодеев.</p>
+<hr>
+<h3 id="far-cry-5-2018">Far Cry 5 (2018)</h3>
+<p>События происходят в округе Хоуп, штат Монтана. Главный герой — помощник шерифа, борющийся с культом "Врата Эдема" во главе с пророком Иосифом Сдом.</p>
+<hr>
+<h4>Актуальность</h4>
+<p>Сеттинг игры вызвал споры из-за отражения современных политических и социальных проблем США. Тема религиозного фанатизма и сепаратизма оказалась актуальной в контексте избрания Дональда Трампа и Brexit.</p>
+<hr>
+<h4>Геймплей</h4>
+<p>Игра ввела систему вербовки местных жителей, которые сражаются вместе с игроком. Также появилась возможность приручать диких животных. Редактор карт позволил создавать собственные миссии.</p>
+<hr>
+<h4>Сюжет</h4>
+<p>Игрок должен освободить регионы округа, победив братьев и сестер Сда. В финале перед игроком стоит выбор: уйти из округа или продолжить сопротивление. Обе концовки ведут к ядерному взрыву, подчеркивая тему неизбежности конца света.</p>
+<hr>
+<h3 id="far-cry-new-dawn-2019">Far Cry New Dawn (2019)</h3>
+<p>Спин-офф, действие которого происходит через 17 лет после событий Far Cry 5. Мир погрузился в постапокалипсис, но природа восстановилась, создав яркие и красочные пейзажи.</p>
+<hr>
+<h4>Особенности</h4>
+<p>Игра отличается необычной цветовой палитрой, контрастирующей с традиционными мрачными постапокалипсисами. Игрок исследует разрушенные города и ищет ресурсы для восстановления поселений.</p>
+<hr>
+<h3 id="far-cry-6-2021">Far Cry 6 (2021)</h3>
+<p>Шестая основная часть серии. Действие происходит в вымышленной латиноамериканской стране Яра, напоминающей Кубу. Главный герой Дани Рохас борется с диктатором Антоном Кастильо.</p>
+<hr>
+<h4>Разработка</h4>
+<p>Игру разрабатывали студии Ubisoft Toronto, Montreal и другие. Двинок Dunia Engine получил улучшения в области графики и физики. Игра включила возможность прятать оружие и скрываться от врагов.</p>
+<hr>
+<h4>Сюжет</h4>
+<p>История рассказывает о революции и борьбе за свободу. Антон Кастильо стал одним из самых сложных и глубоких антагонистов серии. Его отношения с сыном Диего добавляют эмоциональную глубину конфликту.</p>
+<p>Игра получила смешанные отзывы. Критики оценили красоту природы и актерскую игру, но указали на повторяемость геймплея и слабый сюжет.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-far-cry">Что такое Far Cry</a></li><li class="article-toc__item"><a href="#игры-серии">Игры серии</a></li><li class="article-toc__item"><a href="#лор-вселенной">Лор вселенной</a></li><li class="article-toc__item is-h3"><a href="#концепция-изоляции">Концепция изоляции</a></li><li class="article-toc__item is-h3"><a href="#персонажи">Персонажи</a></li><li class="article-toc__item is-h3"><a href="#роль-острова">Роль Острова</a></li><li class="article-toc__item"><a href="#геймплей">Геймплей</a></li><li class="article-toc__item is-h3"><a href="#системный-дизайн">Системный дизайн</a></li><li class="article-toc__item is-h3"><a href="#взаимодействие-с-миром">Взаимодействие с миром</a></li><li class="article-toc__item"><a href="#архитектура-выполнения">Архитектура выполнения</a></li><li class="article-toc__item is-h3"><a href="#движок-dunia-engine">Движок Dunia Engine</a></li><li class="article-toc__item is-h3"><a href="#ключевые-подсистемы">Ключевые подсистемы</a></li><li class="article-toc__item"><a href="#влияние-на-индустрию">Влияние на индустрию</a></li><li class="article-toc__item is-h3"><a href="#формирование-стандартов">Формирование стандартов</a></li><li class="article-toc__item is-h3"><a href="#наследие">Наследие</a></li><li class="article-toc__item"><a href="#история-игр-серии">История игр серии</a></li><li class="article-toc__item is-h3"><a href="#far-cry-2004">Far Cry (2004)</a></li><li class="article-toc__item is-h3"><a href="#far-cry-instincts-2005">Far Cry Instincts (2005)</a></li><li class="article-toc__item is-h3"><a href="#far-cry-2-2008">Far Cry 2 (2008)</a></li><li class="article-toc__item is-h3"><a href="#far-cry-3-2012">Far Cry 3 (2012)</a></li><li class="article-toc__item is-h3"><a href="#far-cry-3-blood-dragon-2013">Far Cry 3 — Blood Dragon (2013)</a></li><li class="article-toc__item is-h3"><a href="#far-cry-4-2014">Far Cry 4 (2014)</a></li><li class="article-toc__item is-h3"><a href="#far-cry-primal-2016">Far Cry Primal (2016)</a></li><li class="article-toc__item is-h3"><a href="#far-cry-5-2018">Far Cry 5 (2018)</a></li><li class="article-toc__item is-h3"><a href="#far-cry-new-dawn-2019">Far Cry New Dawn (2019)</a></li><li class="article-toc__item is-h3"><a href="#far-cry-6-2021">Far Cry 6 (2021)</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

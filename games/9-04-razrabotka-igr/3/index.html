@@ -1,0 +1,722 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Разработка на Unity — Игры IT Universe</title><meta name="description" content="Основой любой сцены в Unity являются игровые объекты (GameObject). Сам по себе GameObject — это пустой контейнер, который становится функциональным только после добавления к нему компонентов."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Разработка на Unity</span></li></ol></nav><header class="portal-hero"> <h1>Разработка на Unity</h1> <p>Основой любой сцены в Unity являются игровые объекты (GameObject). Сам по себе GameObject — это пустой контейнер, который становится функциональным только после добавления к нему компонентов.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Разработка на Unity" data-url="/games/9-04-razrabotka-igr/3">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Разработка на Unity">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Разработка на Unity</h1>
+<div class="itu-play-embed" data-example="spinoff/game-dev-studio-demo" data-src="" data-title="Игровая студия" data-min-height="560" data-play-props="{}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<p>Unity — кроссплатформенный игровой движок для 2D и 3D приложений. Теоретическую основу (что такое движок, компонентная модель) см. в главах <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/112">Игровой движок</a> и <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/113">Виды игровых движков — Unity</a>; здесь — практика в редакторе. Справочник API и lifecycle: <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/301">Справочник по Unity</a>.</p>
+<hr>
+<h3 id="установка-и-настройка-окружения">Установка и настройка окружения</h3>
+<p>Для начала разработки нужны <strong>Unity Hub</strong> и <strong>IDE для C#</strong> (редактор кода).</p>
+<ol>
+<li>
+<p><strong>IDE (на выбор)</strong>:</p>
+<ul>
+<li><strong>Visual Studio Community</strong> — <a href="https://visualstudio.microsoft.com/ru/vs/community/">https://visualstudio.microsoft.com/ru/vs/community/</a> — рабочие нагрузки <strong>"Разработка игр с использованием Unity"</strong> и <strong>"Разработка классических приложений .NET"</strong>.</li>
+<li><strong>JetBrains Rider</strong> (платный, есть trial) или <strong>Visual Studio Code</strong> + расширение C# — тоже поддерживаются; в Unity Hub: <em>Edit → Preferences → External Tools</em> укажите нужный редактор.</li>
+</ul>
+</li>
+<li>
+<p><strong>Установка Unity Hub и редактора</strong>:</p>
+<ul>
+<li>Скачайте Unity Hub с официального сайта Unity (<a href="https://unity.com/ru/download">https://unity.com/ru/download</a>).</li>
+<li>Установите и запустите Unity Hub. Авторизуйтесь или создайте учетную запись.</li>
+<li>В разделе "Installs" добавьте новую версию Unity. Рекомендуется <strong>LTS</strong>-ветка (на момент обновления раздела — <strong>Unity 6 LTS</strong>); проверяйте актуальную LTS на <a href="https://unity.com/releases">unity.com/releases</a>.</li>
+<li>Во время установки Unity выберите <strong>Visual Studio Community</strong> в качестве среды разработки по умолчанию.</li>
+</ul>
+</li>
+<li>
+<p><strong>Создание проекта</strong>:</p>
+<ul>
+<li>В Unity Hub перейдите во вкладку "Projects" и нажмите "New Project".</li>
+<li>Выберите подходящий шаблон (например, "3D").</li>
+<li>Укажите имя проекта и его расположение на диске.</li>
+<li>Нажмите "Create". Проект будет создан, и Unity Editor автоматически откроется.</li>
+</ul>
+</li>
+<li>
+<p><strong>Документация Unity</strong>:</p>
+<ul>
+<li><strong>User Manual</strong> — концепции редактора, пайплайны, 2D/3D, UI (<em>Help → Unity Manual</em> или <a href="https://docs.unity3d.com/Manual/index.html">docs.unity3d.com/Manual</a>).</li>
+<li><strong>Scripting API</strong> — классы C# (<code>GameObject</code>, <code>Rigidbody</code>, …): <em>Help → Scripting Reference</em> или поиск по API на сайте.</li>
+<li>На компоненте в Inspector кнопка <strong>?</strong> открывает страницу справки по этому API.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="основные-окна-редактора-unity">Основные окна редактора Unity</h3>
+<p>Интерфейс Unity состоит из нескольких основных панелей, каждая из которых выполняет свою функцию.</p>
+<ul>
+<li>
+<p><strong>Scene View (Вид сцены)</strong>:</p>
+<ul>
+<li>Представляет собой основное пространство для визуального редактирования сцены.</li>
+<li>Позволяет перемещать, вращать и масштабировать игровые объекты с помощью мыши и клавиш (W - перемещение, E - вращение, R - масштабирование).</li>
+<li>Инструменты в верхнем левом углу позволяют изменять режим просмотра (перспективный/ортогональный) и способ манипуляции объектами (перемещение по осям, вращение вокруг осей, масштабирование).</li>
+</ul>
+</li>
+<li>
+<p><strong>Game View (Вид игры)</strong>:</p>
+<ul>
+<li>Отображает сцену так, как она будет выглядеть при запуске игры.</li>
+<li>Позволяет изменять разрешение экрана и соотношение сторон для тестирования адаптации интерфейса под разные устройства.</li>
+</ul>
+</li>
+<li>
+<p><strong>Hierarchy (Иерархия)</strong>:</p>
+<ul>
+<li>Содержит список всех игровых объектов, находящихся на текущей сцене.</li>
+<li>Объекты могут быть организованы в виде дерева, где один объект является дочерним по отношению к другому (родитель-потомок). Дочерние объекты наследуют трансформации (позицию, вращение, масштаб) своего родителя.</li>
+</ul>
+</li>
+<li>
+<p><strong>Project Window (Окно проекта)</strong>:</p>
+<ul>
+<li>Является файловым менеджером для всех ресурсов вашего проекта — скрипты, модели, текстуры, звуки, префабы и т.д.</li>
+<li>Позволяет организовывать ресурсы в папки (например, <code>Scripts</code>, <code>Models</code>, <code>Textures</code>, <code>Prefabs</code>) для удобства управления.</li>
+<li>Предоставляет доступ к настройкам импорта ресурсов и возможность создавать новые элементы (скрипты, материалы, префабы).</li>
+</ul>
+</li>
+<li>
+<p><strong>Inspector (Инспектор)</strong>:</p>
+<ul>
+<li>Отображает все компоненты и их свойства для выбранного объекта в Hierarchy или Scene View.</li>
+<li>Это центральное место для настройки поведения объектов. Здесь можно изменять параметры компонентов, назначать ссылки на другие объекты и загружать ресурсы (например, модель или текстуру).</li>
+<li>Все изменения, внесенные в Inspector, сохраняются вместе с объектом.</li>
+</ul>
+</li>
+<li>
+<p><strong>Console (Консоль)</strong>:</p>
+<ul>
+<li>Отображает сообщения, генерируемые во время выполнения сцен (логи), а также предупреждения и ошибки.</li>
+<li>Критически важна для отладки кода. Ошибки в скриптах будут выделены красным цветом, и щелчок по сообщению позволяет перейти к соответствующей строке в коде.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="игровые-объекты-и-компоненты">Игровые объекты и компоненты</h3>
+<p>Основой любой сцены в Unity являются <strong>игровые объекты</strong> (<code>GameObject</code>). Сам по себе GameObject — это пустой контейнер, который становится функциональным только после добавления к нему <strong>компонентов</strong>.</p>
+<ul>
+<li>
+<p><strong>Создание объектов</strong>:</p>
+<ul>
+<li>Через контекстное меню в Hierarchy — клик правой кнопкой мыши -> <code>Create Empty</code> (пустой объект) или выбрать тип объекта из раздела <code>3D Object</code> (Cube, Sphere, etc.).</li>
+<li>Через главное меню: <code>GameObject</code> -> <code>Create Empty</code> / <code>3D Object</code>.</li>
+<li>Через кнопку "+" в верхней части панели Hierarchy.</li>
+</ul>
+</li>
+<li>
+<p><strong>Основные компоненты</strong>:</p>
+<ul>
+<li><strong>Transform</strong>: Присутствует у каждого GameObject. <strong>Мировые</strong> координаты (<code>position</code>) и <strong>локальные</strong> относительно родителя (<code>localPosition</code>). Дочерний объект наследует движение родителя в иерархии.</li>
+<li><strong>Mesh Renderer</strong>: Отвечает за визуализацию объекта. Получает геометрию из компонента <code>Mesh Filter</code> и применяет к ней материал.</li>
+<li><strong>Mesh Filter</strong>: Хранит сетку (mesh) объекта, которая определяет его форму.</li>
+<li><strong>Collider</strong> — Определяет физическую границу объекта для системы обнаружения столкновений (например, <code>Box Collider</code>, <code>Sphere Collider</code>).</li>
+<li><strong>Rigidbody</strong>: Придает объекту физические свойства (массу, инерцию) и позволяет ему взаимодействовать с системой физики Unity. Объекты с Rigidbody подвержены действию силы тяжести и могут сталкиваться с другими объектами, имеющими Collider.</li>
+</ul>
+</li>
+<li>
+<p><strong>Настройка свойств через Inspector</strong>:</p>
+<ul>
+<li>Для изменения поведения объекта необходимо настроить параметры его компонентов в Inspector.</li>
+<li>Например, чтобы объект падал, добавьте к нему компонент <code>Rigidbody</code>. Чтобы он мог сталкиваться с другими объектами, убедитесь, что у него и у других объектов есть компоненты <code>Collider</code>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="префабы-повторное-использование-объектов">Префабы — повторное использование объектов</h3>
+<p>Префаб (<code>Prefab</code>) — это шаблон игрового объекта, который может быть многократно использован в сцене. Это ключевой инструмент для обеспечения согласованности и эффективности разработки.</p>
+<ul>
+<li>
+<p><strong>Создание префаба</strong>:</p>
+<ol>
+<li>Создайте и настройте игровой объект в сцене (например, настройте его компоненты, назначьте текстуры).</li>
+<li>Перетащите этот объект из панели Hierarchy в папку <code>Prefabs</code> в окне Project.</li>
+<li>Объект в сцене станет экземпляром префаба (его название в Hierarchy будет синим).</li>
+</ol>
+</li>
+<li>
+<p><strong>Преимущества использования префабов</strong>:</p>
+<ul>
+<li><strong>Упрощение управления</strong>: Все экземпляры одного префаба имеют одинаковую базовую конфигурацию.</li>
+<li><strong>Легкость в тестировании и обновлении</strong>: Если вы внесете изменения в сам префаб (в папке Project), все его экземпляры на всех сценах автоматически получат эти изменения. Это позволяет быстро вносить глобальные изменения (например, изменить здоровье врага).</li>
+<li><strong>Гибкость</strong> — Экземпляры префаба можно модифицировать (например, изменить позицию или цвет материала), и при необходимости применить эти изменения обратно к оригинальному префабу с помощью кнопки "Apply All" в разделе Overrides в Inspector.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="блок-out-уровня-white-boxing">Блок-out уровня (white-boxing)</h3>
+<p>Перед финальным артом удобно собрать <strong>серую коробку</strong> уровня из примитивов Unity — так проверяют масштаб, проходимость и ритм боя без затрат на модели.</p>
+<ol>
+<li>Создайте родительский объект <code>Environment</code> и дочерние <code>Cube</code> / <code>Plane</code> для пола, стен, укрытий.</li>
+<li>Выровняйте сетку (<em>Scene</em> → включите <strong>Grid</strong> и <strong>Snap</strong>, шаг 1 м) — игрок-капсула ≈ 2 м высотой, проходы шириной не меньше 1,5–2 м.</li>
+<li>Назначьте простые <strong>Materials</strong> (разные цвета Albedo) — игрок, пол, стены, предметы легко различать в Play Mode.</li>
+<li>Готовые группы (игрок, враг, бонус) сохраните как <strong>префабы</strong> в <code>Prefabs/</code>.</li>
+</ol>
+<div class="callout callout--info">
+  <div class="callout-title">Документ до кода</div>
+  <div class="callout-body">
+  <p>Для учебного прототипа достаточно <strong>One-Page</strong> — одностраничного описания концепта, механик и win/lose.</p>
+<p>Шаблон и типы документов (GDD, TDD, One-Page) — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/117">гейм-дизайне</a>.</p>
+</div>
+</div>
+<hr>
+<h3 id="освещение-сцены">Освещение сцены</h3>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Роль</th>
+<th>Типичное применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Directional Light</strong></td>
+<td>"Солнце", параллельные лучи</td>
+<td>Открытые арены, день/ночь через поворот</td>
+</tr>
+<tr>
+<td><strong>Point Light</strong></td>
+<td>Сфера света из точки</td>
+<td>Факелы, лампы, взрывы</td>
+</tr>
+<tr>
+<td><strong>Spot Light</strong></td>
+<td>Конус, как прожектор</td>
+<td>Фонари, вспышки, "конус видимости" в стелсе</td>
+</tr>
+</tbody>
+</table>
+<p>Кратко о режимах: <strong>Realtime</strong> — свет считается каждый кадр (дороже); <strong>Baked</strong> — освещение запекается в lightmap для статичной геометрии (дешевле в runtime). Для white-box достаточно одного Directional Light и ambient в <em>Window → Rendering → Lighting</em>.</p>
+<hr>
+<h3 id="работа-со-скриптами">Работа со скриптами</h3>
+<p>Скрипты на C# определяют логику и поведение игровых объектов. Готовые фрагменты с построчным разбором — <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1136">Unity C# — скрипты для новичков</a>.</p>
+<hr>
+<h4>Игровой цикл</h4>
+<p><strong>Игровой цикл</strong> — каждый кадр движок повторяет: ввод → логика → физика → отрисовка. Если шаг тормозит, падает FPS.</p>
+<pre><code class="language-mermaid">flowchart LR
+  A[Awake / Start] --> B[Update: ввод, логика]
+  B --> C[FixedUpdate: физика]
+  C --> D[LateUpdate: камера]
+  D --> E[Рендер кадра]
+</code></pre>
+<p>Unity раскладывает цикл по методам <code>MonoBehaviour</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Awake</code></td>
+<td>Инициализация ссылок (один раз при создании объекта)</td>
+</tr>
+<tr>
+<td><code>Start</code></td>
+<td>Логика старта сцены (один раз перед первым <code>Update</code>)</td>
+</tr>
+<tr>
+<td><code>Update</code></td>
+<td>Кадровая логика: ввод, UI, таймеры (<code>Time.deltaTime</code> — длительность кадра)</td>
+</tr>
+<tr>
+<td><code>FixedUpdate</code></td>
+<td>Физика с фиксированным шагом (~50 Гц); силы и <code>Rigidbody</code> — здесь</td>
+</tr>
+<tr>
+<td><code>LateUpdate</code></td>
+<td>Камера и следование за целью — после всех <code>Update</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Разбор:</strong> скорость в <code>Update</code> умножайте на <code>Time.deltaTime</code>. Силы к <code>Rigidbody</code> — в <code>FixedUpdate</code>. Камеру за игроком удобнее двигать в <code>LateUpdate</code>.</p>
+<p>При <code>Time.timeScale = 0</code> игра на паузе: <code>Update</code> может вызываться, но <code>Time.deltaTime</code> равен нулю, физика не продвигается. Подробная таблица — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/301#%D0%B1%D0%BB%D0%BE%D0%BA-1-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0-lifecycle-gameobject-transform-component-project-settings">справочнике</a>. Готовый каркас <code>MonoBehaviour</code> с построчным разбором — <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1136#karkas">Unity C# — скрипты для новичков</a>.</p>
+<blockquote>
+<p><strong>Ввод с клавиатуры:</strong> в примерах ниже используется классический <strong>Input Manager</strong> (<code>Input.GetKeyDown</code>, <code>Input.GetAxis</code>) — он по-прежнему работает в многих учебных проектах. В новых шаблонах Unity по умолчанию часто включён пакет <strong>Input System</strong> (<code>UnityEngine.InputSystem</code>). Для продакшена выберите один подход в <em>Project Settings → Player → Active Input Handling</em> и придерживайтесь его во всём проекте.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Создание скрипта</strong>:</p>
+<ul>
+<li>В окне Project кликните правой кнопкой мыши -> <code>Create</code> -> <code>C# Script</code>.</li>
+<li>Назовите скрипт (например, <code>PlayerController</code>) и дважды щелкните по нему, чтобы открыть в Visual Studio.</li>
+</ul>
+</li>
+<li>
+<p><strong>Прикрепление скрипта к объекту</strong>:</p>
+<ul>
+<li>Перетащите файл скрипта из окна Project на объект в Hierarchy.</li>
+<li>Альтернативно, выберите объект, затем в Inspector нажмите <code>Add Component</code> и введите имя скрипта.</li>
+<li>После этого скрипт появится в списке компонентов объекта в Inspector.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ссылки в Inspector (<code>[SerializeField]</code> vs <code>public</code>)</strong>:</p>
+<ul>
+<li>Поля с <code>[SerializeField]</code> видны в Inspector, но остаются приватными в C# — так обычно делают в продакшене. <code>public</code> тоже сериализуется, но открывает поле всем скриптам.</li>
+</ul>
+</li>
+</ul>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-001" data-title="Игровой цикл" data-min-height="426"> </div>
+<pre><code>*   После сохранения скрипта перетащите префаб яблока в поле `Apple Prefab` в Inspector. Движение по осям `Horizontal` / `Vertical` работает, если в *Input Manager* заданы эти оси (по умолчанию — WASD и стрелки).
+</code></pre>
+<ul>
+<li><strong>Тот же пример на Input System</strong> (пакет <code>com.unity.inputsystem</code>, в шаблоне часто уже подключён):</li>
+</ul>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-002" data-title="Игровой цикл" data-min-height="642"> </div>
+<p>Для продакшена удобнее <strong>Input Actions asset</strong> (<code>Create → Input Actions</code>) и компонент <code>Player Input</code>, чем жёстко прошитые клавиши в коде.</p>
+<hr>
+<h3 id="работа-с-ui-user-interface">Работа с UI (User Interface)</h3>
+<p>Интерфейс пользователя — критически важный элемент любого приложения. В Unity для создания UI используется система <strong>Canvas</strong>, которая служит контейнером для всех элементов интерфейса, таких как кнопки, текст, полосы здоровья и т.д.</p>
+<ul>
+<li>
+<p><strong>Создание Canvas</strong>:</p>
+<ul>
+<li>Создайте новый объект: <code>GameObject</code> -> <code>UI</code> -> <code>Canvas</code>.</li>
+<li>Canvas может работать в трех режимах рендеринга:
+<ol>
+<li><strong>Screen Space - Overlay</strong>: UI отображается поверх игры. Масштабируется автоматически под разрешение экрана.</li>
+<li><strong>Screen Space - Camera</strong>: UI привязан к конкретной камере, что позволяет контролировать его глубину.</li>
+<li><strong>World Space</strong>: UI является частью 3D-сцены и может быть помещен где угодно в игровом мире.</li>
+</ol>
+</li>
+<li>Для большинства случаев рекомендуется использовать <code>Screen Space - Overlay</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Основные элементы UI</strong>:</p>
+<ul>
+<li><strong>Text / TextMeshPro</strong>: Отображает текст. TextMeshPro (TMP) — это продвинутая альтернатива стандартному Text, предлагающая лучшее качество шрифтов, эффекты (тенями, контурами) и гибкие настройки.</li>
+<li><strong>Image</strong>: Отображает спрайты или цветные фоны. Используется для создания полос здоровья, иконок, рамок.</li>
+<li><strong>Button</strong>: Интерактивная кнопка, реагирующая на клики. Состоит из компонентов <code>Image</code> (для фона) и <code>Button</code>, который обрабатывает события нажатия.</li>
+<li><strong>Slider</strong> — Элемент для отображения прогресса (например, здоровье, энергия). Состоит из фона (<code>Background</code>) и заполняемой области (<code>Fill Area</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Настройка слайдера (Health Bar)</strong>:</p>
+<ol>
+<li>Создайте слайдер: <code>GameObject</code> -> <code>UI</code> -> <code>Slider</code>.</li>
+<li>Удалите компонент <code>Handle Slide Area</code>, если не нужна возможность перетаскивания бегунка.</li>
+<li>В инспекторе найдите раздел <code>Fill Area</code> -> <code>Fill</code>. Настройте цвет и размер заполняемой части.</li>
+<li>Чтобы управлять значением слайдера из скрипта, получите ссылку на компонент <code>Slider</code> через <code>[SerializeField]</code>.</li>
+</ol>
+</li>
+</ul>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-003" data-title="Работа с UI (User Interface)" data-min-height="642"> </div>
+<hr>
+<h3 id="анимация-и-timeline">Анимация и Timeline</h3>
+<p>Unity предоставляет мощные инструменты для создания анимации как 3D-объектов, так и UI.</p>
+<ul>
+<li>
+<p><strong>Анимация свойств с помощью Animation Window</strong>:</p>
+<ol>
+<li>Выделите объект, который нужно анимировать.</li>
+<li>Откройте окно <code>Window</code> -> <code>Animation</code> -> <code>Animation</code>.</li>
+<li>Нажмите <code>Create</code> и укажите имя анимации (например, <code>FadeIn</code>). Файл <code>.anim</code> будет создан в проекте.</li>
+<li>Запишите ключевые кадры (keyframes), изменяя свойства объекта (позиция, вращение, масштаб, прозрачность материала) во времени.</li>
+<li>Для анимации прозрачности необходимо использовать материал со шейдером, поддерживающим прозрачность (например, <code>Standard (Transparent)</code>).</li>
+</ol>
+</li>
+<li>
+<p><strong>Кривые анимации (Animation Curves)</strong>:</p>
+<ul>
+<li>В окне Animation между keyframe'ами Unity рисует <strong>кривую</strong> интерполяции. Откройте <strong>Curves</strong> внизу окна Animation.</li>
+<li><strong>Tangents</strong> (касательные) задают плавность: линейный участок — равномерное изменение, ease-in/out — мягкий старт и финиш (удобно для UI и дверей).</li>
+<li>Для циклического мигания можно зациклить клип (<em>Loop Time</em> в Inspector у <code>.anim</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Плавное изменение параметров (Lerp)</strong>:</p>
+<ul>
+<li>Для плавного изменения числовых значений (например, высоты приседа, яркости света) используется линейная интерполяция <code>Mathf.Lerp</code>.</li>
+<li>Ключевой момент — использование <code>Time.deltaTime</code> для независимости от частоты кадров.</li>
+<li>Пример ниже двигает объект <strong>без <code>Rigidbody</code></strong> через <code>transform</code> — для кинематики и UI это нормально. У объекта с <strong>динамическим <code>Rigidbody</code></strong> позицию в <code>Update</code> лучше не задавать; используйте <code>AddForce</code> / <code>MovePosition</code> в <code>FixedUpdate</code>.</li>
+</ul>
+</li>
+</ul>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-004" data-title="Анимация и Timeline" data-min-height="534"> </div>
+<hr>
+<h3 id="система-частиц-particle-system">Система частиц (Particle System)</h3>
+<p>Компонент <strong>Particle System</strong> создаёт дождь, искры, дым, след от двигателя без отдельных mesh на каждую искру.</p>
+<ol>
+<li><code>GameObject</code> → <code>Effects</code> → <code>Particle System</code>.</li>
+<li>В Inspector настройте минимум:
+<ul>
+<li><strong>Duration</strong> / <strong>Looping</strong> — одноразовый взрыв или непрерывный эффект.</li>
+<li><strong>Start Lifetime</strong> — сколько секунд живёт частица.</li>
+<li><strong>Start Speed</strong> и <strong>Shape</strong> (Sphere, Cone, Box) — откуда вылетают частицы.</li>
+<li><strong>Emission</strong> → <strong>Rate over Time</strong> — плотность потока.</li>
+</ul>
+</li>
+<li>Для "удара" включите <strong>Play On Awake</strong>; для выстрела вызывайте <code>GetComponent&#x3C;ParticleSystem>().Play()</code> из кода.</li>
+</ol>
+<p>В финальной сборке ограничивайте <strong>Max Particles</strong> и область эффекта — лишние частицы часто бьют по FPS (см. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/123">Оптимизация игр</a>).</p>
+<hr>
+<h3 id="движение-игрока-vector3-и-три-подхода">Движение игрока — Vector3 и три подхода</h3>
+<table>
+<thead>
+<tr>
+<th>Подход</th>
+<th>Как двигаем</th>
+<th>Плюсы</th>
+<th>Минусы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transform</strong></td>
+<td><code>transform.Translate</code> / изменение <code>position</code> в <code>Update</code></td>
+<td>Просто, предсказуемо для прототипа</td>
+<td>Обходит физику; плохо для динамического <code>Rigidbody</code></td>
+</tr>
+<tr>
+<td><strong>Rigidbody</strong></td>
+<td><code>AddForce</code>, <code>MovePosition</code>, скорость в <code>FixedUpdate</code></td>
+<td>Гравитация, столкновения, прыжок</td>
+<td>Нужно не смешивать с телепортом через <code>transform</code></td>
+</tr>
+<tr>
+<td><strong>Character Controller</strong></td>
+<td><code>CharacterController.Move</code></td>
+<td>Готовый человекообразный контроллер, ступеньки</td>
+<td>Меньше "чистой" физики; свой компонент Unity</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vector3</strong> хранит позицию <code>(x, y, z)</code> и направление. Движение по плоскости пола — нормализуйте вектор WASD и умножайте на <code>speed * Time.deltaTime</code> (в <code>Update</code>) или задавайте силу/скорость в <code>FixedUpdate</code> для <code>Rigidbody</code>.</p>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-005" data-title="Движение игрока — Vector3 и три подхода" data-min-height="720"> </div>
+<p>На капсуле игрока — <strong>Rigidbody</strong>, <strong>Capsule Collider</strong>, <strong>Freeze Rotation</strong> X/Z. Пол и платформы — слой <code>Ground</code>, его укажите в <code>groundMask</code>. Упрощённые учебные варианты (WASD без физики, прыжок, разбор каждой строки) — <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1136#move-wasd">движение и прыжок в Lab</a>.</p>
+<hr>
+<h3 id="физические-взаимодействия-rigidbody-слои-и-raycast">Физические взаимодействия — Rigidbody, слои и Raycast</h3>
+<ul>
+<li>
+<p><strong>Rigidbody</strong>:</p>
+<ul>
+<li>Компонент <code>Rigidbody</code> добавляет объекту массу, инерцию и позволяет ему подчиняться законам физики (гравитация, столкновения).</li>
+<li>Движение <strong>динамического</strong> тела — через силы (<code>AddForce</code>), <code>MovePosition</code> / <code>MoveRotation</code> или изменение скорости (<code>linearVelocity</code> в Unity 6+, ранее <code>velocity</code>) в <strong><code>FixedUpdate</code></strong>, а не через <code>transform.position</code> в <code>Update</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Слои и <code>LayerMask</code></strong>:</p>
+<ul>
+<li>У каждого <code>GameObject</code> есть <strong>слой</strong> (0–31). В <em>Edit → Project Settings → Tags and Layers</em> создайте, например, слой <code>Interactable</code>.</li>
+<li><code>Physics.Raycast(..., layerMask)</code> проверяет только выбранные слои — так луч не "цепляет" пол и UI.</li>
+<li>Матрица столкновений: <em>Project Settings → Physics → Layer Collision Matrix</em>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Raycast (луч)</strong> — невидимый луч из точки в направлении; используется для выбора, стрельбы, подбора предметов.</p>
+</li>
+</ul>
+<hr>
+<h3 id="стрельба-instantiate-и-layermask">Стрельба — Instantiate и LayerMask</h3>
+<p>Для выстрела создайте <strong>префаб снаряда</strong> (Sphere + <code>Rigidbody</code> + <code>Sphere Collider</code> + скрипт урона). Стрельба — <code>Instantiate</code> в точке <code>firePoint</code> с импульсом вперёд. <strong>LayerMask</strong> ограничивает, кого задевает луч проверки земли и куда попадает пуля.</p>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-006" data-title="Стрельба — Instantiate и LayerMask" data-min-height="498"> </div>
+<p><strong><code>Projectile.cs</code></strong> — уничтожение и урон:</p>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-007" data-title="Стрельба — Instantiate и LayerMask" data-min-height="426"> </div>
+<p>Для частых выстрелов подключите <a href="#%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8--object-pooling">Object Pooling</a> вместо <code>Destroy</code> каждый кадр.</p>
+<hr>
+<h3 id="переноска-объектов-raycast-rigidbody">Переноска объектов (Raycast + Rigidbody)</h3>
+<ol>
+<li>Создайте куб с <code>Rigidbody</code>, <code>Box Collider</code>, скриптом <code>DraggableObject</code> и тегом <code>DraggableObject</code> (<em>Tags and Layers</em>).</li>
+<li>На игрока или камеру — скрипт <code>PlayerInteraction</code> ниже; в Inspector укажите <code>Interactable Layers</code> (слой переносимых объектов).</li>
+</ol>
+<p><strong><code>DraggableObject.cs</code></strong> — объект, который следует за точкой перед камерой:</p>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-008" data-title="Переноска объектов (Raycast + Rigidbody)" data-min-height="720"> </div>
+<p><strong><code>PlayerInteraction.cs</code></strong> — подбор и отпускание по ЛКМ (один файл, заменяет отдельный "учебный" Raycast):</p>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-009" data-title="Переноска объектов (Raycast + Rigidbody)" data-min-height="720"> </div>
+<hr>
+<h3 id="сцены-и-загрузка-уровней">Сцены и загрузка уровней</h3>
+<p>Проект в Unity состоит из одной или нескольких <strong>сцен</strong>. Каждая сцена представляет собой отдельную часть игры (меню, уровень, экран проигрыша).</p>
+<ul>
+<li>
+<p><strong>Создание и добавление сцен</strong>:</p>
+<ol>
+<li>Создайте новую сцену: <code>File</code> -> <code>New Scene</code>.</li>
+<li>Сохраните сцену в папке проекта (например, <code>Scenes/MainMenu.unity</code>, <code>Scenes/GameLevel.unity</code>).</li>
+<li>Для корректной загрузки сцены через API необходимо добавить ее в сборку. Перейдите в <code>File</code> -> <code>Build Settings</code>.</li>
+<li>Перетащите все используемые сцены из окна Project в список "Scenes in Build". Это один из наиболее частых источников ошибок при запуске игры.</li>
+</ol>
+</li>
+<li>
+<p><strong>Загрузка сцены программно</strong>:</p>
+<ul>
+<li>Используйте пространство имен <code>UnityEngine.SceneManagement</code>.</li>
+<li>Метод <code>SceneManager.LoadScene()</code> позволяет загрузить сцену по имени или индексу.</li>
+</ul>
+</li>
+</ul>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-010" data-title="Сцены и загрузка уровней" data-min-height="408"> </div>
+<hr>
+<h3 id="сохранение-данных-playerprefs">Сохранение данных — PlayerPrefs</h3>
+<p>Для сохранения небольших объёмов данных между сессиями (громкость, последний уровень, координаты чекпоинта) можно использовать <code>PlayerPrefs</code>. Это простой key-value на диске, <strong>не</strong> защищённый от правок и не подходящий для сложного прогресса — для него чаще используют JSON-файл, облако или backend.</p>
+<ul>
+<li>
+<p><strong>Основные методы</strong>:</p>
+<ul>
+<li><code>PlayerPrefs.SetFloat(key, value)</code></li>
+<li><code>PlayerPrefs.SetInt(key, value)</code></li>
+<li><code>PlayerPrefs.SetString(key, value)</code></li>
+<li><code>PlayerPrefs.GetFloat(key, defaultValue)</code></li>
+<li><code>PlayerPrefs.GetInt(key, defaultValue)</code></li>
+<li><code>PlayerPrefs.GetString(key, defaultValue)</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Пример: сохранение позиции чекпоинта</strong>:</p>
+</li>
+</ul>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-011" data-title="Сохранение данных — PlayerPrefs" data-min-height="480"> </div>
+<p>На объекте-чекпоинте: <code>Collider</code> с <strong>Is Trigger</strong>; у игрока — <code>Rigidbody</code> (хотя бы kinematic) или Rigidbody на чекпоинте — иначе <code>OnTriggerEnter</code> не вызовется.</p>
+<hr>
+<h3 id="virtual-camera-cinemachine">Virtual Camera (Cinemachine)</h3>
+<p>Пакет <strong>Cinemachine</strong> упрощает слежение камеры за целью, дрожание, кадрирование.</p>
+<ul>
+<li>
+<p><strong>Установка</strong>: Package Manager → <code>Cinemachine</code>.</p>
+</li>
+<li>
+<p><strong>Версии</strong>: в Cinemachine 2.x пункт меню — <em>Cinemachine Virtual Camera</em>; в <strong>Cinemachine 3</strong> объект называется <em>Cinemachine Camera</em> — смысл тот же (<code>Follow</code>, <code>Look At</code>).</p>
+</li>
+<li>
+<p><strong>Настройка камеры слежения</strong>:</p>
+<ol>
+<li>Создайте виртуальную камеру: <code>GameObject</code> → <code>Cinemachine</code> → <em>Virtual Camera</em> / <em>Cinemachine Camera</em> (зависит от версии пакета).</li>
+<li>В инспекторе найдите поле <code>Follow</code> и перетащите туда объект игрока. Камера будет следовать за этим объектом.</li>
+<li>В поле <code>Look At</code> также укажите игрока, чтобы камера всегда была направлена на него.</li>
+<li>Настройте параметры в разделе <code>Body</code>:
+<ul>
+<li><code>Transposer</code> — Задает смещение камеры относительно цели (например, <code>(0, 2, -5)</code> для вида от третьего лица).</li>
+<li><code>Damping</code>: Контролирует плавность движения камеры. Высокие значения делают движение более медленным и плавным.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>Без Cinemachine:</strong> камеру на отдельном объекте можно двигать в <strong><code>LateUpdate</code></strong>, копируя позицию игрока + смещение <code>(0, 2, -5)</code> — так же, как в пошаговых учебниках по Unity; Cinemachine заменяет этот шаблонный код. Готовый скрипт <code>SimpleCameraFollow</code> с разбором — <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1136#camera">камера за игроком в Lab</a>.</p>
+<hr>
+<h3 id="работа-с-коллайдерами-триггеры-и-физические-столкновения">Работа с коллайдерами — триггеры и физические столкновения</h3>
+<p>Компонент <code>Collider</code> определяет форму границ объекта в пространстве. В зависимости от настройки, он может использоваться для двух различных целей: обнаружения физических столкновений или запуска событий при прохождении одного объекта сквозь другой (триггер).</p>
+<ul>
+<li>
+<p><strong>Физическое столкновение</strong>:</p>
+<ul>
+<li>По умолчанию, когда у объекта есть Collider и Rigidbody, он будет физически взаимодействовать с другими объектами, имеющими Collider.</li>
+<li>Это используется для реализации стен, пола, подвижных платформ и т.д.</li>
+<li>События — <code>OnCollisionEnter</code>, <code>OnCollisionStay</code>, <code>OnCollisionExit</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Триггер (Trigger)</strong>:</p>
+<ul>
+<li>Если в инспекторе компонента Collider установить флажок <code>Is Trigger</code>, объект перестает быть "твердым" и позволяет другим объектам проходить сквозь него.</li>
+<li>Вместо этого, при входе, пребывании и выходе другого объекта из зоны действия коллайдера, вызываются специальные события-триггеры.</li>
+<li>Широко применяется для:
+<ul>
+<li>Запуска сценариев при входе игрока в область (например, активация чекпоинта).</li>
+<li>Сбора предметов (игрок проходит через объект-монету) — учебный пример с <code>ScoreManager</code> в <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1136#coin">Lab</a>.</li>
+<li>Обнаружения врагов в радиусе атаки.</li>
+<li>Активации ловушек или сюжетных событий.</li>
+</ul>
+</li>
+<li>События — <code>OnTriggerEnter</code>, <code>OnTriggerStay</code>, <code>OnTriggerExit</code>.</li>
+<li><strong>Условие срабатывания</strong>: хотя бы у одного из участников должен быть <strong><code>Rigidbody</code></strong> (у игрока или у монеты). Оба объекта — с <code>Collider</code>; у триггера включён <code>Is Trigger</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Счёт, здоровье и победа — GameManager</strong>:</p>
+</li>
+</ul>
+<p>Центральный <strong>GameManager</strong> хранит состояние сессии (здоровье, патроны, собранные предметы, флаг game over). UI подписывается на изменения через свойства или события C#.</p>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-012" data-title="Работа с коллайдерами — триггеры и физические столкновения" data-min-height="720"> </div>
+<p><strong><code>GameHud.cs</code></strong> — обновление Slider и текста (TMP):</p>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-013" data-title="Работа с коллайдерами — триггеры и физические столкновения" data-min-height="720"> </div>
+<p>На монете — триггер, вызывающий <code>GameManager.Instance.CollectItem()</code> вместо отдельного счёта очков.</p>
+<hr>
+<h3 id="ии-и-навигация-navmesh">ИИ и навигация — NavMesh</h3>
+<p><strong>NavMesh</strong> — "карта проходимости" уровня: Unity <strong>запекает</strong> её из геометрии, помеченной как статичная для навигации. <strong>NavMeshAgent</strong> на враге сам обходит препятствия и идёт к цели через <code>SetDestination</code>.</p>
+<p><strong>Настройка в редакторе</strong></p>
+<ol>
+<li>Выберите корень уровня (<code>Environment</code>), в Inspector → <strong>Static</strong> → <strong>Navigation Static</strong> (применить к дочерним объектам).</li>
+<li><em>Window → AI → Navigation</em> (в Unity 6 может понадобиться модуль <strong>AI Navigation</strong> в Package Manager).</li>
+<li>Вкладка <strong>Bake</strong> → <strong>Bake</strong>. Синие области на сцене — зоны ходьбы.</li>
+<li>На префаб <strong>Enemy</strong> добавьте <strong>Nav Mesh Agent</strong> (радиус и высота ≈ коллайдер капсулы).</li>
+</ol>
+<p><strong>Маршрут патруля</strong> — пустой родитель <code>PatrolRoute</code> и дочерние <code>Waypoint</code> в углах арены.</p>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-014" data-title="ИИ и навигация — NavMesh" data-min-height="552"> </div>
+<p><strong>Преследование игрока</strong> (упрощённо): в <code>Update</code> задайте <code>agent.SetDestination(player.position)</code> если игрок в радиусе <code>detectionRange</code>; иначе — патруль по waypoints.</p>
+<p><strong>Урон и уничтожение врага</strong>:</p>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-015" data-title="ИИ и навигация — NavMesh" data-min-height="354"> </div>
+<p><strong>Перезапуск уровня</strong> — вынесите в статический класс (логика не привязана к одному <code>GameObject</code>):</p>
+<pre><code class="language-csharp">using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public static class LevelRestart
+{
+    public static void RestartActiveScene()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+}
+</code></pre>
+<p>Кнопка "Retry" на Canvas вызывает <code>LevelRestart.RestartActiveScene()</code>. Подробнее API — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/301">Справочник по Unity</a>; теория pathfinding — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/112">Игровой движок</a>.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Паттерны в геймплее</div>
+  <div class="callout-body">
+  <p>Singleton (`GameManager`), Object Pool (снаряды), Observer (`StateChanged`) — частые приёмы в Unity-проектах.</p>
+<p>Обзор паттернов проектирования — <a href="https://spirzen.ru/encyclopedia/7-project/7-12-konstruirovanie-po/intro">Конструирование ПО</a>.</p>
+</div>
+</div>
+<hr>
+<h3 id="управление-видимостью-объектов-setactive">Управление видимостью объектов — SetActive()</h3>
+<p>Метод <code>SetActive()</code> является основным способом программного управления видимостью и активностью игровых объектов. Это критически важно для таких элементов, как экраны меню, окна проигрыша, диалоговые окна и т.д.</p>
+<ul>
+<li>
+<p><strong>Синтаксис</strong>: <code>gameObject.SetActive(bool state);</code></p>
+<ul>
+<li><code>true</code>: объект становится активным и видимым.</li>
+<li><code>false</code> — объект деактивируется, все его компоненты (включая скрипты) перестают работать, и он исчезает с экрана.</li>
+</ul>
+</li>
+<li>
+<p><strong>Пример: управление экраном проигрыша</strong>:</p>
+</li>
+</ul>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-016" data-title="Управление видимостью объектов — SetActive()" data-min-height="444"> </div>
+<hr>
+<h3 id="оптимизация-производительности-object-pooling">Оптимизация производительности — Object Pooling</h3>
+<p>Частое создание (<code>Instantiate</code>) и уничтожение (<code>Destroy</code>) объектов во время игры (например, пуль, частиц, монет) является крайне неэффективной операцией, которая может вызывать "лаги" (hitching). Паттерн <strong>Object Pooling</strong> решает эту проблему путем повторного использования уже созданных объектов.</p>
+<ul>
+<li>
+<p><strong>Принцип работы</strong>:</p>
+<ol>
+<li>При старте игры создаются несколько экземпляров объекта (например, 10 пуль) и помещаются в "пул" (список), где они находятся в неактивном состоянии.</li>
+<li>Когда игре нужна пуля, она берется из пула (активируется), а не создается заново.</li>
+<li>Когда пуля больше не нужна (например, достигла цели или вышла за пределы экрана), вместо удаления она возвращается в пул (деактивируется и помещается обратно в список).</li>
+</ol>
+</li>
+<li>
+<p><strong>Преимущества</strong>:</p>
+<ul>
+<li>Исключение затрат времени на динамическое выделение памяти (<code>Instantiate</code>/<code>Destroy</code>).</li>
+<li>Гладкая работа игры даже при высокой частоте появления объектов.</li>
+</ul>
+</li>
+<li>
+<p><strong>Базовая реализация пула</strong>:</p>
+</li>
+</ul>
+<div class="itu-code-embed" data-example="csharp/sp-9-9-04-razrabotka-igr-3-017" data-title="Оптимизация производительности — Object Pooling" data-min-height="720"> </div>
+<hr>
+<h3 id="подготовка-к-сборке-проекта">Подготовка к сборке проекта</h3>
+<p>Перед выпуском игры необходимо правильно настроить параметры сборки.</p>
+<ul>
+<li>
+<p><strong>Добавление сцен в сборку</strong>:</p>
+<ul>
+<li>Перейдите в <code>File</code> -> <code>Build Settings</code>.</li>
+<li>Убедитесь, что все используемые сцены (меню, уровни, экран проигрыша) добавлены в список "Scenes in Build". Сцены без них не будут загружены в финальной версии игры.</li>
+</ul>
+</li>
+<li>
+<p><strong>Настройка целевой платформы</strong>:</p>
+<ul>
+<li>В окне <code>Build Settings</code> выберите целевую платформу (PC, Mac &#x26; Linux Standalone, Android, iOS и т.д.).</li>
+<li>Нажмите <code>Switch Platform</code> для применения настроек.</li>
+</ul>
+</li>
+<li>
+<p><strong>Параметры сборки</strong>:</p>
+<ul>
+<li>Выберите тип сборки: Разработка Build (для отладки) или обычную сборку.</li>
+<li>Укажите путь для сохранения собранного проекта.</li>
+<li>Нажмите <code>Build</code> для создания исполняемого файла и связанных с ним данных.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="заключение-отладка-и-финальная-сборка">Заключение — отладка и финальная сборка</h3>
+<p>Перед выпуском игры в свет необходимо тщательно протестировать ее работу и выполнить корректную сборку. Этот этап критически важен для обеспечения стабильности и работоспособности финального продукта.</p>
+<ul>
+<li>
+<p><strong>Комплексное тестирование</strong>:</p>
+<ul>
+<li>Проверьте все механики игры — перемещение, взаимодействие с объектами (<code>PlayerInteraction</code> / Raycast), сбор предметов, поведение врагов.</li>
+<li>Убедитесь, что пользовательский интерфейс (UI) отображается корректно — Health Bar, полоса энергии, счётчик очков. Элементы не должны обрезаться при смене разрешения.</li>
+<li>Протестируйте логику сохранения прогресса через <code>PlayerPrefs</code>. Остановите игру после прохождения чекпоинта и убедитесь, что игрок возрождается в правильной точке при следующем запуске.</li>
+<li>Проверьте загрузку всех сцен: переход из меню в игру, экран проигрыша и возможность рестарта.</li>
+</ul>
+</li>
+<li>
+<p><strong>Оптимизация производительности</strong>:</p>
+<ul>
+<li>Если игра работает с низким FPS, проверьте использование ресурсоемких элементов.</li>
+<li>Уменьшите количество частиц в системах <code>Particle System</code> или ограничьте их область действия.</li>
+<li>Убедитесь, что для анимаций используется паттерн Object Pooling, особенно если они создаются часто.</li>
+<li>Слишком сложные модели или текстуры большого размера могут замедлять игру; рассмотрите возможность использования оптимизированных ассетов.</li>
+</ul>
+</li>
+<li>
+<p><strong>Процесс сборки проекта</strong>:</p>
+<ol>
+<li>Перейдите в <code>File</code> -> <code>Build Settings</code>.</li>
+<li>Убедитесь, что все необходимые сцены находятся в списке "Scenes in Build" и расположены в правильном порядке (например, первая — главное меню).</li>
+<li>Выберите целевую платформу (например, PC, Mac &#x26; Linux Standalone).</li>
+<li>Нажмите <code>Build</code>. Укажите папку для сохранения и задайте имя исполняемого файла (например, <code>ApplePicker.exe</code>).</li>
+<li>Unity создаст исполняемый файл и папку с данными (например, <code>ApplePicker_Data</code>). Эти два компонента <strong>обязательно</strong> должны находиться в одной директории. Без папки с данными игра не запустится.</li>
+</ol>
+</li>
+<li>
+<p><strong>Финальная проверка</strong>:</p>
+<ul>
+<li>Выйдите из редактора Unity и запустите собранный <code>.exe</code> файл.</li>
+<li>Проверьте, что игра запускается, все механики работают, аудио и видео воспроизводятся корректно.</li>
+<li>Убедитесь, что управление и камера реагируют адекватно, UI отображается без артефактов.</li>
+<li>Если возникают проблемы, вернитесь в редактор, проверьте пути к ресурсам, настройки скриптов и повторите процесс сборки.</li>
+</ul>
+</li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item is-h3"><a href="#установка-и-настройка-окружения">Установка и настройка окружения</a></li><li class="article-toc__item is-h3"><a href="#основные-окна-редактора-unity">Основные окна редактора Unity</a></li><li class="article-toc__item is-h3"><a href="#игровые-объекты-и-компоненты">Игровые объекты и компоненты</a></li><li class="article-toc__item is-h3"><a href="#префабы-повторное-использование-объектов">Префабы — повторное использование объектов</a></li><li class="article-toc__item is-h3"><a href="#блок-out-уровня-white-boxing">Блок-out уровня (white-boxing)</a></li><li class="article-toc__item is-h3"><a href="#освещение-сцены">Освещение сцены</a></li><li class="article-toc__item is-h3"><a href="#работа-со-скриптами">Работа со скриптами</a></li><li class="article-toc__item is-h3"><a href="#работа-с-ui-user-interface">Работа с UI (User Interface)</a></li><li class="article-toc__item is-h3"><a href="#анимация-и-timeline">Анимация и Timeline</a></li><li class="article-toc__item is-h3"><a href="#система-частиц-particle-system">Система частиц (Particle System)</a></li><li class="article-toc__item is-h3"><a href="#движение-игрока-vector3-и-три-подхода">Движение игрока — Vector3 и три подхода</a></li><li class="article-toc__item is-h3"><a href="#физические-взаимодействия-rigidbody-слои-и-raycast">Физические взаимодействия — Rigidbody, слои и Raycast</a></li><li class="article-toc__item is-h3"><a href="#стрельба-instantiate-и-layermask">Стрельба — Instantiate и LayerMask</a></li><li class="article-toc__item is-h3"><a href="#переноска-объектов-raycast-rigidbody">Переноска объектов (Raycast + Rigidbody)</a></li><li class="article-toc__item is-h3"><a href="#сцены-и-загрузка-уровней">Сцены и загрузка уровней</a></li><li class="article-toc__item is-h3"><a href="#сохранение-данных-playerprefs">Сохранение данных — PlayerPrefs</a></li><li class="article-toc__item is-h3"><a href="#virtual-camera-cinemachine">Virtual Camera (Cinemachine)</a></li><li class="article-toc__item is-h3"><a href="#работа-с-коллайдерами-триггеры-и-физические-столкновения">Работа с коллайдерами — триггеры и физические столкновения</a></li><li class="article-toc__item is-h3"><a href="#ии-и-навигация-navmesh">ИИ и навигация — NavMesh</a></li><li class="article-toc__item is-h3"><a href="#управление-видимостью-объектов-setactive">Управление видимостью объектов — SetActive()</a></li><li class="article-toc__item is-h3"><a href="#оптимизация-производительности-object-pooling">Оптимизация производительности — Object Pooling</a></li><li class="article-toc__item is-h3"><a href="#подготовка-к-сборке-проекта">Подготовка к сборке проекта</a></li><li class="article-toc__item is-h3"><a href="#заключение-отладка-и-финальная-сборка">Заключение — отладка и финальная сборка</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="https://lab.spirzen.ru/lab/examples/1136" target="_blank" rel="noopener noreferrer"> Unity C# — скрипты для новичков  ↗ </a> </li><li> <a href="/games/9-04-razrabotka-igr/301"> Справочник по Unity  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-05-csharp/intro" target="_blank" rel="noopener noreferrer"> C# — о разделе  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

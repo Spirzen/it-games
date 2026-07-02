@@ -1,0 +1,2077 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Python — диаблоид — Игры IT Universe</title><meta name="description" content="Пошаговый практикум — hack and slash в духе Diablo на Python и Pygame; 18 этапов до играбельного прототипа; полная ревизия файлов (#full-revision) — эталон этапа 18 (этапы 19–22 опциональны)."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Python — диаблоид</span></li></ol></nav><header class="portal-hero"> <h1>Python — диаблоид</h1> <p>Пошаговый практикум — hack and slash в духе Diablo на Python и Pygame; 18 этапов до играбельного прототипа; полная ревизия файлов (#full-revision) — эталон этапа 18 (этапы 19–22 опциональны).</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Python — диаблоид" data-url="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Python — диаблоид">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Python — диаблоид</h1>
+<p><span class="complexity-badge">Разработчику</span>
+<span class="complexity-badge">Средний уровень</span></p>
+<div class="callout callout--info">
+  <div class="callout-title">Формат практикума</div>
+  <div class="callout-body">
+  <p>Материалы трека приводятся к единому формату: <strong>полные листинги для копирования</strong> на каждом этапе, блок <strong>"Разбор"</strong> и раздел <strong>"Полная ревизия"</strong> в конце статьи.</p>
+  <ul>
+    <li>Гарантированно запускаемые эталоны для сверки: <a href="https://github.com/Spirzen/BattleCity">Battle City</a>, <a href="https://github.com/Spirzen/Match3">Match3</a>, <a href="./3.md#full-revision">Ping Pong</a>, <a href="./4.md#full-revision">Racing</a>, <a href="./5.md#full-revision">Tetris</a>, <a href="./6.md#full-revision">диаблоид</a> (<code>#full-revision</code> в каждой статье).</li>
+    <li>В этой статье готовая <a href="#full-revision">полная ревизия</a> (<code>#full-revision</code>) — этапы 0–18; этапы 19–22 (A*, JSON-враги, сохранения, звук) остаются опциональными расширениями.</li>
+  </ul>
+  </div>
+</div>
+<h2 id="как-проходить-практикум">Как проходить практикум</h2>
+<div class="callout callout--tip">
+  <div class="callout-title">Если вы новичок в Pygame</div>
+  <div class="callout-body">
+  <p>Не торопитесь к этапу 18. После каждого шага запускайте игру, пройдите чек-лист и прочитайте блок <strong>"Разбор"</strong> в конце этапа — там объяснено, <em>зачем</em> добавлены новые файлы и как они связаны с предыдущими. Не поняли термин (dataclass, Enum, EventBus) — загляните в разбор ещё раз после сборки этапа 10.</p>
+  </div>
+</div>
+<ol>
+<li>Копируйте <strong>целиком</strong> файлы из блоков кода каждого этапа — без строк <code># ...</code> и без "допишите сами".</li>
+<li>После каждого этапа <strong>запускайте</strong> <code>python main.py</code> из корня папки <code>pythonablo/</code> и пройдите чек-лист <strong>Самопроверка</strong>.</li>
+<li>Прочитайте <strong>"Разбор"</strong> под чек-листом — на всех этапах 0–18 он есть; это главная "лекция" к коду.</li>
+<li>Если код не запускается — откройте <a href="#full-revision">Полную ревизию</a> и сравните <strong>имя файла и импорты</strong>; типичные ошибки — в разделе <a href="#debugging">Отладка</a>.</li>
+<li>После этапа 18 сверьте весь проект с <a href="#full-revision">Полной ревизией файлов</a> или скопируйте эталон целиком и поиграйте, затем вернитесь к своим правкам.</li>
+</ol>
+<p>Эталоны других треков с тем же форматом: <a href="https://github.com/Spirzen/BattleCity">Battle City</a>, <a href="./5.md#full-revision">Tetris</a>, <a href="./4.md#full-revision">Racing</a>.</p>
+<hr>
+<h2 id="о-практикуме">О практикуме</h2>
+<p><strong>Диаблоид</strong> (hack and slash, action-RPG) — вид сверху или изометрия, клик по врагам, лут, прокачка, процедурные подземелья. В этом практикуме соберём <strong>узнаваемый прототип</strong> на <strong>Python 3</strong> и <strong>Pygame</strong> — от чёрного окна до боя, лута, уровней и простого меню. Полная версия с NPC, легендарками и ареной — в репозитории <a href="https://github.com/Spirzen/Pythonablo">Pythonablo</a>.</p>
+<h3 id="четыре-столпа-жанра">Четыре столпа жанра</h3>
+<table>
+<thead>
+<tr>
+<th>Столп</th>
+<th>Что даёт игроку</th>
+<th>Что реализуем в практикуме</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Бой</strong></td>
+<td>постоянное давление, тактика дистанции</td>
+<td>удар по курсору, рывок, огненный шар</td>
+</tr>
+<tr>
+<td><strong>Лут</strong></td>
+<td>"ещё один забег ради шмотки"</td>
+<td>дроп с врагов, зелья, экипировка</td>
+</tr>
+<tr>
+<td><strong>Прокачка</strong></td>
+<td>рост силы персонажа</td>
+<td>XP, level-up, бонусы от предметов</td>
+</tr>
+<tr>
+<td><strong>Исследование</strong></td>
+<td>новые этажи и карта</td>
+<td>процедурные комнаты, портал вниз</td>
+</tr>
+</tbody>
+</table>
+<p>Узнаваемый <strong>core loop</strong> diabloида выглядит так:</p>
+<pre><code class="language-mermaid">flowchart LR
+    A[Войти на этаж] --> B[Зачистить врагов]
+    B --> C[Подобрать лут]
+    C --> D[Прокачаться]
+    D --> E[Спуститься глубже]
+    E --> A
+</code></pre>
+<p>Каждый этап практикума добавляет один элемент этого цикла или инфраструктуру под него (рендер, ввод, сохранение состояния).</p>
+<div class="callout callout--info">
+  <div class="callout-title">Для кого материал</div>
+  <div class="callout-body">
+  <p>Нужны базовые Python (классы, dataclass, списки) и Pygame из статьи <a href="/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a>. Каждый этап — <strong>запускаемый код</strong>: после шага проект можно запустить и увидеть новую механику. Графика на первых этапах — примитивы Pygame; спрайты подключим позже.</p>
+  </div>
+</div>
+<p><strong>Управление в финальной версии практикума</strong></p>
+<table>
+<thead>
+<tr>
+<th>Клавиша / мышь</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>W</code> <code>A</code> <code>S</code> <code>D</code> или стрелки</td>
+<td>Движение</td>
+</tr>
+<tr>
+<td>ЛКМ (удержание)</td>
+<td>Атака в сторону курсора</td>
+</tr>
+<tr>
+<td><code>Пробел</code></td>
+<td>Рывок</td>
+</tr>
+<tr>
+<td><code>1</code> или <code>F</code></td>
+<td>Огненный шар</td>
+</tr>
+<tr>
+<td><code>I</code></td>
+<td>Инвентарь</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>Портал / подбор предмета</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Пауза / меню</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Маршрут чтения</strong></p>
+<ol>
+<li><a href="#architecture">Архитектура</a> — слои, изометрия, машина состояний, шина событий.</li>
+<li><a href="#dependencies">Зависимости и структура папок</a> — окружение и целевая раскладка файлов.</li>
+<li><a href="#stage-0">Этап 0 — минимальный запуск</a> — окно и игровой цикл.</li>
+<li>Этапы 1–18 — по одной подсистеме за шаг.</li>
+<li><a href="#stage-19">Бонусные этапы 19–22</a> — pathfinding, data-driven враги, сохранения, звук.</li>
+<li><a href="#full-revision">Полная ревизия файлов</a> — проверенный эталон для копирования целиком.</li>
+<li><a href="#debugging">Типичные ошибки и отладка</a>.</li>
+<li><a href="#final-checklist">Итоговая самопроверка и расширения</a>.</li>
+</ol>
+<h3 id="карта-этапов">Карта этапов</h3>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Тема</th>
+<th>Новая механика</th>
+<th>Зависит от</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Цикл Pygame</td>
+<td>окно, выход</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>config.py</code></td>
+<td>константы, enum</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Entity</td>
+<td>игрок в данных</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Renderer + Camera</td>
+<td>изометрия, камера</td>
+<td>1–2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>InputHandler</td>
+<td>WASD, мышь</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>LevelGenerator</td>
+<td>процедурная карта</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Collision + Movement</td>
+<td>ходьба без прохода сквозь стены</td>
+<td>3–5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>MapRenderer</td>
+<td>рисование подземелья</td>
+<td>3, 5</td>
+</tr>
+<tr>
+<td>8</td>
+<td>CombatSystem</td>
+<td>удар по дуге</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td>9</td>
+<td>AISystem</td>
+<td>враги, chase</td>
+<td>5–8</td>
+</tr>
+<tr>
+<td>10</td>
+<td>EventBus + XP</td>
+<td>level-up</td>
+<td>8–9</td>
+</tr>
+<tr>
+<td>11</td>
+<td>LootSystem</td>
+<td>дроп на землю</td>
+<td>10</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Inventory</td>
+<td>экипировка</td>
+<td>11</td>
+</tr>
+<tr>
+<td>13</td>
+<td>SkillSystem</td>
+<td>огненный шар</td>
+<td>8, 10</td>
+</tr>
+<tr>
+<td>14</td>
+<td>HUD</td>
+<td>полоски HP/MP</td>
+<td>2, 10</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Menu + GameState</td>
+<td>меню, пауза</td>
+<td>4</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Порталы</td>
+<td>смена этажа</td>
+<td>5, 9</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Dash</td>
+<td>рывок, серия ударов</td>
+<td>6, 8</td>
+</tr>
+<tr>
+<td>18</td>
+<td><code>Game</code> class</td>
+<td>сборка проекта</td>
+<td>все</td>
+</tr>
+<tr>
+<td>19*</td>
+<td>Pathfinding</td>
+<td>A* вместо прямого chase</td>
+<td>9</td>
+</tr>
+<tr>
+<td>20*</td>
+<td><code>enemies.json</code></td>
+<td>враги из данных</td>
+<td>9</td>
+</tr>
+<tr>
+<td>21*</td>
+<td>SaveManager</td>
+<td>сохранение прогресса</td>
+<td>10–16</td>
+</tr>
+<tr>
+<td>22*</td>
+<td>AudioSystem</td>
+<td>процедурный SFX</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>* — бонусные этапы после базового прототипа.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Готовый проект</div>
+  <div class="callout-body">
+  <p>Если хотите сразу поиграть в полную версию — клонируйте <a href="https://github.com/Spirzen/Pythonablo">Pythonablo</a>, установите зависимости и запустите <code>python main.py</code>. Практикум ниже объясняет, <strong>как такой проект собирается с нуля</strong>, шаг за шагом.</p>
+  </div>
+</div>
+<hr>
+<p><span id="architecture"></span></p>
+<h2 id="архитектура">Архитектура</h2>
+<p>Прежде чем писать код, зафиксируем <strong>что из чего состоит</strong> и <strong>как данные текут по кадру</strong>. Целевая архитектура совпадает с <a href="https://github.com/Spirzen/Pythonablo">Pythonablo</a> — один процесс, Pygame, без сети.</p>
+<h3 id="игровой-цикл">Игровой цикл</h3>
+<p>Любая игра на Pygame крутит один и тот же цикл. В диаблоиде порядок шагов важен — сначала ввод и логика, потом отрисовка.</p>
+<pre><code class="language-mermaid">flowchart TD
+    A[Старт main.py] --> B[Game.__init__]
+    B --> C{running?}
+    C -->|да| D[События pygame → InputHandler]
+    D --> E[_update dt]
+    E --> F[_draw]
+    F --> G[display.flip + clock.tick]
+    G --> C
+    C -->|нет| H[pygame.quit]
+</code></pre>
+<p>На каждом кадре внутри <strong>обновления</strong> (состояние <code>PLAYING</code>) выполняется цепочка:</p>
+<ol>
+<li><code>MovementSystem</code> — движение игрока и рывок.</li>
+<li><code>Camera.follow</code> — камера за игроком.</li>
+<li><code>CombatSystem</code> — атака по ЛКМ, таймеры ударов.</li>
+<li><code>SkillSystem</code> — снаряды и AoE.</li>
+<li><code>AISystem</code> — преследование и атака врагов.</li>
+<li><code>LootSystem</code> / <code>BonusSystem</code> — дроп и подбор (через <code>EventBus</code>).</li>
+<li>Проверка HP, порталов, смены этажа.</li>
+</ol>
+<h3 id="слои-приложения">Слои приложения</h3>
+<table>
+<thead>
+<tr>
+<th>Слой</th>
+<th>Пакет</th>
+<th>Ответственность</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Точка входа</strong></td>
+<td><code>main.py</code></td>
+<td><code>Game().run()</code></td>
+</tr>
+<tr>
+<td><strong>Оркестрация</strong></td>
+<td><code>core/</code></td>
+<td>Цикл, <code>GameState</code>, <code>config</code>, <code>EventBus</code></td>
+</tr>
+<tr>
+<td><strong>Движок</strong></td>
+<td><code>engine/</code></td>
+<td>Рендер, камера, ввод, звук, спрайты</td>
+</tr>
+<tr>
+<td><strong>Мир</strong></td>
+<td><code>world/</code></td>
+<td>Карта, генерация, коллизии, pathfinding</td>
+</tr>
+<tr>
+<td><strong>Сущности</strong></td>
+<td><code>entities/</code></td>
+<td>Игрок, враги, предметы на земле, NPC</td>
+</tr>
+<tr>
+<td><strong>Данные игрока</strong></td>
+<td><code>player/</code></td>
+<td>Статы, инвентарь, экипировка, опыт, навыки</td>
+</tr>
+<tr>
+<td><strong>Системы</strong></td>
+<td><code>systems/</code></td>
+<td>Бой, AI, лут, умения, эффекты</td>
+</tr>
+<tr>
+<td><strong>Интерфейс</strong></td>
+<td><code>ui/</code></td>
+<td>Меню, HUD, инвентарь, пауза</td>
+</tr>
+<tr>
+<td><strong>Сохранения</strong></td>
+<td><code>save/</code> + <code>data/</code></td>
+<td>JSON-сохранение, шаблоны врагов и предметов</td>
+</tr>
+</tbody>
+</table>
+<p>Слой <strong>систем</strong> меняет состояние сущностей; слой <strong>engine</strong> только рисует и читает ввод. Так проще добавлять новых врагов и предметы без правок рендера.</p>
+<h3 id="изометрические-координаты">Изометрические координаты</h3>
+<p>Мир храним в <strong>тайловых координатах</strong> <code>(wx, wy)</code> — float, центр клетки <code>(tx + 0.5, ty + 0.5)</code>. Экран — изометрия через линейное преобразование:</p>
+<pre><code>Экран (sx, sy) = f(wx, wy, cam_x, cam_y)
+
+  sx = (wx - wy) * (ISO_TILE_W / 2) - cam_x + SCREEN_W / 2
+  sy = (wx + wy) * (ISO_TILE_H / 2) - cam_y + SCREEN_H / 2 - offset
+</code></pre>
+<p>Обратное преобразование (<code>screen_to_world</code>) нужно для <strong>прицеливания атаки по курсору</strong>.</p>
+<pre><code>Мир (тайлы)                    Экран (изометрия)
+┌───┬───┬───┐                       ╱╲
+│   │   │   │                      ╱  ╲
+├───┼───┼───┤        →            ╱    ╲
+│   │ @ │   │                    ╱  @   ╲
+├───┼───┼───┤                   ╱________╲
+│   │   │   │
+└───┴───┴───┘
+</code></pre>
+<p>Рекомендуемые константы (все модули берут их из <code>core/config.py</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Константа</th>
+<th>Значение</th>
+<th>Смысл</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SCREEN_WIDTH</code> × <code>SCREEN_HEIGHT</code></td>
+<td>1280×720</td>
+<td>Окно</td>
+</tr>
+<tr>
+<td><code>FPS</code></td>
+<td>120</td>
+<td>Целевой FPS (можно 60 на слабом ПК)</td>
+</tr>
+<tr>
+<td><code>ISO_TILE_W</code> × <code>ISO_TILE_H</code></td>
+<td>64×32</td>
+<td>Ромб тайла на экране</td>
+</tr>
+<tr>
+<td><code>MAP_WIDTH</code> × <code>MAP_HEIGHT</code></td>
+<td>61×46</td>
+<td>Размер карты в тайлах</td>
+</tr>
+<tr>
+<td><code>PLAYER_SPEED</code></td>
+<td>310</td>
+<td>Скорость бега</td>
+</tr>
+<tr>
+<td><code>ATTACK_ARC</code></td>
+<td>π (180°)</td>
+<td>Полукруг удара</td>
+</tr>
+</tbody>
+</table>
+<h3 id="машина-состояний">Машина состояний</h3>
+<p>Игра переключает экраны через <code>GameState</code>:</p>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --> MENU
+    MENU --> PLAYING : новая игра
+    PLAYING --> PAUSED : Esc
+    PLAYING --> INVENTORY : I
+    PLAYING --> GAME_OVER : hp ≤ 0
+    PAUSED --> PLAYING : Esc
+    INVENTORY --> PLAYING : Esc / I
+    GAME_OVER --> MENU : Enter
+</code></pre>
+<p>На этапах 0–12 работаем только в <code>PLAYING</code>. Меню и инвентарь добавим на этапах 15–16.</p>
+<h3 id="eventbus-связь-систем-без-спагетти">EventBus — связь систем без спагетти</h3>
+<p>Когда враг умирает, нужно начислить опыт, бросить лут, проиграть звук, обновить счётчик убийств. Вместо прямых вызовов десятка функций из <code>CombatSystem</code> используем <strong>pub/sub</strong>:</p>
+<pre><code class="language-mermaid">flowchart LR
+    CBT[CombatSystem] -->|emit enemy_killed| EB[(EventBus)]
+    SKL[SkillSystem] -->|emit enemy_killed| EB
+    EB -->|subscribe| G1[Game: XP + autosave]
+    EB -->|subscribe| G2[LootSystem: roll drop]
+    EB -->|subscribe| G3[Audio: sfx]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Событие</th>
+<th>Кто эмитит</th>
+<th>Кто слушает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enemy_killed</code></td>
+<td>combat, skills</td>
+<td>Game, loot, audio</td>
+</tr>
+<tr>
+<td><code>enemy_hit</code></td>
+<td>combat</td>
+<td>effects, streak</td>
+</tr>
+<tr>
+<td><code>attack_swung</code></td>
+<td>combat</td>
+<td>audio</td>
+</tr>
+<tr>
+<td><code>item_dropped</code></td>
+<td>loot</td>
+<td>Game (список на земле)</td>
+</tr>
+<tr>
+<td><code>player_died</code></td>
+<td>combat, Game</td>
+<td>переход в GAME_OVER</td>
+</tr>
+</tbody>
+</table>
+<h3>Время кадра <code>dt</code> и фиксированный шаг</h3>
+<p>Вся логика движения, кулдаунов и регенерации завязана на <strong><code>dt</code></strong> — секунды с прошлого кадра:</p>
+<pre><code class="language-python">dt = min(clock.tick(FPS) / 1000.0, 0.05)
+</code></pre>
+<p>Ограничение <code>0.05</code> (50 ms) защищает от "скачка" физики после паузы отладчика или лагов ОС. Скорость в <code>MovementSystem</code> умножается на <code>dt</code>, поэтому при 30 FPS и 120 FPS игрок проходит <strong>одинаковое расстояние в секунду</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Величина</th>
+<th>Формула в коде</th>
+<th>Смысл</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Смещение за кадр</td>
+<td><code>speed * dt * 0.012</code></td>
+<td>коэффициент 0.012 подгоняет тайловые единицы</td>
+</tr>
+<tr>
+<td>Кулдаун атаки</td>
+<td><code>attack_timer -= dt</code></td>
+<td>секунды до следующего удара</td>
+</tr>
+<tr>
+<td>Реген HP</td>
+<td><code>hp += regen * dt</code></td>
+<td>восстановление в секунду</td>
+</tr>
+</tbody>
+</table>
+<h3>Порядок update и draw в <code>PLAYING</code></h3>
+<p>В полном <a href="https://github.com/Spirzen/Pythonablo">Pythonablo</a> порядок <code>_update_playing</code> строго зафиксирован — нарушение ломает геймплей (например, враг бьёт до того, как игрок успел отойти):</p>
+<pre><code class="language-mermaid">flowchart TD
+    U1[MovementSystem] --> U2[Camera.follow]
+    U2 --> U3[CombatSystem]
+    U3 --> U4[SkillSystem]
+    U4 --> U5[AISystem]
+    U5 --> U6[Loot / Bonus / статусы]
+    U6 --> U7[Проверка HP и портала]
+</code></pre>
+<p><strong>Отрисовка</strong> — снизу вверх (дальний план → игрок → HUD):</p>
+<ol>
+<li>фон и тайлы карты;</li>
+<li>предметы на земле;</li>
+<li>враги;</li>
+<li>снаряды и эффекты;</li>
+<li>игрок;</li>
+<li>дуги ударов;</li>
+<li>HUD и оверлеи меню.</li>
+</ol>
+<p>В изометрии сущности на <strong>большем</strong> <code>wx + wy</code> рисуются <strong>позже</strong> (ближе к камере). На этапе 7 достаточно фиксированного порядка "карта → враги → игрок"; для сложных сцен добавьте сортировку:</p>
+<pre><code class="language-python">drawables = [(e.x + e.y, e) for e in enemies if e.alive]
+drawables.append((player.x + player.y, player))
+drawables.sort(key=lambda t: t[0])
+for _, ent in drawables:
+    draw_entity(ent)
+</code></pre>
+<h3 id="целевая-структура-файлов">Целевая структура файлов</h3>
+<p>К <strong>этапу 6</strong> достаточно нескольких модулей. К <strong>этапу 18</strong> проект выглядит так:</p>
+<pre><code>pythonablo/
+├── main.py
+├── requirements.txt
+├── core/
+│   ├── config.py
+│   ├── event_bus.py
+│   └── game.py              # главный цикл (этап 18)
+├── engine/
+│   ├── renderer.py
+│   ├── camera.py
+│   ├── input_handler.py
+│   └── map_renderer.py
+├── world/
+│   ├── tile.py
+│   ├── map.py
+│   ├── level_generator.py
+│   └── collision.py
+├── entities/
+│   ├── entity.py
+│   ├── player.py
+│   └── enemy.py
+├── player/
+│   ├── stats.py
+│   ├── experience.py
+│   ├── inventory.py
+│   └── equipment.py
+├── systems/
+│   ├── movement_system.py
+│   ├── combat_system.py
+│   ├── ai_system.py
+│   ├── loot_system.py
+│   └── skill_system.py
+├── ui/
+│   ├── hud.py
+│   └── menu.py
+├── data/
+│   ├── enemies.json
+│   └── items.json
+└── assets/                  # спрайты (опционально)
+</code></pre>
+<div class="callout callout--tip">
+  <div class="callout-title">Почему "системы", а не один god-class</div>
+  <div class="callout-body">
+  <code>CombatSystem</code> знает про дугу удара и урон; <code>AISystem</code> — про pathfinding. <code>Game</code> только вызывает их по порядку и хранит списки <code>enemies</code>, <code>ground_items</code>. Новый тип врага — правка <code>data/enemies.json</code> и шаблон в AI, без переписывания HUD.
+  </div>
+</div>
+<h3 id="диаграмма-объектов">Диаграмма объектов</h3>
+<pre><code class="language-mermaid">classDiagram
+    class Game {
+        +EventBus events
+        +PlayerEntity player
+        +list enemies
+        +GameMap game_map
+        +CombatSystem combat
+        +AISystem ai
+        +run()
+    }
+    class Entity {
+        +float x, y
+        +float radius
+        +bool alive
+    }
+    class PlayerEntity {
+        +Stats stats
+        +Experience experience
+        +Inventory inventory
+    }
+    class EnemyEntity {
+        +float hp
+        +take_damage()
+    }
+    class GameMap {
+        +grid[][]
+        +is_walkable()
+    }
+    Game --> PlayerEntity
+    Game --> EnemyEntity
+    Game --> GameMap
+    PlayerEntity --|> Entity
+    EnemyEntity --|> Entity
+</code></pre>
+<hr>
+<p><span id="dependencies"></span></p>
+<h2 id="зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</h2>
+<h3 id="требования">Требования</h3>
+<ul>
+<li><strong>Python 3.10+</strong> (аннотации <code>str | None</code>, <code>match</code> по желанию).</li>
+<li><strong>Pygame ≥ 2.5.0</strong> — единственная внешняя зависимость.</li>
+</ul>
+<h3 id="установка">Установка</h3>
+<pre><code class="language-bash">mkdir pythonablo &#x26;&#x26; cd pythonablo
+python -m venv .venv
+</code></pre>
+<p>Активация виртуального окружения:</p>
+<ul>
+<li><strong>Windows (PowerShell):</strong> <code>.venv\Scripts\Activate.ps1</code></li>
+<li><strong>Linux / macOS:</strong> <code>source .venv/bin/activate</code></li>
+</ul>
+<pre><code class="language-bash">pip install pygame
+python -c "import pygame; print('Pygame', pygame.ver)"
+</code></pre>
+<p>Файл <code>requirements.txt</code>:</p>
+<pre><code>pygame>=2.5.0
+</code></pre>
+<h3 id="клонирование-эталона">Клонирование эталона</h3>
+<p>Если хотите сверять свой код с готовым проектом:</p>
+<pre><code class="language-bash">git clone https://github.com/Spirzen/Pythonablo.git
+cd Pythonablo
+python -m venv .venv
+.venv\Scripts\Activate.ps1    # Windows
+# source .venv/bin/activate   # Linux / macOS
+pip install -r requirements.txt
+python main.py
+</code></pre>
+<p>Учебный прототип из практикума <strong>не обязан</strong> совпадать с репозиторием построчно — мы сознательно упрощаем генерацию, AI и лут. Репозиторий — <strong>ориентир архитектуры</strong> и источник идей для бонусных этапов.</p>
+<h3 id="первичная-структура">Первичная структура</h3>
+<p>На <strong>этапе 0</strong> создайте только <code>main.py</code>. Пакеты <code>core/</code>, <code>engine/</code>, <code>world/</code> и остальные добавляем по ходу — в каждом пакете нужен пустой <code>__init__.py</code> (можно оставить файл пустым).</p>
+<div class="callout callout--warning">
+  <div class="callout-title">Импорты между пакетами</div>
+  <div class="callout-body">
+  <p>Запускайте игру из корня проекта: <code>python main.py</code>. Тогда <code>from core.config import FPS</code> работает без установки пакета в site-packages.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-0"></span></p>
+<h2 id="этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</h2>
+<p><strong>Цель</strong> — окно, цикл событий, выход по крестику и <code>Esc</code>, стабильные 60 FPS.</p>
+<p>Создайте <code>main.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-001" data-title="Этап 0 — минимальный запускаемый код" data-min-height="534"> </div>
+<p>Запуск:</p>
+<pre><code class="language-bash">python main.py
+</code></pre>
+<h3 id="разбор">Разбор</h3>
+<p><code>pygame.init()</code> подготавливает дисплей, ввод и таймер — <strong>до</strong> <code>set_mode</code>, иначе окно может не создаться. Цикл <code>while running</code> — каркас любой игры на Pygame:</p>
+<ol>
+<li><strong>События</strong> — <code>pygame.event.get()</code> — закрытие окна, клавиши, мышь.</li>
+<li><strong>Отрисовка</strong> — <code>fill</code> заливает фон; без него на экране остаются "хвосты" прошлых кадров.</li>
+<li><strong><code>display.flip()</code></strong> — показывает нарисованный кадр пользователю.</li>
+<li><strong><code>clock.tick(FPS)</code></strong> — ждёт, пока не пройдёт 1/60 секунды; без этого цикл крутится на тысячи FPS и грузит процессор.</li>
+</ol>
+<p>На этапе 18 этот же порядок переедет в <code>Game.run()</code>, а <code>main.py</code> останется из трёх строк. Пока <strong>не удаляйте</strong> цикл — только дополняйте его.</p>
+<p><strong>Самопроверка этапа 0</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Окно 1280×720 открывается без traceback.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Фон тёмно-синий, без мерцания.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>Esc</code> и крестик закрывают программу.</li>
+</ul>
+<p>На следующих этапах <strong>не удаляем</strong> цикл — постепенно переносим логику в класс <code>Game</code>.</p>
+<div class="callout callout--note">
+  <div class="callout-title">Почему 60 FPS на старте, 120 в финале</div>
+  <div class="callout-body">
+  <p>На этапе 0 достаточно 60 — проще отладка. В <code>config.py</code> полного проекта стоит <code>FPS = 120</code> для плавности dash и серии ударов. Можно оставить 60 на всём прототипе, если железо слабое.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-1"></span></p>
+<h2 id="этап-1-константы-и-конфигурация">Этап 1 — константы и конфигурация</h2>
+<p><strong>Цель</strong> — один источник правды для размеров, скоростей и enum-состояний.</p>
+<p>Создайте <code>core/__init__.py</code> (пустой) и <code>core/config.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-002" data-title="Этап 1 — константы и конфигурация" data-min-height="720"> </div>
+<p>Обновите <code>main.py</code> — заголовок окна из конфига:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-003" data-title="Этап 1 — константы и конфигурация" data-min-height="570"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Заголовок окна "Pythonablo — этап 1".</li>
+<li class="task-list-item"><input type="checkbox" disabled> Изменение <code>FPS</code> в <code>config.py</code> меняет плавность анимации (если добавите движущийся объект позже).</li>
+</ul>
+<p>Проверка импорта без окна (опционально):</p>
+<pre><code class="language-bash">python -c "from core.config import TITLE, FPS; print(TITLE, FPS)"
+</code></pre>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Зачем отдельный <code>config.py</code>.</strong> Вместо "магических чисел" вроде <code>1280</code> по всему коду — одно место, где лежат размеры окна, скорости и цвета. Меняете <code>PLAYER_SPEED</code> — меняется поведение везде, где импортирован конфиг.</p>
+<ul>
+<li><strong><code>BASE_DIR</code></strong> — корень проекта; пригодится для <code>assets/</code> и <code>data/</code> на бонусных этапах.</li>
+<li><strong><code>GameState</code> и <code>TileType</code></strong> — перечисления (<code>Enum</code>): состояние игры и тип тайла задаются именованными константами, а не строками <code>"menu"</code> / <code>"wall"</code>.</li>
+<li><strong><code>FPS = 60</code></strong> — целевая частота кадров; <code>clock.tick(FPS)</code> в <code>main.py</code> привязывает цикл к этому значению.</li>
+<li><strong>Цвета <code>UI_*</code></strong> — кортежи <code>(R, G, B)</code> от 0 до 255; HUD на этапе 14 возьмёт их отсюда.</li>
+</ul>
+<h2>На этом этапе игра по-прежнему рисует только текст — но уже <strong>импортирует</strong> настройки из пакета <code>core</code>, как в больших проектах.</h2>
+<p><span id="stage-2"></span></p>
+<h2 id="этап-2-базовая-сущность-и-игрок">Этап 2 — базовая сущность и игрок</h2>
+<p><strong>Цель</strong> — dataclass <code>Entity</code>, <code>PlayerEntity</code> со статами, позиция в мире.</p>
+<p><code>entities/__init__.py</code>, <code>entities/entity.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-004" data-title="Этап 2 — базовая сущность и игрок" data-min-height="444"> </div>
+<p><code>player/__init__.py</code>, <code>player/stats.py</code>:</p>
+<pre><code class="language-python">from dataclasses import dataclass
+
+
+@dataclass
+class Stats:
+    max_hp: float = 150.0
+    hp: float = 150.0
+    max_mana: float = 80.0
+    mana: float = 80.0
+    damage: float = 18.0
+</code></pre>
+<p><code>entities/player.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-005" data-title="Этап 2 — базовая сущность и игрок" data-min-height="444"> </div>
+<p>В <code>main.py</code> создайте игрока в центре карты (пока без карты — координаты <code>(30.5, 23.5)</code>):</p>
+<pre><code class="language-python">from entities.player import PlayerEntity
+player = PlayerEntity(30.5, 23.5)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>PlayerEntity</code> создаётся, <code>player.hp == 150</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>player.distance_to(other)</code> возвращает корректное расстояние.</li>
+</ul>
+<pre><code class="language-bash">python -c "from entities.player import PlayerEntity; p=PlayerEntity(30.5,23.5); assert p.hp==150; print('OK')"
+</code></pre>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Сущность (Entity)</strong> — любой объект в мире с координатами <code>x</code>, <code>y</code>. Координаты <strong>float</strong>, не целые: центр клетки <code>(5, 3)</code> в коде часто <code>(5.5, 3.5)</code> — так проще двигаться плавно между тайлами.</p>
+<ul>
+<li><strong><code>@dataclass</code></strong> — Python сам создаёт <code>__init__</code> для полей; меньше шаблонного кода, чем у обычного класса.</li>
+<li><strong><code>PlayerEntity</code></strong> наследует <code>Entity</code> и добавляет статы, таймер атаки и скорость — <strong>игрок = сущность + данные персонажа</strong>.</li>
+<li><strong><code>player/stats.py</code></strong> — HP, мана и урон отдельно от "кто где стоит": позже level-up и зелья трогают только <code>Stats</code>.</li>
+<li><strong><code>distance_to</code></strong> — понадобится для подбора лута и портала: "рядом" = расстояние меньше порога.</li>
+</ul>
+<h2>Пока игрок <strong>не рисуется</strong> и <strong>не двигается</strong> — вы только создаёте объект в памяти. Визуализация подключится на этапе 3.</h2>
+<p><span id="stage-3"></span></p>
+<h2 id="этап-3-изометрический-рендер-и-камера">Этап 3 — изометрический рендер и камера</h2>
+<p><strong>Цель</strong> — преобразование world ↔ screen, отрисовка игрока кругом, камера следует за целью.</p>
+<p><code>engine/__init__.py</code>, <code>engine/renderer.py</code> (минимум):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-006" data-title="Этап 3 — изометрический рендер и камера" data-min-height="534"> </div>
+<p><code>engine/camera.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-007" data-title="Этап 3 — изометрический рендер и камера" data-min-height="354"> </div>
+<p>В цикле <code>main.py</code>:</p>
+<pre><code class="language-python">from engine.camera import Camera
+from engine.renderer import Renderer
+
+renderer = Renderer(screen)
+camera = Camera()
+
+# в update:
+camera.follow(player.x, player.y, dt)
+# в draw:
+screen.fill((12, 14, 26))
+renderer.draw_entity_circle(player.x, player.y, camera.x, camera.y, 14, (80, 200, 120))
+</code></pre>
+<p>Добавьте расчёт <code>dt</code>:</p>
+<pre><code class="language-python">dt = min(clock.tick(FPS) / 1000.0, 0.05)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Зелёный круг виден по центру экрана при старте.</li>
+<li class="task-list-item"><input type="checkbox" disabled> При ручном изменении <code>player.x += 0.1</code> каждый кадр камера плавно следует (движение добавим на этапе 6).</li>
+</ul>
+<h3 id="проверка-изометрии-в-repl">Проверка изометрии в REPL</h3>
+<p>Убедитесь, что <code>screen_to_world</code> — обратная функция к <code>world_to_screen</code>:</p>
+<pre><code class="language-python">from engine.renderer import world_to_screen, screen_to_world
+cam_x, cam_y = 100.0, 200.0
+wx, wy = 30.5, 22.0
+sx, sy = world_to_screen(wx, wy, cam_x, cam_y)
+back = screen_to_world(sx, sy, cam_x, cam_y)
+assert abs(back[0] - wx) &#x3C; 0.01 and abs(back[1] - wy) &#x3C; 0.01
+</code></pre>
+<p>Если assert падает — перепроверьте знаки в формулах и offset <code>- 80</code> по Y (сдвиг игрового поля под HUD).</p>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Изометрия</strong> — карта выглядит "ромбом", хотя в памяти это обычная прямоугольная сетка тайлов. Функции <code>world_to_screen</code> и <code>screen_to_world</code> переводят координаты туда-обратно; без обратного преобразования прицеливание мышью на этапе 8 будет мимо.</p>
+<ul>
+<li><strong><code>Renderer</code></strong> — всё, что рисуется <strong>кругами и примитивами</strong> в координатах мира (игрок, враги, снаряды).</li>
+<li><strong><code>Camera.follow</code></strong> — камера не прыгает к игроку, а <strong>догоняет</strong> его (<code>smooth * dt</code>): картинка приятнее глазу.</li>
+<li><strong><code>dt</code></strong> — время кадра в секундах; умножая скорость на <code>dt</code>, получаем одинаковое движение при 60 и 120 FPS.</li>
+<li><strong>Смещение <code>- 80</code> по Y</strong> в формуле экрана — место под полоски HUD сверху.</li>
+</ul>
+<h2>Зелёный круг — заглушка героя; спрайты из <code>assets/</code> можно подставить позже, не меняя логику координат.</h2>
+<p><span id="stage-4"></span></p>
+<h2 id="этап-4-ввод-и-inputhandler">Этап 4 — ввод и InputHandler</h2>
+<p><strong>Цель</strong> — централизованная обработка клавиш и мыши; состояние <code>InputState</code> на кадр.</p>
+<p><code>engine/input_handler.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-008" data-title="Этап 4 — ввод и InputHandler" data-min-height="720"> </div>
+<p>В цикле событий:</p>
+<pre><code class="language-python">inp = InputHandler()
+# KEYDOWN → inp.on_key_down(event.key)
+# KEYUP → inp.on_key_up(event.key)
+# MOUSEBUTTONDOWN/UP/MOTION → соответствующие методы
+# в конце кадра: inp.end_frame()
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Удержание <code>W</code> выставляет <code>inp.state.up is True</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> ЛКМ выставляет <code>attack</code> и однокадровый <code>attack_pressed</code>.</li>
+</ul>
+<div class="callout callout--tip">
+  <div class="callout-title">Held vs pressed</div>
+  <div class="callout-body">
+  <code>attack</code> — пока ЛКМ зажата (серия ударов на этапе 17). <code>attack_pressed</code> — один кадр после нажатия (удобно для UI-кликов). Сбрасывайте <code>*_pressed</code> в <code>end_frame()</code>, иначе событие "залипнет" на несколько кадров.
+  </div>
+</div>
+<h3 id="разбор">Разбор</h3>
+<p><strong>InputHandler</strong> собирает ввод <strong>один раз за кадр</strong> в объект <code>InputState</code>. Игровая логика читает <code>inp.state.up</code>, а не опрашивает клавиатуру в десяти местах — проще отлаживать и добавлять паузу.</p>
+<table>
+<thead>
+<tr>
+<th>Флаг</th>
+<th>Смысл для новичка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>up</code>, <code>left</code>, …</td>
+<td><strong>Удерживается</strong>, пока клавиша зажата — для движения</td>
+</tr>
+<tr>
+<td><code>attack_pressed</code>, <code>dash_pressed</code></td>
+<td><strong>Один кадр</strong> после нажатия — для "нажал E один раз"</td>
+</tr>
+<tr>
+<td><code>attack</code></td>
+<td><strong>Пока зажата ЛКМ</strong> — серия ударов на этапе 17</td>
+</tr>
+<tr>
+<td><code>skill_pressed</code></td>
+<td>Строка <code>"fireball"</code> или <code>None</code> — какое умение нажали в этом кадре</td>
+</tr>
+</tbody>
+</table>
+<h2><strong><code>end_frame()</code></strong> в конце кадра сбрасывает одноразовые флаги. Если забыть — <code>interact_pressed</code> сработает каждый кадр, пока палец не отпустит клавишу (эффект "залипания").</h2>
+<p><span id="stage-5"></span></p>
+<h2 id="этап-5-тайлы-и-процедурная-карта">Этап 5 — тайлы и процедурная карта</h2>
+<p><strong>Цель</strong> — сетка тайлов, генератор комнат и коридоров, старт и выход.</p>
+<p><code>world/tile.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-009" data-title="Этап 5 — тайлы и процедурная карта" data-min-height="534"> </div>
+<p><code>world/level_generator.py</code> (упрощённая версия — 4–6 комнат, L-коридоры):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-010" data-title="Этап 5 — тайлы и процедурная карта" data-min-height="720"> </div>
+<p><code>world/map.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-011" data-title="Этап 5 — тайлы и процедурная карта" data-min-height="318"> </div>
+<p>При старте игры:</p>
+<pre><code class="language-python">game_map = GameMap(floor=1, seed=42)
+player.x, player.y = game_map.start_tile[0] + 0.5, game_map.start_tile[1] + 0.5
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>GameMap(1, 42)</code> дважды подряд даёт одинаковую карту (фиксированный seed).</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>start_tile</code> и <code>exit_tile</code> — walkable.</li>
+</ul>
+<h3 id="как-работает-генератор">Как работает генератор</h3>
+<p>Алгоритм <strong>rooms + corridors</strong> — классика roguelike:</p>
+<ol>
+<li>Случайные прямоугольные комнаты без пересечения (padding 2 тайла).</li>
+<li>Центры комнат соединяются L-образными коридорами.</li>
+<li>Старт — центр первой комнаты; выход — центр самой удалённой комнаты (манhattan distance).</li>
+</ol>
+<p>В <a href="https://github.com/Spirzen/Pythonablo">Pythonablo</a> добавлены расширение chokepoints (<code>_widen_chokepoints</code>), лестница вверх на этажах > 1 и шанс арены — см. <code>world/level_generator.py</code>.</p>
+<pre><code>Комнаты (пример)          После коридоров
+┌────┐     ┌───┐          ┌────┐     ┌───┐
+│ S  │     │   │          │ S──┼─────┤   │
+└────┘     │   │    →     └────┘     │ E │
+           └───┘                     └───┘
+</code></pre>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Карта</strong> — двумерный список <code>grid[ty][tx]</code> — у каждой клетки тип (<code>FLOOR</code>, <code>WALL</code>, …) и флаг <code>walkable</code>.</p>
+<ul>
+<li><strong><code>LevelGenerator</code></strong> — процедурная генерация: каждый запуск с <strong>одним и тем же <code>seed</code></strong> даёт <strong>ту же</strong> карту — удобно для отладки (<code>seed=42</code>).</li>
+<li><strong>Комнаты + L-коридоры</strong> — простой roguelike-приём: сначала прямоугольники, потом соединение центров.</li>
+<li><strong><code>start_tile</code> / <code>exit_tile</code></strong> — координаты <strong>целых</strong> тайлов <code>(x, y)</code>; игрок встаёт в <strong>центр</strong> клетки: <code>x + 0.5</code>, <code>y + 0.5</code>.</li>
+<li><strong><code>GameMap.is_walkable</code></strong> — единая проверка "можно ли сюда встать"; коллизии и спавн врагов используют её же.</li>
+</ul>
+<h2>Раздел "Как работает генератор" выше — углубление; для первого прохождения достаточно понять: <strong>карта создаётся кодом, а не нарисована в редакторе</strong>.</h2>
+<p><span id="stage-6"></span></p>
+<h2 id="этап-6-коллизии-и-движение">Этап 6 — коллизии и движение</h2>
+<p><strong>Цель</strong> — скольжение вдоль стен, игрок не проходит сквозь <code>WALL</code>.</p>
+<p><code>world/collision.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-012" data-title="Этап 6 — коллизии и движение" data-min-height="606"> </div>
+<p><code>systems/movement_system.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-013" data-title="Этап 6 — коллизии и движение" data-min-height="516"> </div>
+<p>Подключите в цикле: <code>movement.update(player, game_map, inp.state, dt)</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>WASD</code> двигает круг по полу.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Игрок останавливается у стены, не проваливается в void.</li>
+</ul>
+<p><code>move_slide</code> делит перемещение на <strong>субшаги</strong> и пробует скольжение по осям X и Y отдельно — игрок "едет" вдоль стены, а не застревает в углу. Радиус <code>ENTITY_RADIUS = 0.34</code> — компромисс между узкими коридорами и ощущением "толстого" героя.</p>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Почему не <code>x += dx</code> напрямую.</strong> Игрок — круг с радиусом <code>ENTITY_RADIUS</code>. Перед шагом проверяем <strong>несколько точек</strong> вокруг центра (<code>can_occupy</code>).</p>
+<ul>
+<li><strong><code>move_slide</code></strong> делит перемещение на <strong>много маленьких шагов</strong> и при ударе о стену пробует сдвинуться только по X или только по Y — отсюда <strong>скольжение</strong> вдоль угла, а не застревание.</li>
+<li><strong><code>MovementSystem</code></strong> переводит WASD в вектор, нормализует его (диагональ не быстрее прямой) и вызывает <code>move_slide</code>.</li>
+<li><strong><code>facing_angle</code></strong> обновляется при движении — позже удар пойдёт "куда шли", если курсор не двигали.</li>
+</ul>
+<h2>Если герой всё ещё проходит сквозь стены — проверьте, что в цикле вызывается именно <code>movement.update(...)</code>, а не ручное изменение <code>player.x</code>.</h2>
+<p><span id="stage-7"></span></p>
+<h2 id="этап-7-отрисовка-карты-в-изометрии">Этап 7 — отрисовка карты в изометрии</h2>
+<p><strong>Цель</strong> — ромбы тайлов, стены темнее пола, маркер портала.</p>
+<p><code>engine/map_renderer.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-014" data-title="Этап 7 — отрисовка карты в изометрии" data-min-height="660"> </div>
+<p>Порядок отрисовки в <code>_draw</code>:</p>
+<ol>
+<li><code>map_renderer.draw(game_map, camera.x, camera.y)</code></li>
+<li><code>renderer.draw_entity_circle(player, ...)</code></li>
+</ol>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Видны комнаты и коридоры "ромбами".</li>
+<li class="task-list-item"><input type="checkbox" disabled> Портал выхода оранжевый, игрок поверх пола.</li>
+</ul>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Порядок отрисовки важен.</strong> Сначала пол (<code>MapRenderer.draw</code>), потом сущности поверх — иначе пол перекроет игрока.</p>
+<ul>
+<li><strong><code>MapRenderer</code></strong> рисует <strong>ромб</strong> из четырёх точек вокруг центра тайла; <code>VOID</code> пропускаем — "пустота" не рисуется.</li>
+<li><strong>Цвета:</strong> пол тёмно-синий, стена ещё темнее, <strong>выход (портал)</strong> — оранжевый: игрок учится искать его на карте.</li>
+<li><strong><code>MapRenderer</code> не знает про игрока</strong> — только сетка; так проще менять стиль карты, не трогая бой.</li>
+</ul>
+<h2>На этом этапе вы впервые <strong>видите своё подземелье</strong> целиком; камера с этапа 3 следует за героем по коридорам.</h2>
+<p><span id="stage-8"></span></p>
+<h2 id="этап-8-ближний-бой-полукруглый-удар">Этап 8 — ближний бой (полукруглый удар)</h2>
+<p><strong>Цель</strong> — ЛКМ бьёт по направлению курсора; урон врагам в дуге 180°.</p>
+<p><code>entities/enemy.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-015" data-title="Этап 8 — ближний бой (полукруглый удар)" data-min-height="318"> </div>
+<p><code>systems/combat_system.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-016" data-title="Этап 8 — ближний бой (полукруглый удар)" data-min-height="720"> </div>
+<p>В игровом цикле:</p>
+<pre><code class="language-python">from engine.renderer import screen_to_world
+mouse_world = screen_to_world(*inp.state.mouse_pos, camera.x, camera.y)
+if inp.state.attack:
+    combat.try_attack(player, enemies, mouse_world)
+player.attack_timer = max(0, player.attack_timer - dt)
+combat.update(dt)
+</code></pre>
+<p>Отрисовка дуги (в <code>Renderer</code>):</p>
+<pre><code class="language-python">def draw_slash(self, slash, cam_x, cam_y) -> None:
+    import pygame, math
+    sx, sy = world_to_screen(slash.x, slash.y, cam_x, cam_y)
+    r = 48
+    start = -slash.angle + math.pi / 2
+    end = start + math.pi
+    rect = pygame.Rect(sx - r, sy - r, r * 2, r * 2)
+    pygame.draw.arc(self.screen, (255, 220, 120), rect, start, end, 3)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> При клике по врагу появляется жёлтая дуга.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Враг теряет HP только если стоит перед игроком в секторе удара.</li>
+</ul>
+<h3 id="математика-сектора-удара">Математика сектора удара</h3>
+<p>Удар — <strong>сектор круга</strong>, а не круг целиком (как в Diablo — удар "перед" героем):</p>
+<ol>
+<li><strong>Дистанция</strong> — <code>dist &#x3C;= SLASH_RANGE + enemy.radius</code>.</li>
+<li><strong>Угол</strong> от игрока к врагу: <code>ea = atan2(dy, dx)</code>.</li>
+<li><strong>Разница</strong> с направлением удара: <code>diff = normalize(ea - angle)</code> в диапазоне <code>[-π, π]</code>.</li>
+<li>Попадание, если <code>abs(diff) &#x3C;= ATTACK_ARC / 2</code> (полукруг 180°).</li>
+</ol>
+<pre><code>        враг B (мимо)
+              ×
+             /
+    игрок ● ------> angle
+             \
+              × враг A (попал)
+</code></pre>
+<p>Добавьте <strong>floating damage</strong> — список <code>(x, y, текст, timer)</code> в <code>CombatSystem</code>, рисуйте числа над врагом с затуханием <code>timer -= dt</code>. В Pythonablo это <code>damage_numbers</code> в <code>systems/combat_system.py</code>.</p>
+<p>На этапе 10 подключите <code>EventBus</code> к <code>CombatSystem</code>:</p>
+<pre><code class="language-python">class CombatSystem:
+    def __init__(self, events: EventBus) -> None:
+        self.events = events
+        ...
+</code></pre>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Ближний бой — сектор, не круг.</strong> Урон получают только враги <strong>перед</strong> героем в дуге 180° (<code>ATTACK_ARC</code>) и <strong>на дистанции</strong> <code>SLASH_RANGE</code>.</p>
+<ol>
+<li>Направление удара — от игрока <strong>к курсору</strong> (<code>atan2</code>).</li>
+<li>Для каждого врага считаем угол "игрок → враг" и сравниваем с углом удара.</li>
+<li><strong><code>attack_timer</code></strong> не даёт бить каждый кадр — пауза <code>attack_cooldown</code> между ударами.</li>
+</ol>
+<ul>
+<li><strong><code>SlashEffect</code></strong> — короткая жёлтая дуга на экране: обратная связь "удар прошёл".</li>
+<li><strong><code>EnemyEntity.take_damage</code></strong> — урон вычитается из <code>hp</code>; при <code>hp &#x3C;= 0</code> — <code>alive = False</code> (пока без EventBus; на этапе 10 добавим событие смерти).</li>
+</ul>
+<h2>Раздел "Математика сектора удара" ниже — для тех, кто хочет понять формулы; в коде достаточно скопировать <code>_apply_slash_damage</code>.</h2>
+<p><span id="stage-9"></span></p>
+<h2 id="этап-9-враги-и-простой-ai">Этап 9 — враги и простой AI</h2>
+<p><strong>Цель</strong> — спавн на walkable-тайлах, преследование игрока, контактный урон.</p>
+<p><code>systems/ai_system.py</code> (упрощённо — без pathfinding, прямой chase):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-017" data-title="Этап 9 — враги и простой AI" data-min-height="720"> </div>
+<p>После создания <code>GameMap</code>:</p>
+<pre><code class="language-python">enemies = ai.spawn_enemies(game_map, floor=1)
+</code></pre>
+<p>Рисуйте врагов красным кругом; мёртвых пропускайте.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> На карте ~12 врагов.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Враги идут к игроку и наносят урон при соприкосновении.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Убитый враг (<code>alive=False</code>) исчезает с экрана.</li>
+</ul>
+<h3 id="полоска-hp-над-врагом">Полоска HP над врагом</h3>
+<p>Мини-HUD над каждым живым врагом сильно улучшает читаемость боя:</p>
+<pre><code class="language-python">def draw_enemy_hp(renderer, enemy, cam_x, cam_y) -> None:
+    import pygame
+    from engine.renderer import world_to_screen
+    sx, sy = world_to_screen(enemy.x, enemy.y, cam_x, cam_y)
+    w, h = 36, 5
+    x = int(sx - w // 2)
+    y = int(sy - 28)
+    pygame.draw.rect(renderer.screen, (40, 20, 24), (x, y, w, h))
+    if enemy.max_hp > 0:
+        fill = int(w * max(0, enemy.hp) / enemy.max_hp)
+        pygame.draw.rect(renderer.screen, (220, 60, 60), (x, y, fill, h))
+</code></pre>
+<p>Прямой chase ломается за стенами — враг упирается в угол. <strong>Этап 19</strong> добавляет A* pathfinding.</p>
+<h3 id="разбор">Разбор</h3>
+<p><strong>AISystem</strong> делает две вещи: <strong>спавн</strong> при старте этажа и <strong>update</strong> каждый кадр.</p>
+<ul>
+<li><strong>Спавн</strong> — случайные клетки, но только <code>walkable</code> и не на старте/выходе; <code>random.Random(floor * 999)</code> даёт повторяемый набор для этажа.</li>
+<li><strong>Chase (преследование)</strong> — враг каждый кадр шагает <strong>прямо к игроку</strong> через <code>move_slide</code>. За стеной враг <strong>упрётся</strong> — это нормально для учебной версии; обход добавит *<em>этап 19 (A</em>)**.</li>
+<li><strong>Контактный урон</strong> — если дистанция <code>&#x3C; 0.15</code>, игрок теряет HP пропорционально <code>dt</code> (урон в секунду, а не "−100 за касание").</li>
+</ul>
+<h2>Красные круги без HP-бара читаются плохо — фрагмент <code>draw_enemy_hp</code> в статье стоит добавить в <code>_draw</code>, когда подключите врагов.</h2>
+<p><span id="stage-10"></span></p>
+<h2 id="этап-10-eventbus-и-опыт">Этап 10 — EventBus и опыт</h2>
+<p><strong>Цель</strong> — отделить "враг умер" от последствий; уровни и полоска XP.</p>
+<p><code>core/event_bus.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-018" data-title="Этап 10 — EventBus и опыт" data-min-height="336"> </div>
+<p><code>player/experience.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-019" data-title="Этап 10 — EventBus и опыт" data-min-height="462"> </div>
+<p>Добавьте в <code>player/stats.py</code> рост при level-up:</p>
+<pre><code class="language-python">def on_level_up(self) -> None:
+    self.vitality = getattr(self, "vitality", 10) + 2
+    self.max_hp += 12
+    self.hp = self.max_hp
+    self.max_mana += 6
+    self.mana = self.max_mana
+    self.damage += 2
+</code></pre>
+<p>В <code>CombatSystem._apply_slash_damage</code> после <code>enemy.take_damage</code>:</p>
+<pre><code class="language-python">if enemy.hp &#x3C;= 0:
+    enemy.alive = False
+    self.events.emit("enemy_killed", enemy=enemy, killer=player)
+</code></pre>
+<p>Подписка в <code>Game</code> или временно в <code>main.py</code>:</p>
+<pre><code class="language-python">def on_enemy_killed(enemy, killer, **kw):
+    if killer is None:
+        return
+    xp = 12 + game_map.floor * 2
+    ups = killer.experience.add_xp(xp)
+    for _ in range(ups):
+        killer.stats.on_level_up()
+    events.emit("level_up", player=killer, levels=ups)  # для звука на этапе 22
+</code></pre>
+<p>Добавьте <code>experience: Experience = field(default_factory=Experience)</code> в <code>PlayerEntity</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После нескольких убийств растёт <code>player.experience.xp</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> При level-up HP и урон увеличиваются.</li>
+</ul>
+<div class="callout callout--info">
+  <div class="callout-title">Один emit — много подписчиков</div>
+  <div class="callout-body">
+  <p>Событие <code>enemy_killed</code> слушают XP, лут, счётчик убийств и аудио. Новый слушатель (например, квест "убей 10") добавляется одной строкой <code>events.subscribe(...)</code> без правки <code>CombatSystem</code>.</p>
+  </div>
+</div>
+<h3 id="разбор">Разбор</h3>
+<p><strong>EventBus (шина событий)</strong> — паттерн "один сигнал — много слушателей". <code>CombatSystem</code> не знает про XP и лут: он только <strong><code>emit("enemy_killed", ...)</code></strong>.</p>
+<ul>
+<li><strong><code>subscribe</code></strong> — "когда враг умер, вызови мою функцию".</li>
+<li><strong><code>Experience.add_xp</code></strong> — копит опыт; при переполнении порога — level-up и новый порог (<code>xp_to_next * 1.19 + 5</code>).</li>
+<li><strong><code>stats.on_level_up</code></strong> — восстанавливает HP/ману и поднимает урон — игрок <strong>чувствует</strong> рост силы.</li>
+</ul>
+<h2>Так бой, лут (этап 11) и звук (этап 22) <strong>не переплетаются</strong> в одном файле: каждый модуль подписывается на нужные события.</h2>
+<p><span id="stage-11"></span></p>
+<h2 id="этап-11-лут-на-земле">Этап 11 — лут на земле</h2>
+<p><strong>Цель</strong> — дроп с шансом, предметы лежат на полу, подбор по <code>E</code>.</p>
+<p><code>entities/item.py</code>:</p>
+<pre><code class="language-python">from dataclasses import dataclass
+from entities.entity import Entity
+
+
+@dataclass
+class GroundItem(Entity):
+    item_id: str = "gold"
+    label: str = "Золото"
+    color: tuple[int, int, int] = (255, 215, 60)
+</code></pre>
+<p><code>systems/loot_system.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-020" data-title="Этап 11 — лут на земле" data-min-height="372"> </div>
+<p>В <code>Game</code> / <code>main</code>:</p>
+<pre><code class="language-python">ground_items: list[GroundItem] = []
+
+def on_item_dropped(item, **kw):
+    ground_items.append(item)
+
+events.subscribe("item_dropped", on_item_dropped)
+</code></pre>
+<p>Подбор:</p>
+<pre><code class="language-python">if inp.state.interact_pressed:  # клавиша E в InputHandler
+    for gi in ground_items:
+        if player.distance_to(gi) &#x3C; 1.2:
+            player.stats.hp = min(player.stats.max_hp, player.stats.hp + 40)
+            ground_items.remove(gi)
+            break
+</code></pre>
+<p>Рисуйте лут маленьким ромбом или кругом <code>item.color</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> С убитых врагов иногда падает зелье.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>E</code> рядом восстанавливает HP.</li>
+</ul>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Лут — отдельные объекты на карте.</strong> После <code>enemy_killed</code> <code>LootSystem</code> с вероятностью <code>DROP_CHANCE</code> создаёт <code>GroundItem</code> и шлёт <code>item_dropped</code>.</p>
+<ul>
+<li>Список <strong><code>ground_items</code></strong> в <code>Game</code> — "что лежит на полу сейчас".</li>
+<li><strong>Подбор по <code>E</code></strong> — перебор предметов рядом с игроком; зелье сразу лечит, меч (этап 12) попадёт в инвентарь.</li>
+<li><strong>Рисование</strong> — маленький цветной круг или ромб; <code>item.color</code> задаётся при создании.</li>
+</ul>
+<h2>Если лут никогда не падает — проверьте подписку <code>LootSystem</code> на <code>enemy_killed</code> и что бой действительно эмитит событие при смерти врага.</h2>
+<p><span id="stage-12"></span></p>
+<h2 id="этап-12-инвентарь-и-экипировка-основа">Этап 12 — инвентарь и экипировка (основа)</h2>
+<p><strong>Цель</strong> — рюкзак, слоты оружия/брони, бонус к урону от предмета.</p>
+<p><code>player/inventory.py</code>:</p>
+<pre><code class="language-python">from dataclasses import dataclass, field
+
+
+@dataclass
+class Inventory:
+    slots: list[str | None] = field(default_factory=lambda: [None] * 20)
+
+    def add(self, item_id: str) -> bool:
+        for i, s in enumerate(self.slots):
+            if s is None:
+                self.slots[i] = item_id
+                return True
+        return False
+</code></pre>
+<p><code>player/equipment.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-021" data-title="Этап 12 — инвентарь и экипировка (основа)" data-min-height="354"> </div>
+<p>Расширьте <code>PlayerEntity.damage</code>:</p>
+<pre><code class="language-python">@property
+def damage(self) -> float:
+    return self.stats.damage + self.equipment.bonus("damage")
+</code></pre>
+<p>При подборе меча с земли — <code>inventory.add("sword_1")</code>; в UI (этап 15) — экипировка в слот <code>weapon</code> с <code>&#x26;#123;"damage": 8&#x26;#125;</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Экипированный меч увеличивает урон по врагам.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Рюкзак не принимает 21-й предмет.</li>
+</ul>
+<h3 id="панель-инвентаря-overlay">Панель инвентаря (overlay)</h3>
+<p>При <code>GameState.INVENTORY</code> мир продолжает рисоваться под полупрозрачной панелью:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-022" data-title="Панель инвентаря (overlay)" data-min-height="336"> </div>
+<p>ЛКМ по слоту — экипировать в <code>weapon</code> / <code>chest</code>; повторное <code>I</code> или <code>Esc</code> — закрыть. В Pythonablo полноценный UI — <code>ui/inventory_ui.py</code> с tooltip и rarity-цветами.</p>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Инвентарь и экипировка — разные вещи.</strong></p>
+<ul>
+<li><strong><code>Inventory.slots</code></strong> — 20 ячеек "что унесли с пола"; <code>add</code> ищет первую пустую.</li>
+<li><strong><code>Equipment</code></strong> — что <strong>надето</strong> и даёт бонусы; <code>equip("sword_1", "weapon", &#x26;#123;"damage": 8&#x26;#125;)</code>.</li>
+<li><strong><code>PlayerEntity.damage</code></strong> — базовый урон из <code>stats</code> <strong>плюс</strong> бонус оружия; UI и бой читают одно свойство.</li>
+</ul>
+<h2>Инвентарь на <strong><code>I</code></strong> (этап 18 в <code>Game</code>) — overlay поверх игры; клик по слоту в полной Pythonablo экипирует предмет — в практикуме меч может экипироваться сразу при подборе для простоты.</h2>
+<p><span id="stage-13"></span></p>
+<h2 id="этап-13-активное-умение-огненный-шар">Этап 13 — активное умение (огненный шар)</h2>
+<p><strong>Цель</strong> — трата маны, снаряд летит к курсору, урон при попадании.</p>
+<p><code>systems/skill_system.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-023" data-title="Этап 13 — активное умение (огненный шар)" data-min-height="720"> </div>
+<p>В цикле при <code>inp.state.skill_pressed == "fireball"</code>:</p>
+<pre><code class="language-python">skills.cast_fireball(player, enemies, mouse_world)
+</code></pre>
+<p>Реген маны: <code>player.stats.mana = min(max_mana, mana + 8 * dt)</code>.</p>
+<p>Следующий шаг после огненного шара — <strong>ударная волна (AoE)</strong> вокруг игрока без прицеливания и <strong>вихрь на ПКМ</strong> (удержание, периодический урон). Обе механики уже реализованы в <code>SkillSystem</code> <a href="https://github.com/Spirzen/Pythonablo/blob/main/systems/skill_system.py">Pythonablo</a> — можно перенести как этап 23.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>F</code> запускает оранжевый снаряд (круг).</li>
+<li class="task-list-item"><input type="checkbox" disabled> Без маны умение не срабатывает.</li>
+</ul>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Активное умение</strong> — трата <strong>маны</strong>, создание <strong>снаряда</strong> в списке <code>projectiles</code>, полёт каждый кадр.</p>
+<ul>
+<li><strong><code>cast_fireball</code></strong> — если маны мало, возвращает <code>False</code> и ничего не тратит.</li>
+<li><strong>Снаряд</strong> — простой dataclass с позицией, скоростью <code>vx/vy</code> и <code>life</code> (самоуничтожается через 2 с).</li>
+<li><strong>Попадание</strong> — расстояние от центра снаряда до врага <code>&#x3C; sum радиусов</code>; урон один раз, снаряд исчезает.</li>
+<li><strong>Смерть от огненного шара</strong> — в <code>update</code> передаётся <code>killer=player</code>, чтобы EventBus начислил XP (как при ударе мечом).</li>
+<li><strong>Реген маны</strong> — <code>mana += 8 * dt</code> в <code>_update_playing</code> возвращает возможность кастовать.</li>
+</ul>
+<h2>Огненный шар на <strong><code>F</code></strong> или <strong><code>1</code></strong> — удобно держать врагов на дистанции, пока кулдаун ближнего удара на перезарядке.</h2>
+<p><span id="stage-14"></span></p>
+<h2 id="этап-14-hud">Этап 14 — HUD</h2>
+<p><strong>Цель</strong> — полоски HP/MP, уровень, номер этажа, иконки умений.</p>
+<p><code>ui/hud.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-024" data-title="Этап 14 — HUD" data-min-height="462"> </div>
+<p>Вызывайте <code>hud.draw(player, floor)</code> <strong>после</strong> отрисовки мира — HUD всегда поверх.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> HP уменьшается при уроне от врагов.</li>
+<li class="task-list-item"><input type="checkbox" disabled> MP уменьшается после огненного шара.</li>
+</ul>
+<p>Расширьте HUD <strong>иконками умений</strong> и подсказкой портала:</p>
+<pre><code class="language-python">def draw_skill_bar(self, player, portal_hint: str | None) -> None:
+    import pygame
+    font = pygame.font.SysFont("Segoe UI", 14)
+    pygame.draw.circle(self.r.screen, (255, 120, 40), (SCREEN_WIDTH - 80, SCREEN_HEIGHT - 40), 18)
+    label = font.render("F", True, UI_TEXT)
+    self.r.screen.blit(label, (SCREEN_WIDTH - 86, SCREEN_HEIGHT - 48))
+    if portal_hint:
+        hint = font.render(portal_hint, True, (255, 204, 96))
+        self.r.screen.blit(hint, (24, SCREEN_HEIGHT - 32))
+</code></pre>
+<h3 id="разбор">Разбор</h3>
+<p><strong>HUD рисуется последним</strong> — поверх мира и врагов, иначе полоски HP окажутся под тайлами.</p>
+<ul>
+<li><strong><code>_bar</code></strong> — сначала фон, потом закрашенная часть шириной <code>cur / max * w</code> — универсальная полоска для HP и MP.</li>
+<li><strong>Текст "Ур. N · Этаж F"</strong> — игрок видит прогресс без консоли.</li>
+<li><strong><code>draw_skill_bar</code></strong> — подсказка "нажми F" и текст "E — портал", когда рядом с выходом (подключится в <code>Game</code> на этапе 16).</li>
+</ul>
+<h2>Цвета HUD берутся из <code>config.py</code> — не дублируйте <code>(88, 228, 112)</code> в <code>hud.py</code>.</h2>
+<p><span id="stage-15"></span></p>
+<h2 id="этап-15-меню-и-машина-состояний">Этап 15 — меню и машина состояний</h2>
+<p><strong>Цель</strong> — экран "Новая игра", пауза по <code>Esc</code>, game over.</p>
+<p><code>ui/menu.py</code> (фрагмент):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-025" data-title="Этап 15 — меню и машина состояний" data-min-height="336"> </div>
+<p>В классе <code>Game</code>:</p>
+<pre><code class="language-python">self.state = GameState.MENU
+self.menu_selected = 0
+
+def _handle_events(self):
+    if self.state == GameState.MENU and inp.state.menu_confirm:
+        self._start_new_game()
+        self.state = GameState.PLAYING
+    if self.state == GameState.PLAYING and inp.state.menu_back:
+        self.state = GameState.PAUSED
+    if player.stats.hp &#x3C;= 0:
+        self.state = GameState.GAME_OVER
+</code></pre>
+<p><code>_start_new_game()</code> создаёт <code>GameMap</code>, <code>PlayerEntity</code>, спавнит врагов.</p>
+<p>Навигация меню стрелками и Enter:</p>
+<pre><code class="language-python">if self.state == GameState.MENU:
+    if inp.menu_up:
+        self.menu_selected = (self.menu_selected - 1) % 2
+    if inp.menu_down:
+        self.menu_selected = (self.menu_selected + 1) % 2
+    if inp.menu_confirm:
+        if self.menu_selected == 0:
+            self._start_new_game()
+            self.state = GameState.PLAYING
+        else:
+            self.running = False
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Старт в меню; Enter начинает игру.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Esc открывает паузу (можно нарисовать полупрозрачную плашку).</li>
+</ul>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Машина состояний (<code>GameState</code>)</strong> — в каждый момент игра в одном режиме — меню, игра, пауза или game over. В <code>_update</code> и <code>_draw</code> ветвление по <code>self.state</code>.</p>
+<ul>
+<li><strong><code>MENU</code></strong> — рисуем только <code>MenuUI</code>; Enter / стрелки выбирают пункт.</li>
+<li><strong><code>PLAYING</code></strong> — вся логика боя и движения; Esc → <strong><code>PAUSED</code></strong>.</li>
+<li><strong><code>GAME_OVER</code></strong> — HP игрока ≤ 0; Esc возвращает в меню.</li>
+</ul>
+<h2><strong><code>_start_new_game()</code></strong> — одна функция создаёт карту, игрока и врагов: и "Новая игра", и будущий "Продолжить" (этап 21) смогут вызывать её же.</h2>
+<p><span id="stage-16"></span></p>
+<h2 id="этап-16-этажи-и-портал">Этап 16 — этажи и портал</h2>
+<p><strong>Цель</strong> — выход с этажа, переход <code>floor += 1</code>, новая генерация карты.</p>
+<p>В <code>Game</code>:</p>
+<pre><code class="language-python">def _try_use_portal(self) -> None:
+    if not self.game_map:
+        return
+    ex, ey = self.game_map.exit_tile
+    if self.player.distance_sq_to(ex + 0.5, ey + 0.5) > 1.85 ** 2:
+        return
+    self.floor += 1
+    self.game_map = GameMap(floor=self.floor, seed=1000 + self.floor)
+    self.player.x = self.game_map.start_tile[0] + 0.5
+    self.player.y = self.game_map.start_tile[1] + 0.5
+    self.enemies = self.ai.spawn_enemies(self.game_map, self.floor)
+    self.ground_items.clear()
+</code></pre>
+<p>Подсказка на HUD: "E — портал", когда игрок рядом.</p>
+<p>Расширьте <code>InputHandler</code> — <code>interact_pressed</code> на <code>E</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> У оранжевого тайла выхода при <code>E</code> загружается этаж 2.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Враги на этаже 2 чуть больнее.</li>
+</ul>
+<p>Масштаб сложности по этажу (рекомендуемая формула):</p>
+<pre><code class="language-python">def floor_mult(floor: int) -> float:
+    return 1.0 + (floor - 1) * 0.12
+
+# в spawn:
+hp = ENEMY_BASE_HP * floor_mult(floor)
+count = int(ENEMIES_PER_FLOOR * (1 + floor * 0.05))
+</code></pre>
+<p>В Pythonablo каждый 3-й этаж — <strong>босс-этаж</strong> с усиленными врагами и отдельной музыкой; на этаже <code>(floor % 3) == 2</code> появляется <strong>Кузнец</strong>.</p>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Портал — тайл <code>EXIT</code> на карте</strong>, не отдельная кнопка. Игрок подходит близко (<code>distance_sq_to</code> ≤ порога) и жмёт <strong><code>E</code></strong>.</p>
+<ul>
+<li><strong><code>floor += 1</code></strong> — номер этажа для HUD и усиления врагов.</li>
+<li><strong>Новый <code>GameMap(..., seed=1000 + floor)</code></strong> — другая карта на каждом этаже.</li>
+<li><strong><code>ground_items.clear()</code></strong> — лут не переносится между этажами (можно изменить в своём форке).</li>
+</ul>
+<h2><strong><code>floor_mult</code></strong> — враги на глубине получают больше HP: <code>ENEMY_BASE_HP * floor_mult(floor)</code>. Игрок ощущает рост сложности без ручной правки каждого этажа.</h2>
+<p><span id="stage-17"></span></p>
+<h2 id="этап-17-рывок-и-удерживаемая-атака">Этап 17 — рывок и удерживаемая атака</h2>
+<p><strong>Цель</strong> — <code>Space</code> — dash с кулдауном; удержание ЛКМ — серия ударов.</p>
+<p>В <code>MovementSystem.try_dash</code> (см. полный код в <a href="https://github.com/Spirzen/Pythonablo/blob/main/systems/movement_system.py">Pythonablo</a>):</p>
+<pre><code class="language-python">from core.config import DASH_COOLDOWN, DASH_DURATION, DASH_SPEED_MULTIPLIER
+
+def try_dash(self, player, game_map, inp) -> bool:
+    if player.is_dashing or player.dash_cooldown_timer > 0:
+        return False
+    # направление из WASD или вверх по умолчанию
+    dash_dist = player.move_speed * DASH_SPEED_MULTIPLIER * DASH_DURATION * 0.012
+    # move_slide на dash_dist
+    player.is_dashing = True
+    player.dash_timer = DASH_DURATION
+    player.dash_cooldown_timer = DASH_COOLDOWN
+    return True
+</code></pre>
+<p>В <code>_update_playing</code>:</p>
+<pre><code class="language-python">if inp.state.dash_pressed:
+    movement.try_dash(player, game_map, inp)
+if inp.state.attack:
+    combat.try_attack(player, enemies, mouse_world)
+</code></pre>
+<p>Добавьте в <code>PlayerEntity</code> поля <code>is_dashing</code>, <code>dash_timer</code>, <code>dash_cooldown_timer</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Рывок проскальзывает сквозь толпу, но не сквозь стены.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Удержание ЛКМ наносит серию ударов с интервалом <code>attack_cooldown</code>.</li>
+</ul>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Dash (рывок)</strong> — короткий <strong>бurst</strong> движения на <code>DASH_DURATION</code> с кулдауном <code>DASH_COOLDOWN</code>; направление из WASD или "вверх" по умолчанию.</p>
+<ul>
+<li><strong><code>is_dashing</code></strong> — пока true, обычное WASD в <code>MovementSystem.update</code> не применяется (герой не "ползёт" во время рывка).</li>
+<li><strong>Тот же <code>move_slide</code></strong> — рывок <strong>не проходит сквозь стены</strong>, только быстрее протискивается по коридору.</li>
+<li><strong>Удержание ЛКМ</strong> — каждый кадр с <code>attack=True</code> вызывает <code>try_attack</code>, но <strong><code>attack_timer</code></strong> ограничивает частоту ударов.</li>
+</ul>
+<h2>Серия ударов — <strong>повторный вызов</strong> одной и той же логики с кулдауном — простой и рабочий приём для прототипа.</h2>
+<p><span id="stage-18"></span></p>
+<h2>Этап 18 — сборка класса <code>Game</code> и чистый <code>main.py</code></h2>
+<p><strong>Цель</strong> — вся логика в <code>core/game.py</code>; <code>main.py</code> — три строки.</p>
+<p><code>core/game.py</code> (скелет):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-026" data-title="Этап 18 — сборка класса `Game` и чистый `main.py`" data-min-height="720"> </div>
+<p>Финальный <code>main.py</code>:</p>
+<pre><code class="language-python">from core.game import Game
+
+if __name__ == "__main__":
+    Game().run()
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>main.py</code> — не больше 5 строк.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Все этапы 1–17 работают внутри одного класса.</li>
+</ul>
+<div class="callout callout--tip">
+  <div class="callout-title">Эталон этапа 18</div>
+  <div class="callout-body">
+  <p>Скелет выше не содержит меню, портала, лута и dash — они собираются из этапов 11–17. Готовый проверенный проект целиком — в разделе <a href="#full-revision">Полная ревизия файлов</a>.</p>
+  </div>
+</div>
+<h3 id="разбор">Разбор</h3>
+<p><strong>Класс <code>Game</code> — дирижёр оркестра.</strong> В <code>__init__</code> создаются все системы; в <code>run()</code> — цикл Pygame из этапа 0, но вызовы разнесены по <code>_handle_events</code>, <code>_update</code>, <code>_draw</code>.</p>
+<pre><code class="language-mermaid">flowchart TD
+    E[События pygame] --> I[InputHandler]
+    I --> U[_update_playing]
+    U --> M[MovementSystem]
+    U --> C[CombatSystem / SkillSystem]
+    U --> A[AISystem]
+    U --> B[EventBus → XP / лут]
+    D[_draw] --> MR[MapRenderer]
+    D --> R[Renderer + HUD]
+</code></pre>
+<ul>
+<li><strong><code>main.py</code></strong> — только <code>Game().run()</code>: так проще тестировать и импортировать игру из других скриптов.</li>
+<li><strong><code>_wire_events</code></strong> — подписки на <code>item_dropped</code> и <code>enemy_killed</code> в одном месте.</li>
+<li><strong>Полный эталон</strong> со всеми деталями этапов 11–17 — в <a href="#full-revision">Полной ревизии</a>; скелет выше можно сверять построчно.</li>
+</ul>
+<h2>Если что-то работало по отдельности, а в <code>Game</code> "сломалось" — сравните порядок вызовов в <code>_update_playing</code> с <a href="#architecture">архитектурой</a>.</h2>
+<p><span id="stage-19"></span></p>
+<h2 id="этап-19-бонус-pathfinding-a">Этап 19 (бонус) — pathfinding A*</h2>
+<p><strong>Цель</strong> — враги обходят стены по сетке walkable-тайлов.</p>
+<p><code>world/pathfinding.py</code> (упрощённый A*):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-027" data-title="Этап 19 (бонус) — pathfinding A*" data-min-height="678"> </div>
+<p>В <code>AISystem.update</code> вместо прямого chase:</p>
+<pre><code class="language-python">from world.pathfinding import find_path
+
+ex, ey = int(player.x), int(player.y)
+sx, sy = int(enemy.x), int(enemy.y)
+path = find_path(game_map, (sx, sy), (ex, ey))
+if len(path) >= 2:
+    nx, ny = path[1]
+    tx, ty = nx + 0.5, ny + 0.5
+    dx, dy = tx - enemy.x, ty - enemy.y
+    dist = math.hypot(dx, dy) or 1.0
+    mx = (dx / dist) * speed
+    my = (dy / dist) * speed
+    enemy.x, enemy.y = move_slide(game_map, enemy.x, enemy.y, mx, my)
+</code></pre>
+<div class="callout callout--caution">
+  <div class="callout-title">Производительность</div>
+  <div class="callout-body">
+  <p>A* на 38 врагах каждый кадр дорог. Пересчитывайте путь раз в 0.3–0.5 с или только когда цель сменила тайл. В Pythonablo pathfinding вызывается с throttling внутри <code>AISystem</code>.</p>
+  </div>
+</div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Враг за стеной идёт в обход, а не упирается в угол.</li>
+<li class="task-list-item"><input type="checkbox" disabled> FPS не падает ниже 30 на карте 61×46.</li>
+</ul>
+<hr>
+<p><span id="stage-20"></span></p>
+<h2 id="этап-20-бонус-враги-из-json">Этап 20 (бонус) — враги из JSON</h2>
+<p><strong>Цель</strong> — data-driven баланс без правки Python-кода.</p>
+<p>Создайте <code>data/enemies.json</code>:</p>
+<pre><code class="language-json">{
+  "enemies": [
+    {"id": "fallen", "name": "Падший", "kind": "grunt", "base_hp": 38, "base_damage": 7, "base_speed": 90, "xp": 10, "weight": 3},
+    {"id": "ghost", "name": "Призрак", "kind": "runner", "base_hp": 26, "base_damage": 9, "base_speed": 135, "xp": 14, "weight": 3},
+    {"id": "brute", "name": "Зверь", "kind": "brute", "base_hp": 85, "base_damage": 14, "base_speed": 65, "xp": 22, "weight": 2}
+  ]
+}
+</code></pre>
+<p>В <code>AISystem</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-028" data-title="Этап 20 (бонус) — враги из JSON" data-min-height="444"> </div>
+<p>Полный список из 22 шаблонов — в <a href="https://github.com/Spirzen/Pythonablo/blob/main/data/enemies.json">репозитории</a>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Изменение <code>base_hp</code> в JSON меняет живучесть без перекомпиляции.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>weight</code> влияет на частоту появления типа.</li>
+</ul>
+<hr>
+<p><span id="stage-21"></span></p>
+<h2 id="этап-21-бонус-сохранение-игры">Этап 21 (бонус) — сохранение игры</h2>
+<p><strong>Цель</strong> — продолжить забег после перезапуска.</p>
+<p><code>save/save_manager.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-029" data-title="Этап 21 (бонус) — сохранение игры" data-min-height="696"> </div>
+<p>Сериализация игрока (минимум):</p>
+<pre><code class="language-python">def player_to_dict(player: PlayerEntity) -> dict:
+    return {
+        "x": player.x, "y": player.y,
+        "hp": player.stats.hp, "max_hp": player.stats.max_hp,
+        "level": player.experience.level,
+        "xp": player.experience.xp,
+    }
+</code></pre>
+<p>Автосейв в <code>Game</code> — каждые 5 убийств (как в Pythonablo):</p>
+<pre><code class="language-python">def _on_enemy_killed(self, enemy, killer, **kw):
+    self.kills += 1
+    if self.kills - self._last_autosave_kills >= 5:
+        self._autosave()
+        self._last_autosave_kills = self.kills
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После сохранения в меню появляется "Продолжить".</li>
+<li class="task-list-item"><input type="checkbox" disabled> Этаж и HP восстанавливаются после <code>load</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-22"></span></p>
+<h2 id="этап-22-бонус-процедурный-звук">Этап 22 (бонус) — процедурный звук</h2>
+<p><strong>Цель</strong> — SFX без внешних <code>.wav</code> файлов.</p>
+<p><code>engine/audio.py</code> (фрагмент):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-030" data-title="Этап 22 (бонус) — процедурный звук" data-min-height="696"> </div>
+<p>Подписки в <code>Game._wire_events</code>:</p>
+<pre><code class="language-python">self.events.subscribe("attack_swung", lambda **_: self.audio.play("swing"))
+self.events.subscribe("enemy_killed", lambda **_: self.audio.play("kill"))
+self.events.subscribe("level_up", lambda **_: self.audio.play("level_up"))
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Слышен короткий звук при ударе и level-up.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Игра запускается без звука, если <code>mixer.init</code> недоступен.</li>
+</ul>
+<hr>
+<p><span id="debugging"></span></p>
+<h2 id="типичные-ошибки-и-отладка">Типичные ошибки и отладка</h2>
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Вероятная причина</th>
+<th>Решение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ModuleNotFoundError: core</code></td>
+<td>запуск не из корня проекта</td>
+<td><code>cd pythonablo</code> → <code>python main.py</code></td>
+</tr>
+<tr>
+<td>Игрок "телепортируется" сквозь стены</td>
+<td>нет субшагов в <code>move_slide</code></td>
+<td>проверьте цикл <code>steps = max(4, int(dist * 28))</code></td>
+</tr>
+<tr>
+<td>Удар бьёт в спину</td>
+<td>неверный <code>normalize</code> угла</td>
+<td>формула <code>(ea - angle + π) % 2π - π</code></td>
+</tr>
+<tr>
+<td>Курсор мимо цели</td>
+<td>забыли <code>screen_to_world</code></td>
+<td>передавайте <code>camera.x/y</code> в преобразование</td>
+</tr>
+<tr>
+<td>Враги не спавнятся</td>
+<td>мало попыток / маленькая карта</td>
+<td>увеличьте <code>max_attempts</code>, проверьте <code>can_occupy</code></td>
+</tr>
+<tr>
+<td>"Залипает" dash</td>
+<td><code>dash_pressed</code> не сбрасывается</td>
+<td>вызывайте <code>input.end_frame()</code> каждый кадр</td>
+</tr>
+<tr>
+<td>FPS просел после A*</td>
+<td>path каждый кадр на всех врагах</td>
+<td>throttle 0.4 с, кэш пути</td>
+</tr>
+<tr>
+<td>Чёрный экран в MENU</td>
+<td><code>_draw</code> выходит до отрисовки мира</td>
+<td>проверьте <code>GameState</code> в <code>_update</code> / <code>_draw</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="debug-overlay">Debug overlay</h3>
+<p>На время разработки рисуйте координаты и FPS:</p>
+<pre><code class="language-python">def draw_debug(screen, player, fps, state) -> None:
+    import pygame
+    font = pygame.font.SysFont("consolas", 14)
+    lines = [
+        f"fps={fps:.0f}  state={state.name}",
+        f"player=({player.x:.2f}, {player.y:.2f})",
+        f"hp={player.stats.hp:.0f}/{player.stats.max_hp:.0f}",
+    ]
+    for i, line in enumerate(lines):
+        screen.blit(font.render(line, True, (180, 255, 180)), (8, 8 + i * 18))
+</code></pre>
+<p>Переключатель — <code>F3</code> или константа <code>DEBUG = True</code> в <code>config.py</code>.</p>
+<h3 id="баланс-с-чего-начать">Баланс — с чего начать</h3>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Старт практикума</th>
+<th>Pythonablo (ориентир)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ENEMIES_PER_FLOOR</code></td>
+<td>12</td>
+<td>38</td>
+</tr>
+<tr>
+<td><code>PLAYER_SPEED</code></td>
+<td>310</td>
+<td>310</td>
+</tr>
+<tr>
+<td><code>ATTACK_COOLDOWN</code></td>
+<td>0.42 с</td>
+<td>0.42 с</td>
+</tr>
+<tr>
+<td>XP за убийство</td>
+<td>12 + floor×2</td>
+<td>из шаблона врага</td>
+</tr>
+<tr>
+<td><code>DROP_CHANCE</code></td>
+<td>0.35</td>
+<td>~0.35 + magic find</td>
+</tr>
+</tbody>
+</table>
+<p>Если игрок умирает слишком быстро — снизьте <code>ENEMY_BASE_DAMAGE</code> или поднимите <code>regen</code>. Если скучно — больше врагов или меньше <code>attack_cooldown</code>.</p>
+<hr>
+<p><span id="full-revision"></span></p>
+<h2 id="полная-ревизия-файлов">Полная ревизия файлов</h2>
+<p>Код проверен командой <code>python -c "from core.game import Game"</code>. Скопируйте <strong>все</strong> файлы ниже в папку <code>pythonablo/</code> (структура каталогов как в дереве) и запустите <code>python main.py</code>.</p>
+<div class="callout callout--info">
+  <div class="callout-title">Как пользоваться ревизией новичку</div>
+  <div class="callout-body">
+  <ol>
+    <li>Создайте пустую папку <code>pythonablo</code>, внутри — <code>python -m venv .venv</code> и <code>pip install -r requirements.txt</code>.</li>
+    <li>Копируйте файлы **по одному** из блоков ниже, сохраняя пути (<code>core/config.py</code>, <code>entities/player.py</code>, …).</li>
+    <li>После каждых 3–4 файлов запускайте <code>python main.py</code> — так проще найти, где опечатка.</li>
+    <li>Под каждым блоком — строка <strong>Разбор</strong>: коротко, что делает файл; не пропускайте, если впервые видите модуль.</li>
+  </ol>
+  </div>
+</div>
+<p>Раздел охватывает <strong>этапы 0–18</strong> — изометрия, карта, бой, враги, XP, лут, огненный шар, HUD, меню, портал и dash. Этапы 19–22 (A*, JSON-враги, сохранения, звук) — опциональные расширения поверх этого эталона.</p>
+<pre><code>pythonablo/
+├── requirements.txt
+├── main.py
+├── core/__init__.py (empty)
+├── core/config.py
+├── core/event_bus.py
+├── core/game.py
+├── engine/__init__.py (empty)
+├── engine/renderer.py
+├── engine/camera.py
+├── engine/input_handler.py
+├── engine/map_renderer.py
+├── entities/__init__.py (empty)
+├── entities/entity.py
+├── entities/player.py
+├── entities/enemy.py
+├── entities/item.py
+├── player/__init__.py (empty)
+├── player/stats.py
+├── player/experience.py
+├── player/inventory.py
+├── player/equipment.py
+├── world/__init__.py (empty)
+├── world/tile.py
+├── world/level_generator.py
+├── world/map.py
+├── world/collision.py
+├── systems/__init__.py (empty)
+├── systems/movement_system.py
+├── systems/combat_system.py
+├── systems/ai_system.py
+├── systems/loot_system.py
+├── systems/skill_system.py
+├── ui/__init__.py (empty)
+├── ui/hud.py
+├── ui/menu.py
+</code></pre>
+<h3><code>requirements.txt</code></h3>
+<p><strong>Разбор.</strong> Список зависимостей для <code>pip install -r requirements.txt</code>. Других библиотек, кроме Pygame, в базовом прототипе нет.</p>
+<pre><code>pygame>=2.5.0
+</code></pre>
+<h3><code>main.py</code></h3>
+<p><strong>Разбор.</strong> Точка входа: Python создаёт <code>Game</code> и вызывает <code>run()</code>. Весь Pygame-цикл спрятан внутри класса — так принято в зрелых проектах.</p>
+<pre><code class="language-python">from core.game import Game
+
+if __name__ == "__main__":
+    Game().run()
+</code></pre>
+<h3><code>core/__init__.py</code></h3>
+<p><strong>Разбор.</strong> Пустой файл — помечает core/ как пакет.</p>
+<pre><code class="language-python"></code></pre>
+<h3><code>core/config.py</code></h3>
+<p><strong>Разбор.</strong> "Справочник чисел" игры — размер окна, скорости, урон, цвета HUD, enum состояний. Любой баланс начинайте с правок здесь.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-031" data-title="`core/config.py`" data-min-height="720"> </div>
+<h3><code>core/event_bus.py</code></h3>
+<p><strong>Разбор.</strong> Очередь подписчиков: модуль A <code>emit('enemy_killed')</code>, модули B и C <code>subscribe</code> — без <code>import</code> друг друга.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-032" data-title="`core/event_bus.py`" data-min-height="336"> </div>
+<h3><code>core/game.py</code></h3>
+<p><strong>Разбор.</strong> Самый большой файл — FSM (меню/игра/пауза), сборка систем, <code>_update_playing</code> и <code>_draw</code>. Если правите поведение — чаще всего правите здесь.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-033" data-title="`core/game.py`" data-min-height="720"> </div>
+<h3><code>engine/__init__.py</code></h3>
+<p><strong>Разбор.</strong> Пустой пакет engine/.</p>
+<pre><code class="language-python"></code></pre>
+<h3><code>engine/renderer.py</code></h3>
+<p><strong>Разбор.</strong> Математика изометрии и отрисовка примитивов. Бой и AI <strong>не</strong> рисуют сами — только просят Renderer.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-034" data-title="`engine/renderer.py`" data-min-height="720"> </div>
+<h3><code>engine/camera.py</code></h3>
+<p><strong>Разбор.</strong> Плавное следование камеры за игроком в изометрии.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-035" data-title="`engine/camera.py`" data-min-height="336"> </div>
+<h3><code>engine/input_handler.py</code></h3>
+<p><strong>Разбор.</strong> Весь ввод клавиатуры/мыши в одном месте; <code>end_frame()</code> обязателен каждый кадр, иначе "залипают" E и dash.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-036" data-title="`engine/input_handler.py`" data-min-height="720"> </div>
+<h3><code>engine/map_renderer.py</code></h3>
+<p><strong>Разбор.</strong> Ромбы тайлов пола, стены и портала.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-037" data-title="`engine/map_renderer.py`" data-min-height="696"> </div>
+<h3><code>entities/__init__.py</code></h3>
+<p><strong>Разбор.</strong> Пустой пакет entities/.</p>
+<pre><code class="language-python"></code></pre>
+<h3><code>entities/entity.py</code></h3>
+<p><strong>Разбор.</strong> Базовый dataclass — позиция, радиус, distance_to.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-038" data-title="`entities/entity.py`" data-min-height="462"> </div>
+<h3><code>entities/player.py</code></h3>
+<p><strong>Разбор.</strong> Игрок — статы, XP, инвентарь, экипировка, dash-таймеры.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-039" data-title="`entities/player.py`" data-min-height="624"> </div>
+<h3><code>entities/enemy.py</code></h3>
+<p><strong>Разбор.</strong> Враг с HP и take_damage.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-040" data-title="`entities/enemy.py`" data-min-height="336"> </div>
+<h3><code>entities/item.py</code></h3>
+<p><strong>Разбор.</strong> Предмет на земле — id, подпись, цвет.</p>
+<pre><code class="language-python">from dataclasses import dataclass
+
+from entities.entity import Entity
+
+
+@dataclass
+class GroundItem(Entity):
+    item_id: str = "gold"
+    label: str = "Золото"
+    color: tuple[int, int, int] = (255, 215, 60)
+</code></pre>
+<h3><code>player/__init__.py</code></h3>
+<p><strong>Разбор.</strong> Пустой пакет player/.</p>
+<pre><code class="language-python"></code></pre>
+<h3><code>player/stats.py</code></h3>
+<p><strong>Разбор.</strong> HP/MP/урон и рост при level-up.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-041" data-title="`player/stats.py`" data-min-height="408"> </div>
+<h3><code>player/experience.py</code></h3>
+<p><strong>Разбор.</strong> XP, порог следующего уровня, add_xp.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-042" data-title="`player/experience.py`" data-min-height="426"> </div>
+<h3><code>player/inventory.py</code></h3>
+<p><strong>Разбор.</strong> 20 слотов рюкзака.</p>
+<pre><code class="language-python">from dataclasses import dataclass, field
+
+
+@dataclass
+class Inventory:
+    slots: list[str | None] = field(default_factory=lambda: [None] * 20)
+
+    def add(self, item_id: str) -> bool:
+        for i, slot in enumerate(self.slots):
+            if slot is None:
+                self.slots[i] = item_id
+                return True
+        return False
+</code></pre>
+<h3><code>player/equipment.py</code></h3>
+<p><strong>Разбор.</strong> Слоты оружия/брони и бонусы к статам.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-043" data-title="`player/equipment.py`" data-min-height="354"> </div>
+<h3><code>world/__init__.py</code></h3>
+<p><strong>Разбор.</strong> Пустой пакет world/.</p>
+<pre><code class="language-python"></code></pre>
+<h3><code>world/tile.py</code></h3>
+<p><strong>Разбор.</strong> Тип тайла и фабрики floor/wall/start/exit.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-044" data-title="`world/tile.py`" data-min-height="516"> </div>
+<h3><code>world/level_generator.py</code></h3>
+<p><strong>Разбор.</strong> Процедурное подземелье — комнаты, коридоры, фиксированный <code>seed</code> для повторяемой отладки.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-045" data-title="`world/level_generator.py`" data-min-height="720"> </div>
+<h3><code>world/map.py</code></h3>
+<p><strong>Разбор.</strong> Обёртка над генератором, is_walkable.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-046" data-title="`world/map.py`" data-min-height="318"> </div>
+<h3><code>world/collision.py</code></h3>
+<p><strong>Разбор.</strong> can_occupy и move_slide со субшагами.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-047" data-title="`world/collision.py`" data-min-height="720"> </div>
+<h3><code>systems/__init__.py</code></h3>
+<p><strong>Разбор.</strong> Пустой пакет systems/.</p>
+<pre><code class="language-python"></code></pre>
+<h3><code>systems/movement_system.py</code></h3>
+<p><strong>Разбор.</strong> WASD-движение и dash через move_slide.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-048" data-title="`systems/movement_system.py`" data-min-height="720"> </div>
+<h3><code>systems/combat_system.py</code></h3>
+<p><strong>Разбор.</strong> Удар сектором 180° + визуальная дуга; при смерти врага — событие на шину, не прямой вызов лута.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-049" data-title="`systems/combat_system.py`" data-min-height="720"> </div>
+<h3><code>systems/ai_system.py</code></h3>
+<p><strong>Разбор.</strong> Спавн врагов на проходимых клетках и простой chase; за стеной враг застрянет — это исправляет бонусный A*.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-050" data-title="`systems/ai_system.py`" data-min-height="720"> </div>
+<h3><code>systems/loot_system.py</code></h3>
+<p><strong>Разбор.</strong> Дроп зелья/меча по событию enemy_killed.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-051" data-title="`systems/loot_system.py`" data-min-height="552"> </div>
+<h3><code>systems/skill_system.py</code></h3>
+<p><strong>Разбор.</strong> Огненный шар — мана, снаряд, урон при попадании.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-052" data-title="`systems/skill_system.py`" data-min-height="720"> </div>
+<h3><code>ui/__init__.py</code></h3>
+<p><strong>Разбор.</strong> Пустой пакет ui/.</p>
+<pre><code class="language-python"></code></pre>
+<h3><code>ui/hud.py</code></h3>
+<p><strong>Разбор.</strong> Полоски HP/MP, уровень, этаж, иконка F, подсказка портала.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-053" data-title="`ui/hud.py`" data-min-height="720"> </div>
+<h3><code>ui/menu.py</code></h3>
+<p><strong>Разбор.</strong> Главное меню, пауза, game over.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-6-054" data-title="`ui/menu.py`" data-min-height="624"> </div>
+<h3 id="разбор-финальной-архитектуры">Разбор финальной архитектуры</h3>
+<p><strong>Поток одного кадра</strong> (состояние <code>PLAYING</code>):</p>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant M as main.py
+    participant G as Game
+    participant I as InputHandler
+    participant S as Systems
+    participant R as Renderer
+
+    M->>G: run()
+    G->>I: события → state
+    G->>S: movement, combat, AI, skills
+    S->>G: EventBus enemy_killed
+    G->>R: map → entities → HUD
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Пакет</th>
+<th>Роль простыми словами</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>core/</code></td>
+<td>"Мозг": цикл, настройки, события</td>
+</tr>
+<tr>
+<td><code>engine/</code></td>
+<td>"Глаза и руки": рисование, камера, клавиатура/мышь</td>
+</tr>
+<tr>
+<td><code>world/</code></td>
+<td>"Подземелье": карта, стены, генерация</td>
+</tr>
+<tr>
+<td><code>entities/</code></td>
+<td>"Кто есть на карте": игрок, враги, предметы</td>
+</tr>
+<tr>
+<td><code>player/</code></td>
+<td>"Лист персонажа": статы, рюкзак, уровень</td>
+</tr>
+<tr>
+<td><code>systems/</code></td>
+<td>"Правила": как двигаются, бьют, дропают лут</td>
+</tr>
+<tr>
+<td><code>ui/</code></td>
+<td>"Интерфейс поверх игры": меню и полоски HP</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><code>main.py</code></strong> — только точка входа; вся логика в <strong><code>core/game.py</code></strong>, чтобы не искать код по десяти файлам в корне.</li>
+<li><strong>EventBus</strong> — бой не импортирует лут: при смерти врага летит событие, а XP и дроп подписаны отдельно.</li>
+<li><strong>Изометрия</strong> — координаты мира в <code>entities</code>, перевод на экран только в <code>engine/renderer.py</code>.</li>
+<li><strong>Коллизии</strong> — один <code>move_slide</code> для игрока, врагов и рывка; не дублируйте проверки стен.</li>
+<li><strong>Портал</strong> — оранжевый тайл <code>EXIT</code>; <code>E</code> рядом → новый <code>GameMap</code> и <code>floor + 1</code>.</li>
+</ul>
+<p><strong>Управление в эталоне:</strong> WASD — ходьба; ЛКМ — удар; удержание ЛКМ — серия; Space — рывок; F — огненный шар; E — подбор / портал; I — инвентарь; Esc — пауза; Enter — меню.</p>
+<hr>
+<p><span id="final-checklist"></span></p>
+<h2 id="итоговая-самопроверка-проекта">Итоговая самопроверка проекта</h2>
+<p>Сверьте поведение с <a href="#full-revision">полной ревизией</a> или пройдите пункты ниже.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Критерий</th>
+<th>Да / нет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Окно 1280×720, стабильный FPS</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Процедурная карта — комнаты и коридоры</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Игрок ходит по WASD, не проходит сквозь стены</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>ЛКМ — удар по направлению курсора</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Враги спавнятся и преследуют</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>EventBus, XP и level-up</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Лут на земле и подбор</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Огненный шар тратит ману</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>HUD с HP/MP и этажом</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Меню, пауза, game over</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Портал на следующий этаж</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Код разбит по пакетам <code>core/</code>, <code>engine/</code>, <code>world/</code>, …</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Рывок и серия ударов работают</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>main.py</code> ≤ 5 строк, логика в <code>Game</code></td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>(бонус) A* обходит стены</td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>(бонус) Враги из <code>data/enemies.json</code></td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>(бонус) Сохранение / загрузка</td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>(бонус) Звук на событиях EventBus</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="сравнение-с-полным-pythonablo">Сравнение с полным Pythonablo</h3>
+<p>После прохождения практикума у вас — <strong>учебный прототип</strong>. Репозиторий <a href="https://github.com/Spirzen/Pythonablo">Pythonablo</a> добавляет поверх этой базы:</p>
+<table>
+<thead>
+<tr>
+<th>Подсистема</th>
+<th>В практикуме</th>
+<th>В Pythonablo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Генерация</td>
+<td>Простые комнаты</td>
+<td>Арена, босс-этажи, cache этажей</td>
+</tr>
+<tr>
+<td>AI</td>
+<td>Прямой chase</td>
+<td>Pathfinding, способности врагов</td>
+</tr>
+<tr>
+<td>Лут</td>
+<td>Зелья</td>
+<td>Rarity, аффиксы, легендарки, сеты</td>
+</tr>
+<tr>
+<td>Навыки</td>
+<td>Огненный шар</td>
+<td>4 умения + улучшения + вихрь ПКМ</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>HUD + меню</td>
+<td>Инвентарь, кузнец, древо пассивов</td>
+</tr>
+<tr>
+<td>Звук</td>
+<td>—</td>
+<td>Процедурный audio в <code>engine/audio.py</code></td>
+</tr>
+<tr>
+<td>Сохранения</td>
+<td>—</td>
+<td><code>save/save_manager.py</code>, автосейв</td>
+</tr>
+</tbody>
+</table>
+<h3 id="идеи-для-расширения-самостоятельно">Идеи для расширения (самостоятельно)</h3>
+<ul>
+<li>Подключить спрайты из <code>assets/</code> через <code>engine/sprite_catalog.py</code> — <code>player.png</code>, <code>enemy_normal.png</code>.</li>
+<li>Редкость лута — normal / magic / rare / legendary с цветами из <code>RARITY_COLORS</code> в <code>config.py</code>.</li>
+<li><strong>Вихрь</strong> на ПКМ — удержание, трата маны, урон по радиусу каждые 0.12 с (<code>SkillSystem</code> в Pythonablo).</li>
+<li><strong>Кузнец и Наставник</strong> — NPC на этажах, экраны <code>ui/merchant_ui.py</code> и <code>ui/skill_tree_ui.py</code>.</li>
+<li><strong>События этажа</strong> — орда, защита жителя (<code>systems/encounter_system.py</code>).</li>
+<li><strong>Режим арены</strong> — волны каждые 30 с (<code>world/arena_generator.py</code>, <code>ARENA_ROUND_DURATION</code>).</li>
+<li><strong>Легендарные предметы</strong> — замена умения (<code>core/legendary_defs.py</code>, <code>systems/legendary_skills.py</code>).</li>
+<li><strong>Кэш этажей</strong> — <code>floor_cache</code> и <code>floor_states</code> в <code>Game</code>, возврат лестницей вверх.</li>
+</ul>
+<h3 id="мини-роадмап-после-практикума">Мини-роадмап после практикума</h3>
+<pre><code class="language-mermaid">flowchart TD
+    P[Прототип практикума] --> A[Pathfinding + JSON]
+    A --> B[Save + Audio]
+    B --> C[Спрайты + HUD polish]
+    C --> D[Лут с rarity]
+    D --> E[Pythonablo feature parity]
+</code></pre>
+<div class="callout callout--info">
+  <div class="callout-title">Дальнейшее чтение</div>
+  <div class="callout-body">
+  <p>Диаграммы архитектуры полной игры — в <a href="https://github.com/Spirzen/Pythonablo/blob/main/docs/architecture.md">docs/architecture.md</a> репозитория. Жанр и референсы — в разделе <a href="/encyclopedia/1-basics/1-18-kompyuternye-igry/intro">Компьютерные игры</a>. База Pygame — <a href="/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a>.</p>
+  </div>
+</div>
+<hr>
+<p>См. также: <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro">Практикум разработки игр — о разделе</a> · <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a> · <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132#shooter">шутер и спрайты в Lab</a> · <a href="https://github.com/Spirzen/Pythonablo">Pythonablo на GitHub</a>.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#как-проходить-практикум">Как проходить практикум</a></li><li class="article-toc__item"><a href="#о-практикуме">О практикуме</a></li><li class="article-toc__item is-h3"><a href="#четыре-столпа-жанра">Четыре столпа жанра</a></li><li class="article-toc__item is-h3"><a href="#карта-этапов">Карта этапов</a></li><li class="article-toc__item"><a href="#архитектура">Архитектура</a></li><li class="article-toc__item is-h3"><a href="#игровой-цикл">Игровой цикл</a></li><li class="article-toc__item is-h3"><a href="#слои-приложения">Слои приложения</a></li><li class="article-toc__item is-h3"><a href="#изометрические-координаты">Изометрические координаты</a></li><li class="article-toc__item is-h3"><a href="#машина-состояний">Машина состояний</a></li><li class="article-toc__item is-h3"><a href="#eventbus-связь-систем-без-спагетти">EventBus — связь систем без спагетти</a></li><li class="article-toc__item is-h3"><a href="#время-кадра-dt-и-фиксированный-шаг">Время кадра `dt` и фиксированный шаг</a></li><li class="article-toc__item is-h3"><a href="#порядок-update-и-draw-в-playing">Порядок update и draw в `PLAYING`</a></li><li class="article-toc__item is-h3"><a href="#целевая-структура-файлов">Целевая структура файлов</a></li><li class="article-toc__item is-h3"><a href="#диаграмма-объектов">Диаграмма объектов</a></li><li class="article-toc__item"><a href="#зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</a></li><li class="article-toc__item is-h3"><a href="#требования">Требования</a></li><li class="article-toc__item is-h3"><a href="#установка">Установка</a></li><li class="article-toc__item is-h3"><a href="#клонирование-эталона">Клонирование эталона</a></li><li class="article-toc__item is-h3"><a href="#первичная-структура">Первичная структура</a></li><li class="article-toc__item"><a href="#этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-1-константы-и-конфигурация">Этап 1 — константы и конфигурация</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-2-базовая-сущность-и-игрок">Этап 2 — базовая сущность и игрок</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-3-изометрический-рендер-и-камера">Этап 3 — изометрический рендер и камера</a></li><li class="article-toc__item is-h3"><a href="#проверка-изометрии-в-repl">Проверка изометрии в REPL</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-4-ввод-и-inputhandler">Этап 4 — ввод и InputHandler</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-5-тайлы-и-процедурная-карта">Этап 5 — тайлы и процедурная карта</a></li><li class="article-toc__item is-h3"><a href="#как-работает-генератор">Как работает генератор</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-6-коллизии-и-движение">Этап 6 — коллизии и движение</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-7-отрисовка-карты-в-изометрии">Этап 7 — отрисовка карты в изометрии</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-8-ближний-бой-полукруглый-удар">Этап 8 — ближний бой (полукруглый удар)</a></li><li class="article-toc__item is-h3"><a href="#математика-сектора-удара">Математика сектора удара</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-9-враги-и-простой-ai">Этап 9 — враги и простой AI</a></li><li class="article-toc__item is-h3"><a href="#полоска-hp-над-врагом">Полоска HP над врагом</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-10-eventbus-и-опыт">Этап 10 — EventBus и опыт</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-11-лут-на-земле">Этап 11 — лут на земле</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-12-инвентарь-и-экипировка-основа">Этап 12 — инвентарь и экипировка (основа)</a></li><li class="article-toc__item is-h3"><a href="#панель-инвентаря-overlay">Панель инвентаря (overlay)</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-13-активное-умение-огненный-шар">Этап 13 — активное умение (огненный шар)</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-14-hud">Этап 14 — HUD</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-15-меню-и-машина-состояний">Этап 15 — меню и машина состояний</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-16-этажи-и-портал">Этап 16 — этажи и портал</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-17-рывок-и-удерживаемая-атака">Этап 17 — рывок и удерживаемая атака</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-18-сборка-класса-game-и-чистый-mainpy">Этап 18 — сборка класса `Game` и чистый `main.py`</a></li><li class="article-toc__item is-h3"><a href="#разбор">Разбор</a></li><li class="article-toc__item"><a href="#этап-19-бонус-pathfinding-a">Этап 19 (бонус) — pathfinding A*</a></li><li class="article-toc__item"><a href="#этап-20-бонус-враги-из-json">Этап 20 (бонус) — враги из JSON</a></li><li class="article-toc__item"><a href="#этап-21-бонус-сохранение-игры">Этап 21 (бонус) — сохранение игры</a></li><li class="article-toc__item"><a href="#этап-22-бонус-процедурный-звук">Этап 22 (бонус) — процедурный звук</a></li><li class="article-toc__item"><a href="#типичные-ошибки-и-отладка">Типичные ошибки и отладка</a></li><li class="article-toc__item is-h3"><a href="#debug-overlay">Debug overlay</a></li><li class="article-toc__item is-h3"><a href="#баланс-с-чего-начать">Баланс — с чего начать</a></li><li class="article-toc__item"><a href="#полная-ревизия-файлов">Полная ревизия файлов</a></li><li class="article-toc__item is-h3"><a href="#requirementstxt">`requirements.txt`</a></li><li class="article-toc__item is-h3"><a href="#mainpy">`main.py`</a></li><li class="article-toc__item is-h3"><a href="#coreinitpy">`core/__init__.py`</a></li><li class="article-toc__item is-h3"><a href="#coreconfigpy">`core/config.py`</a></li><li class="article-toc__item is-h3"><a href="#coreeventbuspy">`core/event_bus.py`</a></li><li class="article-toc__item is-h3"><a href="#coregamepy">`core/game.py`</a></li><li class="article-toc__item is-h3"><a href="#engineinitpy">`engine/__init__.py`</a></li><li class="article-toc__item is-h3"><a href="#enginerendererpy">`engine/renderer.py`</a></li><li class="article-toc__item is-h3"><a href="#enginecamerapy">`engine/camera.py`</a></li><li class="article-toc__item is-h3"><a href="#engineinputhandlerpy">`engine/input_handler.py`</a></li><li class="article-toc__item is-h3"><a href="#enginemaprendererpy">`engine/map_renderer.py`</a></li><li class="article-toc__item is-h3"><a href="#entitiesinitpy">`entities/__init__.py`</a></li><li class="article-toc__item is-h3"><a href="#entitiesentitypy">`entities/entity.py`</a></li><li class="article-toc__item is-h3"><a href="#entitiesplayerpy">`entities/player.py`</a></li><li class="article-toc__item is-h3"><a href="#entitiesenemypy">`entities/enemy.py`</a></li><li class="article-toc__item is-h3"><a href="#entitiesitempy">`entities/item.py`</a></li><li class="article-toc__item is-h3"><a href="#playerinitpy">`player/__init__.py`</a></li><li class="article-toc__item is-h3"><a href="#playerstatspy">`player/stats.py`</a></li><li class="article-toc__item is-h3"><a href="#playerexperiencepy">`player/experience.py`</a></li><li class="article-toc__item is-h3"><a href="#playerinventorypy">`player/inventory.py`</a></li><li class="article-toc__item is-h3"><a href="#playerequipmentpy">`player/equipment.py`</a></li><li class="article-toc__item is-h3"><a href="#worldinitpy">`world/__init__.py`</a></li><li class="article-toc__item is-h3"><a href="#worldtilepy">`world/tile.py`</a></li><li class="article-toc__item is-h3"><a href="#worldlevelgeneratorpy">`world/level_generator.py`</a></li><li class="article-toc__item is-h3"><a href="#worldmappy">`world/map.py`</a></li><li class="article-toc__item is-h3"><a href="#worldcollisionpy">`world/collision.py`</a></li><li class="article-toc__item is-h3"><a href="#systemsinitpy">`systems/__init__.py`</a></li><li class="article-toc__item is-h3"><a href="#systemsmovementsystempy">`systems/movement_system.py`</a></li><li class="article-toc__item is-h3"><a href="#systemscombatsystempy">`systems/combat_system.py`</a></li><li class="article-toc__item is-h3"><a href="#systemsaisystempy">`systems/ai_system.py`</a></li><li class="article-toc__item is-h3"><a href="#systemslootsystempy">`systems/loot_system.py`</a></li><li class="article-toc__item is-h3"><a href="#systemsskillsystempy">`systems/skill_system.py`</a></li><li class="article-toc__item is-h3"><a href="#uiinitpy">`ui/__init__.py`</a></li><li class="article-toc__item is-h3"><a href="#uihudpy">`ui/hud.py`</a></li><li class="article-toc__item is-h3"><a href="#uimenupy">`ui/menu.py`</a></li><li class="article-toc__item is-h3"><a href="#разбор-финальной-архитектуры">Разбор финальной архитектуры</a></li><li class="article-toc__item"><a href="#итоговая-самопроверка-проекта">Итоговая самопроверка проекта</a></li><li class="article-toc__item is-h3"><a href="#сравнение-с-полным-pythonablo">Сравнение с полным Pythonablo</a></li><li class="article-toc__item is-h3"><a href="#идеи-для-расширения-самостоятельно">Идеи для расширения (самостоятельно)</a></li><li class="article-toc__item is-h3"><a href="#мини-роадмап-после-практикума">Мини-роадмап после практикума</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр — о разделе  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312" target="_blank" rel="noopener noreferrer"> Разработка игр на Python  ↗ </a> </li><li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro" target="_blank" rel="noopener noreferrer"> Компьютерные игры — о разделе  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

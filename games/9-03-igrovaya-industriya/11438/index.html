@@ -1,0 +1,691 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Linux-гейминг и Proton — Игры IT Universe</title><meta name="description" content="Steam Deck, Proton, Wine, античит и настройка игр на Linux — практический обзор для PC-геймера и разработчика."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Linux-гейминг и Proton</span></li></ol></nav><header class="portal-hero"> <h1>Linux-гейминг и Proton</h1> <p>Steam Deck, Proton, Wine, античит и настройка игр на Linux — практический обзор для PC-геймера и разработчика.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Linux-гейминг и Proton" data-url="/games/9-03-igrovaya-industriya/11438">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Linux-гейминг и Proton">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Linux-гейминг и Proton</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<p>Большинство игр в Steam пишутся под <strong>Windows</strong>. На <strong>Linux</strong> их запускают через совместимостьный слой — главным образом <strong>Proton</strong> от Valve. Тот же стек стоит на <strong>Steam Deck</strong> — см. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Steam Deck</a> и <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11435">Steam</a>. Для разработчиков Linux — целевая платформа indie и live-service с нативными билдами.</p>
+<hr>
+<h2 id="словарь">Словарь</h2>
+<ul>
+<li><strong>Wine</strong> — слой совместимости WinAPI на Linux без Windows.</li>
+<li><strong>Proton</strong> — форк Wine от Valve с патчами под игры + DXVK/VKD3D.</li>
+<li><strong>DXVK</strong> — перевод DirectX 9/10/11 в Vulkan.</li>
+<li><strong>VKD3D-Proton</strong> — перевод DirectX 12 в Vulkan.</li>
+<li><strong>D9VK / wined3d</strong> — старые DX paths; реже primary сейчас.</li>
+<li><strong>Steam Play</strong> — функция Steam включить Proton для Windows games.</li>
+<li><strong>SteamOS</strong> — дистрибутив на Deck на базе Arch.</li>
+<li><strong>ProtonDB</strong> — crowd reports совместимости (<a href="https://www.protondb.com/">protondb.com</a>).</li>
+<li><strong>Steam Deck Verified</strong> — официальный статус Valve совместимости.</li>
+<li><strong>Shader cache</strong> — кэш скомпилированных шейдеров; ускоряет повторные запуски.</li>
+<li><strong>Prefix / bottle</strong> — isolated Wine environment с fake C: drive.</li>
+<li><strong>Winetricks</strong> — helper install DLLs, fonts.</li>
+<li><strong>Lutris</strong> — game launcher managing Wine runners.</li>
+<li><strong>Heroic</strong> — Epic Games Store open source client.</li>
+<li><strong>Bottles</strong> — GUI Wine prefix manager.</li>
+<li><strong>EAC</strong> — Easy Anti-Cheat.</li>
+<li><strong>BattlEye</strong> — anti-cheat kernel driver.</li>
+<li><strong>Fsr / FSR</strong> — AMD upscaling; Deck uses often.</li>
+<li><strong>Gamemode</strong> — Feral daemon CPU/GPU priority tweak.</li>
+<li><strong>MangoHud</strong> — overlay FPS, frametime, GPU stats.</li>
+<li><strong>Native port</strong> — game binary compiled for Linux directly.</li>
+</ul>
+<hr>
+<h2 id="история-wine-и-proton">История Wine и Proton</h2>
+<table>
+<thead>
+<tr>
+<th>Год</th>
+<th>Событие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1993</td>
+<td>Wine project starts — Wine Is Not an Emulator</td>
+</tr>
+<tr>
+<td>2000s</td>
+<td>Wine runs early DirectX games with limitations</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>Steam Linux client launch; native Linux games push</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>Vulkan API — foundation for DXVK later</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>DXVK by Philip Reichl — DX11 → Vulkan revolution</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>Valve announces Proton; Steam Play beta</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>Proton 4.x; DXVK integrated; thousands playable</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>Steam Deck launch SteamOS 3; Proton experimental default</td>
+</tr>
+<tr>
+<td>2023+</td>
+<td>VKD3D-Proton mature for DX12 AAA</td>
+</tr>
+<tr>
+<td>2024–26</td>
+<td>Anti-cheat Proton support expands; still gaps</td>
+</tr>
+</tbody>
+</table>
+<p>Valve investment changed Linux gaming from hobby to <strong>viable PC gaming OS</strong> for many users.</p>
+<hr>
+<h2 id="цепочка-технологий">Цепочка технологий</h2>
+<pre><code class="language-mermaid">flowchart LR
+  Game["Игра Windows .exe"]
+  Proton["Proton"]
+  DXVK["DXVK / VKD3D"]
+  Wine["Wine WinAPI"]
+  Linux["Ядро Linux + Vulkan"]
+  Game --> Proton --> Wine
+  Proton --> DXVK --> Linux
+  Wine --> Linux
+</code></pre>
+<ul>
+<li><strong>Wine</strong> translates Windows syscalls and APIs.</li>
+<li><strong>DXVK/VKD3D</strong> translate graphics to Vulkan drivers.</li>
+<li><strong>Proton</strong> adds game-specific patches, media codecs, launcher fixes.</li>
+</ul>
+<hr>
+<h2 id="steam-deck">Steam Deck</h2>
+<h3 id="hardware-summary">Hardware summary</h3>
+<ul>
+<li>AMD APU Zen 2 + RDNA 2; 800p screen.</li>
+<li>Fixed TDP budget; FSR upscaling common.</li>
+</ul>
+<h3 id="software">Software</h3>
+<ul>
+<li><strong>SteamOS 3</strong> — read-only root, immutable-ish updates.</li>
+<li><strong>Proton</strong> default for non-Linux games.</li>
+<li><strong>Desktop mode</strong> — full KDE for Lutris, browsers.</li>
+</ul>
+<h3 id="verified-tiers">Verified tiers</h3>
+<ul>
+<li><strong>Verified</strong> — works out of box UI readable.</li>
+<li><strong>Playable</strong> — works with minor issues.</li>
+<li><strong>Unsupported</strong> — may run via Proton manual anyway.</li>
+<li><strong>Unknown</strong> — not tested by Valve.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Steam Deck article</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/123">портативные устройства</a>.</p>
+<hr>
+<h2 id="protondb-как-пользоваться">ProtonDB — как пользоваться</h2>
+<h3 id="рейтинги">Рейтинги</h3>
+<ul>
+<li><strong>Platinum</strong> — perfect out of box.</li>
+<li><strong>Gold</strong> — minor tweaks (proton version, launch options).</li>
+<li><strong>Silver</strong> — issues but playable.</li>
+<li><strong>Bronze</strong> — significant problems.</li>
+<li><strong>Borked</strong> — unplayable.</li>
+</ul>
+<h3 id="как-читать-отчёты">Как читать отчёты</h3>
+<ul>
+<li>Filter by <strong>GPU</strong> (NVIDIA vs AMD) and <strong>distro</strong>.</li>
+<li>Read <strong>recent</strong> reports after game updates.</li>
+<li>Launch options copied from community: <code>PROTON_USE_WINED3D=1</code> etc. — use cautiously.</li>
+</ul>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>Community-sourced; not official Valve warranty.</li>
+<li>Online anti-cheat status changes with patches.</li>
+</ul>
+<h3 id="before-purchase-checklist">Before purchase checklist</h3>
+<ol>
+<li>Search game on ProtonDB.</li>
+<li>Check Steam Deck badge if Deck user.</li>
+<li>Read anti-cheat section below for multiplayer.</li>
+<li>Search Reddit r/linux_gaming recent thread.</li>
+</ol>
+<hr>
+<h2 id="включение-proton-в-steam">Включение Proton в Steam</h2>
+<ol>
+<li><strong>Steam → Settings → Compatibility</strong>.</li>
+<li>Enable <strong>Enable Steam Play for all other titles</strong> (optional global).</li>
+<li>Default Proton version: <strong>Proton Experimental</strong> for new releases.</li>
+<li>Per-game: <strong>Properties → Compatibility → Force specific version</strong>.</li>
+</ol>
+<h3 id="launch-options-examples">Launch options examples</h3>
+<ul>
+<li><code>PROTON_LOG=1 %command%</code> — debug log home directory.</li>
+<li><code>DXVK_HUD=fps</code> — FPS overlay DXVK.</li>
+<li><code>WINEESYNC=1</code> — sync optimization some games.</li>
+</ul>
+<h3 id="proton-versions">Proton versions</h3>
+<ul>
+<li><strong>Proton Experimental</strong> — bleeding edge fixes.</li>
+<li><strong>Proton GE</strong> (Community GloriousEggroll) — third-party enhanced build via ProtonUp-Qt.</li>
+</ul>
+<hr>
+<h2 id="настройка-по-gpu">Настройка по GPU</h2>
+<h3 id="amd-recommended-on-linux">AMD (recommended on Linux)</h3>
+<ul>
+<li><strong>Mesa</strong> open drivers in kernel; RADV Vulkan.</li>
+<li>Works out of box most distros.</li>
+<li><code>radeontop</code> monitor usage.</li>
+</ul>
+<h3 id="nvidia">NVIDIA</h3>
+<ul>
+<li><strong>Proprietary driver</strong> required for performance; install from distro or NVIDIA website.</li>
+<li><strong>Wayland</strong> vs X11 — check game compatibility; XWayland common.</li>
+<li>Newer drivers improve DX12 via VKD3D.</li>
+<li>Issues historically more common than AMD; improving.</li>
+</ul>
+<h3 id="intel-integrated">Intel integrated</h3>
+<ul>
+<li><strong>Arc discrete</strong> — Mesa ANV Vulkan; gaming viable mid settings.</li>
+<li><strong>Integrated Iris</strong> — light games, indie, older AAA low settings.</li>
+<li>Steam Deck class APU = Intel competitor product AMD in Deck.</li>
+</ul>
+<h3 id="general-gpu-tips">General GPU tips</h3>
+<ul>
+<li>Update Mesa/NVIDIA driver after major Proton release.</li>
+<li>Vulkan supported mandatory for DXVK path.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/2-system-network/2-06-sistemnoe-administrirovanie/93">Linux admin</a>.</p>
+<hr>
+<h2 id="античит-eac-и-battleye">Античит — EAC и BattlEye</h2>
+<h3 id="problem">Problem</h3>
+<ul>
+<li>Kernel-level anti-cheat blocked Wine historically.</li>
+<li>Multiplayer <strong>may refuse to launch</strong> even if single-player works.</li>
+</ul>
+<h3 id="valve-initiative">Valve initiative</h3>
+<ul>
+<li>Epic (EAC) and BattlEye pledged Proton support if dev enables flag.</li>
+<li><strong>Developer must enable</strong> Linux support in anti-cheat dashboard — not automatic.</li>
+</ul>
+<h3 id="how-to-check">How to check</h3>
+<ul>
+<li>ProtonDB reports "anticheat works" or not.</li>
+<li>Official game news patch notes "Steam Deck / Linux".</li>
+<li><a href="https://areweanticheatyet.com/">Are We Anti-Cheat Yet</a> community tracker.</li>
+</ul>
+<h3 id="typical-status-categories">Typical status categories</h3>
+<ul>
+<li><strong>Running</strong> — works on Proton.</li>
+<li><strong>Planned</strong> — dev announced.</li>
+<li><strong>Denied</strong> — no Linux support (many competitive shooters).</li>
+</ul>
+<h3 id="single-player">Single-player</h3>
+<ul>
+<li>Often fine without anti-cheat server connection.</li>
+<li>Some games still fail if launcher loads EAC at start — workarounds vary.</li>
+</ul>
+<p>См. <a href="./125">киберспорт</a> — pro tournaments use Windows overwhelmingly.</p>
+<hr>
+<h2 id="lutris-heroic-bottles">Lutris, Heroic, Bottles</h2>
+<h3 id="lutris">Lutris</h3>
+<ul>
+<li>Open source game library.</li>
+<li><strong>Install scripts</strong> community for GOG, Epic, Battle.net (WoW etc.).</li>
+<li>Wine runners bundled; version management.</li>
+<li>Useful non-Steam games.</li>
+</ul>
+<h3 id="heroic-games-launcher">Heroic Games Launcher</h3>
+<ul>
+<li>Epic Games Store client.</li>
+<li>Free games weekly; Proton integration.</li>
+<li>Legendary CLI backend.</li>
+</ul>
+<h3 id="bottles">Bottles</h3>
+<ul>
+<li>Per-app Wine prefix with dependency installer.</li>
+<li>Good for launchers stubborn on default Proton.</li>
+</ul>
+<h3 id="protonup-qt">ProtonUp-Qt</h3>
+<ul>
+<li>GUI install Proton GE into Steam compatibilitytools folder.</li>
+</ul>
+<hr>
+<h2 id="gaming-distros">Gaming distros</h2>
+<table>
+<thead>
+<tr>
+<th>Distro</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SteamOS</strong></td>
+<td>Deck default; immutable</td>
+</tr>
+<tr>
+<td><strong>Bazzite</strong></td>
+<td>Fedora atomic gaming; Deck-like desktop</td>
+</tr>
+<tr>
+<td><strong>Nobara</strong></td>
+<td>Fedora tuned NVIDIA/Multimedia</td>
+</tr>
+<tr>
+<td><strong>Pop!_OS</strong></td>
+<td>System76; NVIDIA ISO</td>
+</tr>
+<tr>
+<td><strong>EndeavourOS / Arch</strong></td>
+<td>Rolling latest Mesa</td>
+</tr>
+<tr>
+<td><strong>Ubuntu LTS</strong></td>
+<td>Stable; slightly older drivers unless PPAs</td>
+</tr>
+</tbody>
+</table>
+<p>No single "best"; Arch rolling popular among enthusiasts.</p>
+<hr>
+<h2 id="kernel-tweaks">Kernel tweaks</h2>
+<h3 id="gamemode">Gamemode</h3>
+<ul>
+<li>Install <code>gamemode</code>; Steam launch option <code>gamemoderun %command%</code>.</li>
+<li>Requests CPU governor performance, optional GPU clock.</li>
+</ul>
+<h3 id="cpu-schedulers">CPU schedulers</h3>
+<ul>
+<li>Most users default kernel fine.</li>
+<li><strong>CFS</strong> tweaks niche; measure before chasing.</li>
+</ul>
+<h3 id="low-latency-kernel">Low latency kernel</h3>
+<ul>
+<li><code>linux-lowlatency</code> optional on Ubuntu for audio; minor gaming effect.</li>
+</ul>
+<h3 id="huge-pages-sysctl">Huge pages / sysctl</h3>
+<ul>
+<li>Advanced; rarely needed consumer gaming.</li>
+</ul>
+<hr>
+<h2 id="shader-cache">Shader cache</h2>
+<h3 id="why-stutter-first-launch">Why stutter first launch</h3>
+<ul>
+<li>DX12/Vulkan pipeline compile hitch first time area loaded.</li>
+<li><strong>Shader pre-caching</strong> Steam builds cache in background after download.</li>
+</ul>
+<h3 id="locations">Locations</h3>
+<ul>
+<li><code>~/.steam/steam/steamapps/shadercache/</code> per game.</li>
+<li>Copy cache when migrating install optional.</li>
+</ul>
+<h3 id="deck-steamos">Deck / SteamOS</h3>
+<ul>
+<li>Pre-cache during download if enabled Settings.</li>
+</ul>
+<h3 id="clear-cache-troubleshooting">Clear cache troubleshooting</h3>
+<ul>
+<li>Delete shadercache folder if corruption after driver update.</li>
+</ul>
+<hr>
+<h2 id="performance-tuning">Performance tuning</h2>
+<h3 id="mangohud">MangoHud</h3>
+<ul>
+<li>Overlay: FPS, frametime graph, GPU temp.</li>
+<li>Launch: <code>MANGOHUD=1 %command%</code>.</li>
+</ul>
+<h3 id="fsr">FSR</h3>
+<ul>
+<li>AMD FidelityFX Super Resolution upscaling in compatible Proton games or via MangoHud variable.</li>
+</ul>
+<h3 id="esync-fsync">Esync / Fsync</h3>
+<ul>
+<li>Wine synchronization primitives; Proton enables improved defaults.</li>
+</ul>
+<h3 id="cpu-cores">CPU cores</h3>
+<ul>
+<li>Some old games break on many cores; <code>taskset</code> or launch limit affinity.</li>
+</ul>
+<h3 id="windows-vs-linux-same-game">Windows vs Linux same game</h3>
+<ul>
+<li>DX12 AAA sometimes -5–15% FPS Linux; gap closing.</li>
+<li>Older DX9 games may run <strong>better</strong> Linux DXVK.</li>
+</ul>
+<h3 id="ram-and-swap">RAM and swap</h3>
+<ul>
+<li>16 GB minimum comfortable AAA.</li>
+<li><strong>zswap</strong> or <strong>zram</strong> on Deck 16GB helps.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/123">оптимизация игр</a>.</p>
+<hr>
+<h2 id="нативные-linux-игры-примеры">Нативные Linux-игры — примеры</h2>
+<h3 id="native-on-steam-examples-list-evolves">Native on Steam (examples, list evolves)</h3>
+<ul>
+<li><strong>Counter-Strike 2</strong> — Linux native Vulkan.</li>
+<li><strong>Dota 2</strong> — native long time.</li>
+<li><strong>Valheim</strong> — native.</li>
+<li><strong>Terraria, Stardew Valley</strong> — native.</li>
+<li><strong>Civilization VI, Borderlands 3</strong> — native builds exist.</li>
+<li><strong>XCOM 2, Total War entries</strong> — Feral ports.</li>
+<li><strong>Rocket League</strong> — removed Linux native historically caution example.</li>
+</ul>
+<h3 id="indies">Indies</h3>
+<ul>
+<li><strong>Godot games</strong> often export Linux trivially.</li>
+<li><strong>Unity / Unreal</strong> — export template if dev enables.</li>
+</ul>
+<h3 id="how-to-find">How to find</h3>
+<ul>
+<li>Steam store filter <strong>SteamOS + Linux</strong> tab.</li>
+<li>Icon <strong>Runs on Steam Deck</strong>.</li>
+</ul>
+<hr>
+<h2 id="разработчикам-экспорт-linux">Разработчикам — экспорт Linux</h2>
+<h3 id="why-ship-linux">Why ship Linux</h3>
+<ul>
+<li>Steam Deck market; passionate community.</li>
+<li>CI Linux headless server builds.</li>
+</ul>
+<h3 id="engines">Engines</h3>
+<ul>
+<li><strong>Godot</strong> — one-click export .x86_64 binary.</li>
+<li><strong>Unity</strong> — Linux build target IL2CPP/Mono.</li>
+<li><strong>Unreal</strong> — Linux cross-compile from Windows or build on Linux.</li>
+<li><strong>GameMaker</strong> — Linux export paid tier history.</li>
+</ul>
+<h3 id="testing">Testing</h3>
+<ul>
+<li>Test Proton <strong>and</strong> native if both offered.</li>
+<li>Ship Vulkan renderer when possible.</li>
+</ul>
+<p>См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/118">платформы геймдева</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/3">Godot</a>.</p>
+<h3 id="anti-cheat-for-devs">Anti-cheat for devs</h3>
+<ul>
+<li>Enable EAC/BattlEye Proton flags if multiplayer title.</li>
+</ul>
+<hr>
+<h2 id="retroarch-на-linux">RetroArch на Linux</h2>
+<ul>
+<li>Excellent native port; see <a href="./128">эмуляция</a>.</li>
+</ul>
+<hr>
+<h2 id="чек-лист-переезд-на-linux">Чек-лист переезд на Linux</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Pick distro (Nobara, Bazzite, or existing Ubuntu).</li>
+<li class="task-list-item"><input type="checkbox" disabled> Install GPU drivers (NVIDIA proprietary if NVIDIA).</li>
+<li class="task-list-item"><input type="checkbox" disabled> Install Steam; enable Proton Experimental.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Install Gamemode, MangoHud optional.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Check ProtonDB for your game library top 10.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Backup saves from Windows cloud or manual.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Test multiplayer titles anti-cheat separately.</li>
+<li class="task-list-item"><input type="checkbox" disabled> SSD space for shader cache.</li>
+</ul>
+<hr>
+<h2 id="faq">FAQ</h2>
+<p><strong>Linux gaming viable 2026?</strong>
+Yes for large Steam library; check specific titles.</p>
+<p><strong>Что такое Proton?</strong>
+Valve Wine fork for Steam games.</p>
+<p><strong>Что такое Wine?</strong>
+Windows API compatibility layer.</p>
+<p><strong>Нужна ли Windows license?</strong>
+No for Proton path.</p>
+<p><strong>Steam Deck works all Steam games?</strong>
+No; Verified subset; many others still run.</p>
+<p><strong>Что такое DXVK?</strong>
+DirectX 11 to Vulkan layer.</p>
+<p><strong>Что такое VKD3D-Proton?</strong>
+DirectX 12 to Vulkan for Proton.</p>
+<p><strong>Что такое ProtonDB?</strong>
+Community compatibility database.</p>
+<p><strong>Platinum vs Gold ProtonDB?</strong>
+Platinum perfect; Gold minor tweaks.</p>
+<p><strong>Как force Proton version?</strong>
+Game Properties → Compatibility.</p>
+<p><strong>Proton Experimental vs stable?</strong>
+Experimental gets fixes first.</p>
+<p><strong>Что такое Proton GE?</strong>
+Community enhanced Proton build.</p>
+<p><strong>NVIDIA Linux gaming OK?</strong>
+Yes with proprietary drivers; more setup than AMD.</p>
+<p><strong>AMD Linux gaming?</strong>
+Excellent Mesa open drivers default.</p>
+<p><strong>Intel Arc Linux?</strong>
+Improving; Mesa ANV.</p>
+<p><strong>Почему не запускается EAC game?</strong>
+Dev didn't enable Proton anti-cheat.</p>
+<p><strong>BattlEye работает на Proton?</strong>
+If developer enabled; check Are We Anti-Cheat Yet.</p>
+<p><strong>Что такое Lutris?</strong>
+Launcher for non-Steam Wine games.</p>
+<p><strong>Что такое Heroic?</strong>
+Epic Store open client Linux.</p>
+<p><strong>Что такое Bottles?</strong>
+Wine prefix manager GUI.</p>
+<p><strong>Что такое Winetricks?</strong>
+Install Windows DLL dependencies.</p>
+<p><strong>Что такое prefix?</strong>
+Fake C: drive Wine environment.</p>
+<p><strong>Что такое shader stutter?</strong>
+Pipeline compile hitch first run.</p>
+<p><strong>Как fix shader stutter?</strong>
+Let Steam build shader cache; update drivers.</p>
+<p><strong>Что такое Gamemode?</strong>
+Feral CPU/GPU performance daemon.</p>
+<p><strong>Что такое MangoHud?</strong>
+Performance overlay.</p>
+<p><strong>Launch option gamemoderun?</strong>
+Wraps game with Gamemode.</p>
+<p><strong>Wayland или X11 gaming?</strong>
+Varies; XWayland common still.</p>
+<p><strong>Что такое Steam Play?</strong>
+Steam feature run Windows games Linux.</p>
+<p><strong>Что такое SteamOS?</strong>
+Valve Linux distro Deck.</p>
+<p><strong>Bazzite vs Nobara?</strong>
+Both gaming-focused Fedora-based; try both FAQs.</p>
+<p><strong>Native vs Proton performance?</strong>
+Native usually better if quality port.</p>
+<p><strong>CS2 native Linux?</strong>
+Yes Vulkan native.</p>
+<p><strong>Dota 2 Linux?</strong>
+Native long-standing.</p>
+<p><strong>Rocket League Linux?</strong>
+Native removed; Proton only.</p>
+<p><strong>Как Epic games Linux?</strong>
+Heroic + Proton or Lutris scripts.</p>
+<p><strong>GOG Linux?</strong>
+Lutris installers or manual Wine.</p>
+<p><strong>Battle.net Wine?</strong>
+WoW often works; Blizzard breaks sometimes.</p>
+<p><strong>Что такое ProtonUp-Qt?</strong>
+Install Proton GE GUI.</p>
+<p><strong>Что такое FSR Deck?</strong>
+Upscale lower render res.</p>
+<p><strong>Сколько RAM нужно?</strong>
+16 GB AAA comfortable.</p>
+<p><strong>Proton log debug?</strong>
+PROTON_LOG=1 launch option.</p>
+<p><strong>Игра не видит controller?</strong>
+Steam Input settings; SDL gamepad.</p>
+<p><strong>Что такое esync fsync?</strong>
+Wine synchronization improvements.</p>
+<p><strong>Export Linux Godot?</strong>
+One-click export template.</p>
+<p><strong>Export Linux Unity?</strong>
+Build target in build settings.</p>
+<p><strong>Unreal Linux build?</strong>
+Cross-compile documentation Epic.</p>
+<p><strong>Anti-cheat dev enable Proton?</strong>
+Epic Online Services dashboard EAC flag.</p>
+<p><strong>Что такое r/linux_gaming?</strong>
+Main community subreddit.</p>
+<p><strong>Что такое Steam Deck Verified?</strong>
+Valve tested compatibility badge.</p>
+<p><strong>Playable vs Verified?</strong>
+Playable minor issues; Verified best.</p>
+<p><strong>Windows only game single-player?</strong>
+Often works Proton if no kernel anticheat.</p>
+<p><strong>Multiplayer Linux risk?</strong>
+Account ban if anticheat triggers; verify support first.</p>
+<p><strong>Dual boot alternative?</strong>
+Keep Windows partition for unsupported titles.</p>
+<p><strong>Flatpak Steam issues?</strong>
+Sandbox permissions; native package sometimes easier.</p>
+<p><strong>Что такое zram Deck?</strong>
+Compressed RAM swap SteamOS.</p>
+<p><strong>Vulkan required?</strong>
+Yes for modern Proton DX path.</p>
+<p><strong>OpenGL old games?</strong>
+Still works; less optimal path.</p>
+<p><strong>Proton fix launchers?</strong>
+Epic/Ubisoft inside Steam add non-Steam game.</p>
+<p><strong>Что такое DXVK_HUD?</strong>
+DXVK debug overlay environment var.</p>
+<p><strong>Wine vs Proton difference?</strong>
+Proton game-tested Wine + DXVK patches.</p>
+<p><strong>Steam Linux market share?</strong>
+Growing with Deck; Valve publishes survey stats.</p>
+<p><strong>Разработчик стоит ли Linux port?</strong>
+Deck + goodwill; Proton may suffice first.</p>
+<p><strong>Что такое pressure-vessel Steam?</strong>
+Container runtime Steam Linux client.</p>
+<p><strong>Snap Steam on Ubuntu?</strong>
+Works; some prefer .deb native.</p>
+<p><strong>Gaming on Fedora?</strong>
+Nobara variant popular tuned.</p>
+<p><strong>Arch for gaming?</strong>
+Rolling Mesa latest; manual maintenance.</p>
+<p><strong>Pop OS NVIDIA?</strong>
+Preinstalled NVIDIA driver ISO easy.</p>
+<p><strong>Что такое Gamescope?</strong>
+Compositor scaling Deck; microstutter help.</p>
+<p><strong>Remote Play Linux?</strong>
+Steam Link app streams from Windows host alternative.</p>
+<p><strong>Proton and modding?</strong>
+Most mod managers Wine; read ProtonDB.</p>
+<p><strong>VR Linux?</strong>
+SteamVR Linux experimental niche.</p>
+<p><strong>Что такое vkd3d-proton vs dxvk?</strong>
+DX12 vs DX11 translation respectively.</p>
+<p><strong>Secure Boot Linux gaming?</strong>
+May block NVIDIA driver signing; disable or enroll MOK.</p>
+<p><strong>TPM Linux gaming?</strong>
+Irrelevant most games; Windows 11 reqs separate.</p>
+<p><strong>Best first step new Linux gamer?</strong>
+Install Steam enable Proton check ProtonDB library.</p>
+<hr>
+<h2 id="gamescope-и-compositor">Gamescope и compositor</h2>
+<ul>
+<li><strong>Gamescope</strong> — Wayland micro-compositor от Valve; frame limiting, scaling, FSR injection.</li>
+<li>Steam Deck uses Gamescope internally for smooth frame pacing.</li>
+<li>Desktop Linux: <code>gamescope -W 1920 -H 1080 -f -- steam -gamepadui</code> experimental setups.</li>
+</ul>
+<p>Полезно когда game raw fullscreen misbehaves on multi-monitor.</p>
+<hr>
+<h2 id="dual-boot-и-passthrough-кратко">Dual boot и passthrough (кратко)</h2>
+<ul>
+<li><strong>Dual boot Windows + Linux</strong> — fallback для titles with kernel anti-cheat denied.</li>
+<li>GRUB bootloader; separate NTFS data partition optional shared saves where cloud sync absent.</li>
+<li><strong>VFIO GPU passthrough</strong> — Windows VM dedicated GPU; advanced, second GPU needed; out of scope beginner but exists for purists.</li>
+</ul>
+<p>Most users: Proton first, dual boot second, passthrough niche.</p>
+<hr>
+<h2 id="troubleshooting-proton">Troubleshooting Proton</h2>
+<table>
+<thead>
+<tr>
+<th>Проблема</th>
+<th>Решение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Launcher hangs</td>
+<td>Proton Experimental; Proton GE</td>
+</tr>
+<tr>
+<td>No audio</td>
+<td>Pavucontrol set output; <code>%command%</code> pulse env</td>
+</tr>
+<tr>
+<td>Missing DLL</td>
+<td>Winetricks vcrun2019; game protontricks</td>
+</tr>
+<tr>
+<td>DX12 crash</td>
+<td>Update VKD3D-Proton via Proton GE</td>
+</tr>
+<tr>
+<td>Online won't connect</td>
+<td>Check EAC status; may be unsupported</td>
+</tr>
+<tr>
+<td>CJK fonts boxes</td>
+<td>Winetricks cjkfonts</td>
+</tr>
+<tr>
+<td>Ultra-wide broken</td>
+<td>Gamescope force resolution</td>
+</tr>
+</tbody>
+</table>
+<p>Community: r/linux_gaming sticky wiki, Steam community guides per appid.</p>
+<hr>
+<h2 id="дополнительные-native-и-gold-titles-примеры">Дополнительные native и Gold titles (примеры)</h2>
+<ul>
+<li><strong>Hollow Knight, Celeste, Stardew Valley</strong> — indie native staples.</li>
+<li><strong>Risk of Rain 2, Factorio</strong> — native multiplayer stable.</li>
+<li><strong>Larian titles (Baldur's Gate 3)</strong> — native Linux day-one example AAA.</li>
+<li><strong>id software historical</strong> — DOOM engines open; modern id via Proton often Platinum.</li>
+</ul>
+<p>Always re-check ProtonDB after major game patch — status flips.</p>
+<hr>
+<h2 id="см-также">См. также</h2>
+<ul>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11435">Steam</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Steam Deck</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/1141">PC как платформа</a></li>
+<li><a href="./128">Эмуляция ретро</a></li>
+<li><a href="./125">Киберспорт</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/2-system-network/2-06-sistemnoe-administrirovanie/93">Администрирование Linux</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/2-system-network/2-01-operatsionnaya-sistema/intro">ОС — intro</a></li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#словарь">Словарь</a></li><li class="article-toc__item"><a href="#история-wine-и-proton">История Wine и Proton</a></li><li class="article-toc__item"><a href="#цепочка-технологий">Цепочка технологий</a></li><li class="article-toc__item"><a href="#steam-deck">Steam Deck</a></li><li class="article-toc__item is-h3"><a href="#hardware-summary">Hardware summary</a></li><li class="article-toc__item is-h3"><a href="#software">Software</a></li><li class="article-toc__item is-h3"><a href="#verified-tiers">Verified tiers</a></li><li class="article-toc__item"><a href="#protondb-как-пользоваться">ProtonDB — как пользоваться</a></li><li class="article-toc__item is-h3"><a href="#рейтинги">Рейтинги</a></li><li class="article-toc__item is-h3"><a href="#как-читать-отчёты">Как читать отчёты</a></li><li class="article-toc__item is-h3"><a href="#limitations">Limitations</a></li><li class="article-toc__item is-h3"><a href="#before-purchase-checklist">Before purchase checklist</a></li><li class="article-toc__item"><a href="#включение-proton-в-steam">Включение Proton в Steam</a></li><li class="article-toc__item is-h3"><a href="#launch-options-examples">Launch options examples</a></li><li class="article-toc__item is-h3"><a href="#proton-versions">Proton versions</a></li><li class="article-toc__item"><a href="#настройка-по-gpu">Настройка по GPU</a></li><li class="article-toc__item is-h3"><a href="#amd-recommended-on-linux">AMD (recommended on Linux)</a></li><li class="article-toc__item is-h3"><a href="#nvidia">NVIDIA</a></li><li class="article-toc__item is-h3"><a href="#intel-integrated">Intel integrated</a></li><li class="article-toc__item is-h3"><a href="#general-gpu-tips">General GPU tips</a></li><li class="article-toc__item"><a href="#античит-eac-и-battleye">Античит — EAC и BattlEye</a></li><li class="article-toc__item is-h3"><a href="#problem">Problem</a></li><li class="article-toc__item is-h3"><a href="#valve-initiative">Valve initiative</a></li><li class="article-toc__item is-h3"><a href="#how-to-check">How to check</a></li><li class="article-toc__item is-h3"><a href="#typical-status-categories">Typical status categories</a></li><li class="article-toc__item is-h3"><a href="#single-player">Single-player</a></li><li class="article-toc__item"><a href="#lutris-heroic-bottles">Lutris, Heroic, Bottles</a></li><li class="article-toc__item is-h3"><a href="#lutris">Lutris</a></li><li class="article-toc__item is-h3"><a href="#heroic-games-launcher">Heroic Games Launcher</a></li><li class="article-toc__item is-h3"><a href="#bottles">Bottles</a></li><li class="article-toc__item is-h3"><a href="#protonup-qt">ProtonUp-Qt</a></li><li class="article-toc__item"><a href="#gaming-distros">Gaming distros</a></li><li class="article-toc__item"><a href="#kernel-tweaks">Kernel tweaks</a></li><li class="article-toc__item is-h3"><a href="#gamemode">Gamemode</a></li><li class="article-toc__item is-h3"><a href="#cpu-schedulers">CPU schedulers</a></li><li class="article-toc__item is-h3"><a href="#low-latency-kernel">Low latency kernel</a></li><li class="article-toc__item is-h3"><a href="#huge-pages-sysctl">Huge pages / sysctl</a></li><li class="article-toc__item"><a href="#shader-cache">Shader cache</a></li><li class="article-toc__item is-h3"><a href="#why-stutter-first-launch">Why stutter first launch</a></li><li class="article-toc__item is-h3"><a href="#locations">Locations</a></li><li class="article-toc__item is-h3"><a href="#deck-steamos">Deck / SteamOS</a></li><li class="article-toc__item is-h3"><a href="#clear-cache-troubleshooting">Clear cache troubleshooting</a></li><li class="article-toc__item"><a href="#performance-tuning">Performance tuning</a></li><li class="article-toc__item is-h3"><a href="#mangohud">MangoHud</a></li><li class="article-toc__item is-h3"><a href="#fsr">FSR</a></li><li class="article-toc__item is-h3"><a href="#esync-fsync">Esync / Fsync</a></li><li class="article-toc__item is-h3"><a href="#cpu-cores">CPU cores</a></li><li class="article-toc__item is-h3"><a href="#windows-vs-linux-same-game">Windows vs Linux same game</a></li><li class="article-toc__item is-h3"><a href="#ram-and-swap">RAM and swap</a></li><li class="article-toc__item"><a href="#нативные-linux-игры-примеры">Нативные Linux-игры — примеры</a></li><li class="article-toc__item is-h3"><a href="#native-on-steam-examples-list-evolves">Native on Steam (examples, list evolves)</a></li><li class="article-toc__item is-h3"><a href="#indies">Indies</a></li><li class="article-toc__item is-h3"><a href="#how-to-find">How to find</a></li><li class="article-toc__item"><a href="#разработчикам-экспорт-linux">Разработчикам — экспорт Linux</a></li><li class="article-toc__item is-h3"><a href="#why-ship-linux">Why ship Linux</a></li><li class="article-toc__item is-h3"><a href="#engines">Engines</a></li><li class="article-toc__item is-h3"><a href="#testing">Testing</a></li><li class="article-toc__item is-h3"><a href="#anti-cheat-for-devs">Anti-cheat for devs</a></li><li class="article-toc__item"><a href="#retroarch-на-linux">RetroArch на Linux</a></li><li class="article-toc__item"><a href="#чек-лист-переезд-на-linux">Чек-лист переезд на Linux</a></li><li class="article-toc__item"><a href="#faq">FAQ</a></li><li class="article-toc__item"><a href="#gamescope-и-compositor">Gamescope и compositor</a></li><li class="article-toc__item"><a href="#dual-boot-и-passthrough-кратко">Dual boot и passthrough (кратко)</a></li><li class="article-toc__item"><a href="#troubleshooting-proton">Troubleshooting Proton</a></li><li class="article-toc__item"><a href="#дополнительные-native-и-gold-titles-примеры">Дополнительные native и Gold titles (примеры)</a></li><li class="article-toc__item"><a href="#см-также">См. также</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-03-igrovaya-industriya/11435"> Steam  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/1141"> PC  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/2-system-network/2-01-operatsionnaya-sistema/intro" target="_blank" rel="noopener noreferrer"> Операционная система — о разделе  ↗ </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей  </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

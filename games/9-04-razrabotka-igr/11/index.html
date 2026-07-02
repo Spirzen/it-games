@@ -1,0 +1,544 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Дорожная карта геймдева — Игры IT Universe</title><meta name="description" content="Термин *«дорожная карта»* в контексте игровой разработки часто используется как метафора: предполагается, что существует чёткий маршрут от «нуля» до «профессионала»."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Дорожная карта геймдева</span></li></ol></nav><header class="portal-hero"> <h1>Дорожная карта геймдева</h1> <p>Термин *«дорожная карта»* в контексте игровой разработки часто используется как метафора: предполагается, что существует чёткий маршрут от «нуля» до «профессионала».</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Дорожная карта геймдева" data-url="/games/9-04-razrabotka-igr/11">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Дорожная карта геймдева">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Дорожная карта геймдева</h1>
+<div class="itu-play-embed" data-example="spinoff/game-dev-roadmap-play" data-src="" data-title="Дорожная карта геймдева" data-min-height="520" data-play-props="{}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="дорожная-карта-геймдева">Дорожная карта геймдева</h2>
+<p>Термин <em>"дорожная карта"</em> в контексте игровой разработки часто используется как метафора: предполагается, что существует чёткий маршрут от "нуля" до "профессионала". В реальности такая интерпретация вводит в заблуждение. Геймдев — многомерное пространство компетенций, пересекающихся ролей и эволюционирующих требований. Поэтому настоящая дорожная карта — это <em>структурная модель</em>, отражающая:</p>
+<ul>
+<li><strong>Глубину специализации</strong> — как формируется экспертность в конкретной дисциплине;</li>
+<li><strong>Широту смежных знаний</strong> — какие области должны быть освоены на уровне понимания, даже если не используются ежедневно;</li>
+<li><strong>Горизонтальные связи</strong> — как специалисты разных профилей взаимодействуют в процессе создания продукта;</li>
+<li><strong>Эволюцию ролей</strong> — как меняются задачи и ответственность по мере роста проекта и карьеры.</li>
+</ul>
+<p>Такая модель позволяет избежать двух распространённых ошибок:</p>
+<ol>
+<li><em>Избыточной фокусировки на инструментах</em> — обучение конкретному движку (Unity, Unreal и т.п.) без понимания лежащих в основе принципов делает знания хрупкими и быстро устаревающими.</li>
+<li><em>Ранней гиперспециализации</em> — попытка стать "шейдерным программистом" или "специалистом по VFX в UE5" без базового понимания архитектуры движка, цикла разработки и ограничений других дисциплин приводит к коммуникативным барьерам и неэффективным решениям.</li>
+</ol>
+<hr>
+<h3 id="часть-1-архитектура-игровой-индустрии-контекст-для-дорожной-карты">Часть 1. Архитектура игровой индустрии — контекст для дорожной карты</h3>
+<p>Прежде чем говорить о ролях, необходимо разграничить три фундаментальных типа игровых проектов, так как от этого зависят как размер команд, так и характер профессиональных требований.</p>
+<hr>
+<h4>1.1. AAA-разработка (high-budget)</h4>
+<p>Это проекты с бюджетами от десятков миллионов до сотен миллионов долларов, продолжительностью разработки от трёх до пяти и более лет. Команды насчитывают сотни человек, часто распределённых по нескольким студиям в разных странах. В таких условиях роли максимально формализованы и узкоспециализированы — отдельный инженер может отвечать только за систему теней, отдельный художник — только за текстуры брони персонажей третьего плана, отдельный дизайнер — только за баланс одного класса в многопользовательском режиме.</p>
+<p>Для AAA характерна жёсткая <em>иерархическая структура</em>:</p>
+<ul>
+<li><strong>Технические лиды</strong> (Tech Lead, Rendering Lead, AI Lead и т.д.) определяют архитектурные решения и стандарты;</li>
+<li><strong>Senior-специалисты</strong> проектируют и реализуют ключевые подсистемы;</li>
+<li><strong>Mid-level</strong> поддерживают и расширяют существующие компоненты;</li>
+<li><strong>Junior и стажёры</strong> занимаются задачами с чёткими границами и сопровождением.</li>
+</ul>
+<p>Важно: в AAA редко требуется, чтобы один человек умел "всё". Требуется глубокое знание <em>своего фрагмента</em>, умение работать в рамках строгих технических и временных ограничений, а также способность эффективно интегрироваться в существующую инфраструктуру.</p>
+<hr>
+<h4>1.2. Indie-разработка (small-to-mid budget)</h4>
+<p>Здесь бюджеты варьируются от нескольких тысяч до нескольких миллионов долларов, а команды — от одного человека до десятков. В отличие от AAA, где специализация — условие масштабируемости, в инди-проектах <em>полифункциональность</em> — условие выживания. Даже в команде из пяти человек каждый участник вынужден совмещать несколько ролей — программист может заниматься кодом, настройкой CI/CD, оптимизацией сборок и базовой аналитикой; художник — создавать ассеты, участвовать в level design и UI-прототипировании.</p>
+<p>Для инди характерна <em>сетевая структура</em> — решения принимаются коллегиально, границы ответственности подвижны, а успех проекта напрямую зависит от способности каждого участника не просто выполнять задачи, но и <em>предвидеть последствия своих решений</em> для других областей. Здесь критически важны:</p>
+<ul>
+<li>Понимание <em>ограничений других дисциплин</em> (например, как архитектурное решение повлияет на анимацию);</li>
+<li>Умение <em>приоритизировать</em> по вкладу в пользовательский опыт;</li>
+<li>Готовность <em>временно взять на себя чужую роль</em>, если это необходимо для продвижения проекта.</li>
+</ul>
+<hr>
+<h4>1.3. Experimental / Art / Educational projects</h4>
+<p>Это проекты, где главная цель — исследование, выражение идеи или обучение. Они могут быть реализованы как в рамках инди-студий, так и в академической среде (например, в рамках курсовых или дипломных работ). Здесь доминирует <em>авторская модель</em> — один человек или небольшая группа задаёт концепцию, и выбор технологий, инструментов и методов полностью подчинён реализации этой концепции.</p>
+<p>Для таких проектов характерно:</p>
+<ul>
+<li>Отказ от промышленных стандартов в пользу экспериментальных решений (например, использование WebAssembly для гибридных веб-десктопных игр или процедурной генерации как основного метода наполнения);</li>
+<li>Акцент на <em>документировании процесса</em>, так как сам процесс часто является частью результата;</li>
+<li>Необходимость <em>переводить технические решения на язык, понятный неспециалистам</em> (для публикаций, выставок, защиты проектов).</li>
+</ul>
+<p>Понимание этих трёх моделей позволяет выбрать, <em>в каком контексте учить</em>. Обучение для AAA требует фокуса на глубине и стандартах; для инди — на широте и гибкости; для экспериментальных проектов — на критическом мышлении и междисциплинарности.</p>
+<hr>
+<h3 id="часть-2-основные-дисциплины-ядро-профессиональных-компетенций">Часть 2. Основные дисциплины — ядро профессиональных компетенций</h3>
+<p>Дорожная карта геймдева строится вокруг семи фундаментальных дисциплин. Каждая из них имеет собственную внутреннюю структуру: от базовых понятий до узкоспециализированных областей. Ниже приводится развернутое описание каждой, с акцентом на <em>концептуальные основы</em>, без привязки к конкретным инструментам.</p>
+<hr>
+<h4>2.1. Программирование игр</h4>
+<p>Программирование в геймдеве принципиально отличается от веб- или enterprise-разработки. Если в обычном ПО процесс обработки данных детерминирован и изолирован от времени, то в игре <em>время — первичный параметр</em>: каждый кадр — это цикл обновления состояния мира с жёсткими временными ограничениями (обычно 16,6 мс для 60 FPS). Это накладывает специфические требования к архитектуре.</p>
+<p>Три ключевых слоя программной архитектуры игры:</p>
+<ol>
+<li>
+<p><strong>Движок (engine layer)</strong> — низкоуровневая инфраструктура, отвечающая за взаимодействие с аппаратным обеспечением — рендеринг, физика, звук, ввод, менеджмент памяти. Здесь доминируют системное программирование, работа с API графических процессоров (Vulkan, DirectX 12, Metal), оптимизация по кэш-линиям и SIMD-инструкциям, управление параллелизмом. Для работы на этом уровне необходимы глубокие знания архитектуры компьютера — как устроены CPU и GPU, как работает память, как передаются данные между компонентами.</p>
+</li>
+<li>
+<p><strong>Системный уровень (systems layer)</strong> — реализация игровых подсистем — анимация, ИИ, навигация, сохранение, сетевая репликация. Здесь уже преобладают <em>шаблоны проектирования</em>, адаптированные под требования игр — Entity-Component-Система (ECS) для гибкости и производительности, объектный пул для минимизации аллокаций, конечные автоматы и поведенческие деревья для ИИ. Важно понимать, <em>почему</em> движок эффективен — разделение данных и логики, последовательный доступ к памяти, предсказуемость поведения кэша.</p>
+</li>
+<li>
+<p><strong>Уровень игровой логики (gameplay layer)</strong> — код, напрямую связанный с механиками — поведение персонажа, логика головоломок, работа интерфейса, баланс. Здесь важны не столько алгоритмы, сколько <em>модульность</em> и <em>тестируемость</em>: механики должны легко переключаться, настраиваться и отлаживаться в редакторе. Это требует владения инструментами <em>скриптования</em> (часто на Python, Lua или C#) и понимания принципов <em>дата-ориентированного проектирования</em> — как структурировать данные так, чтобы их можно было быстро читать, изменять и сериализовать.</p>
+</li>
+</ol>
+<p>В современной индустрии чёткое разделение на "движкового" и "геймплейного" программиста сохраняется в крупных студиях, но в инди-проектах один разработчик часто работает на всех трёх уровнях. Поэтому дорожная карта начинается с освоения <em>основ системного программирования и архитектуры ПО</em>, затем — с углублением в один из слоёв по выбору.</p>
+<hr>
+<h3 id="22-графические-технологии-и-рендеринг">2.2. Графические технологии и рендеринг</h3>
+<p>Графика в играх — это <em>симуляция восприятия</em>. Цель — создать впечатление реальности (или убедительной нереальности) при жёстких ограничениях производительности — каждое изображение должно формироваться за миллисекунды, а не часы, как в кино. Поэтому фундамент графической индустрии — это <em>компромисс между физической точностью и вычислительной эффективностью</em>.</p>
+<hr>
+<h4>2.2.1. Архитектура графического конвейера</h4>
+<p>Любая современная система рендеринга, будь то встроенная в движок или написанная с нуля, реализует <em>графический конвейер</em> — последовательность этапов преобразования трёхмерных данных в двумерное изображение. Его можно разделить на два крупных блока:</p>
+<ul>
+<li>
+<p><strong>Геометрический этап</strong> — обработка объектов в трёхмерном пространстве — загрузка вершин, применение трансформаций (модель → мир → вид → проекция), отсечение невидимых частей, разбиение на примитивы (треугольники). Здесь ключевая задача — <em>максимально быстро отсеять то, что не попадёт в кадр</em> (frustum culling, occlusion culling), так как каждая вершина, прошедшая дальше, потребует вычислительных ресурсов.</p>
+</li>
+<li>
+<p><strong>Растеризационный этап</strong> — преобразование треугольников в пиксели — интерполяция атрибутов (цвет, нормаль, UV), тест глубины, применение шейдеров, запись в буфер кадра. Именно на этом этапе происходит <em>фактическое "рисование"</em>, но оно полностью программируемо — разработчик задаёт, <em>как</em> должен выглядеть каждый пиксель, через шейдеры.</p>
+</li>
+</ul>
+<p>Важно понимать — современные API (Vulkan, DirectX 12, Metal) не скрывают эту структуру. Они предоставляют <em>прямой контроль</em> над состоянием конвейера — что резко повышает производительность, но требует от программиста осознанного управления ресурсами — буферами, текстурами, состояниями рендеринга. В отличие от старых API (OpenGL, DirectX 11), где многое делалось "под капотом", здесь <em>каждое действие должно быть обосновано</em> — иначе возникают узкие места — неоптимальные переключения состояний, избыточные вызовы draw call’ов, фрагментация памяти.</p>
+<hr>
+<h4>2.2.2. Шейдеры — логика рендеринга</h4>
+<p>Шейдер — это программа, выполняемая на GPU, которая описывает поведение одного из этапов конвейера. Основные типы:</p>
+<ul>
+<li>
+<p><strong>Вершинный шейдер (vertex shader)</strong> — определяет, <em>куда</em> попадёт каждая вершина после всех трансформаций. Может также вычислять дополнительные атрибуты (например, локальные освещённые нормали для кожи) для передачи в следующие этапы.</p>
+</li>
+<li>
+<p><strong>Фрагментный (пиксельный) шейдер (fragment/pixel shader)</strong> — определяет <em>цвет и прозрачность</em> каждого пикселя, попавшего в треугольник. Именно здесь реализуются материалы: от простого ламбертовского затенения до сложных многослойных поверхностей (PBR — Physically Based Rendering). Здесь же обрабатываются текстуры, нормальные карты, карты высот.</p>
+</li>
+<li>
+<p><strong>Вычислительные шейдеры (compute shaders)</strong> — не привязаны к конвейеру рендеринга; используют GPU для общих параллельных вычислений — симуляция частиц, обработка изображений в постэффектах, даже машинное обучение.</p>
+</li>
+</ul>
+<p>Центральный принцип работы с шейдерами — <em>декларативность</em> — вы описываете <em>правило</em>, по которому должен обрабатываться <em>один</em> элемент (вершина, пиксель), а GPU применяет его параллельно ко всем. Это требует иного мышления: вместо "как последовательно обработать сцену" — "как описать состояние каждого элемента независимо".</p>
+<hr>
+<h4>2.2.3. Освещение и тени</h4>
+<p>Освещение — ключевой инструмент создания объёма и глубины. В играх используются три основные стратегии, различающиеся по точности и стоимости:</p>
+<ul>
+<li>
+<p><strong>Статическое освещение (baked lighting)</strong> — расчёт освещения заранее, с сохранением результата в текстуры (lightmaps). Позволяет использовать сложные методы (глобальное освещение, GI), но объекты не могут двигаться, а время расчёта может занимать часы. Подходит для окружения в single-player проектах.</p>
+</li>
+<li>
+<p><strong>Динамическое освещение (real-time lighting)</strong> — расчёт освещения "на лету" для каждого кадра. Ограничен по сложности — обычно поддерживаются точечные, направленные и прожекторные источники, но не полноценное GI. Зато позволяет двигать источники и объекты. Используется для персонажей, интерактивных объектов.</p>
+</li>
+<li>
+<p><strong>Смешанное освещение (mixed lighting)</strong> — гибрид — статические объекты освещаются через baked lightmaps, а динамические — через real-time источники, которые дополнительно "запекаются" на статические поверхности (light probes). Это компромисс, доминирующий в современных AAA-проектах.</p>
+</li>
+</ul>
+<p>С тенями ситуация аналогична:</p>
+<ul>
+<li><strong>Тени от статических источников</strong> — запекаются в карты теней (shadow maps) заранее.</li>
+<li><strong>Тени от динамических источников</strong> — генерируются в реальном времени, что требует дополнительного рендер-пасса (shadow map pass) и ведёт к артефактам (aliasing, peter-panning), которые нужно компенсировать техниками фильтрации (PCF, VSM).</li>
+</ul>
+<hr>
+<h4>2.2.4. Постобработка и эффекты</h4>
+<p>После формирования базового изображения применяется цепочка постэффектов — полноэкранная обработка, имитирующая особенности восприятия или камеры:</p>
+<ul>
+<li><strong>Тон-мэппинг (tone mapping)</strong> — преобразование HDR-значений яркости (которые могут превышать 1.0) в диапазон, отображаемый на мониторе (0–1), с сохранением контраста и деталей.</li>
+<li><strong>Bloom</strong> — имитация рассеяния света в объективе или глазу при просмотре ярких объектов.</li>
+<li><strong>Глубина резкости (depth of field)</strong> — размытие вне фокусной плоскости.</li>
+<li><strong>Motion blur</strong> — размытие движущихся объектов для сглаживания дискретности кадров.</li>
+</ul>
+<p>Все эти эффекты реализуются через compute- или фрагментные шейдеры, работающие с буферами геометрии (G-buffer), содержащими информацию о сцене — позиция, нормаль, альбедо, шероховатость и т.д. Это позволяет применять эффекты <em>селективно</em> — например, bloom только к поверхностям с высоким эмиссионным значением.</p>
+<hr>
+<h4>2.2.5. Эволюция графических подходов</h4>
+<p>Современные игры всё чаще отказываются от классического forward rendering (прямой рендеринг каждого объекта со всеми источниками света) в пользу:</p>
+<ul>
+<li>
+<p><strong>Deferred rendering (отложенный рендеринг)</strong> — сначала все геометрические данные записываются в G-buffer, затем освещение рассчитывается отдельно для каждого пикселя. Позволяет использовать сотни источников света, но требует большого объёма видеопамяти и плохо совместим с прозрачностью.</p>
+</li>
+<li>
+<p><strong>Tile-based deferred rendering (TBDR)</strong> — оптимизация deferred rendering для мобильных GPU (PowerVR, Apple), разбивающая экран на тайлы и обрабатывающая их независимо, минимизируя обращения к памяти.</p>
+</li>
+<li>
+<p><strong>Ray tracing в реальном времени</strong> — использование трассировки лучей для отдельных компонентов — теней, отражений, глобального освещения. Требует поддержки RT-ядер (NVIDIA RTX, AMD RDNA2+), но даёт физически корректные результаты без ручной настройки.</p>
+</li>
+</ul>
+<p>Понимание этих подходов позволяет <em>осознанно выбирать архитектуру рендеринга под проект</em>: мобильная игра с сотней объектов не нуждается в deferred rendering, а AAA-шутер с динамическим освещением и отражениями вряд ли обойдётся без гибридного ray tracing + rasterization.</p>
+<hr>
+<h3 id="23-дизайн-игр-от-концепции-к-ощущению">2.3. Дизайн игр — от концепции к ощущению</h3>
+<p>Дизайн — это <em>системное проектирование опыта</em>. Основная задача дизайнера — создать условия, при которых желаемое поведение игрока возникает <em>естественно</em>, без принуждения. Для этого требуется работа на трёх уровнях:</p>
+<hr>
+<h4>2.3.1. Механики и правила</h4>
+<p>Механика — это <em>повторяющееся действие</em>, доступное игроку — прыжок, атака, строительство, диалог. Правила — это <em>ограничения и последствия</em> — сколько стоит действие, что происходит при столкновении с врагом, как ресурсы взаимодействуют.</p>
+<p>Ключевой инструмент дизайнера — <em>итеративное прототипирование</em>. Первые версии механик реализуются в максимально упрощённом виде ("серый бокс" — greyboxing) — без графики, звука, анимации, только с геометрией и базовой физикой. Цель — проверить <em>играбельность</em>:</p>
+<ul>
+<li>Интуитивно ли понятно действие?</li>
+<li>Достаточно ли обратной связи (feedback)?</li>
+<li>Есть ли ощущение контроля (agency)?</li>
+<li>Не возникает ли фрустрация из-за несправедливых условий?</li>
+</ul>
+<p>Если механика не работает на этом уровне, доработка визуала или сюжета не спасёт проект. Поэтому дорожная карта дизайнера начинается с освоения <em>методов быстрого прототипирования</em> и <em>анализа игрового опыта</em>.</p>
+<hr>
+<h4>2.3.2. Настройка и "чувство игры" (game feel)</h4>
+<p>Игровое "чувство" — это совокупность микро-взаимодействий, создающих ощущение веса, инерции, реактивности. Оно формируется через:</p>
+<ul>
+<li><strong>Временные параметры</strong> — задержка между нажатием и реакцией (input lag), длительность анимаций, частота кадров.</li>
+<li><strong>Пространственные параметры</strong> — расстояние прыжка, радиус атаки, зона хитбокса.</li>
+<li><strong>Чувственная обратная связь</strong> — визуальная (экранная дрожь, частицы), аудиальная (звуки, музыкальные акценты), тактильная (вибрация контроллера), тактильно-визуальная (растяжение/сжатие спрайтов — squash &#x26; stretch).</li>
+</ul>
+<p>Настройка этих параметров — <em>точная инженерная работа</em>. Например, увеличение длительности анимации прыжка на 0,05 секунды может превратить персонажа из "прыгучего" в "вялого", а изменение экспоненты ускорения — из "плавного" в "резкого". Поэтому дизайнер должен уметь <em>количественно описывать ощущения</em> и <em>измерять реакцию игроков</em> через playtest’ы.</p>
+<hr>
+<h4>2.3.3. Прогрессия и мотивация</h4>
+<p>Любая игра — это цикл мотивации:</p>
+<ol>
+<li><strong>Цель</strong> (explicit или implicit) — что игрок стремится достичь?</li>
+<li><strong>Препятствие</strong> — что мешает немедленному достижению?</li>
+<li><strong>Инструмент/ресурс</strong> — что даёт игроку шанс преодолеть препятствие?</li>
+<li><strong>Обратная связь</strong> — как система подтверждает успех или объясняет неудачу?</li>
+<li><strong>Награда</strong> — что игрок получает за преодоление? (Не обязательно предмет — это может быть новая способность, доступ к локации, сюжетное откровение.)</li>
+</ol>
+<p>Критически важно: награда должна <em>усиливать желание играть дальше</em>, а не просто закрывать потребность. Если после победы над боссом игрок получает +10% урона, но не видит, как это влияет на следующие сражения — цикл нарушается. Поэтому дорожная карта включает изучение <em>психологических основ мотивации</em> (теория самоопределения, variable ratio reinforcement) и <em>методов балансировки</em> (cost-benefit analysis, curve fitting для параметров персонажей).</p>
+<hr>
+<h4>2.3.4. Уровневый дизайн и пространственное повествование</h4>
+<p>Уровень — это <em>среда, которая руководит поведением</em>. Хороший level design работает через:</p>
+<ul>
+<li><strong>Визуальные якоря</strong> (landmarks) — крупные объекты, помогающие ориентироваться;</li>
+<li><strong>Путь внимания</strong> (eye trace) — композиционные приёмы, направляющие взгляд к следующей цели;</li>
+<li><strong>Прогрессивное раскрытие</strong> — постепенное введение новых механик и правил через safe space → challenge → mastery;</li>
+<li><strong>Экологичное повествование</strong> (environmental storytelling) — передача сюжета через расположение объектов, разрушения, надписи, не через диалоги.</li>
+</ul>
+<p>Например, руины храма с разбитыми статуями, следами огня и скелетами в позах молитвы рассказывают историю вторжения без единой фразы. Для этого дизайнер должен понимать <em>принципы композиции, перспективы и семиотики</em> — как знаки воспринимаются в пространстве.</p>
+<hr>
+<h3 id="24-искусство-и-визуальный-дизайн">2.4. Искусство и визуальный дизайн</h3>
+<p>В игровой индустрии художественная работа — это <em>техническая реализация визуальной стратегии</em>. Каждое изображение, модель, текстура или анимация создаётся с учётом ограничений движка, производительности, масштабируемости и интеграции в общий конвейер. Поэтому дорожная карта художника включает не только навыки рисования, но и глубокое понимание технологий.</p>
+<hr>
+<h4>2.4.1. Стиль и арт-дирекшн как инженерные задачи</h4>
+<p>Арт-директор — это <em>технический лидер визуальной стратегии</em>. Его задача — определить такой визуальный язык, который:</p>
+<ul>
+<li>соответствует игровому опыту (например, чёткость силуэтов для платформера, где важна реакция);</li>
+<li>укладывается в бюджет (мобильная игра не может использовать 8К PBR-текстуры);</li>
+<li>масштабируется (один и тот же стиль должен работать для 10 и для 1000 объектов);</li>
+<li>интегрируется в технический стек (стиль должен быть реализуем через доступные шейдеры и постэффекты).</li>
+</ul>
+<p>Поэтому арт-бук — это <em>техническая спецификация</em>:</p>
+<ul>
+<li>палитра с указанием допустимых отклонений (hue drift tolerance);</li>
+<li>правила освещения (сколько источников, как ведут себя тени);</li>
+<li>система LOD (Level of Detail) — как объекты упрощаются при отдалении;</li>
+<li>ограничения на геометрию (triangle budget per character), карты нормалей, UV-развёртки.</li>
+</ul>
+<p>Новичок часто ошибочно полагает, что сначала нужно "научиться рисовать", а потом — "применять". На практике эффективнее путь <em>в обратном порядке</em> — начать с изучения <em>ограничений</em> (например, как работает PBR-рендеринг), а затем осваивать художественные приёмы <em>внутри этих рамок</em>. Это позволяет избежать ситуаций, когда красиво нарисованная текстура "ломается" в движке из-за некорректной roughness-карты.</p>
+<hr>
+<h4>2.4.2. 2D и иллюстрация — от пикселей к векторам</h4>
+<p>2D-искусство в играх редко бывает "чисто ручным". Даже в инди-проектах с пиксель-артом используются техники, обеспечивающие масштабируемость и анимируемость:</p>
+<ul>
+<li><strong>Слоистая структура</strong> — персонаж разбивается на части (голова, торс, руки), каждая из которых анимируется отдельно. Это требует строгого соблюдения pivot points и иерархии родительских связей.</li>
+<li><strong>Цветовые палитры с контролем контраста</strong> — пиксель-арт живёт за счёт чётких границ между цветами. Перенасыщенные или близкие по яркости оттенки "сливаются" в движении. Поэтому используются ограничения — не более 4–6 цветов на элемент, чёткое разделение на light, midtone, shadow.</li>
+<li><strong>Анимация через ключевые позы</strong>, а не покадрово — экономия времени и обеспечение плавности. Даже в 12 FPS анимации (стандарт для пиксель-арта) важна <em>экстремальность</em> ключевых кадров: максимальное вытягивание в прыжке, максимальное сжатие в ударе (squash &#x26; stretch).</li>
+</ul>
+<p>Для векторной графики (UI, иконки, 2D-рендер в стиле "плоский дизайн") критичны:</p>
+<ul>
+<li><strong>Сетка и выравнивание</strong> — все элементы должны привязываться к базовой сетке (часто 8px), чтобы избежать дрожания при масштабировании;</li>
+<li><strong>Система компонентов</strong> — кнопки, слайдеры, иконки строятся из повторно используемых частей (corner radius, stroke width, padding);</li>
+<li><strong>Адаптивность под разрешения</strong> — один и тот же UI должен корректно отображаться на 720p-телефоне и 4K-мониторе, что требует отказа от абсолютных размеров в пользу относительных (percent-based layout, anchor points).</li>
+</ul>
+<hr>
+<h4>2.4.3. 3D-моделирование и скульптинг — геометрия как функция</h4>
+<p>3D-модель в игре — это <em>оптимизированный объект</em>, предназначенный для анимации, рендеринга и коллизий. Поэтому процесс создания разделяется на этапы:</p>
+<ol>
+<li><strong>High-poly скульптинг</strong> — детализация формы в программах вроде ZBrush или Blender. Здесь важна <em>читаемость формы</em>: даже мелкие детали должны подчиняться крупным объёмам (анатомия, конструкция).</li>
+<li><strong>Low-poly ретопология</strong> — создание упрощённой сетки с минимальным количеством полигонов, но сохраняющей силуэт и основные изгибы. Критерий качества — <em>распределение рёбер</em> — они должны идти вдоль мускульных волокон, складок одежды, границ материалов.</li>
+<li><strong>UV-развёртка</strong> — "разглаживание" 3D-поверхности в 2D-плоскость для наложения текстур. Требует минимизации искажений (stretch) и рационального использования пространства (tiling, shared UV islands для симметричных частей).</li>
+<li><strong>Бейкинг</strong> — перенос деталей с high-poly на low-poly через нормальные карты, карты высот, ambient occlusion. Здесь ошибки в настройках (ray distance, cage) приводят к артефактам, которые невозможно исправить в движке.</li>
+</ol>
+<p>Особое внимание — <em>топологии для анимации</em>. Лицевая сетка должна иметь кольцевые рёбра вокруг глаз, рта, бровей (edge loops), чтобы при деформации не возникало "дыр" или складок. Тело — достаточное количество поперечных рёбер в суставах (локти, колени), чтобы избежать "схлопывания" при сгибании.</p>
+<hr>
+<h4>2.4.4. Анимация — движение как язык</h4>
+<p>Анимация — это <em>стилизованная передача намерения</em>. Даже в фотореалистичных играх движения слегка преувеличены, чтобы быть <em>читаемыми</em> в динамике. Основа — <strong>12 принципов анимации</strong>, но их применение в играх имеет особенности:</p>
+<ul>
+<li><strong>Squash and stretch</strong> — используется для усиления <em>восприятия ускорения</em>. Например, персонаж слегка сплющивается перед прыжком (anticipation), чтобы игрок интуитивно понял: сейчас будет действие.</li>
+<li><strong>Staging</strong> — каждый кадр должен однозначно передавать, <em>что</em> происходит и <em>почему</em>. В игре это критично — если анимация атаки не показывает направление удара, игрок проигрывает из-за недопонимания, а не из-за слабых навыков.</li>
+<li><strong>Secondary action</strong> — второстепенные движения (волосы, одежда, оружие) добавляют правдоподобия, но должны быть <em>ограничены по амплитуде</em>, чтобы не отвлекать от основного действия.</li>
+</ul>
+<p>Технически анимация в играх почти всегда реализуется через <strong>скелетную анимацию</strong> (skeletal/rigged animation), где кости (bones) управляют вершинами сетки. Поэтому аниматор должен понимать:</p>
+<ul>
+<li>как устроены риги (FK/IK-переключение, blend shapes для лица);</li>
+<li>как работают системы смешивания анимаций (blend trees, state machines);</li>
+<li>какие ограничения накладывает движок на количество костей, слоёв анимации, веса вершин (skin weights).</li>
+</ul>
+<p>Профессиональная дорожная карта аниматора включает отработку навыков рисования и освоение <em>технического pipeline</em> — как экспортировать анимации из Maya/Blender в FBX без потерь, как настраивать retargeting между разными ригами, как оптимизировать кривые ключевых кадров (keyframe reduction без потери качества).</p>
+<hr>
+<h3 id="25-аудио-и-звуковой-дизайн">2.5. Аудио и звуковой дизайн</h3>
+<p>Звук в играх — это <em>активный компонент игрового опыта</em>. Он управляет вниманием, предупреждает об угрозах, усиливает обратную связь и формирует эмоциональный контекст. В отличие от кино, где звук последователен, в играх он <em>реагирует</em> на действия игрока, что требует процедурного подхода.</p>
+<hr>
+<h4>2.5.1. Звук как система</h4>
+<p>Профессиональный игровой звук строится на трёх уровнях:</p>
+<ol>
+<li>
+<p><strong>Звуковые активы (assets)</strong> — отдельные файлы — выстрел, шаг, музыкальная фраза. Требования:</p>
+<ul>
+<li>моно или стерео в зависимости от источника (одноточечные — моно, окружение — стерео/ambisonics);</li>
+<li>"чистые" записи без реверберации (эффекты добавляются в движке);</li>
+<li>несколько вариантов одного события (например, 5 разных звуков шагов по траве) для избежания монотонности.</li>
+</ul>
+</li>
+<li>
+<p><strong>Звуковые события (events)</strong> — логические единицы, вызываемые из кода: "игрок прыгнул", "дверь открылась". Каждое событие может содержать:</p>
+<ul>
+<li>случайный выбор из нескольких активов;</li>
+<li>параметрическое управление (громкость в зависимости от расстояния, pitch в зависимости от скорости);</li>
+<li>цепочки (например, "звук удара" → "звук разрушения" → "звук отскока").</li>
+</ul>
+</li>
+<li>
+<p><strong>Звуковое окружение (mixer и DSP)</strong> — глобальные настройки:</p>
+<ul>
+<li>группы микширования (SFX, Music, Voice) с отдельными уровнями громкости;</li>
+<li>эффекты в реальном времени (reverb zones для помещений, low-pass фильтр при погружении в воду);</li>
+<li>3D-позиционирование (HRTF-фильтрация для наушников, attenuation curves для громкости в зависимости от дистанции).</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4>2.5.2. Музыка — адаптивность как норма</h4>
+<p>Игровая музыка редко бывает линейной. Вместо этого используются:</p>
+<ul>
+<li><strong>Слои (stems)</strong> — отдельные дорожки (ударные, мелодия, бас), которые включаются/выключаются в зависимости от состояния игры (бой, исследование, диалог);</li>
+<li><strong>Переходы (transitions)</strong> — плавные смены между состояниями через crossfade или специальные "мостовые" фразы;</li>
+<li><strong>Мотивное развитие</strong> — повторение и вариация коротких музыкальных ячеек (leitmotifs), связанных с персонажами или локациями.</li>
+</ul>
+<p>Для реализации этого требуется не просто композиторский талант, но и понимание <em>звуковых middleware</em> (FMOD, Wwise), где музыкальные события настраиваются визуально, через ноды и параметры.</p>
+<hr>
+<h4>2.5.3. Вокал и диалоги</h4>
+<p>Работа с речью включает:</p>
+<ul>
+<li><strong>Локализацию</strong> — адаптацию под длину фраз (английские слова короче русских, что влияет на синхронизацию губ — lip sync);</li>
+<li><strong>Системы диалогов</strong> — от простых linear scripts до графов с условиями (branching dialogue trees), где выбор игрока влияет на доступные реплики;</li>
+<li><strong>Прогнозирование сценариев</strong> — нужно записать основной сценарий и "мёртвые" ветки (если игрок уйдёт в другую локацию), иначе возникнут паузы.</li>
+</ul>
+<p>Критически важно — все аудио-ресурсы должны быть <em>метаданными</em> — теги (category, priority, distance), чтобы система могла при нехватке памяти отключать менее важные звуки (например, фоновую музыку при переполнении буфера SFX).</p>
+<hr>
+<h3 id="26-продакшн-и-управление-проектами">2.6. Продакшн и управление проектами</h3>
+<p>Продюсер (producer) в игровой индустрии — это <em>гарант жизнеспособности проекта</em>. Его задача — создать условия, при которых команда может работать эффективно, не выгорая, а продукт — достигать целей без катастрофических отклонений по срокам, бюджету и качеству. Для этого требуется работа на трёх уровнях: стратегическом, тактическом и операционном.</p>
+<hr>
+<h4>2.6.1. Стратегический продакшн — постановка условий успеха</h4>
+<p>На этом уровне продюсер участвует ещё до старта проекта:</p>
+<ul>
+<li><strong>Определение scope’а</strong> — "что мы <em>обязаны</em> сделать, чтобы проект окупился". Это включает анализ рынка (аналоги, ниша, платёжеспособная аудитория), технической осуществимости (есть ли в команде компетенции для реализации ключевых механик), рисков (зависимость от одного специалиста, лицензирование технологий).</li>
+<li><strong>Формирование команды</strong> — <em>баланс ролей и стилей работы</em>. Например, в команде с сильным техническим лидером нужен продюсер с акцентом на коммуникации и внешние связи; в коллективе новичков — с опытом наставничества и структурирования задач.</li>
+<li><strong>Установка метрик успеха</strong> — финансовых (ROI, LTV) и процессуальных — скорость итераций (сколько playable-версий за месяц), уровень вовлечённости в playtest’ах, стабильность сборок (сколько критических багов в неделю).</li>
+</ul>
+<p>Ключевой документ на этом этапе — <strong>Vision Document</strong> (документ видения). Это<em>соглашение о ценностях</em>:</p>
+<ul>
+<li>Какой опыт мы создаём? ("ощущение одиночества в космосе" vs "эйфория кооперативного преодоления")</li>
+<li>Какие компромиссы мы готовы принять? ("ради плавной анимации жертвуем детализацией окружения")</li>
+<li>Как мы будем принимать решения при конфликтах? ("техническая осуществимость превыше сюжетной целостности" или наоборот)</li>
+</ul>
+<p>Без такого документа любые споры сводятся к субъективным мнениям, что неизбежно ведёт к "feature creep" — неконтролируемому расширению функционала.</p>
+<hr>
+<h4>2.6.2. Тактический продакшн — планирование и адаптация</h4>
+<p>Здесь начинается работа с <em>циклами разработки</em>. В геймдеве редко используется классический waterfall (каскадная модель), так как неопределённость высока — механики могут не "заиграть", художественное решение — не сработать в движке, рынок — измениться. Поэтому доминируют итеративные подходы:</p>
+<ul>
+<li><strong>Agile (Scrum, Kanban)</strong> — применяется на стадии <em>production</em>, когда базовые механики и арт-дирекшн утверждены. Цикл: sprint → daily standup → review → retrospective. Ключевое отличие от enterprise-разработки: <em>результат sprint’а — playable build</em>, а не "готовый модуль".</li>
+<li><strong>Lean-подход</strong> — фокус на <em>валидации гипотез</em> через минимальные playable-версии (MVP). Например, чтобы проверить, "интересна ли механика управления гравитацией", делается прототип за 2 недели без графики, звука и уровней, только с физикой и управлением.</li>
+<li><strong>Water-scrum-fall</strong> — гибрид для крупных проектов — pre-production по waterfall (фиксированный scope, бюджет, сроки), production по agile, post-production по waterfall (фиксированные этапы локализации, QA, релиза).</li>
+</ul>
+<p>Важно: <strong>оценка задач</strong> в геймдеве принципиально отличается от других отраслей. Программист не может сказать, сколько займёт "реализовать систему ИИ", потому что:</p>
+<ul>
+<li>Неизвестно, насколько сложным окажется баланс (возможно, потребуется 10 итераций настройки);</li>
+<li>Неизвестно, как поведут себя анимации при интеграции (возможно, потребуется доработка рига);</li>
+<li>Неизвестно, как отреагируют игроки в playtest’ах (возможно, механику придётся переписывать).</li>
+</ul>
+<p>Поэтому используются <em>диапазонные оценки</em> ("минимум 3 дня, если всё идеально; максимум 2 недели, если потребуется переработка") и <em>буферы на неопределённость</em> (20–30% времени выделяется на непредвиденные задачи).</p>
+<hr>
+<h4>2.6.3. Операционный продакшн — обеспечение стабильности</h4>
+<p>Это ежедневная работа по поддержанию <em>рабочего состояния проекта</em>:</p>
+<ul>
+<li><strong>Управление сборками</strong> — каждая версия должна быть <em>тестируемой</em>: без критических багов, с минимальным набором механик. Для этого внедряются автоматические проверки (unit tests для систем, smoke tests для сборок).</li>
+<li><strong>Управление активами</strong> — контроль версий кода (Git) и арт-ресурсов (Perforce, Plastic SCM), с возможностью отката к конкретному состоянию сцены.</li>
+<li><strong>Коммуникационные ритуалы</strong> — <em>структурированные форматы</em>:
+<ul>
+<li><em>Tech Art Sync</em> — 15 минут, только технические художники, обсуждение проблем интеграции;</li>
+<li><em>Design–Code Review</em> — дизайнер объясняет механику, программист — как она реализована, выявляются расхождения;</li>
+<li><em>Playtest Debrief</em> — анализ, "какие действия игроки предприняли, а какие — нет, и почему".</li>
+</ul>
+</li>
+</ul>
+<p>Особое внимание — <strong>предотвращение выгорания</strong>. В геймдеве исторически сильна культура "крауча" (crunch — сверхурочная работа перед релизом), но современные исследования показывают — продуктивность после 50 часов в неделю резко падает, растёт количество багов, снижается креативность. Поэтому продюсер внедряет:</p>
+<ul>
+<li><em>Чёткие критерии остановки</em> ("если сборка не проходит smoke test три дня подряд — останавливаем feature work и фиксим");</li>
+<li><em>Ротацию задач</em> (программист, две недели писавший сетевой код, переключается на оптимизацию, чтобы избежать умственного переутомления);</li>
+<li><em>Прозрачность нагрузки</em> (все видят, у кого загрузка 120%, и могут предложить помощь).</li>
+</ul>
+<hr>
+<h3 id="27-техническое-искусство-интеграционный-слой-индустрии">2.7. Техническое искусство — интеграционный слой индустрии</h3>
+<p>Технический художник (technical artist, TA) — это <em>инженер визуального pipeline’а</em>. Его роль возникла как ответ на рост сложности — художники не владеют программированием на уровне, достаточном для оптимизации шейдеров, а программисты — художественными нюансами. TA — мост между этими мирами.</p>
+<hr>
+<h4>2.7.1. Основные функции TA</h4>
+<ol>
+<li>
+<p><strong>Оптимизация арт-ресурсов</strong> — <em>анализ узких мест</em>:</p>
+<ul>
+<li>Слишком много draw call’ов из-за мелких объектов → объединение в атласы (texture atlasing) или использование GPU instancing.</li>
+<li>Высокая стоимость шейдера → упрощение вычислений (замена тригонометрии на lookup-таблицы, отказ от expensive-операций в фрагментном шейдере).</li>
+<li>Избыточная детализация модели → грамотное LOD-дерево с перекрытием (overlap) для избежания popping’а.</li>
+</ul>
+</li>
+<li>
+<p><strong>Создание инструментов для художников</strong> — скрипты и плагины, автоматизирующие рутину:</p>
+<ul>
+<li>Batch-конвертация текстур в нужные форматы (ASTC, BC7);</li>
+<li>Автоматическая проверка UV-развёрток на stretch;</li>
+<li>Генерация collision mesh’ей из high-poly моделей.</li>
+</ul>
+</li>
+<li>
+<p><strong>Настройка шейдеров и материалов</strong> — <em>адаптация под требования проекта</em>:</p>
+<ul>
+<li>Создание универсального PBR-материала с параметрами для разных поверхностей (металл, кожа, ткань);</li>
+<li>Настройка triplanar mapping для ландшафтов, чтобы избежать растяжения текстур на склонах;</li>
+<li>Интеграция custom-шейдеров (например, для воды или волос) в общий pipeline.</li>
+</ul>
+</li>
+<li>
+<p><strong>Поддержка анимации и риггинга</strong> — решение проблем, возникающих при экспорте:</p>
+<ul>
+<li>Исправление skin weights после ретопологии;</li>
+<li>Настройка IK-ручек для аниматоров (hand IK, foot IK);</li>
+<li>Создание blend shape’ов для мимики на основе аудио (viseme-driven animation).</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4>2.7.2. Технические компетенции TA</h4>
+<p>Дорожная карта TA требует трёх компонентов:</p>
+<ul>
+<li><strong>Художественное чутьё</strong> — понимание, <em>почему</em> материал выглядит неправдоподобно (слишком однородная шероховатость, отсутствие micro-occlusion);</li>
+<li><strong>Техническая глубина</strong> — знание, <em>как</em> работает конвейер рендеринга, чтобы найти обходные пути (например, использовать vertex displacement вместо tessellation на слабых GPU);</li>
+<li><strong>Инженерная дисциплина</strong> — умение писать поддерживаемый код (документирование, тестирование, versioning), так как инструменты TA используются всей командой.</li>
+</ul>
+<p>Частая ошибка новичков — стремление освоить всё сразу. На практике эффективнее путь:</p>
+<ol>
+<li>Начать с <em>визуального программирования</em> (Shader Graph в Unity, Material Editor в Unreal);</li>
+<li>Перейти к <em>скриптам для арт-пакетов</em> (Python в Maya/Blender, MEL);</li>
+<li>Освоить <em>низкоуровневые шейдеры</em> (HLSL/GLSL) и <em>профилирование</em> (RenderDoc, GPU counters);</li>
+<li>Займитесь <em>инструментами на C# или C++</em> (Editor Tools, Plugins).</li>
+</ol>
+<p>TA не заменяет художника или программиста — он <em>масштабирует их эффективность</em>. Один TA может сэкономить сотни часов ручной работы, что делает эту роль критически важной даже в небольших командах.</p>
+<hr>
+<h3 id="28-выбор-индивидуальной-траектории-от-общего-к-частному">2.8. Выбор индивидуальной траектории — от общего к частному</h3>
+<p>Дорожная карта — это <em>навигационная система</em>. Она помогает определить, где вы находитесь, куда хотите попасть и какие препятствия могут возникнуть на пути. Для построения личной траектории требуется последовательный анализ трёх уровней: <strong>контекста</strong>, <strong>способностей</strong> и <strong>ценностей</strong>.</p>
+<hr>
+<h4>2.8.1. Контекст — внешние рамки</h4>
+<p>Первый шаг — честная оценка объективных условий:</p>
+<ul>
+<li><strong>Временные ресурсы</strong>. Может ли человек выделить 2 часа в день на обучение или требуется 6-месячный интенсив? Например, для освоения основ программирования игр (C#, архитектура, паттерны) при 10 часах в неделю потребуется 6–9 месяцев; для уровня mid-level — 2–3 года целенаправленной практики.</li>
+<li><strong>Техническая база</strong>. Уже есть опыт в веб-разработке? Это ускорит освоение геймплей-программирования, но не заменит знаний о GPU и параллелизме. Есть художественное образование? Это даст преимущество в композиции, но потребует изучения технических ограничений (UV, LOD, нормальные карты).</li>
+<li><strong>Рыночные условия</strong>. В каком регионе ведётся поиск работы? В Европе и Северной Америке востребованы узкие специалисты (shader programmer, VFX artist); в российских и восточноевропейских инди-студиях — полифункциональные разработчики, способные закрыть несколько ролей.</li>
+<li><strong>Тип желаемого проекта</strong>. Хочется работать над мультиплатформенным AAA-шутером? Тогда критичны знания C++, многопоточности, low-level оптимизации. Хотите выпускать инди-игры в одиночку? Приоритет — инструменты с быстрым циклом итераций (Godot, GameMaker), скриптовые языки, основы продакшна.</li>
+</ul>
+<p>Игнорирование контекста приводит к неэффективным решениям: обучение Vulkan ради мобильной 2D-игры, или изучение процедурной генерации для линейного нарративного проекта.</p>
+<hr>
+<h4>2.8.2. Способности — внутренние ресурсы</h4>
+<p>Второй шаг — объективная диагностика сильных сторон. Здесь важно избегать как завышенной, так и заниженной самооценки. Рекомендуется провести <em>практический аудит</em>:</p>
+<ul>
+<li><strong>Для программиста</strong>: попробуйте реализовать простой ECS-фреймворк без использования движка. Получается ли чётко разделить данные и логику? Легко ли добавлять новые компоненты? Это покажет понимание архитектурных принципов, а не только синтаксиса.</li>
+<li><strong>Для художника</strong>: возьмите чужую low-poly модель и сделайте для неё PBR-текстуры "вслепую" — без референсов, только по силуэту. Получается ли передать материал (дерево vs металл)? Это проверит знание физики поверхностей, а не только навык рисования.</li>
+<li><strong>Для дизайнера</strong>: опишите механику "переключения гравитации" в трёх абзацах так, чтобы её мог реализовать программист без дополнительных вопросов. Есть ли в описании параметры (время переключения, радиус действия, визуальный фидбэк)? Это покажет способность к техническому мышлению.</li>
+</ul>
+<p>Сильные стороны не обязательно совпадают с текущей профессией. Бывший юрист может обнаружить талант к продакшну — благодаря навыкам работы с регламентами и рисками. Инженер-механик — к физическому моделированию в играх. Ключ — <em>находить роль под свои когнитивные преимущества</em>.</p>
+<hr>
+<h4>2.8.3. Ценности — внутренние ориентиры</h4>
+<p>Третий и самый важный шаг — определение того, <em>ради чего</em> вы хотите заниматься геймдевом. Ответ на этот вопрос определяет устойчивость мотивации в долгосрочной перспективе. Часто путают:</p>
+<ul>
+<li><strong>Поверхностные мотивы</strong> — "хочу делать крутые шутеры", "мечтаю о признании", "нравится Unity". Они быстро истощаются при столкновении с рутиной (отладка сетевого кода, бейкинг карт освещения, написание документации).</li>
+<li><strong>Глубинные ценности</strong> — "мне важно создавать пространства для социального взаимодействия", "я стремлюсь к точности в симуляции физических процессов", "меня вдохновляет исследование границ восприятия через интерактив". Они остаются актуальными даже при смене движков, жанров и проектов.</li>
+</ul>
+<p>Например, человек, ценящий <em>авторский контроль</em>, вероятно, будет несчастен в AAA-студии, где решения принимаются коллегиально, но процветать в инди-разработке. Тот, кому важна <em>стабильность и предсказуемость</em>, предпочтёт работу над инструментами или поддержкой legacy-кода, а не экспериментальным прототипированием.</p>
+<hr>
+<h4>2.8.4. Этапы построения траектории</h4>
+<p>На основе анализа контекста, способностей и ценностей строится трёхэтапный план:</p>
+<ol>
+<li>
+<p><strong>Foundation Phase (3–12 месяцев)</strong> — освоение <em>общей базы</em>, без привязки к узкой специализации:</p>
+<ul>
+<li>Программист — C# или C++, основы архитектуры ПО, Git, математика (векторы, матрицы, тригонометрия);</li>
+<li>Художник — композиция, светотень, анатомия, основы 3D-пакетов (Blender), теория цвета;</li>
+<li>Дизайнер — анализ игр ("как реализована механика X"), прототипирование в бумаге и простых движках (PuzzleScript, Bitsy), основы психологии мотивации.</li>
+</ul>
+<p>Критерий завершения — способность самостоятельно собрать playable prototype (например, платформер с 3 уровнями, механикой двойного прыжка и базовым UI).</p>
+</li>
+<li>
+<p><strong>Specialization Phase (6–24 месяца)</strong> — углубление в <em>одну дисциплину</em> с параллельным освоением <em>смежных областей на уровне понимания</em>:</p>
+<ul>
+<li>Геймплей-программист изучает основы анимации (blend trees, state machines), чтобы эффективно взаимодействовать с аниматорами;</li>
+<li>Level designer осваивает базовый скриптинг (Blueprints, GDScript), чтобы проверять логику триггеров без помощи программиста;</li>
+<li>3D-художник изучает основы шейдеров (PBR, normal mapping), чтобы корректно готовить карты.</li>
+</ul>
+<p>Критерий завершения — публичная работа (геймджем, open-source вклад, статья), где продемонстрирована <em>интеграция знаний</em>: "я оптимизировал модель под 60 FPS на мобильных, сохранив читаемость силуэта".</p>
+</li>
+<li>
+<p><strong>Mastery Phase (2+ года)</strong> — <em>расширение влияния</em>:</p>
+<ul>
+<li>Создание инструментов, ускоряющих работу команды;</li>
+<li>Наставничество;</li>
+<li>Участие в формировании технической политики (стандарты кода, pipeline арта);</li>
+<li>Исследование новых подходов (например, применение ML для анимации).</li>
+</ul>
+<p>Здесь уже не важна конкретная должность (senior, lead), а <em>вклад в устойчивость процесса</em>.</p>
+</li>
+</ol>
+<hr>
+<h3 id="29-этические-и-профессиональные-ориентиры">2.9. Этические и профессиональные ориентиры</h3>
+<p>Геймдев — это не нейтральная техническая деятельность. Игры влияют на поведение, формируют представления, потребляют ресурсы. Поэтому дорожная карта включает и этический компас — набор принципов, помогающих принимать ответственные решения.</p>
+<hr>
+<h4>2.9.1. Ответственность за опыт</h4>
+<p>Любая игровая механика — это <em>поведенческий паттерн</em>, который игрок отрабатывает сотни раз. Следовательно, разработчик несёт ответственность за:</p>
+<ul>
+<li><strong>Психологическую безопасность</strong> — избегание механик, провоцирующих панические атаки (например, внезапные громкие звуки без предупреждения), или усугубляющих тревожность (например, постоянный таймер в хорроре без возможности паузы).</li>
+<li><strong>Избежание манипуляции</strong>: чёткое разделение игровых и монетизационных механик. Например, "боевой пропуск" (battle pass) должен давать преимущества в прогрессии, но не в боевой мощи (pay-to-win).</li>
+<li><strong>Инклюзивность</strong>: проектировать механики, доступные разным аудиториям:
+<ul>
+<li>Для людей с нарушениями зрения — аудиальные подсказки, тактильная обратная связь;</li>
+<li>Для людей с ДЦП — настраиваемые задержки ввода, remapping кнопок;</li>
+<li>Для нейроразнообразных игроков — отключение визуальных эффектов (strobe, motion blur).</li>
+</ul>
+</li>
+</ul>
+<p>Этический тест: <em>"Согласился бы я, чтобы мой ребёнок/родитель/друг играл в эту игру ежедневно по 2 часа?"</em></p>
+<hr>
+<h4>2.9.2. Ответственность за команду</h4>
+<p>Профессионализм включает заботу о коллегах:</p>
+<ul>
+<li><strong>Прозрачность в оценках</strong>. Если задача занимает в 3 раза больше времени, чем планировалось, — это <em>данные для улучшения процесса</em>. Сокрытие проблем ведёт к системному накоплению технического долга.</li>
+<li><strong>Документирование как уважение</strong>. Код без комментариев, ассеты без метаданных, механики без описания — это передача бремени будущему "я" или коллеге.</li>
+<li><strong>Отказ от героического кода</strong>. Решения, понятные только одному разработчику, создают "бутылочное горлышко". Архитектура должна быть <em>сопровождаемой</em>, даже если это требует дополнительного времени на этапе проектирования.</li>
+</ul>
+<hr>
+<h4>2.9.3. Ответственность за индустрию</h4>
+<p>Долгосрочное здоровье отрасли зависит от действий каждого:</p>
+<ul>
+<li><strong>Открытость знаний</strong>. Публикация статей, участие в митапах, менторство — <em>инвестиция в экосистему</em>, из которой все черпают кадры и идеи.</li>
+<li><strong>Критика без разрушения</strong>. Анализ чужих проектов должен быть конструктивным: "вот альтернативный подход, и вот его компромиссы".</li>
+<li><strong>Сохранение истории</strong>. Архивирование исходных кодов, арт-буков, геймдизайн-документов — даже неудачных проектов. Они становятся основой для исследований, обучения и избежания повторения ошибок.</li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#дорожная-карта-геймдева">Дорожная карта геймдева</a></li><li class="article-toc__item is-h3"><a href="#часть-1-архитектура-игровой-индустрии-контекст-для-дорожной-карты">Часть 1. Архитектура игровой индустрии — контекст для дорожной карты</a></li><li class="article-toc__item is-h3"><a href="#часть-2-основные-дисциплины-ядро-профессиональных-компетенций">Часть 2. Основные дисциплины — ядро профессиональных компетенций</a></li><li class="article-toc__item is-h3"><a href="#22-графические-технологии-и-рендеринг">2.2. Графические технологии и рендеринг</a></li><li class="article-toc__item is-h3"><a href="#23-дизайн-игр-от-концепции-к-ощущению">2.3. Дизайн игр — от концепции к ощущению</a></li><li class="article-toc__item is-h3"><a href="#24-искусство-и-визуальный-дизайн">2.4. Искусство и визуальный дизайн</a></li><li class="article-toc__item is-h3"><a href="#25-аудио-и-звуковой-дизайн">2.5. Аудио и звуковой дизайн</a></li><li class="article-toc__item is-h3"><a href="#26-продакшн-и-управление-проектами">2.6. Продакшн и управление проектами</a></li><li class="article-toc__item is-h3"><a href="#27-техническое-искусство-интеграционный-слой-индустрии">2.7. Техническое искусство — интеграционный слой индустрии</a></li><li class="article-toc__item is-h3"><a href="#28-выбор-индивидуальной-траектории-от-общего-к-частному">2.8. Выбор индивидуальной траектории — от общего к частному</a></li><li class="article-toc__item is-h3"><a href="#29-этические-и-профессиональные-ориентиры">2.9. Этические и профессиональные ориентиры</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

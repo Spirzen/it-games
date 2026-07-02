@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Python — Space Invaders — Игры IT Universe</title><meta name="description" content="Пошаговый практикум Space Invaders на Python и Pygame. Восемь этапов, счёт, жизни, бомбы и бонусная тарелка. В конце — разнесение кода по модулям."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Python — Space Invaders</span></li></ol></nav><header class="portal-hero"> <h1>Python — Space Invaders</h1> <p>Пошаговый практикум Space Invaders на Python и Pygame. Восемь этапов, счёт, жизни, бомбы и бонусная тарелка. В конце — разнесение кода по модулям.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Python — Space Invaders" data-url="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Python — Space Invaders">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Python — Space Invaders</h1>
+<p><span class="complexity-badge">Разработчику</span>
+<span class="complexity-badge">Начальный уровень</span></p>
+<hr>
+<h2 id="о-практикуме">О практикуме</h2>
+<p>В 1978 году Taito выпустила аркаду <strong>Space Invaders</strong>. Игрок стоит внизу экрана, стреляет вверх, а ряды пришельцев ползут в сторону; у края вся стая разворачивается и опускается на один ряд. Этот шаблон до сих пор встречается в учебных проектах и инди-играх.</p>
+<p>Здесь соберём такую же механику на <strong>Python 3</strong> и <strong>Pygame</strong>. Графика — цветные прямоугольники (<code>pygame.draw</code>, <code>Rect</code>), без загрузки PNG. Так проще сосредоточиться на <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">игровом цикле</a>, столкновениях и состоянии матча. Картинки и звуки подключите позже по инструкции из раздела <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312#game-assets">Где брать графику и звук</a>.</p>
+<h3 id="что-понадобится-заранее">Что понадобится заранее</h3>
+<ul>
+<li>Базовый Python — списки, <code>if</code>, функции, простой класс. Маршрут — <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/intro">Python — о разделе</a>.</li>
+<li>Окно Pygame, события, <code>Rect</code>, <code>clock.tick</code>. Теория — <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a>.</li>
+<li>По желанию, один вечер на <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132#invaders">упрощённых Invaders в Lab</a> — там та же стая врагов в одном коротком файле.</li>
+</ul>
+<p>На каждом этапе вы копируете <strong>целый</strong> <code>main.py</code>, запускаете <code>python main.py</code> и проверяете одну новую механику.</p>
+<h3 id="слова-которые-встретятся-в-коде">Слова, которые встретятся в коде</h3>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Коротко</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Игровой цикл</strong></td>
+<td>Бесконечный <code>while</code>, на каждом кадре — события, логика, отрисовка. Подробнее в <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">главе 312</a>.</td>
+</tr>
+<tr>
+<td><strong><code>Rect</code></strong></td>
+<td>Прямоугольник с координатами и размером; им задают позицию корабля, пули и пришельца.</td>
+</tr>
+<tr>
+<td><strong><code>colliderect</code></strong></td>
+<td>Проверка, пересекаются ли два <code>Rect</code> — основа попадания пули по врагу.</td>
+</tr>
+<tr>
+<td><strong>Кулдаун</strong> (<code>fire_cd</code>)</td>
+<td>Счётчик кадров между выстрелами, чтобы нельзя было зажать Пробел и залить экран пулями.</td>
+</tr>
+<tr>
+<td><strong>Стая</strong></td>
+<td>Все пришельцы двигаются синхронно, как в оригинальной аркаде.</td>
+</tr>
+<tr>
+<td><strong>UFO</strong></td>
+<td>Летающая тарелка-бонус; в оригинале пролетает сверху и даёт случайное число очков.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="управление-в-финальной-версии">Управление в финальной версии</h3>
+<table>
+<thead>
+<tr>
+<th>Клавиша</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> / <code>A</code></td>
+<td>Корабль влево</td>
+</tr>
+<tr>
+<td><code>→</code> / <code>D</code></td>
+<td>Корабль вправо</td>
+</tr>
+<tr>
+<td><code>Пробел</code></td>
+<td>Выстрел (с паузой между выстрелами)</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>Новый матч после победы или поражения</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Выход</td>
+</tr>
+</tbody>
+</table>
+<p>Ориентир по времени — <strong>3–5 часов</strong> на этапы 0–8, ещё около часа на <a href="#full-revision">модульную ревизию</a>.</p>
+<h3 id="карта-этапов">Карта этапов</h3>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Тема</th>
+<th>Что появится в игре</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#stage-0">0</a></td>
+<td>Запуск Pygame</td>
+<td>Тёмное окно 640×720</td>
+</tr>
+<tr>
+<td><a href="#stage-1">1</a></td>
+<td>Игрок</td>
+<td>Корабль внизу, движение по стрелкам</td>
+</tr>
+<tr>
+<td><a href="#stage-2">2</a></td>
+<td>Пули</td>
+<td>Выстрел по Пробелу</td>
+</tr>
+<tr>
+<td><a href="#stage-3">3</a></td>
+<td>Сетка врагов</td>
+<td>5 рядов по 11 пришельцев</td>
+</tr>
+<tr>
+<td><a href="#stage-4">4</a></td>
+<td>Движение стаи</td>
+<td>Разворот у края и шаг вниз</td>
+</tr>
+<tr>
+<td><a href="#stage-5">5</a></td>
+<td>Попадания</td>
+<td>Счёт и ускорение стаи</td>
+</tr>
+<tr>
+<td><a href="#stage-6">6</a></td>
+<td>Бомбы</td>
+<td>Жизни игрока</td>
+</tr>
+<tr>
+<td><a href="#stage-7">7</a></td>
+<td>Бонусная тарелка</td>
+<td>Пролёт UFO и случайные очки</td>
+</tr>
+<tr>
+<td><a href="#stage-8">8</a></td>
+<td>Конец раунда</td>
+<td>Экран победы или поражения, клавиша <code>R</code></td>
+</tr>
+<tr>
+<td><a href="#full-revision">Ревизия</a></td>
+<td>Модули</td>
+<td><code>settings.py</code> и пакет <code>game/</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="dependencies"></span></p>
+<h2 id="зависимости-и-папка-проекта">Зависимости и папка проекта</h2>
+<p>Создайте отдельную папку и виртуальное окружение — так проще не смешать Pygame с другими проектами.</p>
+<pre><code class="language-bash">mkdir invaders &#x26;&#x26; cd invaders
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+pip install pygame
+</code></pre>
+<p>Файл <code>requirements.txt</code> для сдачи работы или GitHub:</p>
+<pre><code class="language-text">pygame>=2.5.0
+</code></pre>
+<p>Структура на этапах 0–8:</p>
+<ul>
+<li>один файл <code>main.py</code> в корне <code>invaders/</code>;</li>
+<li>терминал открыт в этой папке;</li>
+<li>команда запуска — <code>python main.py</code>.</li>
+</ul>
+<p>После <a href="#stage-8">этапа 8</a> можно разнести код по файлам — см. <a href="#full-revision">полную ревизию</a>.</p>
+<hr>
+<p><span id="architecture"></span></p>
+<h2 id="как-устроена-игра">Как устроена игра</h2>
+<p>Каждый кадр (обычно 60 раз в секунду) программа повторяет одну и ту же цепочку:</p>
+<pre><code class="language-mermaid">flowchart TD
+    A[События клавиатуры и мыши] --> B[Движение игрока и пуль]
+    B --> C[Движение стаи пришельцев]
+    C --> D[Бомбы и тарелка UFO]
+    D --> E[Столкновения и начисление очков]
+    E --> F[Проверка победы и жизней]
+    F --> G[Отрисовка кадра]
+</code></pre>
+<p>Роли основных объектов:</p>
+<ul>
+<li><strong>Игрок</strong> — один <code>pygame.Rect</code> внизу экрана; сдвигается только по горизонтали.</li>
+<li><strong>Пули</strong> — список маленьких <code>Rect</code>, каждый кадр поднимаются вверх.</li>
+<li><strong>Пришельцы</strong> — список структур с полем <code>rect</code>, цветом ряда и очками за уничтожение.</li>
+<li><strong>Бомбы</strong> — падающие <code>Rect</code>; сбрасывает случайный пришелец из нижнего живого ряда.</li>
+<li><strong>UFO</strong> — отдельный объект; летит справа налево, за попадание даёт бонус.</li>
+</ul>
+<p>Тот же приём "список объектов + цикл обновления" используется в <a href="./5.md">Tetris</a> и <a href="./3.md">Ping Pong</a> — меняется только правило движения.</p>
+<hr>
+<p><span id="stage-0"></span></p>
+<h2 id="этап-0-минимальный-запуск">Этап 0 — минимальный запуск</h2>
+<p><strong>Цель</strong> — убедиться, что Pygame установлен, окно открывается и закрывается без ошибок.</p>
+<p>Создайте <code>main.py</code>. Внутри — <code>pygame.init()</code>, окно, цикл <code>while running</code>, заливка фона, <code>display.flip()</code> и <code>clock.tick(60)</code>. Выход — по крестику окна или по <code>Esc</code>.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-001" data-title="Этап 0 — минимальный запускаемый код" data-min-height="420"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Окно 640×720, тёмный фон.</li>
+<li class="task-list-item"><input type="checkbox" disabled> После <code>Esc</code> процесс завершается, консоль не зависает.</li>
+</ul>
+<p><strong>Разбор.</strong> <code>clock.tick(60)</code> ограничивает частоту кадров и не даёт циклу загрузить процессор на 100%. Без <code>tick</code> игра может работать слишком быстро или "съедать" весь CPU.</p>
+<hr>
+<p><span id="stage-1"></span></p>
+<h2 id="этап-1-корабль-игрока">Этап 1 — корабль игрока</h2>
+<p><strong>Цель</strong> — нарисовать корабль и двигать его по нижней линии экрана.</p>
+<p>Добавляется <code>player = pygame.Rect(...)</code> и чтение клавиш через <code>pygame.key.get_pressed()</code> <strong>каждый кадр</strong> (пока клавиша зажата, корабль едет). Ограничение <code>player.x = max(8, min(...))</code> не выпускает прямоугольник за левый и правый край.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-002" data-title="Этап 1 — корабль игрока" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Корабль реагирует на <code>←</code>/<code>→</code> и <code>A</code>/<code>D</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled> У правого и левого края корабль останавливается.</li>
+</ul>
+<p><strong>Разбор.</strong> <code>get_pressed()</code> возвращает состояние всех клавиш <strong>сейчас</strong>, в отличие от <code>event.key</code> в <code>KEYDOWN</code>, который срабатывает один раз на нажатие. Для непрерывного движения удобнее именно <code>get_pressed()</code>. Тот же приём — в <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132#invaders">Lab, Invaders lite</a>.</p>
+<hr>
+<p><span id="stage-2"></span></p>
+<h2 id="этап-2-стрельба">Этап 2 — стрельба</h2>
+<p><strong>Цель</strong> — по Пробелу создавать пулю над кораблём и двигать её вверх.</p>
+<p>Пуля — ещё один <code>Rect</code> в списке <code>bullets</code>. Событие <code>pygame.KEYDOWN</code> с <code>K_SPACE</code> добавляет новую пулю. Переменная <code>fire_cd</code> (кулдаун) считает кадры до следующего разрешённого выстрела.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-003" data-title="Этап 2 — стрельба" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Пули летят вверх и исчезают за верхним краем.</li>
+<li class="task-list-item"><input type="checkbox" disabled> При зажатом Пробеле выстрелы идут с паузой, а не сотней пуль за секунду.</li>
+</ul>
+<p><strong>Разбор.</strong> Список <code>bullets</code> перебирают с копией <code>for b in bullets[:]</code> — так безопасно удалять элементы во время цикла. Про списки и мутацию — в <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/intro">Python, коллекции</a>.</p>
+<hr>
+<p><span id="stage-3"></span></p>
+<h2 id="этап-3-сетка-пришельцев">Этап 3 — сетка пришельцев</h2>
+<p><strong>Цель</strong> — расставить врагов рядами и задать разные очки по высоте.</p>
+<p>Функция <code>create_aliens()</code> строит сетку 5×11. Верхний ряд приносит больше очков (массив <code>ROW_POINTS</code>). На этом этапе пришельцы <strong>стоят на месте</strong> — проверьте, что сетка ровная и центрирована.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-004" data-title="Этап 3 — сетка пришельцев" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Пять рядов, в каждом одиннадцать врагов.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Цвета рядов различаются (в коде заданы в <code>ROW_COLORS</code>).</li>
+</ul>
+<p><strong>Разбор.</strong> Координата <code>y</code> ряда считается как <code>ALIEN_TOP + row * (высота + отступ)</code>. Так же строят сетку в <a href="./5.md">Tetris</a> и <a href="./2.md">Match-3</a> — меняются только размер ячейки и правила заполнения.</p>
+<hr>
+<p><span id="stage-4"></span></p>
+<h2 id="этап-4-движение-стаи">Этап 4 — движение стаи</h2>
+<p><strong>Цель</strong> — заставить всех пришельцев двигаться влево-вправо синхронно и опускаться у края экрана.</p>
+<p>Переменная <code>alien_dir</code> хранит направление (1 или −1). Если любой живой пришелец касается края, направление меняется на противоположное (<code>alien_dir *= -1</code>), и весь ряд сдвигается вниз на <code>ALIEN_DROP</code>. Функция <code>alien_speed()</code> увеличивает скорость, когда врагов остаётся меньше — как в оригинальной аркаде.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-005" data-title="Этап 4 — движение стаи" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Стая доходит до края, разворачивается и опускается.</li>
+<li class="task-list-item"><input type="checkbox" disabled> После уничтожения части врагов (на следующих этапах) движение становится быстрее.</li>
+</ul>
+<p><strong>Разбор.</strong> Жанр <strong>fixed shooter</strong> (стрельба с фиксированной линии игрока) разобран в <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/2">классификации компьютерных игр</a> — Space Invaders там часто приводят как пример.</p>
+<hr>
+<p><span id="stage-5"></span></p>
+<h2 id="этап-5-попадания-и-счёт">Этап 5 — попадания и счёт</h2>
+<p><strong>Цель</strong> — уничтожать пришельцев пулями и показывать счёт на экране.</p>
+<p>Для каждой пули вызывается <code>bullet.colliderect(alien.rect)</code>. При попадании у пришельца <code>alive = False</code>, пуля удаляется, к <code>score</code> прибавляются очки ряда. Мёртвые враги не рисуются.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-006" data-title="Этап 5 — попадания, счёт и ускорение" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Счёт растёт при попадании.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Верхний ряд даёт больше очков, чем нижний.</li>
+</ul>
+<p><strong>Разбор.</strong> <code>colliderect</code> сравнивает только прямоугольники, не "прозрачные" пиксели картинки. Для PNG со сложной формой позже можно перейти на <code>collide_mask</code> — это описано в <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">главе 312</a>.</p>
+<hr>
+<p><span id="stage-6"></span></p>
+<h2 id="этап-6-бомбы-и-жизни">Этап 6 — бомбы и жизни</h2>
+<p><strong>Цель</strong> — добавить ответный урон от врагов и запас жизней игрока.</p>
+<p>Раз в несколько кадров случайный пришелец из <strong>самого нижнего живого ряда</strong> создаёт бомбу (<code>Rect</code> под ним). Бомба падает вниз; при пересечении с <code>player</code> жизнь уменьшается. При <code>lives &#x3C;= 0</code> включается флаг поражения.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-007" data-title="Этап 6 — бомбы и жизни" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> На экране видно "Жизни: 3" (и меньше после попадания).</li>
+<li class="task-list-item"><input type="checkbox" disabled> Бомбы падают только с нижнего ряда стаи, а не с верхнего.</li>
+</ul>
+<p><strong>Разбор.</strong> Счётчик <code>bomb_cd</code> задаёт паузу между сбросами бомб. Без него экран быстро заполнился бы падающими прямоугольниками. Жизни (<code>lives</code>) — целое число; при нуле матч считается проигранным.</p>
+<hr>
+<p><span id="stage-7"></span></p>
+<h2 id="этап-7-бонусная-тарелка">Этап 7 — бонусная тарелка</h2>
+<p><strong>Цель</strong> — периодически запускать UFO и давать случайный бонус за попадание.</p>
+<p>Каждые <code>UFO_INTERVAL_MS</code> миллисекунд (в коде около 20 секунд) справа появляется тарелка. Очки за неё выбираются случайно (<code>random.choice</code>). Попадание пули начисляет бонус; на месте тарелки кратко показывается число очков.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-008" data-title="Этап 7 — бонусная тарелка (UFO)" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Тарелка пролетает сверху справа налево.</li>
+<li class="task-list-item"><input type="checkbox" disabled> За разные пролёты можно получить разное число очков.</li>
+</ul>
+<p><strong>Разбор.</strong> Время берётся из <code>pygame.time.get_ticks()</code> — миллисекунды с момента <code>pygame.init()</code>. Так же считают таймеры в <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132#survive">Lab, выживание 30 секунд</a>.</p>
+<hr>
+<p><span id="stage-8"></span></p>
+<h2 id="этап-8-победа-поражение-и-рестарт">Этап 8 — победа, поражение и рестарт</h2>
+<p><strong>Цель</strong> — завершать матч по правилам и начинать заново по <code>R</code>.</p>
+<p>Условия победы:</p>
+<ul>
+<li>живых пришельцев не осталось.</li>
+</ul>
+<p>Условия поражения:</p>
+<ul>
+<li>стая опустилась до линии игрока;</li>
+<li>жизни закончились.</li>
+</ul>
+<p>По клавише <code>R</code> сбрасываются счёт, жизни, списки пуль и бомб, заново вызывается <code>create_aliens()</code>.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-009" data-title="Этап 8 — победа, поражение и рестарт" data-min-height="720"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После уничтожения всех врагов — сообщение о победе.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Если пришельцы дошли до низа или жизни = 0 — поражение.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>R</code> запускает новую волну с чистого листа.</li>
+</ul>
+<p><strong>Разбор.</strong> Флаги <code>won</code> и <code>game_over</code> останавливают обновление логики, но цикл рисования продолжается — игрок видит итоговый текст. Похожая <strong>машина состояний</strong> (меню → игра → конец) есть в <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132">Lab, заготовка 5.2</a> и в <a href="./3.md">Ping Pong, этап 13</a>.</p>
+<hr>
+<p><span id="full-revision"></span></p>
+<h2 id="полная-ревизия-файлов">Полная ревизия файлов</h2>
+<p>Однофайловый <code>main.py</code> на этапе 8 уже длинный. Разнесение по модулям облегчает правки: константы отдельно, логика стаи отдельно, точка входа — короткая.</p>
+<p>Целевая структура:</p>
+<pre><code>invaders/
+  main.py
+  settings.py
+  game/
+    __init__.py
+    game.py
+    player.py
+    bullets.py
+    alien_wave.py
+    ufo.py
+</code></pre>
+<p><strong><code>settings.py</code></strong> — ширина окна, скорости, цвета, число рядов. Все "магические числа" в одном месте.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-010" data-title="settings.py" data-min-height="480"> </div>
+<p><strong><code>main.py</code></strong> — только создание <code>Game()</code> и вызов <code>run()</code>.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-011" data-title="main.py" data-min-height="240"> </div>
+<p><strong><code>game/game.py</code></strong> — класс <code>Game</code>: события, обновление, отрисовка, сброс матча.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-012" data-title="game/game.py" data-min-height="720"> </div>
+<p>Остальные файлы пакета <code>game/</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-013" data-title="game/player.py" data-min-height="300"> </div>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-014" data-title="game/bullets.py" data-min-height="480"> </div>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-015" data-title="game/alien_wave.py" data-min-height="720"> </div>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-11-016" data-title="game/ufo.py" data-min-height="360"> </div>
+<p>Скопируйте файлы в одну папку <code>invaders/</code>, активируйте <code>venv</code>, выполните из корня проекта:</p>
+<pre><code class="language-bash">python main.py
+</code></pre>
+<p>Тот же приём модулей — в <a href="./3.md#full-revision">Ping Pong</a> и <a href="./4.md#full-revision">Racing</a>.</p>
+<h3 id="идеи-для-продолжения">Идеи для продолжения</h3>
+<ul>
+<li><strong>Спрайты PNG</strong> — заменить <code>draw.rect</code> на <code>blit</code> после загрузки картинок. Источники — <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312#game-assets">Где брать графику и звук</a>.</li>
+<li><strong>Звуки выстрела и взрыва</strong> — <code>pygame.mixer.Sound</code>, раздел <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">Изображения и звук</a>.</li>
+<li><strong>Баррикады</strong> — несколько статичных <code>Rect</code> между игроком и стаей, как в оригинале.</li>
+<li><strong>Несколько волн</strong> — после победы снова <code>create_aliens()</code>, уменьшить <code>bomb_cd</code> для сложности.</li>
+<li><strong>Крестики-нолики с ИИ</strong> — другой жанр, но те же клики мыши по сетке — <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132#tic-tac-toe">Lab §4.3</a>.</li>
+</ul>
+<h3 id="см-также">См. также</h3>
+<ul>
+<li><a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132">Pygame — мини-игры</a> — короткие однофайловые примеры.</li>
+<li><a href="./10.md">Bubble Shooter</a> — другая аркада с сеткой и прицеливанием.</li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/1174">Гейм-дизайн, core loop</a> — зачем в аркаде ускоряется стая и растёт напряжение.</li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/116">История аркад</a> — контекст жанра.</li>
+</ul>
+<hr>
+<h2 id="в-подборках">В подборках</h2>
+<p>Статья входит в <a href="https://spirzen.ru/about/collections">тематические подборки</a> и блок "С чего начать?" на <a href="/">главной</a>. Соседние шаги того же маршрута:</p>
+<p><strong>Разработка видеоигр</strong> — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro">Практикум — о разделе</a>, <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a>, <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132">Pygame — мини-игры</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/intro">Разработка игр — о разделе</a>.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#о-практикуме">О практикуме</a></li><li class="article-toc__item is-h3"><a href="#что-понадобится-заранее">Что понадобится заранее</a></li><li class="article-toc__item is-h3"><a href="#слова-которые-встретятся-в-коде">Слова, которые встретятся в коде</a></li><li class="article-toc__item is-h3"><a href="#управление-в-финальной-версии">Управление в финальной версии</a></li><li class="article-toc__item is-h3"><a href="#карта-этапов">Карта этапов</a></li><li class="article-toc__item"><a href="#зависимости-и-папка-проекта">Зависимости и папка проекта</a></li><li class="article-toc__item"><a href="#как-устроена-игра">Как устроена игра</a></li><li class="article-toc__item"><a href="#этап-0-минимальный-запуск">Этап 0 — минимальный запуск</a></li><li class="article-toc__item"><a href="#этап-1-корабль-игрока">Этап 1 — корабль игрока</a></li><li class="article-toc__item"><a href="#этап-2-стрельба">Этап 2 — стрельба</a></li><li class="article-toc__item"><a href="#этап-3-сетка-пришельцев">Этап 3 — сетка пришельцев</a></li><li class="article-toc__item"><a href="#этап-4-движение-стаи">Этап 4 — движение стаи</a></li><li class="article-toc__item"><a href="#этап-5-попадания-и-счёт">Этап 5 — попадания и счёт</a></li><li class="article-toc__item"><a href="#этап-6-бомбы-и-жизни">Этап 6 — бомбы и жизни</a></li><li class="article-toc__item"><a href="#этап-7-бонусная-тарелка">Этап 7 — бонусная тарелка</a></li><li class="article-toc__item"><a href="#этап-8-победа-поражение-и-рестарт">Этап 8 — победа, поражение и рестарт</a></li><li class="article-toc__item"><a href="#полная-ревизия-файлов">Полная ревизия файлов</a></li><li class="article-toc__item is-h3"><a href="#идеи-для-продолжения">Идеи для продолжения</a></li><li class="article-toc__item is-h3"><a href="#см-также">См. также</a></li><li class="article-toc__item"><a href="#в-подборках">В подборках</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр — о разделе  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312" target="_blank" rel="noopener noreferrer"> Разработка игр на Python  ↗ </a> </li><li> <a href="https://lab.spirzen.ru/lab/examples/1132" target="_blank" rel="noopener noreferrer"> Pygame — мини-игры на Python  ↗ </a> </li><li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro" target="_blank" rel="noopener noreferrer"> Компьютерные игры — о разделе  ↗ </a> </li><li> <a href="/games/9-04-razrabotka-igr/112"> Игровой движок  </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

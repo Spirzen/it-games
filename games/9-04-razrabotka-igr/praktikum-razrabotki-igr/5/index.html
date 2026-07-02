@@ -1,0 +1,1532 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Python — Tetris — Игры IT Universe</title><meta name="description" content="Пошаговый практикум Tetris на Python и Pygame — 20 этапов до играбельного прототипа; полная ревизия файлов (#full-revision) — эталон этапа 18 без hold и 7-bag (этапы 19–20 опциональны)."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Python — Tetris</span></li></ol></nav><header class="portal-hero"> <h1>Python — Tetris</h1> <p>Пошаговый практикум Tetris на Python и Pygame — 20 этапов до играбельного прототипа; полная ревизия файлов (#full-revision) — эталон этапа 18 без hold и 7-bag (этапы 19–20 опциональны).</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Python — Tetris" data-url="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Python — Tetris">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Python — Tetris</h1>
+<div class="article-tags">
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Разработчику</span>
+<span class="complexity-badge">Начальный уровень</span></p>
+<div class="callout callout--info">
+  <div class="callout-title">Формат практикума</div>
+  <div class="callout-body">
+  <p>Материалы трека приводятся к единому формату: <strong>полные листинги для копирования</strong> на каждом этапе, блок <strong>"Разбор"</strong> и раздел <strong>"Полная ревизия"</strong> в конце статьи.</p>
+  <ul>
+    <li>Гарантированно запускаемые эталоны для сверки сейчас: <a href="https://github.com/Spirzen/BattleCity">Battle City</a>, <a href="https://github.com/Spirzen/Match3">Match3</a>, <a href="./3.md#full-revision">Ping Pong</a>, <a href="./5.md#full-revision">Tetris</a>, <a href="./4.md#full-revision">Racing</a> (<code>#full-revision</code> в каждой статье).</li>
+    <li>В этой статье готовая <a href="#full-revision">полная ревизия</a> (<code>#full-revision</code>) — этапы 0–18; этапы 19–20 (7-bag, hold, lock delay, DAS) остаются опциональными расширениями.</li>
+  </ul>
+  </div>
+</div>
+<h2 id="как-проходить-практикум">Как проходить практикум</h2>
+<ol>
+<li>Создайте папку <code>tetris/</code>, виртуальное окружение и установите Pygame — раздел <a href="#dependencies">Зависимости</a>.</li>
+<li>Идите по этапам 0–18 по порядку: после каждого шага запускайте <code>python main.py</code> и отмечайте пункты "Самопроверка".</li>
+<li>Копируйте <strong>целиком</strong> файлы из блоков кода этапа, а не отдельные фрагменты — иначе легко потерять импорты.</li>
+<li>На этапе 17 разложите код по пакету <code>game/</code>; с этапа 18 вся логика партии живёт в <code>game/game.py</code>.</li>
+<li>Этапы 19–20 (7-bag, hold, lock delay, DAS) — по желанию, после рабочего прототипа.</li>
+<li>После этапа 18 сверьте проект с эталоном — <a href="#full-revision">Полная ревизия файлов</a>: дерево, разбор и готовые листинги.</li>
+</ol>
+<hr>
+<h2 id="о-практикуме">О практикуме</h2>
+<p><strong>Tetris</strong> (тетрис) — классическая головоломка, придуманная <strong>Алексеем Пажитновым</strong> в 1984 году в Москве. Из падающих фигур из четырёх клеток (<strong>тетромино</strong>) нужно заполнять ряды на поле шириной 10 клеток. Полная горизонтальная линия исчезает, верхние блоки опускаются, за это начисляются очки. Скорость падения растёт с уровнем; игра заканчивается, когда новая фигура не помещается у верхней границы.</p>
+<p>Название происходит от греческого <em>tetra</em> ("четыре") и "теннис" — любимой игры автора. С 1980-х Tetris стал эталоном <strong>простых правил и глубокого skill ceiling</strong> — за десять минут можно понять механику, а годами оттачивать скорость, предвидение и работу с очередью фигур.</p>
+<p>В этом практикуме соберём <strong>полноценный прототип</strong> на <strong>Python 3</strong> и <strong>Pygame</strong> — без спрайтов из оригинала, на цветных квадратах, зато с разбором сетки, вращения, очистки линий, очков, уровней, "призрака", <strong>7-bag</strong>-рандома, <strong>hold</strong> и экранов меню.</p>
+<div class="callout callout--info">
+  <div class="callout-title">Для кого материал</div>
+  <div class="callout-body">
+  <p>Нужны базовые Python (классы, списки, двумерные массивы, циклы) и знакомство с Pygame из статьи <a href="/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a>. Каждый этап — <strong>запускаемый код</strong>: после шага проект можно запустить и увидеть новую механику.</p>
+  </div>
+</div>
+<p><strong>Управление в финальной версии</strong></p>
+<table>
+<thead>
+<tr>
+<th>Клавиша</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> / <code>→</code></td>
+<td>Сдвиг фигуры влево / вправо</td>
+</tr>
+<tr>
+<td><code>↓</code></td>
+<td>Ускоренное падение (soft drop)</td>
+</tr>
+<tr>
+<td><code>↑</code> или <code>X</code></td>
+<td>Поворот по часовой стрелке</td>
+</tr>
+<tr>
+<td><code>Z</code></td>
+<td>Поворот против часовой стрелки</td>
+</tr>
+<tr>
+<td><code>Пробел</code></td>
+<td>Мгновенный сброс (hard drop)</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>Hold — отложить фигуру (этап 20)</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>Пауза</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>Перезапуск после game over</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Выход</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Маршрут чтения</strong></p>
+<ol>
+<li><a href="#architecture">Архитектура</a> — как устроен проект до первой строки кода.</li>
+<li><a href="#dependencies">Зависимости и структура папок</a> — окружение и файлы.</li>
+<li><a href="#stage-0">Этап 0 — минимальный запуск</a> — чёрное окно и игровой цикл.</li>
+<li>Этапы 1–18 — по одной механике за шаг.</li>
+<li><a href="#stage-19">Этапы 19–20 — продвинутые улучшения</a> (7-bag, hold, lock delay, DAS).</li>
+<li><a href="#full-revision">Полная ревизия файлов</a> — проверенный эталон для копирования целиком.</li>
+<li><a href="#final-checklist">Итоговая структура и самопроверка</a>.</li>
+</ol>
+<p><strong>Оглавление этапов</strong></p>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Тема</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#stage-0">0</a></td>
+<td>Минимальное окно</td>
+</tr>
+<tr>
+<td><a href="#stage-1">1</a></td>
+<td><code>settings.py</code></td>
+</tr>
+<tr>
+<td><a href="#stage-2">2</a></td>
+<td>Поле и сетка</td>
+</tr>
+<tr>
+<td><a href="#stage-3">3</a></td>
+<td>Формы тетромино</td>
+</tr>
+<tr>
+<td><a href="#stage-4">4</a></td>
+<td>Класс <code>Piece</code></td>
+</tr>
+<tr>
+<td><a href="#stage-5">5</a></td>
+<td>Сетка <code>board</code></td>
+</tr>
+<tr>
+<td><a href="#stage-6">6</a></td>
+<td>Гравитация</td>
+</tr>
+<tr>
+<td><a href="#stage-7">7</a></td>
+<td>Движение ← / →</td>
+</tr>
+<tr>
+<td><a href="#stage-8">8</a></td>
+<td>Вращение</td>
+</tr>
+<tr>
+<td><a href="#stage-9">9</a></td>
+<td>Soft drop</td>
+</tr>
+<tr>
+<td><a href="#stage-10">10</a></td>
+<td>Фиксация</td>
+</tr>
+<tr>
+<td><a href="#stage-11">11</a></td>
+<td>Hard drop</td>
+</tr>
+<tr>
+<td><a href="#stage-12">12</a></td>
+<td>Очистка линий</td>
+</tr>
+<tr>
+<td><a href="#stage-13">13</a></td>
+<td>Очки и уровни</td>
+</tr>
+<tr>
+<td><a href="#stage-14">14</a></td>
+<td>NEXT</td>
+</tr>
+<tr>
+<td><a href="#stage-15">15</a></td>
+<td>Ghost piece</td>
+</tr>
+<tr>
+<td><a href="#stage-16">16</a></td>
+<td>HUD и состояния</td>
+</tr>
+<tr>
+<td><a href="#stage-17">17</a></td>
+<td>Модули <code>game/</code></td>
+</tr>
+<tr>
+<td><a href="#stage-18">18</a></td>
+<td>Класс <code>Game</code></td>
+</tr>
+<tr>
+<td><a href="#stage-19">19</a></td>
+<td>7-bag randomizer</td>
+</tr>
+<tr>
+<td><a href="#stage-20">20</a></td>
+<td>Hold, lock delay, DAS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Что должно получиться</strong></p>
+<table>
+<thead>
+<tr>
+<th>Механика</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Поле</td>
+<td>Сетка 10×20 клеток</td>
+</tr>
+<tr>
+<td>Фигуры</td>
+<td>7 тетромино (I, O, T, S, Z, J, L) с цветами</td>
+</tr>
+<tr>
+<td>Падение</td>
+<td>Таймер гравитации, ускорение на <code>↓</code></td>
+</tr>
+<tr>
+<td>Вращение</td>
+<td>Поворот с простыми wall kick-сдвигами</td>
+</tr>
+<tr>
+<td>Линии</td>
+<td>Удаление заполненных рядов, сдвиг блоков вниз</td>
+</tr>
+<tr>
+<td>Очки</td>
+<td>Классическая таблица NES + рост уровня каждые 10 линий</td>
+</tr>
+<tr>
+<td>HUD</td>
+<td>Счёт, линии, уровень, превью следующей фигуры</td>
+</tr>
+<tr>
+<td>Призрак</td>
+<td>Полупрозрачная проекция места приземления</td>
+</tr>
+<tr>
+<td>Состояния</td>
+<td>Меню, игра, пауза, game over</td>
+</tr>
+<tr>
+<td>7-bag</td>
+<td>Честная очередь из семи фигур без длинных серий одного типа</td>
+</tr>
+<tr>
+<td>Hold</td>
+<td>Одна "запасная" фигура на обмен</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><span id="architecture"></span></p>
+<h2 id="архитектура">Архитектура</h2>
+<p>Прежде чем писать код, зафиксируем <strong>что из чего состоит</strong> и <strong>как данные текут по кадру</strong>.</p>
+<h3 id="игровой-цикл">Игровой цикл</h3>
+<p>Любая игра на Pygame крутит один и тот же цикл. В Tetris порядок шагов важен — сначала ввод и логика, потом отрисовка.</p>
+<pre><code class="language-mermaid">flowchart TD
+    A[Старт] --> B[Инициализация Pygame]
+    B --> C{running?}
+    C -->|да| D[Обработка событий]
+    D --> E[Обновление состояния]
+    E --> F[Отрисовка]
+    F --> G[clock.tick FPS]
+    G --> C
+    C -->|нет| H[pygame.quit]
+</code></pre>
+<p>На каждом кадре внутри <strong>обновления</strong> выполняется цепочка:</p>
+<ol>
+<li>Прочитать нажатые клавиши (движение, поворот, hard drop).</li>
+<li>Сдвинуть активную фигуру по таймеру гравитации (или быстрее при soft drop).</li>
+<li>Проверить столкновения с границами поля и зафиксированными блоками.</li>
+<li>При "приземлении" — записать клетки фигуры в сетку <code>board</code>.</li>
+<li>Найти и удалить полные горизонтальные линии, сдвинуть верхние ряды вниз.</li>
+<li>Обновить счёт, линии и уровень; ускорить гравитацию.</li>
+<li>Создать новую фигуру из очереди; при переполнении верха — game over.</li>
+</ol>
+<h3 id="два-представления-координат">Два представления координат</h3>
+<p>Tetris живёт в <strong>логической сетке</strong> и <strong>экранных пикселях</strong>. Их нельзя смешивать в одной переменной.</p>
+<table>
+<thead>
+<tr>
+<th>Система</th>
+<th>Оси</th>
+<th>Единица</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Сетка (логика)</strong></td>
+<td><code>col</code> (0…9), <code>row</code> (0…19)</td>
+<td>клетка</td>
+<td>фигура в <code>(3, 0)</code></td>
+</tr>
+<tr>
+<td><strong>Экран (Pygame)</strong></td>
+<td><code>x</code> вправо, <code>y</code> вниз</td>
+<td>пиксель</td>
+<td><code>(120, 40)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Перевод:</p>
+<pre><code class="language-python">screen_x = MARGIN + col * CELL_SIZE
+screen_y = MARGIN + row * CELL_SIZE
+</code></pre>
+<p>Pygame использует <strong>экранные координаты</strong>: начало <code>(0, 0)</code> — левый верхний угол.</p>
+<pre><code>Экран (пиксели)
+┌──────────────────────────────────────────────────┐
+│ MARGIN                                           │
+│  ┌────────────────────┐  ┌──────────────────┐   │
+│  │ ■ ■ □ □ □ □ □ □ □ □ │  │ NEXT:            │   │
+│  │ □ □ □ □ □ □ □ □ □ □ │  │   [T-фигура]     │   │
+│  │ □ □ □ □ □ □ □ □ □ □ │  │                  │   │
+│  │ ... 10×20 сетка    │  │ SCORE: 1200      │   │
+│  │ □ □ ■ ■ ■ ■ □ □ □ □ │  │ LINES: 7         │   │
+│  │ ■ ■ ■ ■ ■ ■ ■ ■ □ □ │  │ LEVEL: 1         │   │
+│  └────────────────────┘  └──────────────────┘   │
+│         игровое поле            боковая панель    │
+└──────────────────────────────────────────────────┘
+</code></pre>
+<h3>Модель данных — сетка <code>board</code></h3>
+<p>Поле храним как <strong>двумерный список</strong> <code>board[row][col]</code>:</p>
+<ul>
+<li><code>0</code> — пустая клетка;</li>
+<li><code>1…7</code> — индекс цвета зафиксированного блока (по типу тетромино).</li>
+</ul>
+<p>Активная (падающая) фигура <strong>не</strong> записывается в <code>board</code>, пока не "застынет". Её рисуем отдельно поверх сетки.</p>
+<h3 id="тетромино">Тетромино</h3>
+<p>Семь классических фигур — <strong>I, O, T, S, Z, J, L</strong>. Каждая занимает до четырёх клеток.</p>
+<p>Удобное представление — <strong>список смещений</strong> <code>(dx, dy)</code> относительно "якорной" точки фигуры <code>(piece.x, piece.y)</code>:</p>
+<pre><code class="language-python"># Фигура T в «нулевом» повороте (вид сверху)
+T_SHAPE = [(0, 0), (-1, 0), (1, 0), (0, 1)]
+#        центр    влево       вправо      вниз
+</code></pre>
+<p>Поворот на 90° по часовой стрелке для каждой клетки:</p>
+<pre><code class="language-python">def rotate_cw(cells):
+    return [(-dy, dx) for dx, dy in cells]
+</code></pre>
+<p>Фигура <strong>O</strong> (квадрат 2×2) при повороте совпадает сама с собой — это нормально.</p>
+<p><strong>Справочник семи фигур</strong> (вид сверху, "нулевой" поворот):</p>
+<pre><code>  I (cyan)          O (yellow)        T (purple)
+  · ■ · ·           ■ ■               · ■ ·
+  ■ ■ ■ ■           ■ ■               ■ ■ ■
+
+  S (green)         Z (red)           J (blue)          L (orange)
+    ■ ■               ■ ·             ■ · ·             · · ■
+  ■ · ·             ■ ■               ■ ■ ■             ■ ■ ■
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Фигура</th>
+<th>Клеток</th>
+<th>Особенность при вращении</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>I</strong></td>
+<td>4</td>
+<td>Единственная "палка"; нужны wall kick ±2 у стены</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>4</td>
+<td>Не меняет форму — поворот можно пропустить</td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td>4</td>
+<td>Центр вращения — "головка" буквы T</td>
+</tr>
+<tr>
+<td><strong>S</strong>, <strong>Z</strong></td>
+<td>4</td>
+<td>Зеркальные парами; часто путают новички</td>
+</tr>
+<tr>
+<td><strong>J</strong>, <strong>L</strong></td>
+<td>4</td>
+<td>Уголок влево / вправо</td>
+</tr>
+</tbody>
+</table>
+<h3 id="точка-спавна">Точка спавна</h3>
+<p>Новая фигура появляется <strong>над видимым полем</strong>, якорь в <code>(SPAWN_COL, SPAWN_ROW)</code>. Для ширины 10 стандартный столбец — <strong>4</strong> или <strong>5</strong> (центр). Фигура <strong>I</strong> в горизонтали шире остальных — при спавне проверяйте <code>can_place</code>, иначе I иногда "вылезает" за правую стену.</p>
+<pre><code class="language-python">SPAWN_COL = 4
+SPAWN_ROW = 0   # верхний ряд; часть клеток может быть с row &#x3C; 0 в Guideline — у нас упрощённо 0
+</code></pre>
+<div class="callout callout--tip">
+  <div class="callout-title">SRS и wall kick</div>
+  <div class="callout-body">
+  <p>В оригинальных Guideline Tetris используется система <strong>SRS</strong> с таблицами сдвигов при вращении у стены. Для учебного проекта достаточно <strong>упрощённых wall kick</strong> — если поворот невозможен, пробуем сдвинуть фигуру на (−1, 0), (+1, 0), (0, −1) клетку.</p>
+  </div>
+</div>
+<h3 id="слои-приложения">Слои приложения</h3>
+<table>
+<thead>
+<tr>
+<th>Слой</th>
+<th>Ответственность</th>
+<th>Примеры сущностей</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ввод</strong></td>
+<td>Клавиши, пауза, перезапуск</td>
+<td><code>KEYDOWN</code>, <code>get_pressed()</code></td>
+</tr>
+<tr>
+<td><strong>Мир</strong></td>
+<td>Размеры сетки, таймеры, очередь фигур</td>
+<td><code>Board</code>, <code>COLS</code>, <code>ROWS</code></td>
+</tr>
+<tr>
+<td><strong>Акторы</strong></td>
+<td>Падающая фигура, следующая фигура</td>
+<td><code>Piece</code>, <code>next_kind</code></td>
+</tr>
+<tr>
+<td><strong>Правила</strong></td>
+<td>Гравитация, фиксация, линии, очки, уровень</td>
+<td><code>Game</code>, <code>clear_lines()</code></td>
+</tr>
+<tr>
+<td><strong>Представление</strong></td>
+<td>Сетка, фигуры, HUD, оверлеи</td>
+<td><code>draw_board</code>, <code>draw_hud</code></td>
+</tr>
+</tbody>
+</table>
+<p>Слой <strong>правил</strong> не рисует напрямую — он меняет состояние; слой <strong>представления</strong> только читает состояние и выводит кадр.</p>
+<h3 id="поток-одного-кадра-playing">Поток одного кадра (PLAYING)</h3>
+<pre><code class="language-mermaid">flowchart LR
+    subgraph input [Ввод]
+        E[KEYDOWN / get_pressed]
+    end
+    subgraph logic [Логика]
+        M[move / rotate / hard drop]
+        G[gravity tick]
+        L[lock → clear_lines → score]
+        N[spawn next]
+    end
+    subgraph render [Отрисовка]
+        B[board + locked]
+        H[ghost + active]
+        U[HUD + NEXT]
+    end
+    E --> M
+    M --> G
+    G --> L
+    L --> N
+    N --> B
+    B --> H
+    H --> U
+</code></pre>
+<p>Порядок в коде — <strong>сначала</strong> <code>handle_event</code>, <strong>затем</strong> <code>update</code> (гравитация и lock), <strong>в конце</strong> <code>draw</code>. Призрак рисуем <strong>до</strong> активной фигуры, чтобы она была поверх.</p>
+<h3 id="алгоритм-коллизий">Алгоритм коллизий</h3>
+<p>Функция <code>can_place(board, cells, ax, ay)</code> — сердце физики Tetris. Для каждой клетки фигуры <code>(dx, dy)</code>:</p>
+<ol>
+<li>Вычислить абсолютные координаты <code>col = ax + dx</code>, <code>row = ay + dy</code>.</li>
+<li>Если <code>col &#x3C; 0</code> или <code>col >= COLS</code> — <strong>стена</strong>, место занято.</li>
+<li>Если <code>row >= ROWS</code> — <strong>пол</strong>, место занято.</li>
+<li>Если <code>row >= 0</code> и <code>board[row][col] != 0</code> — <strong>столкновение</strong> с застывшим блоком.</li>
+<li>Если <code>row &#x3C; 0</code> — клетка "над потолком" видимой зоны; для учебного прототипа это допустимо (фигура ещё не полностью вошла на экран).</li>
+</ol>
+<pre><code class="language-python">def can_place(board, cells, ax, ay):
+    for dx, dy in cells:
+        col, row = ax + dx, ay + dy
+        if col &#x3C; 0 or col >= COLS or row >= ROWS:
+            return False
+        if row >= 0 and board[row][col]:
+            return False
+    return True
+</code></pre>
+<p>Все движения (<code>try_move</code>, <code>try_rotate</code>, <code>hard_drop</code>, <code>ghost_row</code>) сводятся к вызовам <code>can_place</code> с разными <code>(ax, ay)</code> или наборами <code>cells</code>.</p>
+<h3 id="конечный-автомат-состояний">Конечный автомат состояний</h3>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --> MENU
+    MENU --> PLAYING : Пробел
+    PLAYING --> PAUSED : P
+    PAUSED --> PLAYING : P
+    PLAYING --> GAME_OVER : переполнение верха
+    GAME_OVER --> PLAYING : R
+    MENU --> [*] : Esc
+    PLAYING --> [*] : Esc
+    PAUSED --> [*] : Esc
+    GAME_OVER --> [*] : Esc
+</code></pre>
+<h3 id="рекомендуемые-константы">Рекомендуемые константы</h3>
+<table>
+<thead>
+<tr>
+<th>Константа</th>
+<th>Значение</th>
+<th>Смысл</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>COLS</code></td>
+<td><code>10</code></td>
+<td>Ширина поля в клетках</td>
+</tr>
+<tr>
+<td><code>ROWS</code></td>
+<td><code>20</code></td>
+<td>Высота видимого поля</td>
+</tr>
+<tr>
+<td><code>CELL_SIZE</code></td>
+<td><code>30</code></td>
+<td>Размер клетки в пикселях</td>
+</tr>
+<tr>
+<td><code>SIDEBAR_W</code></td>
+<td><code>160</code></td>
+<td>Ширина панели справа</td>
+</tr>
+<tr>
+<td><code>MARGIN</code></td>
+<td><code>24</code></td>
+<td>Отступ от края окна</td>
+</tr>
+<tr>
+<td><code>FPS</code></td>
+<td><code>60</code></td>
+<td>Кадров в секунду</td>
+</tr>
+<tr>
+<td><code>LINES_PER_LEVEL</code></td>
+<td><code>10</code></td>
+<td>Линий до следующего уровня</td>
+</tr>
+</tbody>
+</table>
+<p>Скорость падения (интервал между автоматическими шагами вниз, в секундах) уменьшается с уровнем:</p>
+<pre><code class="language-python">def gravity_interval(level):
+    # level 0 → ~0.8 с, level 9 → ~0.1 с (упрощённая таблица)
+    return max(0.05, 0.8 - level * 0.07)
+</code></pre>
+<h3 id="таблица-очков-стиль-nes">Таблица очков (стиль NES)</h3>
+<table>
+<thead>
+<tr>
+<th>Линий за раз</th>
+<th>Базовые очки</th>
+<th>С множителем уровня</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (Single)</td>
+<td>40</td>
+<td><code>40 × (level + 1)</code></td>
+</tr>
+<tr>
+<td>2 (Double)</td>
+<td>100</td>
+<td><code>100 × (level + 1)</code></td>
+</tr>
+<tr>
+<td>3 (Triple)</td>
+<td>300</td>
+<td><code>300 × (level + 1)</code></td>
+</tr>
+<tr>
+<td>4 (Tetris)</td>
+<td>1200</td>
+<td><code>1200 × (level + 1)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Дополнительно за каждую клетку soft drop — 1 очко, за hard drop — 2 очка за клетку.</p>
+<h3 id="структура-файлов-целевая">Структура файлов (целевая)</h3>
+<p>К <strong>этапу 6</strong> достаточно одного <code>main.py</code>. Дальше проект <strong>раскладываем по модулям</strong>.</p>
+<pre><code>tetris/
+├── main.py              # точка входа, цикл while
+├── settings.py          # константы, цвета, FPS
+├── game/
+│   ├── __init__.py
+│   ├── tetrominoes.py   # формы, цвета, rotate_cw / rotate_ccw
+│   ├── board.py         # сетка, фиксация, очистка линий
+│   ├── piece.py         # Piece — активная фигура
+│   ├── hud.py           # счёт, next, оверлеи
+│   └── game.py          # класс Game — правила партии
+└── requirements.txt
+</code></pre>
+<h3 id="диаграмма-объектов">Диаграмма объектов</h3>
+<pre><code class="language-mermaid">classDiagram
+    class Game {
+        +state
+        +board
+        +piece
+        +next_kind
+        +score
+        +lines
+        +level
+        +update(dt)
+        +draw(surface)
+        +handle_event(event)
+    }
+    class Board {
+        +grid
+        +lock(cells, color_id)
+        +is_valid(cells, ox, oy)
+        +clear_lines()
+        +draw(surface)
+    }
+    class Piece {
+        +kind
+        +cells
+        +x
+        +y
+        +move(dx, dy, board)
+        +rotate(dir, board)
+        +hard_drop(board)
+        +draw(surface)
+        +ghost_y(board)
+    }
+    Game --> Board
+    Game --> Piece
+    Piece --> Board : коллизии
+    Board --> Board : clear_lines
+</code></pre>
+<hr>
+<p><span id="dependencies"></span></p>
+<h2 id="зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</h2>
+<h3 id="требования">Требования</h3>
+<ul>
+<li><strong>Python 3.10+</strong> (удобны <code>match</code>/<code>case</code>; на 3.9 код работает, если заменить <code>match</code> на <code>if/elif</code>).</li>
+<li><strong>Pygame 2.5+</strong> — единственная внешняя библиотека.</li>
+</ul>
+<h3 id="установка">Установка</h3>
+<pre><code class="language-bash">mkdir tetris &#x26;&#x26; cd tetris
+python -m venv .venv
+</code></pre>
+<p>Активация виртуального окружения:</p>
+<ul>
+<li><strong>Windows (PowerShell):</strong> <code>.venv\Scripts\Activate.ps1</code></li>
+<li><strong>Linux / macOS:</strong> <code>source .venv/bin/activate</code></li>
+</ul>
+<pre><code class="language-bash">pip install pygame
+python -c "import pygame; print('Pygame', pygame.ver)"
+</code></pre>
+<p>Файл <code>requirements.txt</code>:</p>
+<pre><code>pygame>=2.5.0
+</code></pre>
+<h3 id="первичная-структура">Первичная структура</h3>
+<p>На <strong>этапе 0</strong> создайте только <code>main.py</code>. Папку <code>game/</code> добавим на этапе 14.</p>
+<div class="callout callout--warning">
+  <div class="callout-title">Delta time</div>
+  <div class="callout-body">
+  <p>На всех этапах таймеры считаем через <code>dt = clock.tick(FPS) / 1000.0</code> — секунды с прошлого кадра. Так интервал гравитации остаётся предсказуемым при просадках FPS.</p>
+  </div>
+</div>
+<div class="callout callout--tip">
+  <div class="callout-title">Как проходить практикум</div>
+  <div class="callout-body">
+  <p>Создайте папку <code>tetris/</code>, копируйте код <strong>после каждого этапа</strong>, запускайте <code>python main.py</code>. Если что-то сломалось — сверьтесь с блоком "Самопроверка" в конце этапа.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-0"></span></p>
+<h2 id="этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</h2>
+<p><strong>Цель</strong> — окно, цикл событий, выход по крестику и <code>Esc</code>, стабильные 60 FPS.</p>
+<p>Создайте <code>main.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-001" data-title="Этап 0 — минимальный запускаемый код" data-min-height="534"> </div>
+<p><strong>Разбор.</strong> <code>pygame.init()</code> поднимает подсистемы Pygame; цикл <code>while running</code> на каждом кадре читает события (<code>QUIT</code>, <code>Esc</code>), заливает фон и вызывает <code>display.flip()</code>. <code>clock.tick(FPS)</code> ограничивает частоту кадров и возвращает <code>dt</code> в секундах — на следующих этапах через него считают таймеры гравитации.</p>
+<p>Запуск:</p>
+<pre><code class="language-bash">python main.py
+</code></pre>
+<p><strong>Самопроверка этапа 0</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Окно открывается без traceback.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Фон тёмный, без мерцания.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>Esc</code> и крестик закрывают программу.</li>
+</ul>
+<p>На следующих этапах <strong>не удаляем</strong> цикл — только расширяем тело <code>while</code>.</p>
+<hr>
+<p><span id="stage-1"></span></p>
+<h2 id="этап-1-константы-и-файл-настроек">Этап 1 — константы и файл настроек</h2>
+<p><strong>Цель</strong> — вынести все числа и цвета в <code>settings.py</code>.</p>
+<p><code>settings.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-002" data-title="Этап 1 — константы и файл настроек" data-min-height="720"> </div>
+<p>Обновите <code>main.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-003" data-title="Этап 1 — константы и файл настроек" data-min-height="480"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Импорт <code>settings as S</code> работает без ошибок.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Окно шире, чем на этапе 0 (есть место под боковую панель).</li>
+</ul>
+<hr>
+<p><span id="stage-2"></span></p>
+<h2 id="этап-2-отрисовка-игрового-поля">Этап 2 — отрисовка игрового поля</h2>
+<p><strong>Цель</strong> — нарисовать прямоугольник поля и сетку 10×20.</p>
+<p>Добавьте в <code>main.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-004" data-title="Этап 2 — отрисовка игрового поля" data-min-height="678"> </div>
+<p>В цикле перед <code>flip()</code>:</p>
+<pre><code class="language-python">    screen.fill(S.COLOR_BG)
+    draw_board(screen)
+    draw_sidebar(screen)
+    pygame.display.flip()
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Слева — сетка 10×20 с тонкими линиями.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Справа — тёмная панель под HUD.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Поле не выходит за границы окна.</li>
+</ul>
+<hr>
+<p><span id="stage-3"></span></p>
+<h2 id="этап-3-формы-тетромино">Этап 3 — формы тетромино</h2>
+<p><strong>Цель</strong> — описать 7 фигур как словари смещений и функции поворота.</p>
+<p>Создайте <code>tetrominoes.py</code> (позже перенесём в <code>game/tetrominoes.py</code>):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-005" data-title="Этап 3 — формы тетромино" data-min-height="606"> </div>
+<p>В <code>main.py</code> добавьте отладочную отрисовку одной фигуры <strong>T</strong> в центре поля:</p>
+<pre><code class="language-python">
+import tetrominoes as T
+
+
+def draw_cells(surface, cells, anchor_x, anchor_y, color):
+    ox, oy = board_origin()
+    for dx, dy in cells:
+        col = anchor_x + dx
+        row = anchor_y + dy
+        px = ox + col * S.CELL_SIZE
+        py = oy + row * S.CELL_SIZE
+        rect = pygame.Rect(px + 1, py + 1, S.CELL_SIZE - 2, S.CELL_SIZE - 2)
+        pygame.draw.rect(surface, color, rect, border_radius=3)
+</code></pre>
+<p>После <code>draw_board(screen)</code>:</p>
+<pre><code class="language-python">    draw_cells(screen, T.SHAPES["T"], 4, 2, T.color_for_kind("T"))
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> В верхней части поля видна фиолетовая T-фигура из 4 клеток.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Клетки чуть меньше ячейки сетки (отступ 1 px).</li>
+<li class="task-list-item"><input type="checkbox" disabled> (Опционально) цикл по <code>T.SHAPES.keys()</code> рисует все 7 фигур в ряд для проверки цветов.</li>
+</ul>
+<div class="callout callout--note">
+  <div class="callout-title">Проверка всех фигур</div>
+  <div class="callout-body">
+  <p>Для отладки временно добавьте цикл: <code>for i, kind in enumerate(T.SHAPES): draw_cells(..., kind, i * 2, 2, T.color_for_kind(kind))</code> — в верхней части поля появится "радуга" из семи тетромино.</p>
+  </div>
+</div>
+<hr>
+<p><span id="stage-4"></span></p>
+<h2>Этап 4 — класс <code>Piece</code></h2>
+<p><strong>Цель</strong> — инкапсулировать активную фигуру — тип, позиция, клетки, отрисовка.</p>
+<p>Добавьте в <code>main.py</code> (позже вынесем в <code>game/piece.py</code>):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-006" data-title="Этап 4 — класс `Piece`" data-min-height="318"> </div>
+<p>Замените отладочный вызов <code>draw_cells(..., "T", ...)</code> на:</p>
+<pre><code class="language-python">active = Piece("T", 4, 2)
+# ...
+    active.draw(screen)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> T-фигура по-прежнему на месте.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Смена <code>Piece("I", 3, 1)</code> в коде показывает cyan-палку из четырёх клеток.</li>
+</ul>
+<hr>
+<p><span id="stage-5"></span></p>
+<h2>Этап 5 — пустая сетка <code>board</code> и отрисовка блоков</h2>
+<p><strong>Цель</strong> — двумерный массив поля и функция рисования зафиксированных блоков.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-007" data-title="Этап 5 — пустая сетка `board` и отрисовка блоков" data-min-height="318"> </div>
+<p>Перед циклом:</p>
+<pre><code class="language-python">board = new_board()
+# «застывшие» блоки для проверки отрисовки
+board[18][3] = 6  # J — синий
+board[18][4] = 6
+board[19][3] = 6
+board[19][4] = 6
+board[19][5] = 7  # L — оранжевый
+active = Piece("T", 4, 2)
+</code></pre>
+<p>В цикле:</p>
+<pre><code class="language-python">    draw_locked_blocks(screen, board)
+    active.draw(screen)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Внизу поля видны синие и оранжевые блоки.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Падающая T-фигура рисуется поверх сетки.</li>
+</ul>
+<hr>
+<p><span id="stage-6"></span></p>
+<h2 id="этап-6-гравитация-автоматическое-падение">Этап 6 — гравитация (автоматическое падение)</h2>
+<p><strong>Цель</strong> — фигура сама опускается вниз через фиксированный интервал.</p>
+<pre><code class="language-python">GRAVITY_INTERVAL = 0.8  # секунд между шагами (пока без уровней)
+</code></pre>
+<p>Добавьте проверку "можно ли сдвинуть вниз" (пока без board — только границы):</p>
+<pre><code class="language-python">def can_place(board, cells, ax, ay):
+    for col, row in [(ax + dx, ay + dy) for dx, dy in cells]:
+        if col &#x3C; 0 or col >= S.COLS or row >= S.ROWS:
+            return False
+        if row >= 0 and board[row][col]:
+            return False
+    return True
+</code></pre>
+<p>В <code>Piece</code>:</p>
+<pre><code class="language-python">    def try_move(self, board, dx, dy):
+        if can_place(board, self.cells, self.x + dx, self.y + dy):
+            self.x += dx
+            self.y += dy
+            return True
+        return False
+</code></pre>
+<p>Перед циклом:</p>
+<pre><code class="language-python">gravity_timer = 0.0
+board = new_board()
+active = Piece("T", 4, 0)
+</code></pre>
+<p>В <code>update</code>-части цикла (перед отрисовкой):</p>
+<pre><code class="language-python">    gravity_timer += dt
+    if gravity_timer >= GRAVITY_INTERVAL:
+        gravity_timer = 0.0
+        if not active.try_move(board, 0, 1):
+            pass  # на этапе 10 здесь будет фиксация
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> T-фигура падает примерно раз в 0.8 с.</li>
+<li class="task-list-item"><input type="checkbox" disabled> На дне поля фигура останавливается (не выходит за <code>ROWS</code>).</li>
+</ul>
+<hr>
+<p><span id="stage-7"></span></p>
+<h2 id="этап-7-управление-влево-и-вправо">Этап 7 — управление влево и вправо</h2>
+<p><strong>Цель</strong> — клавиши <code>←</code> / <code>→</code> сдвигают фигуру, если нет столкновения.</p>
+<p>Обработка в цикле (в блоке <code>for event</code>):</p>
+<pre><code class="language-python">        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                active.try_move(board, -1, 0)
+            elif event.key == pygame.K_RIGHT:
+                active.try_move(board, 1, 0)
+</code></pre>
+<div class="callout callout--tip">
+  <div class="callout-title">DAS (Delayed Auto Shift)</div>
+  <div class="callout-body">
+  <p>В коммерческом Tetris при удержании стрелки фигура сначала сдвигается один раз, затем — с задержкой быстро повторяет шаг. Для прототипа достаточно по одному шагу на нажатие; <strong>DAS</strong> реализуем на <a href="#stage-20">этапе 20</a>.</p>
+  </div>
+</div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>←</code> / <code>→</code> двигают фигуру по клеткам.</li>
+<li class="task-list-item"><input type="checkbox" disabled> У стен и застылого "пола" фигура не проходит сквозь блоки.</li>
+</ul>
+<hr>
+<p><span id="stage-8"></span></p>
+<h2 id="этап-8-вращение">Этап 8 — вращение</h2>
+<p><strong>Цель</strong> — поворот по <code>↑</code> / <code>X</code> (CW) и <code>Z</code> (CCW) с упрощёнными wall kick.</p>
+<p>В <code>Piece</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-008" data-title="Этап 8 — вращение" data-min-height="336"> </div>
+<p>В обработке <code>KEYDOWN</code>:</p>
+<pre><code class="language-python">            elif event.key in (pygame.K_UP, pygame.K_x):
+                active.try_rotate(board, direction=1)
+            elif event.key == pygame.K_z:
+                active.try_rotate(board, direction=-1)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>↑</code> вращает фигуру у дна и у стен.</li>
+<li class="task-list-item"><input type="checkbox" disabled> У левой стены I-палка после поворота сдвигается и не застревает в стене (wall kick).</li>
+<li class="task-list-item"><input type="checkbox" disabled> O-фигура не "дёргается" при нажатии поворота.</li>
+</ul>
+<hr>
+<p><span id="stage-9"></span></p>
+<h2 id="этап-9-soft-drop-и-подсчёт-очков-за-падение">Этап 9 — soft drop и подсчёт очков за падение</h2>
+<p><strong>Цель</strong> — удержание <code>↓</code> ускоряет падение; за каждый шаг вниз — бонусные очки.</p>
+<p>Перед циклом:</p>
+<pre><code class="language-python">score = 0
+</code></pre>
+<p>В <code>Piece.try_move</code> можно добавить необязательный callback; проще обработать в цикле:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-009" data-title="Этап 9 — soft drop и подсчёт очков за падение" data-min-height="318"> </div>
+<div class="callout callout--note">
+  <div class="callout-title">Порядок веток</div>
+  <div class="callout-body">
+  <p>На этом этапе логику soft drop и обычной гравитации держите в одном месте цикла, чтобы не вызывать двойной шаг вниз за кадр.</p>
+  </div>
+</div>
+<p>Временно выведите счёт в угол:</p>
+<pre><code class="language-python">    font = pygame.font.SysFont("consolas", 20)
+    label = font.render(f"Score: {score}", True, S.COLOR_TEXT)
+    screen.blit(label, (S.MARGIN + S.BOARD_W + 20, S.MARGIN + 20))
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>↓</code> заметно ускоряет падение.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Счёт растёт при удержании <code>↓</code>.</li>
+</ul>
+<hr>
+<p><span id="stage-10"></span></p>
+<h2 id="этап-10-фиксация-фигуры-на-поле">Этап 10 — фиксация фигуры на поле</h2>
+<p><strong>Цель</strong> — когда вниз сдвинуть нельзя, записать клетки в <code>board</code> и выдать следующую фигуру.</p>
+<pre><code class="language-python">def lock_piece(board, piece):
+    for col, row in piece.world_cells():
+        if 0 &#x3C;= row &#x3C; S.ROWS and 0 &#x3C;= col &#x3C; S.COLS:
+            board[row][col] = piece.color_id
+</code></pre>
+<p>Функция спавна:</p>
+<pre><code class="language-python">
+import random
+
+def spawn_piece(kind=None):
+    kind = kind or random.choice(list(T.SHAPES.keys()))
+    return Piece(kind, S.SPAWN_COL, S.SPAWN_ROW)
+</code></pre>
+<p><strong>Единая функция гравитации</strong> — собирает soft drop, обычное падение и фиксацию (заменяет разрозненные фрагменты этапов 6, 9 и 10):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-010" data-title="Этап 10 — фиксация фигуры на поле" data-min-height="462"> </div>
+<p>В игровом цикле:</p>
+<pre><code class="language-python">score_box = [score]
+active, gravity_timer, locked = tick_gravity(
+    board, active, gravity_timer, dt, level, score_box,
+)
+score = score_box[0]
+
+if locked:
+    lines_cleared = clear_lines(board)  # очки — этап 13
+    active = spawn_piece()
+    if not can_place(board, active.cells, active.x, active.y):
+        running = False  # этап 16 → GAME_OVER
+</code></pre>
+<div class="callout callout--warning">
+  <div class="callout-title">Lock delay</div>
+  <div class="callout-body">
+  <p>В Guideline Tetris есть задержка перед фиксацией (lock delay), чтобы игрок успел сдвинуть фигуру в последний момент. До этапа 20 фиксируем сразу; там добавим таймер <code>LOCK_DELAY</code>.</p>
+  </div>
+</div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> После приземления T-фигура остаётся на поле цветными блоками.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Сразу появляется новая случайная фигура сверху.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Можно сложить несколько рядов блоков.</li>
+</ul>
+<hr>
+<p><span id="stage-11"></span></p>
+<h2 id="этап-11-hard-drop-пробел">Этап 11 — hard drop (Пробел)</h2>
+<p><strong>Цель</strong> — мгновенно опустить фигуру до упора, начислить очки, зафиксировать.</p>
+<p>В <code>Piece</code>:</p>
+<pre><code class="language-python">    def hard_drop(self, board):
+        dropped = 0
+        while self.try_move(board, 0, 1):
+            dropped += 1
+        return dropped
+</code></pre>
+<p>В <code>KEYDOWN</code>:</p>
+<pre><code class="language-python">            elif event.key == pygame.K_SPACE:
+                steps = active.hard_drop(board)
+                score += steps * S.HARD_DROP_BONUS
+                lock_piece(board, active)
+                active = spawn_piece()
+</code></pre>
+<p>Уберите двойную фиксацию — после hard drop <strong>не</strong> ждите следующего тика гравитации. Вынесите общую логику:</p>
+<pre><code class="language-python">def after_lock(board, active, score, lines_total, level):
+    """Фиксация уже выполнена — очистка, очки, новый спавн."""
+    cleared = clear_lines(board)
+    if cleared:
+        lines_total += cleared
+        score += LINE_SCORES.get(cleared, 0) * (level + 1)
+        level = lines_total // S.LINES_PER_LEVEL
+    active = spawn_piece(next_kind)
+    next_kind = random_kind()
+    gravity_timer = 0.0
+    return active, next_kind, score, lines_total, level
+</code></pre>
+<p>Вызывайте <code>after_lock</code> и из hard drop, и из <code>tick_gravity</code> при <code>locked=True</code>.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>Пробел</code> сбрасывает фигуру на дно или на другие блоки.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Счёт прыгает пропорционально высоте сброса.</li>
+</ul>
+<hr>
+<p><span id="stage-12"></span></p>
+<h2 id="этап-12-очистка-заполненных-линий">Этап 12 — очистка заполненных линий</h2>
+<p><strong>Цель</strong> — удалить полные ряды, сдвинуть верхние блоки вниз.</p>
+<pre><code class="language-python">def clear_lines(board):
+    """Возвращает количество удалённых линий."""
+    cleared = 0
+    row = S.ROWS - 1
+    while row >= 0:
+        if all(board[row][col] for col in range(S.COLS)):
+            del board[row]
+            board.insert(0, [0] * S.COLS)
+            cleared += 1
+        else:
+            row -= 1
+    return cleared
+</code></pre>
+<p>После <code>lock_piece</code> (и в ветке hard drop):</p>
+<pre><code class="language-python">lines_cleared = clear_lines(board)
+</code></pre>
+<p>Для проверки можно временно заспавнить почти полный ряд.</p>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Заполненный ряд исчезает.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Блоки выше опускаются на одну клетку.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Два полных ряда за один lock удаляются оба.</li>
+</ul>
+<hr>
+<p><span id="stage-13"></span></p>
+<h2 id="этап-13-очки-линии-и-уровни">Этап 13 — очки, линии и уровни</h2>
+<p><strong>Цель</strong> — таблица NES, рост уровня, ускорение гравитации.</p>
+<pre><code class="language-python">LINE_SCORES = {1: 40, 2: 100, 3: 300, 4: 1200}
+
+
+def gravity_interval(level):
+    return max(0.05, 0.8 - level * 0.07)
+</code></pre>
+<p><strong>Таблица скоростей (упрощённая модель NES)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Уровень</th>
+<th>Интервал падения, с</th>
+<th>Комментарий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.80</td>
+<td>Медленный старт для обучения</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.73</td>
+<td>После 10 линий</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.45</td>
+<td>Заметное ускорение</td>
+</tr>
+<tr>
+<td>9</td>
+<td>0.17</td>
+<td>Высокий темп</td>
+</tr>
+<tr>
+<td>15+</td>
+<td>0.05</td>
+<td>Потолок — дальше не ускоряем</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout--info">
+  <div class="callout-title">Guideline vs NES</div>
+  <div class="callout-body">
+  <p>Современный Tetris Guideline использует дискретную таблицу из ~20 уровней скорости (до 1G — одна клетка за кадр). Линейная формула <code>0.8 - level * 0.07</code> проще для учебного кода; при желании замените на массив <code>GRAVITY_TABLE = [0.8, 0.7, ...]</code>.</p>
+  </div>
+</div>
+<p>Перед циклом:</p>
+<pre><code class="language-python">score = 0
+lines_total = 0
+level = 0
+</code></pre>
+<p>После <code>clear_lines</code>:</p>
+<pre><code class="language-python">if lines_cleared:
+    lines_total += lines_cleared
+    score += LINE_SCORES.get(lines_cleared, 0) * (level + 1)
+    level = lines_total // S.LINES_PER_LEVEL
+</code></pre>
+<p>В гравитации замените <code>GRAVITY_INTERVAL</code> на:</p>
+<pre><code class="language-python">        interval = gravity_interval(level)
+        if not soft_drop and gravity_timer >= interval:
+            ...
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> За одну линию на уровне 0 начисляется 40 очков.</li>
+<li class="task-list-item"><input type="checkbox" disabled> После 10 линий уровень становится 1, падение ускоряется.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Tetris (4 линии) даёт заметный скачок счёта.</li>
+</ul>
+<hr>
+<p><span id="stage-14"></span></p>
+<h2 id="этап-14-очередь-следующая-фигура">Этап 14 — очередь "следующая фигура"</h2>
+<p><strong>Цель</strong> — игрок видит, что придёт после текущей; спавн из очереди 7-bag (упрощённо — random).</p>
+<pre><code class="language-python">def random_kind():
+    return random.choice(list(T.SHAPES.keys()))
+</code></pre>
+<p>Перед циклом:</p>
+<pre><code class="language-python">next_kind = random_kind()
+active = spawn_piece(next_kind)
+next_kind = random_kind()
+</code></pre>
+<p>После lock / hard drop:</p>
+<pre><code class="language-python">active = spawn_piece(next_kind)
+next_kind = random_kind()
+</code></pre>
+<p>Отрисовка превью на боковой панели:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-011" data-title="Этап 14 — очередь " data-min-height="390"> </div>
+<p>Удобнее отдельная функция с фиксированным origin панели:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-012" data-title="Этап 14 — очередь " data-min-height="318"> </div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Справа отображается следующая фигура.</li>
+<li class="task-list-item"><input type="checkbox" disabled> После lock текущая совпадает с тем, что было в NEXT.</li>
+</ul>
+<hr>
+<p><span id="stage-15"></span></p>
+<h2 id="этап-15-призрак-ghost-piece">Этап 15 — призрак (ghost piece)</h2>
+<p><strong>Цель</strong> — полупрозрачная проекция, куда упадёт фигура при текущем положении.</p>
+<p>В <code>Piece</code>:</p>
+<pre><code class="language-python">    def ghost_row(self, board):
+        ghost_y = self.y
+        while can_place(board, self.cells, self.x, ghost_y + 1):
+            ghost_y += 1
+        return ghost_y
+</code></pre>
+<p>Отрисовка призрака <strong>до</strong> активной фигуры:</p>
+<pre><code class="language-python">def draw_ghost(surface, piece, board):
+    gy = piece.ghost_row(board)
+    ghost_cells = piece.cells
+    color = S.COLOR_GHOST
+    draw_cells(surface, ghost_cells, piece.x, gy, color)
+</code></pre>
+<p>В цикле:</p>
+<pre><code class="language-python">    draw_ghost(screen, active, board)
+    active.draw(screen)
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Серый контур фигуры виден у "дна" траектории.</li>
+<li class="task-list-item"><input type="checkbox" disabled> При движении влево/вправо призрак следует за фигурой.</li>
+</ul>
+<hr>
+<p><span id="stage-16"></span></p>
+<h2 id="этап-16-hud-и-экраны-состояний">Этап 16 — HUD и экраны состояний</h2>
+<p><strong>Цель</strong> — меню, пауза, game over; счёт, линии, уровень на панели.</p>
+<pre><code class="language-python">STATE_MENU = "MENU"
+STATE_PLAYING = "PLAYING"
+STATE_PAUSED = "PAUSED"
+STATE_GAME_OVER = "GAME_OVER"
+
+state = STATE_MENU
+</code></pre>
+<p>Функции HUD:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-013" data-title="Этап 16 — HUD и экраны состояний" data-min-height="426"> </div>
+<p>Обработка событий:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-014" data-title="Этап 16 — HUD и экраны состояний" data-min-height="372"> </div>
+<p>При невозможности спавна:</p>
+<pre><code class="language-python">        if not can_place(board, active.cells, active.x, active.y):
+            state = STATE_GAME_OVER
+</code></pre>
+<p>Обновление и отрисовка только при <code>STATE_PLAYING</code>; в конце <code>draw</code>:</p>
+<pre><code class="language-python">    if state == STATE_MENU:
+        draw_overlay(screen, "TETRIS", "Пробел — начать")
+    elif state == STATE_PAUSED:
+        draw_overlay(screen, "ПАУЗА", "P — продолжить")
+    elif state == STATE_GAME_OVER:
+        draw_overlay(screen, "GAME OVER", "R — в меню")
+</code></pre>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Старт с экрана "Пробел — начать".</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>P</code> ставит паузу с затемнением.</li>
+<li class="task-list-item"><input type="checkbox" disabled> При переполнении верха — game over, <code>R</code> возвращает в меню.</li>
+</ul>
+<hr>
+<p><span id="stage-17"></span></p>
+<h2>Этап 17 — модули <code>game/</code></h2>
+<p><strong>Цель</strong> — разнести код по файлам, как в <a href="#architecture">архитектуре</a>.</p>
+<p>Создайте структуру и <strong>полные файлы</strong> ниже. Корневой <code>tetrominoes.py</code> удалите — всё переезжает в пакет <code>game/</code>.</p>
+<pre><code>tetris/
+├── main.py
+├── settings.py
+├── game/
+│   ├── __init__.py      # пустой
+│   ├── tetrominoes.py
+│   ├── board.py
+│   ├── piece.py
+│   └── hud.py
+</code></pre>
+<p><code>game/tetrominoes.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-015" data-title="Этап 17 — модули `game/`" data-min-height="720"> </div>
+<p><code>game/board.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-016" data-title="Этап 17 — модули `game/`" data-min-height="720"> </div>
+<p><code>game/piece.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-017" data-title="Этап 17 — модули `game/`" data-min-height="720"> </div>
+<p><code>game/hud.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-018" data-title="Этап 17 — модули `game/`" data-min-height="720"> </div>
+<div class="callout callout--info">
+  <div class="callout-title">Импорты без циклов</div>
+  <div class="callout-body">
+  <code>board.py</code> не импортирует <code>Piece</code>. <code>piece.py</code> тянет только <code>can_place</code> из board. Отрисовка клетки в <code>Piece.draw</code> через локальный импорт <code>draw_cell</code> — допустимый приём против циклического импорта.
+  </div>
+</div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>python main.py</code> из корня <code>tetris/</code> работает как на этапе 16.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Нет циклических импортов (<code>board</code> не импортирует <code>piece</code>, если <code>piece</code> импортирует <code>board</code> — только функции).</li>
+</ul>
+<hr>
+<p><span id="stage-18"></span></p>
+<h2>Этап 18 — класс <code>Game</code> и чистый <code>main.py</code></h2>
+<p><strong>Цель</strong> — собрать правила в один класс; в <code>main.py</code> остаётся только цикл.</p>
+<p><code>game/game.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-019" data-title="Этап 18 — класс `Game` и чистый `main.py`" data-min-height="720"> </div>
+<p>Финальный <code>main.py</code>:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-020" data-title="Этап 18 — класс `Game` и чистый `main.py`" data-min-height="606"> </div>
+<p><strong>Самопроверка этапа 18</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Весь игровой процесс работает как на этапе 16–17.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>main.py</code> короче 40 строк.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Можно добавить второй режим (например, <code>Game(seed=42)</code> для фиксированной последовательности) без переписывания цикла.</li>
+</ul>
+<hr>
+<p><span id="stage-19"></span></p>
+<h2 id="этап-19-7-bag-randomizer">Этап 19 — 7-bag randomizer</h2>
+<p><strong>Цель</strong> — заменить <code>random.choice</code> на <strong>мешок из семи фигур</strong> (стандарт Guideline) — каждые 7 спавнов игрок гарантированно получает по одному экземпляру I, O, T, S, Z, J, L в случайном порядке. Это убирает "полоску" из пяти Z подряд и делает игру честнее.</p>
+<p>Добавьте в <code>game/tetrominoes.py</code> (после <code>ALL_KINDS</code>):</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-021" data-title="Этап 19 — 7-bag randomizer" data-min-height="516"> </div>
+<p>В <code>Game.__init__</code> и <code>reset_play</code>:</p>
+<pre><code class="language-python">from game.tetrominoes import SevenBag
+
+self.bag = SevenBag()
+self.next_kind = self.bag.pop()
+self.active = spawn_piece(self.next_kind)
+self.next_kind = self.bag.peek()
+</code></pre>
+<p>В <code>_spawn_after_lock</code>:</p>
+<pre><code class="language-python">self.active = spawn_piece(self.next_kind)
+self.bag.pop()  # сняли текущую «next» из очереди
+self.next_kind = self.bag.peek()
+</code></pre>
+<div class="callout callout--tip">
+  <div class="callout-title">Предсказуемость для обучения</div>
+  <div class="callout-body">
+  <code>SevenBag(seed=42)</code> даёт воспроизводимую последовательность — удобно отлаживать вращения и тестировать очистку линий.
+  </div>
+</div>
+<p><strong>Самопроверка</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> За 7 последовательных фигур встречаются все 7 типов (в любом порядке).</li>
+<li class="task-list-item"><input type="checkbox" disabled> NEXT совпадает с реальным следующим спавном.</li>
+<li class="task-list-item"><input type="checkbox" disabled> С <code>seed=0</code> последовательность одинакова при каждом перезапуске.</li>
+</ul>
+<hr>
+<p><span id="stage-20"></span></p>
+<h2 id="этап-20-hold-lock-delay-и-das">Этап 20 — hold, lock delay и DAS</h2>
+<p><strong>Цель</strong> — три улучшения "как в современном Tetris": запасная фигура, пауза перед фиксацией и автоповтор сдвига при удержании стрелки.</p>
+<h3>Hold (клавиша <code>C</code>)</h3>
+<pre><code class="language-python"># В Game.__init__
+self.hold_kind = None
+self.hold_used = False
+</code></pre>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-022" data-title="Hold (клавиша `C`)" data-min-height="336"> </div>
+<p>В <code>handle_event</code> при <code>K_c</code> вызовите <code>_do_hold()</code>. После каждого lock / spawn сбрасывайте <code>self.hold_used = False</code>.</p>
+<p>Отрисовка hold в <code>hud.py</code> — по аналогии с <code>draw_next_preview</code>, блок "HOLD" над NEXT.</p>
+<h3 id="lock-delay">Lock delay</h3>
+<p>Когда фигура <strong>не может</strong> сдвинуться вниз, не фиксируйте сразу — запустите таймер:</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-023" data-title="Lock delay" data-min-height="372"> </div>
+<p>Любой успешный <code>try_move</code> или <code>try_rotate</code> сбрасывает <code>on_ground</code> и <code>lock_timer</code> — <strong>move reset</strong>, игрок получает ещё <code>LOCK_DELAY</code> секунд.</p>
+<h3 id="das-delayed-auto-shift">DAS (Delayed Auto Shift)</h3>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-024" data-title="DAS (Delayed Auto Shift)" data-min-height="588"> </div>
+<p>Вызывайте <code>_update_das(dt)</code> в <code>update</code> <strong>до</strong> гравитации. Обработку <code>K_LEFT</code> / <code>K_RIGHT</code> в <code>handle_event</code> можно убрать — DAS заменяет одиночные нажатия.</p>
+<p><strong>Самопроверка этапа 20</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> <code>C</code> меняет текущую фигуру на hold (один раз за spawn).</li>
+<li class="task-list-item"><input type="checkbox" disabled> У дна есть ~0.5 с на последний сдвиг/поворот перед фиксацией.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Удержание <code>←</code> через 0.15 с начинает быстро повторять шаг.</li>
+</ul>
+<hr>
+<p><span id="full-revision"></span></p>
+<h2 id="полная-ревизия-файлов">Полная ревизия файлов</h2>
+<p>Код проверен командой <code>python -c "from game.game import Game"</code>. Скопируйте <strong>все</strong> файлы в папку <code>tetris/</code> и запустите <code>python main.py</code>. Раздел охватывает этапы 0–18 — меню, пауза, ghost, NEXT, очки и уровни. Этапы 19–20 (7-bag, hold, lock delay, DAS) — опциональные расширения поверх этого эталона.</p>
+<pre><code>tetris/
+├── main.py
+├── settings.py
+├── requirements.txt
+└── game/
+    ├── __init__.py (empty)
+    ├── tetrominoes.py
+    ├── board.py
+    ├── piece.py
+    ├── hud.py
+    └── game.py
+</code></pre>
+<h3><code>requirements.txt</code></h3>
+<p><strong>Разбор.</strong> Единственная внешняя зависимость — Pygame 2.5+.</p>
+<pre><code>pygame>=2.5.0
+</code></pre>
+<h3><code>settings.py</code></h3>
+<p><strong>Разбор.</strong> Все размеры сетки и окна, бонусы за падение, цвета тетромино и HUD — в одном модуле; остальные файлы импортируют <code>settings as S</code>.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-025" data-title="`settings.py`" data-min-height="720"> </div>
+<h3><code>main.py</code></h3>
+<p><strong>Разбор.</strong> Только инициализация Pygame, игровой цикл и вызовы <code>Game.handle_event</code>, <code>update</code> и <code>draw</code> — без правил Tetris.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-026" data-title="`main.py`" data-min-height="642"> </div>
+<h3><code>game/__init__.py</code></h3>
+<p><strong>Разбор.</strong> Пустой файл — помечает <code>game/</code> как Python-пакет; импорты вида <code>from game.board import …</code> работают из корня <code>tetris/</code>.</p>
+<h3><code>game/tetrominoes.py</code></h3>
+<p><strong>Разбор.</strong> Словари форм и цветов семи тетромино, функции поворота и таблица очков за линии; <code>gravity_interval</code> задаёт скорость падения по уровню.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-027" data-title="`game/tetrominoes.py`" data-min-height="720"> </div>
+<h3><code>game/board.py</code></h3>
+<p><strong>Разбор.</strong> Сетка поля, коллизии <code>can_place</code>, фиксация и очистка линий, отрисовка поля, застывших блоков и призрака.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-028" data-title="`game/board.py`" data-min-height="720"> </div>
+<h3><code>game/piece.py</code></h3>
+<p><strong>Разбор.</strong> Класс <code>Piece</code> — активная фигура — движение, поворот с wall kick, hard drop и расчёт строки призрака; <code>spawn_piece</code> создаёт фигуру в точке спавна.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-029" data-title="`game/piece.py`" data-min-height="720"> </div>
+<h3><code>game/hud.py</code></h3>
+<p><strong>Разбор.</strong> Боковая панель, превью NEXT, счёт/линии/уровень и полупрозрачные оверлеи меню, паузы и game over.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-030" data-title="`game/hud.py`" data-min-height="720"> </div>
+<h3><code>game/game.py</code></h3>
+<p><strong>Разбор.</strong> Класс <code>Game</code> — конечный автомат состояний, гравитация и soft drop, обработка ввода, начисление очков и сборка кадра из модулей <code>board</code>, <code>piece</code> и <code>hud</code>.</p>
+<div class="itu-code-embed" data-example="python/sp-9-9-04-razrabotka-igr-praktikum-razrabotki-igr-5-031" data-title="`game/game.py`" data-min-height="720"> </div>
+<h3 id="разбор-финальной-архитектуры">Разбор финальной архитектуры</h3>
+<ul>
+<li><strong><code>board</code> и <code>piece</code> разделены</strong> — сетка и коллизии в <code>board.py</code>, активная фигура и её движение в <code>piece.py</code>; <code>board</code> не импортирует <code>Piece</code>.</li>
+<li><strong>Конечный автомат в <code>Game</code></strong> — строки <code>MENU</code>, <code>PLAYING</code>, <code>PAUSED</code>, <code>GAME_OVER</code> переключаются из <code>handle_event</code>; <code>update</code> и отрисовка зависят от <code>state</code>.</li>
+<li><strong>Гравитация через <code>gravity_timer</code> и soft drop</strong> — один таймер на кадр; при удержании <code>↓</code> интервал <code>SOFT_DROP_INTERVAL</code>, иначе <code>gravity_interval(level)</code>.</li>
+<li><strong>Призрак через <code>ghost_row</code></strong> — <code>Piece.ghost_row</code> опускает виртуальную фигуру до столкновения; <code>draw_ghost</code> рисует её серым контуром.</li>
+<li><strong><code>LINE_SCORES</code> в <code>tetrominoes.py</code></strong> — после <code>clear_lines</code> очки умножаются на <code>(level + 1)</code> в <code>_apply_line_score</code>.</li>
+</ul>
+<p><strong>Самопроверка эталона</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Пробел на экране меню запускает партию.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Стрелки двигают и вращают фигуру, <code>↓</code> ускоряет падение.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Заполненные линии исчезают, счёт растёт.</li>
+<li class="task-list-item"><input type="checkbox" disabled> Призрак показывает место приземления.</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>P</code> ставит паузу, <code>R</code> после game over возвращает в меню.</li>
+</ul>
+<hr>
+<p><span id="final-checklist"></span></p>
+<h2 id="итоговая-структура-и-самопроверка">Итоговая структура и самопроверка</h2>
+<h3 id="дерево-проекта">Дерево проекта</h3>
+<pre><code>tetris/
+├── main.py
+├── settings.py
+├── requirements.txt
+└── game/
+    ├── __init__.py
+    ├── tetrominoes.py
+    ├── board.py
+    ├── piece.py
+    ├── hud.py
+    └── game.py
+</code></pre>
+<h3 id="полный-чек-лист-прототипа">Полный чек-лист прототипа</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Критерий</th>
+<th>Да / нет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Окно 10×20 + боковая панель, стабильные 60 FPS</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Все 7 тетромино с различимыми цветами</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Гравитация, soft drop, hard drop</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Вращение CW/CCW с wall kick у стен</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Фиксация, очистка линий, сдвиг блоков вниз</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Очки NES, линии, рост уровня каждые 10 линий</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>NEXT, ghost piece, HUD</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Меню, пауза, game over</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Код в модулях <code>game/*</code>, <code>main.py</code> — только цикл</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>(Опционально) 7-bag, hold, lock delay, DAS</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="типичные-ошибки">Типичные ошибки</h3>
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Вероятная причина</th>
+<th>Что сделать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Фигура проходит сквозь блоки</td>
+<td>Нет проверки <code>can_place</code> перед сдвигом</td>
+<td>Все <code>try_move</code> / <code>try_rotate</code> только через <code>can_place</code></td>
+</tr>
+<tr>
+<td>Двойная фиксация за кадр</td>
+<td>Lock и в гравитации, и в hard drop</td>
+<td>Один метод <code>_lock_current()</code>; после hard drop сбросьте таймеры</td>
+</tr>
+<tr>
+<td>I-фигура застревает у стены</td>
+<td>Нет kick ±2</td>
+<td>Добавьте <code>(-2, 0)</code> и <code>(2, 0)</code> в wall kick</td>
+</tr>
+<tr>
+<td>Счёт за линии не растёт</td>
+<td><code>clear_lines</code> не вызывается до очков</td>
+<td><code>_apply_line_score(clear_lines(...))</code> после каждого lock</td>
+</tr>
+<tr>
+<td>NEXT не совпадает со спавном</td>
+<td>Путают <code>pop</code> и <code>peek</code> в 7-bag</td>
+<td>Спавн из <code>peek</code>, после lock — <code>pop</code> и новый <code>peek</code></td>
+</tr>
+<tr>
+<td>Фигура "дёргается" на ↓</td>
+<td>Два таймера гравитации</td>
+<td>Один <code>tick_gravity</code> или один блок в <code>Game.update</code></td>
+</tr>
+<tr>
+<td>Game over при старте</td>
+<td>Спавн вне поля</td>
+<td>Проверьте <code>SPAWN_COL</code> и <code>can_place</code> при reset</td>
+</tr>
+<tr>
+<td>Hold без ограничения</td>
+<td>Нет <code>hold_used</code></td>
+<td>Сбрасывайте <code>hold_used = False</code> после lock</td>
+</tr>
+</tbody>
+</table>
+<h3 id="идеи-для-дальнейшего-расширения">Идеи для дальнейшего расширения</h3>
+<table>
+<thead>
+<tr>
+<th>Улучшение</th>
+<th>Сложность</th>
+<th>Что даёт</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Звуки</strong></td>
+<td>низкая</td>
+<td><code>pygame.mixer</code> — rotate, line clear, Tetris, game over</td>
+</tr>
+<tr>
+<td><strong>SRS wall kicks</strong></td>
+<td>высокая</td>
+<td>Таблицы сдвигов для I и JLSTZ</td>
+</tr>
+<tr>
+<td><strong>Таблица рекордов</strong></td>
+<td>низкая</td>
+<td>Лучший счёт в <code>highscore.json</code></td>
+</tr>
+<tr>
+<td><strong>T-spin</strong></td>
+<td>высокая</td>
+<td>Бонус за вращение T в "карман"</td>
+</tr>
+<tr>
+<td><strong>Мультиplayer</strong></td>
+<td>высокая</td>
+<td>Два поля, "мусорные" линии сопернику</td>
+</tr>
+</tbody>
+</table>
+<h3 id="связь-с-историей-игр">Связь с историей игр</h3>
+<p>Tetris показал, что <strong>минималистичная механика + нарастающая сложность</strong> дают бесконечную реиграбельность. Сетка, таймеры и очередь фигур — тот же каркас, что в Match-3; здесь вы отработали его на каноническом примере рядом с практикумами <a href="https://github.com/Spirzen/BattleCity">Battle City на GitHub</a> и <a href="./2.md">Match3</a>.</p>
+<div class="callout callout--tip">
+  <div class="callout-title">Связанные материалы</div>
+  <div class="callout-body">
+  <p>Аркадный цикл и ввод — в практикуме <a href="/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/3">Python — Ping Pong</a>. Сетка, каскады и match-поиск — в <a href="/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/2">Python — Match3</a>. Упрощённая <a href="/lab/Примеры/1132#snake">змейка в Lab</a> помогает понять сетку и ход по таймеру до полного Tetris. Общая база Pygame — <a href="/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a>.</p>
+  </div>
+</div>
+<hr>
+<p>См. также: <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro">Практикум разработки игр — о разделе</a> · <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312">Разработка игр на Python</a> · <a href="/lab/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B/1132#snake">змейка в Lab</a> · <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/praktikum-razrabotki-igr/3">Python — Ping Pong</a>.</p>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#как-проходить-практикум">Как проходить практикум</a></li><li class="article-toc__item"><a href="#о-практикуме">О практикуме</a></li><li class="article-toc__item"><a href="#архитектура">Архитектура</a></li><li class="article-toc__item is-h3"><a href="#игровой-цикл">Игровой цикл</a></li><li class="article-toc__item is-h3"><a href="#два-представления-координат">Два представления координат</a></li><li class="article-toc__item is-h3"><a href="#модель-данных-сетка-board">Модель данных — сетка `board`</a></li><li class="article-toc__item is-h3"><a href="#тетромино">Тетромино</a></li><li class="article-toc__item is-h3"><a href="#точка-спавна">Точка спавна</a></li><li class="article-toc__item is-h3"><a href="#слои-приложения">Слои приложения</a></li><li class="article-toc__item is-h3"><a href="#поток-одного-кадра-playing">Поток одного кадра (PLAYING)</a></li><li class="article-toc__item is-h3"><a href="#алгоритм-коллизий">Алгоритм коллизий</a></li><li class="article-toc__item is-h3"><a href="#конечный-автомат-состояний">Конечный автомат состояний</a></li><li class="article-toc__item is-h3"><a href="#рекомендуемые-константы">Рекомендуемые константы</a></li><li class="article-toc__item is-h3"><a href="#таблица-очков-стиль-nes">Таблица очков (стиль NES)</a></li><li class="article-toc__item is-h3"><a href="#структура-файлов-целевая">Структура файлов (целевая)</a></li><li class="article-toc__item is-h3"><a href="#диаграмма-объектов">Диаграмма объектов</a></li><li class="article-toc__item"><a href="#зависимости-и-подготовка-окружения">Зависимости и подготовка окружения</a></li><li class="article-toc__item is-h3"><a href="#требования">Требования</a></li><li class="article-toc__item is-h3"><a href="#установка">Установка</a></li><li class="article-toc__item is-h3"><a href="#первичная-структура">Первичная структура</a></li><li class="article-toc__item"><a href="#этап-0-минимальный-запускаемый-код">Этап 0 — минимальный запускаемый код</a></li><li class="article-toc__item"><a href="#этап-1-константы-и-файл-настроек">Этап 1 — константы и файл настроек</a></li><li class="article-toc__item"><a href="#этап-2-отрисовка-игрового-поля">Этап 2 — отрисовка игрового поля</a></li><li class="article-toc__item"><a href="#этап-3-формы-тетромино">Этап 3 — формы тетромино</a></li><li class="article-toc__item"><a href="#этап-4-класс-piece">Этап 4 — класс `Piece`</a></li><li class="article-toc__item"><a href="#этап-5-пустая-сетка-board-и-отрисовка-блоков">Этап 5 — пустая сетка `board` и отрисовка блоков</a></li><li class="article-toc__item"><a href="#этап-6-гравитация-автоматическое-падение">Этап 6 — гравитация (автоматическое падение)</a></li><li class="article-toc__item"><a href="#этап-7-управление-влево-и-вправо">Этап 7 — управление влево и вправо</a></li><li class="article-toc__item"><a href="#этап-8-вращение">Этап 8 — вращение</a></li><li class="article-toc__item"><a href="#этап-9-soft-drop-и-подсчёт-очков-за-падение">Этап 9 — soft drop и подсчёт очков за падение</a></li><li class="article-toc__item"><a href="#этап-10-фиксация-фигуры-на-поле">Этап 10 — фиксация фигуры на поле</a></li><li class="article-toc__item"><a href="#этап-11-hard-drop-пробел">Этап 11 — hard drop (Пробел)</a></li><li class="article-toc__item"><a href="#этап-12-очистка-заполненных-линий">Этап 12 — очистка заполненных линий</a></li><li class="article-toc__item"><a href="#этап-13-очки-линии-и-уровни">Этап 13 — очки, линии и уровни</a></li><li class="article-toc__item"><a href="#этап-14-очередь-следующая-фигура">Этап 14 — очередь &quot;следующая фигура&quot;</a></li><li class="article-toc__item"><a href="#этап-15-призрак-ghost-piece">Этап 15 — призрак (ghost piece)</a></li><li class="article-toc__item"><a href="#этап-16-hud-и-экраны-состояний">Этап 16 — HUD и экраны состояний</a></li><li class="article-toc__item"><a href="#этап-17-модули-game">Этап 17 — модули `game/`</a></li><li class="article-toc__item"><a href="#этап-18-класс-game-и-чистый-mainpy">Этап 18 — класс `Game` и чистый `main.py`</a></li><li class="article-toc__item"><a href="#этап-19-7-bag-randomizer">Этап 19 — 7-bag randomizer</a></li><li class="article-toc__item"><a href="#этап-20-hold-lock-delay-и-das">Этап 20 — hold, lock delay и DAS</a></li><li class="article-toc__item is-h3"><a href="#hold-клавиша-c">Hold (клавиша `C`)</a></li><li class="article-toc__item is-h3"><a href="#lock-delay">Lock delay</a></li><li class="article-toc__item is-h3"><a href="#das-delayed-auto-shift">DAS (Delayed Auto Shift)</a></li><li class="article-toc__item"><a href="#полная-ревизия-файлов">Полная ревизия файлов</a></li><li class="article-toc__item is-h3"><a href="#requirementstxt">`requirements.txt`</a></li><li class="article-toc__item is-h3"><a href="#settingspy">`settings.py`</a></li><li class="article-toc__item is-h3"><a href="#mainpy">`main.py`</a></li><li class="article-toc__item is-h3"><a href="#gameinitpy">`game/__init__.py`</a></li><li class="article-toc__item is-h3"><a href="#gametetrominoespy">`game/tetrominoes.py`</a></li><li class="article-toc__item is-h3"><a href="#gameboardpy">`game/board.py`</a></li><li class="article-toc__item is-h3"><a href="#gamepiecepy">`game/piece.py`</a></li><li class="article-toc__item is-h3"><a href="#gamehudpy">`game/hud.py`</a></li><li class="article-toc__item is-h3"><a href="#gamegamepy">`game/game.py`</a></li><li class="article-toc__item is-h3"><a href="#разбор-финальной-архитектуры">Разбор финальной архитектуры</a></li><li class="article-toc__item"><a href="#итоговая-структура-и-самопроверка">Итоговая структура и самопроверка</a></li><li class="article-toc__item is-h3"><a href="#дерево-проекта">Дерево проекта</a></li><li class="article-toc__item is-h3"><a href="#полный-чек-лист-прототипа">Полный чек-лист прототипа</a></li><li class="article-toc__item is-h3"><a href="#типичные-ошибки">Типичные ошибки</a></li><li class="article-toc__item is-h3"><a href="#идеи-для-дальнейшего-расширения">Идеи для дальнейшего расширения</a></li><li class="article-toc__item is-h3"><a href="#связь-с-историей-игр">Связь с историей игр</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр — о разделе  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/5-languages/5-02-python/312" target="_blank" rel="noopener noreferrer"> Разработка игр на Python  ↗ </a> </li><li> <a href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro" target="_blank" rel="noopener noreferrer"> Компьютерные игры — о разделе  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

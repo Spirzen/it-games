@@ -1,0 +1,511 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Warhammer — Игры IT Universe</title><meta name="description" content="Warhammer представляет собой одну из самых масштабных и детально проработанных игровых вселенных в истории развлекательной индустрии."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Warhammer</span></li></ol></nav><header class="portal-hero"> <h1>Warhammer</h1> <p>Warhammer представляет собой одну из самых масштабных и детально проработанных игровых вселенных в истории развлекательной индустрии.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Warhammer" data-url="/games/9-03-igrovaya-industriya/game-studies/15">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Warhammer">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Warhammer</h1>
+<div class="itu-play-embed" data-example="spinoff/game-franchise-play" data-src="" data-title="Игровая франшиза" data-min-height="520" data-play-props="{&quot;franchise&quot;:&quot;warhammer&quot;}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="что-такое-warhammer">Что такое Warhammer</h2>
+<p>Warhammer представляет собой одну из самых масштабных и детально проработанных игровых вселенных в истории развлекательной индустрии. Созданная компанией Игры Workshop, эта франшиза объединяет настольные варгеймы, художественную литературу, компьютерные игры, коллекционные миниатюры и обширную систему правил. Мир Warhammer уникален своим суровым реализмом, глубокой историей и сложной мифологией, которая охватывает как фэнтезийные миры, так и мрачное космическое будущее.</p>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/Warhammer.png" alt="Warhammer.png"></p>
+<p>Создатели вселенной — Ричард Халливелл, Брайан Анселл и Рик Пристли — заложили фундамент в 1983 году для одноимённой военно-тактической игры. Изначально задуманная как набор правил для битв на столе с использованием миниатюр, вселенная быстро выросла в полноценный медиафранчайзинг. Сегодня она включает в себя несколько основных ветвей — Warhammer Fantasy Battles, переродившуюся в Age of Sigmar, и Warhammer 40,000, действие которой происходит в далеком будущем. Каждая из этих вселенных обладает собственной логикой, историей, расами и правилами взаимодействия, при этом сохраняя общий стиль повествования и эстетику.</p>
+<p>Важной особенностью проекта является его интерактивность. Пользователи не просто потребляют контент, но и активно участвуют в создании миров через сборку, покраску и тактическую игру с миниатюрами. Этот подход создал уникальную культуру сообщества, где хобби по моделированию неразрывно связано с геймплеем. Индустрия получила мощный импульс развития благодаря популяризации стандартов качества производства пластиковых фигурок, развитию рынка акриловых красок и формированию нового сегмента коллекционирования.</p>
+<p>Влияние вселенной Warhammer вышло далеко за пределы игровой индустрии. Эстетика "Grimdark" (мрачный ужас) стала определяющей для многих последующих произведений в жанре фэнтези и научной фантастики. Сюжетные арки, персонажи и концепции из книг и игр вдохновляли разработчиков видеоигр, писателей и кинематографистов. Трансмедийность франшизы демонстрирует пример успешного переноса контента между различными платформами: от печатных книг до экранизаций и мобильных приложений.</p>
+<p>Настоящий материал посвящен детальному рассмотрению всех аспектов вселенной Warhammer. Мы изучим историю создания, структуру мира, ключевые события, такие как Конец Времен, и эволюцию правил игры. Особое внимание будет уделено механике игрового процесса, влиянию на индустрию и культурному значению этой франшизы. Цель материала — предоставить исчерпывающее руководство для тех, кто хочет понять глубину этого мира, независимо от уровня их предварительных знаний.</p>
+<hr>
+<h2 id="история-создания-и-развитие-вселенной">История создания и развитие вселенной</h2>
+<h3 id="зарождение-идеи-и-первые-шаги">Зарождение идеи и первые шаги</h3>
+<p>История вселенной Warhammer берет свое начало в Великобритании начала 1980-х годов. Компания Игры Workshop, основанная в 1975 году, изначально занималась производством и продажей настольных ролевых игр и фэнтезийных миниатюр. К началу 1980-х компания искала новый продукт, который мог бы объединить любителей тактических игр и коллекционеров.</p>
+<p>Ричард Халливелл, Брайан Анселл и Рик Пристли, работавшие в Игры Workshop, предложили идею создания новой системы правил для битв на столе. Их целью было создание игры, которая сочетала бы элементы исторического фэнтези с возможностью тактического маневрирования и использования миниатюр. В 1983 году была выпущена первая редакция правил Warhammer Fantasy Battle, которая сразу же привлекла внимание игроков своей глубиной и детализацией.</p>
+<p>Первая редакция правил отличалась относительной простотой, но содержала зачатки той самой атмосферы мрачного фэнтези, которая станет визитной карточкой франшизы. Игроки собирали армии из миниатюр, представляющих различные расы, и сражались друг с другом на специально оборудованных столах. Правила были написаны так, чтобы быть понятными новичкам, но при этом предоставлять пространство для стратегического мышления опытных игроков.</p>
+<p>Успех первой редакции позволил Игры Workshop расширить линейку продуктов. Были выпущены дополнительные книги с описанием войск различных народов, которые включали в себя не только правила игры, но и подробные описания истории, культуры и особенностей каждой расы. Это помогло создать богатую и живую вселенную, в которую игроки могли погрузиться полностью.</p>
+<hr>
+<h3 id="эволюция-правил-и-расширение-вселенной">Эволюция правил и расширение вселенной</h3>
+<p>С течением времени правила игры претерпевали значительные изменения. С шестой редакцией, выпущенной в 1992 году, игра стала более стратегической и менее зависимой от случайности бросков кубиков. Были введены новые механики, такие как система очков (Point-buy), позволяющая игрокам балансировать свои армии. Также была переработана магическая система, что сделало использование магии более предсказуемым и тактически важным.</p>
+<p>Пятая редакция, выпущенная в 1995 году, принесла новые расы, такие как бретонцы и ящеры. Шестая редакция, выпущенная в 1998 году, значительно переработала магическую систему и ввела новые возможности для командования войсками. Седьмая редакция, выпущенная в 2004 году, сделала игру еще более доступной для новичков, сохранив при этом глубину для опытных игроков.</p>
+<p>Восьмая редакция, выпущенная в 2010 году, ознаменовала собой новый этап в развитии вселенной. Были переработаны многие ключевые аспекты игры, включая систему магии и правила ведения боя. Игра стала более стратегической, и важность количества моделей в армии возросла. Однако именно эта редакция привела к появлению Конца Времен (End Times), глобального апокалипсиса, который положил конец существованию Warhammer Fantasy Battles.</p>
+<hr>
+<h3 id="концепция-конца-времен-и-переход-к-age-of-sigmar">Концепция Конца Времен и переход к Age of Sigmar</h3>
+<p>Концепция Конца Времен была задумана как способ завершить долгую историю Warhammer Fantasy Battles. События Конца Времен описывают глобальный апокалипсис, в результате которого старый мир был уничтожен. Архаон Навеки Избранный, главный антагонист серии, сумел разрушить Мировое древо и расколоть планету на куски. Это событие стало кульминацией многолетней сюжетной линии, в которой силы Хаоса боролись против сил Порядка.</p>
+<p>После событий Конца Времен Игры Workshop объявила о закрытии поддержки Warhammer Fantasy Battles и запуске новой игры — Warhammer Age of Sigmar. Новая игра представляла собой перерождение вселенной, где старые миры были заменены новыми Владениями Смертных Царств. Бог-король Сгмар создал Грозорожденных Вечных, армию полубожественных воинов, для борьбы с силами Хаоса.</p>
+<p>Age of Sigmar сохранила основные механики своих предшественников, но добавила новые элементы, такие как система стратагем и возможность играть в режиме Narrative Play, который фокусируется на воссоздании исторических сражений. Новая игра также включала в себя новые расы и фракции, которые отражали изменения в мире после Конца Времен.</p>
+<hr>
+<h3 id="warhammer-40000-рождение-космофэнтези">Warhammer 40,000 — Рождение космофэнтези</h3>
+<p>Параллельно с развитием Warhammer Fantasy Battles, Игры Workshop работала над созданием новой вселенной — Warhammer 40,000. Первая редакция этой игры была выпущена в 1987 году. Она представляла собой переработку идей Warhammer Fantasy Battles в духе научной фантастики. Действие игры происходило в далеком будущем, где человечество объединено в тоталитарный Империум, а галактика охвачена бесконечной войной.</p>
+<p>Warhammer 40,000 быстро завоевала популярность благодаря своей мрачной атмосфере и глубоким сюжетным линиям. Игроки собирали армии из миниатюр, представляющих различные фракции, такие как Космический Десант, Орды Орко, Тираниды и другие. Правила игры постоянно обновлялись, и каждая новая редакция приносила новые механики и возможности.</p>
+<p>В отличие от Warhammer Fantasy Battles, где акцент делался на фэнтезийном сеттинге, Warhammer 40,000 сосредоточился на технофэнтези космического масштаба. Человечество боролось не только с инопланетными цивилизациями, но и с потусторонними силами Варпа. Император на Золотом Троне сдерживал натиск демонов и чуждых рас, поддерживая единство Империума.</p>
+<hr>
+<h3 id="развитие-литературы-и-комиксов">Развитие литературы и комиксов</h3>
+<p>Одной из ключевых составляющих успеха вселенной Warhammer стала её литературная основа. Игры Workshop издавала множество книг, рассказов и комиксов, которые расширяли и углубляли вымышленную вселенную. Книги публиковались под импринтом Black Library, который стал известен своими качественными произведениями в жанре фэнтези и научной фантастики.</p>
+<p>Литературные произведения охватывали широкий спектр тем: от историй о героях и злодеях до политических интриг и эпических битв. Многие циклы книг стали классикой жанра, например, цикл "Готрек и Феликс", "Ересь Хоруса" и "Призраки Гаунта". Эти произведения не только развивали сюжет вселенной, но и создавали новых любимых персонажей, которых игроки узнавали и любили.</p>
+<p>Комиксы также играли важную роль в развитии вселенной. Они предлагали визуальное представление событий и персонажей, дополняя литературные произведения. Комиксы часто затрагивали темы, которые не могли быть раскрыты в книгах, или давали новую перспективу на известные события.</p>
+<hr>
+<h3 id="компьютерные-игры-и-цифровая-адаптация">Компьютерные игры и цифровая адаптация</h3>
+<p>Вселенная Warhammer также нашла своё отражение в мире компьютерных игр. Различные студии выпускали игры по мотивам франшизы, начиная с ранних тактических стратегий и заканчивая современными RPG и MOBA. Одной из самых известных серий игр является Total War: Warhammer, разработанная Creative Assembly. Эта серия игр позволила миллионам игроков познакомиться с миром Warhammer через масштабные стратегии реального времени.</p>
+<p>Другие важные проекты включают Warhammer Online — Age of Reckoning, MMORPG, которая предлагала уникальный опыт массовых сражений, и Warhammer 40,000 — Space Marine, экшен-приключение, которое позволило игрокам стать частью легендарного Космического Десанта. Эти игры не только сохраняли атмосферу оригинальных вселенных, но и адаптировали их для цифровой платформы, привлекая новую аудиторию.</p>
+<hr>
+<h3 id="современные-тенденции-и-будущее-франшизы">Современные тенденции и будущее франшизы</h3>
+<p>На сегодняшний день вселенная Warhammer продолжает развиваться и расширяться. Игры Workshop регулярно выпускает новые правила, книги, комиксы и миниатюры, поддерживая интерес сообщества. Новые редакции игр, такие как десятая редакция Warhammer 40,000, продолжают обновлять механику и добавлять новые возможности для игроков.</p>
+<p>Также наблюдается рост интереса к цифровым платформам и мобильным приложениям. Игры Workshop активно сотрудничает с различными студиями разработки, чтобы создать новые игры, которые будут доступны на разных устройствах. Это позволяет франшизе оставаться актуальной и привлекать новую аудиторию.</p>
+<p>Будущее вселенной Warhammer выглядит светлым. Продолжающееся развитие литературы, игр и других медиаформатов гарантирует, что этот мир останется одним из самых популярных и влиятельных в индустрии развлечений. Сообщество игроков и поклонников продолжает расти, и каждый год приносит новые истории, персонажей и события, которые обогащают эту уникальную вселенную.</p>
+<hr>
+<h2 id="лор-вселенной">Лор вселенной</h2>
+<h3 id="warhammer-fantasy-battles-классический-фэнтезийный-мир">Warhammer Fantasy Battles — Классический фэнтезийный мир</h3>
+<p>Warhammer Fantasy Battles (WFB) представляет собой один из самых детально проработанных фэнтезийных миров в истории настольных игр. Его действие разворачивается в мире, напоминающем позднее Средневековье Европы, с элементами магического реализма и мрачной атмосферой. Центральным элементом сюжета является постоянная борьба Империи людей против сил Хаоса, которые стремятся поглотить весь мир.</p>
+<hr>
+<h4>География и культура Старого Света</h4>
+<p>Мир WFB разделен на несколько ключевых регионов, каждый из которых имеет свою уникальную культуру, историю и политическую структуру. Старый Свет, аналогичный Евразии и Африке, является основным местом действия. Здесь расположены Империя людей, Бретония, Кислев, Великий Катай и другие государства. Каждый регион вдохновлен реальными историческими прототипами, что придает миру дополнительную глубину и достоверность.</p>
+<p>Империя людей, основанная на Священной Римской империи, является главным оплотом человечества. Она состоит из множества княжеств и городов-государств, объединенных под властью императора. Имперская армия универсальна и способна противостоять любым угрозам. Бретония, вдохновленная средневековой Францией и рыцарскими романами, известна своей рыцарской культурой и верностью королю. Кислев, прототипом которого служат славянские страны и кочевые народы, отличается суровым климатом и воинственным духом жителей.</p>
+<hr>
+<h4>Магия и полярные врата</h4>
+<p>Магия играет ключевую роль в мире WFB. Она пронизывает все аспекты жизни, от повседневных дел до великих битв. Однако магия не всегда безопасна. Полярные врата, расположенные в северных регионах мира, являются источниками свободной магии, которая может привести к появлению демонов и других опасных существ. Эти врата служат воротами в параллельное измерение, где обитают боги Хаоса.</p>
+<p>Маги используют различные школы магии, каждая из которых имеет свои особенности и ограничения. Некоторые маги могут вызывать огненные шары, другие — призывать духов или управлять погодой. Однако использование магии сопряжено с рисками, так как оно может привлечь внимание сил Хаоса.</p>
+<hr>
+<h4>Борьба Империи с Хаосом</h4>
+<p>Основной конфликт в мире WFB заключается в борьбе Империи людей против сил Хаоса. Боги Хаоса — Кхорн, Тзинч, Нургл и Слаанеш — представляют собой стихии войны, магии, разложения и наслаждения соответственно. Их последователи, воины и демоны, стремятся поглотить мир и превратить его в хаос.</p>
+<p>Империя ведет непрерывную войну с Хаосом, используя армию, магию и дипломатию. Важную роль в этой борьбе играют охотники на ведьм, которые ищут и уничтожают последователей Хаоса. Также существуют организации, такие как Коллегия Арканум, которые контролируют использование магии и защищают мир от её опасностей.</p>
+<hr>
+<h4>Другие расы и конфликты</h4>
+<p>Помимо людей и Хаоса, в мире WFB существует множество других рас, каждая из которых имеет свои интересы и цели. Эльфы, разделенные на высших, лесных и темных, ведут вечную борьбу за влияние и ресурсы. Гномы, известные своим мастерством в металлургии и инженерии, защищают свои горные крепости от внешних угроз. Орки и гоблины, варварские племена, постоянно нападают на цивилизованные земли, грабя и разоряя всё на своем пути.</p>
+<p>Каждая раса имеет свои уникальные особенности и способности. Эльфы обладают высокой инициативой и магическими способностями. Гномы отличаются упорством и боевым духом. Орки и гоблины известны своей численностью и агрессивностью. Эти различия создают богатую палитру возможностей для игроков и позволяют создавать разнообразные сценарии и тактики.</p>
+<hr>
+<h3 id="the-end-times-глобальный-апокалипсис">The End Times — Глобальный апокалипсис</h3>
+<p>События Конца Времен (The End Times) представляют собой кульминацию многолетней сюжетной линии Warhammer Fantasy Battles. Это глобальный апокалипсис, в результате которого старый мир был уничтожен. Архаон Навеки Избранный, главный антагонист серии, сумел разрушить Мировое древо и расколоть планету на куски.</p>
+<hr>
+<h4>Подготовка к апокалипсису</h4>
+<p>События Конца Времен начались задолго до финальной битвы. Боги Хаоса готовились к своему возвращению, используя различные методы для ослабления сил Порядка. Демоны проникали в мир через полярные врата, а последователи Хаоса распространяли страх и отчаяние среди населения.</p>
+<p>Архаон, избранный всеми четырьмя богами Хаоса, собрал огромную армию, состоящую из воинов, демонов и монстров. Он стремился достичь своего конечного назначения — уничтожить Мировое древо и открыть путь для вторжения богов Хаоса в материальный мир.</p>
+<hr>
+<h4>Разрушение Мирового древа</h4>
+<p>Финальная битва Конца Времен произошла в месте, где находилось Мировое древо — древнее дерево, которое связывало все слои вселенной. Архаон и его армия атаковали защитников, пытаясь добраться до корня дерева. В ходе битвы погибли многие герои и лидеры сопротивления, включая Сгмара, который пожертвовал собой, чтобы замедлить продвижение врага.</p>
+<p>Когда Архаон достиг корня Мирового древа, он нанес ему смертельный удар. Дерево рухнуло, и планета начала раскалываться на куски. Землетрясения, извержения вулканов и цунами опустошили поверхность мира. Люди, эльфы, гномы и другие расы столкнулись с неизбежным концом.</p>
+<hr>
+<h4>Последствия апокалипсиса</h4>
+<p>Разрушение Мирового древа имело катастрофические последствия. Планета распалась на множество осколков, которые плыли в пустоте. Души обитателей старого мира оказались заключены в металлическое ядро Маллус, которое осталось единственным целым куском планеты.</p>
+<p>События Конца Времен положили конец существованию Warhammer Fantasy Battles. Игры Workshop объявила о закрытии поддержки этой игры и запуске новой вселенной — Age of Sigmar. Однако история Конца Времен остается важной частью лора франшизы и продолжает вдохновлять новых авторов и игроков.</p>
+<hr>
+<h3 id="age-of-sigmar-перерождение-вселенной">Age of Sigmar — Перерождение вселенной</h3>
+<p>Age of Sigmar (AoS) представляет собой новое воплощение вселенной Warhammer, созданное после событий Конца Времен. Это мир, в котором старые земли были заменены новыми Владениями Смертных Царств. Бог-король Сгмар создал Грозорожденных Вечных, армию полубожественных воинов, для борьбы с силами Хаоса.</p>
+<hr>
+<h4>Восемь Владений Смертных Царств</h4>
+<p>Вселенная AoS состоит из восьми взаимосвязанных миров, называемых Владениями. Каждое Владение имеет свою уникальную природу и управляется определенным богом или силой. Владения связаны друг с другом Вратами, через которые армии могут переходить из одного мира в другой.</p>
+<ol>
+<li><strong>Азир</strong> — Владение Небесное, единственное Владение, не тронутое Хаосом. Здесь правит бог Сгмар, и оно является домом для Грозорожденных Вечных.</li>
+<li><strong>Акши</strong> — Владение Огня, где преобладают вулканы и пустыни. Родина Огненных истребителей.</li>
+<li><strong>Гур</strong> — Владение Зверей, фактические владения бога Горкаморки. Здесь обитают орруки и огоры.</li>
+<li><strong>Гиран</strong> — Владение Жизни, чрезвычайно плодоносные земли. На эти владения претендует Алариэль, богиня Жизни.</li>
+<li><strong>Чамон</strong> — Владение Металла, состоит из металлических континентов и плавающих цитаделей. Владеть этими землями особенно желает Тзинч.</li>
+<li><strong>Шаиш</strong> — Владение Смерти, находится под безоговорочным контролем Нагаша. Здесь обитают вампиры, упыри и нежить.</li>
+<li><strong>Хиш</strong> — Владение Света, владения Тириона и Теклиса. Это мир символов и форм.</li>
+<li><strong>Улгу</strong> — Владение Тени, захваченное Малерионом и Морати. Это земля иллюзий и тумана.</li>
+</ol>
+<hr>
+<h4>Создание Грозорожденных Вечных</h4>
+<p>После событий Конца Времен Сгмар нашел осколки старого мира и вдохнул в них жизнь. Души обитателей старого мира возродились в новых мирах. Чтобы защитить новые земли от сил Хаоса, Сгмар создал Грозорожденных Вечных — воинов, закованных в доспехи из особого металла-сигмарита.</p>
+<p>Грозорожденные Вечные обладают божественной силой и являются основными защитниками Порядка. Они сражаются против демонов и последователей Хаоса, защищая новые миры от разрушения. Каждая фракция в AoS имеет свои уникальные способности и тактики, что позволяет создавать разнообразные армии и стратегии.</p>
+<hr>
+<h4>Эпохи и смена власти</h4>
+<p>История AoS разделена на три эпохи: Эпоха Легенд, Эпоха Хаоса и Эпоха Сгмара. В Эпохе Легенд Сгмар восстанавливал мир после разрушения. В Эпохе Хаоса боги Хаоса завоевали семь из восьми Владений, и Сгмар был вынужден отступить в Азир. В Эпохе Сгмара Грозорожденные Вечные переломили ход войны и начали освобождать другие Владения.</p>
+<p>Этапы смены власти отражают динамику конфликта между Порядком и Хаосом. Каждая эпоха имеет свои особенности и вызовы, которые должны преодолеть герои и армии.</p>
+<hr>
+<h3 id="warhammer-40000-далекое-мрачное-будущее">Warhammer 40,000 — Далекое мрачное будущее</h3>
+<p>Warhammer 40,000 (40k) представляет собой вселенную, действие которой происходит в далеком будущем. Это мир технофэнтези космического масштаба, где человечество объединено в тоталитарный Империум, а галактика охвачена бесконечной войной. Император на Золотом Троне сдерживает натиск ксеносов и демонов Варпа.</p>
+<hr>
+<h4>Империум Человечества</h4>
+<p>Империум Человечества — это огромное государство, охватывающее миллионы планет. Оно управляется Императором Человечества, который сидит на Золотом Троне в центре галактики. Император использует свои психические силы, чтобы поддерживать единство Империума и сдерживать натиск демонов Варпа.</p>
+<p>Империум состоит из различных организаций и институтов, таких как Космический Десант, Имперская Гвардия, Инквизиция и Адептус Механикус. Каждая из этих организаций имеет свои задачи и функции, но все они работают на благо Империума.</p>
+<hr>
+<h4>Космический Десант</h4>
+<p>Космический Десант — это генетически модифицированные суперсолдаты, созданные для защиты Империума. Они обладают невероятной силой, скоростью и выносливостью. Каждый десантник принадлежит к определенной Ордену, который имеет свои традиции и особенности.</p>
+<p>Космический Десант сражается против всех врагов Империума, будь то ксеносы, еретики или демоны. Они являются элитными войсками и часто участвуют в самых важных миссиях.</p>
+<hr>
+<h4>Варп и демоны</h4>
+<p>Варп — это параллельное измерение, где обитают демоны и другие потусторонние силы. Псайкеры, люди с сильными психическими способностями, могут путешествовать через Варп, но это опасно, так как демоны могут проникнуть в материальный мир.</p>
+<p>Демоны Варпа — это воплощения страхов и желаний смертных. Они стремятся поглотить души людей и разрушить материальный мир. Империум ведет непрерывную войну с демонами, используя псайкеров, оружие и магию.</p>
+<hr>
+<h4>Ксеносы и инопланетные расы</h4>
+<p>Ксеносы — это термин, обозначающий все инопланетные расы, которые не принадлежат к человечеству. Среди них есть Тираниды, Некроны, Тау, Эльдар и другие. Каждая из этих рас имеет свои цели и технологии, и многие из них угрожают существованию Империума.</p>
+<p>Тираниды — это гигантская биологическая армада, которая поглощает все живое. Некроны — это древняя раса мертвых, которая пробудилась из спячки. Тау — это технологически продвинутая раса, стремящаяся к экспансии. Эльдар — это древняя раса, которая потеряла большую часть своего мира из-за падения Хаоса.</p>
+<hr>
+<h4>Технофэнтези и эклектичность</h4>
+<p>Мир 40k характеризуется эклектичностью технологий и культур. Генетически измененные суперсолдаты имеют оружие, напоминающее историческое вооружение воинов разных эпох. Сверхсветовые космические корабли соседствуют с паровыми машинами, высокотехнологичное фантастическое оружие — с топорами и мечами.</p>
+<p>Эта эклектичность создает уникальную атмосферу, где прошлое и будущее смешиваются. Технологии используются для поддержания тоталитарного режима, а религия и магия играют важную роль в жизни общества.</p>
+<hr>
+<h2 id="расы-в-warhammer">Расы в Warhammer</h2>
+<h3 id="warhammer-fantasy-battles-age-of-sigmar-total-war">Warhammer Fantasy Battles / Age of Sigmar / Total War</h3>
+<table>
+<thead>
+<tr>
+<th>Название расы / фракции</th>
+<th>Сторона (Альянс)</th>
+<th>Особенности и архетип</th>
+<th>Основные представители / Лорды</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Империя (The Empire)</td>
+<td>Порядок</td>
+<td>Классическое человечество эпохи Ренессанса. Сльная артиллерия, стрелки и кавалерия.</td>
+<td>Карл Франц, Бальтазар Гельт</td>
+</tr>
+<tr>
+<td>Бретония (Bretonnia)</td>
+<td>Порядок</td>
+<td>Феодальная человеческая нация, вдохновленная легендами об Артуре. Мощнейшая кавалерия.</td>
+<td>Луан Леонкур, Репанс де Лионесс</td>
+</tr>
+<tr>
+<td>Кислев (Kislev)</td>
+<td>Порядок</td>
+<td>Суровые северные люди, аналог славянских культур. Ледяная магия и боевые медведи.</td>
+<td>Царица Катарина, Косталтын</td>
+</tr>
+<tr>
+<td>Великий Катай (Grand Cathay)</td>
+<td>Порядок</td>
+<td>Великая восточная империя людей. Драконы-правители, терракотовые стражи и гармония Инь-Ян.</td>
+<td>Мяо Ин, Чжао Мин</td>
+</tr>
+<tr>
+<td>Высшие Эльфы (High Elves)</td>
+<td>Порядок</td>
+<td>Гордая древняя раса магических мастеров. Идеальный баланс лучников, копейщиков и драконов.</td>
+<td>Тирион, Теклис, Элтарион</td>
+</tr>
+<tr>
+<td>Лесные Эльфы (Wood Elves)</td>
+<td>Порядок</td>
+<td>Скрытные защитники священных лесов Атель Лорен. Смертоносные лучники и древесные духи.</td>
+<td>Орион, Дуртху, Сестры Сумерек</td>
+</tr>
+<tr>
+<td>Ящеролюды (Lizardmen)</td>
+<td>Порядок</td>
+<td>Древнейшие хладнокровные создания Древних. Могучие маги-жабы Сланны и динозавры.</td>
+<td>Лорд Кроак, Маздамунди, Крок-Гар</td>
+</tr>
+<tr>
+<td>Гномы (Dwarfs)</td>
+<td>Порядок</td>
+<td>Стойкие и злопамятные подземные жители. Тяжелая пехота, рунная магия, полное отсутствие кавалерии.</td>
+<td>Торгрим Злопамятный, Громбриндал</td>
+</tr>
+<tr>
+<td>Культ Кхорна (Khorn)</td>
+<td>Хаос</td>
+<td>Демоны и смертные бога крови. Неистовый ближний бой, ярость, полное отсутствие магии.</td>
+<td>Скарбранд, Валькия Кровавая</td>
+</tr>
+<tr>
+<td>Культ Тзинча (Tzeentch)</td>
+<td>Хаос</td>
+<td>Слуги бога перемен, магии и обмана. Сльные магические барьеры и дальнобойный обстрел.</td>
+<td>Кайрос Судьбоплет, Вилич</td>
+</tr>
+<tr>
+<td>Культ Нургла (Nurgle)</td>
+<td>Хаос</td>
+<td>Последователи бога чумы и разложения. Медленные, но невероятно живучие юниты с ядами.</td>
+<td>Ку'гат, Фестус Повелитель Пиявок</td>
+</tr>
+<tr>
+<td>Культ Слаанеш (Slaanesh)</td>
+<td>Хаос</td>
+<td>Прислужники бога излишеств и темных удовольствий. Сверхинтенсивная скорость, обход с флангов.</td>
+<td>Н'Кари, Азазель</td>
+</tr>
+<tr>
+<td>Воины Хаоса (Warriors of Chaos)</td>
+<td>Хаос</td>
+<td>Смертные бронированные северяне, присягнувшие Неделимому Хаосу. Элитная тяжелая пехота.</td>
+<td>Архаон Навеки Избранный, Холек</td>
+</tr>
+<tr>
+<td>Гномы Хаоса (Chaos Dwarfs)</td>
+<td>Хаос</td>
+<td>Развращенные кузнецы-поработители. Механические монстры, демоническая артиллерия и рабы.</td>
+<td>Астрагот Железнорукий, Дражоат</td>
+</tr>
+<tr>
+<td>Зверолюды (Beastmen)</td>
+<td>Хаос</td>
+<td>Дикие мутанты лесов с козлиными и бычьими чертами. Засады, набеги и высокая мобильность.</td>
+<td>Хазрак Одноглазый, Малогор</td>
+</tr>
+<tr>
+<td>Скавены (Skaven)</td>
+<td>Хаос</td>
+<td>Подлые крысолюды, живущие под землей. Огромная численность, безумное ядерное оружие.</td>
+<td>Квик Головорез, Икит Клешня</td>
+</tr>
+<tr>
+<td>Темные Эльфы (Dark Elves)</td>
+<td>Разрушение</td>
+<td>Жестокие работорговцы и садисты. Механика кровавой доблести, черные ковчеги и монстры.</td>
+<td>Малекит, Морати, Малус Тёмный Клинок</td>
+</tr>
+<tr>
+<td>Зеленокожие (Orcs &#x26; Goblins)</td>
+<td>Разрушение</td>
+<td>Орки и гоблины, живущие ради войны. Хаотичные толпы, дикие звери и механика Waaagh!</td>
+<td>Гримгор Железношкур, Скарсник</td>
+</tr>
+<tr>
+<td>Королевства Огров (Ogre Kingdoms)</td>
+<td>Разрушение</td>
+<td>Огромные прожорливые наемники. Почти все юниты — чудовищная пехота и тяжелый натиск.</td>
+<td>Грисус Златозуб, Скраг Живодер</td>
+</tr>
+<tr>
+<td>Графства Вампиров (Vampire Counts)</td>
+<td>Смерть</td>
+<td>Бессмертные лорд-некроманты. Поднятие мертвецов на поле боя, полное отсутствие стрелков.</td>
+<td>Влад фон Карштайн, Манфред</td>
+</tr>
+<tr>
+<td>Цари Гробниц (Tomb Kings)</td>
+<td>Смерть</td>
+<td>Воскресшие мумии древней пустынной Нехекары. Огромные живые каменные статуи, бесплатные войска.</td>
+<td>Сеттра Бессмертный, Архан Черный</td>
+</tr>
+<tr>
+<td>Берег Вампиров (Vampire Coast)</td>
+<td>Смерть</td>
+<td>Пираты-зомби Нежити. Ручное огнестрельное оружие, гигантские ходячие корабли и пушки.</td>
+<td>Лютор Харкон, Граф Ноктилус</td>
+</tr>
+<tr>
+<td>Норска (Norsca)</td>
+<td>Хаос / Налетчики</td>
+<td>Дикие северные племена людей-викингов. Охота на гигантских монстров, оборотни и ледяные змеи.</td>
+<td>Вульфрик Скиталец, Трогг</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="warhammer-40000">Warhammer 40,000</h3>
+<table>
+<thead>
+<tr>
+<th>Название расы / фракции</th>
+<th>Сторона (Суперфракция)</th>
+<th>Роль и краткое описание</th>
+<th>Известные подфракции</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Космодесант (Space Marines)</td>
+<td>Империум</td>
+<td>Генетически модифицированные суперсолдаты, ангелы смерти Императора. Универсальная элита.</td>
+<td>Ультрамарины, Кровавые Ангелы, Космические Волки</td>
+</tr>
+<tr>
+<td>Астра Милитарум (Imperial Guard)</td>
+<td>Империум</td>
+<td>Регулярная человеческая армия. Миллионы солдат, тяжелые танки и бесконечная артиллерия.</td>
+<td>Кадианцы, Корпус Смерти Крига, Катачанцы</td>
+</tr>
+<tr>
+<td>Адептус Механикус (Adeptus Mechanicus)</td>
+<td>Империум</td>
+<td>Кибернетические культисты-технологи с Марса. Энергетическое оружие, сервиторы и шагатели.</td>
+<td>Скитарии, Культ Механикус</td>
+</tr>
+<tr>
+<td>Адепта Сороритас (Sisters of Battle)</td>
+<td>Империум</td>
+<td>Религиозный орден женщин-воительниц. Святая вера, огнеметы, мельта-оружие и экзорцисты.</td>
+<td>Орден Нашей Мученицы, Орден Кровавой Розы</td>
+</tr>
+<tr>
+<td>Адептус Кустодес (Adeptus Custodes)</td>
+<td>Империум</td>
+<td>Личная гвардия Императора. Немногочисленные, но самые сильные пехотные воины в галактике.</td>
+<td>Соларный Дозор, Эмиссары Императора</td>
+</tr>
+<tr>
+<td>Серые Рыцари (Grey Knights)</td>
+<td>Империум</td>
+<td>Тайный орден космодесанта, состоящий полностью из псайкеров. Специализация на истреблении демонов.</td>
+<td>Охотники на демонов Ордо Маллеус</td>
+</tr>
+<tr>
+<td>Космодесант Хаоса (Chaos Space Marines)</td>
+<td>Хаос</td>
+<td>Предатели Империума, совращенные Темными Богами. Одержимые воины и демонические машины.</td>
+<td>Черный Легион, Гвардия Смерти, Пожиратели Миров</td>
+</tr>
+<tr>
+<td>Демоны Хаоса (Chaos Daemons)</td>
+<td>Хаос</td>
+<td>Проявления сущностей варпа четырех богов. Не используют технику, сильны в ближнем бою и магии.</td>
+<td>Воинства Кхорна, Тзинча, Нургла, Слаанеш</td>
+</tr>
+<tr>
+<td>Орки (Orks)</td>
+<td>Ксеносы</td>
+<td>Варвары-грибы, живущие ради драк. Грубое самодельное оружие, огромная численность, техника из хлама.</td>
+<td>Гоффы, Злые Солнца, Плохие Луны</td>
+</tr>
+<tr>
+<td>Некроны (Necrons)</td>
+<td>Ксеносы</td>
+<td>Древняя раса живого металла, пробудившаяся от сна. Механика реанимации, мощное дезинтегрирующее оружие.</td>
+<td>Династия Саутех, Династия Нехрех</td>
+</tr>
+<tr>
+<td>Тираниды (Tyranids)</td>
+<td>Ксеносы</td>
+<td>Сверхорганизм из другой галактики. Живое био-оружие, поглощающее всю органику на пути.</td>
+<td>Флот-улей Левиафан, Кракен, Бегемот</td>
+</tr>
+<tr>
+<td>Культы Генокрадов (Genestealer Cults)</td>
+<td>Ксеносы</td>
+<td>Тайные гибриды людей и тиранидов. Подпольное восстание, засады, использование шахтерской техники.</td>
+<td>Культ Нищего Червя, Оглашенные спирали</td>
+</tr>
+<tr>
+<td>Аэльдари (Craftworld Eldar)</td>
+<td>Ксеносы</td>
+<td>Вымирающие космические эльфы на огромных мирах-кораблях. Высокие технологии, псайкеры, узкоспециализированные отряды.</td>
+<td>Ультве, Бьел-Тан, Саим-Ханн</td>
+</tr>
+<tr>
+<td>Друкари (Dark Eldar)</td>
+<td>Ксеносы</td>
+<td>Жестокие садисты-эльфы, живущие в Комморраге. Молниеносные налеты, яды, пыточные технологии.</td>
+<td>Кабалы, Культы Ведьм, Ковены Гомункулов</td>
+</tr>
+<tr>
+<td>Империя Т'ау (T'au Empire)</td>
+<td>Ксеносы</td>
+<td>Молодая раса, сражающаяся за Высшее Благо. Дальнобойные рельсовые пушки, высокотехнологичные боевые костюмы.</td>
+<td>Септ Т'ау, Септ Виор'ла, Анклавы Фарсайта</td>
+</tr>
+<tr>
+<td>Лиги Вотанна (Leagues of Votann)</td>
+<td>Ксеносы</td>
+<td>Клонированные коренастые гуманоиды (космические гномы). Прочные скафандры, мощное промышленное оружие.</td>
+<td>Большая Кавказская Гильдия, Транс-Гиперионский Альянс</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="геймплей">Геймплей</h2>
+<h3 id="настольный-варгейм-пошаговая-тактическая-стратегия">Настольный варгейм — Пошаговая тактическая стратегия</h3>
+<p>Warhammer представляет собой пошаговую тактическую стратегию, где игроки управляют армиями из миниатюрных фигурок. Основной принцип игры заключается в том, что игроки по очереди совершают действия, такие как движение, стрельба и ближний бой, пока одна из сторон не будет полностью уничтожена или не выполнит поставленную цель.</p>
+<hr>
+<h4>Сборка и подготовка армий</h4>
+<p>Перед началом игры игроки должны собрать свои армии. Это включает в себя выбор фракции, покупку или сборку миниатюр, их покраску и настройку в соответствии с правилами. Каждая армия имеет ограничение по очкам (Point-buy), которое определяет максимальную стоимость юнитов, техники и героев, которые можно включить в состав.</p>
+<p>Игроки могут использовать различные комбинации юнитов, чтобы создать сбалансированную и эффективную армию. Например, армия может состоять из тяжелой пехоты, легкой кавалерии, артиллерии и магов. Каждый юнит имеет свои характеристики, такие как сила атаки, защита, скорость и специальные способности.</p>
+<hr>
+<h4>Фазы хода</h4>
+<p>Игровой процесс в Warhammer разделен на фазы, которые повторяются в каждом ходу. Стандартный цикл игрового процесса включает следующие фазы:</p>
+<ol>
+<li><strong>Фаза командования</strong>: Игроки тратят командные очки для активации уникальных стратагем фракции. Эти стратагемы могут давать временные бонусы, изменять правила движения или атаки, или выполнять другие особые действия.</li>
+<li><strong>Фаза движения</strong>: Игроки перемещают свои юниты по полю боя. Расстояние между юнитами определяется с помощью линейки. Некоторые юниты могут иметь ограничения на движение, например, тяжелая броня или специфические условия местности.</li>
+<li><strong>Фаза магии (психосил)</strong>: Юниты с магическими способностями разыгрывают заклинания. В Warhammer Fantasy это фаза магии, а в Warhammer 40,000 — фаза психосил. Игроки выбирают заклинания, которые могут быть атакующими, защитными или вспомогательными.</li>
+<li><strong>Фаза стрельбы</strong>: Игроки выполняют все дальние атаки, возможные для текущего игрока. Результаты стрельбы определяются бросками кубиков, которые проверяют попадание и ранение.</li>
+<li><strong>Фаза нападения</strong>: Игроки объявляют нападение юнитами ближнего боя на вражеские отряды, находящиеся в пределах досягаемости.</li>
+<li><strong>Фаза боя</strong>: Задействованные отряды атакуют всем своим оружием ближнего боя. Сначала атаку проводит напавший игрок, затем отвечает защищающийся.</li>
+<li><strong>Фаза боевого шока</strong>: Проверяется мораль истощенных юнитов. Неудачные броски боевого шока приводят к тому, что эти модели бегут из отряда.</li>
+</ol>
+<hr>
+<h4>Использование кубиков d6</h4>
+<p>Рандомизация в Warhammer осуществляется с помощью шестигранных кубиков (d6). Броски кубиков определяют успех большинства действий, таких как попадание, ранение и спасительные броски брони.</p>
+<ul>
+<li><strong>Бросок на попадание (To Hit)</strong>: Определяет, попал ли юнит в цель. Результат сравнивается с таблицей характеристик юнита.</li>
+<li><strong>Бросок на ранение (To Wound)</strong>: Определяет, нанесен ли урон цели. Результат сравнивается с таблицей защиты цели.</li>
+<li><strong>Спасительный бросок брони (Armor Save)</strong>: Определяет, удалось ли цели избежать урона. Результат сравнивается с таблицей брони цели.</li>
+</ul>
+<p>Если оба броска попадания и ранения успешны, а спасбросок не пройден, защищающийся получает урон. Из-за большого влияния удачи на игровой процесс череда неудачных бросков может преломить ход игры.</p>
+<hr>
+<h3 id="менеджмент-ресурсов-управление-командными-очками">Менеджмент ресурсов — Управление командными очками</h3>
+<p>Важным элементом геймплея является управление ресурсами, в частности, командными очками (Command Points). Командные очки используются для активации уникальных стратагем фракции, которые могут дать временные бонусы или изменить правила игры.</p>
+<hr>
+<h4>Стратагемы</h4>
+<p>Стратагемы — это особые способности, которые игроки могут использовать в критические моменты матча. Они делятся на несколько типов:</p>
+<ul>
+<li><strong>Тактические стратагемы</strong>: Дают временные бонусы к характеристикам юнитов или изменяют правила движения и атаки.</li>
+<li><strong>Стратегические стратагемы</strong>: Позволяют выполнить особые действия, такие как призыв подкреплений или изменение условий победы.</li>
+<li><strong>Героические стратагемы</strong>: Активируются героями и дают мощные бонусы или особые способности.</li>
+</ul>
+<p>Игроки должны тщательно планировать использование командных очков, чтобы максимизировать их эффективность. Неправильное распределение ресурсов может привести к проигрышу, даже если армия технически сильнее.</p>
+<hr>
+<h4>Баланс и тактика</h4>
+<p>Баланс в Warhammer достигается за счет системы очков и ограничений на количество определенных юнитов. Игроки должны учитывать силу и слабость своих юнитов, а также особенности противника, чтобы создать эффективную стратегию.</p>
+<p>Тактика в Warhammer включает в себя множество аспектов — позиционирование юнитов, использование местности, координацию атак и защиту. Опытные игроки умеют адаптироваться к меняющимся условиям игры и находить оптимальные решения в сложных ситуациях.</p>
+<hr>
+<h2 id="влияние-на-индустрию-культурное-и-экономическое-значение">Влияние на индустрию — Культурное и экономическое значение</h2>
+<h3 id="формирование-жанра-grimdark">Формирование жанра Grimdark</h3>
+<p>Warhammer сыграл ключевую роль в формировании жанра Grimdark, характеризующегося мрачной атмосферой безысходности и жестокости. Этот стиль повлиял на создание множества вселенных в литературе, кино и видеоиграх.</p>
+<hr>
+<h4>Влияние на видеоигры</h4>
+<p>Многие популярные видеоигры взяли элементы стиля Grimdark из Warhammer. Например, вселенные Warcraft, StarCraft, Gears of War и Dark Souls демонстрируют схожие черты: мрачные пейзажи, жестокие битвы и сложные моральные дилеммы.</p>
+<hr>
+<h4>Влияние на литературу и кино</h4>
+<p>В литературе и кино также прослеживается влияние Warhammer. Произведения в жанре фэнтези и научной фантастики часто используют элементы мрачного фэнтези, которые стали популярными благодаря Warhammer. Фильмы и сериалы, такие как "Ангелы Смерти" и "Молот и Болтер", напрямую основаны на вселенной Warhammer.</p>
+<hr>
+<h3 id="развитие-крафтовой-индустрии">Развитие крафтовой индустрии</h3>
+<p>Warhammer популяризировал хобби по моделированию и покраске миниатюр. Это привело к развитию рынка акриловых красок, инструментов для моделирования и других сопутствующих товаров.</p>
+<hr>
+<h4>Стандарты качества</h4>
+<p>Игры Workshop установила высокие стандарты качества производства пластиковых миниатюр. Фирма Citadel Miniatures, входящая в группу Игры Workshop, стала лидером в производстве миниатюр для настольных игр.</p>
+<hr>
+<h4>Конкурсы и выставки</h4>
+<p>Проводятся престижные конкурсы, такие как Golden Demon, где мастера моделирования соревнуются в искусстве покраски и сборки миниатюр. Эти мероприятия привлекают тысячи участников и зрителей, способствуя развитию сообщества.</p>
+<hr>
+<h3 id="трансмедийность-и-экосистема">Трансмедийность и экосистема</h3>
+<p>Warhammer демонстрирует пример успешной трансмедийности, перенося контент между различными медиаплатформами. Экосистема включает книги, комиксы, настольные игры, мерч и масштабные видеоигры.</p>
+<hr>
+<h4>Книги и комиксы</h4>
+<p>Black Library издает множество книг и комиксов, которые расширяют и углубляют вселенную Warhammer. Эти произведения становятся основой для новых игр и фильмов.</p>
+<hr>
+<h4>Видеоигры</h4>
+<p>Видеоигры по мотивам Warhammer, такие как Total War — Warhammer и Warhammer 40,000: Space Marine, привлекают миллионы игроков и способствуют росту популярности франшизы.</p>
+<hr>
+<h4>Мерч и коллекционирование</h4>
+<p>Мерч и коллекционные миниатюры создают дополнительный источник дохода и поддерживают интерес сообщества. Коллекционирование миниатюр стало самостоятельным видом хобби, где люди ценят качество и дизайн фигурок.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-warhammer">Что такое Warhammer</a></li><li class="article-toc__item"><a href="#история-создания-и-развитие-вселенной">История создания и развитие вселенной</a></li><li class="article-toc__item is-h3"><a href="#зарождение-идеи-и-первые-шаги">Зарождение идеи и первые шаги</a></li><li class="article-toc__item is-h3"><a href="#эволюция-правил-и-расширение-вселенной">Эволюция правил и расширение вселенной</a></li><li class="article-toc__item is-h3"><a href="#концепция-конца-времен-и-переход-к-age-of-sigmar">Концепция Конца Времен и переход к Age of Sigmar</a></li><li class="article-toc__item is-h3"><a href="#warhammer-40000-рождение-космофэнтези">Warhammer 40,000 — Рождение космофэнтези</a></li><li class="article-toc__item is-h3"><a href="#развитие-литературы-и-комиксов">Развитие литературы и комиксов</a></li><li class="article-toc__item is-h3"><a href="#компьютерные-игры-и-цифровая-адаптация">Компьютерные игры и цифровая адаптация</a></li><li class="article-toc__item is-h3"><a href="#современные-тенденции-и-будущее-франшизы">Современные тенденции и будущее франшизы</a></li><li class="article-toc__item"><a href="#лор-вселенной">Лор вселенной</a></li><li class="article-toc__item is-h3"><a href="#warhammer-fantasy-battles-классический-фэнтезийный-мир">Warhammer Fantasy Battles — Классический фэнтезийный мир</a></li><li class="article-toc__item is-h3"><a href="#the-end-times-глобальный-апокалипсис">The End Times — Глобальный апокалипсис</a></li><li class="article-toc__item is-h3"><a href="#age-of-sigmar-перерождение-вселенной">Age of Sigmar — Перерождение вселенной</a></li><li class="article-toc__item is-h3"><a href="#warhammer-40000-далекое-мрачное-будущее">Warhammer 40,000 — Далекое мрачное будущее</a></li><li class="article-toc__item"><a href="#расы-в-warhammer">Расы в Warhammer</a></li><li class="article-toc__item is-h3"><a href="#warhammer-fantasy-battles-age-of-sigmar-total-war">Warhammer Fantasy Battles / Age of Sigmar / Total War</a></li><li class="article-toc__item is-h3"><a href="#warhammer-40000">Warhammer 40,000</a></li><li class="article-toc__item"><a href="#геймплей">Геймплей</a></li><li class="article-toc__item is-h3"><a href="#настольный-варгейм-пошаговая-тактическая-стратегия">Настольный варгейм — Пошаговая тактическая стратегия</a></li><li class="article-toc__item is-h3"><a href="#менеджмент-ресурсов-управление-командными-очками">Менеджмент ресурсов — Управление командными очками</a></li><li class="article-toc__item"><a href="#влияние-на-индустрию-культурное-и-экономическое-значение">Влияние на индустрию — Культурное и экономическое значение</a></li><li class="article-toc__item is-h3"><a href="#формирование-жанра-grimdark">Формирование жанра Grimdark</a></li><li class="article-toc__item is-h3"><a href="#развитие-крафтовой-индустрии">Развитие крафтовой индустрии</a></li><li class="article-toc__item is-h3"><a href="#трансмедийность-и-экосистема">Трансмедийность и экосистема</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

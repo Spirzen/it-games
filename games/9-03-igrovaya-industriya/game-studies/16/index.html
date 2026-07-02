@@ -1,0 +1,564 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>The Witcher — Игры IT Universe</title><meta name="description" content="The Witcher представляет собой масштабную фэнтезийную сагу, созданную польским писателем Анджеем Сапковским и развитую студией CD Projekt RED в серии компьютерных игр."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">The Witcher</span></li></ol></nav><header class="portal-hero"> <h1>The Witcher</h1> <p>The Witcher представляет собой масштабную фэнтезийную сагу, созданную польским писателем Анджеем Сапковским и развитую студией CD Projekt RED в серии компьютерных игр.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="The Witcher" data-url="/games/9-03-igrovaya-industriya/game-studies/16">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="The Witcher">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>The Witcher</h1>
+<div class="itu-play-embed" data-example="spinoff/game-franchise-play" data-src="" data-title="Игровая франшиза" data-min-height="520" data-play-props="{&quot;franchise&quot;:&quot;witcher&quot;}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="что-такое-the-witcher">Что такое The Witcher</h2>
+<p><strong>The Witcher</strong> представляет собой масштабную фэнтезийную сагу, созданную польским писателем Анджеем Сапковским и развитую студией CD Projekt RED в серии компьютерных игр. Произведение выходит за рамки традиционного жанра фэнтези, предлагая мрачный, циничный мир, где добро и зло не имеют четких границ, а моральный выбор игрока определяет судьбу целых государств и народов.</p>
+<p>А кто такой ведьмак? Это наёмный охотник на монстров и нечисть, отличный мечник и алхимик. Ведьмаков во вселенной много, но обычно подразумевается главный герой, Геральт из Ривии.</p>
+<p>Игровая трилогия, выпущенная между 2007 и 2015 годами, стала эталоном для ролевых экшенов с открытым миром. Проекты демонстрируют высокий уровень технической реализации, глубокое погружение в историю и культуру вымышленного мира, а также сложную систему повествования, где каждое решение имеет долгосрочные последствия.</p>
+<p>Сюжет охватывает события, предшествующие, происходящие во время и завершающие историю главного героя — ведьмака Геральта из Ривии. Игры опираются на литературную основу, но развивают собственную каноническую линию, добавляя новые детали к мифологии и расширяя политическую карту мира.</p>
+<hr>
+<h2 id="лор-и-история-мира">Лор и история мира</h2>
+<h3 id="география-и-расы">География и расы</h3>
+<p>Мир <strong>The Witcher</strong> называется Континентом (или Ве́дьжминлендом). Это безымянный материк, окруженный океанами и разделенный на множество государств. Центральное место в истории занимает конфликт между Северными королевствами и Нильфгаардской империей.</p>
+<p>Население Континента состоит из множества разумных видов:</p>
+<ul>
+<li><strong>Люди</strong>. Доминирующая раса, населяющая города и королевства. Люди делятся на различные этнические группы, каждая из которых имеет свои культурные особенности, язык и традиции.</li>
+<li><strong>Эльфы</strong>. Древнейшая цивилизация Континента, обладающая магическими способностями. После прихода людей эльфы были оттеснены в резервации или ассимилированы, что привело к появлению маргинализированных групп, таких как скоя'таэли.</li>
+<li><strong>Краснолюды</strong>. Народ, живущий в горах Махакама. Они известны своим мастерством кузнечного дела, любовью к пиву и воинской доблестью. Краснолюды сохраняют свою независимость и нейтралитет в политических конфликтах.</li>
+<li><strong>Низушки</strong>. Маленькие существа, живущие в подземельях и лесах. Они часто становятся жертвами предрассудков, но обладают уникальными навыками.</li>
+<li><strong>Дриады и сильваны</strong>. Защитники лесов, являющиеся частью природного баланса. Дриады охраняют Брокилон, а сильваны живут в глубоких чащах.</li>
+<li><strong>Чудовища</strong>. Существа, появившиеся после Сопряжения Сфер. Они варьируются от мелких тварей до огромных драконов и монстров, угрожающих жизни людей.</li>
+</ul>
+<hr>
+<h3 id="сопряжение-сфер">Сопряжение Сфер</h3>
+<p>Основой мифологии мира является событие, известное как <strong>Сопряжение Сфер</strong>. Оно произошло около 1500 лет до начала событий игр.</p>
+<p>Границы параллельных измерений пересеклись, создав временные проходы между мирами. Через эти разрывы на Континент проникли чужеродные существа, адаптировавшиеся к новой среде обитания. Некоторые виды чудовищ исчезли, другие мутировали, став угрозой для человечества.</p>
+<p>Магия также получила импульс к развитию. Измерение Хаоса просочилось в материальный мир, дав возможность избранным людям (чародеям) управлять стихиями и энергией. Этот процесс создал баланс между магией и физическим миром, но также привел к появлению новых опасностей.</p>
+<hr>
+<h3 id="политическая-карта">Политическая карта</h3>
+<p>Политическая ситуация на Континенте характеризуется постоянными войнами, интригами и борьбой за власть.</p>
+<p><strong>Северные королевства</strong>:</p>
+<ul>
+<li><strong>Темерия</strong>. Одно из самых могущественных государств, расположенное в центре континента. Темерия играет ключевую роль в сопротивлении Нильфгаарду. Столица — Вызима.</li>
+<li><strong>Редания</strong>. Богатое и влиятельное государство на севере. Известна своими торговыми путями и Новиградом — крупнейшим городом мира.</li>
+<li><strong>Каэдвен</strong>. Агрессивное королевство, стремящееся расширить свои территории. Часто находится в конфликте с соседями.</li>
+<li><strong>Аэдирн</strong>. Крупное государство, пострадавшее от нильфгаардской оккупации.</li>
+<li><strong>Цинтра</strong>. Небольшое, но стратегически важное королевство, захваченное Нильфгаардом. Стало ареной кровопролитных сражений.</li>
+<li><strong>Скеллиге</strong>. Архипелаг островов, населенный викингоподобным народом. Отличается сильной морской традицией и клановой структурой.</li>
+<li><strong>Туссент</strong>. Протекторат Нильфгаарда, известный своей винной промышленностью и рыцарскими традициями.</li>
+</ul>
+<p><strong>Нильфгаардская империя</strong>:
+Мощная южная держава, стремящаяся объединить Континент под своей властью. Империя обладает передовой технологией, дисциплинированной армией и централизованной системой управления. Император Эмгыр вар Эмрейс ведет агрессивную экспансионистскую политику, используя дипломатию и силу.</p>
+<hr>
+<h3 id="атмосфера-и-культура">Атмосфера и культура</h3>
+<p>Мир <strong>The Witcher</strong> отличается мрачной атмосферой средневековья с низким уровнем жизни. Города полны нищеты, болезни и преступности. Деревни страдают от набегов монстров и произвола местных властей.</p>
+<p>Расовая нетерпимость пронизывает все слои общества. Эльфы и краснолюды сталкиваются с дискриминацией, а ведьмаки, будучи мутантами, вызывают страх и отвращение у простых людей. Цинизм становится нормой поведения, где выживание важнее моральных принципов.</p>
+<p>Культура мира богата фольклором, легендами и суевериями. Славянские мотивы переплетаются с европейскими традициями, создавая уникальный колорит. Музыка, одежда, архитектура и обычаи отражают многообразие народов Континента.</p>
+<hr>
+<h3 id="организации-и-движения">Организации и движения</h3>
+<table>
+<thead>
+<tr>
+<th>Группа</th>
+<th>Роль</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Школа Волка</strong></td>
+<td>Ведьмаки из Каэр Морхена; мутации, знаки, нейтралитет</td>
+</tr>
+<tr>
+<td><strong>Школа Кота / Грифона / Змеи / Медведя</strong></td>
+<td>Другие ведьмаки; в играх — отсылки и DLC</td>
+</tr>
+<tr>
+<td><strong>Чародейская Ложа</strong></td>
+<td>Тайный круг магов; влияние на политику Севера</td>
+</tr>
+<tr>
+<td><strong>Скоя'таэли ("белки")</strong></td>
+<td>Эльфийские партизаны; в игре 2007 — выбор: уничтожить, поддержать или нейтралитет</td>
+</tr>
+<tr>
+<td><strong>Крысы</strong></td>
+<td>Банда Цири в Пограничье; "кодекс чести" разбойников</td>
+</tr>
+<tr>
+<td><strong>Серые Стражи</strong></td>
+<td>Орден против Тёмного Властелина; в первой игре — судьба Ордена</td>
+</tr>
+<tr>
+<td><strong>Охотники за головами</strong></td>
+<td>Конкуренты ведьмаков; Лео Бонарт в саге</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Нильфгаард</strong> структурирован как империя провинций — сердце — <strong>Империя Нильфгаард</strong>, окраины — <strong>Виковарийо</strong>, <strong>Метиина</strong>, <strong>Маг Турга</strong>, <strong>Гесо</strong>, <strong>Эббинг</strong>, <strong>Мехт</strong>, <strong>Маэль</strong>, <strong>Назаир</strong> и др. Столица — <strong>Золотой Город</strong>. Император <strong>Эмгыр вар Эмрейс</strong> ведёт войны за объединение Континента; в играх — антагонист или сложный союзник в зависимости от выборов.</p>
+<hr>
+<h3 id="книги-анджея-сапковского">Книги Анджея Сапковского</h3>
+<p>Игры опираются на <strong>Сагу о ведьмаке</strong> (5 романов + повести):</p>
+<ol>
+<li><strong>Последняя желание</strong> / <strong>Меч Предназначения</strong> — рассказы</li>
+<li><strong>Кровь эльфов</strong> — начало Саги</li>
+<li><strong>Час Презрения</strong></li>
+<li><strong>Крещение огнём</strong></li>
+<li><strong>Башня Ласточки</strong></li>
+<li><strong>Владычица Озера</strong></li>
+</ol>
+<p>Отдельно — <strong>Сезон гроз</strong>, <strong>Повесть о ведьмаке</strong>, <strong>Сталь и пепел</strong>. Сапковский <strong>не участвовал</strong> в сценарии игр CD Projekt, но дал права на сеттинг. Ремейк <strong>The Witcher</strong> (анонс 2022) строится на <strong>Unreal Engine 5</strong> с нуля.</p>
+<hr>
+<h2 id="персонажи">Персонажи</h2>
+<h3 id="геральт-из-ривии">Геральт из Ривии</h3>
+<p><strong>Геральт</strong> — главный герой саги, легендарный ведьмак школы Волка. Его настоящее имя неизвестно, а прозвище "Белый Волк" закрепилось благодаря его седым волосам и репутации непобедимого охотника на монстров.</p>
+<p>Происхождение Геральта связано с Испытанием Травами — серией мутаций, которые превратили обычных детей в сверхлюдей. Он обладает ускоренными рефлексами, ночным зрением и повышенной выносливостью. Однако цена этих даров высока: ведьмаки теряют способность к размножению и часто подвергаются социальной изоляции.</p>
+<p>Характер Геральта сложен и противоречив. Внешне он циничен, холоден и замкнут, но внутри руководствуется строгим моральным компасом. Он верит в личную ответственность и готов защищать слабых, даже если это идет вразрез с кодексами ведьмаков.</p>
+<p>Отношения Геральта с окружающими определяют сюжет игры. Его дружба с бардом Лютиком, любовь к чародейкам Трисс Меригольд и Йеннифэр из Венгерберга, а также связь с приемной дочерью Цири формируют эмоциональный стержень повествования.</p>
+<hr>
+<h3 id="цирилла-фиона-элен-рианнон">Цирилла Фиона Элен Рианнон</h3>
+<p><strong>Цири</strong>, известная как Львёнок из Цинтры или Дитя Предназначения, — приемная дочь Геральта и Йеннифэр. Она обладает Старшей Кровью, наследием древних эльфийских правителей, которое дает ей уникальные магические способности.</p>
+<p>Цири способна перемещаться между мирами и временем, что делает её ключевой фигурой в борьбе против Дикой Охоты. Её генетика привлекает внимание различных сил, включая империю Нильфгаард и эльфийский род Эйль.</p>
+<p>Воспитание Цири прошло под влиянием ведьмаков и чародеев. Она освоила боевые искусства, магию и стратегию, став сильным и самостоятельным персонажем. Её путь — это поиск себя, защита близких и борьба за будущее всего мира.</p>
+<hr>
+<h3 id="другие-важные-фигуры">Другие важные фигуры</h3>
+<ul>
+<li><strong>Йеннифэр из Венгерберга</strong>. Мощная чародейка, возлюбленная Геральта. Она играет ключевую роль в политике и магических событиях, часто действуя из тени.</li>
+<li><strong>Трисс Меригольд</strong>. Другая чародейка, близкая к Геральту. Она поддерживает северные королевства и участвует в военных действиях.</li>
+<li><strong>Лютик</strong>. Бард и друг Геральта, автор песен и историй. Он служит голосом народа и источником информации.</li>
+<li><strong>Золтан Хивай</strong>. Краснолюд, владелец корчмы и надежный союзник. Он помогает Геральту в различных ситуациях.</li>
+<li><strong>Вернон Роше</strong>. Разведчик и командир темерской армии, друг Геральта. Он часто оказывается втянут в политические интриги.</li>
+</ul>
+<hr>
+<h3 id="ключевые-персонажи">Ключевые персонажи</h3>
+<table>
+<thead>
+<tr>
+<th>Имя персонажа</th>
+<th>Роль / Фракция</th>
+<th>Появление в играх</th>
+<th>Краткое описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Геральт из Ривии</td>
+<td>Ведьмак (Школа Волка)</td>
+<td>Ведьмак 1, 2, 3</td>
+<td>Главный герой игровой трилогии, охотник на чудовищ.</td>
+</tr>
+<tr>
+<td>Цирилла (Цири)</td>
+<td>Дитя Предназначения</td>
+<td>Ведьмак 3</td>
+<td>Воспитанница Геральта, обладательница Старшей Крови.</td>
+</tr>
+<tr>
+<td>Йеннифэр из Венгерберга</td>
+<td>Чародейка</td>
+<td>Ведьмак 3</td>
+<td>Могущественная чародейка, главная любовь Геральта.</td>
+</tr>
+<tr>
+<td>Трисс Меригольд</td>
+<td>Чародейка</td>
+<td>Ведьмак 1, 2, 3</td>
+<td>Близкая подруга и любовный интерес Геральта, советница королей.</td>
+</tr>
+<tr>
+<td>Лютик (Юлиан Альфред Панкрац)</td>
+<td>Бард / Поэт</td>
+<td>Ведьмак 1, 2, 3</td>
+<td>Лучший друг Геральта, рассказчик всех историй в играх.</td>
+</tr>
+<tr>
+<td>Золтан Хивай</td>
+<td>Краснолюд / Воин</td>
+<td>Ведьмак 1, 2, 3</td>
+<td>Верный друг Геральта, ветеран Битвы под Бренной.</td>
+</tr>
+<tr>
+<td>Весемир</td>
+<td>Наставник ведьмаков</td>
+<td>Ведьмак 1, 3</td>
+<td>Старейший ведьмак Школы Волка, хозяин Каэр Морхена.</td>
+</tr>
+<tr>
+<td>Ламберт</td>
+<td>Ведьмак (Школа Волка)</td>
+<td>Ведьмак 1, 3</td>
+<td>Молодой, язвительный ведьмак, друг Геральта.</td>
+</tr>
+<tr>
+<td>Эскель</td>
+<td>Ведьмак (Школа Волка)</td>
+<td>Ведьмак 1, 3</td>
+<td>Спокойный и рассудительный ведьмак, ровесник Геральта.</td>
+</tr>
+<tr>
+<td>Шани</td>
+<td>Медик / Наместница</td>
+<td>Ведьмак 1, 3 (Каменные сердца)</td>
+<td>Студентка-медик (позже врач), старая подруга Геральта.</td>
+</tr>
+<tr>
+<td>Вернон Роше</td>
+<td>Глава "Сних Полосок"</td>
+<td>Ведьмак 2, 3</td>
+<td>Командир темерского спецназа, верный патриот Темерии.</td>
+</tr>
+<tr>
+<td>Йорвет</td>
+<td>Лидер скоя'таэлей</td>
+<td>Ведьмак 2</td>
+<td>Командир отряда эльфских партизан ("белок").</td>
+</tr>
+<tr>
+<td>Лето из Гулеты</td>
+<td>Ведьмак (Школа Змеи)</td>
+<td>Ведьмак 2, 3</td>
+<td>Убийца королей Фольтеста и Демавенда, антагонист 2-й части.</td>
+</tr>
+<tr>
+<td>Сгизмунд Дийкстра</td>
+<td>Шпион / Регент</td>
+<td>Ведьмак 3</td>
+<td>Бывший глава реданской разведки, теневой правитель Новиграда.</td>
+</tr>
+<tr>
+<td>Филиппа Эйльхарт</td>
+<td>Чародейка</td>
+<td>Ведьмак 2, 3</td>
+<td>Основательница Ложи Чародеек, бывшая советница Радовида.</td>
+</tr>
+<tr>
+<td>Кейра Мец</td>
+<td>Чародейка</td>
+<td>Ведьмак 3</td>
+<td>Бывшая советница короля Фольтеста, скрывавшаяся в Велене.</td>
+</tr>
+<tr>
+<td>Король Фольтест</td>
+<td>Правитель Темерии</td>
+<td>Ведьмак 1, 2</td>
+<td>Король Темерии, нанимавший Геральта для расколдования дочери.</td>
+</tr>
+<tr>
+<td>Король Радовид V Лютый</td>
+<td>Правитель Редании</td>
+<td>Ведьмак 1, 2, 3</td>
+<td>Безумный и жестокий монарх, устроивший охоту на магов.</td>
+</tr>
+<tr>
+<td>Эмгыр вар Эмрейс</td>
+<td>Император Нильфгаарда</td>
+<td>Ведьмак 3</td>
+<td>Белое Пламя, Пляшущее на Курганах Врагов, отец Цири.</td>
+</tr>
+<tr>
+<td>Эредин Бреакк Глас</td>
+<td>Король Дикой Охоты</td>
+<td>Ведьмак 1 (видение), 2, 3</td>
+<td>Предводитель Aen Elle (эльфов Народа Ольх), главный враг 3-й части.</td>
+</tr>
+<tr>
+<td>Аваллак'х (Креван)</td>
+<td>Знающий (Aen Elle)</td>
+<td>Ведьмак 3</td>
+<td>Эльфский маг, наставник Цири, скрывавшийся под маской Умы.</td>
+</tr>
+<tr>
+<td>Крах ан Крайт</td>
+<td>Ярл Скеллиге</td>
+<td>Ведьмак 3</td>
+<td>Правитель клана ан Крайт, давний друг Геральта и Йеннифэр.</td>
+</tr>
+<tr>
+<td>Хьялмар ан Крайт</td>
+<td>Воин Скеллиге</td>
+<td>Ведьмак 3</td>
+<td>Сын Краха, бесстрашный претендент на трон Скеллиге.</td>
+</tr>
+<tr>
+<td>Керис ан Крайт</td>
+<td>Воительница Скеллиге</td>
+<td>Ведьмак 3</td>
+<td>Дочь Краха, рассудительная претендентка на трон Скеллиге.</td>
+</tr>
+<tr>
+<td>Филип Стенгер (Кровавый Барон)</td>
+<td>Наместник Велена</td>
+<td>Ведьмак 3</td>
+<td>Самопровозглашенный правитель Врониц, выдающий квест по поиску Цири.</td>
+</tr>
+<tr>
+<td>Гюнтер о'Дим (Господин Зеркало)</td>
+<td>Сверхъестественное существо</td>
+<td>Ведьмак 3 (Каменные сердца)</td>
+<td>Воплощение зла, собирающее человеческие души по контрактам.</td>
+</tr>
+<tr>
+<td>Ольгерд фон Эверек</td>
+<td>Дворянин / Атаман</td>
+<td>Ведьмак 3 (Каменные сердца)</td>
+<td>Бессмертный дворянин с "каменным сердцем", заключивший сделку с о'Димом.</td>
+</tr>
+<tr>
+<td>Эмиель Регис</td>
+<td>Высший вампир</td>
+<td>Ведьмак 3 (Кровь и вино)</td>
+<td>Близкий друг Геральта из книжной саги, восставший из пепла.</td>
+</tr>
+<tr>
+<td>Анна-Генриетта</td>
+<td>Княгиня Туссента</td>
+<td>Ведьмак 3 (Кровь и вино)</td>
+<td>Правительница цветущего края Туссент, кузина Эмгыра.</td>
+</tr>
+<tr>
+<td>Санна (Сльвия-Анна)</td>
+<td>Изгнанная княжна</td>
+<td>Ведьмак 3 (Кровь и вино)</td>
+<td>Старшая сестра Анны-Генриетты, лидер банды рыцарей-разбойников.</td>
+</tr>
+<tr>
+<td>Детлафф ван дер Эретайн</td>
+<td>Высший вампир</td>
+<td>Ведьмак 3 (Кровь и вино)</td>
+<td>Бестия из Боклера, шантажируемый вампир, напавший на Туссент.</td>
+</tr>
+<tr>
+<td>Азар Явед</td>
+<td>Маг-отступник</td>
+<td>Ведьмак 1</td>
+<td>Главный антагонист первой игры, лидер группировки "Саламандры".</td>
+</tr>
+<tr>
+<td>Профессор (Магистр)</td>
+<td>Наемный убийца</td>
+<td>Ведьмак 1</td>
+<td>Правая рука Азара Яведа, опасный преступник в очках.</td>
+</tr>
+<tr>
+<td>Яков из Альдерсберга</td>
+<td>Великий магистр</td>
+<td>Ведьмак 1</td>
+<td>Глава Ордена Пылающей Розы, главный антагонист первой части.</td>
+</tr>
+<tr>
+<td>Талер (Бернард Дукат)</td>
+<td>Шпион</td>
+<td>Ведьмак 1, 3</td>
+<td>Глава темерской тайной службы, скрывающийся под маской скупщика краденого.</td>
+</tr>
+<tr>
+<td>Шеала де Тансервилль</td>
+<td>Чародейка</td>
+<td>Ведьмак 2, 3</td>
+<td>Член Ложи Чародеек из Ковира, замешанная в заговоре Лето.</td>
+</tr>
+<tr>
+<td>Хенсельт</td>
+<td>Король Каедвена</td>
+<td>Ведьмак 2</td>
+<td>Экспансивный и жестокий правитель Каедвена, воевавший с Аэдирном.</td>
+</tr>
+<tr>
+<td>Саския (Дракон Саэсентессис)</td>
+<td>Дева из Аэдирна</td>
+<td>Ведьмак 2</td>
+<td>Предводительница восстания в Верхнем Аэдирне, скрывающийся золотой дракон.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="геймплей-и-механики">Геймплей и механики</h2>
+<h3 id="боевая-система">Боевая система</h3>
+<p>Бой в <strong>The Witcher</strong> сочетает фехтование, магию и алхимию. Геральт использует два типа мечей: стальной для борьбы с людьми и животными, серебряный для чудовищ.</p>
+<p>Система боя включает:</p>
+<ul>
+<li><strong>Уклонения и парирования</strong>. Игрок должен вовремя реагировать на атаки противников, уклоняться или блокировать удары.</li>
+<li><strong>Комбо и финишеры</strong>. Возможность выполнять серии атак и мощные завершающие движения.</li>
+<li><strong>Динамическое переключение стилей</strong>. Три режима — силовой (медленные, мощные удары), быстрый (быстрые, легкие атаки) и групповой (для нескольких врагов).</li>
+</ul>
+<hr>
+<h3 id="знаки">Знаки</h3>
+<p>Ведьмачьи знаки — это простые заклинания, доступные Геральту. Они требуют энергии и могут использоваться в бою или вне его.</p>
+<p>Пять основных знаков:</p>
+<ul>
+<li><strong>Аард</strong>. Телекинетический удар, отталкивающий врагов и разрушающий препятствия.</li>
+<li><strong>Игни</strong>. Огненный взрыв, наносящий урон и поджигающий цели.</li>
+<li><strong>Ирден</strong>. Ловушка, наносящая урон врагам в зоне поражения.</li>
+<li><strong>Квен</strong>. Защитное поле, поглощающее урон и отражающее атаки.</li>
+<li><strong>Аксий</strong>. Пси-атака, вызывающая замешательство или подчинение врага.</li>
+</ul>
+<hr>
+<h3 id="алхимия">Алхимия</h3>
+<p>Алхимия — важная часть геймплея, позволяющая создавать эликсиры, масла и бомбы.</p>
+<ul>
+<li><strong>Эликсиры</strong>. Восстанавливают здоровье, энергию или дают временные бонусы (ночное зрение, усиление силы). Имеют токсичность, которую нужно контролировать.</li>
+<li><strong>Масла</strong>. Наносятся на оружие для увеличения урона против определенных типов существ.</li>
+<li><strong>Бомбы</strong>. Взрывчатые вещества, наносящие урон и накладывающие эффекты (страх, оглушение, ослепление).</li>
+</ul>
+<p>Управление токсичностью требует планирования и выбора правильных зелий. Медитация позволяет снизить уровень токсичности и восстановить ресурсы.</p>
+<hr>
+<h3 id="ведьмачье-чутье">Ведьмачье чутье</h3>
+<p>Механика расследования позволяет игроку находить следы, предметы и подсказки, используя ведьмачье чутье.</p>
+<ul>
+<li><strong>Поиск следов</strong>. Игрок может видеть скрытые объекты, отмеченные особым свечением.</li>
+<li><strong>Анализ мест преступления</strong>. Сбор улик для понимания ситуации и принятия решений.</li>
+<li><strong>Выслеживание монстров</strong>. Использование инстинктов для отслеживания целей в окружающей среде.</li>
+</ul>
+<hr>
+<h3 id="нарративный-выбор">Нарративный выбор</h3>
+<p>Игры серии отличаются отсутствием четкого деления на добро и зло. Каждый квест предлагает несколько вариантов развития событий, влияющих на сюжет и отношения с персонажами.</p>
+<ul>
+<li><strong>Серая мораль</strong>. Решения часто имеют негативные последствия, даже если они кажутся правильными.</li>
+<li><strong>Непредсказуемость</strong>. Выбор игрока может изменить концовку игры, судьбу городов и жизнь персонажей.</li>
+<li><strong>Контекст</strong>. Реакция мира зависит от предыдущих действий и текущего состояния отношений.</li>
+</ul>
+<hr>
+<h3 id="гвинт">Гвинт</h3>
+<p><strong>Гвинт</strong> — карточная мини-игра, встроенная в основной сюжет. Она основана на правилах, придуманных разработчиками, и стала настолько популярной, что была выпущена как отдельный проект.</p>
+<ul>
+<li><strong>Коллекционирование карт</strong>. Игроки собирают колоды, представляющие различные фракции и персонажей.</li>
+<li><strong>Стратегия</strong>. Игра требует тактического мышления и знания мета-игры.</li>
+<li><strong>Социальный аспект</strong>. Гвинт стал культурным феноменом, объединяющим игроков по всему миру.</li>
+</ul>
+<hr>
+<h2 id="архитектура-выполнения-и-технологии">Архитектура выполнения и технологии</h2>
+<h3 id="движок-redengine">Движок REDengine</h3>
+<p>Для создания игр серии <strong>The Witcher</strong> студия CD Projekt RED разработала собственный игровой движок <strong>REDengine</strong>. Версия 3, использованная в третьей части, стала основой для достижения технических и художественных целей.</p>
+<p><strong>Ключевые особенности REDengine 3</strong>:</p>
+<ul>
+<li><strong>Бесшовный открытый мир</strong>. Отказ от загрузки локаций позволил создать единое пространство без экранов перехода.</li>
+<li><strong>Стриминг ресурсов</strong>. Динамическая подгрузка текстур, геометрии и звуковых файлов перед камерой игрока.</li>
+<li><strong>Оптимизация производительности</strong>. Эффективное использование ресурсов для работы на консолях и ПК.</li>
+</ul>
+<hr>
+<h3 id="графика-и-визуальные-эффекты">Графика и визуальные эффекты</h3>
+<p>Разработчики уделили особое внимание детализации миров и персонажей.</p>
+<ul>
+<li><strong>Моделирование</strong>. Высокополигональные модели созданы с использованием ZBrush, затем оптимизированы для игры.</li>
+<li><strong>Текстуры</strong>. Детализированные текстуры передают состояние поверхностей, материалы и освещение.</li>
+<li><strong>Освещение</strong>. Динамическая система освещения создает реалистичные тени и отражения.</li>
+<li><strong>Анимация</strong>. Процедурная анимация губ и жестов синхронизируется с диалогами.</li>
+</ul>
+<hr>
+<h3 id="система-искусственного-интеллекта">Система искусственного интеллекта</h3>
+<p>ИИ в играх <strong>The Witcher</strong> демонстрирует продвинутое поведение персонажей.</p>
+<ul>
+<li><strong>NPC</strong>. Неигровые персонажи реагируют на время суток, погоду и действия игрока.</li>
+<li><strong>Тактика врагов</strong>. Монстры используют разные стратегии атаки, зависящие от их типа и окружения.</li>
+<li><strong>Диалоги</strong>. Интерактивные беседы с выбором реплик влияют на развитие сюжета.</li>
+</ul>
+<hr>
+<h3 id="управление-контентом-и-квестами">Управление контентом и квестами</h3>
+<p>Архитектура квестов построена на графовых структурах, связывающих множество ветвей сюжета.</p>
+<ul>
+<li><strong>Зависимости</strong>. Выполнение одного задания может открыть или закрыть другие.</li>
+<li><strong>Контекстные изменения</strong>. Реакция мира зависит от предыдущих решений игрока.</li>
+<li><strong>Глобальные последствия</strong>. Мелкие выборы накапливаются, влияя на финал игры.</li>
+</ul>
+<hr>
+<h2 id="история-серий-игр">История серий игр</h2>
+<h3 id="the-witcher-2007">The Witcher (2007)</h3>
+<p>Первая часть серии вышла 24 октября 2007 года. Разработка заняла четыре года, бюджет составил около 10 миллионов долларов. Игра использует движок Aurora от BioWare, модифицированный студией CD Projekt RED.</p>
+<p><strong>Сюжет</strong>: Геральт теряет память и возвращается в Каэр Морхен. Он пытается восстановить прошлое, сталкиваясь с организацией "Саламандра" и политическими интригами Темерии.</p>
+<p><strong>Особенности</strong>:</p>
+<ul>
+<li>Изометрическая камера и пошаговая боевая система.</li>
+<li>Акцент на сюжет и диалоги.</li>
+<li>Первые шаги в создании мира и персонажей.</li>
+</ul>
+<p><strong>Признание</strong> — Игра получила положительные отзывы критиков за сюжет, графику и атмосферу, несмотря на технические ошибки.</p>
+<hr>
+<h3 id="the-witcher-2-assassins-of-kings-2011">The Witcher 2 — Assassins of Kings (2011)</h3>
+<p>Вторая часть вышла 16 мая 2011 года. Разработчики полностью переработали геймплей и создали новый движок REDengine.</p>
+<p><strong>Сюжет</strong>: Геральта обвиняют в убийстве короля Фольтеста. Ему предстоит бежать, расследовать заговор и выбрать сторону в конфликте между повстанцами и лоялистами.</p>
+<p><strong>Особенности</strong>:</p>
+<ul>
+<li>Улучшенная боевая система с элементами слэшера.</li>
+<li>Нелинейный сюжет с двумя основными ветвями (Иорвет и Роше).</li>
+<li>Динамическое изменение мира в зависимости от выбора игрока.</li>
+</ul>
+<p><strong>Признание</strong>: Игра завоевала множество наград и подтвердила статус серии как одной из лучших RPG.</p>
+<hr>
+<h3 id="the-witcher-3-wild-hunt-2015">The Witcher 3 — Wild Hunt (2015)</h3>
+<p>Третья часть вышла 19 мая 2015 года. Проект стал самым амбициозным в истории студии, бюджет приближался к стандартам AAA-игр.</p>
+<p><strong>Сюжет</strong>: Геральт ищет Цири, преследуемую Дикой Охотой. Путешествие по открытому миру приводит к битве с мистической силой, угрожающей существованию всех миров.</p>
+<p><strong>Особенности</strong>:</p>
+<ul>
+<li>Полностью открытый мир с огромным количеством контента.</li>
+<li>Глубокая система квестов с множеством ветвлений.</li>
+<li>Продвинутая графика и анимация.</li>
+<li>Дополнения "Каменные сердца" и "Кровь и вино", значительно расширившие игру.</li>
+</ul>
+<p><strong>Признание</strong>: Игра получила рекордное количество наград "Игра года" и считается эталоном жанра. Продажи превысили 50 миллионов копий.</p>
+<hr>
+<h3 id="the-witcher-iv-в-разработке">The Witcher IV (в разработке)</h3>
+<p>13 декабря 2024 года CD Projekt RED официально анонсировала четвертую часть серии под кодовым названием <strong>Polaris</strong>. Игра станет началом новой трилогии и будет создана на движке Unreal Engine 5.</p>
+<p><strong>Сюжет</strong>: Главной героиней станет Цирилла Фиона Элен Рианнон. Она прошла Испытание Травами и стала ведьмачкой. История сосредоточится на её поисках себя и борьбе с новыми угрозами.</p>
+<p><strong>Разработка</strong>:</p>
+<ul>
+<li>Над проектом работают более 400 человек.</li>
+<li>Производство началось во второй половине 2024 года.</li>
+<li>Ожидаемый релиз — после 31 декабря 2026 года.</li>
+<li>Акцент на консольные платформы для обеспечения стабильности.</li>
+</ul>
+<p><strong>Цели</strong>:</p>
+<ul>
+<li>Сохранение философии серии: сложные решения, зрелый нарратив.</li>
+<li>Улучшение технологий и графики.</li>
+<li>Расширение игрового мира и возможностей.</li>
+</ul>
+<hr>
+<h2 id="влияние-на-индустрию">Влияние на индустрию</h2>
+<h3 id="эталон-квестов">Эталон квестов</h3>
+<p><strong>The Witcher</strong> задал новую планку качества для второстепенных заданий в ролевых играх. Вместо шаблонных поручений "принеси-подай" игроки получили глубокие истории с моральными дилеммами и непредсказуемыми последствиями.</p>
+<hr>
+<h3 id="популяризация-славянского-фольклора">Популяризация славянского фольклора</h3>
+<p>Проекты вывели восточноевропейскую мифологию на мировой рынок массовой культуры. Образы леших, русалок, домовых и других существ стали узнаваемыми для глобальной аудитории.</p>
+<hr>
+<h3 id="рост-cd-projekt-red">Рост CD Projekt RED</h3>
+<p>Локальная польская студия превратилась в одного из гигантов игровой индустрии. Успех серии позволил компании инвестировать в новые проекты, такие как Cyberpunk 2077, и развивать собственные технологии.</p>
+<hr>
+<h3 id="медиафраншиза">Медиафраншиза</h3>
+<p>Игры стали катализатором создания высокобюджетного сериала Netflix, комиксов, рок-опер и мерчандайза. Вселенная <strong>The Witcher</strong> расширилась за пределы видеоигр, став полноценным брендом.</p>
+<p>Вселенная <strong>Анджея Сапковского</strong> (книги, "Ведьмак" / <em>Witcher</em>) — Континент, Нильфгаард, Северные королевства, Сопряжение Сфер. Игры CD Projekt RED развивают <strong>собственную ветку канона</strong> после событий книг, но опираются на персонажей, политику и монстров литературного мира. Помимо Netflix (2019–2023) и польского сериала, существуют комиксы, настольная игра и музыкальные проекты. <strong>Геральт из Ривии</strong> в играх — охотник на чудовищ по контракту; <strong>Цири</strong>, <strong>Йеннифэр</strong> и <strong>Трисс</strong> — центральные фигуры сюжетной арки трилогии.</p>
+<hr>
+<h3 id="стандарт-зрелого-нарратива">Стандарт зрелого нарратива</h3>
+<p>Проекты доказали коммерческую успешность игр с рейтингом 18+ и сложной серой моралью. Индустрия признала, что взрослые темы и глубокие сюжеты могут привлекать широкую аудиторию.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-the-witcher">Что такое The Witcher</a></li><li class="article-toc__item"><a href="#лор-и-история-мира">Лор и история мира</a></li><li class="article-toc__item is-h3"><a href="#география-и-расы">География и расы</a></li><li class="article-toc__item is-h3"><a href="#сопряжение-сфер">Сопряжение Сфер</a></li><li class="article-toc__item is-h3"><a href="#политическая-карта">Политическая карта</a></li><li class="article-toc__item is-h3"><a href="#атмосфера-и-культура">Атмосфера и культура</a></li><li class="article-toc__item is-h3"><a href="#организации-и-движения">Организации и движения</a></li><li class="article-toc__item is-h3"><a href="#книги-анджея-сапковского">Книги Анджея Сапковского</a></li><li class="article-toc__item"><a href="#персонажи">Персонажи</a></li><li class="article-toc__item is-h3"><a href="#геральт-из-ривии">Геральт из Ривии</a></li><li class="article-toc__item is-h3"><a href="#цирилла-фиона-элен-рианнон">Цирилла Фиона Элен Рианнон</a></li><li class="article-toc__item is-h3"><a href="#другие-важные-фигуры">Другие важные фигуры</a></li><li class="article-toc__item is-h3"><a href="#ключевые-персонажи">Ключевые персонажи</a></li><li class="article-toc__item"><a href="#геймплей-и-механики">Геймплей и механики</a></li><li class="article-toc__item is-h3"><a href="#боевая-система">Боевая система</a></li><li class="article-toc__item is-h3"><a href="#знаки">Знаки</a></li><li class="article-toc__item is-h3"><a href="#алхимия">Алхимия</a></li><li class="article-toc__item is-h3"><a href="#ведьмачье-чутье">Ведьмачье чутье</a></li><li class="article-toc__item is-h3"><a href="#нарративный-выбор">Нарративный выбор</a></li><li class="article-toc__item is-h3"><a href="#гвинт">Гвинт</a></li><li class="article-toc__item"><a href="#архитектура-выполнения-и-технологии">Архитектура выполнения и технологии</a></li><li class="article-toc__item is-h3"><a href="#движок-redengine">Движок REDengine</a></li><li class="article-toc__item is-h3"><a href="#графика-и-визуальные-эффекты">Графика и визуальные эффекты</a></li><li class="article-toc__item is-h3"><a href="#система-искусственного-интеллекта">Система искусственного интеллекта</a></li><li class="article-toc__item is-h3"><a href="#управление-контентом-и-квестами">Управление контентом и квестами</a></li><li class="article-toc__item"><a href="#история-серий-игр">История серий игр</a></li><li class="article-toc__item is-h3"><a href="#the-witcher-2007">The Witcher (2007)</a></li><li class="article-toc__item is-h3"><a href="#the-witcher-2-assassins-of-kings-2011">The Witcher 2 — Assassins of Kings (2011)</a></li><li class="article-toc__item is-h3"><a href="#the-witcher-3-wild-hunt-2015">The Witcher 3 — Wild Hunt (2015)</a></li><li class="article-toc__item is-h3"><a href="#the-witcher-iv-в-разработке">The Witcher IV (в разработке)</a></li><li class="article-toc__item"><a href="#влияние-на-индустрию">Влияние на индустрию</a></li><li class="article-toc__item is-h3"><a href="#эталон-квестов">Эталон квестов</a></li><li class="article-toc__item is-h3"><a href="#популяризация-славянского-фольклора">Популяризация славянского фольклора</a></li><li class="article-toc__item is-h3"><a href="#рост-cd-projekt-red">Рост CD Projekt RED</a></li><li class="article-toc__item is-h3"><a href="#медиафраншиза">Медиафраншиза</a></li><li class="article-toc__item is-h3"><a href="#стандарт-зрелого-нарратива">Стандарт зрелого нарратива</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

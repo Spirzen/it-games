@@ -1,0 +1,689 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Starcraft — Игры IT Universe</title><meta name="description" content="StarCraft — это серия стратегий в реальном времени, разработанная компанией Blizzard Entertainment. Проект стал эталоном баланса игровых фракций и фундаментом для киберспорта в Южной Корее."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Starcraft</span></li></ol></nav><header class="portal-hero"> <h1>Starcraft</h1> <p>StarCraft — это серия стратегий в реальном времени, разработанная компанией Blizzard Entertainment. Проект стал эталоном баланса игровых фракций и фундаментом для киберспорта в Южной Корее.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Starcraft" data-url="/games/9-03-igrovaya-industriya/game-studies/11">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Starcraft">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Starcraft</h1>
+<div class="itu-play-embed" data-example="spinoff/game-franchise-play" data-src="" data-title="Игровая франшиза" data-min-height="520" data-play-props="{&quot;franchise&quot;:&quot;starcraft&quot;}"> </div>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="что-такое-starcraft">Что такое StarCraft</h2>
+<div class="callout callout--tip">
+<div class="callout-title">О проекте</div>
+  <div class="callout-body">
+  <p>StarCraft — это серия стратегий в реальном времени, разработанная компанией Blizzard Развлечения.</p>
+<p>Проект стал эталоном баланса игровых фракций и фундаментом для киберспорта в Южной Корее.</p>
+<p>Материал охватывает вселенную игры, механику геймплея, технические особенности движков и детальное описание каждой части трилогии.</p>
+</div>
+  </div>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/SC2.png" alt="SC2.png"></p>
+<hr>
+<h2 id="игры-серии">Игры серии</h2>
+<h3 id="starcraft-1998">StarCraft (1998)</h3>
+<p>Первая часть серии стала революцией в жанре стратегий. Игра вышла 31 марта 1998 года и сразу завоевала мировую популярность. Основной акцент сделан на баланс сил между тремя расами и глубокую проработку сюжета.</p>
+<p><strong>Сеттинг и сюжет.</strong> Действие начинается в 2499 году в секторе Копрулу. Терранская Конфедерация пытается скрыть присутствие зергов, привлекая их на свои территории с помощью пси-излучателей. Джим Рейнор становится ключевой фигурой восстания против тирании. Сюжет раскрывается через три кампании за каждую расу, показывая события с разных точек зрения.</p>
+<p><strong>Геймплей.</strong> Игрок управляет базой, добывает ресурсы и строит армию. Карточки содержат случайные месторождения ресурсов, туман войны скрывает территорию противника. Редактор карт StarEdit позволяет создавать собственные миссии и модификации.</p>
+<p><strong>Технические особенности.</strong> Графика выполнена в 2D с использованием спрайтов. Сетевой режим поддерживает игру через Battle.net. Последняя версия 1.23.5 включала исправления ошибок и улучшения баланса. Игра бесплатна с 2017 года.</p>
+<hr>
+<h3 id="starcraft-brood-war-1998">StarCraft — Brood War (1998)</h3>
+<p>Дополнение вышло 30 ноября 1998 года и продолжило историю оригинальной игры. Добавлены новые кампании, юниты и улучшен искусственный интеллект.</p>
+<p><strong>Сеттинг и сюжет.</strong> События происходят после уничтожения Сверхразума. Власть над зергами переходит к церебралам. Терраны создают Доминион под руководством Менгска. Протоссы пытаются восстановить свою цивилизацию. Сюжет дополняет предысторий и раскрывает тайны происхождения рас.</p>
+<p><strong>Геймплей.</strong> Введены новые юниты для каждой расы. Зерги получили скрытня, терраны — медика, протоссы — тёмного тамплиера. Баланс сил изменён, тактика раша стала менее эффективной. Сложность одиночной кампании повышена.</p>
+<p><strong>Технические особенности.</strong> Дополнение интегрировано в основной клиент. Поддержка сетевой игры сохранена. Обновление 1.22 стало последней версией оригинального дополнения.</p>
+<hr>
+<h3 id="starcraft-ii-wings-of-liberty-2010">StarCraft II — Wings of Liberty (2010)</h3>
+<p>Первая часть трилогии вышла 27 июля 2010 года. Игра переведена в 3D с использованием физического движка Havok.</p>
+<p><strong>Сеттинг и сюжет.</strong> Действие начинается через четыре года после событий Brood War. Джим Рейнор возглавляет повстанцев против Доминиона. Сару Керриган захватывают зерги, но она возвращается как Королева Клинков. Сюжет фокусируется на борьбе Рейнора и поиске артефактов Зел-Нага.</p>
+<p><strong>Геймплей.</strong> Введён новый тип месторождений — золотые минералы. Рабочие могут выполнять очереди заданий. Максимальное количество выделяемых объектов увеличено до 500. Введена система лиг и рейтингов для многопользовательской игры.</p>
+<p><strong>Технические особенности.</strong> Графика полностью трёхмерная. Поддержка разрешения до 4K. Интеграция с Battle.net 2.0. Игра стала бесплатной в режиме Free-to-Play в 2017 году.</p>
+<hr>
+<h3 id="starcraft-ii-heart-of-the-swarm-2013">StarCraft II — Heart of the Swarm (2013)</h3>
+<p>Дополнение вышло 12 марта 2013 года. Капания сосредоточена на Зергах и Саре Керриган.</p>
+<p><strong>Сеттинг и сюжет.</strong> Керриган объединяет разрозненные стаи зергов для мести Менгску. Она проходит путь от пленницы до абсолютной правительницы Роя. Сюжет раскрывает происхождение зергов и их связь с Зел-Нага.</p>
+<p><strong>Геймплей.</strong> Герой Керриган получает новые способности и уровень прокачки. Введены новые юниты и ландшафты. Снятие ограничений с расы зергов делает их более разнообразными. Режим кооперативной игры доступен для всех командиров.</p>
+<p><strong>Технические особенности.</strong> Обновление графического движка. Улучшенная физика разрушений. Поддержка новых карт и редактора.</p>
+<hr>
+<h3 id="starcraft-ii-legacy-of-the-void-2015">StarCraft II — Legacy of the Void (2015)</h3>
+<p>Заключительная часть трилогии вышла 10 ноября 2015 года. Капания посвящена Протоссам и Артанису.</p>
+<p><strong>Сеттинг и сюжет.</strong> Амун, Падший Зел-Нага, пробудился и угрожает галактике. Артанис объединяет разрозненные фракции протоссов для освобождения родной планеты Айур. Финальная битва происходит в Пустоте.</p>
+<p><strong>Геймплей.</strong> Введены новые юниты и герои. Режим Archon Mode позволяет двум игрокам управлять одной базой. Совместный режим с выбором командиров добавляет вариативность прохождения.</p>
+<p><strong>Технические особенности.</strong> Оптимизация производительности. Поддержка новых разрешений. Объединение всех частей в один клиент.</p>
+<hr>
+<h3 id="starcraft-remastered-2017">StarCraft — Remastered (2017)</h3>
+<p>Переиздание оригинальной игры и дополнения Brood War вышло 14 августа 2017 года.</p>
+<p><strong>Сеттинг и сюжет.</strong> Сохранён оригинальный сюжет с новыми вводными вставками. Образы персонажей обновлены для соответствия канону второй части.</p>
+<p><strong>Геймплей.</strong> Сохранена механика оригинала без изменений баланса. Поддержка современных функций Battle.net 2.0. Режим наблюдателя позволяет смотреть матчи с разными ракурсами.</p>
+<h2><strong>Технические особенности.</strong> Графика обновлена до Ultra HD. Звуковое сопровождение перезаписано. Поддержка русского языка и локализации. Возможность играть в оригинальную версию или Remastered в одном клиенте.</h2>
+<h2 id="юниты-вселенной">Юниты вселенной</h2>
+<p>Ниже представлена сводная таблица всех основных боевых и рабочих юнитов из мультиплеера StarCraft II (актуальный состав для всех дополнений, включая Legacy of the Void), разделенная по расам.</p>
+<hr>
+<h3 id="терраны-terran">Терраны (Terran)</h3>
+<table>
+<thead>
+<tr>
+<th>Юнит (Русский)</th>
+<th>Юнит (English)</th>
+<th>Тип</th>
+<th>Место постройки</th>
+<th>Стоимость (Мин/Газ)</th>
+<th>Припасы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>КСМ</td>
+<td>SCV</td>
+<td>Рабочий</td>
+<td>Командный центр</td>
+<td>50 / 0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Морпех</td>
+<td>Marine</td>
+<td>Наземный (Био)</td>
+<td>Бараки</td>
+<td>50 / 0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Головорез</td>
+<td>Reaper</td>
+<td>Наземный (Био)</td>
+<td>Бараки</td>
+<td>50 / 50</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Мародер</td>
+<td>Marauder</td>
+<td>Наземный (Био)</td>
+<td>Бараки (Лаборатория)</td>
+<td>100 / 25</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Призрак</td>
+<td>Ghost</td>
+<td>Наземный (Био/Пси)</td>
+<td>Бараки (Лаборатория)</td>
+<td>150 / 125</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Геллион / Геллан</td>
+<td>Hellion / Hellbat</td>
+<td>Наземный (Мех)</td>
+<td>Завод</td>
+<td>100 / 0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Мина "Вдова"</td>
+<td>Widow Mine</td>
+<td>Наземный (Мех)</td>
+<td>Завод</td>
+<td>75 / 25</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Осадный танк</td>
+<td>Siege Tank</td>
+<td>Наземный (Мех)</td>
+<td>Завод (Лаборатория)</td>
+<td>150 / 125</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Циклон</td>
+<td>Cyclone</td>
+<td>Наземный (Мех)</td>
+<td>Завод</td>
+<td>150 / 100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Тор</td>
+<td>Thor</td>
+<td>Наземный (Мех)</td>
+<td>Завод (Лаборатория)</td>
+<td>300 / 200</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Викинг</td>
+<td>Viking</td>
+<td>Воздушный/Наземный</td>
+<td>Космопорт</td>
+<td>150 / 75</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Медэвак</td>
+<td>Medivac</td>
+<td>Воздушный (Транспорт)</td>
+<td>Космопорт</td>
+<td>100 / 100</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Освободитель</td>
+<td>Liberator</td>
+<td>Воздушный</td>
+<td>Космопорт</td>
+<td>150 / 150</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Баньши</td>
+<td>Banshee</td>
+<td>Воздушный</td>
+<td>Космопорт (Лаборатория)</td>
+<td>150 / 100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Ворон</td>
+<td>Raven</td>
+<td>Воздушный (Детектор)</td>
+<td>Космопорт (Лаборатория)</td>
+<td>100 / 150</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Крейсер</td>
+<td>Battlecruiser</td>
+<td>Воздушный</td>
+<td>Космопорт (Лаборатория)</td>
+<td>400 / 300</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="зерги-zerg">Зерги (Zerg)</h3>
+<table>
+<thead>
+<tr>
+<th>Юнит (Русский)</th>
+<th>Юнит (English)</th>
+<th>Тип</th>
+<th>Требуемое здание</th>
+<th>Стоимость (Мин/Газ)</th>
+<th>Личинки / Припасы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Рабочий</td>
+<td>Drone</td>
+<td>Рабочий</td>
+<td>Инкубатор</td>
+<td>50 / 0</td>
+<td>1 л. / 1</td>
+</tr>
+<tr>
+<td>Надзиратель</td>
+<td>Overlord</td>
+<td>Воздушный (Снабжение)</td>
+<td>Инкубатор</td>
+<td>100 / 0</td>
+<td>1 л. / +8</td>
+</tr>
+<tr>
+<td>Владыка</td>
+<td>Overseer</td>
+<td>Воздушный (Детектор)</td>
+<td>Мутация Надзирателя</td>
+<td>50 / 50</td>
+<td>1 Ов. / 0</td>
+</tr>
+<tr>
+<td>Королева</td>
+<td>Queen</td>
+<td>Наземный (Пси)</td>
+<td>Инкубатор (+Омут)</td>
+<td>150 / 0</td>
+<td>0 л. / 2</td>
+</tr>
+<tr>
+<td>Зерглинг</td>
+<td>Zergling</td>
+<td>Наземный</td>
+<td>Омут рождения</td>
+<td>50 / 0 (за 2 шт)</td>
+<td>1 л. / 0.5 (каждый)</td>
+</tr>
+<tr>
+<td>Гиблинг</td>
+<td>Baneling</td>
+<td>Наземный</td>
+<td>Мутация Зерглинга</td>
+<td>25 / 25</td>
+<td>1 Зг. / 0</td>
+</tr>
+<tr>
+<td>Таракан</td>
+<td>Roach</td>
+<td>Наземный</td>
+<td>Рассадник тараканов</td>
+<td>75 / 25</td>
+<td>1 л. / 2</td>
+</tr>
+<tr>
+<td>Опустошитель</td>
+<td>Ravager</td>
+<td>Наземный</td>
+<td>Мутация Таракана</td>
+<td>25 / 75</td>
+<td>1 Тр. / 1</td>
+</tr>
+<tr>
+<td>Гидралиск</td>
+<td>Hydralisk</td>
+<td>Наземный</td>
+<td>Дендрарий гидралисков</td>
+<td>100 / 50</td>
+<td>1 л. / 2</td>
+</tr>
+<tr>
+<td>Скрытень</td>
+<td>Lurker</td>
+<td>Наземный</td>
+<td>Мутация Гидралиска</td>
+<td>50 / 100</td>
+<td>1 Гд. / 1</td>
+</tr>
+<tr>
+<td>Муталиск</td>
+<td>Mutalisk</td>
+<td>Воздушный</td>
+<td>Шпиль</td>
+<td>100 / 100</td>
+<td>1 л. / 2</td>
+</tr>
+<tr>
+<td>Стрекоза</td>
+<td>Viper</td>
+<td>Воздушный</td>
+<td>Шпиль (требуется Улей)</td>
+<td>100 / 200</td>
+<td>1 л. / 3</td>
+</tr>
+<tr>
+<td>Хозяин стаи</td>
+<td>Brood Lord</td>
+<td>Воздушный</td>
+<td>Мутация Муталиска</td>
+<td>150 / 150</td>
+<td>1 Мт. / 2</td>
+</tr>
+<tr>
+<td>Ультралиск</td>
+<td>Ultralisk</td>
+<td>Наземный</td>
+<td>Пещера ультралисков</td>
+<td>300 / 200</td>
+<td>1 л. / 6</td>
+</tr>
+<tr>
+<td>Заразитель</td>
+<td>Infestor</td>
+<td>Наземный (Пси)</td>
+<td>Яма заразителей</td>
+<td>100 / 150</td>
+<td>1 л. / 2</td>
+</tr>
+<tr>
+<td>Роевик</td>
+<td>Swarm Host</td>
+<td>Наземный</td>
+<td>Яма заразителей</td>
+<td>100 / 75</td>
+<td>1 л. / 3</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="протоссы-protoss">Протоссы (Protoss)</h3>
+<table>
+<thead>
+<tr>
+<th>Юнит (Русский)</th>
+<th>Юнит (English)</th>
+<th>Тип</th>
+<th>Место постройки</th>
+<th>Стоимость (Мин/Газ)</th>
+<th>Припасы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Зонд</td>
+<td>Probe</td>
+<td>Рабочий</td>
+<td>Нексус</td>
+<td>50 / 0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Зилот</td>
+<td>Zealot</td>
+<td>Наземный</td>
+<td>Врата</td>
+<td>100 / 0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Сталкер</td>
+<td>Stalker</td>
+<td>Наземный</td>
+<td>Врата (Кибернетическое)</td>
+<td>125 / 50</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Адепт</td>
+<td>Adept</td>
+<td>Наземный</td>
+<td>Врата (Кибернетическое)</td>
+<td>100 / 25</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Часовой</td>
+<td>Sentry</td>
+<td>Наземный (Пси)</td>
+<td>Врата (Кибернетическое)</td>
+<td>50 / 100</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Высший тамплиер</td>
+<td>High Templar</td>
+<td>Наземный (Пси)</td>
+<td>Врата (Архив тамплиеров)</td>
+<td>50 / 150</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Темный тамплиер</td>
+<td>Dark Templar</td>
+<td>Наземный (Невидимый)</td>
+<td>Врата (Святилище темных)</td>
+<td>125 / 125</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Архонт</td>
+<td>Archon</td>
+<td>Наземный (Пси)</td>
+<td>Слияние двух Тамплиеров</td>
+<td>0 / 0</td>
+<td>0 (уже учтены)</td>
+</tr>
+<tr>
+<td>Наблюдатель</td>
+<td>Observer</td>
+<td>Воздушный (Детектор)</td>
+<td>Робототехника</td>
+<td>25 / 75</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Призма искривления</td>
+<td>Warp Prism</td>
+<td>Воздушный (Транспорт)</td>
+<td>Робототехника</td>
+<td>250 / 0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Бессмертный</td>
+<td>Immortal</td>
+<td>Наземный</td>
+<td>Робототехника</td>
+<td>275 / 100</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Колосс</td>
+<td>Colossus</td>
+<td>Наземный</td>
+<td>Робототехника (Маяк)</td>
+<td>300 / 200</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Дестабилизатор</td>
+<td>Disruptor</td>
+<td>Наземный</td>
+<td>Робототехника (Маяк)</td>
+<td>150 / 150</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Феникс</td>
+<td>Phoenix</td>
+<td>Воздушный</td>
+<td>Звездные врата</td>
+<td>150 / 100</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Оракул</td>
+<td>Oracle</td>
+<td>Воздушный (Пси)</td>
+<td>Звездные врата</td>
+<td>150 / 150</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Излучатель Пустоты</td>
+<td>Void Ray</td>
+<td>Воздушный</td>
+<td>Звездные врата</td>
+<td>200 / 150</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Ураган</td>
+<td>Tempest</td>
+<td>Воздушный</td>
+<td>Звездные врата (Флот)</td>
+<td>250 / 175</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Авианосец</td>
+<td>Carrier</td>
+<td>Воздушный</td>
+<td>Звездные врата (Флот)</td>
+<td>350 / 250</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Материнский корабль</td>
+<td>Mothership</td>
+<td>Воздушный (Уникальный)</td>
+<td>Нексус (Флот)</td>
+<td>400 / 400</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="лор-вселенной">Лор вселенной</h2>
+<h3 id="трагедия-в-секторе-копрулу">Трагедия в секторе Копрулу</h3>
+<p>Сеттинг истории разворачивается в далёком будущем в изолированном секторе космоса под названием Копрулу. Регион представляет собой периферийную область Млечного Пути, куда попадают изгнанники с Земли и другие колонисты. В этом пространстве отсутствует центральная власть, что порождает хаос, войны за ресурсы и формирование множества независимых государств.</p>
+<p>Конфликт основан на противостоянии трёх радикально отличающихся биологических и технологических видов. Каждый вид обладает уникальной философией, способностями и целью выживания. Терраны стремятся к доминированию через технологии и армию. Зерги представляют собой биологический рой, стремящийся поглотить всё живое для совершенствования. Протоссы — древняя раса, защищающая свою цивилизацию и баланс галактики от внешних угроз.</p>
+<p>Сюжетная линия включает падение космических империй, масштабные предательства между союзниками, угрозы ксенобиологической природы и раскрытие древних пророчеств расы Зел-Нага. История показывает, как личные амбиции персонажей влияют на судьбу целых планет и галактических цивилизаций.</p>
+<hr>
+<h3 id="терраны-terrans">Терраны (Terrans)</h3>
+<p>Происхождение терранов связано с земными преступниками и политическими изгнанниками, отправленными на кораблях-ковчегах в неизвестность. Навигационный сбой привёл их в сектор Копрулу, где они были вынуждены осваивать новые миры. Со временем эти группы превратились в различные государства, такие как Конфедерация и Доминион.</p>
+<p>Суть расы заключается в адаптивности, прагматизме и цинизме. Терраны не обладают врождёнными сверхспособностями, поэтому компенсируют это инженерными решениями, тяжелой броней и огневой мощью. Их культура формируется вокруг выживания в суровых условиях и борьбы за ресурсы.</p>
+<p>Эстетика терранов сочетает милитаризм, элементы стимпанка и образы техасских рейнджеров. Архитектура зданий напоминает индустриальные комплексы с трубами и дымом. Техника представлена тяжёлой гусеничной броней, шагоходами и боевыми вертолётами. Люди носят массивные силовые скафандры, защищающие от радиации и химического оружия.</p>
+<hr>
+<h3 id="зерги-zerg">Зерги (Zerg)</h3>
+<p>Зерги являются продуктом направленной эволюции, созданной древней расой Зел-Нага. Изначально эксперимент был направлен на создание идеальной формы жизни, но результат вышел из-под контроля и обрёл агрессивный характер.</p>
+<p>Суть расы представляет собой биологический Рой, управляемый единым Сверхразумом. В оригинальной игре управление осуществлялось Сверхразумом, позже роль лидера взяла на себя Сара Керриган, ставшая Королевой Клинков. Все особи связаны психической связью и действуют как единый организм.</p>
+<p>Эстетика зергов строится на органических постройках, эволюционных мутациях, хитине, кислотах и бесконечной численности. Здания зергов живые, они растут из земли и питаются биомассой. Юниты могут мутировать в процессе боя или получать новые способности. Организация армии базируется на массовых атаках и быстром размножении.</p>
+<hr>
+<h3 id="протоссы-protoss">Протоссы (Protoss)</h3>
+<p>Протоссы — высокоразвитая перворождённая раса, обладающая древней историей и передовыми технологиями. Они являются потомками цивилизации, спасённой Зел-Нага, и имеют собственную философию, основанную на коде Кхала.</p>
+<p>Суть расы заключается в использовании псионных сил и энергии космоса. Протоссы горды, дисциплинированы и следуют строгой кастовой системе. Их общество разделено на воинов, учёных и жрецов, каждый из которых выполняет свою функцию.</p>
+<p>Эстетика протоссов включает золотые доспехи, энергетические щиты, плазменные клинки и телепортацию зданий с орбиты. Технологии расы позволяют создавать невидимые юниты, летать сквозь атмосферу и управлять материей. Здания парят в воздухе и требуют постоянного энергопитания от пилонов.</p>
+<hr>
+<h2 id="геймплей">Геймплей</h2>
+<p>Макроконтроль является основой стратегии и требует от игрока добычи двух ресурсов: минералов и газа Веспен. Процесс включает застройку базы, постоянное производство рабочих юнитов и создание армии. Эффективное распределение ресурсов определяет темп развития и возможность реагировать на действия противника.</p>
+<p>Микроконтроль касается управления отдельными боевыми единицами в бою. Игрок использует уникальные способности каждого юнита, распределяет урон и маневрирует отрядами. Успех в микроконтроле позволяет компенсировать численное превосходство противника и наносить максимальный урон.</p>
+<p>Асимметрия механик создаёт уникальность каждой расы. Каждая сторона имеет отличную систему производства, которая не повторяет другие.</p>
+<p>Терраны строят здания в любом месте карты, способны поднимать их в воздух для перемещения и чинить технику рабочими юнитами. Это обеспечивает высокую мобильность и гибкость обороны.</p>
+<p>Зерги распространяют органическую слизь (крип) по карте, выращивают все юниты из личинок у главного здания. Эта механика позволяет быстро наращивать численность армии и адаптироваться к условиям боя.</p>
+<p>Протоссы вызывают строения через пилоны, генерирующие энергетическое поле. Без питания постройки не функционируют. Юниты обладают самовосстанавливающимися щитами, которые восстанавливаются со временем, если не получают повреждений.</p>
+<hr>
+<h2 id="тактики">Тактики</h2>
+<p>Список ключевых тактик и стратегий (билд-ордеров) для всех трех рас в StarCraft II разделен по расовым противостояниям (матчапам). Ввиду огромного разнообразия игры, здесь собраны все фундаментальные, мета-зависимые и агрессивные схемы игры, используемые профессионалами.</p>
+<hr>
+<h3 id="терраны-terran">Терраны (Terran)</h3>
+<h4>Терран против Протосса (TvP)</h4>
+<ul>
+<li>Fast Expand (Быстрое расширение): Выход в командующий центр на натурале после одного барака для создания мощной экономики.</li>
+<li>3-Grounded Bio Push — Атака с тремя казармами (марики, мародеры, стимпак, щиты) при поддержке двух медиваков.</li>
+<li>Mine Drop (Дроп мин): Быстрая атака медиваком с минами "Вдова" на рабочую линию Протосса.</li>
+<li>Proxy Marauder (Прокси мародеры): Строительство казармы вблизи базы врага для раннего давления мародерами с замедлением.</li>
+<li>Late Game Ghost/Liberator: Переход в позднюю стадию с Призраками (против пси-штормов/архонтов) и Освободителями.</li>
+</ul>
+<hr>
+<h4>Терран против Зерга (TvZ)</h4>
+<ul>
+<li>2-1-1 Timing Attack — Две казармы, один завод, один космопорт. Быстрый дроп 16 маринов с двумя медиваками и стимпаком на 5:00.</li>
+<li>Hellion/Reaper Opening: Стандартное открытие через 4–6 геллионов и жнеца для контроля карты и выжигания лингов.</li>
+<li>Mech (Мех) — Стратегия через танки, торове, геллионы/циклоны без использования пехоты.</li>
+<li>Battlecruiser Rush (Батлкрузер в прокси): Быстрый выход в крейсер с последующей телепортацией на базу Зерга.</li>
+<li>Bio-Mine-Liberator: Динамичная игра пехотой под прикрытием мин и зон поражения Освободителей против застройки люркеров.</li>
+</ul>
+<hr>
+<h4>Терран против Террана (TvT)</h4>
+<ul>
+<li>1-1-1 Opening — Универсальное открытие (барак, завод, космопорт) для гибкого перехода в любую тактику.</li>
+<li>Proxy Reaper: Постройка 2–3 казарм у базы соперника для массового наплыва жнецов.</li>
+<li>Marine-Tank Push: Классическая позиционная война с постепенным продвижением осадных танков под прикрытием пехоты.</li>
+<li>Raven-Tank Meta: Использование Воронов для отключения вражеских танков матрицей и захвата превосходства в воздухе.</li>
+<li>Doom Drop: Рискованный одновременный дроп всей армии на медиваках в производственную зону врага.</li>
+</ul>
+<hr>
+<h3 id="протоссы-protoss">Протоссы (Protoss)</h3>
+<h4>Протосс против Террана (PvT)</h4>
+<ul>
+<li>Gate-Core-Nexus: Стандартное безопасное экономическое открытие.</li>
+<li>Blink Stalker Opening: Быстрое исследование скачка (Blink) для защиты от дропов и постоянного хараса террана.</li>
+<li>Colossus Tech: Быстрый выход в робототехнику и колоссов с увеличенной дальностью для уничтожения био-армии.</li>
+<li>Disruptor Control: Использование дестабилизаторов для мгновенного уничтожения плотных пачек пехоты и танков террана.</li>
+<li>Proxy Oracle: Строительство старгейта на карте для быстрого прилета Оракула и убийства СРВ.</li>
+</ul>
+<hr>
+<h4>Протосс против Зерга (PvZ)</h4>
+<ul>
+<li>Wall-in Expand: Быстрое расширение с обязательной глухой застройкой (стенкой) на натурале против забегания лингов.</li>
+<li>Stargate Void Ray/Phoenix: Открытие в воздух для зачистки оверлордов, защиты от бейлингов и контроля карты.</li>
+<li>2-Base Glaive Adept Timing: Атака адептами с улучшением на скорость атаки (диски) до появления у зерга роучей.</li>
+<li>Immortal-Charge Archon (ICA): Мощный сухопутный кулак из имморталов, архонтов и зилотов с чарджем.</li>
+<li>Skytoss (Золотой флот) — Выход в лейт-гейм через батоны (Carrier), Войд-реев, ураганы и мазершип.</li>
+</ul>
+<hr>
+<h4>Протосс против Протосса (PvP)</h4>
+<ul>
+<li>2-Gate Opening: Стандартное агрессивное или оборонительное открытие в два гейта до нексуса.</li>
+<li>4-Gate Blink/Stalker: Классический all-in с постоянным досылом сталкеров через прокси-пилон.</li>
+<li>Proxy Robo: Постройка роботаймикса вблизи врага для быстрого вывода иммортала или призмы искривления.</li>
+<li>Disruptor Wars: Позиционная игра в мидгейме, где исход битвы решает одно точное попадание шара дестабилизатора.</li>
+<li>Fast DT (Темные тамплиеры): Быстрый выход в невидимых ДТ для внезапного уничтожения рабочих, если у врага нет детекции.</li>
+</ul>
+<hr>
+<h3 id="зерги-zerg">Зерги (Zerg)</h3>
+<h4>Зерг против Террана (ZvT)</h4>
+<ul>
+<li>Rule of 1 Target (Правило трех баз): Максимально быстрый выход в 3 инкубатора и 50+ рабочих под прикрытием королев.</li>
+<li>Linga-Bane-Mutalisk (LBM): Высокоподвижный состав армии для окружения пехоты террана и уничтожения медиваков.</li>
+<li>Roach-Ravager Timing: Мощная контратака или all-in роучами и разорителями, разрушающими бункеры коррозийной желчью.</li>
+<li>Lurker-Infestor Transition: Лейт-гейм композиция с закопанными люркерами под прикрытием микозов инфесторов.</li>
+<li>Ultralisk Late Game: Переход в ультралисков с апгрейдом на броню для затаптывания био-армии.</li>
+</ul>
+<hr>
+<h4>Зерг против Протосса (ZvP)</h4>
+<ul>
+<li>3-Hatch Before Pool: Сверхагрессивный экономический старт (три хаты до спавнинг пула), если протосс играет пассивно.</li>
+<li>Roach-Hydra-Lurker: Плотный и надежный костяк армии против наземного сетапа протосса.</li>
+<li>Swarm Host Siege: Использование хозяев стаи для бесплатного изнурения протосса саранчидами со скалы.</li>
+<li>Viper Pull Tactics: Использование Стрекоз (Viper) для похищения дорогих юнитов протосса (колоссы, батоны) в свою армию.</li>
+<li>Mass Mutalisk Switch: Внезапный переход в муталисков, ловящий протосса без старгейтов или фотонок на мейне.</li>
+</ul>
+<hr>
+<h4>Зерг против Зерга (ZvZ)</h4>
+<ul>
+<li>12-Pool: Сверхранняя атака 6–8 лингами для мгновенного убийства или замедления оппонента.</li>
+<li>Ling-Bane Micro Wars: Тончайшее микро лингами и бейлингами на ранней стадии. Ошибка в один клик ведет к поражению.</li>
+<li>Roach vs Roach: Переход в мидгейм, где решают тайминги улучшений на атаку/броню и позиционирование "вогнутости".</li>
+<li>Hydra-Lurker Tech Up: Позиционное противостояние в лейт-гейме с использованием дальнобойных скрытней.</li>
+<li>Mutalisk Tech Switch: Рискованный выход в муту. Если соперник не успел построить спорки и гидру, игра заканчивается.</li>
+</ul>
+<hr>
+<h2 id="архитектура-выполнения">Архитектура выполнения</h2>
+<h3 id="игровой-движок-starcraft-i-1998">Игровой движок StarCraft I (1998)</h3>
+<p>Изометрия реализована через спрайтовую 2D-графику с фиксированными углами обзора. Персонажи и объекты представлены наборами анимированных изображений, что создаёт классический вид игры конца 90-х годов.</p>
+<p>Сетевой код использует одноранговую синхронную архитектуру Peer-to-Peer Deterministic Lockstep. Компьютеры игроков обмениваются не состоянием мира, а только командами ввода.</p>
+<p>Снхронизация происходит путём передачи команд игрока. Каждое действие игрока кодируется и передаётся всем участникам сети. Каждый компьютер воспроизводит эти команды в идентичном порядке.</p>
+<p>Детерминизм означает, что игра рассчитывается на каждом компьютере идентично при одинаковых входных данных. Любое минимальное отклонение в обработке пакетов вызывает десинхронизацию, когда состояния игр перестают совпадать.</p>
+<p>Поиск пути работает на сетке, что приводит к знаменитым "застреваниям" драгунов протоссов. Юниты сталкиваются друг с другом и блокируют движение, так как алгоритм не умеет плавно обходить препятствия в реальном времени.</p>
+<hr>
+<h3 id="игровой-движок-starcraft-ii-2010">Игровой движок StarCraft II (2010)</h3>
+<p>Физика реализована через полный переход в 3D-графику и интеграцию физического движка Havok. Система позволяет разрушать объекты и моделировать взаимодействия окружения.</p>
+<p>Многопоточность разделяет логику симуляции игры и рендеринга графики. Отдельные потоки процессора отвечают за расчёт боевых действий, а другие — за отображение картинки. Это повышает производительность и стабильность работы.</p>
+<p>Поиск пути внедряет алгоритм RVO (Reciprocal Velocity Obstacles). Юниты плавно огибают друг друга и препятствия, имитируя естественное поведение толпы. Это устраняет проблемы с застреванием, характерные для первой части.</p>
+<p>Сжатие пакетов оптимизирует сетевой протокол Blizzard для минимизации задержек (пинга) в сервисе Battle.net. Данные передаются эффективно, что обеспечивает плавную игру даже при нестабильном соединении.</p>
+<hr>
+<h2 id="влияние-на-индустрию">Влияние на индустрию</h2>
+<p>Киберспорт StarCraft стал национальной дисциплиной в Южной Корее. Игра породила профессиональные лиги OSL и MSL, которые собирают огромные аудитории. Турниры проводятся регулярно с участием лучших игроков планеты.</p>
+<p>Телевещание появилось благодаря популярности игры. Возникли первые специализированные кабельные телеканалы, транслирующие только компьютерные игры. Комментаторы анализируют ход матчей в прямом эфире, что стало новым форматом медиа.</p>
+<p>Профессиональные геймеры получили статус звёзд. Игроки вроде BoxeR, NaDa и Flash стали национальными героями. Появились официальные зарплаты, спонсорские контракты и команды, работающие по аналогии с футбольными клубами.</p>
+<p>Баланс в жанре RTS доказал, что три совершенно разные фракции могут быть идеально уравновешены. Разработчики достигли состояния, когда ни одна раса не имеет преимущества над другой при равном мастерстве игроков.</p>
+<p>Развитие ИИ получило мощный импульс. StarCraft стал полигоном для обучения искусственного интеллекта. Проект Google DeepMind AlphaStar показал, что нейросети способны побеждать профессиональных игроков, используя стратегию и микроконтроль.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#что-такое-starcraft">Что такое StarCraft</a></li><li class="article-toc__item"><a href="#игры-серии">Игры серии</a></li><li class="article-toc__item is-h3"><a href="#starcraft-1998">StarCraft (1998)</a></li><li class="article-toc__item is-h3"><a href="#starcraft-brood-war-1998">StarCraft — Brood War (1998)</a></li><li class="article-toc__item is-h3"><a href="#starcraft-ii-wings-of-liberty-2010">StarCraft II — Wings of Liberty (2010)</a></li><li class="article-toc__item is-h3"><a href="#starcraft-ii-heart-of-the-swarm-2013">StarCraft II — Heart of the Swarm (2013)</a></li><li class="article-toc__item is-h3"><a href="#starcraft-ii-legacy-of-the-void-2015">StarCraft II — Legacy of the Void (2015)</a></li><li class="article-toc__item is-h3"><a href="#starcraft-remastered-2017">StarCraft — Remastered (2017)</a></li><li class="article-toc__item"><a href="#юниты-вселенной">Юниты вселенной</a></li><li class="article-toc__item is-h3"><a href="#терраны-terran">Терраны (Terran)</a></li><li class="article-toc__item is-h3"><a href="#зерги-zerg">Зерги (Zerg)</a></li><li class="article-toc__item is-h3"><a href="#протоссы-protoss">Протоссы (Protoss)</a></li><li class="article-toc__item"><a href="#лор-вселенной">Лор вселенной</a></li><li class="article-toc__item is-h3"><a href="#трагедия-в-секторе-копрулу">Трагедия в секторе Копрулу</a></li><li class="article-toc__item is-h3"><a href="#терраны-terrans">Терраны (Terrans)</a></li><li class="article-toc__item is-h3"><a href="#зерги-zerg">Зерги (Zerg)</a></li><li class="article-toc__item is-h3"><a href="#протоссы-protoss">Протоссы (Protoss)</a></li><li class="article-toc__item"><a href="#геймплей">Геймплей</a></li><li class="article-toc__item"><a href="#тактики">Тактики</a></li><li class="article-toc__item is-h3"><a href="#терраны-terran">Терраны (Terran)</a></li><li class="article-toc__item is-h3"><a href="#протоссы-protoss">Протоссы (Protoss)</a></li><li class="article-toc__item is-h3"><a href="#зерги-zerg">Зерги (Zerg)</a></li><li class="article-toc__item"><a href="#архитектура-выполнения">Архитектура выполнения</a></li><li class="article-toc__item is-h3"><a href="#игровой-движок-starcraft-i-1998">Игровой движок StarCraft I (1998)</a></li><li class="article-toc__item is-h3"><a href="#игровой-движок-starcraft-ii-2010">Игровой движок StarCraft II (2010)</a></li><li class="article-toc__item"><a href="#влияние-на-индустрию">Влияние на индустрию</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

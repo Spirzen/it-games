@@ -1,0 +1,816 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>DOOM — Игры IT Universe</title><meta name="description" content="Серия FPS от id Software — от революции 1993 года и движка id Tech 1 до Doom Eternal. Лор, движки, создатели и влияние на индустрию."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested" open> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">DOOM</span></li></ol></nav><header class="portal-hero"> <h1>DOOM</h1> <p>Серия FPS от id Software — от революции 1993 года и движка id Tech 1 до Doom Eternal. Лор, движки, создатели и влияние на индустрию.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="DOOM" data-url="/games/9-03-igrovaya-industriya/game-studies/14">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="DOOM">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>DOOM</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="словарь">Словарь</h2>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Простыми словами</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="https://terms.spirzen.ru/glossary/F#fps-first-person-shooter">FPS</a></strong></td>
+<td>Шутер от первого лица — камера там, где глаза героя.</td>
+</tr>
+<tr>
+<td><strong>id Software</strong></td>
+<td>Студия, создавшая DOOM, <a href="https://terms.spirzen.ru/glossary/Q#quake">Quake</a> и <a href="https://terms.spirzen.ru/glossary/W#wolfenstein">Wolfenstein 3D</a>. См. <a href="https://terms.spirzen.ru/glossary/I#id-software">глоссарий</a>.</td>
+</tr>
+<tr>
+<td><strong>Shareware</strong></td>
+<td>Модель распространения — первую часть игры отдают бесплатно, за продолжение просят деньги.</td>
+</tr>
+<tr>
+<td><strong>2.5D / псевдо-3D</strong></td>
+<td>Картинка <em>кажется</em> объёмной, но уровень на самом деле плоский. Подробнее — <a href="https://spirzen.ru/encyclopedia/1-basics/1-07-nemnogo-o-proshlom/13">история ПК</a>.</td>
+</tr>
+<tr>
+<td><strong>Спрайт</strong></td>
+<td>Плоская картинка в 3D-сцене (враг, предмет), которая всегда повёрнута к камере.</td>
+</tr>
+<tr>
+<td><strong>WAD</strong></td>
+<td>Файл с данными игры (уровни, текстуры, звуки). Название расшифровывают как <em>Where's All the Data?</em></td>
+</tr>
+<tr>
+<td><strong>Deathmatch</strong></td>
+<td>Сетевой режим, где игроки сражаются друг с другом, а не с компьютером.</td>
+</tr>
+<tr>
+<td><strong>Рейкастинг</strong></td>
+<td>Метод отрисовки — из камеры выпускают лучи и смотрят, во что они упираются.</td>
+</tr>
+<tr>
+<td><strong>BSP</strong></td>
+<td><em>Binary Space Partition</em> — карту заранее делят на зоны, чтобы быстро понять, что рисовать.</td>
+</tr>
+<tr>
+<td><strong>BBS / FTP</strong></td>
+<td>Способы скачать игру по сети в начале 1990-х (доска объявлений и файловый сервер).</td>
+</tr>
+<tr>
+<td><strong>Движок</strong></td>
+<td>Программа, которая рисует мир, считает физику и запускает игру. См. <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/112">игровые движки</a>.</td>
+</tr>
+<tr>
+<td><strong>Мод / моддинг</strong></td>
+<td>Пользовательская переделка — новые уровни, текстуры или правила без смены движка.</td>
+</tr>
+<tr>
+<td><strong>GPL</strong></td>
+<td>Свободная лицензия на исходный код — можно изучать, изменять и распространять программу.</td>
+</tr>
+<tr>
+<td><strong>Glory kill</strong></td>
+<td>Добивание ослабленного врага в ближнем бою (<em>Doom</em> 2016+) — даёт здоровье или патроны.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="что-такое-doom">Что такое DOOM</h2>
+<p><strong>DOOM</strong> — серия <a href="https://terms.spirzen.ru/glossary/F#fps-first-person-shooter">шутеров от первого лица</a> от студии <strong>id Software</strong>. Первая часть вышла в <strong>1993</strong> году и задала стандарты жанра на десятилетия вперёд.</p>
+<ul>
+<li><strong>Псевдо-3D</strong> на слабых <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/114">ПК</a> — игра шла даже на процессоре 386.</li>
+<li><strong>Shareware</strong> — бесплатный первый эпизод разошёлся по сетям быстрее платной рекламы.</li>
+<li><strong>Deathmatch</strong> по локальной сети — сотрудники офисов и университетов устраивали перестрелки на рабочих местах.</li>
+<li><strong>WAD-моды</strong> — игроки сами делали уровни и тотальные переделки.</li>
+</ul>
+<p>Современные части (<em>Doom</em> 2016, <em>Eternal</em>, <em>The Dark Ages</em>) сохраняют агрессивный темп боя. В классике — месть за кролика <strong>Дейзи</strong>; в новых играх — война с <strong>Творцами</strong> и <strong>Иконой Греха</strong>.</p>
+<p><img src="https://assets.spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/game-studies/DoomTDA.png" alt="DoomTDA.png"></p>
+<p>Главный герой — безымянный космический пехотинец (в фандоме <strong>Думгай</strong>, в новых частях <strong>Палач Рока</strong>). Он сражается с демонами из измерения <strong>Ад</strong> на Марсе, спутниках <strong>Фобос</strong> и <strong>Деймос</strong>, а затем на Земле. В <em>Doom</em> (1993) сюжет минимален; в <em>Doom</em> (2016) и <em>Eternal</em> выросла космогония с древними расами <strong>Творцов</strong> и богоподобными сущностями.</p>
+<p>В основной линейке id Software — <strong>шесть</strong> игр с 1993 по 2025 год, плюс мобильные версии, VR-эксперименты и спин-оффы. Каждая часть меняла технологии рендеринга, геймплей или глубину лора.</p>
+<hr>
+<h2 id="лор-вселенной">Лор вселенной</h2>
+<p>В классической части (1993–1994) сюжет простой — выжить и закрыть портал в Ад. В <em>Doom</em> (2016) и <em>Eternal</em> та же вселенная обросла мифологией древних цивилизаций, богоподобных сущностей и межпространственных войн.</p>
+<hr>
+<h3 id="хронология-событий">Хронология событий</h3>
+<p>Происхождение героя связывает две разные временные линии: земной морпех и бессмертный воин Ночных Стражей.</p>
+<pre><code class="language-text">[Земной морпех] ➔ [Предательство на Марсе] ➔ [Мир Аргет Д'Нур] ➔ [Машина Квантового Очищения] ➔ [Палач Рока]
+</code></pre>
+<hr>
+<h4>Творцы и демоны</h4>
+<p>В основе вселенной лежит история создания мироздания. <strong>Давот</strong> — Первородное существо, породившее вселенную и расу <strong>Творцов</strong>. Изначально их мир был процветающим технологическим центром. Однако позже Творцы заперли Давота в его собственном измерении, превратив его богатую жизнь в адское пространство, населенное демонами. Столица ада, изначально бывшая столицей Творцов, получила название <strong>Иммора</strong>. Этот конфликт между творцами и их создателем формирует основу мифологии серии.</p>
+<hr>
+<h4>Думгай и обычный морпех</h4>
+<p>Персонаж главного героя имеет двойственную природу. В ранних играх он представлен как обычный солдат Земли, сосланный на Марс за нападение на командира. Позже выясняется, что этот персонаж прошел через <strong>Божественную Машину Творцов</strong> в городе Твердыня Рока. Это привело к мутации и трансформации — герой получил бесконечную выносливость, бессмертие и физическую силу, сравнимую с силой бога. Эта эволюция превратила обычного десантника в легендарного воина, известного как <strong>Думгай</strong> или <strong>Палач Рока</strong>.</p>
+<hr>
+<h4>Марсианский инцидент</h4>
+<p>События большинства частей серии начинаются с деятельности корпорации <strong>ОАК</strong> (Объединенная Аэрокосмическая Корпорация). Ученые вели раскопки на Марсе и обнаружили источник энергии, называемый <strong>Аргент-плазмой</strong>, которая добывается из Ада. Чтобы решить энергетический кризис Земли, ОАК начала массовую добычу этой энергии. Однако исследовательница <strong>Оливия Пирс</strong> заключила сделку с демонами, открыв портал для вторжения. Это событие стало точкой невозврата, приведшей к падению марсианской базы и началу глобальной войны.</p>
+<hr>
+<h4>Кибердемон</h4>
+<p>Один из ключевых врагов серии — <strong>Кибердемон</strong>. Это древний тиран Ада, реанимированный технологиями ОАК на Марсе. Процесс синтеза включал замену сердца монстра на аргонный накопитель и установку мощной ракетной установки. Кибердемон стал символом неограниченной мощи и главной угрозой для человечества в нескольких частях серии.</p>
+<hr>
+<h4>Потеря во времени и попадание к Творцам</h4>
+<p>После событий игры 2016 года лидер ОАК <strong>Самуэль Хайден</strong> обманом телепортировал Думгая в неизведанные миры. Герой оказался в мире <strong>Аргет Д'Нур</strong>, находящемся на стыке измерений. Там он столкнулся с расой Ночных Стражей, которые долгое время сражались с силами Ада.</p>
+<hr>
+<h4>Гладиатор на арене</h4>
+<p>Пришельцы посчитали чужака безумцем и отправили на гладиаторские бои. Думгай победил всех соперников, включая могущественных существ, и заслужил право служить в элите Стражей. Это событие укрепило его статус как защитника вселенной от демонических угроз.</p>
+<hr>
+<h4>Пробуждение</h4>
+<p>Демоны заманили Палача в ловушку, запечатав в гробнице на тысячелетия. Самуэль Хайден нашел саркофаг и перевез его на Марс перед катастрофой. Это пробуждение запустило события новой эпохи, где герой снова должен был сразиться с силами Ада.</p>
+<hr>
+<h4>Кан Созидательница</h4>
+<p><strong>Кан Созидательница</strong> — лидер расы Творцов из измерения Урдак. Она заключила союз с Адом для переработки душ ради продления жизни своего мира. Ее планы включали полное поглощение Земли и использование ее населения в качестве ресурса.</p>
+<hr>
+<h4>Вторжение на Землю и Икона Греха</h4>
+<p>Демоны уничтожили 60% населения Земли за счет адских жрецов. <strong>Икона Греха</strong> — древний титан, пробужденный Кан Созидательницей для полного поглощения планеты. Победа над этим титаном стала финальной точкой в войне за выживание человечества.</p>
+<hr>
+<h2 id="демоны-вселенной-doom">Демоны вселенной DOOM</h2>
+<table>
+<thead>
+<tr>
+<th>Название демона (Eng / Rus)</th>
+<th>Класс / Роль</th>
+<th>Первое появление</th>
+<th>Появление в других частях серии / Модификации</th>
+<th>Краткое описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zombieman / Одержимый солдат</td>
+<td>Рядовой (Мясо)</td>
+<td>Doom (1993)</td>
+<td>Вся серия. Модификации: Shotgun Guy, Heavy Weapon Dude, Unwilling (2016), Mecha-Zombie, Shield Soldier, Riot Soldier</td>
+<td>Бывшие люди и солдаты, находящиеся под контролем адской энергии. Вооружены огнестрельным оружием.</td>
+</tr>
+<tr>
+<td>Imp / Имп</td>
+<td>Рядовой / Легкий</td>
+<td>Doom (1993)</td>
+<td>Вся серия. Модификации: Stone Imp (Eternal DLC2), Nightmare Imp (Doom 64 / The Dark Ages)</td>
+<td>Самые массовые демоны Ада. Быстрые, ловкие, атакуют огненными шарами на расстоянии и когтями вблизи.</td>
+</tr>
+<tr>
+<td>Gargoyle / Гаргулья</td>
+<td>Легкий летающий</td>
+<td>Doom Eternal</td>
+<td>The Dark Ages</td>
+<td>Летающие стайные бестии, похожие на импов, атакующие с воздуха на высокой скорости.</td>
+</tr>
+<tr>
+<td>Pinky (Demon) / Пинки</td>
+<td>Тяжелый штурмовик</td>
+<td>Doom (1993)</td>
+<td>Вся серия. Модификации: Pinky Rider (The Dark Ages)</td>
+<td>Рогатый четвероногий демон. Таранит игрока. В современных частях имеет бронированную лобовую часть.</td>
+</tr>
+<tr>
+<td>Spectre / Спектр</td>
+<td>Невидимый штурмовик</td>
+<td>Doom (1993)</td>
+<td>Вся серия</td>
+<td>Почти полностью невидимая (полупрозрачная) модификация демона Пинки.</td>
+</tr>
+<tr>
+<td>Lost Soul / Потерянная душа</td>
+<td>Легкий камикадзе</td>
+<td>Doom (1993)</td>
+<td>Вся серия</td>
+<td>Летающий пылающий череп. Атакует с разгона, взрываясь при контакте или погибая от урона.</td>
+</tr>
+<tr>
+<td>Cacodemon / Какодемон</td>
+<td>Легкий / Тяжелый летающий</td>
+<td>Doom (1993)</td>
+<td>Вся серия. Модификации: Cacodemon Hybrid (The Dark Ages)</td>
+<td>Летающий шарообразный одноглазый демон. Плюется сгустками плазмы, заглатывает гранаты.</td>
+</tr>
+<tr>
+<td>Hell Knight / Рыцарь Ада</td>
+<td>Тяжелый гладиатор</td>
+<td>Doom II</td>
+<td>Вся серия после Doom II. Модификации: Dread Knight (Eternal), Battle Knight (The Dark Ages)</td>
+<td>Крупный мускулистый демон, постоянно преследующий игрока и бьющий по земле энергетическими волнами.</td>
+</tr>
+<tr>
+<td>Baron of Hell / Барон Ада</td>
+<td>Сверхтяжелый</td>
+<td>Doom (1993)</td>
+<td>Вся серия. Модификации: Fireborne Baron (2016/Eternal), Armored Baron (Eternal DLC2), Cosmic Baron (The Dark Ages)</td>
+<td>Старшие и более опасные сородичи Рыцарей Ада. Обладают огромным запасом здоровья и швыряют плазму.</td>
+</tr>
+<tr>
+<td>Arachnotron / Арахнотрон</td>
+<td>Тяжелая огневая точка</td>
+<td>Doom II</td>
+<td>Doom 64, Eternal, The Dark Ages</td>
+<td>Мозг на механических паучьих лапах. Дистанционно расстреливает плазмой из турели.</td>
+</tr>
+<tr>
+<td>Mancubus / Манкубус</td>
+<td>Тяжелый танк</td>
+<td>Doom II</td>
+<td>Вся серия после Doom II</td>
+<td>Огромный, жирный и медлительный демон с огнеметами/пушками вместо рук.</td>
+</tr>
+<tr>
+<td>Cyber-Mancubus / Киберманкубус</td>
+<td>Кибер-демон</td>
+<td>Doom (2016)</td>
+<td>Doom Eternal</td>
+<td>Бронированная версия Манкубуса, атакующая коррозийной кислотой и усиленной плазмой.</td>
+</tr>
+<tr>
+<td>Revenant / Ревенант</td>
+<td>Тяжелый ракетчик</td>
+<td>Doom II</td>
+<td>Вся серия после Doom II</td>
+<td>Скелет в реактивном ранце с наплечными ракетными установками, стреляющими самонаводящимися снарядами.</td>
+</tr>
+<tr>
+<td>Pain Elemental / Элементаль боли</td>
+<td>Тяжелый летающий</td>
+<td>Doom II</td>
+<td>Doom 64, Doom Eternal</td>
+<td>Летающий сферический демон, который постоянно порождает и выплевывает Потерянные души.</td>
+</tr>
+<tr>
+<td>Arch-vile / Арчвайл</td>
+<td>Сверхтяжелый призыватель</td>
+<td>Doom II</td>
+<td>Doom 3, Doom Eternal</td>
+<td>Демон-колдун. Способен призывать орды других демонов, защищать их силовым щитом и поджигать землю.</td>
+</tr>
+<tr>
+<td>Summoner / Призыватель</td>
+<td>Высокий / Мобильный</td>
+<td>Doom (2016)</td>
+<td>Переродился в Арчвайла в Eternal</td>
+<td>Парящий демон, телепортирующийся по арене и призывающий подкрепления. Духовный наследник Арчвайла.</td>
+</tr>
+<tr>
+<td>Prowler / Бродяга</td>
+<td>Легкий / Телепортирующийся</td>
+<td>Doom Eternal</td>
+<td>Модификации: Cursed Prowler (Eternal DLC2)</td>
+<td>Быстрый фиолетовый демон, использующий телепортацию для неожиданных атак со спины.</td>
+</tr>
+<tr>
+<td>Whiplash / Плеть</td>
+<td>Тяжелый (Змея)</td>
+<td>Doom Eternal</td>
+<td>Модификации: Spectre Whiplash (Eternal DLC1)</td>
+<td>Первый демон-рептилия. Быстро перемещается по земле зигзагами, бьет плетьми и пускает энергетические волны.</td>
+</tr>
+<tr>
+<td>Carcass / Туша</td>
+<td>Тяжелая поддержка</td>
+<td>Doom Eternal</td>
+<td>Нет</td>
+<td>Киборг на механических ножках, постоянно преграждающий путь Палачу защитными лазерными щитами.</td>
+</tr>
+<tr>
+<td>Hell Razer / Адский крушитель</td>
+<td>Легкий снайпер</td>
+<td>Doom (2016)</td>
+<td>Нет</td>
+<td>Одержимый, чья рука трансформирована в лазерное орудие, стреляющее непрерывным лучом.</td>
+</tr>
+<tr>
+<td>Harvester / Жнец</td>
+<td>Сетевой демон</td>
+<td>Doom (2016)</td>
+<td>Только мультиплеер Doom 2016</td>
+<td>Демон, высасывающий души врагов для накопления энергии и последующего мощного взрыва.</td>
+</tr>
+<tr>
+<td>Cherub / Херувим</td>
+<td>Легкий мутант</td>
+<td>Doom 3</td>
+<td>Resurrection of Evil</td>
+<td>Уродливый младенец с крыльями насекомого и когтями. Атакует стаями.</td>
+</tr>
+<tr>
+<td>Maggot / Червь</td>
+<td>Легкий бестия</td>
+<td>Doom 3</td>
+<td>Нет</td>
+<td>Двухголовый демон, быстро передвигающийся на четырех конечностях.</td>
+</tr>
+<tr>
+<td>Trite / Tick / Трайт и Тик</td>
+<td>Легкие паукообразные</td>
+<td>Doom 3</td>
+<td>Нет</td>
+<td>Маленькие паукообразные твари (Трайты имеют перевернутую человеческую голову). Нападают толпой.</td>
+</tr>
+<tr>
+<td>Vulgar / Вульгар</td>
+<td>Легкий</td>
+<td>Doom 3: RoE</td>
+<td>Прообраз Бродяги в Eternal</td>
+<td>Похож на импа, но передвигается на четырех лапах и мечет шары из токсичной плазмы.</td>
+</tr>
+<tr>
+<td>Wraith / Призрак</td>
+<td>Средний</td>
+<td>Doom 3</td>
+<td>Doom (2016)</td>
+<td>Демон, способный становиться невидимым и мгновенно перемещаться к цели для удара.</td>
+</tr>
+<tr>
+<td>Bruiser / Брузер</td>
+<td>Сверхтяжелый</td>
+<td>Doom 3: RoE</td>
+<td>Нет</td>
+<td>Гигант, визуально похожий на Манкубуса, но имеющий экраны вместо глаз и изрыгающий огонь из пасти на руках.</td>
+</tr>
+<tr>
+<td>Hell Guard / Адский страж</td>
+<td>Босс / Элита</td>
+<td>Doom (2016)</td>
+<td>Нет</td>
+<td>Крупные биомеханические защитники Олицетворения Ада, управляемые паразитами внутри брони.</td>
+</tr>
+<tr>
+<td>Vagary / Вагари</td>
+<td>Босс / Киборг</td>
+<td>Doom 3</td>
+<td>The Dark Ages (Vagary Champion)</td>
+<td>Существо с телом гигантского паука и человеческим торсом. Использует телекинез для швыряния шипастых шаров.</td>
+</tr>
+<tr>
+<td>Marauder / Мародер</td>
+<td>Сверхтяжелый тактик</td>
+<td>Doom Eternal</td>
+<td>Eternal DLC1 / DLC2</td>
+<td>Падший Ночной Страж, восставший на стороне Ада. Имеет супердробовик, топор, щит и призывает призрачного волка.</td>
+</tr>
+<tr>
+<td>Doom Hunter / Охотник на Рок</td>
+<td>Сверхтяжелый полубосс</td>
+<td>Doom Eternal</td>
+<td>Встречается как регулярный враг</td>
+<td>Киборг на летающей платформе, созданный специально для охоты на Палача Рока. Оснащен щитом и ракетами.</td>
+</tr>
+<tr>
+<td>Tyrant / Тиран</td>
+<td>Сверхтяжелый танк</td>
+<td>Doom Eternal</td>
+<td>Legacy of Rust</td>
+<td>Прямой аналог классического Кибердемона из оригинальных игр. Вооружен ракетной установкой и лазерами.</td>
+</tr>
+<tr>
+<td>Cyberdemon / Кибердемон</td>
+<td>Главный Босс / Элита</td>
+<td>Doom (1993)</td>
+<td>Doom II, Doom 3, Doom (2016), The Dark Ages</td>
+<td>Величайший титан Ада, скрещенный с технологиями ОАК. Главный символ мощи адского войска.</td>
+</tr>
+<tr>
+<td>Spider Mastermind / Владыка Пауков</td>
+<td>Главный Босс</td>
+<td>Doom (1993)</td>
+<td>Doom (2016) (как Spiderdemon)</td>
+<td>Огромный мозг на четырех титановых ногах, оснащенный сверхмощным шестиствольным пулеметом.</td>
+</tr>
+<tr>
+<td>Icon of Sin / Икона Греха</td>
+<td>Финальный Босс</td>
+<td>Doom II</td>
+<td>Doom (2016) (пасхалка), Doom Eternal</td>
+<td>Исполинский титан, само присутствие которого на Земле способно искажать пространство и затянуть планету в Ад.</td>
+</tr>
+<tr>
+<td>The Dark Lord / Темный Властелин</td>
+<td>Финальный Босс</td>
+<td>Doom Eternal: TAG 2</td>
+<td>Упоминания по всей вселенной</td>
+<td>Давот — создатель всего сущего, правитель Иффина (Ада). Сражается в гигантском механическом костюме.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="история-выпуска-и-описание-игр-серии">История выпуска и описание игр серии</h2>
+<p>Серия DOOM насчитывает шесть основных частей, выпущенных с 1993 по 2025 год, а также множество побочных проектов. Каждая часть внесла свой вклад в развитие жанра и лора вселенной.</p>
+<hr>
+<h3 id="doom-1993">DOOM (1993)</h3>
+<p>Первая игра серии вышла <strong>10 декабря 1993</strong> года. Она показала, что динамичный 3D-шутер может работать на обычном домашнем компьютере начала 1990-х.</p>
+<p><strong>Графика 2.5D.</strong> Уровень — это плоская <a href="https://spirzen.ru/encyclopedia/1-basics/1-07-nemnogo-o-proshlom/13">карта этажа</a> с разной высотой пола и потолка. Враги и предметы — <strong>спрайты</strong>, плоские картинки, которые всегда смотрят на игрока (термины — в <a href="#%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C">словаре</a> выше). Полноценной 3D-геометрии нет, но на экране создаётся ощущение коридоров и залов.</p>
+<p><strong>Shareware.</strong> Первый эпизод <em>Knee-Deep in the Dead</em> распространяли бесплатно. За два следующих эпизода платили через издателя <strong>GT Interactive</strong>. Ту же схему команда уже проверила на <em>Commander Keen</em> и <a href="https://terms.spirzen.ru/glossary/W#wolfenstein">Wolfenstein 3D</a>.</p>
+<p><strong>Геймплей.</strong></p>
+<ul>
+<li>исследование лабиринтов и поиск секретных комнат;</li>
+<li>перестрелки с демонами;</li>
+<li>арсенал от пистолета до бензопилы и плазменного ружья;</li>
+<li>режим <strong>Deathmatch</strong> — каждый игрок против всех по локальной сети.</li>
+</ul>
+<p>Термин <strong>Deathmatch</strong> придумал <strong>Джон Ромеро</strong>, когда коллеги в офисе id Software сутками играли друг с другом, ругались и ломали клавиатуры.</p>
+<p><strong>Сюжет.</strong> В текстовом README и мануале — история морпеха на базе <strong>UAC</strong> (Union Aerospace Corporation). Учёные открыли портал в Ад; герой должен выбраться и спасти Землю. Главная мотивация запоминается с первых строк: демоны убили домашнего кролика <strong>Дейзи</strong> и насадили его на кол — морпех идёт мстить через весь ад.</p>
+<p><strong>Релиз.</strong> Файлы выложили на <strong>FTP</strong>-сервер id Software. Желающих скачать оказалось так много, что заняли все <strong>127</strong> модемных линий — сами разработчики не могли зайти и догрузить дистрибутив. За первые <strong>30 минут</strong> — <strong>10 000</strong> скачиваний. Сети университетов и компаний вроде Intel и AT&#x26;T легли под нагрузкой офисных сетевых баталий. В ряде организаций DOOM запретили на рабочих местах.</p>
+<p>Тираж первой части превысил <strong>10 млн</strong> копий. На пике популярности игра стояла на большем числе ПК, чем свежая <strong>Windows 95</strong>.</p>
+<hr>
+<h3 id="doom-ii-hell-on-earth-1994">DOOM II — Hell on Earth (1994)</h3>
+<p>Продолжение вышло <strong>10 октября 1994</strong> года. Демоны захватили Землю. Вместо трёх эпизодов — один набор из <strong>32</strong> карт. Разработка заняла около <strong>8 месяцев</strong>, движок тот же, что в первой части.</p>
+<p><strong>Что добавили.</strong></p>
+<ul>
+<li>цепную пушку и супердробовик;</li>
+<li>новых и более агрессивных врагов;</li>
+<li>финального босса <strong>Икону Греха</strong>.</li>
+</ul>
+<p><strong>Пасхалка.</strong> Внутри модели босса спрятана голова <strong>Джона Ромеро</strong> на шипе. С чит-кодом прохода сквозь стены (<code>idclip</code>) можно залететь за спину босса и расстрелять голову разработчика. Рев монстра — искажённая запись голоса <strong>Ромеро</strong>, проигранная задом наперёд.</p>
+<hr>
+<h3 id="final-doom-1996">Final Doom (1996)</h3>
+<p>Сборник двух наборов уровней от сторонних авторов.</p>
+<ul>
+<li><em>TNT: Evilution</em></li>
+<li><em>The Plutonia Experiment</em></li>
+</ul>
+<p>Дополнения показали, насколько гибок движок id Tech 1, и подняли планку сложности для опытных игроков.</p>
+<hr>
+<h3 id="doom-64-1997">DOOM 64 (1997)</h3>
+<p>Разработана Midway Игры для консоли Nintendo 64. Игра представляет собой прямое продолжение DOOM II с новыми текстурами и звуковым оформлением. Особенностью стала атмосфера ужаса и мрачности, усиливающая напряжение.</p>
+<hr>
+<h3 id="doom-3-2004">DOOM 3 (2004)</h3>
+<p>Перезапуск вышел <strong>3 августа 2004</strong> года на движке <strong>id Tech 4</strong>. Полноценная 3D-графика и динамическое освещение. Акцент на хоррор.</p>
+<ul>
+<li>тёмные коридоры и резкие звуки;</li>
+<li>враги часто подкрадываются из темноты;</li>
+<li>темп медленнее, чем в классике и в <em>Doom</em> (2016).</li>
+</ul>
+<p><strong>Сюжет</strong> переосмысливает первую часть с диалогами и NPC-помощниками.</p>
+<hr>
+<h3 id="doom-2016">DOOM (2016)</h3>
+<p>Четвертая основная часть, выпущенная 13 мая 2016 года. Игра возвращает серию к корням: динамичный геймплей, быстрый темп и акцент на экшен. Введена система зверских убийств, позволяющая восстанавливать здоровье и патроны.</p>
+<p><strong>Сюжет</strong> рассказывает о Палаче Рока, древнем воине, пробужденном из саркофага для борьбы с демонами. Герой сражается с новыми видами врагов и боссами, используя мощное оружие и способности.</p>
+<hr>
+<h3 id="doom-eternal-2020">DOOM Eternal (2020)</h3>
+<p>Прямое продолжение DOOM 2016, выпущенное 20 марта 2020 года. Игра расширяет механики предыдущей части, добавляя новые виды оружия, движения и тактики.</p>
+<p><strong>Геймплей</strong> требует постоянного движения и управления ресурсами. Игрок должен использовать бензопилу для патронов, огнемет для брони и зверские убийства для здоровья. Сюжет продолжает историю Палача Рока, который сражается с Культ Деаг и Иконом Греха.</p>
+<hr>
+<h3 id="doom-the-dark-ages-2025">DOOM — The Dark Ages (2025)</h3>
+<p>Приквел к событиям 2016 года, выпущенный 15 мая 2025 года. Игра переносит игрока в техно-средневековый сеттинг, где Палач Рока сражается с силами Ада.</p>
+<p><strong>Особенности</strong> включают более тяжелый стиль боя, ближний бой и стратегические элементы. Игра исследует происхождение Палача и его связь с расой Творцов.</p>
+<hr>
+<h2 id="геймплей">Геймплей</h2>
+<p>В классических частях (1993–1994) игрок бегает по уровню, собирает оружие и патроны, ищет секреты и расстреливает демонов. В <em>Doom</em> (2016) и <em>Eternal</em> добавился <strong>агрессивный менеджмент ресурсов</strong> — здоровье, патроны и броня чаще добываются в бою, а не лежат в ящиках.</p>
+<pre><code class="language-text">[Низкое здоровье] ➔ (Зверское убийство) ➔ [Выпадение аптечек]
+[Мало патронов]    ➔ (Бензопила)         ➔ [Выпадение боеприпасов]
+[Нет брони]        ➔ (Огнемет)           ➔ [Выпадение щитов]
+</code></pre>
+<hr>
+<h3 id="агрессивный-менеджмент">Агрессивный менеджмент</h3>
+<p><em>Doom</em> (2016) и <em>Eternal</em>. Ресурсы добываются из врагов прямо в перестрелке.</p>
+<ul>
+<li><strong>Glory kill</strong> (зверское убийство) — ближняя добивка даёт здоровье.</li>
+<li><strong>Бензопила</strong> — режет врага и возвращает патроны.</li>
+<li><strong>Огнемёт</strong> — поджигает демонов и снимает броню с врага.</li>
+</ul>
+<p>Остановиться и ждать аптечку в углу — плохая тактика. Атака кормит выживание.</p>
+<hr>
+<h3 id="постоянное-движение">Постоянное движение</h3>
+<p>Остановка под перекрёстным огнём быстро убивает. Работают прыжки, <strong>стрейф</strong> (движение боком без поворота камеры) и постоянный бег по арене. В <em>Eternal</em> добавились крюк, рывок и двойной прыжок — см. <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/1">компьютерные игры</a>.</p>
+<hr>
+<h3 id="зональное-оружие">Зональное оружие</h3>
+<p>Каждый ствол закрывает свою задачу.</p>
+<ul>
+<li>дробовик и супердробовик — толпа слабых врагов вблизи;</li>
+<li>плазменное ружьё и ракетница — тяжёлые демоны;</li>
+<li>BFG — редкий "ядерный" выстрел по самым опасным целям.</li>
+</ul>
+<hr>
+<h2 id="архитектура-выполнения">Архитектура выполнения</h2>
+<p>Технологии в серии DOOM прошли путь от хитрых приёмов на слабом <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/4">CPU</a> до полноценного 3D на <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/7">Vulkan</a>. Классика (1993–1994) — эталон оптимизации; <em>Doom Eternal</em> (2020) грузит <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/2">GPU</a> миллионами полигонов.</p>
+<hr>
+<h3 id="движок-id-tech-1-1993">Движок id Tech 1 (1993)</h3>
+<p><strong>Как устроен уровень.</strong> Карта — плоский чертёж этажа в памяти компьютера. Редактор "выдавливает" из него коридоры и залы, задавая высоту пола и потолка (<strong>экструзия</strong>). Стены всегда вертикальны. Два этажа друг над другом в одной точке карты сделать нельзя — зато игра летает даже на процессоре <strong>386</strong>.</p>
+<p><strong>Три приёма, которые ускорили картинку.</strong> Команда шла от простых идей к более сложным.</p>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Что делает</th>
+<th>Место в истории DOOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Алгоритм художника</strong></td>
+<td>Рисует дальние объекты первыми, ближние — поверх</td>
+<td>Ранний способ; процессор тратит силы на стены, которые потом закроет ближний объект</td>
+</tr>
+<tr>
+<td><strong>Рейкастинг</strong></td>
+<td>Из камеры игрока выпускает лучи влево‑вправо; первое попадание в стену показывает, что рисовать</td>
+<td>Основа <a href="https://terms.spirzen.ru/glossary/W#wolfenstein">Wolfenstein 3D</a>; всё за передней стеной не считается</td>
+</tr>
+<tr>
+<td><strong>BSP</strong> (<em>Binary Space Partition</em>)</td>
+<td>При сборке <a href="#%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C">WAD</a> режет карту плоскостями и складывает в дерево зон</td>
+<td>Главный приём DOOM; идею <strong>Джон Кармак</strong> взял из работ <strong>Bell Labs</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Как BSP работает в игре.</strong> Движок за доли секунды понимает, в какой зоне стоит игрок, и рисует стены от ближних к дальним. <strong>Span buffer</strong> (буфер горизонтальных полос) запоминает, какие столбцы экрана уже закрашены. Когда полоса заполнена целиком, отрисовка кадра <strong>останавливается</strong> — процессор не тратит лишние такты.</p>
+<p><strong>Целые числа вместо дробей.</strong> Процессоры начала 1990-х медленно считали <strong>числа с плавающей точкой</strong> (дроби вроде 3,14159). Тригонометрия для углов стен тормозила картинку. Кармак заранее посчитал значения в <strong>таблицах</strong> (lookup tables) и хранил углы в формате <strong>BAM</strong> (<em>Binary Angle Measurement</em>) — только быстрая целочисленная математика.</p>
+<p><strong>Сеть для Deathmatch.</strong> Выделенного сервера не было — каждый ПК симулировал свою копию мира (<strong>peer-to-peer lockstep</strong>). По модему передавали только <strong>нажатия клавиш</strong>. Трафик маленький, но один медленный компьютер тормозил всю комнату.</p>
+<p><strong>Откуда взялись монстры и оружие.</strong></p>
+<ul>
+<li>демонов (Барон Ада, Арчвайл, Spider Mastermind) лепили из <strong>глины</strong>, снимали с <strong>8 ракурсов</strong> (шаг 45°) и превращали в спрайты;</li>
+<li>оружие в кадре — детские игрушечные бластеры; <strong>BFG</strong> собрали зеркальным копированием одной игрушки;</li>
+<li>руки героя — фото художника <strong>Кевина Клауда</strong>; окровавленную ногу после мотоаварии сфотографировали для текстуры;</li>
+<li>звук зомби — запись <strong>верблюда</strong>, проигранная задом наперёд.</li>
+</ul>
+<p>Подробнее о семействе движков id — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/113">idTech</a> и <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/114">графические API</a>.</p>
+<hr>
+<h3 id="современный-стек-id-tech-7">Современный стек (id Tech 7)</h3>
+<p>Движок <em>Doom Eternal</em> опирается на другие технологии.</p>
+<ul>
+<li><strong><a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/7">Vulkan</a></strong> — прямой доступ к <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/2">видеокарте</a> с меньшими накладными расходами, чем у старых API.</li>
+<li><strong>Многопоточность</strong> — физика, ИИ и рендеринг идут параллельно на разных ядрах <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/4">процессора</a>.</li>
+<li><strong>Виртуальное текстурирование</strong> — движок подгружает детали по мере необходимости и держит миллионы полигонов без просадки <a href="https://terms.spirzen.ru/glossary/F#fps-%D1%87%D0%B0%D1%81%D1%82%D0%BE%D1%82%D0%B0-%D0%BA%D0%B0%D0%B4%D1%80%D0%BE%D0%B2-frames-per-second">FPS</a>.</li>
+</ul>
+<hr>
+<h2 id="история-разработки">История разработки</h2>
+<h3 id="два-джона-и-имя-doom">Два Джона и имя DOOM</h3>
+<p><strong>Джон Кармак</strong> придумал рабочее название <strong>DOOM</strong>, вспомнив сцену из фильма "Цвет денег" (1986, Мартин Скорсезе). Герой Тома Круза на вопрос "Что у тебя в футляре?" отвечает "Doom" (с англ. — рок, гибель, проклятие) и выигрывает партию в бильярде. Название отражало дерзость команды.</p>
+<p>В прессе пару основателей id Software называют <strong>"два Джона"</strong>.</p>
+<ul>
+<li><strong>Джон Кармак</strong> — главный программист, автор движков.</li>
+<li><strong>Джон Ромеро</strong> — геймдизайнер и публичное лицо студии.</li>
+</ul>
+<p>Художник <strong>Адриан Кармак</strong> лепил монстров из глины. Фамилия совпадала с фамилией Джона Кармака, но они <strong>не были родственниками</strong>. Биографии команды — в <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-01-velikie-lyudi/1">Великих людях IT</a>.</p>
+<p><strong>Джон Кармак</strong> с детства жил кодом. В <strong>1984</strong> его арестовали за кражу <strong>Apple II</strong> из школы — хотел программировать игры; год провёл в исправительном учреждении. Позже продал спортивную <strong>MG</strong>, чтобы купить компьютер <strong>NeXT</strong> Стива Джобса (~<strong>$11 000</strong>) — по меркам 1980‑х одну из самых мощных машин для разработки.</p>
+<hr>
+<h3 id="от-mario-до-wolfenstein-3d">От Mario до Wolfenstein 3D</h3>
+<p>В конце 1980‑х <strong>плавный скроллинг</strong> уровня умели в основном консоли <strong>NES</strong>. Там за сдвиг картинки отвечал чип <strong>PPU</strong>. На <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/114">ПК</a> такого железа не было.</p>
+<p>Кармак написал <strong>кольцевой буфер</strong> в памяти и повторил эффект программно. Команда перенесла первый уровень <em>Super Mario Bros.</em> на PC <strong>пиксель в пиксель</strong> и отправила демо в <strong>Nintendo</strong>. Компания ответила отказом — рынок персональных компьютеров их не интересовал.</p>
+<p>Издатель <strong>Скотт Миллер</strong> (Apogee) предложил <strong>shareware</strong> — первый эпизод бесплатно, остальные за деньги. В "домике у озера", заваленном пиццей и колой, команда выпустила <strong>Commander Keen</strong>.</p>
+<p>Следом вышел <strong><a href="https://terms.spirzen.ru/glossary/W#wolfenstein">Wolfenstein 3D</a></strong> (1992) — первый массовый FPS с <strong>рейкастингом</strong>. Сеттинг Второй мировой выбрали после усталости от фэнтезийной нежити. Успех Wolfenstein показал, что 3D-шутер на PC продаётся. Через год на том же опыте вышел DOOM.</p>
+<hr>
+<h3 id="хронология-релизов">Хронология релизов</h3>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Срок</th>
+<th>Детали</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Разработка DOOM</td>
+<td>~12 месяцев</td>
+<td>Вдвое дольше, чем Wolfenstein</td>
+</tr>
+<tr>
+<td>Релиз DOOM</td>
+<td>10 декабря 1993</td>
+<td>Первый эпизод на <strong>BBS</strong>, shareware, розница через <strong>GT Interactive</strong></td>
+</tr>
+<tr>
+<td>DOOM II</td>
+<td>1994, ~8 месяцев</td>
+<td>Тот же движок, 32 карты, босс <strong>Икона Греха</strong></td>
+</tr>
+<tr>
+<td>Final Doom</td>
+<td>1996</td>
+<td>Два мега-WAD от сообщества</td>
+</tr>
+<tr>
+<td>Doom 64</td>
+<td>1997, Midway</td>
+<td>Новые текстуры для Nintendo 64</td>
+</tr>
+<tr>
+<td>Doom 3</td>
+<td>2004, id Tech 4</td>
+<td>~4 года, хоррор; дополнение <em>Resurrection of Evil</em> (2005)</td>
+</tr>
+<tr>
+<td>Отменённая Doom 4</td>
+<td>—</td>
+<td>Перезапуск — стиль Call of Duty не прижился</td>
+</tr>
+<tr>
+<td>Doom (2016)</td>
+<td>id Tech 6</td>
+<td>Возврат к быстрому темпу, <strong>glory kills</strong></td>
+</tr>
+<tr>
+<td>Doom Eternal</td>
+<td>2020</td>
+<td>Ресурсный цикл боя</td>
+</tr>
+<tr>
+<td>The Dark Ages</td>
+<td>2025</td>
+<td>Приквел, акцент на ближний бой</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Игра</th>
+<th>Год</th>
+<th>Руководство</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Doom</td>
+<td>1993</td>
+<td>Джон Ромеро, Джон Кармак</td>
+</tr>
+<tr>
+<td>Doom II</td>
+<td>1994</td>
+<td>Ромеро, Кармак</td>
+</tr>
+<tr>
+<td>Doom 3</td>
+<td>2004</td>
+<td>Джон Кармак, Тим Уиллитс</td>
+</tr>
+<tr>
+<td>Doom (2016)</td>
+<td>2016</td>
+<td>Хьюго Мартин, Марти Страттон</td>
+</tr>
+<tr>
+<td>Doom Eternal</td>
+<td>2020</td>
+<td>Хьюго Мартин</td>
+</tr>
+<tr>
+<td>The Dark Ages</td>
+<td>2025</td>
+<td>Хьюго Мартин</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="экранизации-и-медиа">Экранизации и медиа</h3>
+<ul>
+<li><strong>Doom</strong> (2005, Universal) — фильм с Карлом Урбаном; сюжет сильно расходится с играми.</li>
+<li><strong>Doom: Аннигиляция</strong> (2019) — второй фильм по мотивам франшизы.</li>
+<li>Комиксы и книги по вселенной.</li>
+<li>Саундтреки — <strong>Роберт Принс</strong> (классика), <strong>Мик Гордон</strong> (современные части).</li>
+</ul>
+<p>Мод <strong>Brutal Doom</strong> неоднократно попадал в топы Mod DB. Для <em>Doom (2016)</em> работал редактор <strong>SnapMap</strong> с обменом картами.</p>
+<hr>
+<h3 id="мобильные-и-побочные-релизы">Мобильные и побочные релизы</h3>
+<ul>
+<li><strong>Doom RPG</strong> / <strong>Doom II RPG</strong> (2005–2009) — пошаговые RPG для телефонов.</li>
+<li><strong>Doom Resurrection</strong> (2009, iOS) — rail-shooter по мотивам Doom 3.</li>
+<li><strong>Doom (2016)</strong> — порт на <strong>Nintendo Switch</strong> с упрощённой графикой.</li>
+<li><strong>Doom Eternal: The Ancient Gods</strong> (2020–2021) — два DLC, финал сюжета <strong>Maykr</strong> и <strong>Dark Lord</strong>.</li>
+</ul>
+<hr>
+<h3 id="id-tech-и-открытый-код">id Tech и открытый код</h3>
+<p><strong>Doom</strong> (1993) после публикации исходников (1997, лицензия <strong>GPL</strong>) получил десятки <strong>портов</strong> — Linux, консоли, калькуляторы.</p>
+<table>
+<thead>
+<tr>
+<th>Версия</th>
+<th>Игра</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id Tech 1</strong></td>
+<td>Doom 1993</td>
+<td>2.5D, BSP-карты</td>
+</tr>
+<tr>
+<td><strong>id Tech 4</strong></td>
+<td>Doom 3</td>
+<td>Полный 3D, динамический свет</td>
+</tr>
+<tr>
+<td><strong>id Tech 6/7</strong></td>
+<td>Doom 2016 / Eternal</td>
+<td>Vulkan, glory kills, арены для <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/125">киберспорта</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="восприятие-критиков">Восприятие критиков</h3>
+<table>
+<thead>
+<tr>
+<th>Игра</th>
+<th>Оценка прессы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Doom (1993)</td>
+<td>Революция жанра, эталон FPS</td>
+</tr>
+<tr>
+<td>Doom 3</td>
+<td>Сильный хоррор; слабый мультиплеер</td>
+</tr>
+<tr>
+<td>Doom (2016)</td>
+<td>Возврат к корням, 85+ Metacritic</td>
+</tr>
+<tr>
+<td>Doom Eternal</td>
+<td>88+; хвалят темп, критикуют перегруз механик</td>
+</tr>
+<tr>
+<td>The Dark Ages</td>
+<td>Приквел 2025, средневековый сеттинг и щит</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="влияние-на-индустрию">Влияние на индустрию</h2>
+<p>DOOM изменило <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/114">PC-гейминг</a>, сетевые шутеры и цифровую дистрибуцию через <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11435">Steam</a>. Обзор в контексте других культовых игр — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/122">Легенды</a>.</p>
+<hr>
+<h3 id="рождение-жанра">Рождение жанра</h3>
+<p>Новые FPS в 1990‑х называли "<strong>клонами DOOM</strong>". Механики, которые переняла индустрия:</p>
+<ul>
+<li>быстрый темп перестрелок;</li>
+<li>большой арсенал под разные ситуации;</li>
+<li>секретные зоны на уровне;</li>
+<li>кооператив и <strong>Deathmatch</strong> по локальной сети.</li>
+</ul>
+<p><strong>Цепочка технологий</strong> от DOOM до Steam:</p>
+<pre><code class="language-text">DOOM (id Tech 1, 1993) ➔ Quake (3D, 1996) ➔ GoldSrc (Half-Life) ➔ Source ➔ Valve / Steam
+</code></pre>
+<p><a href="https://terms.spirzen.ru/glossary/Q#quake">Quake</a> принёс настоящую 3D-геометрию. На его основе собрали <strong>GoldSrc</strong> — движок <em>Half-Life</em> (1998). <strong>Гейб Ньюэлл</strong> (позже основатель <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11435">Valve</a>) раньше продюсировал порт <strong>Doom 95</strong> для Microsoft. Успех <em>Half-Life</em> привёл к магазину <strong>Steam</strong>.</p>
+<hr>
+<h3 id="pc-гейминг-и-microsoft">PC-гейминг и Microsoft</h3>
+<p>Тираж DOOM превысил <strong>10 млн</strong> копий. На пике популярности игра стояла на большем числе ПК, чем <strong>Windows 95</strong>.</p>
+<p><strong>Билл Гейтс</strong> снялся в шуточном рекламном ролике DOOM с дробовиком и запустил разработку <strong>DirectX</strong>, чтобы удержать геймеров в экосистеме Windows. Хронология API — <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11439">История DirectX</a>.</p>
+<hr>
+<h3 id="культура-моддинга">Культура моддинга</h3>
+<p>Исходники движка опубликовали в <strong>1997</strong> под <strong>GPL</strong>. Формат <strong>WAD</strong> хранит уровни и текстуры отдельно от программы — моддер меняет данные без пересборки exe.</p>
+<p>Популярные проекты сообщества:</p>
+<ul>
+<li><em>GZDoom</em> — современный порт с новыми эффектами;</li>
+<li><em>Brutal Doom</em> — более жестокая переделка геймплея;</li>
+<li>тысячи пользовательских карт с 1993 года по сей день.</li>
+</ul>
+<hr>
+<h3 id="рок-звёзды-it">Рок-звёзды IT</h3>
+<p>Программисты id Software стали кумирами 1990‑х. <strong>Джон Ромеро</strong> носил футболку "<strong>I made this game</strong>" ("Я сделал эту игру") — на выставках фанаты кланялись ему на колени.</p>
+<p><strong>Трент Резнор</strong> (Nine Inch Nails) после концертов играл в DOOM; позже написал саундтрек для <em>DOOM 3</em>.</p>
+<hr>
+<h3 id="феномен-it-runs-doom">Феномен "it runs Doom"</h3>
+<p>Игру запустили на медицинских сканерах, калькуляторах, тракторах и умных лампах. Мем <strong>"it runs Doom"</strong> проверяет любой новый экран — насколько он универсален и насколько компактен код id Tech 1.</p>
+<hr>
+<h2 id="см-также">См. также</h2>
+<ul>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/122">Легенды</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-01-velikie-lyudi/1">Великие люди IT</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11439">История DirectX</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11435">Steam</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/114">ПК как игровая платформа</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/7">DirectX, OpenGL и Vulkan — простыми словами</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/112">Игровые движки</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/113">idTech</a></li>
+<li><a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro">Компьютерные игры — о разделе</a></li>
+</ul>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#словарь">Словарь</a></li><li class="article-toc__item"><a href="#что-такое-doom">Что такое DOOM</a></li><li class="article-toc__item"><a href="#лор-вселенной">Лор вселенной</a></li><li class="article-toc__item is-h3"><a href="#хронология-событий">Хронология событий</a></li><li class="article-toc__item"><a href="#демоны-вселенной-doom">Демоны вселенной DOOM</a></li><li class="article-toc__item"><a href="#история-выпуска-и-описание-игр-серии">История выпуска и описание игр серии</a></li><li class="article-toc__item is-h3"><a href="#doom-1993">DOOM (1993)</a></li><li class="article-toc__item is-h3"><a href="#doom-ii-hell-on-earth-1994">DOOM II — Hell on Earth (1994)</a></li><li class="article-toc__item is-h3"><a href="#final-doom-1996">Final Doom (1996)</a></li><li class="article-toc__item is-h3"><a href="#doom-64-1997">DOOM 64 (1997)</a></li><li class="article-toc__item is-h3"><a href="#doom-3-2004">DOOM 3 (2004)</a></li><li class="article-toc__item is-h3"><a href="#doom-2016">DOOM (2016)</a></li><li class="article-toc__item is-h3"><a href="#doom-eternal-2020">DOOM Eternal (2020)</a></li><li class="article-toc__item is-h3"><a href="#doom-the-dark-ages-2025">DOOM — The Dark Ages (2025)</a></li><li class="article-toc__item"><a href="#геймплей">Геймплей</a></li><li class="article-toc__item is-h3"><a href="#агрессивный-менеджмент">Агрессивный менеджмент</a></li><li class="article-toc__item is-h3"><a href="#постоянное-движение">Постоянное движение</a></li><li class="article-toc__item is-h3"><a href="#зональное-оружие">Зональное оружие</a></li><li class="article-toc__item"><a href="#архитектура-выполнения">Архитектура выполнения</a></li><li class="article-toc__item is-h3"><a href="#движок-id-tech-1-1993">Движок id Tech 1 (1993)</a></li><li class="article-toc__item is-h3"><a href="#современный-стек-id-tech-7">Современный стек (id Tech 7)</a></li><li class="article-toc__item"><a href="#история-разработки">История разработки</a></li><li class="article-toc__item is-h3"><a href="#два-джона-и-имя-doom">Два Джона и имя DOOM</a></li><li class="article-toc__item is-h3"><a href="#от-mario-до-wolfenstein-3d">От Mario до Wolfenstein 3D</a></li><li class="article-toc__item is-h3"><a href="#хронология-релизов">Хронология релизов</a></li><li class="article-toc__item is-h3"><a href="#экранизации-и-медиа">Экранизации и медиа</a></li><li class="article-toc__item is-h3"><a href="#мобильные-и-побочные-релизы">Мобильные и побочные релизы</a></li><li class="article-toc__item is-h3"><a href="#id-tech-и-открытый-код">id Tech и открытый код</a></li><li class="article-toc__item is-h3"><a href="#восприятие-критиков">Восприятие критиков</a></li><li class="article-toc__item"><a href="#влияние-на-индустрию">Влияние на индустрию</a></li><li class="article-toc__item is-h3"><a href="#рождение-жанра">Рождение жанра</a></li><li class="article-toc__item is-h3"><a href="#pc-гейминг-и-microsoft">PC-гейминг и Microsoft</a></li><li class="article-toc__item is-h3"><a href="#культура-моддинга">Культура моддинга</a></li><li class="article-toc__item is-h3"><a href="#рок-звёзды-it">Рок-звёзды IT</a></li><li class="article-toc__item is-h3"><a href="#феномен-it-runs-doom">Феномен &quot;it runs Doom&quot;</a></li><li class="article-toc__item"><a href="#см-также">См. также</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="/games/9-03-igrovaya-industriya/122"> Легенды  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-01-velikie-lyudi/1" target="_blank" rel="noopener noreferrer"> Великие люди IT  ↗ </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11435"> Steam  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/114"> Персональные компьютеры как игровая платформа  </a> </li><li> <a href="/games/9-04-razrabotka-igr/114"> Графические API в разработке игр  </a> </li><li> <a href="/games/9-04-razrabotka-igr/112"> Игровые движки  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-07-nemnogo-o-proshlom/13" target="_blank" rel="noopener noreferrer"> История ПК и видеокарт  ↗ </a> </li><li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-18-kompyuternye-igry/intro" target="_blank" rel="noopener noreferrer"> Компьютерные игры — о разделе  ↗ </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Как устроен Xbox Series S и Series X — Игры IT Universe</title><meta name="description" content="Консоли Xbox Series X и Series S — результат эволюции платформы Xbox под флагом Microsoft."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-03-igrovaya-industriya/intro">Игровая индустрия</a></li><li><span aria-current="page">Как устроен Xbox Series S и Series X</span></li></ol></nav><header class="portal-hero"> <h1>Как устроен Xbox Series S и Series X</h1> <p>Консоли Xbox Series X и Series S — результат эволюции платформы Xbox под флагом Microsoft.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Как устроен Xbox Series S и Series X" data-url="/games/9-03-igrovaya-industriya/11431">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Как устроен Xbox Series S и Series X">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Как устроен Xbox Series S и Series X</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="как-устроен-xbox-series-s-и-series-x">Как устроен Xbox Series S и Series X</h2>
+<p>Консоли Xbox Series X и Series S — результат эволюции платформы Xbox под флагом Microsoft. Обе модели относятся к четвёртому поколению домашних игровых консолей Xbox и были представлены в ноябре 2020 года. Несмотря на различия в производительности и комплектации, они построены на единой архитектурной основе, объединённой общей платформенной стратегией Microsoft — унификация разработки, обратная совместимость, облачная интеграция и максимальное использование возможностей современных вычислительных технологий.</p>
+<hr>
+<h3 id="линейка-xbox-до-series-xs">Линейка Xbox до Series X|S</h3>
+<p>Серия домашних консолей Microsoft насчитывает четыре аппаратных поколения с <strong>2001</strong> года. Каждое выходило в конкуренции с Sony и Nintendo того же цикла и наследовало сервисы предыдущего уровня — прежде всего <strong>Xbox Live</strong> (с 2002) и позже цифровой магазин, <strong>Game Pass</strong> и облачный стриминг.</p>
+<table>
+<thead>
+<tr>
+<th>Консоль</th>
+<th>Старт продаж</th>
+<th>Преемник</th>
+<th>Ориентир по продажам</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Xbox</td>
+<td>15.11.2001 (США)</td>
+<td>Xbox 360</td>
+<td>~24,6 млн</td>
+</tr>
+<tr>
+<td>Xbox 360</td>
+<td>22.11.2005 (США)</td>
+<td>Xbox One</td>
+<td>~85,8 млн</td>
+</tr>
+<tr>
+<td>Xbox One (+ One S, One X)</td>
+<td>22.11.2013</td>
+<td>Series X и S</td>
+<td>~51 млн</td>
+</tr>
+<tr>
+<td>Xbox Series X / Series S</td>
+<td>10.11.2020</td>
+<td>—</td>
+<td>в продаже</td>
+</tr>
+</tbody>
+</table>
+<p>Первую Xbox задумали как <strong>DirectX Box</strong> — консоль на PC-подобном железе (x86, DirectX, HDD, Ethernet). Перед Series Microsoft тестировала консоль под кодовым именем <strong>Project Scarlett</strong>; публичное имя <strong>Xbox Series X</strong> дали на <strong>The Game Awards</strong> (декабрь 2019), релиз — через год.</p>
+<p>История бренда, мотивация выхода Microsoft на рынок приставок и поколения с точки зрения разработчика — в статье <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-04-razrabotka-igr/121">Xbox</a>.</p>
+<hr>
+<h3 id="общая-концепция-проектирования">Общая концепция проектирования</h3>
+<p>Microsoft выбрала сегментированную модель выпуска: одна высокопроизводительная консоль (Series X) и одна компактная (Series S), ориентированная на экономичность и доступность. Это решение позволяет обслуживать разные сегменты рынка без фрагментации экосистемы. Обе консоли используют идентичные вычислительные блоки, но с разной частотой, количеством исполнительных блоков и объёмом памяти. Такой подход снижает издержки разработки ПО, обеспечивает единую кодовую базу, и позволяет разработчикам оптимизировать игры под одну базовую платформу с возможностью масштабирования.</p>
+<p>В центре концепции — <strong>Velocity Architecture</strong> — совокупность аппаратных и программных технологий, призванных радикально сократить время загрузки, повысить отзывчивость ввода и усилить детализацию визуального контента. Эта архитектура опирается на четыре ключевых компонента:</p>
+<ol>
+<li><strong>Пользовательский SSD-накопитель с высокой пропускной способностью</strong></li>
+<li><strong>Система сжатия данных (BCPack)</strong></li>
+<li><strong>Sampler Feedback Streaming (SFS)</strong></li>
+<li><strong>Механизм прямого доступа к памяти (DirectStorage API)</strong></li>
+</ol>
+<p>Эти компоненты работают совместно, формируя сквозной конвейер от хранения данных до их отображения на экране.</p>
+<hr>
+<h3 id="процессорный-комплекс-cpu">Процессорный комплекс (CPU)</h3>
+<p>Обе консоли используют модифицированный 8-ядерный процессор на основе архитектуры <strong>Zen 2</strong>, разработанной AMD. Это модификация Ryzen третьего поколения, изготовленная по техпроцессу 7 нм+, адаптированная под требования игровой платформы.</p>
+<ul>
+<li>В <strong>Xbox Series X</strong> базовая частота каждого ядра — 3,8 ГГц при отключённой симметричной многопоточности (SMT), и 3,6 ГГц — при включённой.</li>
+<li>В <strong>Xbox Series S</strong> — 3,6 ГГц без SMT, 3,4 ГГц с SMT.</li>
+</ul>
+<p>Процессор интегрирован в единый кристалл (SoC) вместе с графическим ядром и контроллерами памяти и ввода-вывода. Такая интеграция минимизирует задержки между компонентами и упрощает маршрутизацию данных. Все ядра равноправны, поддерживают одновременную многопоточность. Архитектура Zen 2 обеспечивает высокую IPC (Instructions Per Cycle), что особенно важно для физических симуляций, ИИ персонажей, систем управления состоянием мира и других вычислительно интенсивных задач, выполняемых на CPU-стороне.</p>
+<p>Microsoft предоставляет разработчикам полный доступ к ресурсам CPU. В отличие от предыдущих поколений, нет выделенного "системного" ядра, удерживаемого ОС — весь процессор доступен для игр и приложений, а управление фоновыми процессами осуществляется через приоритеты и изоляцию задач на уровне ядра ОС.</p>
+<hr>
+<h3 id="графический-комплекс-gpu">Графический комплекс (GPU)</h3>
+<p>Графическая подсистема основана на микроархитектуре <strong>RDNA 2</strong> от AMD. Это первая консольная реализация RDNA 2 в массовом сегменте. RDNA 2 — это эволюция RDNA, дополненная поддержкой аппаратной трассировки лучей, улучшенной эффективностью исполнения шейдеров и новыми вычислительными возможностями.</p>
+<hr>
+<h4>Исполнительные единицы и производительность</h4>
+<ul>
+<li><strong>Xbox Series X</strong> содержит 52 Compute Units (CU), каждая из которых включает 64 шейдерных ядра, итого 3328 шейдерных процессоров. Частота GPU — 1825 МГц. Пиковая вычислительная мощность — 12,15 TFLOPS в операциях FP32.</li>
+<li><strong>Xbox Series S</strong> содержит 20 CU (1280 шейдерных ядер), частота — 1565 МГц, производительность — 4 TFLOPS FP32.</li>
+</ul>
+<p>Различие в количестве CU — основной фактор разрыва в графической мощности. Такая конфигурация позволяет сохранить совместимость шейдерных программ: один и тот же шейдерный код компилируется один раз и выполняется на обеих консолях, но распределение нагрузки адаптируется автоматически под доступное количество вычислительных ресурсов.</p>
+<hr>
+<h4>Поддержка трассировки лучей</h4>
+<p>Каждый CU включает блоки <strong>Ray Accelerators</strong> — специализированные аппаратные модули, ускоряющие пересечение лучей с геометрией. Трассировка реализована на уровне <strong>DirectX Raytracing Tier 1.1</strong>, что включает:</p>
+<ul>
+<li>Динамическое пересечение лучей с ускоряющими структурами (Bounding Volume Hierarchies);</li>
+<li>Поддержку геометрических шейдеров для генерации примитивов в реальном времени;</li>
+<li>Возможность запуска нескольких лучей из одного шейдера.</li>
+</ul>
+<p>Трассировка применяется выборочно — отражения в зеркалах и влажных поверхностях, тени от точечных источников, глобальное освещение в интерьерах. Полная трассировка сцены в реальном времени не реализована — она требует ресурсов, значительно превосходящих возможности даже Series X. Вместо этого используется гибридный рендеринг: растеризация основной сцены + трассировка ключевых эффектов.</p>
+<hr>
+<h4>Mesh Shaders</h4>
+<p>Эта технология заменяет традиционный конвейер геометрической обработки (Input Ассемблер → Vertex Shader → Hull/Domain/Tessellation → Geometry Shader). Mesh Shaders позволяют разработчику управлять геометрической детализацией непосредственно на этапе формирования сетки, минуя промежуточные этапы. Это даёт:</p>
+<ul>
+<li>Прямое управление кластерами треугольников (meshlets);</li>
+<li>Возможность отсечения невидимых частей геометрии на раннем этапе;</li>
+<li>Снижение нагрузки на шину памяти за счёт уменьшения объёма передаваемых данных.</li>
+</ul>
+<hr>
+<h4>Variable Rate Shading (VRS)</h4>
+<p>VRS позволяет изменять частоту шейдинга (то есть, количество вычислений на пиксель) в разных областях кадра. Например, в центре внимания — область фокуса игрока, где применяется полное шейдинг-разрешение (1×1), а на периферии — пониженное (2×2, 4×4). Это достигается за счёт тайлинга изображения на крупные мозаичные блоки (обычно 16×16 пикселей) и присвоения каждому блоку уровня детализации.</p>
+<p>Уровень детализации определяется по геометрической сложности, динамике движения, глубине сцены и другим параметрам. VRS реализован аппаратно и управляем через DirectX 12 Ultimate. Экономия вычислительных ресурсов достигает 15–20 % без заметного ухудшения визуального качества.</p>
+<hr>
+<h4>Sampler Feedback Streaming (SFS)</h4>
+<p>SFS — ключевой компонент Velocity Architecture. Цель технологии — оптимизировать использование текстурной памяти. В традиционных системах все мип-уровни текстур загружаются полностью, даже если на экране видна только небольшая часть поверхности. SFS отслеживает, какие именно части текстур используются в кадре, и формирует "карту обратной связи" (feedback map), которая затем используется при загрузке следующего кадра для выборочной подгрузки только нужных тайлов текстур.</p>
+<p>Это позволяет:</p>
+<ul>
+<li>Уменьшить объём данных, передаваемых из SSD в видеопамять;</li>
+<li>Сократить задержки при смене локаций;</li>
+<li>Реализовать текстуры эквивалентные 4K при физическом хранении в 2K или даже 1080p с динамическим апскейлингом на лету.</li>
+</ul>
+<p>SFS работает в связке с BCPack — собственным алгоритмом сжатия Microsoft, оптимизированным под текстурные данные. Коэффициент сжатия — до 2:1 по сравнению с BC7, без потерь качества при визуальном восприятии.</p>
+<hr>
+<h3 id="оперативная-память-gddr6">Оперативная память (GDDR6)</h3>
+<p>Память — критически важный элемент Velocity Architecture. Обе консоли используют высокоскоростную память типа <strong>GDDR6</strong>, но с различной организацией шины и объёмом.</p>
+<ul>
+<li><strong>Xbox Series X</strong>: 16 ГБ GDDR6 (10 ГБ быстрой памяти @ 560 ГБ/с, 6 ГБ медленной @ 336 ГБ/с). Шина — 320-бит.</li>
+<li><strong>Xbox Series S</strong>: 10 ГБ GDDR6 (8 ГБ быстрой @ 224 ГБ/с, 2 ГБ медленной @ 56 ГБ/с). Шина — 128-бит.</li>
+</ul>
+<p>Разделение на "быструю" и "медленную" память — условная модель, принятая для упрощения описания. На физическом уровне это единый банк памяти, но с разной полосой пропускания в зависимости от адресного пространства. Быстрая память выделена для критически важных данных — вершин, индексов, константных буферов, текстур кадра. Медленная — для системных структур, аудио, сетевых буферов, UI-слоёв.</p>
+<p>Разработчики получают полный контроль над размещением данных через <strong>Explicit Heap Management</strong> в DirectX 12. Это позволяет избежать фрагментации и гарантировать минимальные задержки при доступе к данным.</p>
+<p>Объём памяти выбран с расчётом на 4K-рендеринг с мультисэмплированием, высокодетализированные шейдеры и одновременную работу фоновых сервисов (чат, стриминг, запись клипов). В Series S объём уменьшен с учётом целевого разрешения — 1440p (масштабируемого до 4K через FSR или XeSS).</p>
+<hr>
+<h3 id="хранилище-ssd-и-расширение">Хранилище — SSD и расширение</h3>
+<h4>Встроенный SSD</h4>
+<p>Обе консоли комплектуются NVMe SSD, спроектированным в партнёрстве с Seagate. Интерфейс — PCIe 4.0 x2 (пропускная способность до 2,4 ГБ/с "сырой" скорости, до 4,8 ГБ/с с учётом сжатия BCPack).</p>
+<ul>
+<li><strong>Series X</strong>: 1 ТБ пользовательского пространства (реально доступно ~802 ГБ после вычета системных разделов).</li>
+<li><strong>Series S</strong>: 512 ГБ (~364 ГБ доступно).</li>
+</ul>
+<p>SSD не просто заменяет HDD — он интегрирован в вычислительный конвейер. Данные с диска поступают напрямую в GPU через DMA-канал, минуя CPU и ОЗУ, где это возможно. Это реализовано через <strong>DirectStorage API</strong>, изначально разработанный для Windows, но адаптированный под Xbox OS.</p>
+<hr>
+<h4>Внешнее хранилище</h4>
+<p>Microsoft поддерживает два типа внешних накопителей:</p>
+<ol>
+<li><strong>USB 3.2 Gen 1 (5 Гбит/с) HDD/SSD</strong> — для хранения и запуска игр предыдущих поколений (Xbox, Xbox 360, Xbox One).</li>
+<li><strong>Расширительный картридж Seagate (1 ТБ)</strong> — NVMe-накопитель в фирменном форм-факторе, подключаемый через специальный порт на задней панели. Поддерживает запуск игр нового поколения (Series X|S Optimized).</li>
+</ol>
+<p>Стандартные внешние SSD по USB <strong>не позволяют запускать нативные игры Series X|S</strong>, даже если их интерфейс обеспечивает достаточную пропускную способность. Причина — отсутствие низкоуровневого доступа к контроллеру, необходимого для работы Velocity Architecture. Только картридж Seagate прошит прошивкой, согласованной с Xbox OS, и эмулирует поведение встроенного SSD.</p>
+<p><strong>Срок службы SSD</strong> — заявленный TBW (Total Bytes Written) для встроенного накопителя составляет около 300–400 ТБ. При среднем потреблении 50–100 ГБ в день (установка обновлений, загрузка уровней, запись клипов) ресурс рассчитан минимум на 10 лет интенсивного использования. Износ контролируется встроенной системой мониторинга, но пользователю данные не предоставляются.</p>
+<hr>
+<h3 id="носители-и-оптика">Носители и оптика</h3>
+<p>Только <strong>Xbox Series X</strong> оснащена оптическим приводом: 4K UHD Blu-ray с максимальной скоростью чтения 4× (54 МБ/с). Привод поддерживает:</p>
+<ul>
+<li>Игровые диски Xbox One и Series X|S;</li>
+<li>Фильмы в форматах BD-ROM, BD-R/RE, DVD±R/RW;</li>
+<li>Dolby Vision и HDR10 для видео.</li>
+</ul>
+<p><strong>Xbox Series S</strong> — полностью цифровая консоль. Покупка игр возможна только через Microsoft Store, Xbox Game Pass или цифровые ключи. Это решение снижает стоимость, габариты и энергопотребление. Отдельно про экосистему Store — в статье <a href="https://spirzen.ru/encyclopedia/4-code-dev/4-11-desktopnye-prilozheniya/117">Microsoft Store и публикация Windows-приложений</a>.</p>
+<hr>
+<h3 id="операционная-система-и-программная-платформа">Операционная система и программная платформа</h3>
+<p>Xbox Series X и Series S работают под управлением <strong>Xbox OS</strong> — модифицированной версии Windows 10 Core, оптимизированной для игровых консолей. Это специализированная сборка на базе ядра Windows NT, с упрощённым стеком драйверов, отключённым графическим интерфейсом Win32 и жёстким контролем приоритетов процессов.</p>
+<p>Основные компоненты ОС:</p>
+<ul>
+<li><strong>Xbox System Software (XSS)</strong> — базовый уровень, управляющий загрузкой, безопасностью, питанием и обновлениями.</li>
+<li><strong>Xbox Shell</strong> — пользовательский интерфейс ("Домашний экран"), реализованный как UWP-приложение.</li>
+<li><strong>Game Host</strong> — изолированная среда выполнения игр, где процесс игры запускается с максимальным приоритетом, без фоновой активности ОС.</li>
+<li><strong>Hypervisor</strong> — виртуализирующий слой, обеспечивающий изоляцию системных служб от игрового процесса и защиту лицензионных данных.</li>
+</ul>
+<p>Все обновления ОС поставляются централизованно через Microsoft Store, в фоновом режиме, с возможностью отсрочки установки. После установки обновления система перезагружается в течение 15–20 секунд — рекордное время для платформы такого класса, достигнутое за счёт частичной загрузки ядра в резервной памяти (Quick Resume State).</p>
+<hr>
+<h4>DirectX и API-стек</h4>
+<p>Консоли поддерживают полный набор технологий <strong>DirectX 12 Ultimate</strong>, включая:</p>
+<ul>
+<li>Mesh Shaders,</li>
+<li>Variable Rate Shading Tier 2,</li>
+<li>DirectX Raytracing Tier 1.1,</li>
+<li>Sampler Feedback Streaming.</li>
+</ul>
+<p>Это делает Xbox Series X|S единственными консолями, полностью совместимыми с самой современной версией DirectX на момент выпуска. Разработчики используют единый SDK — <strong>Xbox GDK (Game Разработка Kit)</strong>, который включает:</p>
+<ul>
+<li>Инструменты профилирования (PIX for Xbox),</li>
+<li>Эмуляторы контроллера и сети,</li>
+<li>Симуляторы задержек и потерь пакетов,</li>
+<li>Интеграцию с Azure DevOps.</li>
+</ul>
+<p>GDK унифицирован с PC-версией: одна и та же кодовая база может компилироваться как для Xbox, так и для Windows 10/11 с минимальными правками. Эта совместимость лежит в основе стратегии <strong>Play Anywhere</strong>.</p>
+<hr>
+<h4>Play Anywhere и кроссплатформенная идентичность</h4>
+<p>Play Anywhere — это маркетинговое название политики лицензирования и синхронизации. При покупке игры с пометкой <em>"Xbox Play Anywhere"</em> пользователь получает:</p>
+<ul>
+<li>Одну лицензию, действующую на Xbox и Windows PC;</li>
+<li>Общее облачное сохранение через Xbox Live;</li>
+<li>Единые достижения, статистику и друзей;</li>
+<li>Возможность продолжить игру с того же места на другом устройстве.</li>
+</ul>
+<p>Технической основой служит <strong>Xbox Live Services</strong> — облачная платформа, предоставляющая API для социальных функций, сохранений, аналитики и монетизации. Все игры, даже офлайн-режимы, используют Xbox Live для авторизации и проверки лицензии (за исключением редких случаев, когда разработчик отключает обязательный онлайн-чек).</p>
+<hr>
+<h3 id="обратная-совместимость">Обратная совместимость</h3>
+<p>Microsoft реализовала одну из самых масштабных программ обратной совместимости в истории игровой индустрии. Xbox Series X|S поддерживают:</p>
+<ul>
+<li>Все игры Xbox One (включая Xbox One X Enhanced);</li>
+<li>Более 600 игр Xbox 360;</li>
+<li>Некоторые игры оригинального Xbox (около 200 тайтлов).</li>
+</ul>
+<hr>
+<h4>Как это работает</h4>
+<p>Обратная совместимость достигнута не эмуляцией в классическом понимании, а <strong>рекомпиляцией и хостингом образов</strong>. Каждая совместимая игра проходит ручную проверку и интеграцию в каталог Xbox:</p>
+<ol>
+<li>Исходный образ диска преобразуется в цифровой пакет (XISO);</li>
+<li>При необходимости — применяются патчи для совместимости с новым GPU (например, замена устаревших шейдеров HLSL);</li>
+<li>Игра упаковывается в контейнер, запускаемый через <strong>Compatibility Layer</strong> — прослойку, преобразующую вызовы XDK (Xbox Разработка Kit) в вызовы GDK.</li>
+</ol>
+<p>Для игр Xbox 360 используется программная эмуляция процессора PowerPC на CPU Zen 2. Производительность обеспечивается за счёт значительного превосходства современных ядер над Xenon (CPU Xbox 360): даже при эмуляции 3 ядер Xenon на одном ядре Zen 2 остаётся запас по тактовой частоте и IPC.</p>
+<hr>
+<h4>Улучшения для старых игр</h4>
+<p>Совместимые игры получают следующие улучшения "из коробки":</p>
+<ul>
+<li><strong>Автоматическое повышение частоты кадров</strong> — если игра не блокирует FPS, она может работать на 60 или даже 120 кадрах в секунду (например, <em>Gears of War</em> на Xbox 360 изначально работала на 30 FPS, на Series X — на 60 FPS без изменений кода).</li>
+<li><strong>Повышение разрешения</strong> — через динамическое масштабирование (часто до 4K на Series X, до 1440p на Series S).</li>
+<li><strong>Уменьшение времени загрузки</strong> — за счёт SSD: загрузка <em>Fallout 3</em> сократилась с 52 секунд до 8.</li>
+<li><strong>Автоматическая поддержка HDR</strong> — через tone mapping, если игра использует линейное цветовое пространство.</li>
+</ul>
+<p>Некоторые игры не поддерживаются. Это связано с аппаратными зависимостями, которые невозможно воспроизвести программно — например, игры, требующие специализированных аксессуаров (Guitar Hero, Rock Band), или использующие защищённые DRM-механизмы третьих сторон (некоторые издания <em>Need for Speed</em> с SecuROM). Также исключены игры, не прошедшие юридическую проверку (например, <em>The Lord of the Rings: The Battle for Middle-earth II</em>, права на которую принадлежат Warner Bros., но не переданы Microsoft).</p>
+<hr>
+<h3 id="аудиоподсистема-и-пространственный-звук">Аудиоподсистема и пространственный звук</h3>
+<p>Обе консоли поддерживают <strong>Dolby Atmos для игр и медиа</strong>, а также <strong>Windows Sonic</strong> и <strong>DTS:X</strong> (последнее — через приложение DTS Sound Unbound из магазина).</p>
+<p>Dolby Atmos реализован на программном уровне через <strong>Xbox Audio Stack</strong>, совместимый с AV-ресиверами, саундбарами и совместимыми наушниками (включая беспровредные). Консоль генерирует объектно-ориентированный звуковой поток, где каждый источник (выстрел, шаг, двигатель) имеет координаты в 3D-пространстве. Рендеринг выполняется в реальном времени, с учётом геометрии сцены (отражения, поглощение, окклюзия).</p>
+<p>Для наушников используется бинауральная виртуализация с HRTF (Head-Related Transfer Function), адаптированная под среднестатистическую анатомию уха. Microsoft сотрудничала с Fraunhofer Institute для калибровки моделей.</p>
+<p>Важно: Atmos активируется <strong>только при передаче аудио по HDMI</strong>. Оптический выход (S/PDIF) на Series X поддерживает только Dolby Digital и DTS, без Atmos.</p>
+<hr>
+<h3 id="сетевые-интерфейсы-и-облачная-интеграция">Сетевые интерфейсы и облачная интеграция</h3>
+<h4>Физические интерфейсы</h4>
+<ul>
+<li><strong>Gigabit Ethernet (10/100/1000BASE-T)</strong> — с поддержкой QoS (IEEE 802.1p) для приоритезации игрового трафика.</li>
+<li><strong>Wi-Fi 5 (802.11ac)</strong> — двухдиапазонный (2,4 ГГц и 5 ГГц), MU-MIMO, до 867 Мбит/с в 5 ГГц.</li>
+<li><strong>Bluetooth 5.0</strong> — для подключения геймпадов, наушников, клавиатур.</li>
+</ul>
+<p>Нет поддержки Wi-Fi 6 (802.11ax) и 2,5/10 Gigabit Ethernet — решение, принятое для снижения стоимости и энергопотребления. На практике Gigabit Ethernet и Wi-Fi 5 полностью покрывают потребности в онлайн-играх и стриминге 4K HDR.</p>
+<hr>
+<h4>Xbox Cloud Gaming (xCloud)</h4>
+<p>Консоль интегрирована с облачной платформой <strong>Xbox Cloud Gaming</strong>, работающей на кластерах Azure с GPU на базе AMD Radeon Instinct. Каждый поток — это виртуальная Xbox Series X, запускающая игру в облаке и передающая видеопоток клиенту по протоколу <strong>Microsoft Game Streaming Protocol (MGSP)</strong>.</p>
+<p>MGSP включает:</p>
+<ul>
+<li>Адаптивное кодирование (H.264/H.265, до 1080p@60fps);</li>
+<li>Компенсацию задержек (input lag prediction);</li>
+<li>Динамическое масштабирование разрешения в зависимости от пропускной способности канала.</li>
+</ul>
+<p>Series X|S могут не только принимать поток, но и <strong>выступать в роли хоста для стриминга на другие устройства</strong> через приложение Xbox Console Streaming.</p>
+<hr>
+<h4>Xbox Live и сетевые службы</h4>
+<p>Сетевой стек включает:</p>
+<ul>
+<li><strong>TrueSkill 2</strong> — система ранжирования, оценивающая навык игрока на основе результатов и нестабильности;</li>
+<li><strong>Party Chat</strong> — зашифрованная голосовая связь с E2E-шифрованием (SRTP);</li>
+<li><strong>Matchmaking</strong> — распределённый сервис, минимизирующий пинг и максимизирующий баланс команд;</li>
+<li><strong>Xbox Network QoS</strong> — приоритезация UDP-пакетов от игр на уровне маршрутизатора (требует поддержки на стороне роутера).</li>
+</ul>
+<p>Все сетевые соединения проходят через <strong>Xbox Secure Boot Chain</strong> — цепочку доверенной загрузки, включающую проверку сертификатов на каждом уровне стека.</p>
+<hr>
+<h3 id="охлаждение-энергопотребление-и-теплоотвод">Охлаждение, энергопотребление и теплоотвод</h3>
+<h4>Конструкция системы охлаждения</h4>
+<ul>
+<li><strong>Xbox Series X</strong> использует вертикальный воздушный поток — воздух забирается с нижней решётки, проходит через радиаторы CPU и GPU, охлаждаемые одним 130-мм вентилятором с лопастями переменного шага, и выбрасывается через верхнюю панель.</li>
+<li><strong>Xbox Series S</strong> — горизонтальный поток, более компактный вентилятор (92 мм), двухсекционный теплообменник.</li>
+</ul>
+<p>Обе системы построены по принципу <strong>параллельного охлаждения</strong>: CPU и GPU имеют отдельные тепловые трубы, соединённые с единым алюминиевым радиатором. Это предотвращает "тепловой перекос" — ситуацию, когда один чип нагревает другой.</p>
+<p>Термоинтерфейс — гибридная паста на основе металлических частиц (не жидкий металл, в отличие от некоторых ПК-решений). Замена возможна, но требует разборки и нарушает гарантию.</p>
+<hr>
+<h4>Потребление и энергоэффективность</h4>
+<ul>
+<li><strong>Xbox Series X</strong> — до 315 Вт в пиковой нагрузке, до 10 Вт в режиме Instant-On, 1–2 Вт в выключенном состоянии с подключённым питанием.</li>
+<li><strong>Xbox Series S</strong> — до 160 Вт, 7 Вт в Instant-On, 0,5 Вт в покое.</li>
+</ul>
+<p>Обе консоли сертифицированы по стандарту <strong>Энергетика Star 8.0</strong> и <strong>EU ErP Lot 3</strong>. Режим <strong>Энергетика-Saving Mode</strong> отключает фоновую загрузку и Instant-On, снижая потребление в простое до <code>&#x3C;</code>0,5 Вт.</p>
+<p>Автономной работы нет — консоли рассчитаны на постоянное подключение к сети питания. Режим "Полёта" (Airplane Mode) отключает все радиомодули (Wi-Fi, Bluetooth), но не влияет на производительность CPU/GPU.</p>
+<hr>
+<h3 id="техническое-обслуживание-и-долговечность">Техническое обслуживание и долговечность</h3>
+<h4>Чистка и профилактика</h4>
+<p>Рекомендованная периодичность чистки — раз в 12–18 месяцев при средней нагрузке. Этапы:</p>
+<ol>
+<li>Отключение от сети и охлаждение не менее 1 часа.</li>
+<li>Снятие боковой панели (Series S) или верхней крышки (Series X — требует отвёртки Torx T8).</li>
+<li>Продувка вентилятора и радиатора сжатым воздухом (давление ≤ 0,3 МПа, температура воздуха не ниже +10 °C).</li>
+<li>Проверка свободного хода лопастей вентилятора.</li>
+</ol>
+<p>Замена термопасты не требуется в течение срока службы при нормальной эксплуатации. Перегрев возникает только при физической блокировке вентиляционных отверстий или эксплуатации в условиях <code>></code>40 °C и влажности <code>></code>80 %.</p>
+<hr>
+<h4>Диагностика и обновление</h4>
+<p>Встроенная утилита <strong>Xbox System Info</strong> (вызывается комбинацией кнопок при загрузке) позволяет:</p>
+<ul>
+<li>Просмотреть версии микропрограмм CPU, GPU, SSD;</li>
+<li>Проверить целостность памяти (RAM test);</li>
+<li>Запустить диагностику диска (SMART-статус, процент износа);</li>
+<li>Сбросить настройки сети.</li>
+</ul>
+<p>Обновления микропрограмм (firmware) SSD, контроллера питания и чипсета поставляются вместе с обновлениями ОС и устанавливаются автоматически.</p>
+<hr>
+<h3 id="практическая-эксплуатация">Практическая эксплуатация</h3>
+<h4>Первоначальная настройка</h4>
+<p>Процесс включает:</p>
+<ol>
+<li>Выбор региона и языка;</li>
+<li>Подключение к сети (проводное или Wi-Fi);</li>
+<li>Вход в учётную запись Microsoft (или создание новой);</li>
+<li>Настройка Xbox Live Gold / Game Pass (опционально);</li>
+<li>Калибровка дисплея (автоматическое определение HDR, частоты, цветового охвата);</li>
+<li>Конфигурация аудиовыхода (Dolby Atmos, стерео, наушники).</li>
+</ol>
+<p>Весь процесс занимает 8–12 минут при стабильном интернете.</p>
+<hr>
+<h4>Работа с периферией</h4>
+<ul>
+<li><strong>Геймпад Xbox Wireless Controller (2020)</strong> — использует собственный 2,4 ГГц RF-протокол (не Bluetooth LE для игр), обеспечивая задержку <code>&#x3C;</code>8 мс. Поддерживает динамическую подсветку (через аксессуары), тактильную отдачу Impulse Triggers и шумоподавление в микрофоне (при подключении гарнитуры).</li>
+<li><strong>Клавиатура и мышь</strong> — поддерживаются на уровне системы и в приложениях (браузер, Discord), но не во всех играх. Разрешение ввода зависит от разработчика.</li>
+<li><strong>Наушники</strong> — через 3,5-мм разъём (с поддержкой CTIA), USB-C (для цифровых гарнитур) или Bluetooth. Dolby Atmos активируется автоматически при обнаружении совместимого устройства.</li>
+</ul>
+<hr>
+<h4>Xbox Game Pass и облачная экосистема</h4>
+<p>Game Pass — подписка, предоставляющая доступ к библиотеке из сотен игр. Подробнее о тарифах, истории и полном каталоге — в статье <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/114301">Xbox Game Pass</a>. На консоли в 2025–2026 годах основные уровни — <strong>Essential</strong>, <strong>Premium</strong> и <strong>Ultimate</strong>; отдельно существует <strong>PC Game Pass</strong> для Windows.</p>
+<p>Игры добавляются и удаляются по графику. Все тайтлы от Microsoft (включая <em>Halo</em>, <em>Forza</em>, <em>Starfield</em>) доступны в день релиза.</p>
+<hr>
+<h3 id="инженерный-баланс-почему-именно-так">Инженерный баланс — почему именно так</h3>
+<p>Архитектура Xbox Series X и Series S — результат системной оптимизации под три цели:</p>
+<ol>
+<li><strong>Максимальная производительность в целевом ценовом сегменте</strong>;</li>
+<li><strong>Долгосрочная стабильность и предсказуемость для разработчиков</strong>;</li>
+<li><strong>Глубокая интеграция в облачную экосистему Microsoft</strong>.</li>
+</ol>
+<p>Эти цели проявились в следующих решениях:</p>
+<ul>
+<li>
+<p><strong>Единый SoC (System-on-Chip)</strong> — CPU, GPU, память и контроллеры объединены на одном кристалле (AMD XCG SKU). Это снижает латентность межкомпонентных связей, упрощает трассировку платы, повышает энергоэффективность и гарантирует идентичность характеристик у всех устройств одного поколения. В отличие от ПК, где производительность зависит от комбинации материнской платы, ОЗУ, SSD и драйверов, консоль предлагает фиксированную целевую конфигурацию.</p>
+</li>
+<li>
+<p><strong>Отказ от универсального PCIe x4 SSD-интерфейса</strong> — Microsoft могла использовать стандартный M.2 NVMe-слот, но выбрала собственный расширительный порт с лицензированным контроллером. Это обеспечило контроль над микропрограммой, гарантию пропускной способности и совместимости с Velocity Architecture. Стандартные SSD не соответствуют требованиям по времени отклика и уровню детерминизма ввода-вывода.</p>
+</li>
+<li>
+<p><strong>Гибридная память (GDDR6 с разной пропускной способностью)</strong> — в отличие от единообразной памяти в ПК, Xbox использует адресное пространство с переменной полосой. Это позволяет разработчику явно размещать данные в "быстрой" или "медленной" зоне, оптимизируя баланс между пропускной способностью и объёмом. Такая схема эффективнее, чем добавление ещё 6 ГБ памяти с той же скоростью по цене и энергопотреблению.</p>
+</li>
+<li>
+<p><strong>Вертикальная форма Series X</strong> — инженерное решение. Вертикальный воздушный поток устраняет эффект "тепловой стратификации", наблюдаемый в горизонтальных корпусах (например, PS5). В Series X температура GPU стабильно ниже температуры CPU на 4–6 °C, что снижает риск троттлинга под длительной нагрузкой.</p>
+</li>
+</ul>
+<hr>
+<h3 id="сравнение-с-playstation-5">Сравнение с PlayStation 5</h3>
+<p>Xbox Series X и PlayStation 5 используют схожую базовую архитектуру — AMD Zen 2 + RDNA 2, GDDR6, SSD. Однако различия в деталях определяют разницу в поведении платформ.</p>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Xbox Series X</th>
+<th>PlayStation 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ЦП</strong></td>
+<td>8 ядер @ 3,8/3,6 ГГц</td>
+<td>8 ядер @ 3,5 ГГц (фикс.)</td>
+</tr>
+<tr>
+<td><strong>ГП</strong></td>
+<td>52 CU @ 1825 МГц</td>
+<td>36 CU @ 2233 МГц</td>
+</tr>
+<tr>
+<td><strong>Память</strong></td>
+<td>16 ГБ GDDR6 (320 бит, 560/336 ГБ/с)</td>
+<td>16 ГБ GDDR6 (256 бит, 448 ГБ/с)</td>
+</tr>
+<tr>
+<td><strong>SSD</strong></td>
+<td>2,4 ГБ/с (RAW), 4,8 ГБ/с (сжатие)</td>
+<td>5,5 ГБ/с (RAW), до 8–9 ГБ/с (Oodle Kraken + RAD)</td>
+</tr>
+<tr>
+<td><strong>Архитектура ввода-вывода</strong></td>
+<td>DirectStorage + BCPack + SFS</td>
+<td>Custom I/O Complex + Kraken + Sampler Feedback-like</td>
+</tr>
+<tr>
+<td><strong>Обратная совместимость</strong></td>
+<td>Xbox, 360, One (600+ игр)</td>
+<td>PS4 (99 % библиотеки), частично PS2/PS1 (через PS Plus Premium)</td>
+</tr>
+</tbody>
+</table>
+<p>Ключевые отличия:</p>
+<ul>
+<li><strong>Пиковая TFLOPS-мощность</strong> выше у Series X (12,2 против 10,3), но PS5 компенсирует это более высокой частотой GPU и уникальной системой кэширования (до 256 МБ L2 + 64 МБ "Infinity Cache"-подобного буфера).</li>
+<li><strong>Скорость SSD</strong> выше у PS5 на "сырых" данных, но Xbox обеспечивает более предсказуемую задержку за счёт детерминированного планировщика ввода-вывода.</li>
+<li><strong>Обратная совместимость</strong> у Xbox шире по поколениям, но PS5 обеспечивает более глубокую интеграцию с PS4 (например, общий кооператив между поколениями).</li>
+<li><strong>Разработка</strong> под Xbox унифицирована с Windows; под PS5 — через проприетарный SDK с ограниченным доступом к низкоуровневым API.</li>
+</ul>
+<p>Обе платформы поддерживают 4K/120 Гц, HDR, VRR, но <strong>реальные игры редко используют 120 Гц в 4K</strong> — это требует ~24 TFLOPS при современных настройках качества. Чаще встречаются режимы:</p>
+<ul>
+<li>4K/60 Гц с трассировкой и VRS,</li>
+<li>1440p/120 Гц с растеризацией,</li>
+<li>Динамическое разрешение (1800p–4K) с адаптивной частотой (60–120 Гц).</li>
+</ul>
+<hr>
+<h3 id="разработка-игр-под-xbox-series-xs-от-архитектуры-движка-до-оптимизации">Разработка игр под Xbox Series X|S — от архитектуры движка до оптимизации</h3>
+<p>Разработка начинается с выбора <strong>целевой конфигурации</strong>. Microsoft рекомендует использовать <strong>Scalable Game Architecture</strong> — подход, при котором игра разрабатывается под Series X, а затем масштабируется вниз для Series S и Xbox One.</p>
+<hr>
+<h4>Этапы оптимизации</h4>
+<ol>
+<li>
+<p><strong>Базовый порт</strong> — запуск игры без изменений (режим совместимости). Работает, но не использует преимуществ новой архитектуры.</p>
+</li>
+<li>
+<p><strong>Включение GDK-ускорений</strong> — переход с XDK на Xbox GDK, активация DirectStorage, VRS, Mesh Shaders.</p>
+</li>
+<li>
+<p><strong>Оптимизация под Velocity Architecture</strong> —</p>
+<ul>
+<li>Перестройка загрузчика уровней под SFS;</li>
+<li>Замена статических текстур на тайловые, управляемые Sampler Feedback;</li>
+<li>Рефакторинг CPU-задач под 8 ядер с SMT.</li>
+</ul>
+</li>
+<li>
+<p><strong>Разделение ресурсов по профилю</strong> — создание нескольких наборов ассетов:</p>
+<ul>
+<li><code>XboxSeriesX_Quality</code> — 4K, 60 Гц, полная трассировка, 8× MSAA;</li>
+<li><code>XboxSeriesS_Performance</code> — 1440p (рендер), 4K (вывод через FSR 2.2), 120 Гц, частичная трассировка;</li>
+<li><code>XboxOneX_Compatibility</code> — 1080p/30 Гц, без трассировки.</li>
+</ul>
+</li>
+<li>
+<p><strong>Тестирование на реальном железе</strong> — обязательная проверка на обеих консолях. Эмуляторы не передают термальные и энергетические ограничения.</p>
+</li>
+</ol>
+<hr>
+<h4>Инструменты разработчика</h4>
+<ul>
+<li><strong>PIX for Xbox</strong> — профилировщик, фиксирующий GPU-таймлайн, CPU-стек, использование памяти, задержки ввода. Поддерживает трассировку DirectX-вызовов в реальном времени.</li>
+<li><strong>Xbox Hardware Lab Kit (HLK)</strong> — набор тестов совместимости, обязательный перед сертификацией. Включает проверку на утечки памяти, энергопотребление, реакцию на отключение сети, корректность HDR-вывода.</li>
+<li><strong>Game Bar SDK</strong> — интеграция с системными функциями — запись клипов, вещание, доступ к друзьям.</li>
+</ul>
+<p>Все игры проходят <strong>Xbox Certification</strong>, включающую 300+ тестов. Отклонение возможно по причинам:</p>
+<ul>
+<li>Задержка ввода > 130 мс (в режиме 60 Гц),</li>
+<li>Некорректная обработка HDR (например, клиппинг ярких зон),</li>
+<li>Отсутствие поддержки геймпада (если не заявлено управление клавиатурой/мышью),</li>
+<li>Использование нелицензионных API (например, прямой доступ к NVMe без DirectStorage).</li>
+</ul>
+<hr>
+<h3 id="что-важно-знать-а-что-второстепенно">Что важно знать, а что второстепенно</h3>
+<p>Ниже — фильтр для технических специалистов: какие аспекты критичны в работе, а какие имеют ограниченное практическое значение.</p>
+<hr>
+<h4>Важно</h4>
+<p>✅ <strong>Velocity Architecture как единый конвейер</strong> — SSD, SFS, BCPack и DirectStorage работают только в связке. Отключение одного звена (например, установка игры на HDD) отключает весь стек ускорений.</p>
+<p>✅ <strong>Граница между "быстрой" и "медленной" памятью</strong> — размещение текстур кадра или тяжёлых шейдерных буферов в медленной зоне вызывает просадки FPS. Разработчик обязан контролировать Heap Placement.</p>
+<p>✅ <strong>Сертификация Xbox — обязательна</strong> — даже игры в Game Pass не публикуются без прохождения Xbox HLK. Это не формальность — проверяются энергопотребление, сетевая безопасность, отказоустойчивость.</p>
+<p>✅ <strong>Обратная совместимость — не автоматическая</strong> — игра не станет совместимой сама по себе. Требуется вмешательство Microsoft — анализ, патчинг, тестирование. Разработчик может инициировать запрос через ID@Xbox.</p>
+<p>✅ <strong>Dolby Atmos — требует лицензии</strong> — включение Atmos в игре требует подписания соглашения с Dolby и уплаты роялти. Windows Sonic бесплатен и включён по умолчанию.</p>
+<hr>
+<h4>Второстепенно</h4>
+<p>❌ <strong>Точные TFLOPS-значения</strong> — не определяют производительность напрямую. На практике важнее пропускная способность памяти, латентность SSD, эффективность шейдерных ядер и оптимизация движка.</p>
+<p>❌ <strong>Сравнение с видеокартами ПК ("Series X = RTX 3060")</strong> — некорректно. Консоль — закрытая система с фиксированным API, предсказуемой нагрузкой и отсутствием фоновых процессов. ПК-видеокарта работает в переменных условиях — драйверы, фоновые приложения, фрагментация памяти.</p>
+<p>❌ <strong>Наличие оптического привода</strong> — не влияет на производительность. Series S и Series X идентичны по архитектуре; различие — в комплектации и маркетинговой позиции.</p>
+<p>❌ <strong>Замена термопасты</strong> — не требуется в течение срока службы при нормальной эксплуатации. Перегрев возникает только при нарушении вентиляции. Замена нарушает гарантию и не даёт измеримого прироста FPS.</p>
+<p>❌ <strong>Режим полёта</strong> — отключает только Wi-Fi/Bluetooth. Не влияет на производительность CPU/GPU, не экономит энергию в активном режиме.</p>
+<hr>
+<h3 id="перспективы-развития">Перспективы развития</h3>
+<p>Microsoft заявляет о десятилетнем жизненном цикле поколения. Это означает:</p>
+<ul>
+<li>Поддержка новых API через обновления GDK (ожидается DirectX 13 Feature Level 12.2 к 2026–2027 гг.);</li>
+<li>Постепенное расширение Velocity Architecture (например, поддержка ZSTD вместо BCPack);</li>
+<li>Интеграция с <strong>Project Scarlett Refresh</strong> — гипотетическое обновление на базе RDNA 3.5+/Zen 4, если будет принято решение о mid-gen refresh (как Xbox One X);</li>
+<li>Развитие <strong>Xbox Cloud Hybrid</strong> — сценариев, где часть вычислений (физика, ИИ) выполняется в облаке, а рендеринг — на консоли.</li>
+</ul>
+<p>Ключевой тренд — <strong>стирание границы между локальным и облачным</strong>. Уже сегодня:</p>
+<ul>
+<li>Сохранения, друзья, достижения — облачные;</li>
+<li>Игровой поток — может начинаться в облаке и продолжаться локально (Quick Resume across devices);</li>
+<li>Аналитика и античит — частично вынесены на Azure.</li>
+</ul>
+<p>Это делает Xbox Series X|S не просто игровыми консолями, а <strong>локальными терминалами глобальной игровой платформы</strong>.</p>
+<hr>
+<h2 id="в-подборках">В подборках</h2>
+<p>Статья входит в <a href="https://spirzen.ru/about/collections">тематические подборки</a> и блок "С чего начать?" на <a href="/">главной</a>. Соседние шаги того же маршрута:</p>
+<p><strong>Железо</strong> — <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/intro">Как работает компьютер — о разделе</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11432">Как устроен Steam Deck и Steam Machine</a>, <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/1">Аппаратное обеспечение</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11433">Как устроена Nintendo Switch</a>, <a href="https://spirzen.ru/encyclopedia/9-spinoff/9-03-igrovaya-industriya/11434">Как устроена Playstation 5</a>, <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/intro">Аппаратное обеспечение — о разделе</a>.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#как-устроен-xbox-series-s-и-series-x">Как устроен Xbox Series S и Series X</a></li><li class="article-toc__item is-h3"><a href="#линейка-xbox-до-series-xs">Линейка Xbox до Series X|S</a></li><li class="article-toc__item is-h3"><a href="#общая-концепция-проектирования">Общая концепция проектирования</a></li><li class="article-toc__item is-h3"><a href="#процессорный-комплекс-cpu">Процессорный комплекс (CPU)</a></li><li class="article-toc__item is-h3"><a href="#графический-комплекс-gpu">Графический комплекс (GPU)</a></li><li class="article-toc__item is-h3"><a href="#оперативная-память-gddr6">Оперативная память (GDDR6)</a></li><li class="article-toc__item is-h3"><a href="#хранилище-ssd-и-расширение">Хранилище — SSD и расширение</a></li><li class="article-toc__item is-h3"><a href="#носители-и-оптика">Носители и оптика</a></li><li class="article-toc__item is-h3"><a href="#операционная-система-и-программная-платформа">Операционная система и программная платформа</a></li><li class="article-toc__item is-h3"><a href="#обратная-совместимость">Обратная совместимость</a></li><li class="article-toc__item is-h3"><a href="#аудиоподсистема-и-пространственный-звук">Аудиоподсистема и пространственный звук</a></li><li class="article-toc__item is-h3"><a href="#сетевые-интерфейсы-и-облачная-интеграция">Сетевые интерфейсы и облачная интеграция</a></li><li class="article-toc__item is-h3"><a href="#охлаждение-энергопотребление-и-теплоотвод">Охлаждение, энергопотребление и теплоотвод</a></li><li class="article-toc__item is-h3"><a href="#техническое-обслуживание-и-долговечность">Техническое обслуживание и долговечность</a></li><li class="article-toc__item is-h3"><a href="#практическая-эксплуатация">Практическая эксплуатация</a></li><li class="article-toc__item is-h3"><a href="#инженерный-баланс-почему-именно-так">Инженерный баланс — почему именно так</a></li><li class="article-toc__item is-h3"><a href="#сравнение-с-playstation-5">Сравнение с PlayStation 5</a></li><li class="article-toc__item is-h3"><a href="#разработка-игр-под-xbox-series-xs-от-архитектуры-движка-до-оптимизации">Разработка игр под Xbox Series X|S — от архитектуры движка до оптимизации</a></li><li class="article-toc__item is-h3"><a href="#что-важно-знать-а-что-второстепенно">Что важно знать, а что второстепенно</a></li><li class="article-toc__item is-h3"><a href="#перспективы-развития">Перспективы развития</a></li><li class="article-toc__item"><a href="#в-подборках">В подборках</a></li></ul></nav></aside> </div> <aside class="related-topics" aria-label="Связанные темы"> <h2>Связанные темы</h2> <ul> <li> <a href="https://spirzen.ru/encyclopedia/1-basics/1-08-kak-rabotaet-kompyuter/intro" target="_blank" rel="noopener noreferrer"> Как работает компьютер — о разделе  ↗ </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine  </a> </li><li> <a href="https://spirzen.ru/encyclopedia/2-system-network/2-10-zhelezo/1" target="_blank" rel="noopener noreferrer"> Аппаратное обеспечение  ↗ </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch  </a> </li><li> <a href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass  </a> </li> </ul> </aside> </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>

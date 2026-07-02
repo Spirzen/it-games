@@ -1,0 +1,477 @@
+<!DOCTYPE html><html lang="ru" data-portal="games" data-platform="steam"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>Архитектура гонок — Игры IT Universe</title><meta name="description" content="Архитектура гонок в играх - поведение соперников, динамика сложности и приёмы, заметные игроку в заезде."><link rel="icon" href="/favicon.ico" sizes="any"><script id="itu-ecosystem-config" type="application/json">{"postMessage":{"themeRequest":"itu-theme-request","themeChange":"itu-theme-change","source":"itu-portal"},"domains":{"spirzen":"https://spirzen.ru","terms":"https://terms.spirzen.ru","lab":"https://lab.spirzen.ru","games":"https://games.spirzen.ru","kids":"https://kids.spirzen.ru","tools":"https://tools.spirzen.ru","code":"https://code.spirzen.ru","play":"https://play.spirzen.ru","assets":"https://assets.spirzen.ru","html":"https://html.spirzen.ru","search":"https://search.spirzen.ru","color":"https://color.spirzen.ru","random":"https://random.spirzen.ru","writer":"https://writer.spirzen.ru","schema":"https://schema.spirzen.ru","sql":"https://sql.spirzen.ru"}}</script><script>(function(){const portalVariant = "games";
+
+      (function () {
+        try {
+          var themeKey = 'itu-portal-theme';
+          var platformKey = 'itu-games-platform';
+          var platforms = ['steam', 'xbox', 'playstation', 'nintendo'];
+          var root = document.documentElement;
+
+          if (portalVariant === 'games') {
+            var platform = localStorage.getItem(platformKey);
+            root.dataset.platform = platforms.indexOf(platform) >= 0 ? platform : 'steam';
+          }
+
+          var stored = localStorage.getItem(themeKey);
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : portalVariant === 'games'
+                ? 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          root.dataset.theme = theme;
+          root.classList.toggle('dark', theme === 'dark');
+        } catch (e) {}
+      })();
+    })();</script><link rel="stylesheet" href="/_astro/_slug_.Dw6yzqSY.css">
+<style>.itu-loader-host{display:grid;place-items:center;gap:.85rem;padding:1.25rem;text-align:center}.itu-loader-host--overlay{position:absolute;inset:0;z-index:2;background:color-mix(in srgb,var(--itu-loader-bg, #ffffff) 94%,transparent);backdrop-filter:blur(4px)}.itu-loader-host--page{min-height:100vh;background:var(--itu-loader-bg, #f4f6fb)}.itu-loader{display:flex;flex-direction:column;align-items:center;gap:.85rem}.itu-loader__stage{position:relative;width:168px;height:118px;display:grid;place-items:center}.itu-loader__orbs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.itu-loader__orbs span{position:absolute;width:14px;height:14px;border-radius:999px;background:linear-gradient(135deg,var(--itu-loader-accent, #7b68ee),#470ba9);box-shadow:0 0 18px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 45%,transparent);animation:itu-loader-orb 1.5s infinite ease-in-out}.itu-loader__orbs span:nth-child(1){top:4px;left:50%;margin-left:-7px;animation-delay:-.4s}.itu-loader__orbs span:nth-child(2){bottom:8px;left:18px;animation-delay:-.25s}.itu-loader__orbs span:nth-child(3){bottom:8px;right:18px;animation-delay:-.1s}.itu-loader__book{position:relative;width:132px;height:auto;filter:drop-shadow(0 12px 24px color-mix(in srgb,var(--itu-loader-accent, #7b68ee) 22%,transparent))}.itu-loader__book-cover,.itu-loader__book-page{display:block;width:100%;height:auto}.itu-loader__book-page{position:absolute;top:0;left:0;width:52%;transform-origin:left center;animation:itu-loader-page .55s ease-in-out infinite}.itu-loader__label{margin:0;max-width:22rem;font-size:.88rem;line-height:1.45;color:var(--itu-loader-muted, #5a6c7d)}.itu-loader__label strong{display:block;margin-bottom:.15rem;font-size:.95rem;font-weight:700;color:var(--itu-loader-text, #2c3e50)}@keyframes itu-loader-page{0%{transform:rotateY(0) skewY(0)}45%{transform:rotateY(88deg) skewY(-12deg)}to{transform:rotateY(0) skewY(0)}}@keyframes itu-loader-orb{0%,80%,to{opacity:.35;transform:scale(.55)}40%{opacity:1;transform:scale(1)}}:root[data-theme=dark] .itu-loader-host,html.dark .itu-loader-host{--itu-loader-bg: #0b1020;--itu-loader-text: #e2e8f0;--itu-loader-muted: #94a3b8;--itu-loader-accent: #9370db}@media(prefers-reduced-motion:reduce){.itu-loader__book-page,.itu-loader__orbs span{animation:none}}
+</style></head> <body> <header class="ecosystem-nav"> <a class="ecosystem-nav__brand" href="https://games.spirzen.ru/games/intro"> <img class="ecosystem-nav__brand-mark" src="/img/docusaurus.png" alt="" width="28" height="28" decoding="async"> <span>Игры IT</span> </a> <nav class="ecosystem-nav__links" aria-label="Экосистема Вселенная IT"> <a class="ecosystem-nav__link" href="https://spirzen.ru"> Энциклопедия </a><a class="ecosystem-nav__link" href="https://terms.spirzen.ru/glossary/intro"> Глоссарий </a><a class="ecosystem-nav__link" href="https://lab.spirzen.ru"> Лаборатория </a><a class="ecosystem-nav__link" href="https://code.spirzen.ru"> Код </a><a class="ecosystem-nav__link" href="https://play.spirzen.ru"> Play </a><a class="ecosystem-nav__link" href="https://tools.spirzen.ru"> Инструменты </a><a class="ecosystem-nav__link is-active" href="https://games.spirzen.ru" aria-current="page"> Игры </a><a class="ecosystem-nav__link" href="https://kids.spirzen.ru"> Для детей </a><a class="ecosystem-nav__link" href="https://html.spirzen.ru"> WebEditor </a> </nav> <div class="ecosystem-nav__actions"> <div class="platform-picker" role="group" aria-label="Стиль платформы"> <button type="button" class="platform-picker__btn is-active" data-games-platform="steam" aria-pressed="true" title="Steam"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Steam</span> </button><button type="button" class="platform-picker__btn" data-games-platform="xbox" aria-pressed="false" title="Xbox"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Xbox</span> </button><button type="button" class="platform-picker__btn" data-games-platform="playstation" aria-pressed="false" title="PlayStation"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">PlayStation</span> </button><button type="button" class="platform-picker__btn" data-games-platform="nintendo" aria-pressed="false" title="Nintendo"> <span class="platform-picker__swatch" aria-hidden="true"></span> <span class="platform-picker__label">Nintendo</span> </button> </div> <button type="button" class="theme-toggle" data-itu-theme-toggle aria-label="Переключить тему" data-astro-cid-x3pjskd3> <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true" data-astro-cid-x3pjskd3>☀</span> <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" data-astro-cid-x3pjskd3>☽</span> </button>  </div> </header> <div class="portal-shell has-sidebar has-toc"> <aside class="portal-sidebar" aria-label="Разделы"> <div class="portal-sidebar__head"> <p class="portal-sidebar__title">Разделы</p> <button type="button" class="portal-sidebar__collapse" data-sidebar-collapse aria-expanded="true" aria-label="Свернуть боковую панель">
+‹
+</button> </div> <nav class="portal-sidebar__nav"> <ul class="portal-sidebar__list"> <li> <a class="portal-sidebar__link" href="/games/intro"> О портале </a> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-03-igrovaya-industriya/intro"> Игровая индустрия </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-03-igrovaya-industriya/game-studies/intro"> Игроведение </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/1"> Diablo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/101"> Overwatch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/11"> Starcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/111"> The Elder Scrolls </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/112"> Super Mario </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/113"> Mortal Kombat </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/114"> Street Fighter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/115"> Resident Evil </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/116"> Far Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/117"> Assassin&#39;s Creed </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/118"> Dragon Age </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/119"> Devil May Cry </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/12"> Warcraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/120"> Dead Space </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/121"> Cyberpunk 2077 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/122"> Crysis </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/123"> Call of Duty </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/124"> Final Fantasy </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/125"> Halo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/126"> Grand Theft Auto </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/127"> Жанры видеоигр — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/128"> DRM и Denuvo в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/129"> Игровые консоли — маршрут </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/13"> Monster Hunter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/14"> DOOM </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/15"> Warhammer </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/16"> The Witcher </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/game-studies/17"> The Sims </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1"> Игровая индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11"> Кризис игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/111"> Студии и независимые разработчики </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/112"> Издатели игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/113"> Цифровые магазины и физические дистрибьюторы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114"> Игровые платформы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1141"> Почему AAA-разработка такая дорогая </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1142"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1143"> Игровые консоли </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/114301"> Xbox Game Pass </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11431"> Как устроен Xbox Series S и Series X </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11432"> Как устроен Steam Deck и Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11433"> Как устроена Nintendo Switch </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11434"> Как устроена Playstation 5 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11435"> Steam </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11436"> PlayStation Store </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11437"> Nintendo eShop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11438"> Linux-гейминг и Proton </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11439"> История DirectX — от DOS до нейросетей </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/1144"> Виртуальная реальность </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11440"> Как устроена Nintendo Switch 2 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/11441"> Как устроен Steam Machine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/115"> Монетизация </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/116"> Аркадные автоматы </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/117"> Сообщество и контент </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/118"> Работа в игровой индустрии </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/119"> Java игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/120"> Dendy и NES </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/121"> Sega Mega Drive и Genesis игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/122"> Легенды </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/123"> Производительность портативных игровых устройств </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/124"> Игровые выставки, шоукейсы и презентации </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/125"> Киберспорт — как устроена индустрия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/126"> Live-service игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/127"> UGC-платформы — Roblox, Fortnite Creative и аналоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/128"> Эмуляция ретро-игр — легально и технически </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/998"> Игровая индустрия — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-03-igrovaya-industriya/999"> Игровая индустрия — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details" open> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-04-razrabotka-igr/intro"> Разработка игр </a> </summary> <ul class="portal-sidebar__sublist"> <li class="portal-sidebar__subcategory"> <details class="portal-sidebar__details portal-sidebar__details--nested"> <summary class="portal-sidebar__summary portal-sidebar__summary--nested"> <a class="portal-sidebar__sublink portal-sidebar__sublink--section" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/intro"> Практикум разработки игр </a> </summary> <ul class="portal-sidebar__nested"> <li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/10"> Python — Bubble Shooter </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/11"> Python — Space Invaders </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/2"> Python — Match3 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/3"> Python — Ping Pong </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/4"> Python — Racing </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/5"> Python — Tetris </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/6"> Python — диаблоид </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/7"> Python — карточная стратегия </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/8"> Java — Java Survivors </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/praktikum-razrabotki-igr/9"> TypeScript — OnlineCardGame </a> </li> </ul> </details> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1"> Процесс разработки видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/11"> Дорожная карта геймдева </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/111"> Команда разработки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/112"> Игровой движок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/113"> Виды игровых движков </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/114"> Языки программирования игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/115"> Моделирование </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/116"> Текстуры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/117"> Гейм-дизайн </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1171"> Опыт игрока и мотивационные модели </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1172"> Механики и пространство состояний </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1173"> Системы, петли обратной связи и баланс </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1174"> Геймплей и core loop </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1175"> Макроструктура, нарратив и метагейм </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/1176"> Прототип и playtest дизайна </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/118"> PC </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/119"> PlayStation </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/120"> Nintendo </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/121"> Xbox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/122"> Мобильные игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/123"> Оптимизация игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/124"> Тестирование игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/125"> Каталог open-source клонов игр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/126"> Звук и музыка в играх — FMOD и Wwise </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/127"> Игровая доступность (accessibility) </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/128"> ИИ в играх </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/129"> Unreal Engine 6 </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/130"> Verse </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/2"> Разработка на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/201"> Справочник по Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/202"> Внутриигровая экономика Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/203"> Roblox Studio — первая игра и настройки Place </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/204"> Практикум — обби на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/205"> Практикум — королевская битва на Roblox </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/206"> Roblox — механика, монетизация и продвижение </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/207"> Godot — первая 2D-игра за вечер </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/21"> Разработка в Minecraft </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/3"> Разработка на Unity </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/301"> Справочник по Unity </a> </li><li> <a class="portal-sidebar__sublink is-active" href="/games/9-04-razrabotka-igr/31"> Архитектура гонок </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/32"> Ритм игры </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/4"> Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/401"> Справочник по Unreal Engine </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/998"> Разработка игр — итоги </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-04-razrabotka-igr/999"> Разработка игр — чек-лист </a> </li> </ul> </details> </li><li class="portal-sidebar__category"> <details class="portal-sidebar__details"> <summary class="portal-sidebar__summary"> <a class="portal-sidebar__link" href="/games/9-031-gametools/intro"> Полезные инструменты </a> </summary> <ul class="portal-sidebar__sublist"> <li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1"> Движки </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/1111"> Запуск игр на Xbox Series X|S с внешнего жёсткого диска </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/2"> Инструменты для видеоигр </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/3"> Игровые магазины </a> </li><li> <a class="portal-sidebar__sublink" href="/games/9-031-gametools/4"> Игры, которые должен попробовать каждый </a> </li> </ul> </details> </li> </ul> </nav> </aside> <main class="portal-main" id="main-content"> <div class="portal-content">   <nav class="article-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="/games/intro">Игры</a></li><li><a href="/games/9-04-razrabotka-igr/intro">Разработка игр</a></li><li><span aria-current="page">Архитектура гонок</span></li></ol></nav><header class="portal-hero"> <h1>Архитектура гонок</h1> <p>Архитектура гонок в играх - поведение соперников, динамика сложности и приёмы, заметные игроку в заезде.</p> </header><div class="article-toolbar" data-pdf-exclude> <div class="article-toolbar__actions"> <button type="button" class="article-toolbar__btn" data-article-share data-title="Архитектура гонок" data-url="/games/9-04-razrabotka-igr/31">
+Поделиться
+</button> <button type="button" class="article-toolbar__btn" data-article-pdf data-title="Архитектура гонок">
+Сохранить PDF
+</button> </div> </div><div class="article-layout"> <article class="article-shell"> <div class="article-body"><h1>Архитектура гонок</h1>
+<div class="article-tags">
+  <span class="tag tag-required">ОБЯЗАТЕЛЬНО</span>
+  <span class="tag tag-beginner">ДЛЯ НОВИЧКОВ</span>
+</div>
+<p><span class="complexity-badge">Всем</span></p>
+<hr>
+<h2 id="архитектура-поведения-ии-и-динамическая-регулировка-сложности-в-гоночных-играх">Архитектура поведения ИИ и динамическая регулировка сложности в гоночных играх</h2>
+<p>Гоночные видеоигры — один из самых зрелых и технически насыщенных жанров. За кажущейся простотой ("руль, газ, тормоз, финиш") скрывается сложная система взаимодействующих компонентов — физического движка, трассового графа, системы маршрутизации, прогнозирующего ИИ, динамического контроллера сложности и мета-уровневого управления ходом заезда. Особенно интересна роль <strong>искусственного интеллекта противников</strong>, поскольку именно он формирует впечатление "честной", "напряжённой" или "скучной" гонки — независимо от технического совершенства графики или физики.</p>
+<p>Вопрос, поставленный в начале, касается <em>наблюдаемого</em> поведения:</p>
+<ul>
+<li>Противники "тормозят" перед финишем;</li>
+<li>Ускоряются после ошибки игрока;</li>
+<li>Меняют агрессивность в зависимости от этапа гонки;</li>
+<li>Корректируют скорость даже при идеальной езде игрока.</li>
+</ul>
+<p>Эти эффекты не случайны и не являются артефактами физического моделирования. Это результат <strong>многоуровневой системы управления поведением ИИ</strong>, включающей как низкоуровневые правила навигации, так и высокоуровневые стратегии, подчинённые целям <em>игрового дизайна</em>, прежде всего — поддержанию драматургической напряжённости и ощущения "справедливой борьбы".</p>
+<p>Рассмотрим компоненты этой системы по порядку: от абстрактной концепции до реализации.</p>
+<hr>
+<h3 id="1-базовые-уровни-архитектуры-поведения-ии-в-гонках">1. Базовые уровни архитектуры поведения ИИ в гонках</h3>
+<p>В подавляющем большинстве современных гоночных игр используется <strong>иерархическая архитектура поведения</strong>, состоящая как минимум из трёх слоёв:</p>
+<ol>
+<li>
+<p><strong>Навигационный слой (Path Following &#x26; Lane Keeping)</strong><br>
+Отвечает за следование по трассе — выбор траектории, удержание на полосе, обход препятствий, прохождение поворотов. В аркадных играх (NFS, <em>Forza Horizon</em>) часто применяется <em>сплайновая навигация</em>: трасса представлена в виде кривой Безье или Catmull–Rom-сплайна, дополненного <em>waypoint’ами</em> (точки пути) с атрибутами:</p>
+<ul>
+<li>оптимальная скорость,</li>
+<li>максимальный угол поворота руля,</li>
+<li>зоны агрессивного/пассивного поведения,</li>
+<li>параметры "зондов" для обнаружения соперников.</li>
+</ul>
+<p>В симуляторах (<em>iRacing</em>, <em>Assetto Corsa</em>) используется гибрид сплайнов и <em>глобального маршрутизационного графа</em> (вроде тех, что применяются в RTS), что позволяет ИИ адаптироваться к изменяющимся условиям (дождь, разбитый асфальт, блокировка тормозов).</p>
+</li>
+<li>
+<p><strong>Тактический слой (Race Strategy &#x26; Interaction)</strong><br>
+Управляет поведением в контексте текущей позиции, отставания/опережения, состояния машины, а также действий других участников. Здесь происходят:</p>
+<ul>
+<li>драфтинг (следование в slipstream’е),</li>
+<li>обгоны/блокировки,</li>
+<li>уступка при сбросе соперника с трассы,</li>
+<li>реакция на столкновения.</li>
+</ul>
+<p>Тактический слой использует <em>состояние машины игрока</em> как входной сигнал — сколько раз он столкнулся, сколько раз выехал за пределы трассы, насколько стабильна его скорость. На основе этого строится <em>оценка угрозы</em> — степень, с которой игрок представляет опасность для текущего положения ИИ.</p>
+</li>
+<li>
+<p><strong>Стратегический (мета-) слой (Meta-Game Control &#x26; Rubber-Banding)</strong><br>
+Именно этот слой отвечает за наблюдаемые "нечестные" эффекты: замедление перед финишем, ускорение после аварии игрока и т.п. Его цель — <em>поддержание интереса игрока</em> и <em>избежание демотивирующих сценариев</em> (например, отставание на 30 секунд к середине гонки).</p>
+<p>Этот уровень работает через <em>глобальные параметры динамической сложности</em>, применяющиеся ко всем ИИ-агентам синхронно или индивидуально.</p>
+</li>
+</ol>
+<hr>
+<h3 id="2-rubber-banding-динамическая-коррекция-скорости">2. Rubber-Banding — динамическая коррекция скорости</h3>
+<p>Термин <strong>rubber-banding</strong> ("резиновая лента") происходит из аналогии: машины ИИ и игрока связаны воображаемой резинкой — чем дальше одна уходит вперёд, тем сильнее "тянет" другую. Это одна из старейших и наиболее эффективных техник балансировки в гонках.</p>
+<p>Однако современные реализации уже не сводятся к простому масштабированию скорости. Вместо этого используется <strong>многофакторная функция коррекции</strong>, включающая:</p>
+<ul>
+<li>
+<p><strong>Относительное отставание (Δtime)</strong><br>
+Абсолютное время отставания (в секундах) от лидера или от игрока (если он в топ-3). При Δtime > порога <em>T₁</em> начинается плавное увеличение максимальной скорости ИИ; при Δtime <code>&#x3C;</code> −T₂ (ИИ сильно впереди) — снижение.</p>
+</li>
+<li>
+<p><strong>Дисперсия скорости игрока (speed variance)</strong><br>
+Если игрок демонстрирует стабильную скорость (например, отклонение <code>&#x3C;</code> 5 км/ч на прямой), система считает, что он контролирует ситуацию — и уменьшает агрессию ИИ. Если же дисперсия высока (резкие торможения, ускорения, колебания на поворотах), это интерпретируется как <em>признак нестабильности</em>, и ИИ активизируется: начинает атаковать позиции, сокращать интервалы.</p>
+</li>
+<li>
+<p><strong>Событийные триггеры (event triggers)</strong><br>
+Такие как:</p>
+<ul>
+<li><code>player_off_track</code> → +15% к скорости ближайших ИИ на 10 сек;</li>
+<li><code>player_collision_with_AI</code> → снижение агрессивности у <em>ударенного</em> ИИ (во избежание отмщения), но +10% к скорости у <em>остальных</em>;</li>
+<li><code>player_spinout</code> → кратковременный импульс "догоняющего" режима у всех соперников в радиусе 200 м.</li>
+</ul>
+</li>
+</ul>
+<p>Эти параметры обычно хранятся в <em>таблицах баланса</em>, привязанных к уровню сложности. Например, в таблице для <em>Hard</em> может быть:</p>
+<pre><code class="language-csv">event, delta_speed_mult, duration_sec, affected_AI
+spinout, +0.18, 12, followers_only
+off_track >2s, +0.22, 15, all_behind_player
+clean_lap, -0.05, ∞, all
+</code></pre>
+<p>Коррекция скорости <strong>не происходит линейно</strong>. ИИ <em>оптимизирует траекторию</em> — сокращает радиус поворотов, реже тормозит перед шиканами, агрессивнее входит в драфт, допускает более рискованные обгоны. Это создаёт иллюзию "умного ускорения".</p>
+<hr>
+<h3 id="3-фазовая-модель-гонки-управление-драматургией">3. Фазовая модель гонки — управление драматургией</h3>
+<p>Современные игры не рассматривают гонку как единый отрезок времени. Вместо этого применяется <strong>фазовая модель</strong>, где заезд делится на логические отрезки с разными целями у ИИ:</p>
+<table>
+<thead>
+<tr>
+<th>Фаза</th>
+<th>Продолжительность</th>
+<th>Цель ИИ</th>
+<th>Поведенческие признаки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Старт</strong></td>
+<td>0–15% дистанции</td>
+<td>Оптимизация позиции, минимизация коллизий</td>
+<td>Аккуратные траектории, избегание рискованных обгонов в первом повороте, "пассивный" старт у слабых ИИ</td>
+</tr>
+<tr>
+<td><strong>Развитие</strong></td>
+<td>15–70% дистанции</td>
+<td>Стабилизация групп, построение стратегии</td>
+<td>Драфтинг, чередование атак и отдыха, имитация "усталости" (микроторможения раз в 30–60 с), накопление "очков агрессии" для финала</td>
+</tr>
+<tr>
+<td><strong>Напряжение</strong></td>
+<td>70–95% дистанции</td>
+<td>Создание ощущения борьбы</td>
+<td>Сокращение дистанций, чаще неоптимальные, но зрелищные обгоны, имитация "второго дыхания" (микро-ускорения после торможения), <em>замедление</em> при сильном отрыве игрока (чтобы не уйти "в никуда")</td>
+</tr>
+<tr>
+<td><strong>Финал</strong></td>
+<td>95–100%</td>
+<td>Максимизация драматизма</td>
+<td><em>Контролируемое торможение</em> перед финишной прямой (чтобы игрок мог ворваться в борьбу), резкое ускорение при попытке обгона в последнем повороте, <em>намеренное сохранение 0.2–0.8 сек отставания</em> для "фотофиниша"</td>
+</tr>
+</tbody>
+</table>
+<p>Фазы не жёстко привязаны к кругам, а <strong>вычисляются динамически</strong> на основе:</p>
+<ul>
+<li>текущего положения игрока (лидер/аутсайдер),</li>
+<li>отставания от ближайшего соперника,</li>
+<li>количества оставшихся кругов <em>и времени</em> (в гонках на время).</li>
+</ul>
+<p>Например, если игрок — лидер с отрывом в 8 секунд на предпоследнем круге, фаза "Напряжение" может начаться уже с середины круга: один или два ИИ получат команду <em>отработать атаку</em>, даже если по календарю гонка ещё в "Развитии".</p>
+<p>Это <em>дизайнерское решение</em>, аналогичное тому, как в кино режиссёр замедляет кадры перед кульминацией. Игроку важно <em>ощущать</em> борьбу — даже если она частично сценаризирована.</p>
+<hr>
+<h3 id="4-прогнозирующая-система-ии-который-знает-будущее">4. Прогнозирующая система — ИИ, который "знает" будущее</h3>
+<p>Ключевое упрощение, позволяющее ИИ оставаться конкурентоспособным без суперкомпьютера:</p>
+<blockquote>
+<p><strong>ИИ не симулирует реакцию в реальном времени — он следует заранее рассчитанному "идеальному проезду" и корректирует его на лету.</strong></p>
+</blockquote>
+<p>Это достигается через <strong>pre-baked racing line + runtime adaptation</strong>:</p>
+<ol>
+<li>
+<p>На этапе подготовки уровня (на этапе компиляции карты) для каждой машины (в зависимости от класса — <em>Touring</em>, <em>Supercar</em>, <em>Drift</em>) генерируется <em>идеальная траектория</em> — последовательность точек с указанием:</p>
+<ul>
+<li>скорости входа/выхода в поворот,</li>
+<li>точки торможения,</li>
+<li>зоны ускорения,</li>
+<li>допустимых отклонений ("воронки" толерантности).</li>
+</ul>
+</li>
+<li>
+<p>Во время гонки ИИ движется по этой траектории, но с <strong>адаптивным масштабированием параметров</strong>:</p>
+<ul>
+<li>Если игрок рядом — увеличивается ширина "воронки" (разрешается больше отклонений от идеала ради манёвров);</li>
+<li>Если ИИ отстаёт — сокращается время торможения на 5–10%, смещается точка входа в поворот;</li>
+<li>Если игрок съехал — ИИ может <em>временно переключиться на другую траекторию</em> (например, "агрессивную" с более поздним торможением), даже если она менее эффективна в среднем, но даёт визуальный эффект "атаки".</li>
+</ul>
+</li>
+</ol>
+<p>Иными словами, ИИ не "думает", как человек, — он <em>воспроизводит поведение</em>, заранее спланированное разработчиками, но с динамическими поправками. Это позволяет достичь высокой производительности даже на слабом hardware.</p>
+<hr>
+<h3 id="5-адаптивные-ии-системы-от-статики-к-персонализации">5. Адаптивные ИИ-системы — от статики к персонализации</h3>
+<p>Если в ранних гоночных играх (например, <em>Gran Turismo 2</em>, <em>Need for Speed — Underground</em>) поведение ИИ задавалось фиксированными таблицами ("на Easy — 90% от скорости игрока, на Hard — 105%"), то современные системы используют <strong>динамическое профилирование игрока</strong> и <strong>онлайн-адаптацию</strong> поведения противников.</p>
+<hr>
+<h4>5.1. Принцип Drivatar (Forza Motorsport / Horizon)</h4>
+<p>Технология <strong>Drivatar</strong>, разработанная Turn 10 Studios и Microsoft Research, — один из самых значимых прорывов в области ИИ для гонок. Её суть — замена "универсального" ИИ на <em>статистическую модель поведения реальных игроков</em>.</p>
+<p>Как это работает:</p>
+<ol>
+<li>
+<p>Каждый игрок, участвующий в онлайн-гонках, оставляет "след":</p>
+<ul>
+<li>траектории прохождения поворотов,</li>
+<li>распределение скоростей по сегментам,</li>
+<li>частота и типы столкновений,</li>
+<li>реакция на драфт, торможение, атаку.</li>
+</ul>
+</li>
+<li>
+<p>На основе этих данных строится <strong>скрытая марковская модель (Hidden Markov Model — HMM)</strong> поведения конкретного водителя. Состояния модели соответствуют тактическим режимам:</p>
+<ul>
+<li><code>Conservative_Lap</code> (аккуратный круг),</li>
+<li><code>Aggressive_Overtake</code>,</li>
+<li><code>Recovery_After_Spin</code>,</li>
+<li><code>Draft_Hunting</code>,<br>
+— и переходы между ними оцениваются по вероятности.</li>
+</ul>
+</li>
+<li>
+<p>При генерации ИИ-соперника в одиночной гонке система <em>выбирает случайный Drivatar-профиль</em> из пула (или синтезирует гибридный), и запускает его на трассе. Таким образом, вместо "робота с ускорением ×1.1" игрок сталкивается с поведением, имитирующим стиль <em>реального человека</em> — кто-то будет агрессивно врезаться в повороты, кто-то — ждать ошибки, кто-то — рисковать на прыжках.</p>
+</li>
+</ol>
+<p><strong>Drivatar не копирует конкретного игрока в реальном времени</strong> (это было бы технически невыполнимо в offline-режиме), а использует <em>обобщённые паттерны</em>, извлечённые офлайн и кэшированные в локальной базе. Это гарантирует предсказуемость (никаких "внезапных гениальностей" от ИИ) и конфиденциальность.</p>
+<hr>
+<h4>5.2. Reinforcement Learning в гоночных ИИ (исследовательские проекты)</h4>
+<p>Хотя коммерческие игры пока избегают чистого обучения с подкреплением (RL) из-за непредсказуемости и требований к тренировке, в академической среде уже получены значимые результаты.</p>
+<p>Например, в проекте <em>DeepRacer</em> (Amazon) и исследованиях NVIDIA (<em>Learning to Drive from Simulation without Real World Labels</em>) применяются следующие подходы:</p>
+<ul>
+<li><strong>Симулятор → ИИ → Трансфер в реальность</strong> — ИИ обучается в физически точной среде (например, <em>CARLA</em>), максимизируя функцию награды:</li>
+</ul>
+<pre><code>  R = w₁·v + w₂·(1 − |θ|) − w₃·collision − w₄·off_track
+</code></pre>
+<p>где:</p>
+<ul>
+<li>
+<p><code>v</code> — текущая скорость,</p>
+</li>
+<li>
+<p><code>θ</code> — отклонение от центра полосы,</p>
+</li>
+<li>
+<p><code>collision</code>, <code>off_track</code> — бинарные штрафы.</p>
+</li>
+<li>
+<p><strong>Imitation Learning (IL)</strong>: ИИ обучается на записях профессиональных пилотов — <em>восстанавливая функцию стоимости</em>, лежащую в основе решений. Такой ИИ способен повторять траекторию и <em>адаптироваться к изменениям</em>: если на трассе появилось препятствие — выбрать альтернативный маршрут, не разученный изначально.</p>
+</li>
+</ul>
+<p>На практике такие системы пока не внедрены в массовые игры из-за:</p>
+<ul>
+<li>высокой вариативности поведения (ИИ может "впасть" в нежелательные стратегии — например, ехать задом наперёд, если это даёт локальный максимум скорости),</li>
+<li>сложности интеграции с rubber-banding и фазовой моделью,</li>
+<li>риска нарушения "театральности" гонки.</li>
+</ul>
+<p>Тем не менее, гибридные архитектуры (например, RL-оптимизация параметров rubber-banding на основе A/B-тестирования в live-сервисах) уже используются в <em>Forza Horizon 5</em> и <em>The Crew Motorfest</em>.</p>
+<hr>
+<h3 id="6-физический-движок-как-ограничитель-поведения-ии">6. Физический движок как ограничитель поведения ИИ</h3>
+<p>Важное, но часто упускаемое из виду обстоятельство: <strong>поведение ИИ жёстко ограничено физическим движком</strong>. ИИ не может "просто поехать быстрее" — он должен <em>выполнять те же законы механики</em>, что и игрок.</p>
+<p>Это реализуется через:</p>
+<hr>
+<h4>6.1. Shared Physics State</h4>
+<p>Все машины (игровая и ИИ) работают в одном физическом мире. У каждой — масса, момент инерции, аэродинамические коэффициенты, характеристики шин (Pacejka-модель), КПП, подвеска. ИИ-контроллер подаёт сигналы на:</p>
+<ul>
+<li>педаль газа/тормоза (0…1),</li>
+<li>угол поворота руля (−1…1),</li>
+<li>сцепление/передачу (в ручном режиме).</li>
+</ul>
+<p>Эти сигналы проходят через <strong>тот же физический солвер</strong>, что и у игрока. Следовательно, если игрок настроил машину на избыточную поворачиваемость — ИИ <em>тоже</em> будет заносить на выходе из поворотов, если его логика не компенсирует это коррекцией газа/руля.</p>
+<hr>
+<h4>6.2. Predictive Physics Queries</h4>
+<p>Чтобы избежать столкновений и нереалистичных манёвров, ИИ постоянно выполняет <em>упреждающие физические запросы</em> (raycasts, swept-sphere tests, swept-OBB) вперёд по траектории на 0.5–2 секунды. На основе этого строится:</p>
+<ul>
+<li>прогноз времени до столкновения (TTC),</li>
+<li>безопасная зона обгона,</li>
+<li>допустимые углы входа в поворот с учётом текущей скорости.</li>
+</ul>
+<p>Например, если ИИ "видит", что при текущем ускорении через 1.2 сек он столкнётся с отбойником (на основе raycast’а вдоль сплайна), он <em>самостоятельно</em> снижает газ — даже если мета-слой требует ускорения. Это предотвращает абсурдные ситуации вроде "ИИ врезается в стену, потому что rubber-banding велел ему ехать на 250 км/ч в шпильке".</p>
+<hr>
+<h4>6.3. Тайм-варпинг и временная когерентность</h4>
+<p>В некоторых играх (например, <em>Mario Kart</em>, <em>Burnout</em>) используется <strong>локальное замедление времени</strong> для усиления зрелищности ("эффект матрицы" при столкновении). При этом важно сохранить <strong>временную когерентность ИИ</strong>: если время замедлено для игрока, оно замедляется и для противников — иначе ИИ мог бы "догнать" игрока за счёт более высокой дискретизации.</p>
+<p>В симуляторах же, напротив, используется <strong>фиксированный timestep</strong> (обычно 60–120 Гц), и все агенты обновляются строго синхронно — это гарантирует, что победа/поражение не зависит от случайных джиттеров в цикле рендеринга.</p>
+<hr>
+<h3 id="7-координация-ии">7. Координация ИИ</h3>
+<p>В гонке из 20 машин хаос неизбежен — если каждый ИИ будет просто следовать своей идеальной траектории, возникнет "затор" в первом повороте. Чтобы этого избежать, применяются механизмы <em>неявной координации</em>:</p>
+<hr>
+<h4>7.1. Локальное упорядочение (Local Ordering)</h4>
+<p>Каждый ИИ поддерживает <em>локальный список соседей</em> (в радиусе 30–50 м) и присваивает им приоритеты на основе:</p>
+<ul>
+<li>абсолютной позиции в заезде,</li>
+<li>относительной скорости,</li>
+<li>углового положения (кто "внутри" дуги поворота).</li>
+</ul>
+<p>На основе этого строится <em>временная карта доступности</em>:</p>
+<blockquote>
+<p>"Я могу занять внешнюю траекторию <em>только если</em> соперник слева не начал торможение раньше меня".</p>
+</blockquote>
+<p>Это вычисляется через жадный алгоритм: сначала обрабатываются лидеры, затем — по убыванию позиции. Таким образом, более медленные ИИ <em>сами отдают инициативу</em>, даже без прямой коммуникации.</p>
+<hr>
+<h4>7.2. Зоны недоступности (Exclusion Zones)</h4>
+<p>Для ключевых участков (вход в шикан, узкий тоннель, зона прыжка) задаются <em>статические exclusion zones</em> — области, в которые разрешено входить не более чем <em>N</em> машин одновременно. Если зона переполнена, входящие ИИ получают команду:</p>
+<ul>
+<li>снизить скорость,</li>
+<li>выбрать альтернативную траекторию (если есть),</li>
+<li>активировать "режим ожидания" до освобождения слота.</li>
+</ul>
+<p>В <em>Dirt 5</em> и <em>WRC Generations</em> такие зоны динамически расширяются при дожде или ночном освещении — чтобы избежать цепных аварий.</p>
+<hr>
+<h4>7.3. Глобальный диспетчер гонки (Race Director)</h4>
+<p>Это отдельный высокоуровневый компонент (часто реализованный как скрипт на C# или Lua), который следит за <em>целостностью заезда</em> как зрелищного события:</p>
+<ul>
+<li>Если три и более ИИ одновременно вылетели — временно снижает агрессию у всех остальных, чтобы не усугубить "эффект домино";</li>
+<li>Если игрок долго не участвует в борьбе (например, едет одиноко на 8-м месте), инициирует "инцидент" — один из впереди идущих ИИ совершает "ошибку" (занос, лёгкий вылет), открывая окно для обгона;</li>
+<li>Если в финале складывается "один на один" — активирует <em>режим дуэли</em>: оба соперника получают +3% к сцеплению и −5% к инерции, чтобы минимизировать случайные сходы в решающий момент.</li>
+</ul>
+<p>Race Director — это, по сути, <em>гейм-мастер</em>, следящий за нарративом гонки. Он не нарушает физики, но манипулирует <em>контекстом</em>, в котором она работает.</p>
+<hr>
+<h3 id="8-сетевая-синхронизация-и-ии">8. Сетевая синхронизация и ИИ</h3>
+<p>В мультиплеерных гонках (например, <em>Forza Horizon Online</em>, <em>The Crew 2</em>, <em>Gran Turismo 7 Sport Mode</em>) ключевая проблема — <strong>сетевая задержка (latency)</strong>. Даже при пинге 50 мс игрок видит машину соперника "там, где она была 50 мс назад". Если бы ИИ (или сервер) просто воспроизводил входящие пакеты, это привело бы к:</p>
+<ul>
+<li>"телепортации" машин при потере пакетов,</li>
+<li>несправедливым столкновениям ("я его не видел, а он врезался"),</li>
+<li>нестабильной физике при частых коррекциях.</li>
+</ul>
+<p>Решение — <strong>гибридная модель клиент-сервер с ИИ-предсказанием и постфактум-коррекцией</strong>.</p>
+<hr>
+<h4>8.1. Client-Side Prediction + Server Reconciliation</h4>
+<p>Каждый клиент (включая ИИ-агентов на сервере) выполняет:</p>
+<ol>
+<li>
+<p><strong>Экстраполяцию</strong>: на основе последнего полученного состояния машины соперника строится предсказание её положения через Δt = latency / 2.<br>
+Используется <strong>физически консистентная модель</strong> — учитывается текущее ускорение, угловая скорость, трение шин — чтобы предсказание не "улетало" в отбойник при входе в поворот.</p>
+</li>
+<li>
+<p><strong>Интерполяцию входящих данных</strong>: когда приходит новый пакет — клиент плавно "подтягивает" отображаемую позицию к реальной (обычно за 100–200 мс), избегая рывков.</p>
+</li>
+<li>
+<p><strong>Rollback при расхождении</strong>: если ошибка между предсказанием и фактом превышает порог (например, 1.5 м), клиент "откатывает" состояние на <em>серверную временную метку</em> и пересчитывает физику с этого момента. Это особенно критично для столкновений.</p>
+</li>
+</ol>
+<p>ИИ здесь играет двойную роль:</p>
+<ul>
+<li><strong>На сервере</strong> — ИИ-агенты участвуют в физическом симуляторе как полноценные участники. Их действия (газ, руль) вычисляются заранее (см. §4), а результаты отправляются клиентам как "авторитетные" данные.</li>
+<li><strong>На клиенте</strong> — если связь с сервером потеряна (например, у игрока временный дроп), локальный ИИ может <em>временно заменить</em> отвалившихся соперников, используя их последний профиль Drivatar или rubber-banding-параметры. Это называется <strong>AI Fallback Mode</strong> — и применяется, например, в <em>Forza Horizon 5</em> при потере одного из 12 участников в Horizon Life.</li>
+</ul>
+<blockquote>
+<p>⚠️ Важно: сервер <em>никогда</em> не доверяет клиенту финальное решение о столкновении или прохождении контрольной точки. Это исключает читерство через локальное ускорение времени.</p>
+</blockquote>
+<hr>
+<h4>8.2. Lag Compensation через изменение поведения ИИ</h4>
+<p>Интересный приём, используемый в <em>Project CARS 2</em> и <em>Wreckfest</em>: при высоком пинге у игрока система <strong>снижает агрессивность ИИ в его окрестности</strong> на 10–20%. Почему?</p>
+<p>При лаге игрок не способен адекватно реагировать на резкие манёвры — и будет воспринимать ИИ как "нечестного", даже если тот просто следует своей траектории. Снижение агрессии — это <em>адаптация интерфейса к ограничениям канала</em>, аналогично тому, как видеостриминг понижает битрейт при слабом Wi-Fi.</p>
+<hr>
+<h3 id="9-эволюция-ии-в-гоночных-играх">9. Эволюция ИИ в гоночных играх</h3>
+<p>Чтобы понять, насколько сложной стала современная архитектура, полезно проследить историю.</p>
+<table>
+<thead>
+<tr>
+<th>Эпоха</th>
+<th>Примеры</th>
+<th>Архитектура ИИ</th>
+<th>Ограничения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1994–1999</strong> (<em>NFS II</em>, <em>Ridge Racer</em>, <em>Gran Turismo 1</em>)</td>
+<td>Сплайны + фиксированные скорости</td>
+<td>ИИ следует предзаписанной траектории. Скорость = <code>player_speed × k</code>, где <code>k</code> — константа (0.8–1.05). Нет реакции на столкновения.</td>
+<td>Машины "приклеены к трассе", игнорируют аварии, не могут обгонять.</td>
+</tr>
+<tr>
+<td><strong>2000–2007</strong> (<em>NFS: Underground</em>, <em>Burnout 3</em>, <em>GT4</em>)</td>
+<td>State Machines + базовый rubber-banding</td>
+<td>Конечные автоматы: <code>Cruising</code> → <code>Overtaking</code> → <code>Blocking</code>. Событийные триггеры: <code>if (player hits me) → state = Aggressive</code>. Динамическое изменение <code>k</code> по отставанию.</td>
+<td>Жёсткие переходы между состояниями, "роботизированное" поведение, отсутствие долгосрочной стратегии.</td>
+</tr>
+<tr>
+<td><strong>2008–2015</strong> (<em>Forza 3–4</em>, <em>Dirt 2–3</em>, <em>GT5–6</em>)</td>
+<td>Utility-Based AI + фазовая модель</td>
+<td>Функции полезности: <code>U = w₁·position_gain + w₂·risk − w₃·damage</code>. Выбор действия — максимизация <code>U</code>. Введение фаз гонки (старт/середина/финиш).</td>
+<td>Требует ручной настройки весов <code>wᵢ</code>. Поведение предсказуемо, но не персонализировано.</td>
+</tr>
+<tr>
+<td><strong>2016–н.в.</strong> (<em>Forza Horizon 3–5</em>, <em>GT7</em>, <em>WRC Generations</em>)</td>
+<td>Drivatar + Meta-Director + Adaptive RL</td>
+<td>Гибрид статистического моделирования и высокоуровневого нарративного контроля. Обратная связь от игрока → онлайн-реобучение параметров rubber-banding.</td>
+<td>Высокая сложность отладки; риск "слишком человеческого" ИИ (например, умышленное торможение перед финишем воспринимается как насмешка).</td>
+</tr>
+</tbody>
+</table>
+<p>Ключевой переход произошёл около 2013–2015 гг.:</p>
+<blockquote>
+<p>От <em>управления машиной</em> — к <em>управлению впечатлением</em>.</p>
+</blockquote>
+<p>Разработчики перестали спрашивать: <em>"Как сделать ИИ быстрее?"</em> — и начали спрашивать: <em>"Как сделать гонку запоминающейся?"</em><br>
+Это и привело к появлению Race Director, фазовых триггеров и этических дебатов вокруг "честности".</p>
+<hr>
+<h3 id="10-ограничения-и-артефакты-почему-ии-всё-ещё-не-идеален">10. Ограничения и артефакты — почему ИИ всё ещё не идеален</h3>
+<p>Несмотря на прогресс, современные системы сталкиваются с фундаментальными ограничениями.</p>
+<hr>
+<h4>10.1. Дилемма предсказуемости vs. неожиданности</h4>
+<p>ИИ должен быть:</p>
+<ul>
+<li><strong>Предсказуемым</strong> — чтобы игрок мог научиться его "читать" и обыгрывать;</li>
+<li><strong>Неожиданным</strong> — чтобы избежать монотонности.</li>
+</ul>
+<p>Эти цели противоречивы. Слишком стабильный ИИ вызывает скуку (<em>"опять тормозит перед шпилькой"</em>). Слишком хаотичный — фрустрацию (<em>"почему он внезапно врезался в меня без причины?"</em>).</p>
+<p>Решение — <strong>контролируемый стохастический шум</strong>:</p>
+<ul>
+<li>К базовым параметрам (скорость входа в поворот, точка торможения) добавляется гауссов шум с σ = 0.03–0.07;</li>
+<li>Но его амплитуда регулируется Race Director: снижается в финале, повышается в середине гонки;</li>
+<li>Шум <em>коррелирует</em> между агентами: если один ИИ "решил" рисковать — другие в той же группе получают +20% к вероятности агрессивного обгона.</li>
+</ul>
+<hr>
+<h4>10.2. Проблема "невидимого идеала"</h4>
+<p>Игроки часто сравнивают себя не с ИИ, а с <em>воображаемым идеалом</em>:</p>
+<blockquote>
+<p>"Он прошёл поворот на 10 км/ч быстрее — значит, он читер".</p>
+</blockquote>
+<p>На самом деле ИИ едет <em>достаточно хорошо, чтобы создать иллюзию борьбы</em>. Например, в <em>Forza Motorsport</em> лучшие ИИ-профили всё равно теряют 0.3–0.7 сек на круге по сравнению с теоретическим S-разгоном, потому что:</p>
+<ul>
+<li>избегают риска вылета (вводят запас в 5% по скорости),</li>
+<li>оставляют пространство для обгона (не занимают 100% ширины трассы),</li>
+<li>имитируют "усталость" (микро-ошибки каждые 4–6 кругов).</li>
+</ul>
+<p>Но игрок этого не видит — он видит только результат.</p>
+<hr>
+<h4>10.3. Этический разрыв восприятия</h4>
+<p>Самый острый конфликт возникает, когда игрок <em>обнаруживает</em> rubber-banding — например, замечает, что ИИ тормозит перед финишем даже при его идеальной езде.</p>
+<p>Это вызывает ощущение <strong>маневрируемости</strong> — будто игра "решает за него", лишая агентности. Особенно болезненно это для хардкорных симуляторов, где ценится "чистота" физики.</p>
+<p>Производители реагируют двумя способами:</p>
+<ol>
+<li>
+<p><strong>Скрытие механизмов</strong>:</p>
+<ul>
+<li>в <em>Gran Turismo 7</em> rubber-banding активируется только при отставании <code>></code> 12 сек — "чтобы сохранить реалистичность для опытных";</li>
+<li>в <em>Assetto Corsa Competizione</em> ИИ можно отключить от коррекции скорости через <code>aiParams.ini</code>, но это не задокументировано.</li>
+</ul>
+</li>
+<li>
+<p><strong>Явное объяснение в обучении</strong>:</p>
+<ul>
+<li><em>Forza Motorsport (2023)</em> в разделе "Как работает ИИ" прямо пишет:
+<blockquote>
+<p>"Противники могут корректировать темп, чтобы гонка оставалась напряжённой. Это не изменяет физику вашей машины — только поведение соперников".</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<p>Выбор стратегии зависит от целевой аудитории: аркады — скрывают, симуляторы — объясняют.</p>
+<hr>
+<h3 id="11-гонка-как-нарративная-система">11. Гонка как нарративная система</h3>
+<p>Гоночная игра — это не соревнование скоростей. Это <strong>динамическая нарративная система</strong>, где:</p>
+<ul>
+<li>Трасса — сценарий,</li>
+<li>Машины — персонажи,</li>
+<li>Физика — законы мира,</li>
+<li>ИИ — актёры, исполняющие партии по партитуре, но с импровизацией в рамках режиссёрского замысла.</li>
+</ul>
+<p>Инженерия поведения ИИ в таких играх — это синтез:</p>
+<ul>
+<li>вычислительной эффективности (работа на GPU/CPU консоли в 60 FPS),</li>
+<li>психологической достоверности (ощущение "живого" соперника),</li>
+<li>драматургической целесообразности (нарастание напряжения к финалу).</li>
+</ul>
+<p>Именно поэтому за "простым" эффектом — "ИИ замедлился перед финишем" — стоит многоуровневая архитектура, объединяющая:</p>
+<ul>
+<li>сплайновую навигацию,</li>
+<li>адаптивные функции полезности,</li>
+<li>фазовые триггеры,</li>
+<li>физическую изоляцию,</li>
+<li>сетевую компенсацию,</li>
+<li>и нарративный контроль.</li>
+</ul>
+<p>Понимание этой системы важно не только для геймдева. Она служит образцом <strong>сложной адаптивной системы реального времени</strong>, применимой в симуляторах управления трафиком, дронов, роботизированных складов — везде, где требуется баланс между предсказуемостью, эффективностью и "человечностью" поведения.</p>
+<hr>
+</div> </article> <aside class="article-toc" aria-label="Содержание страницы" data-pdf-exclude><div class="article-toc__head"><p class="article-toc__title">Содержание</p><button type="button" class="article-toc__toggle" data-toc-collapse aria-expanded="true" aria-label="Свернуть содержание">
+‹
+</button></div><nav class="article-toc__nav"><ul><li class="article-toc__item"><a href="#архитектура-поведения-ии-и-динамическая-регулировка-сложности-в-гоночных-играх">Архитектура поведения ИИ и динамическая регулировка сложности в гоночных играх</a></li><li class="article-toc__item is-h3"><a href="#1-базовые-уровни-архитектуры-поведения-ии-в-гонках">1. Базовые уровни архитектуры поведения ИИ в гонках</a></li><li class="article-toc__item is-h3"><a href="#2-rubber-banding-динамическая-коррекция-скорости">2. Rubber-Banding — динамическая коррекция скорости</a></li><li class="article-toc__item is-h3"><a href="#3-фазовая-модель-гонки-управление-драматургией">3. Фазовая модель гонки — управление драматургией</a></li><li class="article-toc__item is-h3"><a href="#4-прогнозирующая-система-ии-который-знает-будущее">4. Прогнозирующая система — ИИ, который &quot;знает&quot; будущее</a></li><li class="article-toc__item is-h3"><a href="#5-адаптивные-ии-системы-от-статики-к-персонализации">5. Адаптивные ИИ-системы — от статики к персонализации</a></li><li class="article-toc__item is-h3"><a href="#6-физический-движок-как-ограничитель-поведения-ии">6. Физический движок как ограничитель поведения ИИ</a></li><li class="article-toc__item is-h3"><a href="#7-координация-ии">7. Координация ИИ</a></li><li class="article-toc__item is-h3"><a href="#8-сетевая-синхронизация-и-ии">8. Сетевая синхронизация и ИИ</a></li><li class="article-toc__item is-h3"><a href="#9-эволюция-ии-в-гоночных-играх">9. Эволюция ИИ в гоночных играх</a></li><li class="article-toc__item is-h3"><a href="#10-ограничения-и-артефакты-почему-ии-всё-ещё-не-идеален">10. Ограничения и артефакты — почему ИИ всё ещё не идеален</a></li><li class="article-toc__item is-h3"><a href="#11-гонка-как-нарративная-система">11. Гонка как нарративная система</a></li></ul></nav></aside> </div>  </div> </main> </div> <footer class="ecosystem-footer"> <div class="ecosystem-footer__grid"> <section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Энциклопедия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/section/basics" rel="noopener noreferrer"> Основы </a> </li><li> <a href="https://spirzen.ru/section/system-network" rel="noopener noreferrer"> Система и сеть </a> </li><li> <a href="https://spirzen.ru/section/data-markup" rel="noopener noreferrer"> Данные и разметка </a> </li><li> <a href="https://spirzen.ru/section/code-dev" rel="noopener noreferrer"> Код и разработка </a> </li><li> <a href="https://spirzen.ru/section/infra-security" rel="noopener noreferrer"> Инфраструктура и безопасность </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Экосистема</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://search.spirzen.ru" rel="noopener noreferrer"> Поиск </a> </li><li> <a href="https://terms.spirzen.ru/glossary/intro" rel="noopener noreferrer"> Глоссарий </a> </li><li> <a href="https://lab.spirzen.ru/lab/intro" rel="noopener noreferrer"> Лаборатория </a> </li><li> <a href="https://kids.spirzen.ru/kids/intro" rel="noopener noreferrer"> Для детей </a> </li><li> <a href="https://games.spirzen.ru/games/intro" rel="noopener noreferrer"> Видеоигры </a> </li><li> <a href="https://tools.spirzen.ru/tools/intro" rel="noopener noreferrer"> Инструменты </a> </li><li> <a href="https://color.spirzen.ru" rel="noopener noreferrer"> Color </a> </li><li> <a href="https://random.spirzen.ru" rel="noopener noreferrer"> Random </a> </li><li> <a href="https://writer.spirzen.ru" rel="noopener noreferrer"> Writer </a> </li><li> <a href="https://html.spirzen.ru" rel="noopener noreferrer"> WebEditor </a> </li><li> <a href="https://schema.spirzen.ru" rel="noopener noreferrer"> Schema </a> </li><li> <a href="https://sql.spirzen.ru" rel="noopener noreferrer"> SQL </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">Контекст и рефлексия</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/context/intro" rel="noopener noreferrer"> Контекст </a> </li><li> <a href="https://spirzen.ru/philosophy/intro" rel="noopener noreferrer"> Философия </a> </li> </ul> </section><section class="ecosystem-footer__col"> <h2 class="ecosystem-footer__title">О проекте</h2> <ul class="ecosystem-footer__list"> <li> <a href="https://spirzen.ru/about/project" rel="noopener noreferrer"> О проекте </a> </li><li> <a href="https://spirzen.ru/about/collections" rel="noopener noreferrer"> Тематические подборки </a> </li><li> <a href="https://spirzen.ru/about/manifest" rel="noopener noreferrer"> Манифест и правила </a> </li><li> <a href="https://spirzen.ru/about/author#support" rel="noopener noreferrer"> Поддержать проект </a> </li><li> <a href="https://spirzen.ru/about/author" rel="noopener noreferrer"> Об авторе </a> </li><li> <a href="https://github.com/spirzen/it-knowledge-base" rel="noopener noreferrer"> GitHub </a> </li> </ul> </section> </div> <p class="ecosystem-footer__copy">Copyright © 2026 Тагиров Тимур Владиславович. Все права защищены.</p> </footer> <script type="module" src="/_astro/PortalLayout.astro_astro_type_script_index_0_lang.DV1Tx6R7.js"></script> </body> </html>
